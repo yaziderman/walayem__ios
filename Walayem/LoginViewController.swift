@@ -15,7 +15,7 @@ import GoogleSignIn
 import FirebaseMessaging
 import FBSDKCoreKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate, GIDSignInUIDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
 
     // MARK: Properties
     
@@ -107,7 +107,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     }
     
     @IBAction func loginViaGoogle(_ sender: UIButton) {
-        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance().signIn()
     }
     

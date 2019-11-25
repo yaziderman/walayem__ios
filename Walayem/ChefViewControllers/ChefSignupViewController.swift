@@ -55,6 +55,7 @@ class ChefSignupViewController: UIViewController, UITextFieldDelegate{
                                       "confirm_password": password,
                                       "is_chef": true]
         
+
         progressAlert = showProgressAlert()
         PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
             if let error = error {
@@ -101,6 +102,11 @@ class ChefSignupViewController: UIViewController, UITextFieldDelegate{
         emailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         phoneTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        nameIndicator.tintColor = UIColor.silver
+        emailIndicator.tintColor = UIColor.silver
+        phoneIndicator.tintColor = UIColor.silver
+        passwordIndicator.tintColor = UIColor.silver
         
         updateSignupButtonState()
     }

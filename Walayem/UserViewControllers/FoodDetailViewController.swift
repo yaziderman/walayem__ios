@@ -94,7 +94,7 @@ class FoodDetailViewController: UIViewController {
             nameLabel.text = food.name
             kitchenLabel.text = food.kitcherName! + " \u{2022} " + food.chefName!
             estimatedTimeLabel.text = "\(food.preparationTime) min"
-            priceLabel.text = "AED \(food.price)"
+            priceLabel.text = "AED \(food.price) Subject to delivery fees"
             descriptionLabel.text = food.description
             deliveryLabel.text = "Home delivery"
             timeLabel.text = "Preparation \(food.preparationTime) min"

@@ -16,7 +16,7 @@ import GoogleSignIn
 import FirebaseMessaging
 import FirebaseAuth
 
-class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate, GIDSignInUIDelegate {
+class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
 
     // MARK: Properties
     
@@ -46,6 +46,12 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     
     @IBAction func back(_ sender: UIButton){
         dismiss(animated: true, completion: nil)
+    }
+    
+    private func showAlert(title: String, msg: String){
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func signup(_ sender: UIButton) {
@@ -135,7 +141,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     }
     
     @IBAction func signupViaGoogle(_ sender: UIButton) {
-        GIDSignIn.sharedInstance().uiDelegate = self
+        GIDSignIn.sharedInstance()?.delegate = self
         GIDSignIn.sharedInstance().signIn()
     }
     
@@ -153,6 +159,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         phoneTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
+        nameVerifyImageView.tintColor = UIColor.silver
+        emailVerifyImageView.tintColor = UIColor.silver
+        phoneVerifyImageView.tintColor = UIColor.silver
+        passwordVerifyImageView.tintColor = UIColor.silver
+
         updateSignupButtonState()
     }
 

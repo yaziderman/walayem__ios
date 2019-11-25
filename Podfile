@@ -15,4 +15,6 @@ target 'Walayem' do
   pod 'Firebase/Messaging'
   pod 'Firebase/Auth'
   pod 'DatePickerDialog'
+  pod 'CropViewController'
+
 end

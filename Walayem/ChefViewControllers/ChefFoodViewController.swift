@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import CropViewController
 
 class FoodImageCell: UICollectionViewCell{
     
@@ -41,7 +42,7 @@ class FoodImageCell: UICollectionViewCell{
     
 }
 
-class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CropViewControllerDelegate{
 
     // MARK: Properties
     let imageCellId = "imageCellId"
@@ -320,24 +321,37 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
         guard let selectedImage = info[UIImagePickerControllerEditedImage] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
-        // So the user can pick only Square Image not others
-        if selectedImage.size.height == selectedImage.size.width
-        {
-            // Dismiss the picker.
-            dismiss(animated: true, completion: nil)
-            if let image64 = Utils.encodeImage(selectedImage){
-                foodImages.append(image64)
-                let indexPath = IndexPath(row: foodImages.count, section: 0)
-                imageCollectionView.insertItems(at: [indexPath])
-            }
-        }else{
-            dismiss(animated: true, completion: nil)
-            self.showAlert(title: "Invalid Image", msg: "Please crop the image in square shape while selecting it.")
-        }
+
+        dismiss(animated: true, completion: nil)
         
+        let cropViewController = CropViewController(image: selectedImage)
+        cropViewController.customAspectRatio = CGSize.init(width: 1, height: 1)
+        cropViewController.aspectRatioPreset = TOCropViewControllerAspectRatioPreset.presetSquare
+        cropViewController.aspectRatioLockEnabled = true
+        cropViewController.resetAspectRatioEnabled = false
+        cropViewController.aspectRatioLockDimensionSwapEnabled = false
+        cropViewController.delegate = self
+        present(cropViewController, animated: true, completion: nil)
         
+//        // So the user can pick only Square Image not others
+//        if selectedImage.size.height == selectedImage.size.width
+//        {
+//            // Dismiss the picker.
+//            if let image64 = Utils.encodeImage(selectedImage){
+//                foodImages.append(image64)
+//                let indexPath = IndexPath(row: foodImages.count, section: 0)
+//                imageCollectionView.insertItems(at: [indexPath])
+//            }
+//        }else{
+//            dismiss(animated: true, completion: nil)
+//            self.showAlert(title: "Invalid Image", msg: "Please crop the image in square shape while selecting it.")
+//        }
+//
         
-       
+    }
+    
+    func cropViewController(_ cropViewController: CropViewController, didFinishCancelled cancelled: Bool) {
+        cropViewController.dismiss(animated: false, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -350,7 +364,20 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
         textField.resignFirstResponder()
         return true
     }
+    
+    // MARK: CROP VIEW CONTROLLER
+    func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
+        
+        if let image64 = Utils.encodeImage(image){
+            foodImages.append(image64)
+            let indexPath = IndexPath(row: foodImages.count, section: 0)
+            imageCollectionView.insertItems(at: [indexPath])
+        }
+        
+        cropViewController.dismiss(animated: false, completion: nil)
 
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
