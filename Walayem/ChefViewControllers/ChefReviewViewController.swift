@@ -35,14 +35,16 @@ class ChefReviewViewController: UIViewController {
     }
     
     @IBAction func contactSupport(_ sender: UIButton) {
-        let email = UserDefaults.standard.string(forKey: "ContactEmail")
-        let url = URL(string: "mailto:\(email!)")
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-        } else {
-            // Fallback on earlier versions
-            UIApplication.shared.openURL(url!)
-        }
+        self.performSegue(withIdentifier: "ChefMainSegue", sender: sender)
+
+//        let email = UserDefaults.standard.string(forKey: "ContactEmail")
+//        let url = URL(string: "mailto:\(email!)")
+//        if #available(iOS 10.0, *) {
+//            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+//        } else {
+//            // Fallback on earlier versions
+//            UIApplication.shared.openURL(url!)
+//        }
     }
     
     @IBAction func logout(_ sender: UIButton) {

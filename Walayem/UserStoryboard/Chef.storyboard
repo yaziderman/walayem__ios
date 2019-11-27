@@ -11,7 +11,7 @@
         <!--Chefs-->
         <scene sceneID="OtN-xT-m5b">
             <objects>
-                <viewController id="Vua-lY-CeW" customClass="ChefTableViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Vua-lY-CeW" customClass="ChefTableViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zse-pr-M2d">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -245,7 +245,7 @@
         <!--Fav Chef Table View Controller-->
         <scene sceneID="cgY-HF-0VL">
             <objects>
-                <viewController id="vbp-fl-eas" customClass="FavChefTableViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="vbp-fl-eas" customClass="FavChefTableViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Vlo-gb-xsy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -423,7 +423,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6w-Z3-Olj">
-                            <rect key="frame" x="-16291.333333333372" y="344" width="32822.666666666664" height="36"/>
+                            <rect key="frame" x="-16291.333333333334" y="344" width="32822.666666666664" height="36"/>
                             <attributedString key="attributedText">
                                 <fragment>
                                     <string key="content">All your favorite chefs
@@ -461,7 +461,7 @@
         <!--Chef Detail View Controller-->
         <scene sceneID="MtV-Yk-srj">
             <objects>
-                <viewController id="Ye8-3P-4Wc" customClass="ChefDetailViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Ye8-3P-4Wc" customClass="ChefDetailViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i77-AS-O8S">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1066,7 +1066,7 @@
         <!--Chef-->
         <scene sceneID="h7H-gH-AGZ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ztq-0G-sZ2" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="ztq-0G-sZ2" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Chef" image="chef" id="RDq-n4-tsZ"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -1099,6 +1099,6 @@
         <image name="timer" width="13" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ld4-tu-toR"/>
+        <segue reference="HDH-9h-mnR"/>
     </inferredMetricsTieBreakers>
 </document>

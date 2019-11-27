@@ -11,7 +11,7 @@
         <!--Login Prior View Controller-->
         <scene sceneID="cRU-p5-LDA">
             <objects>
-                <viewController id="7sD-th-m69" customClass="LoginPriorViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="7sD-th-m69" customClass="LoginPriorViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Of9-Tf-dae">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -137,13 +137,13 @@ that easy</string>
         <!--Login View Controller-->
         <scene sceneID="bme-Mb-Olj">
             <objects>
-                <viewController id="rQG-dw-03r" customClass="LoginViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="rQG-dw-03r" customClass="LoginViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rMW-er-zn7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="P3d-YL-VUT">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AlU-km-1RG" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -367,12 +367,12 @@ that easy</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="klX-oj-sdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="657" y="-672"/>
+            <point key="canvasLocation" x="-287" y="-795"/>
         </scene>
         <!--Reset Password-->
         <scene sceneID="HT0-oK-xyD">
             <objects>
-                <viewController id="56X-JO-zSh" customClass="ResetPasswordViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="56X-JO-zSh" customClass="ResetPasswordViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7sv-cE-u5V">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -507,13 +507,13 @@ we’ll send you instructions</string>
         <!--Signup View Controller-->
         <scene sceneID="mjw-9V-lLw">
             <objects>
-                <viewController id="IRQ-UA-oYI" customClass="SignupViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="IRQ-UA-oYI" customClass="SignupViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SfJ-m5-O0K">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="vhI-0T-7HG">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7A-EN-In5" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
@@ -788,10 +788,10 @@ we’ll send you instructions</string>
         <!--Navigation Controller-->
         <scene sceneID="UFI-Ci-Tl8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z92-iY-8VN" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Z92-iY-8VN" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ocV-5A-Q94">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -806,9 +806,9 @@ we’ll send you instructions</string>
         <!--Verify Phone View Controller-->
         <scene sceneID="N82-Wq-vHb">
             <objects>
-                <viewController id="Wej-BK-cMk" customClass="VerifyPhoneViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="Wej-BK-cMk" customClass="VerifyPhoneViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="eNk-3T-g6O">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="enr-03-2Kl">
@@ -843,7 +843,7 @@ code.</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMI-mS-BQL">
-                                <rect key="frame" x="322" y="597" width="33" height="30"/>
+                                <rect key="frame" x="322" y="617" width="33" height="30"/>
                                 <state key="normal" title="SKIP">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -881,9 +881,9 @@ code.</string>
         <!--Verify Emirates View Controller-->
         <scene sceneID="b5t-ME-xz6">
             <objects>
-                <viewController id="wVX-au-yfE" customClass="VerifyEmiratesViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="wVX-au-yfE" customClass="VerifyEmiratesViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AAR-FB-RQ9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify Emirates Id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OVY-WN-4ih">
@@ -920,7 +920,7 @@ code.</string>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vi3-s9-ykr">
-                                <rect key="frame" x="321" y="594" width="38" height="33"/>
+                                <rect key="frame" x="321" y="614" width="38" height="33"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <state key="normal" title="Next">
                                     <color key="titleColor" red="0.36184465885162354" green="0.90076011419296265" blue="0.8036765456199646" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -980,16 +980,16 @@ scan of your Emirates ID</string>
         <!--Chef Signup View Controller-->
         <scene sceneID="IUc-Rg-vLj">
             <objects>
-                <viewController id="nT7-XL-oOp" customClass="ChefSignupViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="nT7-XL-oOp" customClass="ChefSignupViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7r1-Ic-gUW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Ioj-lE-mQl">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9PM-9S-JuO" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoNoText" translatesAutoresizingMaskIntoConstraints="NO" id="xmY-7F-ggb">
                                                 <rect key="frame" x="170" y="55" width="35" height="74"/>

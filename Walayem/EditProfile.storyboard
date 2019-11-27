@@ -11,7 +11,7 @@
         <!--Change Password-->
         <scene sceneID="pEa-SC-7it">
             <objects>
-                <viewController id="LMt-HH-glT" customClass="ChangePasswordViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="LMt-HH-glT" customClass="ChangePasswordViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r86-M7-fg0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,7 +109,7 @@
         <!--Update Profile-->
         <scene sceneID="qxW-ay-DgQ">
             <objects>
-                <tableViewController storyboardIdentifier="updateProfileVC" id="cl7-5Q-GGx" customClass="UpdateProfileViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="updateProfileVC" modalPresentationStyle="fullScreen" id="cl7-5Q-GGx" customClass="UpdateProfileViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="70" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="tCu-d5-DDe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -259,7 +259,7 @@
         <!--Change Phone Number-->
         <scene sceneID="HGC-7b-dmP">
             <objects>
-                <viewController storyboardIdentifier="ChangePhoneVC" id="msk-Cq-VZ3" customClass="ChangePhoneViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChangePhoneVC" modalPresentationStyle="fullScreen" id="msk-Cq-VZ3" customClass="ChangePhoneViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="obG-4N-PSR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -370,7 +370,7 @@
         <!--Change Name-->
         <scene sceneID="uxd-gK-n8U">
             <objects>
-                <viewController id="gks-a4-mLd" customClass="ChangeNameViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="gks-a4-mLd" customClass="ChangeNameViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fe4-7a-Z2T">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -438,7 +438,7 @@
         <!--Navigation Controller-->
         <scene sceneID="eWr-uj-e0B">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rz3-nl-Jv2" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="rz3-nl-Jv2" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GuO-cT-Cof">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -456,7 +456,7 @@
         <!--Update Emirates ID-->
         <scene sceneID="tOc-vB-oU3">
             <objects>
-                <viewController id="64B-bb-2cb" customClass="UpdateEmiratesIDViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="64B-bb-2cb" customClass="UpdateEmiratesIDViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CcC-lM-Za9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

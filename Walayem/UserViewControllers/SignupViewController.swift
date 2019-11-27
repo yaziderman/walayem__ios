@@ -55,6 +55,27 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     }
     
     @IBAction func signup(_ sender: UIButton) {
+        if(!emailVerified)
+        {
+            self.showMessagePrompt("Invalid email.")
+            return;
+        }
+        else if(!nameVerified)
+        {
+            self.showMessagePrompt("Invalid name.")
+            return;
+        }
+        else if(!phoneVerified)
+        {
+            self.showMessagePrompt("Phone number should be valid and start with 971.")
+            return;
+        }
+        else if(!passwordVerified)
+        {
+            self.showMessagePrompt("Password must be at least 4 characters.")
+            return;
+        }
+        
         let name = nameTextField.text ?? ""
         let email = emailTextField.text ?? ""
         let phone = phoneTextField.text ?? ""
@@ -208,13 +229,13 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     }
     
     private func updateSignupButtonState(){
-        if nameVerified && emailVerified && passwordVerified{
-            signupButton.isEnabled = true
-            signupButton.alpha = 1
-        }else{
-            signupButton.isEnabled = false
-            signupButton.alpha = 0.3
-        }
+//        if nameVerified && emailVerified && passwordVerified{
+//            signupButton.isEnabled = true
+//            signupButton.alpha = 1
+//        }else{
+//            signupButton.isEnabled = false
+//            signupButton.alpha = 0.3
+//        }
     }
     
     private func sendFbData(token: String){

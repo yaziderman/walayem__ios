@@ -230,7 +230,7 @@ button and add some items</string>
                     <viewLayoutGuide key="safeArea" id="82D-n5-Gnm"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="157.59999999999999" y="-76.011994002998506"/>
+            <point key="canvasLocation" x="121" y="-109"/>
         </scene>
         <!--New Menu-->
         <scene sceneID="n9I-mw-UyP">
@@ -754,7 +754,7 @@ button and add some items</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xl4-fJ-bs4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-729" y="-74"/>
+            <point key="canvasLocation" x="-674" y="-91"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JWm-3g-7W9">
