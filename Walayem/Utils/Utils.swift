@@ -9,6 +9,7 @@
 import UIKit
 
 class Utils{
+    public static var SHOW_NEWDISH = false
     
     static func formatDate(_ date: String) -> String {
         let dateFormatter = DateFormatter()

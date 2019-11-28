@@ -43,6 +43,12 @@ class ChefFoodTableViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         getFoods()
+        
+        if(Utils.SHOW_NEWDISH)
+        {
+            Utils.SHOW_NEWDISH = false
+            self.performSegue(withIdentifier: "showNewDish", sender: self)
+        }
     }
     
     // MARK: Private methods

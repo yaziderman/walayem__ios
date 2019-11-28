@@ -432,6 +432,12 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     // MARK: CartFoodHeader delegate
     
     func toggleSection(section: Int) {
+        if(cartItems.count <= section)
+        {
+            return
+        }
+        
+        
         cartItems[section].opened = !cartItems[section].opened!
         
         tableView.reloadSections([section], with: .automatic)

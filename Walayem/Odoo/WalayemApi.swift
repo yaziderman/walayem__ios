@@ -10,8 +10,8 @@ import Foundation
 
 class WalayemApi{
     
-    static let BASE_URL: String = "http://13.229.229.140"
-//    static let BASE_URL: String = "http://app.walayem.com"
+//    static let BASE_URL: String = "http://13.229.229.140"
+    static let BASE_URL: String = "http://app.walayem.com"
     static let DB_NAME: String = "walayem"
     
     

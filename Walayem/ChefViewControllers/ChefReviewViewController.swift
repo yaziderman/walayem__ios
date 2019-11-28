@@ -11,7 +11,8 @@ import FirebaseMessaging
 
 class ChefReviewViewController: UIViewController {
 
-    @IBAction func skipPressed(_ sender: Any) {
+    @IBAction func skipPressed(_ sender: Any) {        Utils.SHOW_NEWDISH = true;
+
          self.performSegue(withIdentifier: "ChefMainSegue", sender: sender)
     }
     // MARK: Properties
@@ -35,16 +36,20 @@ class ChefReviewViewController: UIViewController {
     }
     
     @IBAction func contactSupport(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "ChefMainSegue", sender: sender)
-
-//        let email = UserDefaults.standard.string(forKey: "ContactEmail")
-//        let url = URL(string: "mailto:\(email!)")
-//        if #available(iOS 10.0, *) {
-//            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-//        } else {
-//            // Fallback on earlier versions
-//            UIApplication.shared.openURL(url!)
-//        }
+        var email = UserDefaults.standard.string(forKey: "ContactEmail")
+        
+        if(email == nil)
+        {
+            email = "walayem@gmail.com"
+        }
+        
+        let url = URL(string: "mailto:\(email!)")
+        if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
+            UIApplication.shared.openURL(url!)
+        }
     }
     
     @IBAction func logout(_ sender: UIButton) {

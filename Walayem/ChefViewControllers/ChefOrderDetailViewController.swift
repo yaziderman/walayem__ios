@@ -347,7 +347,7 @@ extension ChefOrderDetailViewController: UITableViewDataSource, UITableViewDeleg
             for food in orderDetail.products{
                 totalTime += food.preparationTime
             }
-            footerCell.preparationTimeLabel.text = "\(totalTime) minutes preparation time"
+            footerCell.preparationTimeLabel.text = "\(totalTime) hour(s) preparation time"
         }
         return footerCell.contentView
     }

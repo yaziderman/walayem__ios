@@ -288,21 +288,77 @@ class OrderViewController: UITableViewController {
             imageView.heightAnchor.constraint(equalToConstant: 16).isActive = true
             imageView.widthAnchor.constraint(equalToConstant: 16).isActive = true
             
-            if #available(iOS 11, *){
-                let guide = footerView.safeAreaLayoutGuide
+            if(self.orderDetail!.state == .rejected)
+            {
+                let rejectTitle = UILabel()
+                rejectTitle.text = "Rejected"
+                rejectTitle.textColor = UIColor.lightGray
+                rejectTitle.translatesAutoresizingMaskIntoConstraints = false
                 
-                imageView.centerYAnchor.constraint(equalTo: guide.centerYAnchor).isActive = true
-                imageView.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 20).isActive = true
+                let rejectReason = UILabel()
+                rejectReason.text = self.orderDetail?.reject_reason
+                rejectReason.textColor = UIColor.lightGray
+                rejectReason.translatesAutoresizingMaskIntoConstraints = false
                 
-                titleLabel.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
-                titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 12).isActive = true
-                titleLabel.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
-                titleLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: 20).isActive = true
-            }else{
-                footerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-14-[v0]-14-|", options: [], metrics: nil, views: ["v0": imageView]))
-                footerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-10-[v1]-20-|", options: .alignAllCenterY, metrics: nil, views: ["v0": imageView, "v1": titleLabel]))
+                let iv2 = UIImageView(frame: CGRect(x: 0, y: 0, width: 16, height: 16))
+                iv2.image = UIImage(named: "information")
+                iv2.tintColor = UIColor.red
+                iv2.translatesAutoresizingMaskIntoConstraints = false
+                
+                footerView.addSubview(rejectTitle)
+                footerView.addSubview(rejectReason)
+                footerView.addSubview(iv2)
+                
+                iv2.heightAnchor.constraint(equalToConstant: 16).isActive = true
+                iv2.widthAnchor.constraint(equalToConstant: 16).isActive = true
+                
+                if #available(iOS 11, *){
+                    let guide = footerView.safeAreaLayoutGuide
+                    
+                    imageView.topAnchor.constraint(equalTo: guide.topAnchor, constant: 12).isActive = true
+                    imageView.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 20).isActive = true
+                    
+                    titleLabel.topAnchor.constraint(equalTo: guide.topAnchor, constant: 12).isActive = true
+                    titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 12).isActive = true
+                    titleLabel.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -70).isActive = true
+                    titleLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: 20).isActive = true
+                    
+                    iv2.topAnchor.constraint(equalTo: guide.topAnchor, constant: 42).isActive = true
+                    iv2.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 20).isActive = true
+                    
+                    rejectTitle.topAnchor.constraint(equalTo: guide.topAnchor, constant: 38).isActive = true
+                    rejectTitle.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 12).isActive = true
+                    rejectTitle.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -40).isActive = true
+                    rejectTitle.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: 20).isActive = true
+                    
+                    rejectReason.topAnchor.constraint(equalTo: guide.topAnchor, constant: 64).isActive = true
+                    rejectReason.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 12).isActive = true
+                    rejectReason.bottomAnchor.constraint(equalTo: guide.bottomAnchor, constant: -12).isActive = true
+                    rejectReason.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: 20).isActive = true
+                    
+                    
+                }else{
+                    footerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-14-[v0]-74-|", options: [], metrics: nil, views: ["v0": imageView]))
+                    footerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-10-[v1]-20-|", options: .alignAllCenterY, metrics: nil, views: ["v0": imageView, "v1": titleLabel]))
+                }
             }
-            
+            else
+            {
+                if #available(iOS 11, *){
+                    let guide = footerView.safeAreaLayoutGuide
+                    
+                    imageView.centerYAnchor.constraint(equalTo: guide.centerYAnchor).isActive = true
+                    imageView.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 20).isActive = true
+                    
+                    titleLabel.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
+                    titleLabel.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 12).isActive = true
+                    titleLabel.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
+                    titleLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: 20).isActive = true
+                }else{
+                    footerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-14-[v0]-14-|", options: [], metrics: nil, views: ["v0": imageView]))
+                    footerView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-10-[v1]-20-|", options: .alignAllCenterY, metrics: nil, views: ["v0": imageView, "v1": titleLabel]))
+                }
+            }
             return footerView
         }else{
             return nil
@@ -314,6 +370,11 @@ class OrderViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if(self.orderDetail?.state == .rejected)
+        {
+            return 100
+        }
+        
         return 44
     }
     

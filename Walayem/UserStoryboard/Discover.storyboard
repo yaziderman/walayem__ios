@@ -821,7 +821,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="131" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="OSb-cM-hxm">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="50" width="375" height="617"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="550" id="VKi-36-X5L"/>
@@ -1143,7 +1143,7 @@
                         <constraints>
                             <constraint firstItem="66c-ki-x9h" firstAttribute="trailing" secondItem="OSb-cM-hxm" secondAttribute="trailing" priority="750" id="D1i-AE-0JK"/>
                             <constraint firstAttribute="bottom" secondItem="OSb-cM-hxm" secondAttribute="bottom" id="S50-jD-EEs"/>
-                            <constraint firstItem="OSb-cM-hxm" firstAttribute="top" secondItem="z9B-pC-Tiw" secondAttribute="top" id="deb-QI-a0Y"/>
+                            <constraint firstItem="OSb-cM-hxm" firstAttribute="top" secondItem="z9B-pC-Tiw" secondAttribute="top" constant="50" id="deb-QI-a0Y"/>
                             <constraint firstItem="OSb-cM-hxm" firstAttribute="leading" secondItem="66c-ki-x9h" secondAttribute="leading" priority="750" id="ebo-Ct-leF"/>
                             <constraint firstItem="OSb-cM-hxm" firstAttribute="centerX" secondItem="z9B-pC-Tiw" secondAttribute="centerX" id="oUX-eb-NYn"/>
                         </constraints>

@@ -16,6 +16,12 @@ class ChefTabController: UITabBarController {
         NotificationCenter.default.addObserver(self, selector: #selector(showOrderDetail(_:)), name: NSNotification.Name(rawValue: "OrderStateNotification"), object: nil)
         setupTabBar()
         
+        if(Utils.SHOW_NEWDISH)
+        {
+            self.selectedIndex = 1
+        }
+        
+        
     }
     func setupTabBar(){
         //hide divider

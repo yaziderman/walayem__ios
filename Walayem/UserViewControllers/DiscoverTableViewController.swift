@@ -224,6 +224,17 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     }
     
     private func setupSearch(){
+        
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+                appearance.backgroundColor = .white
+                appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
+                navigationItem.standardAppearance = appearance
+                navigationItem.scrollEdgeAppearance = appearance
+            
+        } else {
+            // Fallback on earlier versions
+        }
       
         guard let searchResultController = storyboard?.instantiateViewController(withIdentifier: "FoodSearchResultVC") as? FoodSearchResultController else {
             fatalError("Unexpected ViewController")

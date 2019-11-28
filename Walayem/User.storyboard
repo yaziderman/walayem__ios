@@ -361,8 +361,8 @@ that easy</string>
                         <outlet property="passwordView" destination="uU9-BC-9z3" id="eq0-sp-eLQ"/>
                         <outlet property="socialLoginLabel" destination="5Pd-or-48l" id="2m5-hn-KIf"/>
                         <outlet property="socialLoginView" destination="fvV-Kv-DjX" id="6cq-RE-XDk"/>
-                        <segue destination="rTT-60-HXg" kind="presentation" identifier="MainSegue" modalTransitionStyle="crossDissolve" id="zhq-LA-1dd"/>
-                        <segue destination="oC6-yo-Cxa" kind="presentation" identifier="ChefMainSegue" modalTransitionStyle="crossDissolve" id="0aj-Gx-qSv"/>
+                        <segue destination="rTT-60-HXg" kind="presentation" identifier="MainSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="zhq-LA-1dd"/>
+                        <segue destination="oC6-yo-Cxa" kind="presentation" identifier="ChefMainSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="0aj-Gx-qSv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="klX-oj-sdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -870,7 +870,7 @@ code.</string>
                     <connections>
                         <outlet property="activityIndicator" destination="TCz-W5-ihT" id="VIL-dS-jvE"/>
                         <outlet property="codeTextField" destination="enr-03-2Kl" id="2vS-Xk-GKD"/>
-                        <segue destination="rTT-60-HXg" kind="presentation" identifier="MainSegue" id="gbp-bA-3SQ"/>
+                        <segue destination="rTT-60-HXg" kind="presentation" identifier="MainSegue" modalPresentationStyle="fullScreen" id="gbp-bA-3SQ"/>
                         <segue destination="wVX-au-yfE" kind="presentation" identifier="VerifyEmiratesVCSegue" id="gof-kb-6ud"/>
                     </connections>
                 </viewController>
@@ -960,7 +960,7 @@ scan of your Emirates ID</string>
                         <outlet property="activityIndicator" destination="EaM-lm-TuZ" id="aHR-q1-N8d"/>
                         <outlet property="firstImageView" destination="xbi-CI-Aba" id="EXX-qF-1ZH"/>
                         <outlet property="secondImageView" destination="W50-bM-cDI" id="fGg-UF-SK6"/>
-                        <segue destination="oC6-yo-Cxa" kind="presentation" identifier="ChefMainSegue" animates="NO" id="rZk-oN-2GR"/>
+                        <segue destination="oC6-yo-Cxa" kind="presentation" identifier="ChefMainSegue" animates="NO" modalPresentationStyle="fullScreen" id="rZk-oN-2GR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BJ0-Zp-Bou" userLabel="First Responder" sceneMemberID="firstResponder"/>

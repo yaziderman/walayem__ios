@@ -41,7 +41,7 @@
         <!--Chef Review View Controller-->
         <scene sceneID="q08-e6-1qZ">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" id="LI8-HR-WdJ" customClass="ChefReviewViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="LI8-HR-WdJ" customClass="ChefReviewViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="x6X-ib-5oL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -96,24 +96,15 @@ as soon as it’s approved, the users will be able to view and order foods f
                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zpg-B7-x8L">
-                            <rect key="frame" x="161.5" y="629" width="52" height="30"/>
-                            <state key="normal" title="Log out">
-                                <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="logout:" destination="LI8-HR-WdJ" eventType="touchUpInside" id="Bc2-R9-x7L"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSO-oJ-uha">
-                            <rect key="frame" x="20" y="565" width="335" height="52"/>
+                            <rect key="frame" x="20" y="551" width="335" height="52"/>
                             <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="52" id="d53-3c-Ye3"/>
                                 <constraint firstAttribute="width" constant="550" id="kiv-b3-8wy"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
-                            <state key="normal" title="Contact support">
+                            <state key="normal" title="Add your products">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <variation key="default">
@@ -127,11 +118,11 @@ as soon as it’s approved, the users will be able to view and order foods f
                                 </mask>
                             </variation>
                             <connections>
-                                <action selector="contactSupport:" destination="LI8-HR-WdJ" eventType="touchUpInside" id="9vf-IB-Wao"/>
+                                <action selector="skipPressed:" destination="LI8-HR-WdJ" eventType="touchUpInside" id="axm-kk-3t7"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMh-oU-cwn">
-                            <rect key="frame" x="0.0" y="484" width="375" height="57"/>
+                            <rect key="frame" x="0.0" y="482" width="375" height="57"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Lik-Y4-eSZ">
                                     <rect key="frame" x="114" y="13" width="147" height="31"/>
@@ -159,14 +150,16 @@ as soon as it’s approved, the users will be able to view and order foods f
                                 <constraint firstItem="Lik-Y4-eSZ" firstAttribute="centerY" secondItem="LMh-oU-cwn" secondAttribute="centerY" id="lbQ-re-W3Q"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9zj-t9-m7V">
-                            <rect key="frame" x="232" y="20" width="127" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Add your products">
-                                <color key="titleColor" red="0.70588235290000001" green="0.72549019609999998" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lIN-GR-VEu">
+                            <rect key="frame" x="16" y="619" width="335" height="48"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="DlT-LQ-yA2"/>
+                            </constraints>
+                            <state key="normal" title="Contact support">
+                                <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <connections>
-                                <action selector="skipPressed:" destination="LI8-HR-WdJ" eventType="touchUpInside" id="8Vv-cR-OGo"/>
+                                <action selector="contactSupport:" destination="LI8-HR-WdJ" eventType="touchUpInside" id="s17-ow-i7Z"/>
                             </connections>
                         </button>
                     </subviews>
@@ -175,18 +168,19 @@ as soon as it’s approved, the users will be able to view and order foods f
                         <constraint firstItem="9H7-5w-ydb" firstAttribute="trailing" secondItem="LMh-oU-cwn" secondAttribute="trailing" id="4s6-au-Xdv"/>
                         <constraint firstItem="0jJ-DS-yOz" firstAttribute="centerX" secondItem="fwf-pl-OJQ" secondAttribute="centerX" id="8eO-Ii-Nsd"/>
                         <constraint firstItem="P1H-fQ-IjT" firstAttribute="top" secondItem="vMv-Qg-j9d" secondAttribute="bottom" constant="16" id="Bpi-cT-KhG"/>
-                        <constraint firstItem="kSO-oJ-uha" firstAttribute="top" secondItem="LMh-oU-cwn" secondAttribute="bottom" constant="24" id="CxE-Wr-6vx"/>
+                        <constraint firstItem="kSO-oJ-uha" firstAttribute="top" secondItem="LMh-oU-cwn" secondAttribute="bottom" constant="12" id="CxE-Wr-6vx"/>
                         <constraint firstItem="LMh-oU-cwn" firstAttribute="top" secondItem="P1H-fQ-IjT" secondAttribute="bottom" constant="82" id="DWc-49-jbW"/>
-                        <constraint firstItem="zpg-B7-x8L" firstAttribute="centerX" secondItem="fwf-pl-OJQ" secondAttribute="centerX" id="Dfq-Nn-yKg"/>
                         <constraint firstItem="P1H-fQ-IjT" firstAttribute="centerY" secondItem="fwf-pl-OJQ" secondAttribute="centerY" id="JSa-rQ-gJn"/>
                         <constraint firstItem="9H7-5w-ydb" firstAttribute="trailing" secondItem="kSO-oJ-uha" secondAttribute="trailing" constant="20" id="MD5-FW-DVy"/>
+                        <constraint firstItem="9H7-5w-ydb" firstAttribute="bottom" secondItem="lIN-GR-VEu" secondAttribute="bottom" constant="8" id="MPL-Zr-Xo9"/>
                         <constraint firstItem="kSO-oJ-uha" firstAttribute="centerX" secondItem="fwf-pl-OJQ" secondAttribute="centerX" id="O66-MS-tQj"/>
                         <constraint firstItem="vMv-Qg-j9d" firstAttribute="top" secondItem="0jJ-DS-yOz" secondAttribute="bottom" constant="24" id="Pp8-sp-Pvd"/>
                         <constraint firstItem="LMh-oU-cwn" firstAttribute="leading" secondItem="9H7-5w-ydb" secondAttribute="leading" id="Yia-lY-vae"/>
+                        <constraint firstItem="9H7-5w-ydb" firstAttribute="trailing" secondItem="lIN-GR-VEu" secondAttribute="trailing" constant="20" id="YlV-A3-B8R"/>
                         <constraint firstItem="0jJ-DS-yOz" firstAttribute="top" secondItem="9H7-5w-ydb" secondAttribute="top" constant="73" id="iAy-Fw-YGM"/>
-                        <constraint firstItem="zpg-B7-x8L" firstAttribute="top" secondItem="kSO-oJ-uha" secondAttribute="bottom" constant="12" id="lG9-mU-RMk"/>
                         <constraint firstItem="vMv-Qg-j9d" firstAttribute="centerX" secondItem="fwf-pl-OJQ" secondAttribute="centerX" id="lMr-se-tgX"/>
-                        <constraint firstAttribute="bottom" secondItem="zpg-B7-x8L" secondAttribute="bottom" constant="8" id="oor-zb-7NM"/>
+                        <constraint firstItem="lIN-GR-VEu" firstAttribute="top" secondItem="kSO-oJ-uha" secondAttribute="bottom" constant="8" id="qUX-et-nRp"/>
+                        <constraint firstItem="lIN-GR-VEu" firstAttribute="leading" secondItem="9H7-5w-ydb" secondAttribute="leading" constant="20" id="syV-af-P3T"/>
                         <constraint firstItem="kSO-oJ-uha" firstAttribute="leading" secondItem="9H7-5w-ydb" secondAttribute="leading" constant="20" id="tDY-Oa-ATy"/>
                         <constraint firstItem="P1H-fQ-IjT" firstAttribute="centerX" secondItem="fwf-pl-OJQ" secondAttribute="centerX" id="wVa-zd-qLk"/>
                     </constraints>
@@ -206,7 +200,6 @@ as soon as it’s approved, the users will be able to view and order foods f
                             <include reference="DWc-49-jbW"/>
                             <include reference="O66-MS-tQj"/>
                             <exclude reference="tDY-Oa-ATy"/>
-                            <exclude reference="oor-zb-7NM"/>
                         </mask>
                     </variation>
                 </view>
@@ -216,7 +209,7 @@ as soon as it’s approved, the users will be able to view and order foods f
         <!--Chef Tab Controller-->
         <scene sceneID="GIt-Gv-c5U">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="BM9-od-VU4" customClass="ChefTabController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="BM9-od-VU4" customClass="ChefTabController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="IQl-MF-CFM">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
