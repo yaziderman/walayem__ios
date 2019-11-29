@@ -39,6 +39,34 @@ class ChefFoodTableViewController: UIViewController {
         tableView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
         tableView.tableFooterView = UIView()
         Utils.setupNavigationBar(nav: self.navigationController!)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(addedDish(_:)), name: NSNotification.Name(rawValue: "AddedDish"), object: nil)
+    }
+    
+    @objc private func addedDish(_ notification : Notification){
+        let category = notification.userInfo![AnyHashable("category")] as! String
+        
+        var nIndex = 0;
+        if(category == "dessert")
+        {
+            nIndex = 2;
+        }
+        else if(category == "maincourse")
+        {
+            nIndex = 1;
+        }
+        else
+        {
+            nIndex = 0;
+        }
+
+        selectedCateg = nIndex
+        collectionView.reloadData()
+        collectionView.scrollToItem(at: IndexPath.init(row: nIndex, section: 0), at: .left, animated: true)
+        
+        foods.removeAll()
+        self.tableView.reloadData()
+        getFoods()
     }
     
     override func viewDidAppear(_ animated: Bool) {

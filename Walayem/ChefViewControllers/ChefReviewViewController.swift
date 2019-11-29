@@ -11,9 +11,10 @@ import FirebaseMessaging
 
 class ChefReviewViewController: UIViewController {
 
-    @IBAction func skipPressed(_ sender: Any) {        Utils.SHOW_NEWDISH = true;
+    @IBAction func skipPressed(_ sender: Any) {
+        Utils.SHOW_NEWDISH = true;
 
-         self.performSegue(withIdentifier: "ChefMainSegue", sender: sender)
+        self.performSegue(withIdentifier: "ChefMainSegue", sender: sender)
     }
     // MARK: Properties
     

@@ -25,6 +25,7 @@ class DatabaseHandler{
     let image = Expression<String>("image")
     let price = Expression<Double>("price")
     let quantity = Expression<Int>("quantity")
+    let preparationTime = Expression<Int>("preparationTime")
     
     // MARK: Initialization
     
@@ -54,6 +55,7 @@ class DatabaseHandler{
                 table.column(name)
                 table.column(price)
                 table.column(quantity)
+                table.column(preparationTime)
                 table.foreignKey(chefId, references: cartChef, id)
             })
         } catch {
@@ -79,7 +81,7 @@ class DatabaseHandler{
         
         addChef(chefId: item.chefId!, chefName: item.chefName!, chefImage: item.chefImage!, kitchen: item.kitcherName!)
         do{
-            let insert = cartFood.insert(self.id <- item.id, chefId <- item.chefId!, name <- item.name, price <- Double(item.price), quantity <- 1)
+            let insert = cartFood.insert(self.id <- item.id, chefId <- item.chefId!, name <- item.name, price <- Double(item.price), quantity <- 1, preparationTime <- item.preparationTime)
             let id = try db!.run(insert)
             return Int(id)
         }catch let error{
@@ -103,7 +105,7 @@ class DatabaseHandler{
         
         addChef(chefId: item.chefId!, chefName: item.chefName!, chefImage: item.chefImage!, kitchen: item.kitcherName!)
         do{
-            let insert = cartFood.insert(self.id <- item.id, chefId <- item.chefId!, name <- item.name, price <- Double(item.price), quantity <- item.quantity)
+            let insert = cartFood.insert(self.id <- item.id, chefId <- item.chefId!, name <- item.name, price <- Double(item.price), quantity <- item.quantity, preparationTime <- item.preparationTime)
             let id = try db!.run(insert)
             return Int(id)
         }catch let error{
@@ -136,7 +138,8 @@ class DatabaseHandler{
                     let food = Food(id: foodItem[self.id],
                                     name: foodItem[name],
                                     price: foodItem[price],
-                                    quantity: foodItem[quantity])
+                                    quantity: foodItem[quantity],
+                                    preparationTime: foodItem[preparationTime])
                     foods.append(food)
                 }
                 
@@ -160,7 +163,8 @@ class DatabaseHandler{
                 let food = Food(id: foodItem[self.id],
                                 name: foodItem[name],
                                 price: foodItem[price],
-                                quantity: foodItem[quantity])
+                                quantity: foodItem[quantity],
+                                preparationTime: foodItem[preparationTime])
                 foods.append(food)
             }
         }catch let error{

@@ -180,7 +180,7 @@ class ChefOrderDetailViewController: UIViewController {
             var deliveryForTitle = "Delivery as soon as possible"
             
             guard let order_type = record["order_type"] as? String else{
-                let deliveryForCell = Food(id: -1, name: deliveryForTitle, price: -1, quantity: -1)
+                let deliveryForCell = Food(id: -1, name: deliveryForTitle, price: -1, quantity: -1, preparationTime: -1)
                 self.orderDetail?.products.append(deliveryForCell)
                 self.updateViews()
                print("oder_type not found!!")
@@ -218,7 +218,7 @@ class ChefOrderDetailViewController: UIViewController {
             }
             
             //delivery for row at the end
-            let deliveryForCell = Food(id: -1, name: deliveryForTitle, price: -1, quantity: -1)
+            let deliveryForCell = Food(id: -1, name: deliveryForTitle, price: -1, quantity: -1, preparationTime: -1)
             self.orderDetail?.products.append(deliveryForCell)
             self.updateViews()
         }
@@ -347,7 +347,8 @@ extension ChefOrderDetailViewController: UITableViewDataSource, UITableViewDeleg
             for food in orderDetail.products{
                 totalTime += food.preparationTime
             }
-            footerCell.preparationTimeLabel.text = "\(totalTime) hour(s) preparation time"
+            let time = Int(max(1, round( Double(totalTime) / 60.0)))
+            footerCell.preparationTimeLabel.text = "\(time) hour(s) preparation time"
         }
         return footerCell.contentView
     }

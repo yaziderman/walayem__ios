@@ -97,7 +97,7 @@ as soon as it’s approved, the users will be able to view and order foods f
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSO-oJ-uha">
-                            <rect key="frame" x="20" y="551" width="335" height="52"/>
+                            <rect key="frame" x="20" y="494" width="335" height="52"/>
                             <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="52" id="d53-3c-Ye3"/>
@@ -122,7 +122,7 @@ as soon as it’s approved, the users will be able to view and order foods f
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMh-oU-cwn">
-                            <rect key="frame" x="0.0" y="482" width="375" height="57"/>
+                            <rect key="frame" x="0.0" y="554" width="375" height="57"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Lik-Y4-eSZ">
                                     <rect key="frame" x="114" y="13" width="147" height="31"/>
@@ -165,21 +165,21 @@ as soon as it’s approved, the users will be able to view and order foods f
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="LMh-oU-cwn" firstAttribute="top" secondItem="kSO-oJ-uha" secondAttribute="bottom" constant="8" id="2zC-sa-BTx"/>
                         <constraint firstItem="9H7-5w-ydb" firstAttribute="trailing" secondItem="LMh-oU-cwn" secondAttribute="trailing" id="4s6-au-Xdv"/>
                         <constraint firstItem="0jJ-DS-yOz" firstAttribute="centerX" secondItem="fwf-pl-OJQ" secondAttribute="centerX" id="8eO-Ii-Nsd"/>
                         <constraint firstItem="P1H-fQ-IjT" firstAttribute="top" secondItem="vMv-Qg-j9d" secondAttribute="bottom" constant="16" id="Bpi-cT-KhG"/>
-                        <constraint firstItem="kSO-oJ-uha" firstAttribute="top" secondItem="LMh-oU-cwn" secondAttribute="bottom" constant="12" id="CxE-Wr-6vx"/>
                         <constraint firstItem="LMh-oU-cwn" firstAttribute="top" secondItem="P1H-fQ-IjT" secondAttribute="bottom" constant="82" id="DWc-49-jbW"/>
                         <constraint firstItem="P1H-fQ-IjT" firstAttribute="centerY" secondItem="fwf-pl-OJQ" secondAttribute="centerY" id="JSa-rQ-gJn"/>
                         <constraint firstItem="9H7-5w-ydb" firstAttribute="trailing" secondItem="kSO-oJ-uha" secondAttribute="trailing" constant="20" id="MD5-FW-DVy"/>
                         <constraint firstItem="9H7-5w-ydb" firstAttribute="bottom" secondItem="lIN-GR-VEu" secondAttribute="bottom" constant="8" id="MPL-Zr-Xo9"/>
                         <constraint firstItem="kSO-oJ-uha" firstAttribute="centerX" secondItem="fwf-pl-OJQ" secondAttribute="centerX" id="O66-MS-tQj"/>
                         <constraint firstItem="vMv-Qg-j9d" firstAttribute="top" secondItem="0jJ-DS-yOz" secondAttribute="bottom" constant="24" id="Pp8-sp-Pvd"/>
+                        <constraint firstItem="lIN-GR-VEu" firstAttribute="top" secondItem="LMh-oU-cwn" secondAttribute="bottom" id="RzJ-aS-2YI"/>
                         <constraint firstItem="LMh-oU-cwn" firstAttribute="leading" secondItem="9H7-5w-ydb" secondAttribute="leading" id="Yia-lY-vae"/>
                         <constraint firstItem="9H7-5w-ydb" firstAttribute="trailing" secondItem="lIN-GR-VEu" secondAttribute="trailing" constant="20" id="YlV-A3-B8R"/>
                         <constraint firstItem="0jJ-DS-yOz" firstAttribute="top" secondItem="9H7-5w-ydb" secondAttribute="top" constant="73" id="iAy-Fw-YGM"/>
                         <constraint firstItem="vMv-Qg-j9d" firstAttribute="centerX" secondItem="fwf-pl-OJQ" secondAttribute="centerX" id="lMr-se-tgX"/>
-                        <constraint firstItem="lIN-GR-VEu" firstAttribute="top" secondItem="kSO-oJ-uha" secondAttribute="bottom" constant="8" id="qUX-et-nRp"/>
                         <constraint firstItem="lIN-GR-VEu" firstAttribute="leading" secondItem="9H7-5w-ydb" secondAttribute="leading" constant="20" id="syV-af-P3T"/>
                         <constraint firstItem="kSO-oJ-uha" firstAttribute="leading" secondItem="9H7-5w-ydb" secondAttribute="leading" constant="20" id="tDY-Oa-ATy"/>
                         <constraint firstItem="P1H-fQ-IjT" firstAttribute="centerX" secondItem="fwf-pl-OJQ" secondAttribute="centerX" id="wVa-zd-qLk"/>
@@ -188,8 +188,8 @@ as soon as it’s approved, the users will be able to view and order foods f
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="JSa-rQ-gJn"/>
-                            <exclude reference="DWc-49-jbW"/>
                             <exclude reference="O66-MS-tQj"/>
+                            <exclude reference="DWc-49-jbW"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular-widthClass=regular">
@@ -197,9 +197,9 @@ as soon as it’s approved, the users will be able to view and order foods f
                             <exclude reference="MD5-FW-DVy"/>
                             <exclude reference="iAy-Fw-YGM"/>
                             <include reference="JSa-rQ-gJn"/>
-                            <include reference="DWc-49-jbW"/>
                             <include reference="O66-MS-tQj"/>
                             <exclude reference="tDY-Oa-ATy"/>
+                            <include reference="DWc-49-jbW"/>
                         </mask>
                     </variation>
                 </view>

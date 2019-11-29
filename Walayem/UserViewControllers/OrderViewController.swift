@@ -150,7 +150,7 @@ class OrderViewController: UITableViewController {
             }
             
             //delivery for row at the end
-            let deliveryForCell = Food(id: -1, name: deliveryForTitle, price: -1, quantity: -1)
+            let deliveryForCell = Food(id: -1, name: deliveryForTitle, price: -1, quantity: -1, preparationTime: -1)
             self.orderDetail?.products.append(deliveryForCell)
             self.updateViews()
         }

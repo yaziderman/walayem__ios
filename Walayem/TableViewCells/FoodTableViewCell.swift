@@ -55,7 +55,8 @@ class FoodTableViewCell: UITableViewCell {
         foodImageView.layer.masksToBounds = true
         
         nameLabel.text = food.name
-        timeLabel.text = "\(food.preparationTime) hour(s)"
+        let time = Int(max(1, round( Double(food.preparationTime) / 60.0)))
+        timeLabel.text = "\(time) hour(s)"
         priceLabel.text = "AED \(food.price)"
         quantityLabel.text = String(food.quantity)
         descriptionLabel.text = food.kitcherName! + " \u{2022} " + food.chefName!

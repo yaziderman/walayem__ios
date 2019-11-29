@@ -23,6 +23,7 @@ class ChefTabController: UITabBarController {
         
         
     }
+
     func setupTabBar(){
         //hide divider
         UITabBar.appearance().shadowImage = UIImage()

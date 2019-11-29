@@ -10,6 +10,7 @@ import UIKit
 
 class Utils{
     public static var SHOW_NEWDISH = false
+    public static var ADDED_FOODTYPE = ""
     
     static func formatDate(_ date: String) -> String {
         let dateFormatter = DateFormatter()

@@ -149,7 +149,7 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
         var params = ["chef_id": user?.partner_id as Any,
                       "name": name,
                       "list_price": price,
-                      "preparation_time": time,
+                      "preparation_time": "\(Int(time)! * 60)",
                       "serves": serve,
                       "description_sale": description,
                       "food_type": selectedFoodType.rawValue,
@@ -178,6 +178,8 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
                 self.showAlert(title: "Error", msg: msg)
                 return
             }
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AddedDish"), object: nil, userInfo: ["category" :self.selectedFoodType.rawValue])
             
             let isPresentInCreateMode = self.presentingViewController is UITabBarController
             if isPresentInCreateMode{
@@ -224,7 +226,8 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
             
             nameTextField.text = food.name
             priceTextField.text = String(food.price)
-            timeTextField.text = String(food.preparationTime)
+            let hour = Int(max(1, round( Double(food.preparationTime) / 60.0)))
+            timeTextField.text = String(hour)
             serveTextField.text = String(food.servingQunatity)
             descriptionTextField.text = food.description
             

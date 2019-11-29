@@ -243,11 +243,20 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
                 fatalError("Cannot convert to CGRect")
             }
             print(keyboardFrame.height)
-            let contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardFrame.height - self.tabBarController!.tabBar.frame.height, 0.0);
-            UIView.animate(withDuration: 0.5) {
-                self.tableView.contentInset = contentInsets;
-                self.tableView.scrollIndicatorInsets = contentInsets;
+            
+            do
+            {
+                let contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardFrame.height - self.tabBarController!.tabBar.frame.height, 0.0);
+                UIView.animate(withDuration: 0.5) {
+                    self.tableView.contentInset = contentInsets;
+                    self.tableView.scrollIndicatorInsets = contentInsets;
+                }
             }
+            catch
+            {
+            
+            }
+
         }
     }
     
@@ -566,6 +575,9 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
         }
         footerView.delegate = self
         footerView.section = section
+        footerView.foods = cartItems[section].chef.foods
+        
+        footerView.update()
         
         return footerView
     }
@@ -575,6 +587,12 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 44
+        let orderType = UserDefaults.standard.string(forKey: "OrderType") ?? "asap"
+        
+        if(orderType == "asap"){
+            return 80
+        }
+        
+        return 60
     }
 }
