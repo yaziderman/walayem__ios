@@ -35,11 +35,22 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
     }
     
     @IBAction func call(_ sender: UIButton) {
-        let phone = UserDefaults.standard.string(forKey: "ContactNumber")
-        if let url = URL(string: "tel://\(phone!)") {
-            UIApplication.shared.open(url, options: [:], completionHandler: { (Success) in
-                print("Make call \(Success)")
-            })
+        var phone = UserDefaults.standard.string(forKey: "ContactNumber")
+        
+        
+        if(phone == nil)
+        {
+            phone = "+971 58 566 8800";
+        }
+        
+        phone = phone!.replacingOccurrences( of:"[^0-9]", with: "", options: .regularExpression)
+
+        if let phoneNumber = phone{
+            if let url = URL(string: "tel://\(phoneNumber)") {
+             UIApplication.shared.open(url, options: [:], completionHandler: { (Success) in
+                 print("Make call \(Success)")
+             })
+         }
         }
     }
 

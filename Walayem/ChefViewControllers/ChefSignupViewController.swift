@@ -44,14 +44,23 @@ class ChefSignupViewController: UIViewController, UITextFieldDelegate{
     }
     
     @IBAction func signup(_ sender: Any) {
-        if(!emailVerified)
+        
+        if(nameTextField.text!.isEmpty || emailTextField.text!.isEmpty ||
+            phoneTextField.text!.isEmpty ||
+            passwordTextField.text!.isEmpty)
         {
-            self.showMessagePrompt("Invalid email.")
+            self.showMessagePrompt("All the fields are mandatory.")
             return;
         }
-        else if(!nameVerified)
+        
+        if(!nameVerified)
         {
             self.showMessagePrompt("Invalid name.")
+            return;
+        }
+        else if(!emailVerified)
+        {
+            self.showMessagePrompt("Invalid email.")
             return;
         }
         else if(!phoneVerified)
@@ -269,6 +278,9 @@ class ChefSignupViewController: UIViewController, UITextFieldDelegate{
                 nameVerified = false
             }
         case emailTextField:
+            
+            emailTextField.text = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
             let email = emailTextField.text ?? ""
             if Verification.isValidEmail(email){
                 emailIndicator.tintColor = UIColor.colorPrimary

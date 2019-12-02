@@ -292,11 +292,14 @@ class OrderViewController: UITableViewController {
             {
                 let rejectTitle = UILabel()
                 rejectTitle.text = "Rejected"
-                rejectTitle.textColor = UIColor.lightGray
+                rejectTitle.textColor = UIColor.red
                 rejectTitle.translatesAutoresizingMaskIntoConstraints = false
                 
                 let rejectReason = UILabel()
-                rejectReason.text = self.orderDetail?.reject_reason
+                if let reason = self.orderDetail?.reject_reason
+                {
+                    rejectReason.text = "\"\(reason)\""
+                }
                 rejectReason.textColor = UIColor.lightGray
                 rejectReason.translatesAutoresizingMaskIntoConstraints = false
                 

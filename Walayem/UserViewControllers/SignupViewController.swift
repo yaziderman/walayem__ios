@@ -55,14 +55,23 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     }
     
     @IBAction func signup(_ sender: UIButton) {
-        if(!emailVerified)
+        
+        if(nameTextField.text!.isEmpty || emailTextField.text!.isEmpty ||
+            phoneTextField.text!.isEmpty ||
+            passwordTextField.text!.isEmpty)
         {
-            self.showMessagePrompt("Invalid email.")
+            self.showMessagePrompt("All the fields are mandatory.")
             return;
         }
-        else if(!nameVerified)
+            
+        if(!nameVerified)
         {
             self.showMessagePrompt("Invalid name.")
+            return;
+        }
+        else if(!emailVerified)
+        {
+            self.showMessagePrompt("Invalid email.")
             return;
         }
         else if(!phoneVerified)
@@ -179,6 +188,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         emailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         phoneTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        emailTextField.delegate = self
         
         nameVerifyImageView.tintColor = UIColor.silver
         emailVerifyImageView.tintColor = UIColor.silver
@@ -384,6 +395,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 nameVerified = false
             }
         case emailTextField:
+            emailTextField.text = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
             let email = emailTextField.text ?? ""
             if Verification.isValidEmail(email){
                 emailVerifyImageView.tintColor = UIColor.colorPrimary
@@ -417,6 +430,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         updateSignupButtonState()
     }
     
+   
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
