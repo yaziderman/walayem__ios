@@ -16,5 +16,6 @@ target 'Walayem' do
   pod 'Firebase/Auth'
   pod 'DatePickerDialog'
   pod 'CropViewController'
+  pod 'BetterSegmentedControl', '1.0'
 
 end

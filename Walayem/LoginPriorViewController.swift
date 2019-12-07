@@ -17,11 +17,13 @@ class LoginPriorViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func signup(_ sender: UIButton) {
-        if userSwitch.isOn{
-            performSegue(withIdentifier: "ChefSignupVCSegue", sender: sender)
-        }else{
-            performSegue(withIdentifier: "SignupVCSegue", sender: sender)
-        }
+        performSegue(withIdentifier: "SignupVCSegue", sender: sender)
+
+//        if userSwitch.isOn{
+//            performSegue(withIdentifier: "ChefSignupVCSegue", sender: sender)
+//        }else{
+//            performSegue(withIdentifier: "SignupVCSegue", sender: sender)
+//        }
     }
     override func viewDidLoad() {
         super.viewDidLoad()

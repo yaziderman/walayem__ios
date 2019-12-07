@@ -15,6 +15,7 @@ import FBSDKLoginKit
 import GoogleSignIn
 import FirebaseMessaging
 import FirebaseAuth
+import BetterSegmentedControl
 
 class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate {
 
@@ -34,14 +35,20 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     @IBOutlet weak var phoneVerifyImageView: UIImageView!
     @IBOutlet weak var passwordVerifyImageView: UIImageView!
     
+    @IBOutlet weak var vDivider: UIView!
+    @IBOutlet weak var vSocial: UIStackView!
+    @IBOutlet weak var lbSocial: UILabel!
+    
+    
     var emailVerified: Bool = false
     var nameVerified: Bool = false
     var phoneVerified: Bool = false
     var passwordVerified: Bool = false
     var image64: String?
-    
+    var isChef: Bool = false
     var progressAlert: UIAlertController?
     
+    @IBOutlet weak var segment: BetterSegmentedControl!
     // MARK: Actions
     
     @IBAction func back(_ sender: UIButton){
@@ -94,7 +101,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                                       "login": email,
                                       "password": password,
                                       "confirm_password": password,
-                                      "is_chef": false]
+                                      "is_chef": self.isChef]
         
         progressAlert = showProgressAlert()
         PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
@@ -197,6 +204,15 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         passwordVerifyImageView.tintColor = UIColor.silver
 
         updateSignupButtonState()
+        
+        self.segment.segments = LabelSegment.segments(withTitles: ["Customer", "Chef"], normalTextColor: UIColor.black, selectedTextColor: UIColor.white)
+        self.segment.options = [.cornerRadius(15.0),
+                                .backgroundColor(UIColor.white),
+        .indicatorViewBackgroundColor(.colorPrimary)];
+        
+        self.segment.addTarget(self,
+        action: #selector(SignupViewController.segmentChanged(_:)),
+        for: .valueChanged)
     }
 
     override func viewWillLayoutSubviews() {
@@ -314,10 +330,14 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
             let records = result!["records"] as! [Any]
             if let record = records[0] as? [String : Any]{
                 let partnerId = record["id"] as! Int
-                let isImageSet = record["is_image_set"] as! Bool
                 let user = User(record: record)
                 self.saveUserInDevice(user: user, partnerId: partnerId)
-                self.uploadImage(partnerId: partnerId, isImageSet: isImageSet)
+                
+                if(!self.isChef)
+                {
+                    let isImageSet = record["is_image_set"] as! Bool
+                    self.uploadImage(partnerId: partnerId, isImageSet: isImageSet)
+                }
             }
         }
     }
@@ -346,6 +366,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         userDefaults.set(partnerId, forKey: UserDefaultsKeys.PARTNER_ID)
   
         userDefaults.synchronize()
+        
+        if(self.isChef)
+        {
+            performSegue(withIdentifier: "VerifyPhoneSegue", sender: self)
+        }
     }
     
     private func subscribeToFirebaseTopics(_ partnerId: Int){
@@ -480,6 +505,32 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         // ...
     }
     
+    // MARK: - Action handlers
+    @objc func segmentChanged(_ sender: BetterSegmentedControl) {
+        if sender.index == 0 {
+            self.isChef = false;
+        } else {
+            self.isChef = true;
+        }
+        
+        updateUI()
+    }
+    
+    func updateUI()
+    {
+        if(self.isChef)
+        {
+            self.vDivider.isHidden = true
+            self.vSocial.isHidden = true
+            self.lbSocial.isHidden = true            
+        }
+        else
+        {
+            self.vDivider.isHidden = false
+            self.vSocial.isHidden = false
+            self.lbSocial.isHidden = false
+        }
+    }
     
     /*
     // MARK: - Navigation

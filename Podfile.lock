@@ -5,6 +5,7 @@ PODS:
     - AppAuth/ExternalUserAgent (= 1.3.0)
   - AppAuth/Core (1.3.0)
   - AppAuth/ExternalUserAgent (1.3.0)
+  - BetterSegmentedControl (1.0)
   - CropViewController (2.5.2)
   - DatePickerDialog (3.0)
   - FacebookCore (0.9.0):
@@ -137,6 +138,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - BetterSegmentedControl (= 1.0)
   - CropViewController
   - DatePickerDialog
   - FacebookCore
@@ -153,6 +155,7 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AppAuth
+    - BetterSegmentedControl
     - CropViewController
     - DatePickerDialog
     - FacebookCore
@@ -186,6 +189,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AppAuth: 73574f3013a1e65b9601a3ddc8b3158cce68c09d
+  BetterSegmentedControl: 92555f980e4273ec414d6187acc5b811659a9abf
   CropViewController: 1aac40093c5739e60d992b04724a55d12a689a4c
   DatePickerDialog: 03dbb8350bfa80302ab2a8c83cee1fec70184444
   FacebookCore: ba86524b66cfa86d0f8e65d08faa8504a9f732dd
@@ -216,6 +220,6 @@ SPEC CHECKSUMS:
   Protobuf: 394b2bf29ec303f4325e3ee4892c09e675647152
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
 
-PODFILE CHECKSUM: f72f2e128caab880f53d157f06c1222be11db1a3
+PODFILE CHECKSUM: 15d7b8849eb6ab340f0548aecdbedd5f81cb4a09
 
 COCOAPODS: 1.8.3
