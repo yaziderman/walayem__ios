@@ -40,7 +40,13 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     }
     
     @IBAction func email(_ sender: UIButton) {
-        let email = UserDefaults.standard.string(forKey: "ContactEmail")
+        var email = UserDefaults.standard.string(forKey: "ContactEmail")
+        
+        if(email == nil)
+        {
+            email = "walayem@gmail.com"
+        }
+        
         let url = URL(string: "mailto:\(email!)")
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url!, options: [:], completionHandler: nil)
