@@ -55,6 +55,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     @IBOutlet weak var chefPhoneView: UIStackView!
     @IBOutlet weak var chefPasswordView: UIStackView!
     
+    
     var emailVerified: Bool = false
     var nameVerified: Bool = false
     var phoneVerified: Bool = false
@@ -93,7 +94,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     @IBAction func signup(_ sender: UIButton) {
         if(!self.isChef)
         {
-
             if(nameTextField.text!.isEmpty || emailTextField.text!.isEmpty ||
                 phoneTextField.text!.isEmpty ||
                 passwordTextField.text!.isEmpty)
@@ -324,13 +324,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
 
         updateSignupButtonState()
         
-
         self.btnCustomer.layer.borderWidth = 1
         self.btnChef.layer.borderWidth = 1
         
         self.btnCustomer.layer.borderColor = UIColor.colorPrimary.cgColor
         self.btnChef.layer.borderColor = UIColor.colorPrimary.cgColor
-
     }
 
     override func viewWillLayoutSubviews() {
@@ -476,7 +474,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
             }
             
             let records = result!["records"] as! [Any]
-
             if(!self.isChef)
             {
                 if let record = records[0] as? [String : Any]{
@@ -527,7 +524,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         
         if(self.isChef)
         {
-
             self.progressAlert?.dismiss(animated: false, completion: {
                 self.performSegue(withIdentifier: "VerifyPhoneSegue", sender: self)
             })
