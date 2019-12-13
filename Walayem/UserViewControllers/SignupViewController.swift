@@ -702,33 +702,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         // ...
     }
     
-    // MARK: - Action handlers
-    @objc func segmentChanged(_ sender: BetterSegmentedControl) {
-        if sender.index == 0 {
-            self.isChef = false;
-        } else {
-            self.isChef = true;
-        }
-        
-        updateUI()
-    }
-    
-    func updateUI()
-    {
-        if(self.isChef)
-        {
-            self.vDivider.isHidden = true
-            self.vSocial.isHidden = true
-            self.lbSocial.isHidden = true            
-        }
-        else
-        {
-            self.vDivider.isHidden = false
-            self.vSocial.isHidden = false
-            self.lbSocial.isHidden = false
-        }
-    }
-    
+    // MARK: - Action handlers    
     /*
     // MARK: - Navigation
 

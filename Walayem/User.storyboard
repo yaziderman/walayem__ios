@@ -541,7 +541,7 @@ we’ll send you instructions</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7A-EN-In5" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="779.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="725.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoNoText" translatesAutoresizingMaskIntoConstraints="NO" id="SO9-qP-dnO">
                                                 <rect key="frame" x="170" y="55" width="35" height="74"/>
@@ -550,33 +550,24 @@ we’ll send you instructions</string>
                                                     <constraint firstAttribute="height" constant="74" id="i1b-SM-FmN"/>
                                                 </constraints>
                                             </imageView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="PgO-uu-DRX">
-                                                <rect key="frame" x="129.5" y="626" width="473" height="100"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="PgO-uu-DRX">
+                                                <rect key="frame" x="129.5" y="626" width="116" height="46"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register as" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pM3-Iz-fH2">
-                                                        <rect key="frame" x="0.0" y="0.0" width="106" height="100"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="27" id="Svf-Jw-sJc"/>
-                                                            <constraint firstAttribute="width" constant="106" id="Zg5-9z-qcW"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uLu-Tc-SS4" customClass="BetterSegmentedControl" customModule="BetterSegmentedControl">
-                                                        <rect key="frame" x="130" y="0.0" width="343" height="100"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="54" id="Syz-NF-Z5I"/>
-                                                        </constraints>
-                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5U-oX-gKJ">
+                                                        <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                        <state key="normal" image="facebook"/>
+                                                        <connections>
+                                                            <action selector="signupViaFb:" destination="IRQ-UA-oYI" eventType="touchUpInside" id="3MF-K5-uzv"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iaD-lF-7DH">
+                                                        <rect key="frame" x="70" y="0.0" width="46" height="46"/>
+                                                        <state key="normal" image="google"/>
+                                                        <connections>
+                                                            <action selector="signupViaGoogle:" destination="IRQ-UA-oYI" eventType="touchUpInside" id="4rv-U4-d4G"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="100" id="LS8-Va-UOz"/>
-                                                    <constraint firstAttribute="trailing" secondItem="uLu-Tc-SS4" secondAttribute="trailing" id="Oof-dr-Wsn"/>
-                                                    <constraint firstAttribute="bottom" secondItem="uLu-Tc-SS4" secondAttribute="bottom" id="bVd-IC-OXl"/>
-                                                </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" baselineRelativeArrangement="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9th-51-dCg">
                                                 <rect key="frame" x="32" y="249" width="311" height="208"/>
@@ -794,7 +785,7 @@ we’ll send you instructions</string>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up with social media" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Tc-UY-g5X">
-                                                <rect key="frame" x="91" y="747" width="193.5" height="20.5"/>
+                                                <rect key="frame" x="91" y="693" width="193.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -968,7 +959,6 @@ we’ll send you instructions</string>
                         <outlet property="phoneTextField" destination="Cui-GD-s2M" id="2XM-av-ROg"/>
                         <outlet property="phoneVerifyImageView" destination="6gz-fn-Btk" id="DY5-vl-rjg"/>
                         <outlet property="phoneView" destination="u02-CR-liD" id="vsd-Ds-bub"/>
-                        <outlet property="segment" destination="uLu-Tc-SS4" id="eTp-1w-JMt"/>
                         <outlet property="signupButton" destination="Ixp-g0-i9v" id="bkM-XS-waf"/>
                         <outlet property="socialPanel" destination="PgO-uu-DRX" id="8XG-wN-n5P"/>
                         <outlet property="vDivider" destination="oKz-g2-X0o" id="7Lg-Lz-6nf"/>
