@@ -21,35 +21,64 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
 
     // MARK: Properties
     
+    @IBOutlet weak var customerView: UIStackView!
+    @IBOutlet weak var chefView: UIStackView!
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    
     @IBOutlet weak var signupButton: UIButton!
     @IBOutlet weak var nameView: UIStackView!
     @IBOutlet weak var emailView: UIStackView!
     @IBOutlet weak var phoneView: UIStackView!
     @IBOutlet weak var passwordView: UIStackView!
+    
     @IBOutlet weak var nameVerifyImageView: UIImageView!
     @IBOutlet weak var emailVerifyImageView: UIImageView!
     @IBOutlet weak var phoneVerifyImageView: UIImageView!
     @IBOutlet weak var passwordVerifyImageView: UIImageView!
+
+    @IBOutlet weak var chefNameTextField: UITextField!
+    @IBOutlet weak var chefEmailTextField: UITextField!
+    @IBOutlet weak var chefPhoneTextField: UITextField!
+    @IBOutlet weak var chefPasswordTextField: UITextField!
     
-    @IBOutlet weak var vDivider: UIView!
-    @IBOutlet weak var vSocial: UIStackView!
-    @IBOutlet weak var lbSocial: UILabel!
+    @IBOutlet weak var chefNameVerifyImageView: UIImageView!
+    @IBOutlet weak var chefEmailVerifyImageView: UIImageView!
+    @IBOutlet weak var chefPhoneVerifyImageView: UIImageView!
+    @IBOutlet weak var chefPasswordVerifyImageView: UIImageView!
     
+    @IBOutlet weak var chefNameView: UIStackView!
+    @IBOutlet weak var chefEmailView: UIStackView!
+    @IBOutlet weak var chefPhoneView: UIStackView!
+    @IBOutlet weak var chefPasswordView: UIStackView!
     
     var emailVerified: Bool = false
     var nameVerified: Bool = false
     var phoneVerified: Bool = false
     var passwordVerified: Bool = false
+    
+    var chefEmailVerified: Bool = false
+    var chefNameVerified: Bool = false
+    var chefPhoneVerified: Bool = false
+    var chefPasswordVerified: Bool = false
+    
     var image64: String?
+    
     var isChef: Bool = false
+    
     var progressAlert: UIAlertController?
     
-    @IBOutlet weak var segment: BetterSegmentedControl!
+    @IBOutlet weak var btnCustomer: UIButton!
+    @IBOutlet weak var btnChef: UIButton!
     // MARK: Actions
+    
+    @IBOutlet weak var lbSocialSignUp: UILabel!
+    @IBOutlet weak var socialPanel: UIStackView!
+    @IBOutlet weak var vDivider: UIView!
+    
     
     @IBAction func back(_ sender: UIButton){
         dismiss(animated: true, completion: nil)
@@ -62,77 +91,153 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     }
     
     @IBAction func signup(_ sender: UIButton) {
-        
-        if(nameTextField.text!.isEmpty || emailTextField.text!.isEmpty ||
-            phoneTextField.text!.isEmpty ||
-            passwordTextField.text!.isEmpty)
+        if(!self.isChef)
         {
-            self.showMessagePrompt("All the fields are mandatory.")
-            return;
-        }
+
+            if(nameTextField.text!.isEmpty || emailTextField.text!.isEmpty ||
+                phoneTextField.text!.isEmpty ||
+                passwordTextField.text!.isEmpty)
+            {
+                self.showMessagePrompt("All the fields are mandatory.")
+                return;
+            }
+                
+            if(!nameVerified)
+            {
+                self.showMessagePrompt("Invalid name.")
+                return;
+            }
+            else if(!emailVerified)
+            {
+                self.showMessagePrompt("Invalid email.")
+                return;
+            }
+            else if(!phoneVerified)
+            {
+                self.showMessagePrompt("Phone number should be valid and start with 971.")
+                return;
+            }
+            else if(!passwordVerified)
+            {
+                self.showMessagePrompt("Password must be at least 4 characters.")
+                return;
+            }
             
-        if(!nameVerified)
-        {
-            self.showMessagePrompt("Invalid name.")
-            return;
-        }
-        else if(!emailVerified)
-        {
-            self.showMessagePrompt("Invalid email.")
-            return;
-        }
-        else if(!phoneVerified)
-        {
-            self.showMessagePrompt("Phone number should be valid and start with 971.")
-            return;
-        }
-        else if(!passwordVerified)
-        {
-            self.showMessagePrompt("Password must be at least 4 characters.")
-            return;
-        }
-        
-        let name = nameTextField.text ?? ""
-        let email = emailTextField.text ?? ""
-        let phone = phoneTextField.text ?? ""
-        let password = passwordTextField.text ?? ""
-        
-        let params: [String : Any] = ["name": name,
-                                      "login": email,
-                                      "password": password,
-                                      "confirm_password": password,
-                                      "is_chef": self.isChef]
-        
-        progressAlert = showProgressAlert()
-        PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
-            if let error = error {
-                self.progressAlert?.dismiss(animated: false, completion: {
-                    self.showMessagePrompt(error.localizedDescription)
-                })
-                return
-            }
-            UserDefaults.standard.set(verificationID, forKey: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
-            RestClient().request(WalayemApi.signup, params) { (result, error) in
-                if error != nil{
+            let name = nameTextField.text ?? ""
+            let email = emailTextField.text ?? ""
+            let phone = phoneTextField.text ?? ""
+            let password = passwordTextField.text ?? ""
+            
+            let params: [String : Any] = ["name": name,
+                                          "login": email,
+                                          "password": password,
+                                          "confirm_password": password,
+                                          "is_chef": false]
+            
+            progressAlert = showProgressAlert()
+            PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
+                if let error = error {
                     self.progressAlert?.dismiss(animated: false, completion: {
-                        let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
-                        self.showMessagePrompt(errmsg)
+                        self.showMessagePrompt(error.localizedDescription)
                     })
                     return
                 }
-                let record = result!["result"] as! [String: Any]
-                if let errmsg = record["error"] as? String{
+                UserDefaults.standard.set(verificationID, forKey: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
+                RestClient().request(WalayemApi.signup, params) { (result, error) in
+                    if error != nil{
+                        self.progressAlert?.dismiss(animated: false, completion: {
+                            let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+                            self.showMessagePrompt(errmsg)
+                        })
+                        return
+                    }
+                    let record = result!["result"] as! [String: Any]
+                    if let errmsg = record["error"] as? String{
+                        self.progressAlert?.dismiss(animated: false, completion: {
+                            self.showMessagePrompt(errmsg)
+                        })
+                        return
+                    }
+                    let data = record["data"] as! [String: Any]
+                    let sessionId: String = data["session_id"] as! String
+                    UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
+                    self.loadUserDetails()
+                }
+            })
+        }
+        else{
+            if(chefNameTextField.text!.isEmpty || chefEmailTextField.text!.isEmpty ||
+                chefPhoneTextField.text!.isEmpty ||
+                chefPasswordTextField.text!.isEmpty)
+            {
+                self.showMessagePrompt("All the fields are mandatory.")
+                return;
+            }
+                
+            if(!chefNameVerified)
+            {
+                self.showMessagePrompt("Invalid name.")
+                return;
+            }
+            else if(!chefEmailVerified)
+            {
+                self.showMessagePrompt("Invalid email.")
+                return;
+            }
+            else if(!chefPhoneVerified)
+            {
+                self.showMessagePrompt("Phone number should be valid and start with 971.")
+                return;
+            }
+            else if(!chefPasswordVerified)
+            {
+                self.showMessagePrompt("Password must be at least 4 characters.")
+                return;
+            }
+            
+            let name = chefNameTextField.text ?? ""
+            let email = chefEmailTextField.text ?? ""
+            let phone = chefPhoneTextField.text ?? ""
+            let password = chefPasswordTextField.text ?? ""
+            
+            let params: [String : Any] = ["name": name,
+                                          "login": email,
+                                          "password": password,
+                                          "confirm_password": password,
+                                          "is_chef": true]
+            
+            progressAlert = showProgressAlert()
+            PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
+                if let error = error {
                     self.progressAlert?.dismiss(animated: false, completion: {
-                        self.showMessagePrompt(errmsg)
+                        self.showMessagePrompt(error.localizedDescription)
                     })
                     return
                 }
-                let data = record["data"] as! [String: Any]
-                let sessionId: String = data["session_id"] as! String
-                UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
-                self.loadUserDetails()
-            }
-        })
+                UserDefaults.standard.set(verificationID, forKey: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
+                RestClient().request(WalayemApi.signup, params) { (result, error) in
+                    if error != nil{
+                        self.progressAlert?.dismiss(animated: false, completion: {
+                            let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+                            self.showMessagePrompt(errmsg)
+                        })
+                        return
+                    }
+                    let record = result!["result"] as! [String: Any]
+                    if let errmsg = record["error"] as? String{
+                        self.progressAlert?.dismiss(animated: false, completion: {
+                            self.showMessagePrompt(errmsg)
+                        })
+                        return
+                    }
+                    let data = record["data"] as! [String: Any]
+                    let sessionId: String = data["session_id"] as! String
+                    UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
+                    self.loadUserDetails()
+                }
+            })
+        }
+        
         
     }
     
@@ -190,29 +295,42 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         signupButton.layer.masksToBounds = false
         addImageInsideTextField()
         
-        passwordTextField.delegate = self
         nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         emailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         phoneTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
+        passwordTextField.delegate = self
         emailTextField.delegate = self
         
         nameVerifyImageView.tintColor = UIColor.silver
         emailVerifyImageView.tintColor = UIColor.silver
         phoneVerifyImageView.tintColor = UIColor.silver
         passwordVerifyImageView.tintColor = UIColor.silver
+        
+        
+        chefNameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        chefEmailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        chefPhoneTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        chefPasswordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        chefPasswordTextField.delegate = self
+        chefEmailTextField.delegate = self
+        
+        chefNameVerifyImageView.tintColor = UIColor.silver
+        chefEmailVerifyImageView.tintColor = UIColor.silver
+        chefPhoneVerifyImageView.tintColor = UIColor.silver
+        chefPasswordVerifyImageView.tintColor = UIColor.silver
 
         updateSignupButtonState()
         
-        self.segment.segments = LabelSegment.segments(withTitles: ["Customer", "Chef"], normalTextColor: UIColor.black, selectedTextColor: UIColor.white)
-        self.segment.options = [.cornerRadius(15.0),
-                                .backgroundColor(UIColor.white),
-        .indicatorViewBackgroundColor(.colorPrimary)];
+
+        self.btnCustomer.layer.borderWidth = 1
+        self.btnChef.layer.borderWidth = 1
         
-        self.segment.addTarget(self,
-        action: #selector(SignupViewController.segmentChanged(_:)),
-        for: .valueChanged)
+        self.btnCustomer.layer.borderColor = UIColor.colorPrimary.cgColor
+        self.btnChef.layer.borderColor = UIColor.colorPrimary.cgColor
+
     }
 
     override func viewWillLayoutSubviews() {
@@ -246,6 +364,32 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         lockImageView.contentMode = .left
         passwordTextField.leftViewMode = .always
         passwordTextField.leftView = lockImageView
+        
+        
+        let chefUserImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        chefUserImageView.image = UIImage(named: "user")
+        chefUserImageView.contentMode = .left
+        chefUserImageView.tintColor = UIColor.colorPrimary
+        chefNameTextField.leftViewMode = .always
+        chefNameTextField.leftView = chefUserImageView
+        
+        let chefEmailImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        chefEmailImageView.image = UIImage(named: "email")
+        chefEmailImageView.contentMode = .left
+        chefEmailTextField.leftViewMode = .always
+        chefEmailTextField.leftView = chefEmailImageView
+        
+        let chefPhoneImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        chefPhoneImageView.image = UIImage(named: "phone")
+        chefPhoneImageView.contentMode = .left
+        chefPhoneTextField.leftViewMode = .always
+        chefPhoneTextField.leftView = chefPhoneImageView
+        
+        let chefLockImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        chefLockImageView.image = UIImage(named: "lock")
+        chefLockImageView.contentMode = .left
+        chefPasswordTextField.leftViewMode = .always
+        chefPasswordTextField.leftView = chefLockImageView
     }
     
     private func addBottomBorder(){
@@ -253,6 +397,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         emailView.addBottomBorderWithColor(color: UIColor.silver, width: 1)
         phoneView.addBottomBorderWithColor(color: UIColor.silver, width: 1)
         passwordView.addBottomBorderWithColor(color: UIColor.silver, width: 1)
+        chefNameView.addBottomBorderWithColor(color: UIColor.silver, width: 1)
+        chefEmailView.addBottomBorderWithColor(color: UIColor.silver, width: 1)
+        chefPhoneView.addBottomBorderWithColor(color: UIColor.silver, width: 1)
+        chefPasswordView.addBottomBorderWithColor(color: UIColor.silver, width: 1)
     }
     
     private func updateSignupButtonState(){
@@ -328,17 +476,27 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
             }
             
             let records = result!["records"] as! [Any]
-            if let record = records[0] as? [String : Any]{
-                let partnerId = record["id"] as! Int
-                let user = User(record: record)
-                self.saveUserInDevice(user: user, partnerId: partnerId)
-                
-                if(!self.isChef)
-                {
+
+            if(!self.isChef)
+            {
+                if let record = records[0] as? [String : Any]{
+                    let partnerId = record["id"] as! Int
                     let isImageSet = record["is_image_set"] as! Bool
+                    let user = User(record: record)
+                    self.saveUserInDevice(user: user, partnerId: partnerId)
                     self.uploadImage(partnerId: partnerId, isImageSet: isImageSet)
                 }
             }
+            else
+            {
+                if let record = records[0] as? [String : Any]{
+                    let partnerId = record["id"] as! Int
+                    let user = User(record: record)
+                    self.subscribeToFirebaseTopics(partnerId)
+                    self.saveUserInDevice(user: user, partnerId: partnerId)
+                }
+            }
+
         }
     }
     
@@ -369,7 +527,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         
         if(self.isChef)
         {
-            performSegue(withIdentifier: "VerifyPhoneSegue", sender: self)
+
+            self.progressAlert?.dismiss(animated: false, completion: {
+                self.performSegue(withIdentifier: "VerifyPhoneSegue", sender: self)
+            })
         }
     }
     
@@ -447,6 +608,46 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
             }else{
                 passwordVerifyImageView.tintColor = UIColor.silver
                 passwordVerified = false
+            }
+            
+
+        case chefNameTextField:
+            let name = chefNameTextField.text ?? ""
+            if Verification.isValidName(name){
+                chefNameVerifyImageView.tintColor = UIColor.colorPrimary
+                chefNameVerified = true
+            }else{
+                chefNameVerifyImageView.tintColor = UIColor.silver
+                chefNameVerified = false
+            }
+        case chefEmailTextField:
+            chefEmailTextField.text = chefEmailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            let email = chefEmailTextField.text ?? ""
+            if Verification.isValidEmail(email){
+                chefEmailVerifyImageView.tintColor = UIColor.colorPrimary
+                chefEmailVerified = true
+            }else{
+                chefEmailVerifyImageView.tintColor = UIColor.silver
+                chefEmailVerified = false
+            }
+        case chefPhoneTextField:
+            let phone = chefPhoneTextField.text ?? ""
+            if Verification.isValidPhoneNumber(phone){
+                chefPhoneVerifyImageView.tintColor = UIColor.colorPrimary
+                chefPhoneVerified = true
+            }else{
+                chefPhoneVerifyImageView.tintColor = UIColor.silver
+                chefPhoneVerified = false
+            }
+        case chefPasswordTextField:
+            let password = chefPasswordTextField.text ?? ""
+            if Verification.isValidPassword(password){
+                chefPasswordVerifyImageView.tintColor = UIColor.colorPrimary
+                chefPasswordVerified = true
+            }else{
+                chefPasswordVerifyImageView.tintColor = UIColor.silver
+                chefPasswordVerified = false
             }
         default:
             print ("TextField does not exist")
@@ -542,4 +743,42 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     }
     */
 
+    
+    @IBAction func onCustomer(_ sender: Any) {
+        self.btnCustomer.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        self.btnChef.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        
+        self.btnCustomer.setTitleColor(UIColor.white, for: .normal)
+        self.btnCustomer.backgroundColor = .colorPrimary
+        self.btnChef.setTitleColor(UIColor.colorPrimary, for: .normal)
+        self.btnChef.backgroundColor = .white
+        
+        self.isChef = false
+        self.chefView.isHidden = true
+        self.customerView.isHidden = false
+        
+        self.lbSocialSignUp.isHidden = false
+        self.socialPanel.isHidden = false
+        self.vDivider.isHidden = false
+    }
+    
+    @IBAction func onChef(_ sender: Any) {
+        self.btnCustomer.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        self.btnChef.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+        
+        self.btnChef.setTitleColor(UIColor.white, for: .normal)
+        self.btnChef.backgroundColor = .colorPrimary
+
+        self.btnCustomer.setTitleColor(UIColor.colorPrimary, for: .normal)
+        self.btnCustomer.backgroundColor = .white
+
+        self.isChef = true
+        self.chefView.isHidden = false
+        self.customerView.isHidden = true
+        
+        self.lbSocialSignUp.isHidden = true
+        self.socialPanel.isHidden = true
+        self.vDivider.isHidden = true
+    }
+    
 }
