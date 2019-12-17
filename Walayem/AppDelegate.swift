@@ -39,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         setRootViewController()
         getContactDetails()
+        getChefSettings()
         return true
     }
     
@@ -150,6 +151,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefaults.set(phone, forKey: "ContactNumber")
             userDefaults.set(website, forKey: "ContactUrl")
             userDefaults.synchronize()
+        }
+    }
+    
+    private func getChefSettings(){
+        RestClient().request(WalayemApi.getChefSettings, [:]) { (result, error) in
+            if let _ = error{
+                return
+            }
+            
+            let a = 0;
         }
     }
 

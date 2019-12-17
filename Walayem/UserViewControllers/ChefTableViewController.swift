@@ -74,7 +74,27 @@ class ChefTableViewController: UIViewController {
     
     
     func datePickerTapped() {
-        DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .dateAndTime) {
+        let startTime = Utils.getChefStartTime()
+        let endTime = Utils.getChefEndTime()
+        let minHours = Utils.getMinHours()
+        
+        let calendar = Calendar.current
+        var date = calendar.date(byAdding: .hour, value: minHours, to: Date())
+        
+        var components = calendar.dateComponents([.year, .month, .day, .hour], from: date!)
+
+        if components.hour! < startTime {
+            components.hour = startTime
+            components.minute = 0
+        }
+        else if components.hour! > endTime - 1 {
+            components.hour = endTime - 1
+            components.minute = 59
+        }
+        
+        date = calendar.date(from: components)! // 2018-10-10
+        
+        DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", startTime: startTime, endTime: endTime, minimumDate: date, datePickerMode: .dateAndTime) {
             (date) -> Void in
             if let dt = date {
                 let thisDate = Date()

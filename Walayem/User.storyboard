@@ -174,14 +174,14 @@ that easy</string>
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjP-DM-qyu">
-                                                <rect key="frame" x="16" y="12" width="10" height="22"/>
+                                                <rect key="frame" x="16" y="12" width="20" height="32"/>
                                                 <state key="normal" image="back"/>
                                                 <connections>
                                                     <action selector="back:" destination="rQG-dw-03r" eventType="touchUpInside" id="c39-vK-baU"/>
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="88G-a7-dNl">
-                                                <rect key="frame" x="123" y="76" width="129" height="98.000000000000028"/>
+                                                <rect key="frame" x="123" y="76" width="129" height="98"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="129" id="CDz-9M-bhi"/>
                                                     <constraint firstAttribute="height" constant="98" id="wvm-jn-8ye"/>
@@ -290,17 +290,25 @@ that easy</string>
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="fvV-Kv-DjX">
-                                                <rect key="frame" x="125.5" y="570" width="124" height="46"/>
+                                                <rect key="frame" x="131.5" y="576" width="112" height="40"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDL-7F-Mrr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="NET-Pt-muc"/>
+                                                            <constraint firstAttribute="height" constant="40" id="SuA-eQ-mYj"/>
+                                                        </constraints>
                                                         <state key="normal" image="facebook"/>
                                                         <connections>
                                                             <action selector="loginViaFacebook:" destination="rQG-dw-03r" eventType="touchUpInside" id="gln-LO-wy5"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjy-Qb-VO6">
-                                                        <rect key="frame" x="78" y="0.0" width="46" height="46"/>
+                                                        <rect key="frame" x="72" y="0.0" width="40" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="7nH-ck-x35"/>
+                                                            <constraint firstAttribute="width" constant="40" id="NaK-et-w8n"/>
+                                                        </constraints>
                                                         <state key="normal" image="google"/>
                                                         <connections>
                                                             <action selector="loginViaGoogle:" destination="rQG-dw-03r" eventType="touchUpInside" id="Urs-1H-8ng"/>
@@ -541,7 +549,7 @@ we’ll send you instructions</string>
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7A-EN-In5" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="725.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="719.5"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoNoText" translatesAutoresizingMaskIntoConstraints="NO" id="SO9-qP-dnO">
                                                 <rect key="frame" x="170" y="55" width="35" height="74"/>
@@ -551,17 +559,25 @@ we’ll send you instructions</string>
                                                 </constraints>
                                             </imageView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="PgO-uu-DRX">
-                                                <rect key="frame" x="129.5" y="626" width="116" height="46"/>
+                                                <rect key="frame" x="135.5" y="626" width="104" height="40"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5U-oX-gKJ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="46" height="46"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="40" id="Ssf-11-f7Q"/>
+                                                            <constraint firstAttribute="height" constant="40" id="fgA-29-iFz"/>
+                                                        </constraints>
                                                         <state key="normal" image="facebook"/>
                                                         <connections>
                                                             <action selector="signupViaFb:" destination="IRQ-UA-oYI" eventType="touchUpInside" id="3MF-K5-uzv"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iaD-lF-7DH">
-                                                        <rect key="frame" x="70" y="0.0" width="46" height="46"/>
+                                                        <rect key="frame" x="64" y="0.0" width="40" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="3aN-C3-8FX"/>
+                                                            <constraint firstAttribute="width" constant="40" id="Pag-J5-BYu"/>
+                                                        </constraints>
                                                         <state key="normal" image="google"/>
                                                         <connections>
                                                             <action selector="signupViaGoogle:" destination="IRQ-UA-oYI" eventType="touchUpInside" id="4rv-U4-d4G"/>
@@ -785,7 +801,7 @@ we’ll send you instructions</string>
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign up with social media" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Tc-UY-g5X">
-                                                <rect key="frame" x="91" y="693" width="193.5" height="20.5"/>
+                                                <rect key="frame" x="91" y="687" width="193.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -1403,8 +1419,8 @@ scan of your Emirates ID</string>
     </scenes>
     <resources>
         <image name="back" width="10" height="16"/>
-        <image name="facebook" width="46" height="46"/>
-        <image name="google" width="46" height="46"/>
+        <image name="facebook" width="192" height="192"/>
+        <image name="google" width="192" height="192"/>
         <image name="idEmpty" width="100" height="100"/>
         <image name="loginPrior" width="157" height="181"/>
         <image name="logo" width="128" height="98"/>

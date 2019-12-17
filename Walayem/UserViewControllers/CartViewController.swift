@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import DatePickerDialog
+
 
 class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeaderDelegate, CartFoodFooterDelegate {
 
@@ -27,6 +29,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     @IBOutlet weak var paymentIcon: UIImageView!
     @IBOutlet weak var addressIcon: UIImageView!
     @IBOutlet weak var orderForLabel: UILabel!
+    
+    @IBOutlet weak var orderView: UIView!
     
     let db = DatabaseHandler()
     var user: User?
@@ -181,7 +185,10 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
         Utils.setupNavigationBar(nav: self.navigationController!)
-      
+        
+        let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.checkAction))
+        self.orderView.addGestureRecognizer(gesture)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -200,7 +207,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "MMM dd yyyy hh:mm aa"
             let date_str = dateFormatter.string(from: date!)
-            orderForLabel.text = "Delivery for \(date_str)"
+            orderForLabel.text = "\(date_str)"
             
             let calendar = NSCalendar.current
             
@@ -210,17 +217,72 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
             let time_str = timeFormatter.string(from: date!)
         
             if calendar.isDateInToday(date!) {
-                orderForLabel.text = "Delivery for today at \(time_str)"
+                orderForLabel.text = "today at \(time_str)"
             }
             else if calendar.isDateInTomorrow(date!) {
-                orderForLabel.text = "Delivery for tomorrow at \(time_str)"
+                orderForLabel.text = "tomorrow at \(time_str)"
             }
             
         }else{
             orderForLabel.text = "Delivery as soon as possible"
         }
+                
     }
-    
+
+    @objc func checkAction(sender : UITapGestureRecognizer) {
+        // Do what you want       
+        
+        let startTime = Utils.getChefStartTime()
+        let endTime = Utils.getChefEndTime()
+        let minHours = Utils.getMinHours()
+        
+        let calendar = Calendar.current
+        var date = calendar.date(byAdding: .hour, value: minHours, to: Date())
+        
+        var components = calendar.dateComponents([.year, .month, .day, .hour], from: date!)
+
+        if components.hour! < startTime {
+            components.hour = startTime
+            components.minute = 0
+        }
+        else if components.hour! > endTime - 1 {
+            components.hour = endTime - 1
+            components.minute = 59
+        }
+        
+        date = calendar.date(from: components)! // 2018-10-10
+        
+        DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", startTime: startTime, endTime: endTime, minimumDate: date , datePickerMode: .dateAndTime) {
+            (date) -> Void in
+            if let dt = date {
+                let thisDate = Date()
+                let calendar = NSCalendar.current
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MMM dd yyyy"
+                
+                let timeFormatter = DateFormatter()
+                timeFormatter.dateFormat = "hh:mm aa"
+                
+                let time_str = timeFormatter.string(from: dt)
+                var date_str = dateFormatter.string(from: dt)
+                
+                if calendar.isDateInToday(dt) { date_str = "Today" }
+                else if calendar.isDateInTomorrow(dt) { date_str = "Tomorrow" }
+                
+                let dateTimeFormatter = DateFormatter()
+                dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                let date_time_str = dateTimeFormatter.string(from: dt)
+                
+                let userDefaults = UserDefaults.standard
+                userDefaults.set("future", forKey: "OrderType")
+                userDefaults.set(date_time_str, forKey: "OrderDate")
+                userDefaults.synchronize()
+                
+                self.orderForLabel.text = "\(date_str) at \(time_str)"
+            }
+        }
+        
+    }
     // MARK: Private methods
     
     private func setViews(){

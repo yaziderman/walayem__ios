@@ -56,21 +56,23 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     }
     
     @IBAction func datePickerClicked(_ sender: Any) {
-        let alert = UIAlertController(title: "", message: "When do you want your meal?", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "ASAP", style: .default, handler: { (action) in
-            self.datePickerButton.setTitle("ASAP", for: .normal)
-            let userDefaults = UserDefaults.standard
-            userDefaults.set("asap", forKey: "OrderType")
-            userDefaults.synchronize()
-        }))
-        alert.addAction(UIAlertAction(title: "Custom time", style: .default, handler: { (action) in
-            self.datePickerTapped()
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
-            self.navigationController?.popViewController(animated: true)
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
+//        let alert = UIAlertController(title: "", message: "When do you want your meal?", preferredStyle: .actionSheet)
+//        alert.addAction(UIAlertAction(title: "ASAP", style: .default, handler: { (action) in
+//            self.datePickerButton.setTitle("ASAP", for: .normal)
+//            let userDefaults = UserDefaults.standard
+//            userDefaults.set("asap", forKey: "OrderType")
+//            userDefaults.synchronize()
+//        }))
+//        alert.addAction(UIAlertAction(title: "Custom time", style: .default, handler: { (action) in
+//            self.datePickerTapped()
+//        }))
+//        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
+//            self.navigationController?.popViewController(animated: true)
+//        }))
+//
+//        self.present(alert, animated: true, completion: nil)
+//
+        datePickerTapped()
     }
     @IBOutlet weak var locationPickButton: UIButton!
     
@@ -128,10 +130,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         Utils.setupNavigationBar(nav: self.navigationController!)
         StaticLinker.discoverViewController = self
         
-        let userDefaults = UserDefaults.standard
-        userDefaults.set("asap", forKey: "OrderType")
-        userDefaults.set("", forKey: "OrderDate")
-        userDefaults.synchronize()
+        initialCustomDate()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -181,8 +180,79 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         }
     }
     
+    func initialCustomDate() {
+        let startTime = Utils.getChefStartTime()
+        let endTime = Utils.getChefEndTime()
+        let minHours = Utils.getMinHours()
+        
+        let cal = Calendar.current
+        var dt = cal.date(byAdding: .hour, value: minHours, to: Date())
+        
+
+        var components = cal.dateComponents([.year, .month, .day, .hour], from: dt!)
+
+        if components.hour! < startTime {
+            components.hour = startTime
+            components.minute = 0
+        }
+        else if components.hour! > endTime - 1 {
+            components.hour = endTime - 1
+            components.minute = 59
+        }
+        
+        dt = cal.date(from: components)! // 2018-10-10
+        
+        
+        let calendar = NSCalendar.current
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd yyyy"
+        
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "hh:mm aa"
+        
+        let time_str = timeFormatter.string(from: dt!)
+        var date_str = dateFormatter.string(from: dt!)
+        
+        if calendar.isDateInToday(dt!) { date_str = "Today" }
+        else if calendar.isDateInTomorrow(dt!) { date_str = "Tomorrow" }
+        
+        let dateTimeFormatter = DateFormatter()
+        dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let date_time_str = dateTimeFormatter.string(from: dt!)
+        
+        let userDefaults = UserDefaults.standard
+        userDefaults.set("future", forKey: "OrderType")
+        userDefaults.set(date_time_str, forKey: "OrderDate")
+        userDefaults.synchronize()
+        
+        if(StaticLinker.chefViewController != nil){
+            StaticLinker.chefViewController?.timePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
+        }
+        self.datePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
+    }
+    
     func datePickerTapped() {
-        DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .dateAndTime) {
+        let startTime = Utils.getChefStartTime()
+        let endTime = Utils.getChefEndTime()
+        let minHours = Utils.getMinHours()
+        
+        let calendar = Calendar.current
+        var date = calendar.date(byAdding: .hour, value: minHours, to: Date())
+        
+        var components = calendar.dateComponents([.year, .month, .day, .hour], from: date!)
+
+        if components.hour! < startTime {
+            components.hour = startTime
+            components.minute = 0
+        }
+        else if components.hour! > endTime - 1 {
+            components.hour = endTime - 1
+            components.minute = 59
+        }
+        
+        date = calendar.date(from: components)! // 2018-10-10
+        
+        DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", startTime: startTime, endTime: endTime, minimumDate: date , datePickerMode: .dateAndTime) {
             (date) -> Void in
             if let dt = date {
                 let thisDate = Date()

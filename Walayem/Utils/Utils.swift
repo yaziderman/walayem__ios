@@ -110,4 +110,36 @@ class Utils{
         nav.navigationBar.layer.masksToBounds = false
         nav.navigationBar.layer.shadowPath = UIBezierPath(roundedRect: (nav.navigationBar.layer.bounds), cornerRadius: 6).cgPath
     }
+    
+    static func getChefStartTime() -> Int {
+        var startTime = UserDefaults.standard.integer(forKey: "chef_start_time")
+        if(startTime == 0)
+        {
+            startTime = 7
+        }
+        
+        return startTime;
+    }
+
+    static func getChefEndTime() -> Int {
+        var endTime = UserDefaults.standard.integer(forKey: "chef_end_time")
+        if(endTime == 0)
+        {
+            endTime = 23
+        }
+        
+        return endTime;
+
+    }
+
+    static func getMinHours() -> Int {
+        var minHours = UserDefaults.standard.integer(forKey: "chef_min_hours")
+        if(minHours == 0)
+        {
+            minHours = 13
+        }
+        
+        return minHours;
+
+    }
 }
