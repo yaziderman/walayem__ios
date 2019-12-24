@@ -60,6 +60,12 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
         newPwdTextField.addTarget(self, action: #selector(textFieldDidChange(sender:)), for: .editingChanged)
         Utils.setupNavigationBar(nav: self.navigationController!)
         updateSubmitButtonState()
+        
+        oldPwdTextField.textColor = UIColor.textColor
+        oldPwdTextField.placeHolderColor = UIColor.placeholderColor
+        
+        newPwdTextField.textColor = UIColor.textColor
+        newPwdTextField.placeHolderColor = UIColor.placeholderColor
     }
     
     override func viewWillLayoutSubviews() {

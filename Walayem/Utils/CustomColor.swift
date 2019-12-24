@@ -57,6 +57,14 @@ extension UIColor{
     static var seafoamBlue: UIColor {
         return UIColor(red: 95.0 / 255.0, green: 211.0 / 255.0, blue: 162.0 / 255.0, alpha: 1.0)
     }
+    
+    static var textColor: UIColor {
+        return UIColor(red: 100.0 / 255.0, green: 105.0 / 255.0, blue: 110.0 / 255.0, alpha: 1.0)
+    }
+    
+    static var placeholderColor: UIColor {
+        return UIColor(red: 130.0 / 255.0, green: 135.0 / 255.0, blue: 140.0 / 255.0, alpha: 1.0)
+    }
 
 
 }

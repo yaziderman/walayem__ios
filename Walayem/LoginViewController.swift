@@ -121,6 +121,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         updateLoginButtonState()
+        
+        emailTextField.textColor = UIColor.textColor
+        emailTextField.placeHolderColor = UIColor.placeholderColor
+        
+        passwordTextField.textColor = UIColor.textColor
+        passwordTextField.placeHolderColor = UIColor.placeholderColor
     }
     
     override func viewWillLayoutSubviews() {

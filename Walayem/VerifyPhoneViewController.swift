@@ -51,6 +51,9 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate {
     
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        
+        codeTextField.textColor = UIColor.textColor
+        codeTextField.placeHolderColor = UIColor.placeholderColor
     }
     
     // MARK: Private methods

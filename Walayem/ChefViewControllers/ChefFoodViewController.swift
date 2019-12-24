@@ -240,6 +240,21 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
             cuisineLabel.text = selectedCuisine?.name
             downloadImages(food.imageIds!)
         }
+        
+        nameTextField.textColor = UIColor.textColor
+        nameTextField.placeHolderColor = UIColor.placeholderColor
+        
+        priceTextField.textColor = UIColor.textColor
+        priceTextField.placeHolderColor = UIColor.placeholderColor
+        
+        timeTextField.textColor = UIColor.textColor
+        timeTextField.placeHolderColor = UIColor.placeholderColor
+        
+        serveTextField.textColor = UIColor.textColor
+        serveTextField.placeHolderColor = UIColor.placeholderColor
+        
+        descriptionTextField.textColor = UIColor.textColor
+        descriptionTextField.placeHolderColor = UIColor.placeholderColor
     }
     
     override func viewWillLayoutSubviews() {

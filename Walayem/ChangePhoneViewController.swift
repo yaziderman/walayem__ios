@@ -86,6 +86,12 @@ class ChangePhoneViewController: UIViewController, UITextFieldDelegate {
         updateVerifyButtonState()
         updateUpdateButtonState()
         Utils.setupNavigationBar(nav: self.navigationController!)
+                
+        phoneTextField.textColor = UIColor.textColor
+        phoneTextField.placeHolderColor = UIColor.placeholderColor
+        
+        codeTextField.textColor = UIColor.textColor
+        codeTextField.placeHolderColor = UIColor.placeholderColor
     }
     
     override func viewWillLayoutSubviews() {

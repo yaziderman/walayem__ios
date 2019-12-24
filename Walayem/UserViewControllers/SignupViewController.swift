@@ -329,6 +329,30 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         
         self.btnCustomer.layer.borderColor = UIColor.colorPrimary.cgColor
         self.btnChef.layer.borderColor = UIColor.colorPrimary.cgColor
+        
+        nameTextField.placeHolderColor = UIColor.placeholderColor
+        nameTextField.textColor = UIColor.textColor
+        
+        emailTextField.placeHolderColor = UIColor.placeholderColor
+        emailTextField.textColor = UIColor.textColor
+        
+        phoneTextField.placeHolderColor = UIColor.placeholderColor
+        phoneTextField.textColor = UIColor.textColor
+        
+        passwordTextField.placeHolderColor = UIColor.placeholderColor
+        passwordTextField.textColor = UIColor.textColor
+        
+        chefNameTextField.placeHolderColor = UIColor.placeholderColor
+        chefNameTextField.textColor = UIColor.textColor
+        
+        chefEmailTextField.placeHolderColor = UIColor.placeholderColor
+        chefEmailTextField.textColor = UIColor.textColor
+        
+        chefPhoneTextField.placeHolderColor = UIColor.placeholderColor
+        chefPhoneTextField.textColor = UIColor.textColor
+        
+        chefPasswordTextField.placeHolderColor = UIColor.placeholderColor
+        chefPasswordTextField.textColor = UIColor.textColor
     }
 
     override func viewWillLayoutSubviews() {

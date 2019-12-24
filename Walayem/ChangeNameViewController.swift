@@ -56,6 +56,9 @@ class ChangeNameViewController: UIViewController, UITextFieldDelegate {
         nameTextField.addTarget(self, action: #selector(textFieldDidChange(sender:)), for: .editingChanged)
         nameTextField.becomeFirstResponder()
         Utils.setupNavigationBar(nav: self.navigationController!)
+        
+        nameTextField.textColor = UIColor.textColor
+        nameTextField.placeHolderColor = UIColor.placeholderColor
     }
     
     override func viewWillLayoutSubviews() {

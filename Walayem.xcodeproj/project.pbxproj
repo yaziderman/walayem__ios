@@ -118,6 +118,7 @@
 		523CDF8620A0708E0090C3E6 /* ChefOrders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523CDF8520A0708E0090C3E6 /* ChefOrders.storyboard */; };
 		523CDF8820A070A30090C3E6 /* ChefMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523CDF8720A070A30090C3E6 /* ChefMenu.storyboard */; };
 		523CDF8A20A070B60090C3E6 /* ChefProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523CDF8920A070B60090C3E6 /* ChefProfile.storyboard */; };
+		526C962523AA97DF008D5FE4 /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526C962423AA97DF008D5FE4 /* UITextFieldExtension.swift */; };
 		52EA619C20B3E53E001DB6CC /* TermsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA619B20B3E53E001DB6CC /* TermsViewController.swift */; };
 		52EA619E20B3E586001DB6CC /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA619D20B3E586001DB6CC /* PrivacyViewController.swift */; };
 		52F2D1CF209ECE1B00FAE72C /* ChefMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52F2D1CE209ECE1B00FAE72C /* ChefMain.storyboard */; };
@@ -241,6 +242,7 @@
 		523CDF8520A0708E0090C3E6 /* ChefOrders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChefOrders.storyboard; sourceTree = "<group>"; };
 		523CDF8720A070A30090C3E6 /* ChefMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChefMenu.storyboard; sourceTree = "<group>"; };
 		523CDF8920A070B60090C3E6 /* ChefProfile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChefProfile.storyboard; sourceTree = "<group>"; };
+		526C962423AA97DF008D5FE4 /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		52EA619B20B3E53E001DB6CC /* TermsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsViewController.swift; sourceTree = "<group>"; };
 		52EA619D20B3E586001DB6CC /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		52F2D1CE209ECE1B00FAE72C /* ChefMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChefMain.storyboard; sourceTree = "<group>"; };
@@ -341,6 +343,7 @@
 				0AF9861820BEB69700E712BA /* UIBarButtonItemExtension.swift */,
 				0A0F54BC2110845E004F2006 /* FontsOverride.swift */,
 				0AD7E9FE212592DE00C0B546 /* StaticLinker.swift */,
+				526C962423AA97DF008D5FE4 /* UITextFieldExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				04B7FE872091D4D000018304 /* FoodCategCollectionViewCell.swift in Sources */,
 				0AD7E9FF212592DE00C0B546 /* StaticLinker.swift in Sources */,
 				04D9E8A22085B38D002E1B51 /* LoginViewController.swift in Sources */,
+				526C962523AA97DF008D5FE4 /* UITextFieldExtension.swift in Sources */,
 				04B7FE852091A49700018304 /* ChefDetailViewController.swift in Sources */,
 				04CCB84620AD9CFA0011BD95 /* CompletedOrderTableViewController.swift in Sources */,
 				040902D220B2922800059F1D /* ChefFoodViewController.swift in Sources */,

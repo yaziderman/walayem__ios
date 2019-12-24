@@ -68,6 +68,9 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         requestButton.alpha = 0.3
         
         Utils.setupNavigationBar(nav: self.navigationController!)
+        
+        emailTextField.textColor = UIColor.textColor
+        emailTextField.placeHolderColor = UIColor.placeholderColor
     }
     
     override func viewWillLayoutSubviews() {

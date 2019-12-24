@@ -79,6 +79,18 @@ class AddressViewController: UIViewController, UITextFieldDelegate {
             extraTextField.text = address.extra
         }
          Utils.setupNavigationBar(nav: self.navigationController!)
+        
+        nameTextField.textColor = UIColor.textColor
+        nameTextField.placeHolderColor = UIColor.placeholderColor
+        
+        streetTextField.textColor = UIColor.textColor
+        streetTextField.placeHolderColor = UIColor.placeholderColor
+        
+        cityTextField.textColor = UIColor.textColor
+        cityTextField.placeHolderColor = UIColor.placeholderColor
+        
+        extraTextField.textColor = UIColor.textColor
+        extraTextField.placeHolderColor = UIColor.placeholderColor
     }
     
     override func viewWillLayoutSubviews() {
