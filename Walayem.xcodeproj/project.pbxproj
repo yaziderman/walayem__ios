@@ -15,12 +15,10 @@
 		040CA40220AEDB8100E64BFE /* ChefOrderFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040CA40120AEDB8100E64BFE /* ChefOrderFoodCell.swift */; };
 		040CA40420AEE88400E64BFE /* ChefOrderFoodHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040CA40320AEE88400E64BFE /* ChefOrderFoodHeaderCell.swift */; };
 		040CA40620AEE8B100E64BFE /* ChefOrderFoodFooterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040CA40520AEE8B100E64BFE /* ChefOrderFoodFooterCell.swift */; };
-		041AE59D209EFE33007C05D9 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041AE59C209EFE32007C05D9 /* Address.swift */; };
 		041AE59F209EFFCC007C05D9 /* AddressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041AE59E209EFFCC007C05D9 /* AddressTableViewCell.swift */; };
 		043532FA20A2C5C400D90035 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043532F920A2C5C400D90035 /* OrderTableViewCell.swift */; };
 		0437932A208725E90050C7D8 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04379329208725E90050C7D8 /* ResetPasswordViewController.swift */; };
 		0437932C20874D880050C7D8 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437932B20874D880050C7D8 /* RestClient.swift */; };
-		0437932E208756C00050C7D8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437932D208756C00050C7D8 /* User.swift */; };
 		044416B3230C1AA5007413F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 044416B2230C1AA5007413F6 /* GoogleService-Info.plist */; };
 		04831C4620AC150400195B1A /* FoodSearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04831C4520AC150400195B1A /* FoodSearchResultController.swift */; };
 		04831C4920AC39FE00195B1A /* BadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04831C4820AC39FE00195B1A /* BadgeButton.swift */; };
@@ -29,11 +27,8 @@
 		04AD0D3D209B0ED1002C072D /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD0D3C209B0ED1002C072D /* FilterViewController.swift */; };
 		04AD0D3F209B0F33002C072D /* FilterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD0D3E209B0F33002C072D /* FilterCollectionViewCell.swift */; };
 		04AD0D41209B0F7C002C072D /* FilterCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD0D40209B0F7C002C072D /* FilterCollectionHeaderView.swift */; };
-		04AD0D43209B1921002C072D /* Cuisine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AD0D42209B1921002C072D /* Cuisine.swift */; };
-		04B295D120A05DAC00A64EED /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B295D020A05DAC00A64EED /* Cart.swift */; };
 		04B7FE852091A49700018304 /* ChefDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B7FE842091A49700018304 /* ChefDetailViewController.swift */; };
 		04B7FE872091D4D000018304 /* FoodCategCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B7FE862091D4D000018304 /* FoodCategCollectionViewCell.swift */; };
-		04B824FB20A2C95A00458DA6 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B824FA20A2C95A00458DA6 /* Order.swift */; };
 		04B824FD20A2F4CF00458DA6 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B824FC20A2F4CF00458DA6 /* OrderViewController.swift */; };
 		04B824FF20A30D5100458DA6 /* OrderFoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B824FE20A30D5100458DA6 /* OrderFoodTableViewCell.swift */; };
 		04B8250120A3112200458DA6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04B8250020A3112000458DA6 /* Assets.xcassets */; };
@@ -74,14 +69,11 @@
 		04E854B620B159CB00A26562 /* ChefProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E854B520B159CB00A26562 /* ChefProfileTableViewController.swift */; };
 		04E854B820B16C5600A26562 /* ChefFoodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E854B720B16C5600A26562 /* ChefFoodTableViewController.swift */; };
 		04E854BA20B1824F00A26562 /* ChefFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E854B920B1824F00A26562 /* ChefFoodCell.swift */; };
-		04F2157F208865A3003D47AD /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2157E208865A3003D47AD /* Food.swift */; };
-		04F21581208866E8003D47AD /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F21580208866E8003D47AD /* Tag.swift */; };
 		04F2158320887622003D47AD /* RecommendedCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2158220887622003D47AD /* RecommendedCollectionTableViewCell.swift */; };
 		04F215852088ABBD003D47AD /* UIView + border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F215842088ABBD003D47AD /* UIView + border.swift */; };
 		04F215872088B315003D47AD /* ChefTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F215862088B315003D47AD /* ChefTableViewCell.swift */; };
 		04F215892088B35F003D47AD /* ChefFoodCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F215882088B35F003D47AD /* ChefFoodCollectionViewCell.swift */; };
 		04F2158B2088B391003D47AD /* ChefTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2158A2088B391003D47AD /* ChefTableViewController.swift */; };
-		04F2158D2088B4B7003D47AD /* Chef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F2158C2088B4B7003D47AD /* Chef.swift */; };
 		04F38A20208F1F8E00223B82 /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F38A1F208F1F8E00223B82 /* InviteViewController.swift */; };
 		04F38A22208F231100223B82 /* AddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F38A21208F231100223B82 /* AddressViewController.swift */; };
 		04FA702C20933AE600EF4F92 /* FavChefTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA702B20933AE600EF4F92 /* FavChefTableViewController.swift */; };
@@ -113,7 +105,6 @@
 		4703A1F320C27D6E000722CD /* ChangePhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4703A1F220C27D6E000722CD /* ChangePhoneViewController.swift */; };
 		47FF3DEE20A1F62800A6289F /* OrderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47FF3DED20A1F62800A6289F /* OrderTableViewController.swift */; };
 		521F2ED120B153A7000DF518 /* AccountsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F2ED020B153A7000DF518 /* AccountsTableViewController.swift */; };
-		521F2ED320B157B9000DF518 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F2ED220B157B9000DF518 /* Account.swift */; };
 		521F2ED520B15C0B000DF518 /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F2ED420B15C0B000DF518 /* AccountTableViewCell.swift */; };
 		523CDF8620A0708E0090C3E6 /* ChefOrders.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523CDF8520A0708E0090C3E6 /* ChefOrders.storyboard */; };
 		523CDF8820A070A30090C3E6 /* ChefMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 523CDF8720A070A30090C3E6 /* ChefMenu.storyboard */; };
@@ -123,6 +114,15 @@
 		52EA619E20B3E586001DB6CC /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA619D20B3E586001DB6CC /* PrivacyViewController.swift */; };
 		52F2D1CF209ECE1B00FAE72C /* ChefMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52F2D1CE209ECE1B00FAE72C /* ChefMain.storyboard */; };
 		52F2D1D1209F121B00FAE72C /* ChefSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F2D1D0209F121B00FAE72C /* ChefSignupViewController.swift */; };
+		5BBECB0023B7953600461CA6 /* Cuisine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAF723B7953600461CA6 /* Cuisine.swift */; };
+		5BBECB0123B7953600461CA6 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAF823B7953600461CA6 /* Cart.swift */; };
+		5BBECB0223B7953600461CA6 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAF923B7953600461CA6 /* Tag.swift */; };
+		5BBECB0323B7953600461CA6 /* Chef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFA23B7953600461CA6 /* Chef.swift */; };
+		5BBECB0423B7953600461CA6 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFB23B7953600461CA6 /* Food.swift */; };
+		5BBECB0523B7953700461CA6 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFC23B7953600461CA6 /* Order.swift */; };
+		5BBECB0623B7953700461CA6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFD23B7953600461CA6 /* User.swift */; };
+		5BBECB0723B7953700461CA6 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFE23B7953600461CA6 /* Address.swift */; };
+		5BBECB0823B7953700461CA6 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFF23B7953600461CA6 /* Account.swift */; };
 		C3E01AAB1E1B439F32F34F23 /* Pods_Walayem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF272E4C0EC903E149663133 /* Pods_Walayem.framework */; };
 /* End PBXBuildFile section */
 
@@ -135,12 +135,10 @@
 		040CA40120AEDB8100E64BFE /* ChefOrderFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefOrderFoodCell.swift; sourceTree = "<group>"; };
 		040CA40320AEE88400E64BFE /* ChefOrderFoodHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefOrderFoodHeaderCell.swift; sourceTree = "<group>"; };
 		040CA40520AEE8B100E64BFE /* ChefOrderFoodFooterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefOrderFoodFooterCell.swift; sourceTree = "<group>"; };
-		041AE59C209EFE32007C05D9 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		041AE59E209EFFCC007C05D9 /* AddressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressTableViewCell.swift; sourceTree = "<group>"; };
 		043532F920A2C5C400D90035 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		04379329208725E90050C7D8 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		0437932B20874D880050C7D8 /* RestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
-		0437932D208756C00050C7D8 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		044416B2230C1AA5007413F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04831C4520AC150400195B1A /* FoodSearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchResultController.swift; sourceTree = "<group>"; };
 		04831C4820AC39FE00195B1A /* BadgeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeButton.swift; sourceTree = "<group>"; };
@@ -149,11 +147,8 @@
 		04AD0D3C209B0ED1002C072D /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		04AD0D3E209B0F33002C072D /* FilterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionViewCell.swift; sourceTree = "<group>"; };
 		04AD0D40209B0F7C002C072D /* FilterCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionHeaderView.swift; sourceTree = "<group>"; };
-		04AD0D42209B1921002C072D /* Cuisine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cuisine.swift; sourceTree = "<group>"; };
-		04B295D020A05DAC00A64EED /* Cart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		04B7FE842091A49700018304 /* ChefDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefDetailViewController.swift; sourceTree = "<group>"; };
 		04B7FE862091D4D000018304 /* FoodCategCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodCategCollectionViewCell.swift; sourceTree = "<group>"; };
-		04B824FA20A2C95A00458DA6 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		04B824FC20A2F4CF00458DA6 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		04B824FE20A30D5100458DA6 /* OrderFoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderFoodTableViewCell.swift; sourceTree = "<group>"; };
 		04B8250020A3112000458DA6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -196,14 +191,11 @@
 		04E854B520B159CB00A26562 /* ChefProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefProfileTableViewController.swift; sourceTree = "<group>"; };
 		04E854B720B16C5600A26562 /* ChefFoodTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefFoodTableViewController.swift; sourceTree = "<group>"; };
 		04E854B920B1824F00A26562 /* ChefFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefFoodCell.swift; sourceTree = "<group>"; };
-		04F2157E208865A3003D47AD /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
-		04F21580208866E8003D47AD /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		04F2158220887622003D47AD /* RecommendedCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedCollectionTableViewCell.swift; sourceTree = "<group>"; };
 		04F215842088ABBD003D47AD /* UIView + border.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + border.swift"; sourceTree = "<group>"; };
 		04F215862088B315003D47AD /* ChefTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefTableViewCell.swift; sourceTree = "<group>"; };
 		04F215882088B35F003D47AD /* ChefFoodCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefFoodCollectionViewCell.swift; sourceTree = "<group>"; };
 		04F2158A2088B391003D47AD /* ChefTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefTableViewController.swift; sourceTree = "<group>"; };
-		04F2158C2088B4B7003D47AD /* Chef.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chef.swift; sourceTree = "<group>"; };
 		04F38A1F208F1F8E00223B82 /* InviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
 		04F38A21208F231100223B82 /* AddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressViewController.swift; sourceTree = "<group>"; };
 		04FA702B20933AE600EF4F92 /* FavChefTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavChefTableViewController.swift; sourceTree = "<group>"; };
@@ -237,7 +229,6 @@
 		4703A1F220C27D6E000722CD /* ChangePhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePhoneViewController.swift; sourceTree = "<group>"; };
 		47FF3DED20A1F62800A6289F /* OrderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewController.swift; sourceTree = "<group>"; };
 		521F2ED020B153A7000DF518 /* AccountsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsTableViewController.swift; sourceTree = "<group>"; };
-		521F2ED220B157B9000DF518 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		521F2ED420B15C0B000DF518 /* AccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
 		523CDF8520A0708E0090C3E6 /* ChefOrders.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChefOrders.storyboard; sourceTree = "<group>"; };
 		523CDF8720A070A30090C3E6 /* ChefMenu.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChefMenu.storyboard; sourceTree = "<group>"; };
@@ -247,6 +238,15 @@
 		52EA619D20B3E586001DB6CC /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		52F2D1CE209ECE1B00FAE72C /* ChefMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChefMain.storyboard; sourceTree = "<group>"; };
 		52F2D1D0209F121B00FAE72C /* ChefSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefSignupViewController.swift; sourceTree = "<group>"; };
+		5BBECAF723B7953600461CA6 /* Cuisine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cuisine.swift; sourceTree = "<group>"; };
+		5BBECAF823B7953600461CA6 /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		5BBECAF923B7953600461CA6 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		5BBECAFA23B7953600461CA6 /* Chef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chef.swift; sourceTree = "<group>"; };
+		5BBECAFB23B7953600461CA6 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		5BBECAFC23B7953600461CA6 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		5BBECAFD23B7953600461CA6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5BBECAFE23B7953600461CA6 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		5BBECAFF23B7953600461CA6 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		7B1A71D8F45A96894E6650A3 /* Pods-Walayem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Walayem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Walayem/Pods-Walayem.debug.xcconfig"; sourceTree = "<group>"; };
 		BF272E4C0EC903E149663133 /* Pods_Walayem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Walayem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -316,15 +316,15 @@
 		04C596BB2084765400B284D3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0437932D208756C00050C7D8 /* User.swift */,
-				521F2ED220B157B9000DF518 /* Account.swift */,
-				04F2157E208865A3003D47AD /* Food.swift */,
-				04F21580208866E8003D47AD /* Tag.swift */,
-				04F2158C2088B4B7003D47AD /* Chef.swift */,
-				04AD0D42209B1921002C072D /* Cuisine.swift */,
-				041AE59C209EFE32007C05D9 /* Address.swift */,
-				04B295D020A05DAC00A64EED /* Cart.swift */,
-				04B824FA20A2C95A00458DA6 /* Order.swift */,
+				5BBECAFF23B7953600461CA6 /* Account.swift */,
+				5BBECAFE23B7953600461CA6 /* Address.swift */,
+				5BBECAF823B7953600461CA6 /* Cart.swift */,
+				5BBECAFA23B7953600461CA6 /* Chef.swift */,
+				5BBECAF723B7953600461CA6 /* Cuisine.swift */,
+				5BBECAFB23B7953600461CA6 /* Food.swift */,
+				5BBECAFC23B7953600461CA6 /* Order.swift */,
+				5BBECAF923B7953600461CA6 /* Tag.swift */,
+				5BBECAFD23B7953600461CA6 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -653,19 +653,17 @@
 				04CCB84620AD9CFA0011BD95 /* CompletedOrderTableViewController.swift in Sources */,
 				040902D220B2922800059F1D /* ChefFoodViewController.swift in Sources */,
 				04831C4920AC39FE00195B1A /* BadgeButton.swift in Sources */,
+				5BBECB0023B7953600461CA6 /* Cuisine.swift in Sources */,
 				043532FA20A2C5C400D90035 /* OrderTableViewCell.swift in Sources */,
 				041AE59F209EFFCC007C05D9 /* AddressTableViewCell.swift in Sources */,
 				04C596C020848ED900B284D3 /* OnBoardingViewController.swift in Sources */,
 				04D9E8AB2085D31A002E1B51 /* SignupViewController.swift in Sources */,
 				52EA619C20B3E53E001DB6CC /* TermsViewController.swift in Sources */,
 				47FF3DEE20A1F62800A6289F /* OrderTableViewController.swift in Sources */,
-				04AD0D43209B1921002C072D /* Cuisine.swift in Sources */,
 				0409E71420A426FB00C95E10 /* OrderFoodHeaderCell.swift in Sources */,
 				040902D620B2A01500059F1D /* ChooseCuisineViewController.swift in Sources */,
-				041AE59D209EFE33007C05D9 /* Address.swift in Sources */,
 				0AF9861920BEB69700E712BA /* UIBarButtonItemExtension.swift in Sources */,
-				04B824FB20A2C95A00458DA6 /* Order.swift in Sources */,
-				04F2158D2088B4B7003D47AD /* Chef.swift in Sources */,
+				5BBECB0623B7953700461CA6 /* User.swift in Sources */,
 				04CCB84420AD9CC10011BD95 /* PendingOrderTableViewController.swift in Sources */,
 				04D9E8B12085FD00002E1B51 /* FoodTableViewCell.swift in Sources */,
 				0ADC141120B6D7350003FC8B /* UserTabBarController.swift in Sources */,
@@ -681,12 +679,12 @@
 				04B824FF20A30D5100458DA6 /* OrderFoodTableViewCell.swift in Sources */,
 				04AD0D41209B0F7C002C072D /* FilterCollectionHeaderView.swift in Sources */,
 				0A3B841C20B57F0400E1E24C /* CartFoodHeaderCell.swift in Sources */,
-				04F2157F208865A3003D47AD /* Food.swift in Sources */,
 				04C596BE2084769100B284D3 /* CustomColor.swift in Sources */,
 				04D9E8A52085B9D9002E1B51 /* OdooClient.swift in Sources */,
-				0437932E208756C00050C7D8 /* User.swift in Sources */,
 				04F215872088B315003D47AD /* ChefTableViewCell.swift in Sources */,
 				0A08C4A120C1314800E006AB /* ChangeNameViewController.swift in Sources */,
+				5BBECB0123B7953600461CA6 /* Cart.swift in Sources */,
+				5BBECB0223B7953600461CA6 /* Tag.swift in Sources */,
 				04E854B620B159CB00A26562 /* ChefProfileTableViewController.swift in Sources */,
 				0A24D16620D656BE00692A23 /* VerifyPhoneViewController.swift in Sources */,
 				04F2158320887622003D47AD /* RecommendedCollectionTableViewCell.swift in Sources */,
@@ -694,6 +692,7 @@
 				04DE41E7208C797100A14C30 /* ProfileTableViewController.swift in Sources */,
 				04CAD477208F464C00DD48C6 /* RatingControl.swift in Sources */,
 				04DE41EB208CA30F00A14C30 /* AddressTableViewController.swift in Sources */,
+				5BBECB0823B7953700461CA6 /* Account.swift in Sources */,
 				04F38A20208F1F8E00223B82 /* InviteViewController.swift in Sources */,
 				04D9E8AF2085FCD1002E1B51 /* RecommendationCollectionViewCell.swift in Sources */,
 				0437932C20874D880050C7D8 /* RestClient.swift in Sources */,
@@ -704,13 +703,13 @@
 				0A79101F20DF885F00FA7DA9 /* ChefReviewViewController.swift in Sources */,
 				04D2C83120AABBBB00BA32A1 /* OrderSuccessViewController.swift in Sources */,
 				0A20D5C720B82AC300F4E15D /* CartFoodFooterCell.swift in Sources */,
-				04F21581208866E8003D47AD /* Tag.swift in Sources */,
 				04831C4620AC150400195B1A /* FoodSearchResultController.swift in Sources */,
 				521F2ED520B15C0B000DF518 /* AccountTableViewCell.swift in Sources */,
 				0A126ABF20D39F530063DC33 /* CartViewController.swift in Sources */,
 				04B824FD20A2F4CF00458DA6 /* OrderViewController.swift in Sources */,
 				040CA40620AEE8B100E64BFE /* ChefOrderFoodFooterCell.swift in Sources */,
 				04F215892088B35F003D47AD /* ChefFoodCollectionViewCell.swift in Sources */,
+				5BBECB0523B7953700461CA6 /* Order.swift in Sources */,
 				04BBB3AC20ADDBE3009D697F /* ChefOrderTableViewCell.swift in Sources */,
 				04FB0C252089CDF700C30660 /* FoodDetailViewController.swift in Sources */,
 				04D9E8AD2085FC98002E1B51 /* DiscoverTableViewController.swift in Sources */,
@@ -721,12 +720,13 @@
 				04D9E8A72085BA64002E1B51 /* WalayemApi.swift in Sources */,
 				04C596C320848F9700B284D3 /* OnboardingCollectionViewCell.swift in Sources */,
 				0ADC141320B6D8E80003FC8B /* ChefTabController.swift in Sources */,
-				521F2ED320B157B9000DF518 /* Account.swift in Sources */,
 				04F38A22208F231100223B82 /* AddressViewController.swift in Sources */,
 				04CCB84220AD74420011BD95 /* ChefOrderViewController.swift in Sources */,
 				0A0F54BD2110845E004F2006 /* FontsOverride.swift in Sources */,
 				04AD0D3D209B0ED1002C072D /* FilterViewController.swift in Sources */,
+				5BBECB0723B7953700461CA6 /* Address.swift in Sources */,
 				0437932A208725E90050C7D8 /* ResetPasswordViewController.swift in Sources */,
+				5BBECB0423B7953600461CA6 /* Food.swift in Sources */,
 				04CAD475208F395100DD48C6 /* FavFoodTableViewController.swift in Sources */,
 				0A03F37620BA9A00007F148D /* UIViewControllerExtension.swift in Sources */,
 				52EA619E20B3E586001DB6CC /* PrivacyViewController.swift in Sources */,
@@ -735,9 +735,9 @@
 				04C596C52084BB5D00B284D3 /* LocationPermissionViewController.swift in Sources */,
 				04A6594F20A0378100DBCF86 /* DatabaseHandler.swift in Sources */,
 				0AD0350120C550B10030E1E8 /* ImageViewController.swift in Sources */,
-				04B295D120A05DAC00A64EED /* Cart.swift in Sources */,
 				04F215852088ABBD003D47AD /* UIView + border.swift in Sources */,
 				04AD0D3F209B0F33002C072D /* FilterCollectionViewCell.swift in Sources */,
+				5BBECB0323B7953600461CA6 /* Chef.swift in Sources */,
 				04C596C72084C15F00B284D3 /* LoginPriorViewController.swift in Sources */,
 				04E854BA20B1824F00A26562 /* ChefFoodCell.swift in Sources */,
 				04A6594520A0350400DBCF86 /* CartFoodTableViewCell.swift in Sources */,
