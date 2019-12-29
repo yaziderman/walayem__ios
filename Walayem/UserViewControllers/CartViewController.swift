@@ -251,12 +251,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         }
         
         date = calendar.date(from: components)! // 2018-10-10
-//
-//        DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", startTime: startTime, endTime: endTime, minimumDate: date , datePickerMode: .dateAndTime) {
         
-        
-        DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", defaultDate: date!, minimumDate: date ,
-               maximumDate: nil, datePickerMode: .dateAndTime) {
+        DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", startTime: startTime, endTime: endTime, minimumDate: date , datePickerMode: .dateAndTime) {
             (date) -> Void in
             if let dt = date {
                 let thisDate = Date()

@@ -114,15 +114,15 @@
 		52EA619E20B3E586001DB6CC /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52EA619D20B3E586001DB6CC /* PrivacyViewController.swift */; };
 		52F2D1CF209ECE1B00FAE72C /* ChefMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52F2D1CE209ECE1B00FAE72C /* ChefMain.storyboard */; };
 		52F2D1D1209F121B00FAE72C /* ChefSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52F2D1D0209F121B00FAE72C /* ChefSignupViewController.swift */; };
-		5BBECB0023B7953600461CA6 /* Cuisine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAF723B7953600461CA6 /* Cuisine.swift */; };
-		5BBECB0123B7953600461CA6 /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAF823B7953600461CA6 /* Cart.swift */; };
-		5BBECB0223B7953600461CA6 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAF923B7953600461CA6 /* Tag.swift */; };
-		5BBECB0323B7953600461CA6 /* Chef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFA23B7953600461CA6 /* Chef.swift */; };
-		5BBECB0423B7953600461CA6 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFB23B7953600461CA6 /* Food.swift */; };
-		5BBECB0523B7953700461CA6 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFC23B7953600461CA6 /* Order.swift */; };
-		5BBECB0623B7953700461CA6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFD23B7953600461CA6 /* User.swift */; };
-		5BBECB0723B7953700461CA6 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFE23B7953600461CA6 /* Address.swift */; };
-		5BBECB0823B7953700461CA6 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFF23B7953600461CA6 /* Account.swift */; };
+		5B467DF223B882CE008620FF /* Cuisine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DE923B882CD008620FF /* Cuisine.swift */; };
+		5B467DF323B882CE008620FF /* Chef.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DEA23B882CD008620FF /* Chef.swift */; };
+		5B467DF423B882CE008620FF /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DEB23B882CD008620FF /* Address.swift */; };
+		5B467DF523B882CE008620FF /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DEC23B882CD008620FF /* Order.swift */; };
+		5B467DF623B882CE008620FF /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DED23B882CD008620FF /* Account.swift */; };
+		5B467DF723B882CE008620FF /* Cart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DEE23B882CD008620FF /* Cart.swift */; };
+		5B467DF823B882CE008620FF /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DEF23B882CD008620FF /* Tag.swift */; };
+		5B467DF923B882CE008620FF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DF023B882CD008620FF /* User.swift */; };
+		5B467DFA23B882CE008620FF /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DF123B882CE008620FF /* Food.swift */; };
 		C3E01AAB1E1B439F32F34F23 /* Pods_Walayem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF272E4C0EC903E149663133 /* Pods_Walayem.framework */; };
 /* End PBXBuildFile section */
 
@@ -238,15 +238,15 @@
 		52EA619D20B3E586001DB6CC /* PrivacyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		52F2D1CE209ECE1B00FAE72C /* ChefMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChefMain.storyboard; sourceTree = "<group>"; };
 		52F2D1D0209F121B00FAE72C /* ChefSignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefSignupViewController.swift; sourceTree = "<group>"; };
-		5BBECAF723B7953600461CA6 /* Cuisine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cuisine.swift; sourceTree = "<group>"; };
-		5BBECAF823B7953600461CA6 /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
-		5BBECAF923B7953600461CA6 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
-		5BBECAFA23B7953600461CA6 /* Chef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chef.swift; sourceTree = "<group>"; };
-		5BBECAFB23B7953600461CA6 /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
-		5BBECAFC23B7953600461CA6 /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
-		5BBECAFD23B7953600461CA6 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		5BBECAFE23B7953600461CA6 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
-		5BBECAFF23B7953600461CA6 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		5B467DE923B882CD008620FF /* Cuisine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cuisine.swift; sourceTree = "<group>"; };
+		5B467DEA23B882CD008620FF /* Chef.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chef.swift; sourceTree = "<group>"; };
+		5B467DEB23B882CD008620FF /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		5B467DEC23B882CD008620FF /* Order.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		5B467DED23B882CD008620FF /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		5B467DEE23B882CD008620FF /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
+		5B467DEF23B882CD008620FF /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		5B467DF023B882CD008620FF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5B467DF123B882CE008620FF /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		7B1A71D8F45A96894E6650A3 /* Pods-Walayem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Walayem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Walayem/Pods-Walayem.debug.xcconfig"; sourceTree = "<group>"; };
 		BF272E4C0EC903E149663133 /* Pods_Walayem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Walayem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -316,15 +316,15 @@
 		04C596BB2084765400B284D3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5BBECAFF23B7953600461CA6 /* Account.swift */,
-				5BBECAFE23B7953600461CA6 /* Address.swift */,
-				5BBECAF823B7953600461CA6 /* Cart.swift */,
-				5BBECAFA23B7953600461CA6 /* Chef.swift */,
-				5BBECAF723B7953600461CA6 /* Cuisine.swift */,
-				5BBECAFB23B7953600461CA6 /* Food.swift */,
-				5BBECAFC23B7953600461CA6 /* Order.swift */,
-				5BBECAF923B7953600461CA6 /* Tag.swift */,
-				5BBECAFD23B7953600461CA6 /* User.swift */,
+				5B467DED23B882CD008620FF /* Account.swift */,
+				5B467DEB23B882CD008620FF /* Address.swift */,
+				5B467DEE23B882CD008620FF /* Cart.swift */,
+				5B467DEA23B882CD008620FF /* Chef.swift */,
+				5B467DE923B882CD008620FF /* Cuisine.swift */,
+				5B467DF123B882CE008620FF /* Food.swift */,
+				5B467DEC23B882CD008620FF /* Order.swift */,
+				5B467DEF23B882CD008620FF /* Tag.swift */,
+				5B467DF023B882CD008620FF /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -653,17 +653,18 @@
 				04CCB84620AD9CFA0011BD95 /* CompletedOrderTableViewController.swift in Sources */,
 				040902D220B2922800059F1D /* ChefFoodViewController.swift in Sources */,
 				04831C4920AC39FE00195B1A /* BadgeButton.swift in Sources */,
-				5BBECB0023B7953600461CA6 /* Cuisine.swift in Sources */,
+				5B467DF223B882CE008620FF /* Cuisine.swift in Sources */,
 				043532FA20A2C5C400D90035 /* OrderTableViewCell.swift in Sources */,
 				041AE59F209EFFCC007C05D9 /* AddressTableViewCell.swift in Sources */,
 				04C596C020848ED900B284D3 /* OnBoardingViewController.swift in Sources */,
 				04D9E8AB2085D31A002E1B51 /* SignupViewController.swift in Sources */,
+				5B467DF323B882CE008620FF /* Chef.swift in Sources */,
+				5B467DF623B882CE008620FF /* Account.swift in Sources */,
 				52EA619C20B3E53E001DB6CC /* TermsViewController.swift in Sources */,
 				47FF3DEE20A1F62800A6289F /* OrderTableViewController.swift in Sources */,
 				0409E71420A426FB00C95E10 /* OrderFoodHeaderCell.swift in Sources */,
 				040902D620B2A01500059F1D /* ChooseCuisineViewController.swift in Sources */,
 				0AF9861920BEB69700E712BA /* UIBarButtonItemExtension.swift in Sources */,
-				5BBECB0623B7953700461CA6 /* User.swift in Sources */,
 				04CCB84420AD9CC10011BD95 /* PendingOrderTableViewController.swift in Sources */,
 				04D9E8B12085FD00002E1B51 /* FoodTableViewCell.swift in Sources */,
 				0ADC141120B6D7350003FC8B /* UserTabBarController.swift in Sources */,
@@ -683,16 +684,14 @@
 				04D9E8A52085B9D9002E1B51 /* OdooClient.swift in Sources */,
 				04F215872088B315003D47AD /* ChefTableViewCell.swift in Sources */,
 				0A08C4A120C1314800E006AB /* ChangeNameViewController.swift in Sources */,
-				5BBECB0123B7953600461CA6 /* Cart.swift in Sources */,
-				5BBECB0223B7953600461CA6 /* Tag.swift in Sources */,
 				04E854B620B159CB00A26562 /* ChefProfileTableViewController.swift in Sources */,
 				0A24D16620D656BE00692A23 /* VerifyPhoneViewController.swift in Sources */,
 				04F2158320887622003D47AD /* RecommendedCollectionTableViewCell.swift in Sources */,
+				5B467DF423B882CE008620FF /* Address.swift in Sources */,
 				0A08C4A320C13B2D00E006AB /* ChangePasswordViewController.swift in Sources */,
 				04DE41E7208C797100A14C30 /* ProfileTableViewController.swift in Sources */,
 				04CAD477208F464C00DD48C6 /* RatingControl.swift in Sources */,
 				04DE41EB208CA30F00A14C30 /* AddressTableViewController.swift in Sources */,
-				5BBECB0823B7953700461CA6 /* Account.swift in Sources */,
 				04F38A20208F1F8E00223B82 /* InviteViewController.swift in Sources */,
 				04D9E8AF2085FCD1002E1B51 /* RecommendationCollectionViewCell.swift in Sources */,
 				0437932C20874D880050C7D8 /* RestClient.swift in Sources */,
@@ -709,13 +708,16 @@
 				04B824FD20A2F4CF00458DA6 /* OrderViewController.swift in Sources */,
 				040CA40620AEE8B100E64BFE /* ChefOrderFoodFooterCell.swift in Sources */,
 				04F215892088B35F003D47AD /* ChefFoodCollectionViewCell.swift in Sources */,
-				5BBECB0523B7953700461CA6 /* Order.swift in Sources */,
 				04BBB3AC20ADDBE3009D697F /* ChefOrderTableViewCell.swift in Sources */,
 				04FB0C252089CDF700C30660 /* FoodDetailViewController.swift in Sources */,
+				5B467DF723B882CE008620FF /* Cart.swift in Sources */,
 				04D9E8AD2085FC98002E1B51 /* DiscoverTableViewController.swift in Sources */,
 				04CF06C82084634F0064B18A /* AppDelegate.swift in Sources */,
+				5B467DF923B882CE008620FF /* User.swift in Sources */,
+				5B467DF523B882CE008620FF /* Order.swift in Sources */,
 				0A08C49B20C12CB500E006AB /* UpdateProfileViewController.swift in Sources */,
 				04FA702C20933AE600EF4F92 /* FavChefTableViewController.swift in Sources */,
+				5B467DFA23B882CE008620FF /* Food.swift in Sources */,
 				0AD7EA012126E5FB00C0B546 /* DeliveryForTableViewCell.swift in Sources */,
 				04D9E8A72085BA64002E1B51 /* WalayemApi.swift in Sources */,
 				04C596C320848F9700B284D3 /* OnboardingCollectionViewCell.swift in Sources */,
@@ -724,9 +726,7 @@
 				04CCB84220AD74420011BD95 /* ChefOrderViewController.swift in Sources */,
 				0A0F54BD2110845E004F2006 /* FontsOverride.swift in Sources */,
 				04AD0D3D209B0ED1002C072D /* FilterViewController.swift in Sources */,
-				5BBECB0723B7953700461CA6 /* Address.swift in Sources */,
 				0437932A208725E90050C7D8 /* ResetPasswordViewController.swift in Sources */,
-				5BBECB0423B7953600461CA6 /* Food.swift in Sources */,
 				04CAD475208F395100DD48C6 /* FavFoodTableViewController.swift in Sources */,
 				0A03F37620BA9A00007F148D /* UIViewControllerExtension.swift in Sources */,
 				52EA619E20B3E586001DB6CC /* PrivacyViewController.swift in Sources */,
@@ -734,10 +734,10 @@
 				040CA40420AEE88400E64BFE /* ChefOrderFoodHeaderCell.swift in Sources */,
 				04C596C52084BB5D00B284D3 /* LocationPermissionViewController.swift in Sources */,
 				04A6594F20A0378100DBCF86 /* DatabaseHandler.swift in Sources */,
+				5B467DF823B882CE008620FF /* Tag.swift in Sources */,
 				0AD0350120C550B10030E1E8 /* ImageViewController.swift in Sources */,
 				04F215852088ABBD003D47AD /* UIView + border.swift in Sources */,
 				04AD0D3F209B0F33002C072D /* FilterCollectionViewCell.swift in Sources */,
-				5BBECB0323B7953600461CA6 /* Chef.swift in Sources */,
 				04C596C72084C15F00B284D3 /* LoginPriorViewController.swift in Sources */,
 				04E854BA20B1824F00A26562 /* ChefFoodCell.swift in Sources */,
 				04A6594520A0350400DBCF86 /* CartFoodTableViewCell.swift in Sources */,
