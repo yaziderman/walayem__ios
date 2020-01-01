@@ -135,7 +135,7 @@ class ChefOrderDetailViewController: UIViewController {
                 title = "Order Completed"
                 stateButton.isHidden = true
                 cancelButton.isHidden = true
-            case .rejected, .cancel:
+            case .rejected, .cancel, .draft:
                 title = "Order Cancelled"
                 stateButton.isHidden = true
                 cancelButton.isHidden = true

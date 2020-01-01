@@ -29,13 +29,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         window?.backgroundColor = UIColor.white
         
-        // CONFIGURE GOOGLE SIGNIN
-        GIDSignIn.sharedInstance().clientID = "685466919055-mg1tqlbdomrl6spk56opmle5tm8gpbsk.apps.googleusercontent.com"
-        // CONFIGURE FACEBOOK LOGIN
-        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         // CONFIGURE FIREBASE
         FirebaseApp.configure()
         registerRemoteNotification(application)
+        
+        // CONFIGURE GOOGLE SIGNIN
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID //"685466919055-mg1tqlbdomrl6spk56opmle5tm8gpbsk.apps.googleusercontent.com"
+        // CONFIGURE FACEBOOK LOGIN
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         setRootViewController()
         getContactDetails()

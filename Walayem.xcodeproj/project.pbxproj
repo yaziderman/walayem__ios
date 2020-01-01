@@ -79,6 +79,7 @@
 		04FA702C20933AE600EF4F92 /* FavChefTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA702B20933AE600EF4F92 /* FavChefTableViewController.swift */; };
 		04FB0C232089A7FF00C30660 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB0C222089A7FF00C30660 /* Utils.swift */; };
 		04FB0C252089CDF700C30660 /* FoodDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB0C242089CDF700C30660 /* FoodDetailViewController.swift */; };
+		090547014DEEEF13A62EE4BD /* Pods_Walayem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF272E4C0EC903E149663133 /* Pods_Walayem.framework */; };
 		0A03F37620BA9A00007F148D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A03F37520BA9A00007F148D /* UIViewControllerExtension.swift */; };
 		0A08C49B20C12CB500E006AB /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A08C49A20C12CB500E006AB /* UpdateProfileViewController.swift */; };
 		0A08C49F20C1309500E006AB /* EditProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A08C49E20C1309500E006AB /* EditProfile.storyboard */; };
@@ -123,7 +124,6 @@
 		5BBECB0623B7953700461CA6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFD23B7953600461CA6 /* User.swift */; };
 		5BBECB0723B7953700461CA6 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFE23B7953600461CA6 /* Address.swift */; };
 		5BBECB0823B7953700461CA6 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFF23B7953600461CA6 /* Account.swift */; };
-		C3E01AAB1E1B439F32F34F23 /* Pods_Walayem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF272E4C0EC903E149663133 /* Pods_Walayem.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -257,7 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AE735B420BD464000944CF4 /* UserNotifications.framework in Frameworks */,
-				C3E01AAB1E1B439F32F34F23 /* Pods_Walayem.framework in Frameworks */,
+				090547014DEEEF13A62EE4BD /* Pods_Walayem.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -889,7 +889,7 @@
 				CODE_SIGN_ENTITLEMENTS = Walayem/Walayem.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Walayem/Info.plist;
@@ -916,7 +916,7 @@
 				CODE_SIGN_ENTITLEMENTS = Walayem/Walayem.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Walayem/Info.plist;

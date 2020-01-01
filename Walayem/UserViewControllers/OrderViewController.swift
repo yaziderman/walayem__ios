@@ -191,7 +191,7 @@ class OrderViewController: UITableViewController {
             cookingImageView.image = UIImage(named: "filledOrderState")
             deliveryImageView.image = UIImage(named: "filledOrderState")
             deliveredImageView.image = UIImage(named: "filledOrderState")
-        case .cancel, .rejected:
+        case .cancel, .rejected, .draft:
             statusImage = UIImage(named: "cancelled")?.withRenderingMode(.alwaysOriginal)
             cancelButton.isHidden = true
         }

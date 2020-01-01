@@ -115,7 +115,7 @@ class Utils{
         var startTime = UserDefaults.standard.integer(forKey: "chef_start_time")
         if(startTime == 0)
         {
-            startTime = 7
+            startTime = 8
         }
         
         return startTime;
@@ -125,7 +125,7 @@ class Utils{
         var endTime = UserDefaults.standard.integer(forKey: "chef_end_time")
         if(endTime == 0)
         {
-            endTime = 23
+            endTime = 24
         }
         
         return endTime;
@@ -136,7 +136,7 @@ class Utils{
         var minHours = UserDefaults.standard.integer(forKey: "chef_min_hours")
         if(minHours == 0)
         {
-            minHours = 13
+            minHours = 14
         }
         
         return minHours;

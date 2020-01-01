@@ -291,6 +291,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     override func viewDidLoad() {
         super.viewDidLoad()
         GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        
         signupButton.layer.cornerRadius = 12
         signupButton.layer.masksToBounds = false
         addImageInsideTextField()

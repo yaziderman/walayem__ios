@@ -151,6 +151,14 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
             params.updateValue(date_time_str, forKey: "order_for")
         }
         
+        var newarr = [[String:String]]()
+        var newdict = [String:String]()
+        for (key, value) in params {
+            newdict[key] = "\(value)"
+        }
+        newarr.append(newdict)
+        print(newarr)
+        
         RestClient().request(WalayemApi.placeOrder, params) { (result, error) in
             progressAlert.dismiss(animated: true, completion: {
                 if error != nil{
@@ -236,8 +244,10 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         let endTime = Utils.getChefEndTime()
         let minHours = Utils.getMinHours()
         
+        let today = Date()
+        
         let calendar = Calendar.current
-        var date = calendar.date(byAdding: .hour, value: minHours, to: Date())
+        var date = calendar.date(byAdding: .hour, value: minHours, to: Date())//Calendar.current.date(byAdding: .hour, value: minHours, to: today)!
         
         var components = calendar.dateComponents([.year, .month, .day, .hour], from: date!)
 

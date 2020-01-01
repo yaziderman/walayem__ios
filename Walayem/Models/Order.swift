@@ -16,6 +16,7 @@ enum OrderState: String{
     case delivered
     case cancel
     case rejected
+    case draft
 }
 
 class Order{
@@ -35,6 +36,7 @@ class Order{
         self.amount = record["amount_total"] as! Double
         self.foods = record["products"] as? [String]
         self.state = OrderState.init(rawValue: record["state"] as! String)!
+        
     }
 }
 
@@ -67,7 +69,7 @@ class OrderDetail: Order{
         self.doneDate = record["datetime_done"] as? String ?? ""
         self.kitchen = record["kitchen_name"] as! String
         self.note = record["note"] as! String
-        self.reject_reason = record["reject_reason"] as! String
+        self.reject_reason = record["reject_reason"] as? String ?? ""
         self.address = Address(record: record["address"] as! [String: Any])
         let products = record["products"] as! [Any]
         for product in products{

@@ -42,7 +42,7 @@ class OrderTableViewCell: UITableViewCell {
             statusImage = UIImage(named: "ongoing")
         case .delivered:
             statusImage = UIImage(named: "completed")
-        case .cancel, .rejected:
+        case .cancel, .rejected, .draft:
             statusImage = UIImage(named: "cancelled")
         }
         statusImageView.image = statusImage!
