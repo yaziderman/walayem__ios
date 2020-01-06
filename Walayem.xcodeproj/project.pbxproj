@@ -124,6 +124,7 @@
 		5BBECB0623B7953700461CA6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFD23B7953600461CA6 /* User.swift */; };
 		5BBECB0723B7953700461CA6 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFE23B7953600461CA6 /* Address.swift */; };
 		5BBECB0823B7953700461CA6 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBECAFF23B7953600461CA6 /* Account.swift */; };
+		BED7B92823C1C5EA001CF396 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED7B92723C1C5EA001CF396 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -248,6 +249,7 @@
 		5BBECAFE23B7953600461CA6 /* Address.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		5BBECAFF23B7953600461CA6 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		7B1A71D8F45A96894E6650A3 /* Pods-Walayem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Walayem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Walayem/Pods-Walayem.debug.xcconfig"; sourceTree = "<group>"; };
+		BED7B92723C1C5EA001CF396 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BF272E4C0EC903E149663133 /* Pods_Walayem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Walayem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -344,6 +346,7 @@
 				0A0F54BC2110845E004F2006 /* FontsOverride.swift */,
 				0AD7E9FE212592DE00C0B546 /* StaticLinker.swift */,
 				526C962423AA97DF008D5FE4 /* UITextFieldExtension.swift */,
+				BED7B92723C1C5EA001CF396 /* Extensions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -682,6 +685,7 @@
 				04C596BE2084769100B284D3 /* CustomColor.swift in Sources */,
 				04D9E8A52085B9D9002E1B51 /* OdooClient.swift in Sources */,
 				04F215872088B315003D47AD /* ChefTableViewCell.swift in Sources */,
+				BED7B92823C1C5EA001CF396 /* Extensions.swift in Sources */,
 				0A08C4A120C1314800E006AB /* ChangeNameViewController.swift in Sources */,
 				5BBECB0123B7953600461CA6 /* Cart.swift in Sources */,
 				5BBECB0223B7953600461CA6 /* Tag.swift in Sources */,

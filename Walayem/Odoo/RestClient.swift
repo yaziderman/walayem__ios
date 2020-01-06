@@ -30,6 +30,7 @@ class RestClient{
         let jsonParam : [String: Any] = ["jsonrpc": "2.0",
                                          "id": Int(Date().timeIntervalSince1970),
                                          "params": params]
+        print(jsonParam)
         
         Alamofire.request(url, method: .post, parameters: jsonParam, encoding: JSONEncoding.default, headers: headers)
         .validate()

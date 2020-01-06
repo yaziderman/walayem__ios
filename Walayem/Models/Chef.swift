@@ -8,7 +8,11 @@
 
 import Foundation
 
-class Chef{
+class Chef: Equatable{
+    static func == (lhs: Chef, rhs: Chef) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
     
     var id: Int
     var name: String

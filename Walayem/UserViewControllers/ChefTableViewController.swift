@@ -304,13 +304,26 @@ class ChefTableViewController: UIViewController {
             self.totalPage = value["total_pages"] as? Int
             let records = value["data"] as! [Any]
             for record in records{
-                let chef = Chef(record: record as! [String : Any])
-                self.chefs.append(chef)
+                let chefR = Chef(record: record as! [String : Any])
+//                let tempChefts = self.chefs
+                
+//                for tempChef in tempChefts{
+//                    if tempChef.id == chefR.id{
+////                        self.chefs.append(chefR)
+//                    }
+//                    else{
+                if !self.chefs.contains(chefR){
+                    self.chefs.append(chefR)
+                }
+                else{
+                    print("Duplicate id \(chefR)")
+                }
             }
             self.tableView.reloadData()
             self.tableView.tableFooterView = nil
         }
     }
+    
     
     private func searchChef(){
         let tagIds: [Int] = selectedTags.map { (tag) -> Int in

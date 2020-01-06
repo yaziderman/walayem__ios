@@ -42,11 +42,15 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
                 return
             }
             let value = result!["result"] as! [String: Any]
+//            let errorValue = value["error"] as! String
+//            let msg = "Password reset link sent to \(email)"
             let msg = value["message"] as! String
             let alert = UIAlertController(title: "Success", message: msg, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
                 self.dismiss(animated: true, completion: nil)
-            }))
+            }
+        )
+        )
             self.present(alert, animated: true, completion: nil)
         }
     }
