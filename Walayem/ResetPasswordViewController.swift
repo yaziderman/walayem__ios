@@ -34,20 +34,31 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         RestClient().request(WalayemApi.changePassword, params) { (result, error) in
             activityIndicator.stopAnimating()
             self.requestButton.isEnabled = true
+            var message = "Something went wrong!"
+            var title = "Error"
             if let error = error{
-                let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
-                let alert = UIAlertController(title: "Error", message: errmsg, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                return
+                
+                message = error.userInfo[NSLocalizedDescriptionKey] as! String
+            
+//                let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
+//                let alert = UIAlertController(title: "Error", message: errmsg, preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+//                self.present(alert, animated: true, completion: nil)
+//                return
+                
             }
-            let value = result!["result"] as! [String: Any]
-            let msg = value["message"] as! String
-            let alert = UIAlertController(title: "Success", message: msg, preferredStyle: .alert)
+            if let res = result , let value = res["result"] as? [String: Any]{
+                if let msg = value["message"] as? String{
+                   title = "Success"
+                message = msg
+                }
+            }
+            
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-                self.dismiss(animated: true, completion: nil)
-            }))
+            self.dismiss(animated: true, completion: nil)}))
             self.present(alert, animated: true, completion: nil)
+            
         }
     }
     

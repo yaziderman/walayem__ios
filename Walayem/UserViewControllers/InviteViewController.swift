@@ -55,16 +55,37 @@ class InviteViewController: UIViewController {
         
         RestClient().request(WalayemApi.invite, params, { (result, error) in
             activityIndicator.stopAnimating()
-            if error != nil{
-                let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
-                print (errmsg)
-                return
+            var message = "Something went wrong!"
+            var title = "Error"
+            
+            if let error = error{
+                message = error.userInfo[NSLocalizedDescriptionKey] as! String
             }
-            let alert = UIAlertController(title: "Success", message: "Invitation successfully sent", preferredStyle: .alert)
+            if let res = result , let value = res["result"] as? [String: Any]{
+                if let msg = value["message"] as? String{
+                title = "Success"
+                message = msg
+                }
+            }
+            
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
                 self.navigationController?.popViewController(animated: true)
             }))
             self.present(alert, animated: true, completion: nil)
+            
+            
+            
+//            if error != nil{
+//                let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+//                print (errmsg)
+//                return
+//            }
+//            let alert = UIAlertController(title: "Success", message: "Invitation successfully sent", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+//                self.navigationController?.popViewController(animated: true)
+//            }))
+//            self.present(alert, animated: true, completion: nil)
         })
     }
     

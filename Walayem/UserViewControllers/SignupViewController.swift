@@ -122,10 +122,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 self.showMessagePrompt("Password must be at least 4 characters.")
                 return;
             }
-            
+
+            let countryCode = "+971"
             let name = nameTextField.text ?? ""
             let email = emailTextField.text ?? ""
-            let phone = phoneTextField.text ?? ""
+            let phone = countryCode + (phoneTextField.text ?? "")
             let password = passwordTextField.text ?? ""
             
             let params: [String : Any] = ["name": name,
@@ -194,10 +195,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 self.showMessagePrompt("Password must be at least 4 characters.")
                 return;
             }
-            
+            let countryCode = "+971"
             let name = chefNameTextField.text ?? ""
             let email = chefEmailTextField.text ?? ""
-            let phone = chefPhoneTextField.text ?? ""
+            let phone = countryCode + (chefPhoneTextField.text ?? "")
             let password = chefPasswordTextField.text ?? ""
             
             let params: [String : Any] = ["name": name,
@@ -375,11 +376,26 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         emailTextField.leftViewMode = .always
         emailTextField.leftView = emailImageView
         
-        let phoneImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        let phoneImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 0, height: 20))
         phoneImageView.image = UIImage(named: "phone")
         phoneImageView.contentMode = .left
+        
+        let prefix = UILabel(frame: CGRect(x: 18, y:0, width: 40, height: 20))
+        prefix.text = "+971 -"
+        prefix.sizeToFit()
+        prefix.textColor = UIColor.textColor
+        
+        let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20 + 50, height: 20))
+        
+        leftView.addSubview(phoneImageView)
+        leftView.addSubview(prefix)
+        leftView.contentMode = .left
+        
+        phoneTextField.leftView = leftView
         phoneTextField.leftViewMode = .always
-        phoneTextField.leftView = phoneImageView
+        phoneTextField.placeholder = "50XXXXXXX"
+        
+//        phoneTextField.leftView = phoneImageView
         
         let lockImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
         lockImageView.image = UIImage(named: "lock")
@@ -401,11 +417,26 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         chefEmailTextField.leftViewMode = .always
         chefEmailTextField.leftView = chefEmailImageView
         
-        let chefPhoneImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        let chefPhoneImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 0, height: 20))
         chefPhoneImageView.image = UIImage(named: "phone")
         chefPhoneImageView.contentMode = .left
+        //
+        
+        let prefix2 = UILabel(frame: CGRect(x: 18, y:0, width: 40, height: 20))
+        prefix2.text = "+971 -"
+        prefix2.sizeToFit()
+        prefix2.textColor = UIColor.textColor
+
+        let leftView2 = UIView(frame: CGRect(x: 0, y: 0, width: 20 + 50, height: 20))
+
+        leftView2.addSubview(chefPhoneImageView)
+        leftView2.addSubview(prefix2)
+        leftView2.contentMode = .left
+        
+        
         chefPhoneTextField.leftViewMode = .always
-        chefPhoneTextField.leftView = chefPhoneImageView
+        chefPhoneTextField.leftView = leftView2
+        chefPhoneTextField.placeholder = "50XXXXXXX"
         
         let chefLockImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
         chefLockImageView.image = UIImage(named: "lock")
@@ -574,8 +605,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         
         let views = ["pending" : alert.view, "indicator" : indicator]
         
-        var constraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[indicator]-(-50)-|", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views)
-        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|[indicator]|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: views)
+        var constraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[indicator]-(-50)-|", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views as [String : Any])
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|[indicator]|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: views as [String : Any])
         alert.view.addConstraints(constraints)
         
         indicator.isUserInteractionEnabled = false

@@ -28,13 +28,15 @@ class ChangePhoneViewController: UIViewController, UITextFieldDelegate {
     // MARK: Actions
     
     @IBAction func verify(_ sender: UIButton) {
-        let phoneNumber = phoneTextField.text ?? ""
+        let countryCode = "+971"
+        let phoneNumber = countryCode + (phoneTextField.text ?? "")
         
 //        if(phoneNumber.prefix(3) != "971" && phoneNumber.prefix(4) != "+971")
 //        {
 //            self.showAlert(title: "Invalid phone number", msg: "Phone number should start with +971.")
 //            return;
 //        }
+        
         
         let alert = UIAlertController(title: "", message: "Is \(phoneNumber) your phone number?", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Verify", style: .default, handler: { (action) in
@@ -79,7 +81,7 @@ class ChangePhoneViewController: UIViewController, UITextFieldDelegate {
         setViews()
         phoneTextField.delegate = self
         codeTextField.delegate = self
-        phoneTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        phoneTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged) 
         codeTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         phoneTextField.becomeFirstResponder()
         
@@ -89,6 +91,8 @@ class ChangePhoneViewController: UIViewController, UITextFieldDelegate {
                 
         phoneTextField.textColor = UIColor.textColor
         phoneTextField.placeHolderColor = UIColor.placeholderColor
+        
+
         
         codeTextField.textColor = UIColor.textColor
         codeTextField.placeHolderColor = UIColor.placeholderColor
@@ -102,11 +106,29 @@ class ChangePhoneViewController: UIViewController, UITextFieldDelegate {
     // MARK: Private methods
     
     private func setViews(){
-        let phoneImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        
+        let phoneImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 18 + 2, height: 20))
         phoneImageView.image = UIImage(named: "phone")
-        phoneImageView.contentMode = .left
+//        phoneImageView.contentMode = .left
+        
+        let prefix = UILabel(frame: CGRect(x: 30, y:0, width: 40, height: 20))
+        prefix.text = "+971 -"
+        prefix.sizeToFit()
+        prefix.textColor = UIColor.textColor
+        
+        let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20 + 65, height: 20))
+        
+        leftView.addSubview(phoneImageView)
+        leftView.addSubview(prefix)
+        leftView.contentMode = .left
+        
+        
         phoneTextField.leftViewMode = .always
-        phoneTextField.leftView = phoneImageView
+//        phoneTextField.leftView = phoneImageView + prefix
+        
+        phoneTextField.leftView = leftView
+//        phoneTextField.leftViewMode = .always
+        
         
         verifyButton.layer.cornerRadius = 15
         verifyButton.layer.masksToBounds = true
@@ -154,6 +176,7 @@ class ChangePhoneViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func sendPhoneToServer(_ phone: String){
+        
       let values: [String: Any] = ["is_number_verified": true, "phone": phone]
         
         let activityIndicator = showActivityIndicator()

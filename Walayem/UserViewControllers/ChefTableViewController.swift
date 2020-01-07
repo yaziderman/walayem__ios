@@ -302,7 +302,9 @@ class ChefTableViewController: UIViewController {
             let records = value["data"] as! [Any]
             for record in records{
                 let chef = Chef(record: record as! [String : Any])
-                self.chefs.append(chef)
+                if !self.chefs.contains(chef){
+                    self.chefs.append(chef)
+                }
             }
             self.tableView.reloadData()
             self.tableView.tableFooterView = nil
@@ -331,7 +333,10 @@ class ChefTableViewController: UIViewController {
             let records = value["data"] as! [Any]
             for record in records{
                 let chef = Chef(record: record as! [String: Any])
-                self.chefs.append(chef)
+                
+                if !self.chefs.contains(chef){
+                    self.chefs.append(chef)
+                }
             }
             self.tableView.reloadData()
         }

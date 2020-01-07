@@ -17,6 +17,7 @@ class OrderTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var cancelledLabel: UILabel!
     
     var order: Order!{
         didSet{
@@ -26,7 +27,7 @@ class OrderTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -40,10 +41,13 @@ class OrderTableViewCell: UITableViewCell {
         switch order.state {
         case .sale, .done, .cooking, .ready:
             statusImage = UIImage(named: "ongoing")
+            cancelledLabel.isHidden = true
         case .delivered:
             statusImage = UIImage(named: "completed")
+            cancelledLabel.isHidden = true
         case .cancel, .rejected:
             statusImage = UIImage(named: "cancelled")
+            cancelledLabel.isHidden = false
         }
         statusImageView.image = statusImage!
     }
