@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8QL-oQ-ksh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8QL-oQ-ksh">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -110,6 +110,13 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your account is not approved, products are not appearing." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="755-AC-iwN">
+                                <rect key="frame" x="0.0" y="560" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XB5-IL-wbp">
                                 <rect key="frame" x="0.0" y="44" width="375" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -165,8 +172,9 @@
                         <constraints>
                             <constraint firstItem="XB5-IL-wbp" firstAttribute="centerX" secondItem="iMR-Xg-wzG" secondAttribute="centerX" id="0hs-qQ-YH0"/>
                             <constraint firstAttribute="bottom" secondItem="CrN-YP-hLQ" secondAttribute="bottom" id="3eX-Ne-VSE"/>
-                            <constraint firstItem="XB5-IL-wbp" firstAttribute="top" secondItem="hNS-K9-hSH" secondAttribute="top" id="3x2-6v-eXe"/>
                             <constraint firstItem="XB5-IL-wbp" firstAttribute="leading" secondItem="hNS-K9-hSH" secondAttribute="leading" priority="750" id="7EO-Si-1az"/>
+                            <constraint firstItem="XB5-IL-wbp" firstAttribute="top" secondItem="iMR-Xg-wzG" secondAttribute="top" constant="44" id="8dC-Vv-fK6"/>
+                            <constraint firstItem="XB5-IL-wbp" firstAttribute="top" secondItem="hNS-K9-hSH" secondAttribute="top" id="8hP-7n-yn9"/>
                             <constraint firstItem="XB5-IL-wbp" firstAttribute="trailing" secondItem="hNS-K9-hSH" secondAttribute="trailing" priority="750" id="EAD-Uh-gab"/>
                             <constraint firstItem="CrN-YP-hLQ" firstAttribute="leading" secondItem="hNS-K9-hSH" secondAttribute="leading" priority="750" id="Ie9-th-fph"/>
                             <constraint firstItem="CrN-YP-hLQ" firstAttribute="top" secondItem="iMR-Xg-wzG" secondAttribute="top" id="NcA-Ta-PIc"/>
@@ -186,6 +194,7 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="chefInfoLabel" destination="755-AC-iwN" id="djv-SP-rt1"/>
                         <outlet property="collectionView" destination="XB5-IL-wbp" id="XS2-9i-KQg"/>
                         <outlet property="emptyView" destination="5tT-VI-VjZ" id="mct-nF-hTz"/>
                         <outlet property="tableView" destination="CrN-YP-hLQ" id="S0z-g6-UxO"/>
@@ -232,7 +241,7 @@ button and add some items</string>
             </objects>
             <point key="canvasLocation" x="121" y="-109"/>
         </scene>
-        <!--New Menu-->
+        <!--New Meal-->
         <scene sceneID="n9I-mw-UyP">
             <objects>
                 <viewController id="pd2-oH-RiV" customClass="ChefFoodViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
@@ -273,14 +282,14 @@ button and add some items</string>
                                                                     <constraint firstAttribute="width" constant="17" id="DI5-IY-XS8"/>
                                                                 </constraints>
                                                             </imageView>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eb9-DM-8hk">
-                                                                <rect key="frame" x="29" y="22.5" width="44.5" height="19.5"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eb9-DM-8hk">
+                                                                <rect key="frame" x="29" y="22.5" width="84.5" height="19.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                                 <color key="textColor" red="0.39912536739999999" green="0.42339813710000002" blue="0.439733386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="no1-l4-eTg">
-                                                                <rect key="frame" x="85.5" y="23" width="249.5" height="18"/>
+                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Meal Name" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="no1-l4-eTg">
+                                                                <rect key="frame" x="125.5" y="23" width="209.5" height="18"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -632,7 +641,7 @@ button and add some items</string>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="New Menu" id="Gge-zq-7in">
+                    <navigationItem key="navigationItem" title="New Meal" id="Gge-zq-7in">
                         <barButtonItem key="backBarButtonItem" title=" " id="Tn5-NB-YHg"/>
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="w2A-bY-6tJ">
                             <connections>
@@ -700,7 +709,7 @@ button and add some items</string>
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="52"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9s-xU-MoJ">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="s9s-xU-MoJ">
                                             <rect key="frame" x="16" y="0.0" width="118" height="52"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                             <color key="textColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -797,7 +806,7 @@ button and add some items</string>
                                     <rect key="frame" x="0.0" y="0.0" width="150" height="52"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9OK-E2-dMz">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="9OK-E2-dMz">
                                             <rect key="frame" x="16" y="0.0" width="118" height="52"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                             <color key="textColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -849,6 +858,6 @@ button and add some items</string>
         <image name="timer" width="13" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bH3-UQ-jol"/>
+        <segue reference="FKH-XN-cDH"/>
     </inferredMetricsTieBreakers>
 </document>

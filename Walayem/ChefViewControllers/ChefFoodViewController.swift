@@ -210,12 +210,12 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
         super.viewDidLoad()
         user = User().getUserDefaults()
         setViews()
-        Utils.setupNavigationBar(nav: self.navigationController!)
+        if(self.navigationController != nil){
+            Utils.setupNavigationBar(nav: self.navigationController!)
+        }
         if #available(iOS 11.0, *) {
             navigationController?.navigationItem.largeTitleDisplayMode = .never
-        } 
-        nameTextField.delegate = self
-        descriptionTextField.delegate = self
+        }
         if traitCollection.forceTouchCapability == .available{
             registerForPreviewing(with: self, sourceView: imageCollectionView)
         }
@@ -242,18 +242,23 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
         }
         
         nameTextField.textColor = UIColor.textColor
+        nameTextField.delegate = self
         nameTextField.placeHolderColor = UIColor.placeholderColor
         
         priceTextField.textColor = UIColor.textColor
+        priceTextField.delegate = self
         priceTextField.placeHolderColor = UIColor.placeholderColor
         
         timeTextField.textColor = UIColor.textColor
+        timeTextField.delegate = self
         timeTextField.placeHolderColor = UIColor.placeholderColor
         
         serveTextField.textColor = UIColor.textColor
+        serveTextField.delegate = self
         serveTextField.placeHolderColor = UIColor.placeholderColor
         
         descriptionTextField.textColor = UIColor.textColor
+        descriptionTextField.delegate = self
         descriptionTextField.placeHolderColor = UIColor.placeholderColor
     }
     
@@ -381,6 +386,9 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        textField.resignFirstResponder()
     }
     
     // MARK: CROP VIEW CONTROLLER

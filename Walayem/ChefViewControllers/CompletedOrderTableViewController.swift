@@ -213,7 +213,7 @@ class CompletedOrderTableViewController: UITableViewController, OrderHeaderCellD
             fatalError("Unexpected view controller")
         }
         destinationVC.orderId = order.id
-        destinationVC.orderState = order.state
+        destinationVC.orderState = order.state ?? OrderState(rawValue: "")!
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
     

@@ -36,6 +36,9 @@ class OrderTableViewCell: UITableViewCell {
         descriptionLabel.text = "#WA\(order.id) \u{2022} \(order.foods!.compactMap({ $0 }).joined())"
         timeLabel.text = Utils.getDay(order.date)
         priceLabel.text = "AED \(order.amount)"
+//        cancelledLabel.layer.borderWidth = 1
+        cancelledLabel.layer.borderColor = UIColor.rosa.cgColor
+        cancelledLabel.textColor = .rosa
         
         var statusImage: UIImage?
         switch order.state {
@@ -48,6 +51,8 @@ class OrderTableViewCell: UITableViewCell {
         case .cancel, .rejected:
             statusImage = UIImage(named: "cancelled")
             cancelledLabel.isHidden = false
+        default:
+            statusImage = UIImage(named: "ongoing")
         }
         statusImageView.image = statusImage!
     }

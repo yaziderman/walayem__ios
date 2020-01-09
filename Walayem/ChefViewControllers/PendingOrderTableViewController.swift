@@ -22,7 +22,7 @@ class PendingOrderTableViewController: UITableViewController, OrderHeaderCellDel
         var opened: Bool!
         var hidden: Bool!
         var iconColor: UIColor!
-        var orderState: String!
+        var orderState: String?
         var orders: [Order]!
     }
     var sections: [Section]?
@@ -226,7 +226,7 @@ class PendingOrderTableViewController: UITableViewController, OrderHeaderCellDel
             fatalError("Unexpected view controller")
         }
         destinationVC.orderId = order.id
-        destinationVC.orderState = order.state
+        destinationVC.orderState = order.state!
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
     

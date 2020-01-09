@@ -252,16 +252,37 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         
         date = calendar.date(from: components)! // 2018-10-10
         
+        let orderFirstTime = UserDefaults.standard.bool(forKey: UserDefaultsKeys.ORDER_FIRST_TIME)
+        
+        if(!orderFirstTime){
+            
+            let alert = UIAlertController(title: "", message: "Our Chefs will serve you any time between 8:00am - 12:00pm, after 15 hours from now.", preferredStyle: .alert)
+            self.present(alert, animated: true, completion: nil)
+
+            alert.setMessage(font: UIFont(name: "AvenirNextCondensed", size: 17), color: UIColor.black)
+            // change to desired number of seconds (in this case 5 seconds)
+            let when = DispatchTime.now() + 4
+            DispatchQueue.main.asyncAfter(deadline: when){
+              // your code with delay
+              alert.dismiss(animated: true, completion: nil)
+            }
+            
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(true, forKey: UserDefaultsKeys.ORDER_FIRST_TIME)
+            userDefaults.synchronize()
+        }
+        
         DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", startTime: startTime, endTime: endTime, minimumDate: date , datePickerMode: .dateAndTime) {
             (date) -> Void in
             if let dt = date {
-                let thisDate = Date()
+//                let thisDate = Date()
                 let calendar = NSCalendar.current
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "MMM dd yyyy"
                 
                 let timeFormatter = DateFormatter()
                 timeFormatter.dateFormat = "hh:mm aa"
+                
                 
                 let time_str = timeFormatter.string(from: dt)
                 var date_str = dateFormatter.string(from: dt)

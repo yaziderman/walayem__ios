@@ -111,6 +111,11 @@ class Utils{
         nav.navigationBar.layer.shadowPath = UIBezierPath(roundedRect: (nav.navigationBar.layer.bounds), cornerRadius: 6).cgPath
     }
     
+    static func addChefInfoInNavigationBar(nav: UINavigationController){
+//        nav.navigationBar.frame.size.height += 30
+    }
+    
+    
     static func getChefStartTime() -> Int {
         var startTime = UserDefaults.standard.integer(forKey: "chef_start_time")
         if(startTime == 0)

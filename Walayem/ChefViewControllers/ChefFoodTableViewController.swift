@@ -19,6 +19,7 @@ class ChefFoodTableViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
+    @IBOutlet weak var chefInfoLabel: UILabel!
     
     var activityIndicator: UIActivityIndicatorView!
     
@@ -30,6 +31,9 @@ class ChefFoodTableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         user = User().getUserDefaults()
+        chefInfoLabel.isHidden = true
+        getFoods()
+        
         
         setupRefreshControl()
         collectionView.dataSource = self
@@ -39,7 +43,7 @@ class ChefFoodTableViewController: UIViewController {
         tableView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
         tableView.tableFooterView = UIView()
         Utils.setupNavigationBar(nav: self.navigationController!)
-        
+
         NotificationCenter.default.addObserver(self, selector: #selector(addedDish(_:)), name: NSNotification.Name(rawValue: "AddedDish"), object: nil)
     }
     
@@ -70,6 +74,21 @@ class ChefFoodTableViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        let isChefVerified = User().getUserDefaults().isChefVerified
+        if(!(isChefVerified )) {
+            let label = UILabel(frame: CGRect(x: 0, y: (navigationController?.navigationBar.frame.height)! - 25, width: UIScreen.main.bounds.width, height: 35))
+            label.translatesAutoresizingMaskIntoConstraints = true
+            label.numberOfLines = 0
+            label.textAlignment = .center
+            label.adjustsFontSizeToFitWidth = true
+            label.text = "Your profile is pending approval, Contact us to make it faster."
+            label.textColor = .white
+            label.backgroundColor = UIColor.amber
+            self.view.frame.origin.y = self.view.frame.origin.y + 70
+            self.view.addSubview(label)
+        }
+        
         getFoods()
         
         if(Utils.SHOW_NEWDISH)
@@ -77,6 +96,8 @@ class ChefFoodTableViewController: UIViewController {
             Utils.SHOW_NEWDISH = false
             self.performSegue(withIdentifier: "showNewDish", sender: self)
         }
+        
+
     }
     
     // MARK: Private methods

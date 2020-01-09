@@ -23,6 +23,7 @@ open class DatePickerDialog: UIView {
     private var dialogView: UIView!
     private var titleLabel: UILabel!
     private var descLabel: UILabel!
+    private var timeDelayLabel: UILabel!
     open var datePicker: UIDatePicker!
     var startTime:Int! = 7
     var endTime:Int! = 22
@@ -230,12 +231,20 @@ open class DatePickerDialog: UIView {
         self.titleLabel.font = self.font.withSize(17)
         container.addSubview(self.titleLabel)
         
-        //Title
+        //Description
         self.descLabel = UILabel(frame: CGRect(x: 10, y: 40, width: 320, height: 20))
         self.descLabel.textAlignment = .center
         self.descLabel.textColor = self.textColor
         self.descLabel.font = self.font.withSize(12)
         container.addSubview(self.descLabel)
+        
+        
+        //Title
+        self.timeDelayLabel = UILabel(frame: CGRect(x: 10, y: 60, width: 320, height: 20))
+        self.timeDelayLabel.textAlignment = .center
+        self.timeDelayLabel.textColor = self.textColor
+        self.timeDelayLabel.font = self.font.withSize(12)
+        container.addSubview(self.timeDelayLabel)
 
         self.datePicker = configuredDatePicker()
         container.addSubview(self.datePicker)
@@ -328,6 +337,7 @@ open class DatePickerDialog: UIView {
         datePickerMode: UIDatePicker.Mode = .dateAndTime,
         callback: @escaping DatePickerCallback
     ) {
+        
         let calendar = Calendar.current
 
         let date = Date()
@@ -342,6 +352,10 @@ open class DatePickerDialog: UIView {
         if(isNextDay && diff > 0){
             sTime = startTime + diff
         }
+        
+        
+        
+        
 
         let cDate = isNextDay ? Calendar.current.date(byAdding: .day, value: 1, to: date) : date
         var minDateComponents = calendar.dateComponents([.day, .month, .year], from: cDate!)
@@ -350,6 +364,7 @@ open class DatePickerDialog: UIView {
 
         self.titleLabel.text = title
         self.descLabel.text = "Select Time 7:00 AM - 11:00 PM"
+//        self.descLabel.text = "Delay is created, as home chefs can busy"
         self.doneButton.setTitle(doneButtonTitle, for: .normal)
         if showCancelButton { self.cancelButton.setTitle(cancelButtonTitle, for: .normal) }
         self.datePickerMode = datePickerMode
@@ -358,6 +373,7 @@ open class DatePickerDialog: UIView {
         self.datePicker.minimumDate = Calendar.current.date(from: minDateComponents)//minimumDate-----------------
         
         if let locale = self.locale { self.datePicker.locale = locale }
+        
 
         /* Add dialog to main window */
         guard let appDelegate = UIApplication.shared.delegate else { fatalError() }

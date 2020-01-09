@@ -16,6 +16,7 @@ struct UserDefaultsKeys{
     static let SESSION_ID: String = "sessionId"
     static let PARTNER_ID: String = "partnerId"
     static let IS_CHEF: String = "isChef"
+    static let ORDER_FIRST_TIME: String = "orderFirstTime"
     static let IS_CHEF_VERIFIED: String = "isChefVerified"
     static let FIREBASE_VERIFICATION_ID = "firebaseVerificationID"
 }

@@ -42,6 +42,8 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        
+        
         guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else{
             fatalError("Could not get the flow layout")
         }

@@ -120,32 +120,40 @@ class OrderViewController: UITableViewController {
             var deliveryForTitle = "Delivery as soon as possible"
             
             if(order_type == "future"){  
-                let orderDate = record["order_for"] as! String
-                
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                formatter.timeZone = TimeZone(abbreviation: "UTC")
-                let date = formatter.date(from: orderDate)
-                
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MMM dd yyyy hh:mm aa"
-                dateFormatter.timeZone = TimeZone.current
-                let date_str = dateFormatter.string(from: date!)
-                deliveryForTitle = "Delivery for \(date_str)"
-                
-                let calendar = NSCalendar.current
-                
-                let timeFormatter = DateFormatter()
-                timeFormatter.timeZone = TimeZone.current
-                timeFormatter.dateFormat = "hh:mm aa"
-                
-                let time_str = timeFormatter.string(from: date!)
-                
-                if calendar.isDateInToday(date!) {
-                    deliveryForTitle = "Delivery for today at \(time_str)"
+                let orderDate = record["order_for"] as? String ?? ""
+                if(orderDate == ""){
+                    deliveryForTitle = "Date Removed"
                 }
-                else if calendar.isDateInTomorrow(date!) {
-                    deliveryForTitle = "Delivery for tomorrow at \(time_str)"
+                else{
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    formatter.timeZone = TimeZone(abbreviation: "UTC")
+                    let date = formatter.date(from: orderDate)
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MMM dd yyyy hh:mm aa"
+                    dateFormatter.timeZone = TimeZone.current
+                    var date_str = ""
+                    if dateFormatter.string(from: date!) != nil {
+                        date_str = dateFormatter.string(from: date!)
+                    }
+                    deliveryForTitle = "Delivery for \(date_str ?? "")"
+                    
+                    let calendar = NSCalendar.current
+                    
+                    let timeFormatter = DateFormatter()
+                    timeFormatter.timeZone = TimeZone.current
+                    timeFormatter.dateFormat = "hh:mm aa"
+                    
+                    let time_str = timeFormatter.string(from: date!)
+                    
+                    if calendar.isDateInToday(date!) {
+                        deliveryForTitle = "Delivery for today at \(time_str)"
+                    }
+                    else if calendar.isDateInTomorrow(date!) {
+                        deliveryForTitle = "Delivery for tomorrow at \(time_str)"
+                    }
+                    
                 }
             }
             
@@ -194,6 +202,9 @@ class OrderViewController: UITableViewController {
         case .cancel, .rejected:
             statusImage = UIImage(named: "cancelled")?.withRenderingMode(.alwaysOriginal)
             cancelButton.isHidden = true
+        default:
+            cancelButton.isHidden = false
+            
         }
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: statusImage, style: .plain, target: nil, action: nil)
         

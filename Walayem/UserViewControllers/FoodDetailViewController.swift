@@ -70,6 +70,7 @@ class FoodDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Utils.setupNavigationBar(nav: self.navigationController!)
+        
         user = User().getUserDefaults()
         
         if #available(iOS 11.0, *) {
@@ -77,7 +78,7 @@ class FoodDetailViewController: UIViewController {
         } 
         favouriteBarItem = UIBarButtonItem(image: UIImage(named: "emptyFavourite"), style: .plain, target: self, action: #selector(addRemoveFavourite(_:)))
         navigationItem.setRightBarButton(favouriteBarItem, animated: false)
-       
+        navigationItem.title = "test"
         setCollectionView()
         setViews()
         if traitCollection.forceTouchCapability == .available{
@@ -92,6 +93,7 @@ class FoodDetailViewController: UIViewController {
             
             food.quantity = 1
             nameLabel.text = food.name
+//            self.navigationItem.title = food.name
             kitchenLabel.text = food.kitcherName! + " \u{2022} " + food.chefName!
                     
             let time = Int(max(1, round( Double(food.preparationTime) / 60.0)))

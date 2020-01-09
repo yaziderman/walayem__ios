@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ztq-0G-sZ2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ztq-0G-sZ2">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -422,22 +422,14 @@
                             <color key="textColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6w-Z3-Olj">
-                            <rect key="frame" x="-16291.333333333334" y="344" width="32822.666666666664" height="36"/>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6w-Z3-Olj">
+                            <rect key="frame" x="0.0" y="344" width="240" height="36"/>
                             <attributedString key="attributedText">
-                                <fragment>
-                                    <string key="content">All your favorite chefs
-</string>
+                                <fragment content="All your favorite chefs will appear here">
                                     <attributes>
                                         <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <font key="NSFont" metaFont="system" size="15"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content="will appear here">
-                                    <attributes>
-                                        <color key="NSColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <font key="NSFont" metaFont="system" size="15"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                     </attributes>
                                 </fragment>
                             </attributedString>
@@ -446,6 +438,9 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstItem="e6w-Z3-Olj" firstAttribute="leading" secondItem="4qc-I4-zdC" secondAttribute="leading" id="Dkt-rj-QnK"/>
+                        <constraint firstItem="e6w-Z3-Olj" firstAttribute="top" secondItem="JBl-uG-KIL" secondAttribute="bottom" constant="8" id="I5I-BS-Id3"/>
+                        <constraint firstAttribute="trailing" secondItem="e6w-Z3-Olj" secondAttribute="trailing" id="hz1-IG-87D"/>
                         <constraint firstItem="nSG-dI-dYn" firstAttribute="centerX" secondItem="4qc-I4-zdC" secondAttribute="centerX" id="oRW-ok-j7e"/>
                         <constraint firstItem="e6w-Z3-Olj" firstAttribute="centerX" secondItem="4qc-I4-zdC" secondAttribute="centerX" id="ohF-9n-fwe"/>
                         <constraint firstItem="e6w-Z3-Olj" firstAttribute="top" secondItem="JBl-uG-KIL" secondAttribute="bottom" constant="8" id="stu-ja-qHT"/>

@@ -44,6 +44,8 @@ class ChefOrderTableViewCell: UITableViewCell {
             statusImage = UIImage(named: "completed")
         case .cancel, .rejected:
             statusImage = UIImage(named: "cancelled")
+        default:
+            statusImage = UIImage(named: "ongoing")
         }
         statusImageView.image = statusImage!
     }
