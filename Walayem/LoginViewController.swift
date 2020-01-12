@@ -50,7 +50,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         OdooClient().authenticate(email: email, password: password, database: WalayemApi.DB_NAME) { (result, error) in
             if error != nil{
                 self.progressAlert?.dismiss(animated: true, completion: {
-                    self.showMessagePrompt("Passwords donot match")
+                    self.showMessagePrompt("Passwords do not match")
                 })
                 return
             }
@@ -121,6 +121,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         passwordTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         
         updateLoginButtonState()
+        self.hideKeyboardWhenTappedAround()
         
         emailTextField.textColor = UIColor.textColor
         emailTextField.placeHolderColor = UIColor.placeholderColor

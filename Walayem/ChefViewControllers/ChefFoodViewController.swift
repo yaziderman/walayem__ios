@@ -220,6 +220,12 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
             registerForPreviewing(with: self, sourceView: imageCollectionView)
         }
         
+
+        self.hideKeyboardWhenTappedAround() 
+        
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+//        view.addGestureRecognizer(tap)
+        
         if let food = food{
             navigationItem.title = food.name
             navigationItem.leftBarButtonItem = nil

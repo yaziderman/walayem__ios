@@ -70,7 +70,7 @@ class ChefSignupViewController: UIViewController, UITextFieldDelegate{
         }
         else if(!passwordVerified)
         {
-            self.showMessagePrompt("Password must be at least 4 characters.")
+            self.showMessagePrompt("Password must be at least 6 characters.")
             return;
         }
         

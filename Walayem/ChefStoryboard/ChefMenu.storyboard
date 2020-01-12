@@ -110,13 +110,6 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your account is not approved, products are not appearing." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="755-AC-iwN">
-                                <rect key="frame" x="0.0" y="560" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="XB5-IL-wbp">
                                 <rect key="frame" x="0.0" y="44" width="375" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -171,10 +164,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="XB5-IL-wbp" firstAttribute="centerX" secondItem="iMR-Xg-wzG" secondAttribute="centerX" id="0hs-qQ-YH0"/>
+                            <constraint firstItem="XB5-IL-wbp" firstAttribute="top" secondItem="hNS-K9-hSH" secondAttribute="top" id="3IK-cB-hhM"/>
                             <constraint firstAttribute="bottom" secondItem="CrN-YP-hLQ" secondAttribute="bottom" id="3eX-Ne-VSE"/>
                             <constraint firstItem="XB5-IL-wbp" firstAttribute="leading" secondItem="hNS-K9-hSH" secondAttribute="leading" priority="750" id="7EO-Si-1az"/>
-                            <constraint firstItem="XB5-IL-wbp" firstAttribute="top" secondItem="iMR-Xg-wzG" secondAttribute="top" constant="44" id="8dC-Vv-fK6"/>
-                            <constraint firstItem="XB5-IL-wbp" firstAttribute="top" secondItem="hNS-K9-hSH" secondAttribute="top" id="8hP-7n-yn9"/>
                             <constraint firstItem="XB5-IL-wbp" firstAttribute="trailing" secondItem="hNS-K9-hSH" secondAttribute="trailing" priority="750" id="EAD-Uh-gab"/>
                             <constraint firstItem="CrN-YP-hLQ" firstAttribute="leading" secondItem="hNS-K9-hSH" secondAttribute="leading" priority="750" id="Ie9-th-fph"/>
                             <constraint firstItem="CrN-YP-hLQ" firstAttribute="top" secondItem="iMR-Xg-wzG" secondAttribute="top" id="NcA-Ta-PIc"/>
@@ -194,7 +186,6 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="chefInfoLabel" destination="755-AC-iwN" id="djv-SP-rt1"/>
                         <outlet property="collectionView" destination="XB5-IL-wbp" id="XS2-9i-KQg"/>
                         <outlet property="emptyView" destination="5tT-VI-VjZ" id="mct-nF-hTz"/>
                         <outlet property="tableView" destination="CrN-YP-hLQ" id="S0z-g6-UxO"/>
@@ -239,7 +230,7 @@ button and add some items</string>
                     <viewLayoutGuide key="safeArea" id="82D-n5-Gnm"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="121" y="-109"/>
+            <point key="canvasLocation" x="120.8" y="-109.29535232383809"/>
         </scene>
         <!--New Meal-->
         <scene sceneID="n9I-mw-UyP">

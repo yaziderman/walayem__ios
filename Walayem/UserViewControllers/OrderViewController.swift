@@ -268,7 +268,7 @@ class OrderViewController: UITableViewController {
             headerCell.chefImageView.layer.masksToBounds = true
             headerCell.foodSummaryIcon.tintColor = UIColor.perrywinkle
             if let orderDetail = orderDetail{
-                headerCell.nameLabel.text = orderDetail.chefName
+                headerCell.nameLabel.text = orderDetail.chefName ?? "Chef Removed"
                 headerCell.kitchenLabel.text = orderDetail.kitchen
                 headerCell.chefImageView.image = Utils.decodeImage(orderDetail.chefImage)
                 headerCell.dateLabel.text = Utils.getDay(orderDetail.createDate) + "\n" + Utils.getTime(orderDetail.createDate)

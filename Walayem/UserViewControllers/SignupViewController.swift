@@ -119,7 +119,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
             }
             else if(!passwordVerified)
             {
-                self.showMessagePrompt("Password must be at least 4 characters.")
+                self.showMessagePrompt("Password must be at least 6  characters.")
                 return;
             }
 
@@ -192,7 +192,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
             }
             else if(!chefPasswordVerified)
             {
-                self.showMessagePrompt("Password must be at least 4 characters.")
+                self.showMessagePrompt("Password must be at least 6 characters.")
                 return;
             }
             let countryCode = "+971"

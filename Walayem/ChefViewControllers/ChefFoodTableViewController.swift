@@ -16,10 +16,13 @@ class ChefFoodTableViewController: UIViewController {
     static let FOOD_PAUSE: Int = 2
     static let FOOD_RESUME: Int = 3
     
+    let CHEF_INFO_MSG = "Your profile is pending approval, Contact us to make it faster."
+    
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var emptyView: UIView!
-    @IBOutlet weak var chefInfoLabel: UILabel!
+//    @IBOutlet weak var chefInfoLabel: UILabel!
+    var chefInfoLabel: UILabel?
     
     var activityIndicator: UIActivityIndicatorView!
     
@@ -27,14 +30,12 @@ class ChefFoodTableViewController: UIViewController {
     var selectedCateg: Int = 0
     var user: User?
     var foods = [Food]()
+    var isChefVerified = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         user = User().getUserDefaults()
-        chefInfoLabel.isHidden = true
         getFoods()
-        
-        
         setupRefreshControl()
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -75,18 +76,23 @@ class ChefFoodTableViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        let isChefVerified = User().getUserDefaults().isChefVerified
+        isChefVerified = User().getUserDefaults().isChefVerified
         if(!(isChefVerified )) {
-            let label = UILabel(frame: CGRect(x: 0, y: (navigationController?.navigationBar.frame.height)! - 25, width: UIScreen.main.bounds.width, height: 35))
-            label.translatesAutoresizingMaskIntoConstraints = true
-            label.numberOfLines = 0
-            label.textAlignment = .center
-            label.adjustsFontSizeToFitWidth = true
-            label.text = "Your profile is pending approval, Contact us to make it faster."
-            label.textColor = .white
-            label.backgroundColor = UIColor.amber
-            self.view.frame.origin.y = self.view.frame.origin.y + 70
-            self.view.addSubview(label)
+            let y = Int((self.navigationController?.navigationBar.frame.origin.y)! - 35)
+            let chefInfoLabel = UILabel(frame: CGRect(x: 0, y:y+40, width: Int(UIScreen.main.bounds.width), height: 35))
+            chefInfoLabel.translatesAutoresizingMaskIntoConstraints = true
+            chefInfoLabel.numberOfLines = 0
+            chefInfoLabel.textAlignment = .center
+            chefInfoLabel.adjustsFontSizeToFitWidth = true
+            chefInfoLabel.text = "Your profile is pending approval, Contact us to make it faster."
+            chefInfoLabel.textColor = .white
+            chefInfoLabel.backgroundColor = UIColor.amber
+            self.view.frame.origin.y = self.view.frame.origin.y + 35
+            self.view.addSubview(chefInfoLabel)
+        }
+        else{
+            chefInfoLabel?.isHidden = true
+            chefInfoLabel?.alpha = 0.0
         }
         
         getFoods()
@@ -114,6 +120,7 @@ class ChefFoodTableViewController: UIViewController {
     
     private func getFoods(){
         showActivityIndicator()
+        updateChefLabel()
         
         var filterString: String!
         switch selectedCateg{
@@ -126,6 +133,7 @@ class ChefFoodTableViewController: UIViewController {
         default:
             filterString = ""
         }
+        
         
         let params: [String: Any] = ["partner_id": user?.partner_id as Any, "food_type": filterString]
         RestClient().request(WalayemApi.chefFood, params) { (result, error) in
@@ -143,7 +151,11 @@ class ChefFoodTableViewController: UIViewController {
             }
             let value = result!["result"] as! [String: Any]
             if let status = value["status"] as? Int, status == 0{
+                print("Status...........................\(status)")
                 return
+            }
+            else{
+                print("Status...........................\(value["status"])")
             }
             self.foods.removeAll()
             let records = value["data"] as! [Any]
@@ -157,10 +169,51 @@ class ChefFoodTableViewController: UIViewController {
                 let food = Food(record: record as! [String: Any])
                 self.foods.append(food)
             }
+            self.updateChefLabel()
             self.tableView.reloadData()
         }
     
     }
+
+    
+    private func updateChefLabel(){
+        
+        let fields = ["is_chef_verified"]
+        OdooClient.sharedInstance().read(model: "res.partner", ids: [user!.partner_id!], fields: fields) { (result, error) in
+            self.activityIndicator.stopAnimating()
+            if let _ = error{
+                if self.user!.isChefVerified{
+                    self.chefInfoLabel?.isHidden = true
+                    self.chefInfoLabel?.removeFromSuperview()
+                    self.chefInfoLabel?.alpha = 0.0
+                }else{
+                    self.chefInfoLabel?.isHidden = false
+                }
+                return
+            }
+            let records = result!["result"] as! [Any]
+            guard let record = records[0] as? [String: Any] else {
+                return
+            }
+            let isChefVerified = record["is_chef_verified"] as! Bool
+            UserDefaults.standard.set(isChefVerified, forKey: UserDefaultsKeys.IS_CHEF_VERIFIED)
+            if isChefVerified{
+                self.chefInfoLabel?.isHidden = true
+                self.chefInfoLabel?.removeFromSuperview()
+                self.chefInfoLabel?.alpha = 0.0
+                self.chefInfoLabel?.frame.size.height = 0
+//                self.setNeedsFocusUpdate()
+//                self.loadView()
+                self.view.layoutIfNeeded()
+                self.chefInfoLabel?.text = "Your account is approved, please login again."
+                print("self.chefInfoLabel?.isHidden = true...........\(isChefVerified)")
+            }else{
+                self.chefInfoLabel?.isHidden = false
+                print("self.chefInfoLabel?.isHidden = true...........\(isChefVerified)")
+            }
+        }
+    }
+    
 
     private func pauseRemoveFood(foodId: Int, action: Int){
         let params: [String: Int] = ["partner_id": user!.partner_id!, "product_id": foodId, "action": action]
@@ -195,6 +248,7 @@ class ChefFoodTableViewController: UIViewController {
             activityIndicator.color = UIColor.colorPrimary
             activityIndicator.hidesWhenStopped = true
         }
+        updateChefLabel()
         tableView.backgroundView = activityIndicator
         
         activityIndicator.startAnimating()
