@@ -155,7 +155,7 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
                       "food_type": selectedFoodType.rawValue,
                       "images": foodImages,
                       "food_tags": selectedTags!.map({ (tag) -> Int in
-                        return tag.id
+                        return (tag.id ?? 0)
                       }),
                       "cuisine_id": selectedCuisine!.id ] as [String : Any]
         
@@ -314,7 +314,7 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
     private func updateTags(){
         var tagString = ""
         for tag in selectedTags!{
-            tagString += tag.name
+            tagString += tag.name ?? ""
             if selectedTags?.last !== tag{
                 tagString += ", "
             }

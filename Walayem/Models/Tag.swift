@@ -10,8 +10,8 @@ import Foundation
 
 class Tag{
     
-    var id: Int
-    var name: String
+    var id: Int?
+    var name: String?
     
     init(id: Int, name: String){
         self.id = id
@@ -19,7 +19,7 @@ class Tag{
     }
     
     init(record: [String: Any]){
-        self.id = record["id"] as! Int
-        self.name = record["name"] as! String
+        self.id = record["id"] as? Int ?? 0
+        self.name = record["name"] as? String ?? ""
     }
 }

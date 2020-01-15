@@ -57,7 +57,8 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     }
     
     @IBAction func connectFacebook(_ sender: UIButton) {
-        let url = URL(string: UserDefaults.standard.string(forKey: "ContactFacebook")!)
+        let url = URL(string: UserDefaults.standard.string(forKey: "ContactFacebook")!) ?? URL(string: "https://www.facebook.com/WalayemApp")
+        
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url!, options: [:], completionHandler: nil)
         } else {
@@ -65,10 +66,13 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
             UIApplication.shared.openURL(url!)
         }
         
+        
+        
     }
     
     @IBAction func connectInsta(_ sender: UIButton) {
-        let url = URL(string: UserDefaults.standard.string(forKey: "ContactInstagram")!)
+        let url = URL(string: UserDefaults.standard.string(forKey: "ContactInstagram") ?? "https://www.instagram.com/walayem")
+        
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url!, options: [:], completionHandler: nil)
         } else {

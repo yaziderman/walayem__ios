@@ -36,7 +36,7 @@ class ChefTableViewCell: UITableViewCell {
         
         var description: String = ""
         for tag in chef.foods[0].tags{
-            description.append(tag.name)
+            description.append(tag.name ?? "")
             if let lastTag = chef.foods[0].tags.last, lastTag !== tag{
                 description.append(" \u{2022} ")
             }

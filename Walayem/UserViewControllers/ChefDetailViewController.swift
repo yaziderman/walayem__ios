@@ -100,7 +100,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
             
             var tagString: String = ""
             for tag in chef.foods[0].tags{
-                tagString.append(tag.name)
+                tagString.append(tag.name ?? "")
                 if let lastTag = chef.foods[0].tags.last, lastTag !== tag{
                     tagString.append(" \u{2022} ")
                 }
@@ -381,6 +381,8 @@ extension ChefDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         }
         cell.titleLabel.text = foodCategs[indexPath.row]
         cell.iconImageView.tintColor = UIColor.perrywinkle
+//        cell.frame.size.width.x
+        print(cell.frame.size.width)
         if indexPath.row == selectedCateg{
             cell.titleLabel.textColor = UIColor.steel
             cell.iconImageView.isHidden = false

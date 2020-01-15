@@ -8,7 +8,14 @@
 
 import UIKit
 
-class UserTabBarController: UITabBarController {
+enum UIUserInterfaceIdiom : Int {
+    case unspecified
+
+    case phone // iPhone and iPod touch style UI
+    case pad // iPad style UI
+}
+
+class UserTabBarController: UITabBarController{
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +24,8 @@ class UserTabBarController: UITabBarController {
         NotificationCenter.default.addObserver(self, selector: #selector(showOrderDetail(_:)), name: NSNotification.Name(rawValue: "OrderStateNotification"), object: nil)
         setupTabBar()
     }
+    
+    
     
     func setupTabBar(){
         //hide divider
@@ -39,6 +48,57 @@ class UserTabBarController: UITabBarController {
             tabItem.badgeColor = UIColor.colorPrimary
             tabItem.badgeValue = "*"
         }
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
+        switch UIDevice.current.userInterfaceIdiom {
+           case .phone:
+               // It's an iPhone
+            print("phone----------------------------------------------------------------------")
+           case .pad:
+           print("pad")
+               // It's an iPad
+            
+           if item.title == "Profile" {
+                        selectedIndex = 4
+           }
+           else if item.title == "History" {
+                    selectedIndex = 3
+           }
+        //        self.selectedIndex = 3
+           if self.selectedIndex == 3 {
+                if let currentViewController = self.selectedViewController as? UISplitViewController{
+                    guard let orderVC = UIStoryboard.init(name: "Order", bundle: Bundle.main).instantiateViewController(withIdentifier: "OrderNav") as? OrderTableViewController else {
+                        fatalError("Unexpected view controller")
+                    }
+                    let navigationVC = UINavigationController(rootViewController: orderVC)
+                    currentViewController.showDetailViewController(navigationVC, sender: self)
+                }
+                
+            }
+            
+            if self.selectedIndex == 4 {
+                if let currentViewController = self.selectedViewController as? UISplitViewController{
+                    guard let orderVC = UIStoryboard.init(name: "Profile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileTableViewController") as? ProfileTableViewController else {
+                        fatalError("Unexpected view controller")
+                    }
+                    let navigationVC = UINavigationController(rootViewController: orderVC)
+                    currentViewController.showDetailViewController(navigationVC, sender: self)
+                }
+                
+            }
+        
+            
+           case .unspecified:
+           print("unspecified")
+                   // Uh, oh! What could it be?
+            case .tv:
+            print("tv")
+            case .carPlay:
+            print("carplay")
+        }
+        
     }
     
     @objc private func showOrderDetail(_ notification : Notification){

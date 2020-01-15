@@ -36,7 +36,7 @@ class ChefFoodCell: UITableViewCell {
         priceLabel.text = "AED \(food.price)"
         var tagString = ""
         for tag in food.tags{
-            tagString.append(tag.name)
+            tagString.append(tag.name ?? "")
             if let lastTag = food.tags.last, lastTag !== tag{
                 tagString.append(" \u{2022} ")
             }

@@ -111,6 +111,16 @@ class Utils{
         nav.navigationBar.layer.shadowPath = UIBezierPath(roundedRect: (nav.navigationBar.layer.bounds), cornerRadius: 6).cgPath
     }
     
+    static func setupNavigationBarDiscover(nav: UINavigationController){
+        nav.navigationBar.setValue(true, forKey: "hidesShadow")
+//        nav.navigationBar.layer.shadowColor = UIColor.black.cgColor
+//        nav.navigationBar.layer.shadowOffset = CGSize(width: 0.0, height: 1)
+//        nav.navigationBar.layer.shadowRadius = 5
+//        nav.navigationBar.layer.shadowOpacity = 0.1
+//        nav.navigationBar.layer.masksToBounds = false
+//        nav.navigationBar.layer.shadowPath = UIBezierPath(roundedRect: (nav.navigationBar.layer.bounds), cornerRadius: 6).cgPath
+    }
+    
     static func addChefInfoInNavigationBar(nav: UINavigationController){
 //        nav.navigationBar.frame.size.height += 30
     }

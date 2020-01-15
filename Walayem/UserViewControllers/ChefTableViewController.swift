@@ -313,10 +313,10 @@ class ChefTableViewController: UIViewController {
     
     private func searchChef(){
         let tagIds: [Int] = selectedTags.map { (tag) -> Int in
-            tag.id
+            (tag.id ?? 0)
         }
         let cuisineIds: [Int] = selectedCuisines.map { (cuisine) -> Int in
-            cuisine.id
+            (cuisine.id ?? 0)
         }
         let params: [String: Any] = ["search": false, "food_tags": tagIds, "cuisine": cuisineIds]
         RestClient().request(WalayemApi.searchChef, params) { (result, error) in

@@ -261,7 +261,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             self.present(alert, animated: true, completion: nil)
 
             // change to desired number of seconds (in this case 5 seconds)
-            let when = DispatchTime.now() + 4
+            let when = DispatchTime.now() + 5
             DispatchQueue.main.asyncAfter(deadline: when){
               // your code with delay
               alert.dismiss(animated: true, completion: nil)
@@ -457,10 +457,10 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     
     private func searchFood(){
         let tagIds: [Int] = selectedTags.map { (tag) -> Int in
-            tag.id
+            (tag.id ?? 0)
         }
         let cuisineIds: [Int] = selectedCuisines.map { (cuisine) -> Int in
-            cuisine.id
+            (cuisine.id ?? 0)
         }
         let params: [String: Any] = ["search": false, "food_tags": tagIds, "cuisine": cuisineIds]
         RestClient().request(WalayemApi.searchFood, params) { (result, error) in
