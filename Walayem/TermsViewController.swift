@@ -54,8 +54,9 @@ class TermsViewController: UIViewController {
                 return
             }
             guard let content = data.data(using: String.Encoding.unicode) else { return }
-
+        
             try? self.contentLabel.attributedText = NSAttributedString(data: content, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+            self.contentLabel.font = UIFont.init(name: "System", size: 12)
 
         }
     }

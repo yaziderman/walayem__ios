@@ -19,6 +19,7 @@ struct UserDefaultsKeys{
     static let ORDER_FIRST_TIME: String = "orderFirstTime"
     static let IS_CHEF_VERIFIED: String = "isChefVerified"
     static let FIREBASE_VERIFICATION_ID = "firebaseVerificationID"
+    static let FOOD_QUANTITY = "foodQuantity"
 }
 
 class User{

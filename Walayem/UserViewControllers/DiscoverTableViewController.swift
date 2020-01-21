@@ -30,6 +30,9 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     var totalPage: Int?
     var isLoading = false
     var addressList = [Address]()
+//    var lastIndex
+//    var indexPath = []
+//    var cartItems = [CartItem]()
     
     @IBAction func locationPickClicked(_ sender: Any) {
         let alert = UIAlertController(title: "", message: "Select an address", preferredStyle: .actionSheet)
@@ -106,22 +109,22 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         partnerId = UserDefaults.standard.integer(forKey: UserDefaultsKeys.PARTNER_ID)
-        
+        datePickerButton.setTitle("ASAP", for: .normal)
         setupSearch()
         setupRefreshControl()
-        
+
 //        let strNumber: NSString = "Today at 5pm to Address" as NSString
 //        let range = (strNumber).range(of: "to")
 //        let attribute = NSMutableAttributedString.init(string: strNumber as String)
 //        attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.lightGray , range: range)
 //        scheduleButton.setAttributedTitle(attribute, for: .normal)
-        
+
         tableView.delegate = self
         tableView.dataSource = self
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-        
+
         showActivityIndicator()
         getRecommendations()
         getFoods()
@@ -129,18 +132,29 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         getAddress()
         Utils.setupNavigationBar(nav: self.navigationController!)
         StaticLinker.discoverViewController = self
-        
+
         initialCustomDate()
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        
         if let selectedIndexPath = tableView.indexPathForSelectedRow{
             tableView.deselectRow(at: selectedIndexPath, animated: true)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FoodTableViewCell", for: selectedIndexPath)
         }
+        self.tableView.reloadData()
         getAddress()
-       
+        
+//        hideActivityIndicator()
         
     }
+    
+    
+    override func viewWillDisappear(_ animated: Bool){
+        
+    }
+    
+    
 
     
     // MARK: Private methods
@@ -206,6 +220,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         let calendar = NSCalendar.current
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd yyyy"
+//        dateFormatter.dateFormat = "dd MMM yyyy"
         
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "hh:mm aa"
@@ -224,11 +239,13 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         userDefaults.set("future", forKey: "OrderType")
         userDefaults.set(date_time_str, forKey: "OrderDate")
         userDefaults.synchronize()
-        
+//
         if(StaticLinker.chefViewController != nil){
             StaticLinker.chefViewController?.timePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
         }
         self.datePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
+//        self.datePickerButton.setTitle("ASAP", for: .normal)
+        
     }
     
     func datePickerTapped() {
@@ -255,22 +272,18 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         let orderFirstTime = UserDefaults.standard.bool(forKey: UserDefaultsKeys.ORDER_FIRST_TIME)
         
         if(!orderFirstTime){
-            let alert = UIAlertController(title: "", message: "Our Chefs will serve you any time between 8:00am - 12:00pm, after 15 hours from now.", preferredStyle: .alert)
-            alert.setMessage(font: UIFont(name: "AvenirNextCondensed", size: 17), color: UIColor.black)
             
-            self.present(alert, animated: true, completion: nil)
-
-            // change to desired number of seconds (in this case 5 seconds)
-            let when = DispatchTime.now() + 5
-            DispatchQueue.main.asyncAfter(deadline: when){
-              // your code with delay
-              alert.dismiss(animated: true, completion: nil)
-            }
+            Utils.showDelayAlert(context: self)
+            Utils.setUserDefaults(value: true, key: UserDefaultsKeys.ORDER_FIRST_TIME)
+//
+//            let userDefaults = UserDefaults.standard
+//            userDefaults.set(true, forKey: UserDefaultsKeys.ORDER_FIRST_TIME)
+//            userDefaults.synchronize()
             
-            let userDefaults = UserDefaults.standard
-            userDefaults.set(true, forKey: UserDefaultsKeys.ORDER_FIRST_TIME)
-            userDefaults.synchronize()
+            
         }
+        
+        
         
         
         
@@ -317,7 +330,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             }
         }
     }
-    
+   
     private func setupSearch(){
         
         if #available(iOS 13.0, *) {
@@ -420,7 +433,11 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             let records = value["data"] as! [Any]
             for record in records{
                 let food = Food(record: record as! [String: Any])
-                self.foods.append(food)
+//                self.foods.append(food)
+                
+                if !self.foods.contains(food){
+                    self.foods.append(food)
+                }
             }
             self.tableView.reloadData()
         }
@@ -448,7 +465,12 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             let records = value["data"] as! [Any]
             for record in records{
                 let food = Food(record: record as! [String: Any])
-                self.foods.append(food)
+//                self.foods.append(food)
+                
+                if !self.foods.contains(food){
+                    self.foods.append(food)
+                }
+                
             }
             self.tableView.reloadData()
             self.tableView.tableFooterView = nil
@@ -477,6 +499,19 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             let records = value["data"] as! [Any]
             for record in records{
                 let food = Food(record: record as! [String: Any])
+                
+//                for cuisineId in cuisineIds{
+//                    if food.cuisine?.id == cuisineId{
+//                        print("cousine Id matched -----")
+//                        self.foods.append(food)
+//                    }
+////                    print(cuisineId)
+////                    print(food.cuisine?.id)
+////                    print(food.name)
+////                    print(food.chefName)
+//                }
+                
+                
                 self.foods.append(food)
             }
             self.tableView.reloadData()
@@ -530,6 +565,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         if db.addFoodDirectly(item: food) != -1 {
             print ("Quantity added")
             updateBadge()
+            
         }
     }
     
@@ -544,6 +580,35 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         }
     }
     
+//    func didRefreshRow(sender: FoodTableViewCell){
+//        guard let indexPath = tableView.indexPath(for: sender) else {
+//            fatalError("Cell does not exist")
+//        }
+//        let food = foods[indexPath.row]
+//    }
+    
+    
+    
+    
+    
+//    private func getCartItems(){
+//        let foods = db.getFoods()
+//        validateFoods(foods: foods) { (success) in
+//            self.cartItems.removeAll()
+//            let chefs = self.db.getCartItems()
+//            if chefs.count == 0{
+//                self.changeView(true)
+//            }else{
+//                self.changeView(false)
+//                for chef in chefs{
+//                    let cartItem = CartItem(opened: true, chef: chef, note: "")
+//                    self.cartItems.append(cartItem)
+//                }
+//                self.calculateCost()
+//            }
+//            self.tableView.reloadData()
+//        }
+//    }
 
     
     /*
@@ -576,6 +641,7 @@ extension DiscoverTableViewController: UITableViewDelegate, UITableViewDataSourc
         cell.delegate = self
         let food = foods[indexPath.row]
         cell.food = food
+//        cell.food.quantity = 0
         return cell
     }
     

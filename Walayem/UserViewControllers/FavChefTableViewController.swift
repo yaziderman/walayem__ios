@@ -35,6 +35,13 @@ class FavChefTableViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if let user = user{
+            getFavChefs(user.partner_id!)
+        }
+        tableView.reloadData()
+    }
+    
     // MARK: Actions
 
     

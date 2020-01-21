@@ -9,6 +9,10 @@
 import UIKit
 import DatePickerDialog
 
+protocol CartViewDelegate {
+    func refreshTableViewCell()
+}
+
 
 class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeaderDelegate, CartFoodFooterDelegate {
 
@@ -29,8 +33,9 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     @IBOutlet weak var paymentIcon: UIImageView!
     @IBOutlet weak var addressIcon: UIImageView!
     @IBOutlet weak var orderForLabel: UILabel!
-    
     @IBOutlet weak var orderView: UIView!
+    
+    var delegate: CartViewDelegate? = nil
     
     let db = DatabaseHandler()
     var user: User?
@@ -188,6 +193,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.checkAction))
         self.orderView.addGestureRecognizer(gesture)
+        
 
     }
     
@@ -195,6 +201,11 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         user = User().getUserDefaults()
         getCartItems()
         getAddress()
+        
+        if (delegate != nil){
+            
+            delegate?.refreshTableViewCell()
+        }
         
         let orderType = UserDefaults.standard.string(forKey: "OrderType") ?? "asap"
         
@@ -255,17 +266,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         let orderFirstTime = UserDefaults.standard.bool(forKey: UserDefaultsKeys.ORDER_FIRST_TIME)
         
         if(!orderFirstTime){
-            
-            let alert = UIAlertController(title: "", message: "Our Chefs will serve you any time between 8:00am - 12:00pm, after 15 hours from now.", preferredStyle: .alert)
-            self.present(alert, animated: true, completion: nil)
-
-            alert.setMessage(font: UIFont(name: "AvenirNextCondensed", size: 17), color: UIColor.black)
-            // change to desired number of seconds (in this case 5 seconds)
-            let when = DispatchTime.now() + 4
-            DispatchQueue.main.asyncAfter(deadline: when){
-              // your code with delay
-              alert.dismiss(animated: true, completion: nil)
-            }
+            Utils.showDelayAlert(context: self)
+        
             
             let userDefaults = UserDefaults.standard
             userDefaults.set(true, forKey: UserDefaultsKeys.ORDER_FIRST_TIME)
@@ -314,6 +316,14 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         summaryIcon.tintColor = UIColor.seafoamBlue
         paymentIcon.tintColor = UIColor.babyBlue
         addressIcon.tintColor = UIColor.rosa
+        
+        
+//        let prefix = UILabel(frame: CGRect(x: 0, y:0, width: 10, height: 20))
+//        prefix.text = "*"
+//        prefix.sizeToFit()
+//        prefix.textColor = UIColor.rosa
+//
+//        subjectToDeliveryLabel.addSubview(prefix)
         
         let headerNib = UINib(nibName: "CartFoodHeaderCell", bundle: .main)
         tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: "CartFoodHeaderCell")
@@ -530,6 +540,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         }
         
         
+        
         cartItems[section].opened = !cartItems[section].opened!
         
         tableView.reloadSections([section], with: .automatic)
@@ -538,7 +549,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     // MARK: CartFoodFooter delegate
     
     func updateNote(sender: UITextField, section: Int) {
-        cartItems[section].note = sender.text
+//        cartItems[section].note = sender.text
     }
     
     
@@ -550,11 +561,13 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         }
         let food = cartItems[indexPath.section].chef.foods[indexPath.row]
         if db.addQuantity(foodId: food.id){
-            print("Quantity added")
+            print("Quantity added---- on Cart screen")
             calculateCost()
         }
         
     }
+    
+    
     
     func didTapRemoveItem(sender: CartFoodTableViewCell) {
         guard let indexPath = tableView.indexPath(for: sender) else{

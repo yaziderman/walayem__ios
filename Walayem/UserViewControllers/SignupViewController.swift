@@ -135,36 +135,86 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                                           "confirm_password": password,
                                           "is_chef": false]
             
+            
             progressAlert = showProgressAlert()
-            PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
-                if let error = error {
+            RestClient().request(WalayemApi.signup, params) { (result, error) in
+                if error != nil{
                     self.progressAlert?.dismiss(animated: false, completion: {
-                        self.showMessagePrompt(error.localizedDescription)
+                        let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+                        self.showMessagePrompt(errmsg)
                     })
                     return
                 }
-                UserDefaults.standard.set(verificationID, forKey: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
-                RestClient().request(WalayemApi.signup, params) { (result, error) in
-                    if error != nil{
-                        self.progressAlert?.dismiss(animated: false, completion: {
-                            let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
-                            self.showMessagePrompt(errmsg)
-                        })
-                        return
-                    }
-                    let record = result!["result"] as! [String: Any]
-                    if let errmsg = record["error"] as? String{
-                        self.progressAlert?.dismiss(animated: false, completion: {
-                            self.showMessagePrompt(errmsg)
-                        })
-                        return
-                    }
-                    let data = record["data"] as! [String: Any]
-                    let sessionId: String = data["session_id"] as! String
-                    UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
-                    self.loadUserDetails()
+                let record = result!["result"] as! [String: Any]
+                if let errmsg = record["error"] as? String{
+                    self.progressAlert?.dismiss(animated: false, completion: {
+                        self.showMessagePrompt(errmsg)
+                    })
+                    self.showMessagePrompt(errmsg)
+                    return
                 }
-            })
+                else {
+                    PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
+                            if let error = error {
+                                self.progressAlert?.dismiss(animated: false, completion: {
+                                    self.showMessagePrompt(error.localizedDescription)
+                                })
+                                return
+                            }
+                        })
+//
+                }
+                
+                
+                let data = record["data"] as! [String: Any]
+                let sessionId: String = data["session_id"] as! String
+                UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
+                self.loadUserDetails()
+            }
+
+            
+            
+//
+//            PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
+//                if let error = error {
+//                    self.progressAlert?.dismiss(animated: false, completion: {
+//                        self.showMessagePrompt(error.localizedDescription)
+//                    })
+//                    return
+//                }
+//            })
+            
+            
+//            PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
+//                if let error = error {
+//                    self.progressAlert?.dismiss(animated: false, completion: {
+//                        self.showMessagePrompt(error.localizedDescription)
+//                    })
+//                    return
+//                }
+////                UserDefaults.standard.set(verificationID, forKey: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
+//
+////                RestClient().request(WalayemApi.signup, params) { (result, error) in
+////                    if error != nil{
+////                        self.progressAlert?.dismiss(animated: false, completion: {
+////                            let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+////                            self.showMessagePrompt(errmsg)
+////                        })
+////                        return
+////                    }
+////                    let record = result!["result"] as! [String: Any]
+////                    if let errmsg = record["error"] as? String{
+////                        self.progressAlert?.dismiss(animated: false, completion: {
+////                            self.showMessagePrompt(errmsg)
+////                        })
+////                        return
+////                    }
+////                    let data = record["data"] as! [String: Any]
+////                    let sessionId: String = data["session_id"] as! String
+////                    UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
+////                    self.loadUserDetails()
+////                }
+//            })
         }
         else{
             if(chefNameTextField.text!.isEmpty || chefEmailTextField.text!.isEmpty ||
@@ -208,35 +258,43 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                                           "is_chef": true]
             
             progressAlert = showProgressAlert()
-            PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
-                if let error = error {
+            
+            RestClient().request(WalayemApi.signup, params) { (result, error) in
+                if error != nil{
                     self.progressAlert?.dismiss(animated: false, completion: {
-                        self.showMessagePrompt(error.localizedDescription)
+                        let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+                        self.showMessagePrompt(errmsg)
                     })
                     return
                 }
-                UserDefaults.standard.set(verificationID, forKey: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
-                RestClient().request(WalayemApi.signup, params) { (result, error) in
-                    if error != nil{
-                        self.progressAlert?.dismiss(animated: false, completion: {
-                            let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
-                            self.showMessagePrompt(errmsg)
-                        })
-                        return
-                    }
-                    let record = result!["result"] as! [String: Any]
-                    if let errmsg = record["error"] as? String{
-                        self.progressAlert?.dismiss(animated: false, completion: {
-                            self.showMessagePrompt(errmsg)
-                        })
-                        return
-                    }
-                    let data = record["data"] as! [String: Any]
-                    let sessionId: String = data["session_id"] as! String
-                    UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
-                    self.loadUserDetails()
+                let record = result!["result"] as! [String: Any]
+                if let errmsg = record["error"] as? String{
+                    self.progressAlert?.dismiss(animated: false, completion: {
+                        self.showMessagePrompt(errmsg)
+                    })
+                    return
                 }
-            })
+                else{
+                    
+                    PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
+                        if let error = error {
+                            self.progressAlert?.dismiss(animated: false, completion: {
+                                self.showMessagePrompt(error.localizedDescription)
+                            })
+                            return
+                        }
+                        UserDefaults.standard.set(verificationID, forKey: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
+
+                    })
+                    
+                }
+                
+                let data = record["data"] as! [String: Any]
+                let sessionId: String = data["session_id"] as! String
+                UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
+                self.loadUserDetails()
+            }
+            
         }
         
         
@@ -284,8 +342,13 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     }
     
     @IBAction func signupViaGoogle(_ sender: UIButton) {
-        GIDSignIn.sharedInstance()?.delegate = self
+        GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance().signIn()
+        
+        // Add try-catch here
+        
+//        GIDSignIn.sharedInstance()?.uidelegate = self
+//        try this GIDSignIn.sharedInstance()?.presentingViewController = self
     }
     
     

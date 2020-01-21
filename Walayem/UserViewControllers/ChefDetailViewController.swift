@@ -42,7 +42,6 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     var hasMainCourse: Bool = false
     var hasDesserts: Bool = false
     var hadOrdered: Bool = true
-    
     var orderedFoods = [String]()
     // MARK: Actions
     
@@ -87,7 +86,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        collectionView.contentInset = UIEdgeInsets(top: 5, left: 20, bottom: 0, right: 20)
         
         if let chef = chef{
             checkIsFavourite(chef.id)
@@ -121,6 +120,9 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
             return
         }
         foodTableView.deselectRow(at: indexPath, animated: true)
+//        filterFoods(chef!.foods)
+        foodTableView.reloadData()
+        
     }
     
     // MARK: Private methods
@@ -161,6 +163,10 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
                 print("ordereed food-->\(food)")
             }
         }
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.foodTableView.beginUpdates()
+        self.foodTableView.endUpdates()
     }
     
     @objc private func addRemoveFavourite(_ sender: UIBarButtonItem){
@@ -363,6 +369,8 @@ extension ChefDetailViewController: UITableViewDelegate, UITableViewDataSource{
         foodDetailVC.food = food
         navigationController?.pushViewController(foodDetailVC, animated: true)
     }
+    
+
 }
 
 extension ChefDetailViewController: UICollectionViewDelegate, UICollectionViewDataSource{
@@ -383,6 +391,10 @@ extension ChefDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.iconImageView.tintColor = UIColor.perrywinkle
 //        cell.frame.size.width.x
         print(cell.frame.size.width)
+        print(cell.frame.size.height)
+        
+        print(cell.frame)
+
         if indexPath.row == selectedCateg{
             cell.titleLabel.textColor = UIColor.steel
             cell.iconImageView.isHidden = false

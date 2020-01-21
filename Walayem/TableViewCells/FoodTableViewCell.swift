@@ -12,9 +12,16 @@ import Kingfisher
 protocol FoodCellDelegate {
     func didTapAddItem(sender: FoodTableViewCell)
     func didTapRemoveItem(sender: FoodTableViewCell)
+//    func refreshTableViewCell()
 }
 
-class FoodTableViewCell: UITableViewCell {
+class FoodTableViewCell: UITableViewCell{
+    
+//    func refreshTableViewCell() {
+//        print("refreshTableViewCell------------------------------------------")
+////        quantityLabel.text = String(food.quantity)
+//    }
+    
     
     // MARK: Properties
     
@@ -24,6 +31,9 @@ class FoodTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
+    
+    var numberOfServesLabel: String?
+    let db = DatabaseHandler()
     
     var delegate: FoodCellDelegate?
     
@@ -51,18 +61,27 @@ class FoodTableViewCell: UITableViewCell {
     
     
     func updateUI(){
+        food.quantity = 0
         foodImageView.layer.cornerRadius = 12
         foodImageView.layer.masksToBounds = true
-        
         nameLabel.text = food.name
-        let time = Int(max(1, round( Double(food.preparationTime) / 60.0)))
-        timeLabel.text = "\(time) hour(s)"
+//        let time = Int(max(1, round( Double(food.preparationTime) / 60.0)))
+//        timeLabel.text = "\(time) hour(s)"
+        numberOfServesLabel = "Serves \(food.servingQunatity) people"
         priceLabel.text = "AED \(food.price)"
-        quantityLabel.text = String(food.quantity)
+        quantityLabel.text =  String(food.quantity)
         descriptionLabel.text = food.kitcherName! + " \u{2022} " + food.chefName!
+        
+//        print("Food Quantity = \(food.quantity)")
+        
+        timeLabel.text = numberOfServesLabel
         
         let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id)/image")
         foodImageView.kf.setImage(with: imageUrl)
+    }
+    
+    func refreshCell(){
+        quantityLabel.text = String(food.quantity)
     }
     
 }

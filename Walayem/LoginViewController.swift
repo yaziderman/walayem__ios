@@ -107,7 +107,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     }
     
     @IBAction func loginViaGoogle(_ sender: UIButton) {
-        GIDSignIn.sharedInstance()?.delegate = self
+        
+        do {
+            try  print ("I am in try block")//igniteRockets(fuel: 5000, astronauts: 1)
+            
+        } catch {
+            print(error)
+        }
+        GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance().signIn()
     }
     
@@ -333,7 +340,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             }
         case passwordTextField:
             let password = passwordTextField.text ?? ""
-            if Verification.isValidPassword(password){
+            if Verification.isValidLoginPassword(password){
                 passwordVerifyImageView.tintColor = UIColor.colorPrimary
                 passwordVerified = true
             }else{
@@ -354,7 +361,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     //MARK: GIDSignInUIDelegate
     
     func sign(inWillDispatch signIn: GIDSignIn!, error: Error!) {
-        
+        print("Error")
     }
     
     func sign(_ signIn: GIDSignIn!, present viewController: UIViewController!) {
@@ -368,6 +375,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     // MARK: GIDSignInDelegate
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+//        do{
+        
         if let error = error {
             print("\(error.localizedDescription)")
         } else {
@@ -386,7 +395,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                 self.image64 = Utils.encodeImage(image!)
             })
             sendGoogleData(token: accessToken!)
-        }
+            }
+            
+//        }
+//        catch e{
+//            print("\(error.localizedDescription)")
+//        }
+        
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,

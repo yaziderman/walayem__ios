@@ -413,12 +413,15 @@ class FoodDetailViewController: UIViewController {
             foodImageView.kf.setImage(with: imageUrl)
             
             food.quantity = 1
+//            if food.quantity != 1 || food.quantity == nil{
+//                food.quantity = 1
+//            }
             nameLabel.text = food.name
             kitchenLabel.text = food.kitcherName! + " \u{2022} " + food.chefName!
                     
             let time = Int(max(1, round( Double(food.preparationTime) / 60.0)))
 
-            estimatedTimeLabel.text = "\(time) hour(s)"
+            estimatedTimeLabel.text = "Prep. Time \(time) hour(s)"
             priceLabel.text = "AED \(food.price)"
             descriptionLabel.text = food.description
             deliveryLabel.text = "Home delivery"
@@ -461,7 +464,10 @@ class FoodDetailViewController: UIViewController {
     }
     
     private func setSaveButtonTitle(){
-        let title = "Add \(food!.quantity) (AED \(Double(food!.quantity) * food!.price))"
+        var title = "Add \(food!.quantity) (AED \(Double(food!.quantity) * food!.price))"
+        if(food?.quantity != 0){
+            title = "Add \(food!.quantity) (AED \(Double(food!.quantity) * food!.price))"
+        }
         saveButton.setTitle(title, for: .normal)
     }
     

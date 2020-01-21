@@ -37,6 +37,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         registerRemoteNotification(application)
         
+
+//        GIDSignIn.sharedInstance()?.presentingViewController = self
         setRootViewController()
         getContactDetails()
         getChefSettings()

@@ -85,37 +85,77 @@ class ChefSignupViewController: UIViewController, UITextFieldDelegate{
                                       "confirm_password": password,
                                       "is_chef": true]
         
-
+        
         progressAlert = showProgressAlert()
-        PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
-            if let error = error {
+        
+        RestClient().request(WalayemApi.signup, params) { (result, error) in
+            if error != nil{
                 self.progressAlert?.dismiss(animated: false, completion: {
-                    self.showMessagePrompt(error.localizedDescription)
+                    let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+                    self.showMessagePrompt(errmsg)
                 })
                 return
             }
-            UserDefaults.standard.set(verificationID, forKey: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
-            RestClient().request(WalayemApi.signup, params) { (result, error) in
-                if error != nil{
-                    self.progressAlert?.dismiss(animated: false, completion: {
-                        let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
-                        self.showMessagePrompt(errmsg)
-                    })
-                    return
-                }
-                let record = result!["result"] as! [String: Any]
-                if let errmsg = record["error"] as? String{
-                    self.progressAlert?.dismiss(animated: false, completion: {
-                        self.showMessagePrompt(errmsg)
-                    })
-                    return
-                }
-                let data = record["data"] as! [String: Any]
-                let sessionId: String = data["session_id"] as! String
-                UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
-                self.loadUserDetails()
+            let record = result!["result"] as! [String: Any]
+            if let errmsg = record["error"] as? String{
+                self.progressAlert?.dismiss(animated: false, completion: {
+                    self.showMessagePrompt(errmsg)
+                })
+                return
             }
-        })
+            else{
+                PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
+                    if let error = error {
+                        self.progressAlert?.dismiss(animated: false, completion: {
+                            self.showMessagePrompt(error.localizedDescription)
+                        })
+                        return
+                    }
+                    UserDefaults.standard.set(verificationID, forKey: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
+                })
+            }
+            
+            let data = record["data"] as! [String: Any]
+            let sessionId: String = data["session_id"] as! String
+            UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
+            self.loadUserDetails()
+        }
+        
+        
+        
+
+//        progressAlert = showProgressAlert()
+//        PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
+//            if let error = error {
+//                self.progressAlert?.dismiss(animated: false, completion: {
+//                    self.showMessagePrompt(error.localizedDescription)
+//                })
+//                return
+//            }
+//            UserDefaults.standard.set(verificationID, forKey: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
+            
+            
+//            RestClient().request(WalayemApi.signup, params) { (result, error) in
+//                if error != nil{
+//                    self.progressAlert?.dismiss(animated: false, completion: {
+//                        let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+//                        self.showMessagePrompt(errmsg)
+//                    })
+//                    return
+//                }
+//                let record = result!["result"] as! [String: Any]
+//                if let errmsg = record["error"] as? String{
+//                    self.progressAlert?.dismiss(animated: false, completion: {
+//                        self.showMessagePrompt(errmsg)
+//                    })
+//                    return
+//                }
+//                let data = record["data"] as! [String: Any]
+//                let sessionId: String = data["session_id"] as! String
+//                UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
+//                self.loadUserDetails()
+//            }
+//        })
         
     }
     

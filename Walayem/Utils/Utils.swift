@@ -11,6 +11,7 @@ import UIKit
 class Utils{
     public static var SHOW_NEWDISH = false
     public static var ADDED_FOODTYPE = ""
+    public static var DELAY_TIME = 15
     
     static func formatDate(_ date: String) -> String {
         let dateFormatter = DateFormatter()
@@ -112,17 +113,37 @@ class Utils{
     }
     
     static func setupNavigationBarDiscover(nav: UINavigationController){
-        nav.navigationBar.setValue(true, forKey: "hidesShadow")
-//        nav.navigationBar.layer.shadowColor = UIColor.black.cgColor
-//        nav.navigationBar.layer.shadowOffset = CGSize(width: 0.0, height: 1)
-//        nav.navigationBar.layer.shadowRadius = 5
-//        nav.navigationBar.layer.shadowOpacity = 0.1
-//        nav.navigationBar.layer.masksToBounds = false
-//        nav.navigationBar.layer.shadowPath = UIBezierPath(roundedRect: (nav.navigationBar.layer.bounds), cornerRadius: 6).cgPath
+            nav.navigationBar.setValue(true, forKey: "hidesShadow")
+    //        nav.navigationBar.layer.shadowColor = UIColor.black.cgColor
+    //        nav.navigationBar.layer.shadowOffset = CGSize(width: 0.0, height: 1)
+    //        nav.navigationBar.layer.shadowRadius = 5
+    //        nav.navigationBar.layer.shadowOpacity = 0.1
+    //        nav.navigationBar.layer.masksToBounds = false
+    //        nav.navigationBar.layer.shadowPath = UIBezierPath(roundedRect: (nav.navigationBar.layer.bounds), cornerRadius: 6).cgPath
+        }
+    
+    static func showDelayAlert(context: UIViewController){
+
+        let alert = UIAlertController(title: "", message: Utils.getDelayMsg(), preferredStyle: .alert)
+        alert.setMessage(font: UIFont(name: "AvenirNextCondensed", size: 17), color: UIColor.black)
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: {(action:UIAlertAction!) in
+            print("Continue pressed........ ")
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        
+        context.present(alert, animated: true, completion: nil)
     }
     
+    
+    static func setUserDefaults(value: Any, key: String){
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(value, forKey: key)
+        userDefaults.synchronize()
+    }
+    
+    
+    
     static func addChefInfoInNavigationBar(nav: UINavigationController){
-//        nav.navigationBar.frame.size.height += 30
     }
     
     
@@ -152,10 +173,14 @@ class Utils{
         var minHours = UserDefaults.standard.integer(forKey: "chef_min_hours")
         if(minHours == 0)
         {
-            minHours = 13
+            minHours = DELAY_TIME
         }
         
         return minHours;
 
+    }
+    
+    static func getDelayMsg() -> String {
+        return "Order delivery is available during day hours, after \(DELAY_TIME) hours from now.";
     }
 }

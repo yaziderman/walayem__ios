@@ -29,5 +29,8 @@ class Verification{
     static func isValidPassword(_ password: String) -> Bool{
         return password.count > 5
     }
+    static func isValidLoginPassword(_ password: String) -> Bool{
+        return password.count >= 2
+    }
     
 }

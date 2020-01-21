@@ -57,15 +57,19 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     }
     
     @IBAction func connectFacebook(_ sender: UIButton) {
-        let url = URL(string: UserDefaults.standard.string(forKey: "ContactFacebook")!) ?? URL(string: "https://www.facebook.com/WalayemApp")
+        if let url = URL(string: UserDefaults.standard.string(forKey: "ContactFacebook") ?? "https://www.facebook.com/WalayemApp"){
+        
         
         if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {
             // Fallback on earlier versions
-            UIApplication.shared.openURL(url!)
+            UIApplication.shared.openURL(url)
         }
-        
+        }
+        else {
+ 
+        }
         
         
     }

@@ -55,21 +55,22 @@ class ChefTableViewController: UIViewController {
     
     
     @IBAction func onTimePickerClicked(_ sender: Any) {
-        let alert = UIAlertController(title: "", message: "When do you want your meal?", preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "ASAP", style: .default, handler: { (action) in
-            self.timePickerButton.setTitle("ASAP", for: .normal)
-            let userDefaults = UserDefaults.standard
-            userDefaults.set("asap", forKey: "OrderType")
-            userDefaults.synchronize()
-        }))
-        alert.addAction(UIAlertAction(title: "Custom time", style: .default, handler: { (action) in
-             self.datePickerTapped()
-        }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
-            self.navigationController?.popViewController(animated: true)
-        }))
         
-        self.present(alert, animated: true, completion: nil)
+//        let alert = UIAlertController(title: "", message: "When do you want your meal?", preferredStyle: .actionSheet)
+//        alert.addAction(UIAlertAction(title: "ASAP", style: .default, handler: { (action) in
+//            self.timePickerButton.setTitle("ASAP", for: .normal)
+//            let userDefaults = UserDefaults.standard
+//            userDefaults.set("asap", forKey: "OrderType")
+//            userDefaults.synchronize()
+//        }))
+//        alert.addAction(UIAlertAction(title: "Custom time", style: .default, handler: { (action) in
+             self.datePickerTapped()
+//        }))
+//        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
+//            self.navigationController?.popViewController(animated: true)
+//        }))
+//
+//        self.present(alert, animated: true, completion: nil)
     }
     
     
@@ -93,6 +94,21 @@ class ChefTableViewController: UIViewController {
         }
         
         date = calendar.date(from: components)! // 2018-10-10
+        
+        
+        let orderFirstTime = UserDefaults.standard.bool(forKey: UserDefaultsKeys.ORDER_FIRST_TIME)
+        
+        
+        
+        if(!orderFirstTime){
+            Utils.showDelayAlert(context: self)
+       
+            let userDefaults = UserDefaults.standard
+            userDefaults.set(true, forKey: UserDefaultsKeys.ORDER_FIRST_TIME)
+            userDefaults.synchronize()
+        }
+                
+                
         
         DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", startTime: startTime, endTime: endTime, minimumDate: date, datePickerMode: .dateAndTime) {
             (date) -> Void in
@@ -191,6 +207,8 @@ class ChefTableViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        
         if let selectedIndexPath = tableView.indexPathForSelectedRow{
             tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
@@ -202,6 +220,8 @@ class ChefTableViewController: UIViewController {
                 }
             }
         }
+        
+        tableView.reloadData()
     }
 
     // MARK: Private methods
@@ -274,7 +294,10 @@ class ChefTableViewController: UIViewController {
             let records = value["data"] as! [Any]
             for record in records{
                 let chef = Chef(record: record as! [String : Any])
-                self.chefs.append(chef)
+//                self.chefs.append(chef)
+                if !self.chefs.contains(chef){
+                   self.chefs.append(chef)
+               }
             }
             self.tableView.reloadData()
         }
@@ -444,6 +467,19 @@ extension ChefTableViewController: UITableViewDataSource, UITableViewDelegate{
             tableView.tableFooterView = activityIndicator
         }
     }
+    
+    
+    
+    override func viewWillDisappear(_ animated: Bool){
+    //        tableView.layoutIfNeeded()
+    //        tableView.setNeedsLayout()
+//            getFoods()
+//            getMoreFoods()
+            getChefs()
+            getMoreChefs()
+            self.tableView.reloadData()
+    //        print("viewWillDisappear")
+        }
     
 }
 

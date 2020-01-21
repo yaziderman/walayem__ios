@@ -8,8 +8,13 @@
 
 import Foundation
 
-class Food{
-    
+class Food: Equatable{
+static func == (lhs: Food, rhs: Food) -> Bool {
+    return (lhs.id == rhs.id)
+}
+
+
+
     var id: Int
     var name: String
     var description: String?
@@ -38,10 +43,12 @@ class Food{
         self.servingQunatity = record["serves"] as! Int
         self.imageIds = record["food_image_ids"] as? [Int]
         self.chefId = record["chef_id"] as? Int ?? 0
+//        self.quantity = record["quantity"] as? Int ?? 0
         self.chefName = record["chef_name"] as? String ?? ""
         self.chefImage = record["chef_image_hash"] as? String ?? "0"
         self.kitcherName = record["kitchen_name"] as? String ?? ""
         self.paused = record["paused"] as? Bool ?? false
+//        self.numberofItemsInCart = UserDefaults.standard.integer(forKey: UserDefaultsKeys.NUMBER_OF_ITEMS_IN_CART)
         
         let foodTags = record["food_tags"] as! [Any]
         for foodTag in foodTags{
