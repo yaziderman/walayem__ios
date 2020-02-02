@@ -16,6 +16,11 @@ extension UIViewController{
         OdooClient.destroy()
         
         let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
+        if #available(iOS 13.0, *) {
+            viewController.isModalInPresentation = true
+        } else {
+            // Fallback on earlier versions
+        }
         self.present(viewController, animated: true, completion: nil)
     }
     

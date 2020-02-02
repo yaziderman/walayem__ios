@@ -361,7 +361,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     
     private func getCartItems(){
         let foods = db.getFoods()
-        validateFoods(foods: foods) { (success) in
+//        validateFoods(foods: foods) { (success) in
             self.cartItems.removeAll()
             let chefs = self.db.getCartItems()
             if chefs.count == 0{
@@ -375,7 +375,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
                 self.calculateCost()
             }
             self.tableView.reloadData()
-        }
+//        }
     }
     
     private func validateFoods(foods: [Food], completion: @escaping(Bool) -> Void){

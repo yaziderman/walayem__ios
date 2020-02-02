@@ -31,7 +31,6 @@ class LoginPriorViewController: UIViewController {
         signupButton.layer.masksToBounds = false
         userSwitch.setOn(false, animated: false)
         // Do not show onboarding screen
-        UserDefaults.standard.set(true, forKey: "regularRun")
     }
     // MARK: - Navigation
 

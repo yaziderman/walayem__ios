@@ -129,7 +129,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         getRecommendations()
         getFoods()
         updateBadge()
-        getAddress()
+//        getAddress()
         Utils.setupNavigationBar(nav: self.navigationController!)
         StaticLinker.discoverViewController = self
 
@@ -143,7 +143,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FoodTableViewCell", for: selectedIndexPath)
         }
         self.tableView.reloadData()
-        getAddress()
+//        getAddress()
         
 //        hideActivityIndicator()
         

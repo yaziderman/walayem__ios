@@ -40,8 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 //        GIDSignIn.sharedInstance()?.presentingViewController = self
         setRootViewController()
-        getContactDetails()
-        getChefSettings()
+//        getContactDetails()
+//        getChefSettings()
         return true
     }
     
@@ -120,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if !isRegular{
             storyboard = UIStoryboard(name: "WalkThrough", bundle: nil)
         }else if session == nil{
-            storyboard = UIStoryboard(name: "User", bundle: nil)
+            storyboard = UIStoryboard(name: "Main", bundle: nil)
         }else{
             let isChef = UserDefaults.standard.bool(forKey: UserDefaultsKeys.IS_CHEF)
             if(isChef){
@@ -130,7 +130,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
         }
-        window?.rootViewController = storyboard?.instantiateInitialViewController()
+        window?.rootViewController = storyboard?.instantiateInitialViewController()        
+        
+        UserDefaults.standard.set(true, forKey: "regularRun")
     }
     
     private func getContactDetails(){

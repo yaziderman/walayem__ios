@@ -129,6 +129,24 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         }
          Utils.setupNavigationBar(nav: self.navigationController!)
         self.tableView.separatorColor = UIColor.silverEleven
+        
+        getAddress()
+    }
+    
+    
+    private func getAddress(){
+        let params = ["partner_id": 0]
+        
+        RestClient().request(WalayemApi.address, params) { (result, error) in
+            if error != nil{
+                let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+                if errmsg == OdooClient.SESSION_EXPIRED{
+                    self.onSessionExpired()
+                }
+                print (errmsg)
+                return
+            }
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
