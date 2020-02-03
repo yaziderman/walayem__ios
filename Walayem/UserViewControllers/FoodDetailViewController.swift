@@ -481,10 +481,14 @@ class FoodDetailViewController: UIViewController {
                 return
             }
             
-            let record = result!["result"] as! [String: Any]
-            self.food!.isFav = record["is_favorite"] as! Bool
+            if((result?.keys.contains("result"))!)
+            {
+                let record = result!["result"] as! [String: Any]
+                self.food!.isFav = record["is_favorite"] as! Bool
+                
+                self.changeFavouriteBarItemIcon(isFav: self.food!.isFav)
+            }
             
-            self.changeFavouriteBarItemIcon(isFav: self.food!.isFav)
         }
     }
     
