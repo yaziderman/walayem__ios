@@ -264,7 +264,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                     }else{
                         Utils.notifyRefresh()
                         self.dismiss(animated: true) {
-                            StaticLinker.loginNav?.dismiss(animated: true, completion: nil)
+                            StaticLinker.loginVC?.dismiss(animated: false, completion: {
+                                StaticLinker.loginNav?.dismiss(animated: false, completion: nil)
+                            })
                         }
                     }
                 })
@@ -276,7 +278,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                 }else{
                     Utils.notifyRefresh()
                     self.dismiss(animated: true) {
-                        StaticLinker.loginNav?.dismiss(animated: true, completion: nil)
+                        StaticLinker.loginVC?.dismiss(animated: false, completion: {
+                            StaticLinker.loginNav?.dismiss(animated: false, completion: nil)
+                        })
                     }
                 }
             })
