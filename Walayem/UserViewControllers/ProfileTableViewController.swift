@@ -131,8 +131,22 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         self.tableView.separatorColor = UIColor.silverEleven
         
         getAddress()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
     }
     
+    @objc func refresh() {
+        user = User().getUserDefaults()
+        if let image = user?.image{
+            userImageView.image = Utils.decodeImage(image)
+        }else{
+            getUserImage(user!.partner_id!)
+        }
+         Utils.setupNavigationBar(nav: self.navigationController!)
+        self.tableView.separatorColor = UIColor.silverEleven
+        
+        updateUI()
+    }
     
     private func getAddress(){
         let params = ["partner_id": 0]

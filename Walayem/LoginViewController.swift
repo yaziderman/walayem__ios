@@ -262,7 +262,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                     if self.isChef || isChef{
                         self.performSegue(withIdentifier: "ChefMainSegue", sender: self)
                     }else{
-                        self.performSegue(withIdentifier: "MainSegue", sender: self)
+                        Utils.notifyRefresh()
+                        self.dismiss(animated: true) {
+                            StaticLinker.loginNav?.dismiss(animated: true, completion: nil)
+                        }
                     }
                 })
             }
@@ -271,7 +274,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                 if self.isChef || isChef{
                     self.performSegue(withIdentifier: "ChefMainSegue", sender: self)
                 }else{
-                    self.performSegue(withIdentifier: "MainSegue", sender: self)
+                    Utils.notifyRefresh()
+                    self.dismiss(animated: true) {
+                        StaticLinker.loginNav?.dismiss(animated: true, completion: nil)
+                    }
                 }
             })
         }

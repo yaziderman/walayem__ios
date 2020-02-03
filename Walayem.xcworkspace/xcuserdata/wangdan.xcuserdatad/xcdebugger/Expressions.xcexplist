@@ -10,5 +10,38 @@
             </PersistentString>
          </PersistentStrings>
       </ContextState>
+      <ContextState
+         contextName = "closure #2 in LoginViewController.uploadImage(partnerId:isChef:isImageSet:):LoginViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.presentingViewController">
+            </PersistentString>
+            <PersistentString
+               value = "self.navigationController">
+            </PersistentString>
+            <PersistentString
+               value = "self.presentingViewController?.navigationController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LoginPriorViewController.signup(_:):LoginPriorViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.navigationController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "LoginViewController.loginViaFacebook(_:):LoginViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.parentViewController">
+            </PersistentString>
+            <PersistentString
+               value = "Utils.loginNav">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>

@@ -13,6 +13,9 @@ class Utils{
     public static var ADDED_FOODTYPE = ""
     public static var DELAY_TIME = 15
     
+    public static var NOTIFIER_KEY = "NOTIFIER_KEY"
+    
+    
     static func formatDate(_ date: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -182,5 +185,9 @@ class Utils{
     
     static func getDelayMsg() -> String {
         return "Order delivery is available during day hours, after \(DELAY_TIME) hours from now.";
+    }
+    
+    static func notifyRefresh() {
+        NotificationCenter.default.post(name: NSNotification.Name.init(NOTIFIER_KEY), object: nil);
     }
 }

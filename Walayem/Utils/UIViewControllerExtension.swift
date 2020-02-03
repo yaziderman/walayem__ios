@@ -16,12 +16,17 @@ extension UIViewController{
         OdooClient.destroy()
         
         let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
+        
+        let navigationController : UINavigationController = UINavigationController.init(rootViewController: viewController);
+        
+        navigationController.setNavigationBarHidden(true, animated: false)
         if #available(iOS 13.0, *) {
-            viewController.isModalInPresentation = true
+            navigationController.isModalInPresentation = true
         } else {
             // Fallback on earlier versions
         }
-        self.present(viewController, animated: true, completion: nil)
+        StaticLinker.loginNav = navigationController
+        self.present(navigationController, animated: true, completion: nil)
     }
     
 }

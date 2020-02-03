@@ -7,9 +7,12 @@
 //
 
 import Foundation
+import UIKit
 
 class StaticLinker
 {
     static var discoverViewController : DiscoverTableViewController? = nil
     static var chefViewController : ChefTableViewController? = nil
+    public static var loginNav: UINavigationController?
+    
 }

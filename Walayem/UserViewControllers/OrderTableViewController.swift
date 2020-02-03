@@ -31,10 +31,19 @@ class OrderTableViewController: UITableViewController, UISplitViewControllerDele
         
         self.splitViewController?.delegate = self
         self.splitViewController?.preferredDisplayMode = .allVisible
-         Utils.setupNavigationBar(nav: self.navigationController!)
+        Utils.setupNavigationBar(nav: self.navigationController!)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
+    }
+    
+    @objc func refresh() {        
+        user = User().getUserDefaults()
+        getOrderHistory()
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        user = User().getUserDefaults()
         getOrderHistory()
         UIApplication.shared.applicationIconBadgeNumber = 0
         self.splitViewController?.tabBarItem.badgeValue = nil
