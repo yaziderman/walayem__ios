@@ -122,6 +122,13 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate {
 //                self.performSegue(withIdentifier: "MainSegue", sender: self)
                 
                 Utils.notifyRefresh()
+                self.dismiss(animated: false) {
+                    StaticLinker.signupVC?.dismiss(animated: false, completion: {
+                        StaticLinker.loginVC?.dismiss(animated: false, completion: {
+                            StaticLinker.loginNav?.dismiss(animated: false, completion: nil)
+                        })
+                    })
+                }
             }
         }
     }
