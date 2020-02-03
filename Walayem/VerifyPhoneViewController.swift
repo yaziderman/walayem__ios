@@ -27,7 +27,15 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate {
             if self.user!.isChef{
                 self.performSegue(withIdentifier: "VerifyEmiratesVCSegue", sender: self)
             }else{
-                self.performSegue(withIdentifier: "MainSegue", sender: self)
+                Utils.notifyRefresh()
+                self.dismiss(animated: false) {
+                    StaticLinker.signupVC?.dismiss(animated: false, completion: {
+                        StaticLinker.loginVC?.dismiss(animated: false, completion: {
+                            StaticLinker.loginNav?.dismiss(animated: false, completion: nil)
+                        })
+                    })
+                }
+//                self.performSegue(withIdentifier: "MainSegue", sender: self)
             }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -111,7 +119,9 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate {
             if self.user!.isChef{
                 self.performSegue(withIdentifier: "VerifyEmiratesVCSegue", sender: self)
             }else{
-                self.performSegue(withIdentifier: "MainSegue", sender: self)
+//                self.performSegue(withIdentifier: "MainSegue", sender: self)
+                
+                Utils.notifyRefresh()
             }
         }
     }

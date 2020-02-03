@@ -174,6 +174,8 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        getAddress()
         updateUI()
     }
     

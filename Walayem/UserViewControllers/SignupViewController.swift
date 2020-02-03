@@ -417,6 +417,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         
         chefPasswordTextField.placeHolderColor = UIColor.placeholderColor
         chefPasswordTextField.textColor = UIColor.textColor
+        
+        StaticLinker.signupVC = self
     }
 
     override func viewWillLayoutSubviews() {

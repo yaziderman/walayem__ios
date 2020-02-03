@@ -14,5 +14,7 @@ class StaticLinker
     static var discoverViewController : DiscoverTableViewController? = nil
     static var chefViewController : ChefTableViewController? = nil
     public static var loginNav: UINavigationController?
+    public static var signupVC : UIViewController? = nil
+    public static var loginVC : UIViewController? = nil
     
 }
