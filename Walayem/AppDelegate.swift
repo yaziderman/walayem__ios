@@ -206,6 +206,7 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         UIApplication.shared.applicationIconBadgeNumber += 1
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UpdateBadgeNotification"), object: nil, userInfo: userInfo)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "OrderStateNotification"), object: nil, userInfo: userInfo)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "UpdateTabNotification"), object: nil, userInfo: userInfo)
         
         completionHandler()
     }

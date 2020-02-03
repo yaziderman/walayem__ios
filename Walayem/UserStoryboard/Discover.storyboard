@@ -809,7 +809,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="woZ-RH-97U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1588" y="163.71814092953525"/>
+            <point key="canvasLocation" x="2527.1999999999998" y="163.71814092953525"/>
         </scene>
         <!--Discover-->
         <scene sceneID="g6O-t2-flu">
@@ -1174,7 +1174,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fdh-qw-9qM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="700" y="164.16791604197903"/>
+            <point key="canvasLocation" x="1639.2" y="163.26836581709148"/>
         </scene>
         <!--Discover-->
         <scene sceneID="IJx-Z4-dfp">
@@ -1194,7 +1194,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vts-fH-qjE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-50.399999999999999" y="165.96701649175412"/>
+            <point key="canvasLocation" x="700" y="177"/>
         </scene>
         <!--Food Search Result Controller-->
         <scene sceneID="Kvx-eE-DlZ">

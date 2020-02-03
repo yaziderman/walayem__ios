@@ -124,6 +124,10 @@
 		5B467DF923B882CE008620FF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DF023B882CD008620FF /* User.swift */; };
 		5B467DFA23B882CE008620FF /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DF123B882CE008620FF /* Food.swift */; };
 		BE6B334923C5EF6400CB01D6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6B334823C5EF6400CB01D6 /* Extensions.swift */; };
+		BEBB0FEB23E7E4B500D43789 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBB0FEA23E7E4B500D43789 /* HomeViewController.swift */; };
+		BEBB0FEE23E7E65F00D43789 /* MealOfDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBB0FEC23E7E65E00D43789 /* MealOfDayCollectionViewCell.swift */; };
+		BEBB0FEF23E7E65F00D43789 /* RecommendedHomeCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBB0FED23E7E65E00D43789 /* RecommendedHomeCVCell.swift */; };
+		BEBB0FF123E7EC6700D43789 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBB0FF023E7EC6700D43789 /* Home.storyboard */; };
 		C3E01AAB1E1B439F32F34F23 /* Pods_Walayem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF272E4C0EC903E149663133 /* Pods_Walayem.framework */; };
 /* End PBXBuildFile section */
 
@@ -250,6 +254,10 @@
 		5B467DF123B882CE008620FF /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		7B1A71D8F45A96894E6650A3 /* Pods-Walayem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Walayem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Walayem/Pods-Walayem.debug.xcconfig"; sourceTree = "<group>"; };
 		BE6B334823C5EF6400CB01D6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		BEBB0FEA23E7E4B500D43789 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BEBB0FEC23E7E65E00D43789 /* MealOfDayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealOfDayCollectionViewCell.swift; sourceTree = "<group>"; };
+		BEBB0FED23E7E65E00D43789 /* RecommendedHomeCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommendedHomeCVCell.swift; sourceTree = "<group>"; };
+		BEBB0FF023E7EC6700D43789 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		BF272E4C0EC903E149663133 /* Pods_Walayem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Walayem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -353,6 +361,8 @@
 		04C596C120848F4E00B284D3 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				BEBB0FEC23E7E65E00D43789 /* MealOfDayCollectionViewCell.swift */,
+				BEBB0FED23E7E65E00D43789 /* RecommendedHomeCVCell.swift */,
 				04C596C220848F9700B284D3 /* OnboardingCollectionViewCell.swift */,
 				04D9E8AE2085FCD1002E1B51 /* RecommendationCollectionViewCell.swift */,
 				04D9E8B02085FD00002E1B51 /* FoodTableViewCell.swift */,
@@ -387,6 +397,7 @@
 				04CF06E3208468D40064B18A /* Cart.storyboard */,
 				04CF06E5208468EE0064B18A /* Order.storyboard */,
 				04CF06E7208468FF0064B18A /* Profile.storyboard */,
+				BEBB0FF023E7EC6700D43789 /* Home.storyboard */,
 			);
 			path = UserStoryboard;
 			sourceTree = "<group>";
@@ -433,6 +444,7 @@
 				04831C4720AC38D400195B1A /* ChefViewControllers */,
 				04C596BA2084763C00B284D3 /* UserViewControllers */,
 				04C596BF20848ED900B284D3 /* OnBoardingViewController.swift */,
+				BEBB0FEA23E7E4B500D43789 /* HomeViewController.swift */,
 				04C596C42084BB5D00B284D3 /* LocationPermissionViewController.swift */,
 				04C596C62084C15F00B284D3 /* LoginPriorViewController.swift */,
 				04D9E8A12085B38D002E1B51 /* LoginViewController.swift */,
@@ -580,6 +592,7 @@
 				04CF06DE208465D50064B18A /* WalkThrough.storyboard in Resources */,
 				52F2D1CF209ECE1B00FAE72C /* ChefMain.storyboard in Resources */,
 				523CDF8620A0708E0090C3E6 /* ChefOrders.storyboard in Resources */,
+				BEBB0FF123E7EC6700D43789 /* Home.storyboard in Resources */,
 				04CF06E0208468AD0064B18A /* Discover.storyboard in Resources */,
 				523CDF8A20A070B60090C3E6 /* ChefProfile.storyboard in Resources */,
 				04CF06E2208468BE0064B18A /* Chef.storyboard in Resources */,
@@ -655,6 +668,7 @@
 				04B7FE852091A49700018304 /* ChefDetailViewController.swift in Sources */,
 				04CCB84620AD9CFA0011BD95 /* CompletedOrderTableViewController.swift in Sources */,
 				040902D220B2922800059F1D /* ChefFoodViewController.swift in Sources */,
+				BEBB0FEE23E7E65F00D43789 /* MealOfDayCollectionViewCell.swift in Sources */,
 				04831C4920AC39FE00195B1A /* BadgeButton.swift in Sources */,
 				5B467DF223B882CE008620FF /* Cuisine.swift in Sources */,
 				043532FA20A2C5C400D90035 /* OrderTableViewCell.swift in Sources */,
@@ -725,6 +739,7 @@
 				04D9E8A72085BA64002E1B51 /* WalayemApi.swift in Sources */,
 				04C596C320848F9700B284D3 /* OnboardingCollectionViewCell.swift in Sources */,
 				0ADC141320B6D8E80003FC8B /* ChefTabController.swift in Sources */,
+				BEBB0FEF23E7E65F00D43789 /* RecommendedHomeCVCell.swift in Sources */,
 				04F38A22208F231100223B82 /* AddressViewController.swift in Sources */,
 				04CCB84220AD74420011BD95 /* ChefOrderViewController.swift in Sources */,
 				0A0F54BD2110845E004F2006 /* FontsOverride.swift in Sources */,
@@ -743,6 +758,7 @@
 				04AD0D3F209B0F33002C072D /* FilterCollectionViewCell.swift in Sources */,
 				04C596C72084C15F00B284D3 /* LoginPriorViewController.swift in Sources */,
 				04E854BA20B1824F00A26562 /* ChefFoodCell.swift in Sources */,
+				BEBB0FEB23E7E4B500D43789 /* HomeViewController.swift in Sources */,
 				04A6594520A0350400DBCF86 /* CartFoodTableViewCell.swift in Sources */,
 				04CCB84020AD68870011BD95 /* VerifyEmiratesViewController.swift in Sources */,
 				BE6B334923C5EF6400CB01D6 /* Extensions.swift in Sources */,
