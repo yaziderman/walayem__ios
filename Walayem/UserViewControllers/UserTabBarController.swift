@@ -20,7 +20,10 @@ class UserTabBarController: UITabBarController{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NotificationCenter.default.addObserver(self, selector: #selector(setBadge(_:)), name: NSNotification.Name(rawValue: "UpdateBadgeNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(setBadge(_:)), name: NSNotification.Name(rawValue: "showOrderDetail"), object: nil)
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(setUpTabSeletion(_:)), name: NSNotification.Name(rawValue: "UpdateTabNotification"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(showOrderDetail(_:)), name: NSNotification.Name(rawValue: "OrderStateNotification"), object: nil)
         setupTabBar()
     }
@@ -42,13 +45,23 @@ class UserTabBarController: UITabBarController{
         tabBar.layer.masksToBounds = false
     }
     // MARK: Private methods
-    
     @objc private func setBadge(_ notification : Notification){
         if let tabItem = self.tabBar.items?[3]{
             tabItem.badgeColor = UIColor.colorPrimary
             tabItem.badgeValue = "*"
         }
     }
+    
+//
+//    @objc private func setUpTabSeletion(_ notification : Notification){
+//        if let tabItem = self.tabBar.items?[1]{
+//            tabItem.badgeColor = UIColor.colorPrimary
+////            tabItem.badgeValue = "*"
+//            print("in setUpTabSeletion")
+//        }
+//        self.selectedIndex = 1
+//
+//    }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         

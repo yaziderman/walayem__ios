@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
-    <device id="ipad11_0rounded" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -17,11 +17,12 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Pfd-j8-4CE" kind="relationship" relationship="viewControllers" id="x1d-ZS-pIP"/>
-                        <segue destination="zcZ-Jj-PyY" kind="relationship" relationship="viewControllers" id="xGu-oT-XQR"/>
-                        <segue destination="rOU-95-rD6" kind="relationship" relationship="viewControllers" id="hmu-NX-A9G"/>
-                        <segue destination="GJm-Ng-64y" kind="relationship" relationship="viewControllers" id="ps2-1Z-0yX"/>
-                        <segue destination="FEe-jv-Vff" kind="relationship" relationship="viewControllers" id="XO4-Ak-Tz9"/>
+                        <segue destination="Ydl-oc-pxD" kind="relationship" relationship="viewControllers" id="i4s-xH-mu6"/>
+                        <segue destination="Pfd-j8-4CE" kind="relationship" relationship="viewControllers" id="v7y-zJ-e2V"/>
+                        <segue destination="zcZ-Jj-PyY" kind="relationship" relationship="viewControllers" id="kxE-oV-oEl"/>
+                        <segue destination="FEe-jv-Vff" kind="relationship" relationship="viewControllers" id="MYp-od-U03"/>
+                        <segue destination="rOU-95-rD6" kind="relationship" relationship="viewControllers" id="Afo-nZ-TYL"/>
+                        <segue destination="GJm-Ng-64y" kind="relationship" relationship="viewControllers" id="aLo-QW-u1k"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -77,6 +78,17 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MIh-hb-BXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="822" y="260"/>
+        </scene>
+        <!--Home-->
+        <scene sceneID="dhE-1o-RMP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" id="Ydl-oc-pxD" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="2Ap-Ym-Yoo"/>
+                    <navigationItem key="navigationItem" id="Lh6-Sc-xoL"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AuS-pl-BHe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="825" y="161"/>
         </scene>
     </scenes>
 </document>
