@@ -24,7 +24,7 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource {
 //        didSet{
 //            updateUI()
 //        }
-    }
+//    }
     
     private func updateUI(){
         
@@ -53,7 +53,7 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource {
             
             cellPriceLabel?.text = "1,200 AED"
 //            let food = foods[indexPath.section]
-            cellNameLabel?.text = food.name
+//            cellNameLabel?.text = food.name
             cellView?.roundCorners([.bottomRight,.bottomLeft], radius: 15)
             
 //            let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(876)/image")
