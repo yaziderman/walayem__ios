@@ -10,6 +10,7 @@ import UIKit
 
 class HomeButtonTableViewCell: UITableViewCell {
 
+    var parent: UIViewController?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -18,6 +19,9 @@ class HomeButtonTableViewCell: UITableViewCell {
     @IBAction func browseMealsPressed(_ sender: Any) {
         print("This will take you towards Root of Discover food tab.")
         
+        let viewController : UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
+        StaticLinker.mainVC = viewController
+        self.parent!.present(viewController, animated: true, completion: nil)
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

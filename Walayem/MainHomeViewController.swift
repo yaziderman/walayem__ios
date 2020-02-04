@@ -99,7 +99,9 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
         
         
         else if indexPath.row == 3 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "mainHomeTableViewCell1") else { fatalError("mainHomeTableViewCell1") }
+            guard let cell : HomeButtonTableViewCell = tableView.dequeueReusableCell(withIdentifier: "mainHomeTableViewCell1") as! HomeButtonTableViewCell else { fatalError("mainHomeTableViewCell1") }
+            
+            cell.parent = self
             cell.selectionStyle = .none
             return cell
         }

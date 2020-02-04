@@ -16,5 +16,6 @@ class StaticLinker
     public static var loginNav: UINavigationController?
     public static var signupVC : UIViewController? = nil
     public static var loginVC : UIViewController? = nil
+    public static var mainVC : UIViewController? = nil
     
 }
