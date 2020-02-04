@@ -28,7 +28,8 @@ class MealOfDayCollectionViewCell:UICollectionViewCell {
         imageView.layer.cornerRadius = 15
         imageView.layer.masksToBounds = true
                 
-        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id)/image")
+//          let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id)/image")
+        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/987/image")
         imageView.kf.setImage(with: imageUrl)
     }
     
