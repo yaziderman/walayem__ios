@@ -15,14 +15,21 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource {
     @IBOutlet weak var bookmarkImage: UIImageView!
     @IBOutlet weak var bookmarkText: UILabel!
     
-    var food: Food!{
-        didSet{
-            updateUI()
-        }
+    var cellPriceLabel = UILabel()
+    var cellNameLabel = UILabel()
+    var foods = [Food]()
+    
+//
+//    var food: Food!{
+//        didSet{
+//            updateUI()
+//        }
     }
     
     private func updateUI(){
         
+//        cellNameLabel.text = food.name
+//        collectionView.reloadData()
     }
     
     
@@ -45,6 +52,8 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource {
             let cellNameLabel = collectionView.viewWithTag(8803) as? UILabel
             
             cellPriceLabel?.text = "1,200 AED"
+//            let food = foods[indexPath.section]
+            cellNameLabel?.text = food.name
             cellView?.roundCorners([.bottomRight,.bottomLeft], radius: 15)
             
 //            let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(876)/image")

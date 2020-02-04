@@ -17,7 +17,6 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Ydl-oc-pxD" kind="relationship" relationship="viewControllers" id="i4s-xH-mu6"/>
                         <segue destination="Pfd-j8-4CE" kind="relationship" relationship="viewControllers" id="v7y-zJ-e2V"/>
                         <segue destination="zcZ-Jj-PyY" kind="relationship" relationship="viewControllers" id="kxE-oV-oEl"/>
                         <segue destination="FEe-jv-Vff" kind="relationship" relationship="viewControllers" id="MYp-od-U03"/>

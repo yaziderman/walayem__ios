@@ -50,6 +50,7 @@ class MainHomeViewController: UIViewController {
                 let food = Food(record: record as! [String : Any])
                 self.recommendedFoods.append(food)
                 print(food.chefName as Any)
+
             }
         }
     }
@@ -90,6 +91,8 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
             cell.identifier = collectionViewCellIdentifier;
             cell.bookmarkText.text = self.bookmarks[indexPath.row]
             cell.selectionStyle = .none
+//            cell.foods = foods
+            
             return cell
         }
         

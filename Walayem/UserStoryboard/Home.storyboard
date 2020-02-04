@@ -353,11 +353,10 @@
             </objects>
             <point key="canvasLocation" x="2069.5652173913045" y="6.6964285714285712"/>
         </scene>
-        <!--Home-->
+        <!--Navigation Controller-->
         <scene sceneID="eM1-Zu-Ufj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2SF-dD-v4x" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" id="jUV-sd-yRJ"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3Lr-Na-ehx">
@@ -378,7 +377,6 @@
         <image name="Image" width="1125" height="257"/>
         <image name="bookmark" width="15" height="19"/>
         <image name="foodImageEmpty" width="512" height="512"/>
-        <image name="house" catalog="system" width="64" height="54"/>
         <image name="launchScreen2" width="203" height="423"/>
     </resources>
 </document>
