@@ -15,6 +15,7 @@ class WalayemApi{
 //static let BASE_URL: String = "http://192.168.1.103:8073"
     static let DB_NAME: String = "walayem"
     
+    //    var http://18.139.224.233/api/promoted
     
     // Customer Api
     static let signup: String = "\(BASE_URL)/api/signup"

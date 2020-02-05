@@ -15,7 +15,7 @@ class MainHomeViewController: UIViewController {
     var recommendedFoods = [Food]()
     var foods = [Food]()
     let bookmarks = ["Recommended", "Meals of the day", "Cuisines", "Best Chefs"]
-//    let markImages = [UIImage(named: "bookmark")]
+//    let tableCell = HomeTableViewCell()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,7 +23,7 @@ class MainHomeViewController: UIViewController {
            super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        getRecommendations()
+//        getRecommendations()
         
         print(recommendedFoods)
        
@@ -50,7 +50,7 @@ class MainHomeViewController: UIViewController {
                 let food = Food(record: record as! [String : Any])
                 self.recommendedFoods.append(food)
                 print(food.chefName as Any)
-
+                self.tableView.reloadData()
             }
         }
     }
@@ -91,7 +91,7 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
             cell.identifier = collectionViewCellIdentifier;
             cell.bookmarkText.text = self.bookmarks[indexPath.row]
             cell.selectionStyle = .none
-//            cell.foods = foods
+            cell.foods = foods
             
             return cell
         }
