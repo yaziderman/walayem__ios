@@ -227,8 +227,9 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
             DatabaseHandler().clearDatabase()
             OdooClient.destroy()
             
-            let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
-            self.present(viewController, animated: true, completion: nil)
+            StaticLinker.mainVC?.dismiss(animated: true, completion: nil)
+//            let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
+//            self.present(viewController, animated: true, completion: nil)
         })
     }
     

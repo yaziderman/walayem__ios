@@ -26,9 +26,31 @@ class UserTabBarController: UITabBarController{
         
         NotificationCenter.default.addObserver(self, selector: #selector(showOrderDetail(_:)), name: NSNotification.Name(rawValue: "OrderStateNotification"), object: nil)
         setupTabBar()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateProfileTitle) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
+        
+        updateProfileTitle()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateProfileTitle()
+    }
     
+    @objc func updateProfileTitle() {
+        
+        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        if(session == nil)
+        {
+            self.tabBar.items![4].title = "Log In"
+        }
+        else
+        {
+            self.tabBar.items![4].title = "Profile"
+        }
+        
+    }
     
     func setupTabBar(){
         //hide divider
