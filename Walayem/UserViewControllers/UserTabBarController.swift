@@ -30,6 +30,7 @@ class UserTabBarController: UITabBarController{
         NotificationCenter.default.addObserver(self, selector: #selector(updateProfileTitle) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
         
         updateProfileTitle()
+        StaticLinker.mainVC = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,7 +69,7 @@ class UserTabBarController: UITabBarController{
     }
     // MARK: Private methods
     @objc private func setBadge(_ notification : Notification){
-        if let tabItem = self.tabBar.items?[3]{
+        if let tabItem = self.tabBar.items?[4]{
             tabItem.badgeColor = UIColor.colorPrimary
             tabItem.badgeValue = "*"
         }

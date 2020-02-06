@@ -50,4 +50,9 @@ class LoginPriorViewController: UIViewController {
             os_log("Sign up segue", log: .default, type: .debug)
         }
     }
+    @IBAction func onSkep(_ sender: Any) {        
+        self.dismiss(animated: true) {
+            StaticLinker.mainVC?.selectedIndex = 0
+        }
+    }
 }

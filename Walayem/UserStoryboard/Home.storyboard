@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2SF-dD-v4x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2SF-dD-v4x">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main Home View Controller-->
+        <!--Home-->
         <scene sceneID="q4F-CG-IyQ">
             <objects>
                 <viewController id="qAR-xy-7VH" customClass="MainHomeViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
@@ -344,7 +344,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aAK-pw-AgJ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="WRN-ho-Taf"/>
+                    <navigationItem key="navigationItem" title="Home" id="WRN-ho-Taf"/>
                     <connections>
                         <outlet property="tableView" destination="dZI-7y-IzS" id="CEv-D8-qhF"/>
                     </connections>
@@ -353,10 +353,11 @@
             </objects>
             <point key="canvasLocation" x="2069.5652173913045" y="6.6964285714285712"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Home-->
         <scene sceneID="eM1-Zu-Ufj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2SF-dD-v4x" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="1LO-qZ-yzi"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3Lr-Na-ehx">
@@ -377,6 +378,7 @@
         <image name="Image" width="1125" height="257"/>
         <image name="bookmark" width="15" height="19"/>
         <image name="foodImageEmpty" width="512" height="512"/>
+        <image name="home" width="16" height="16"/>
         <image name="launchScreen2" width="203" height="423"/>
     </resources>
 </document>

@@ -12,7 +12,7 @@ extension UIViewController{
     
     func onSessionExpired() {
         User().clearUserDefaults()
-        DatabaseHandler().clearDatabase()
+//        DatabaseHandler().clearDatabase()
         OdooClient.destroy()
         
         let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!

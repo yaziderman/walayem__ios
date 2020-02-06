@@ -19,9 +19,7 @@ class HomeButtonTableViewCell: UITableViewCell {
     @IBAction func browseMealsPressed(_ sender: Any) {
         print("This will take you towards Root of Discover food tab.")
         
-        let viewController : UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
-        StaticLinker.mainVC = viewController
-        self.parent!.present(viewController, animated: true, completion: nil)
+        StaticLinker.mainVC?.selectedIndex = 1;
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

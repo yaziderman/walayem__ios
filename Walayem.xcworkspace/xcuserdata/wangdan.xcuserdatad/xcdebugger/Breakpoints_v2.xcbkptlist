@@ -39,17 +39,64 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E0272A52-F78C-43BC-A351-626DCDB17ABA"
+            uuid = "892A927E-C5A9-4E05-B497-A219691C9F39"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Walayem/UserViewControllers/CartViewController.swift"
+            filePath = "Walayem/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "placeOrder(_:)"
-            landmarkType = "7">
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "HomeViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "892A927E-C5A9-4E05-B497-A219691C9F39 - b9066fa9cebf6b02"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Walayem.HomeViewController.usertab.getter : Walayem.UserTabBarController"
+                  moduleName = "Walayem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Work/Workspace/Walayem_iOS/Walayem/HomeViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "59">
+               </Location>
+               <Location
+                  uuid = "892A927E-C5A9-4E05-B497-A219691C9F39 - c4bc8d0695b9f756"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Walayem.HomeViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; Walayem.HomeViewController"
+                  moduleName = "Walayem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Work/Workspace/Walayem_iOS/Walayem/HomeViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "189">
+               </Location>
+               <Location
+                  uuid = "892A927E-C5A9-4E05-B497-A219691C9F39 - c6522e40e25d253"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Walayem.HomeViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;Walayem.HomeViewController&gt;"
+                  moduleName = "Walayem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Volumes/Work/Workspace/Walayem_iOS/Walayem/HomeViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "126">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

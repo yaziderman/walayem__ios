@@ -523,7 +523,7 @@ class FoodDetailViewController: UIViewController {
     }
     
     private func updateBadge(){
-        if let tabItem = tabBarController?.tabBar.items?[2]{
+        if let tabItem = tabBarController?.tabBar.items?[3]{
             tabItem.badgeColor = UIColor.colorPrimary
             tabItem.badgeValue = db.getFoodsCount()
         }

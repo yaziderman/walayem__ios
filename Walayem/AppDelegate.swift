@@ -120,13 +120,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if !isRegular{
             storyboard = UIStoryboard(name: "WalkThrough", bundle: nil)
         }else if session == nil{
-            storyboard = UIStoryboard(name: "Home", bundle: nil)
+            storyboard = UIStoryboard(name: "Main", bundle: nil)
         }else{
             let isChef = UserDefaults.standard.bool(forKey: UserDefaultsKeys.IS_CHEF)
             if(isChef){
                 storyboard = UIStoryboard(name: "ChefMain", bundle: nil)
             }else{
-                storyboard = UIStoryboard(name: "Home", bundle: nil)
+                storyboard = UIStoryboard(name: "Main", bundle: nil)
             }
             
         }

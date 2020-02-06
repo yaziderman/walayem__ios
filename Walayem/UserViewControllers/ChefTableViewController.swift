@@ -213,6 +213,7 @@ class ChefTableViewController: UIViewController {
             tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
         let selectedAddressId = UserDefaults.standard.integer(forKey: "OrderAddress") as Int?
+        
         if(selectedAddressId != nil){
             for addr in (StaticLinker.discoverViewController?.addressList)!{
                 if(addr.id == selectedAddressId){

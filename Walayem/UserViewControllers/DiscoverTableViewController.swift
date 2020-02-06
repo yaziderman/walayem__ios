@@ -87,12 +87,17 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             self.selectedCuisines = sourceVC.selectedCuisines!
             let badgeNumber = selectedTags.count + selectedCuisines.count
             
-            if badgeNumber > 0{
-                searchFood()
-                filterBarButton.addBadge(number: badgeNumber, withOffset: CGPoint(x: 0, y: 5), andColor: UIColor.colorPrimary, andFilled: true)
-            }else {
-                getFoods()
-                filterBarButton.removeBadge()
+            do{
+                if badgeNumber > 0{
+                    searchFood()
+                    filterBarButton.addBadge(number: badgeNumber, withOffset: CGPoint(x: 0, y: 5), andColor: UIColor.colorPrimary, andFilled: true)
+                }else {
+                    getFoods()
+                    filterBarButton.removeBadge()
+                }
+            }
+            catch {
+            
             }
         }
     }
@@ -549,7 +554,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     }
     
     private func updateBadge(){
-        if let tabItem = tabBarController?.tabBar.items?[2]{
+        if let tabItem = tabBarController?.tabBar.items?[3]{
             tabItem.badgeColor = UIColor.colorPrimary
             tabItem.badgeValue = db.getFoodsCount()
         }

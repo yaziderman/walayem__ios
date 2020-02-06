@@ -224,10 +224,13 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
             Messaging.messaging().unsubscribe(fromTopic: "\(self.user!.partner_id!)i")
             Messaging.messaging().unsubscribe(fromTopic: "alluseri")
             User().clearUserDefaults()
-            DatabaseHandler().clearDatabase()
+//            DatabaseHandler().clearDatabase()
             OdooClient.destroy()
             
-            StaticLinker.mainVC?.dismiss(animated: true, completion: nil)
+            StaticLinker.mainVC?.selectedIndex = 0
+            
+            Utils.notifyRefresh()
+//            StaticLinker.mainVC?.dismiss(animated: true, completion: nil)
 //            let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
 //            self.present(viewController, animated: true, completion: nil)
         })
@@ -248,6 +251,9 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
                 fatalError("Unexpected view controller")
             }
             showDetailViewController(termsVC, sender: self)
+        }else if(indexPath.section, indexPath.row) == (1, 1) {
+            let orderVC = UIStoryboard(name: "Order", bundle: Bundle.main).instantiateInitialViewController();
+            showDetailViewController(orderVC!, sender: self)
         }else if(indexPath.section, indexPath.row) == (2, 1) {
             guard let privacyVC = UIStoryboard(name: "More", bundle: Bundle.main).instantiateViewController(withIdentifier: "PrivacyVC") as? PrivacyViewController else{
                 fatalError("Unexpected view controller")
