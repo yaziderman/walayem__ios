@@ -32,8 +32,10 @@ class RestClient{
         let jsonParam : [String: Any] = ["jsonrpc": "2.0",
                                          "id": Int(Date().timeIntervalSince1970),
                                          "params": params]
+        var parameter = [String:AnyObject]()
+ 
         
-        Alamofire.request(url, method: .post, parameters: jsonParam, encoding: JSONEncoding.default, headers: headers)
+        Alamofire.request(url, method: .post, parameters: jsonParam , encoding: JSONEncoding.default, headers: headers)
         .validate()
         .responseJSON { (response) in
             if response.result.isSuccess{
@@ -51,25 +53,46 @@ class RestClient{
     
     
     func requestNewApi(_ url: String, _ params: [String: Any], _ completionHandler: @escaping(_ result: [String: Any]?, _ error: NSError?) -> Void){
-
         
-        let parameters = "{}"
-        let postData = parameters.data(using: .utf8)
         
-        var request = URLRequest(url: URL(string:WalayemApi.homeRecommendation)!,timeoutInterval: Double.infinity)
-        request.httpMethod = "GET"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = postData
-
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard data != nil else {
-            print(String(describing: error))
-            return
-          }
-            print(response as Any)
+        var parameter = [String:AnyObject]()
+        
+        Alamofire.request(url, method: .post, parameters: parameter , encoding: JSONEncoding.default, headers: headers)
+        .validate()
+        .responseJSON { (response) in
+            if response.result.isSuccess{
+                
+//                response.
+                
+                let value: [String: Any] = response.result.value as! [String: Any]
+                if let error = value["error"] as? [String: Any]{
+                    completionHandler(nil, NSError(domain: "", code: error["code"] as! Int, userInfo: [NSLocalizedDescriptionKey: error["message"] as! String]))
+                }else{
+                    completionHandler(value, nil)
+                }
+            }else{
+                completionHandler(nil, response.result.error as NSError?)
+            }
         }
-
-        task.resume()
+        
+        
+//        let parameters = "{}"
+//        let postData = parameters.data(using: .utf8)
+//
+//        var request = URLRequest(url: URL(string:WalayemApi.homeRecommendation)!,timeoutInterval: Double.infinity)
+//        request.httpMethod = "GET"
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.httpBody = postData
+//
+//        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+//            guard data != nil else {
+//            print(String(describing: error))
+//            return
+//          }
+//            print(response as Any)
+//        }
+//
+//        task.resume()
         
 //
 //        let mUrl = URL(string: "http://app.walayem.com/walayem/image/product.template/674/image")
@@ -89,19 +112,19 @@ class RestClient{
 //        mtask.resume()
         
         
-        let headers = ["Content-Type": "application/json"]
-               let params : [String: Any] = ["body": "{}"]
-               
-       let url = "http://18.139.224.233/api/promoted"
-       Alamofire.request(url, method: .get, parameters: params, encoding: JSONEncoding.default,  headers: headers).responseJSON { (response) in
-             switch response.result {
-             case .success:
-                 print("SUKCES with \(response)")
-                 print((String.init(data: response.data!, encoding: .utf8))!)
-             case .failure(let error):
-                 print("ERROR with '\(error)")
-             }
-         }
+//        let headers = ["Content-Type": "application/json"]
+//               let params : [String: Any] = ["body": "{}"]
+//               
+//       let url = "http://18.139.224.233/api/promoted"
+//       Alamofire.request(url, method: .get, parameters: params, encoding: JSONEncoding.default,  headers: headers).responseJSON { (response) in
+//             switch response.result {
+//             case .success:
+//                 print("SUKCES with \(response)")
+//                 print((String.init(data: response.data!, encoding: .utf8))!)
+//             case .failure(let error):
+//                 print("ERROR with '\(error)")
+//             }
+//         }
         
         
 //        let jsonParam : [String: Any] = ["jsonrpc": "2.0",

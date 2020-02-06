@@ -110,6 +110,19 @@ that easy</string>
                                 <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyl-hA-91S">
+                                <rect key="frame" x="325" y="0.0" width="34" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8Zu-me-tNI"/>
+                                    <constraint firstAttribute="width" constant="34" id="SEa-NZ-QBG"/>
+                                </constraints>
+                                <state key="normal" title="Skip ">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipButton:" destination="7sD-th-m69" eventType="touchUpInside" id="mNC-xc-4qV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -122,10 +135,12 @@ that easy</string>
                             <constraint firstItem="tUf-vI-E1B" firstAttribute="top" secondItem="lvl-Bt-4nc" secondAttribute="top" id="Jy5-gh-ncG"/>
                             <constraint firstItem="VlU-RX-AjX" firstAttribute="centerX" secondItem="Of9-Tf-dae" secondAttribute="centerX" id="Qj6-Cg-Y5Z"/>
                             <constraint firstItem="XQv-cq-EmJ" firstAttribute="leading" secondItem="lvl-Bt-4nc" secondAttribute="leading" constant="32" id="TxQ-zt-Dnq"/>
+                            <constraint firstItem="lvl-Bt-4nc" firstAttribute="trailing" secondItem="zyl-hA-91S" secondAttribute="trailing" constant="16" id="Uxh-He-aRd"/>
                             <constraint firstItem="VlU-RX-AjX" firstAttribute="top" secondItem="aCS-pV-rUJ" secondAttribute="bottom" constant="20" id="aXv-HU-VH7"/>
                             <constraint firstItem="x5W-Kz-zOt" firstAttribute="centerX" secondItem="Of9-Tf-dae" secondAttribute="centerX" id="bBA-sn-gt0"/>
                             <constraint firstItem="aCS-pV-rUJ" firstAttribute="centerX" secondItem="Of9-Tf-dae" secondAttribute="centerX" id="cNU-rA-ugP"/>
                             <constraint firstItem="tUf-vI-E1B" firstAttribute="trailing" secondItem="Of9-Tf-dae" secondAttribute="trailingMargin" id="dTf-Gh-fah"/>
+                            <constraint firstItem="zyl-hA-91S" firstAttribute="top" secondItem="lvl-Bt-4nc" secondAttribute="top" id="eCf-0G-3Se"/>
                             <constraint firstItem="j7L-HN-nNT" firstAttribute="centerX" secondItem="Jgs-ww-IwP" secondAttribute="centerX" id="fwA-bv-xc9"/>
                             <constraint firstItem="XGm-zI-Uj8" firstAttribute="centerX" secondItem="Of9-Tf-dae" secondAttribute="centerX" id="l7W-vL-oej"/>
                             <constraint firstItem="Jgs-ww-IwP" firstAttribute="centerX" secondItem="AQM-Pm-H1Z" secondAttribute="centerX" id="q1p-jd-fex"/>
@@ -322,6 +337,16 @@ that easy</string>
                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCg-N4-TVj" userLabel="Skip">
+                                                <rect key="frame" x="322" y="8" width="45" height="45"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="45" id="cSx-qp-4eb"/>
+                                                    <constraint firstAttribute="width" constant="45" id="pns-Sh-eEe"/>
+                                                </constraints>
+                                                <state key="normal" title="Skip ">
+                                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -333,7 +358,9 @@ that easy</string>
                                             <constraint firstItem="fvV-Kv-DjX" firstAttribute="centerX" secondItem="AlU-km-1RG" secondAttribute="centerX" id="JRf-QL-5fz"/>
                                             <constraint firstItem="wv0-iX-UBx" firstAttribute="centerX" secondItem="AlU-km-1RG" secondAttribute="centerX" id="Lzr-5U-mjD"/>
                                             <constraint firstItem="5Pd-or-48l" firstAttribute="centerX" secondItem="AlU-km-1RG" secondAttribute="centerX" id="NjC-Wv-xrC"/>
+                                            <constraint firstAttribute="trailing" secondItem="MCg-N4-TVj" secondAttribute="trailing" constant="8" id="S4M-ti-o74"/>
                                             <constraint firstItem="88G-a7-dNl" firstAttribute="centerX" secondItem="AlU-km-1RG" secondAttribute="centerX" id="U5n-7r-mEc"/>
+                                            <constraint firstItem="MCg-N4-TVj" firstAttribute="top" secondItem="AlU-km-1RG" secondAttribute="top" constant="8" id="Xtp-c4-bsL"/>
                                             <constraint firstItem="z29-m1-bou" firstAttribute="centerX" secondItem="AlU-km-1RG" secondAttribute="centerX" id="Z8W-Cc-2Rh"/>
                                             <constraint firstAttribute="bottom" secondItem="5Pd-or-48l" secondAttribute="bottom" constant="12" id="dSI-SF-mVs"/>
                                             <constraint firstAttribute="trailing" secondItem="wv0-iX-UBx" secondAttribute="trailing" constant="32" id="jms-It-dt9"/>
@@ -401,7 +428,7 @@ that easy</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="klX-oj-sdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-287" y="-795"/>
+            <point key="canvasLocation" x="-287.19999999999999" y="-795.6521739130435"/>
         </scene>
         <!--Reset Password-->
         <scene sceneID="HT0-oK-xyD">

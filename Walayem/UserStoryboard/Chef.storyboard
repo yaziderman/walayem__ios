@@ -695,23 +695,23 @@
                                                                     </subviews>
                                                                 </stackView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Or8-6D-0iq">
-                                                                    <rect key="frame" x="298.66666666666669" y="80" width="95.333333333333314" height="34"/>
+                                                                    <rect key="frame" x="230.66666666666663" y="46" width="163.33333333333337" height="68"/>
                                                                     <subviews>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzp-Cx-EGt">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="68" height="68"/>
                                                                             <state key="normal" image="subtract"/>
                                                                             <connections>
                                                                                 <action selector="subtractItem:" destination="bHb-jm-Dta" eventType="touchUpInside" id="Ffc-QQ-VRy"/>
                                                                             </connections>
                                                                         </button>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xng-e0-7m8">
-                                                                            <rect key="frame" x="42" y="0.0" width="11.333333333333336" height="34"/>
+                                                                            <rect key="frame" x="76.000000000000028" y="0.0" width="11.333333333333329" height="68"/>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                             <color key="textColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbk-cB-DR3">
-                                                                            <rect key="frame" x="61.333333333333314" y="0.0" width="34" height="34"/>
+                                                                            <rect key="frame" x="95.333333333333343" y="0.0" width="68" height="68"/>
                                                                             <state key="normal" image="add"/>
                                                                             <connections>
                                                                                 <action selector="addItem:" destination="bHb-jm-Dta" eventType="touchUpInside" id="hQq-zM-cyq"/>

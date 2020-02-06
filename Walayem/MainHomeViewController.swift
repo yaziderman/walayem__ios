@@ -15,6 +15,16 @@ class MainHomeViewController: UIViewController {
     var recommendedFoods = [Food]()
     var foods = [Food]()
     let bookmarks = ["Recommended", "Meals of the day", "Cuisines", "Best Chefs"]
+    var bookmarkImages: [UIImage] = [
+        UIImage(named: "bookmark.jpg")!,
+        UIImage(named: "fire.jpg")!,
+        UIImage(named: "bookmark.jpg")!,
+        UIImage(named: "fire2.jpeg")!,
+        UIImage(named: "bookmark.jpg")!,
+        UIImage(named: "fire.jpg")!
+    ]
+    
+    
 //    let tableCell = HomeTableViewCell()
     
     @IBOutlet weak var tableView: UITableView!
@@ -23,7 +33,7 @@ class MainHomeViewController: UIViewController {
            super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-//        getRecommendations()
+        getRecommendations()
         
         print(recommendedFoods)
        
@@ -32,8 +42,7 @@ class MainHomeViewController: UIViewController {
     private func getRecommendations(){
         let params : [String: Any] = ["partner_id": partnerId ?? 0]
         
-        RestClient().request(WalayemApi.recommendation, params) { (result, error) in
-//            self.hideActivityIndicator()
+        RestClient().requestNewApi(WalayemApi.homeRecommendation, params) { (result, error) in
             self.tableView.refreshControl?.endRefreshing()
             
             if let error = error{
@@ -45,13 +54,13 @@ class MainHomeViewController: UIViewController {
                 return
             }
             self.recommendedFoods.removeAll()
-            let records = data["data"] as! [Any]
-            for record in records{
-                let food = Food(record: record as! [String : Any])
-                self.recommendedFoods.append(food)
-                print(food.chefName as Any)
-                self.tableView.reloadData()
-            }
+//            let records = data["data"] as! [Any]
+//            for record in records{
+//                let food = Food(record: record as! [String : Any])
+//                self.recommendedFoods.append(food)
+//                print(food.chefName as Any)
+//                self.tableView.reloadData()
+//            }
         }
     }
     
@@ -90,6 +99,7 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "mainHomeTableViewCell") as? HomeTableViewCell  else { fatalError("mainHomeTableViewCell") }
             cell.identifier = collectionViewCellIdentifier;
             cell.bookmarkText.text = self.bookmarks[indexPath.row]
+            cell.bookmarkImage.image = self.bookmarkImages[indexPath.row]
             cell.selectionStyle = .none
             cell.foods = foods
             
@@ -134,7 +144,7 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
         if indexPath.row == 3 {
             return 90
         }
-        return 132
+        return 98
     }
     
     

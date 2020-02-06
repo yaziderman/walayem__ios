@@ -16,8 +16,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
             endingLineNumber = "60"
-            landmarkName = "UserTabBarController"
-            landmarkType = "3">
+            landmarkName = "setupTabBar()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -30,8 +30,8 @@
             filePath = "Walayem/Odoo/RestClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
             landmarkName = "requestNewApi(_:_:_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,121 +46,9 @@
             filePath = "Walayem/Odoo/RestClient.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "requestNewApi(_:_:_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "85B92EEC-B3E0-4C86-87C7-20D32807D676"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Walayem/Odoo/RestClient.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "requestNewApi(_:_:_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "85B92EEC-B3E0-4C86-87C7-20D32807D676 - 4a81eea9414373ba"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Walayem.RestClient.requestNewApi(Swift.String, Swift.Dictionary&lt;Swift.String, Any&gt;, (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, Swift.Optional&lt;__C.NSError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Walayem"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nasbeerahammed/Documents/Walayem/walayem-ios/walayem-ios/Walayem/Odoo/RestClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "64"
-                  endingLineNumber = "64"
-                  offsetFromSymbolStart = "1221">
-               </Location>
-               <Location
-                  uuid = "85B92EEC-B3E0-4C86-87C7-20D32807D676 - d00f5328e306eacf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Walayem.RestClient.requestNewApi(Swift.String, Swift.Dictionary&lt;Swift.String, Any&gt;, (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, Swift.Optional&lt;__C.NSError&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "Walayem"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nasbeerahammed/Documents/Walayem/walayem-ios/walayem-ios/Walayem/Odoo/RestClient.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "133">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F8EDE597-1160-41AE-B8E5-4CAFDC69ACF5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Walayem/Odoo/RestClient.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "requestNewApi(_:_:_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1F34F07A-F744-422F-A10A-D8A7DBA612EA"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Walayem/Odoo/RestClient.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "requestNewApi(_:_:_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EFA79301-AB66-4487-B700-A7C3FB4149C5"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Walayem/TableViewCells/HomeTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "collectionView(_:cellForItemAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3F52CCD2-F425-4C9F-845C-BAE295F4391B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Walayem/TableViewCells/HomeTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -174,8 +62,8 @@
             filePath = "Walayem/MainHomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "handleNetworkError(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -183,16 +71,128 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "217D1C76-05BD-42DD-8A42-4C93905AA3DA"
+            uuid = "EF898204-AB8A-4816-99FE-17C01C3EDC91"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Walayem/TableViewCells/HomeTableViewCell.swift"
+            filePath = "Walayem/MainHomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
-            landmarkName = "awakeFromNib()"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "getRecommendations()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "EF898204-AB8A-4816-99FE-17C01C3EDC91 - f82e3519d3ce34f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Walayem.MainHomeViewController.(getRecommendations in _7E2DA45A0B036012C11A5286E9ED0B11)() -&gt; ()"
+                  moduleName = "Walayem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nasbeerahammed/Documents/Walayem/walayem-ios/walayem-ios/Walayem/MainHomeViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "269">
+               </Location>
+               <Location
+                  uuid = "EF898204-AB8A-4816-99FE-17C01C3EDC91 - 5e24a83a2d2b1619"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, Swift.Optional&lt;__C.NSError&gt;) -&gt; () in Walayem.MainHomeViewController.(getRecommendations in _7E2DA45A0B036012C11A5286E9ED0B11)() -&gt; ()"
+                  moduleName = "Walayem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nasbeerahammed/Documents/Walayem/walayem-ios/walayem-ios/Walayem/MainHomeViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "225">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "40902B26-8976-4818-9032-4D48F4B1ACD4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Walayem/Odoo/RestClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "request(_:_:_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "40902B26-8976-4818-9032-4D48F4B1ACD4 - 410b2c7134ae7a22"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Walayem.RestClient.request(Swift.String, Swift.Dictionary&lt;Swift.String, Any&gt;, (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, Swift.Optional&lt;__C.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Walayem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nasbeerahammed/Documents/Walayem/walayem-ios/walayem-ios/Walayem/Odoo/RestClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "1616">
+               </Location>
+               <Location
+                  uuid = "40902B26-8976-4818-9032-4D48F4B1ACD4 - ebf135f102c0b5ce"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in Walayem.RestClient.request(Swift.String, Swift.Dictionary&lt;Swift.String, Any&gt;, (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, Swift.Optional&lt;__C.NSError&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "Walayem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nasbeerahammed/Documents/Walayem/walayem-ios/walayem-ios/Walayem/Odoo/RestClient.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "174">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FEE173CB-BF31-4C65-8455-C394ED40F451"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Walayem/Odoo/RestClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "request(_:_:_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "84598B68-B57D-4910-B8A0-3882D6714346"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Walayem/Odoo/RestClient.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "request(_:_:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

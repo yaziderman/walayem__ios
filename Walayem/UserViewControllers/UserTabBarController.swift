@@ -24,6 +24,7 @@ class UserTabBarController: UITabBarController{
         
 //        NotificationCenter.default.addObserver(self, selector: #selector(setUpTabSeletion(_:)), name: NSNotification.Name(rawValue: "UpdateTabNotification"), object: nil)
         
+        
         NotificationCenter.default.addObserver(self, selector: #selector(showOrderDetail(_:)), name: NSNotification.Name(rawValue: "OrderStateNotification"), object: nil)
         setupTabBar()
         

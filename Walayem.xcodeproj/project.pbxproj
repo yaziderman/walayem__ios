@@ -125,8 +125,6 @@
 		5B467DFA23B882CE008620FF /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DF123B882CE008620FF /* Food.swift */; };
 		BE6B334923C5EF6400CB01D6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6B334823C5EF6400CB01D6 /* Extensions.swift */; };
 		BE81C7FB23E8215200EBE520 /* HomeRecommendedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE81C7FA23E8215200EBE520 /* HomeRecommendedCell.swift */; };
-		BE9B441B23E95C5D000F6225 /* CuisineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9B441923E95C5D000F6225 /* CuisineCollectionViewCell.swift */; };
-		BE9B441C23E95C5D000F6225 /* CuisineCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE9B441A23E95C5D000F6225 /* CuisineCollectionViewCell.xib */; };
 		BE9B441E23E9A30B000F6225 /* HomeButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9B441D23E9A30B000F6225 /* HomeButtonTableViewCell.swift */; };
 		BEBB0FEB23E7E4B500D43789 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBB0FEA23E7E4B500D43789 /* HomeViewController.swift */; };
 		BEBB0FEE23E7E65F00D43789 /* MealOfDayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBB0FEC23E7E65E00D43789 /* MealOfDayCollectionViewCell.swift */; };
@@ -262,8 +260,6 @@
 		7B1A71D8F45A96894E6650A3 /* Pods-Walayem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Walayem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Walayem/Pods-Walayem.debug.xcconfig"; sourceTree = "<group>"; };
 		BE6B334823C5EF6400CB01D6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BE81C7FA23E8215200EBE520 /* HomeRecommendedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecommendedCell.swift; sourceTree = "<group>"; };
-		BE9B441923E95C5D000F6225 /* CuisineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineCollectionViewCell.swift; sourceTree = "<group>"; };
-		BE9B441A23E95C5D000F6225 /* CuisineCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CuisineCollectionViewCell.xib; sourceTree = "<group>"; };
 		BE9B441D23E9A30B000F6225 /* HomeButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonTableViewCell.swift; sourceTree = "<group>"; };
 		BEBB0FEA23E7E4B500D43789 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BEBB0FEC23E7E65E00D43789 /* MealOfDayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealOfDayCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -457,7 +453,6 @@
 				04D9E8A32085B97E002E1B51 /* Odoo */,
 				04C596BC2084766900B284D3 /* Utils */,
 				0A3B841A20B57EAF00E1E24C /* HeaderFooterCells */,
-				BE9B441823E95C34000F6225 /* CollectionViewCells */,
 				04C596C120848F4E00B284D3 /* TableViewCells */,
 				04C596BB2084765400B284D3 /* Models */,
 				04831C4720AC38D400195B1A /* ChefViewControllers */,
@@ -531,15 +526,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		BE9B441823E95C34000F6225 /* CollectionViewCells */ = {
-			isa = PBXGroup;
-			children = (
-				BE9B441923E95C5D000F6225 /* CuisineCollectionViewCell.swift */,
-				BE9B441A23E95C5D000F6225 /* CuisineCollectionViewCell.xib */,
-			);
-			path = CollectionViewCells;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -611,7 +597,6 @@
 				0A3B841E20B57F2100E1E24C /* CartFoodHeaderCell.xib in Resources */,
 				04CF06D4208463520064B18A /* LaunchScreen.storyboard in Resources */,
 				04CF06E8208468FF0064B18A /* Profile.storyboard in Resources */,
-				BE9B441C23E95C5D000F6225 /* CuisineCollectionViewCell.xib in Resources */,
 				0A08C49F20C1309500E006AB /* EditProfile.storyboard in Resources */,
 				0ADC141520B6DD350003FC8B /* More.storyboard in Resources */,
 				044416B3230C1AA5007413F6 /* GoogleService-Info.plist in Resources */,
@@ -787,7 +772,6 @@
 				040CA40420AEE88400E64BFE /* ChefOrderFoodHeaderCell.swift in Sources */,
 				04C596C52084BB5D00B284D3 /* LocationPermissionViewController.swift in Sources */,
 				04A6594F20A0378100DBCF86 /* DatabaseHandler.swift in Sources */,
-				BE9B441B23E95C5D000F6225 /* CuisineCollectionViewCell.swift in Sources */,
 				5B467DF823B882CE008620FF /* Tag.swift in Sources */,
 				0AD0350120C550B10030E1E8 /* ImageViewController.swift in Sources */,
 				04F215852088ABBD003D47AD /* UIView + border.swift in Sources */,
@@ -954,7 +938,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.17;
+				MARKETING_VERSION = 2.18;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inceptionworld.Walayem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -981,7 +965,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.17;
+				MARKETING_VERSION = 2.18;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inceptionworld.Walayem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -50,4 +50,8 @@ class LoginPriorViewController: UIViewController {
             os_log("Sign up segue", log: .default, type: .debug)
         }
     }
+    
+    @IBAction func skipButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
