@@ -134,11 +134,12 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
         if indexPath.row == 3 {
             return 90
         }
-        return 132
+        return 98
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        tableView.deselectRow(at: indexPath, animated: true)
+        
+        
     }
 }
