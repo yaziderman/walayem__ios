@@ -60,6 +60,17 @@ class RestClient{
         Alamofire.request(url, method: .post, parameters: parameter , encoding: JSONEncoding.default, headers: headers)
         .validate()
         .responseJSON { (response) in
+            
+            let result = response.result
+            let result2 = response.result.ifSuccess {
+                
+                print(result)
+                
+                let value: [String: Any] = response.result.value as! [String: Any]
+            }
+            
+            print(result)
+            
             if response.result.isSuccess{
                 
 //                response.

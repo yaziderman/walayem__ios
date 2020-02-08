@@ -9,6 +9,26 @@
 import Foundation
 import UIKit
 
+struct TodaysMeal{
+    
+    let id: Int
+    let end_date: String
+    let start_date: String
+    let item_details: MealItemDetail
+    let item_id: ()
+    let kitchen_name: String
+}
+
+struct MealItemDetail{
+    let comment:Int
+    let favorite_products:()
+    let id:Int
+    let image_hash:Int
+    let kitchen_id:()
+    let name:String
+    let products:String
+}
+
 class MainHomeViewController: UIViewController {
     
     var partnerId: Int?
@@ -49,11 +69,54 @@ class MainHomeViewController: UIViewController {
                 self.handleNetworkError(error)
                 return
             }
-            let data = result!["result"] as! [String: Any]
-            if let status = data["status"] as? Int, status == 0{
-                return
+            
+            do{
+//                let json = JSONSerialization.jsonObject(with: result, options: .mutableContainers) as? [Any]
+                
+//                print(json)
+            }catch let err {
+                print(err)
             }
+            
+            let data = result!["result"] as! [String: Any]
+            
+//            let best_sellers = data["best_sellers"]
+//            let advertisment_image = data["advertisment_image"]
+            let status_api = data["status"]
+//            let recommended = data["recommended"]
+            
+            if let status = status_api as? Int, status == 0{
+//                return
+                print(status)
+            }
+            if let advertisment_image = data["advertisment_image"] as? Int, advertisment_image == 0{
+                print(advertisment_image)
+                print("no image available")
+            }
+            
+            
             self.recommendedFoods.removeAll()
+            
+            for best_seller in data["best_sellers"] as! [Any]{
+                print(best_seller)
+            }
+            for todays_meal in data["todays_meals"] as! [Any]{
+                print(todays_meal)
+            }
+            
+//            if let recommended = data["recommended"] as! [Any]{
+//                print(recommended)
+//            }
+            
+            for recommended in data["recommended"] as! [Any] {
+                print(recommended)
+                
+//                let food = Food(recommended)
+//                self.recommendedFoods.append(rFood)
+            }
+            
+            print(self.recommendedFoods)
+            
 //            let records = data["data"] as! [Any]
 //            for record in records{
 //                let food = Food(record: record as! [String : Any])

@@ -123,6 +123,7 @@
 		5B467DF823B882CE008620FF /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DEF23B882CD008620FF /* Tag.swift */; };
 		5B467DF923B882CE008620FF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DF023B882CD008620FF /* User.swift */; };
 		5B467DFA23B882CE008620FF /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DF123B882CE008620FF /* Food.swift */; };
+		BE4501EA23EC4AE000E3AB68 /* Promoted.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4501E923EC4AE000E3AB68 /* Promoted.swift */; };
 		BE6B334923C5EF6400CB01D6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6B334823C5EF6400CB01D6 /* Extensions.swift */; };
 		BE81C7FB23E8215200EBE520 /* HomeRecommendedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE81C7FA23E8215200EBE520 /* HomeRecommendedCell.swift */; };
 		BE9B441E23E9A30B000F6225 /* HomeButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9B441D23E9A30B000F6225 /* HomeButtonTableViewCell.swift */; };
@@ -258,6 +259,7 @@
 		5B467DF023B882CD008620FF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5B467DF123B882CE008620FF /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		7B1A71D8F45A96894E6650A3 /* Pods-Walayem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Walayem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Walayem/Pods-Walayem.debug.xcconfig"; sourceTree = "<group>"; };
+		BE4501E923EC4AE000E3AB68 /* Promoted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promoted.swift; sourceTree = "<group>"; };
 		BE6B334823C5EF6400CB01D6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BE81C7FA23E8215200EBE520 /* HomeRecommendedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecommendedCell.swift; sourceTree = "<group>"; };
 		BE9B441D23E9A30B000F6225 /* HomeButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeButtonTableViewCell.swift; sourceTree = "<group>"; };
@@ -344,6 +346,7 @@
 				5B467DEC23B882CD008620FF /* Order.swift */,
 				5B467DEF23B882CD008620FF /* Tag.swift */,
 				5B467DF023B882CD008620FF /* User.swift */,
+				BE4501E923EC4AE000E3AB68 /* Promoted.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -743,6 +746,7 @@
 				521F2ED520B15C0B000DF518 /* AccountTableViewCell.swift in Sources */,
 				0A126ABF20D39F530063DC33 /* CartViewController.swift in Sources */,
 				04B824FD20A2F4CF00458DA6 /* OrderViewController.swift in Sources */,
+				BE4501EA23EC4AE000E3AB68 /* Promoted.swift in Sources */,
 				040CA40620AEE8B100E64BFE /* ChefOrderFoodFooterCell.swift in Sources */,
 				04F215892088B35F003D47AD /* ChefFoodCollectionViewCell.swift in Sources */,
 				04BBB3AC20ADDBE3009D697F /* ChefOrderTableViewCell.swift in Sources */,

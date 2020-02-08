@@ -13,8 +13,6 @@ static func == (lhs: Food, rhs: Food) -> Bool {
     return (lhs.id == rhs.id)
 }
 
-
-
     var id: Int
     var name: String
     var description: String?
