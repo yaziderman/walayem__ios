@@ -6,16 +6,6 @@
 //  Copyright © 2020 Inception Innovation. All rights reserved.
 //
 
-
-
-
-
-
-                            // --MARK     OLD
-
-
-
-
 import UIKit
 
 class HomeViewController: UIViewController{

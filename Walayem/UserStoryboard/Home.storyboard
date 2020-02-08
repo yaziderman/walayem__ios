@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2SF-dD-v4x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2SF-dD-v4x">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -65,14 +65,14 @@
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell1" id="6hy-hd-Vdq">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mealDayCell1" id="6hy-hd-Vdq">
                                                             <rect key="frame" x="0.0" y="65.666666666666671" width="260" height="144"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kCo-7i-J5Y">
                                                                 <rect key="frame" x="0.0" y="0.0" width="260" height="144"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodImageEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="2N1-cm-o5U">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="600" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodImageEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="2N1-cm-o5U">
                                                                         <rect key="frame" x="2" y="2" width="224" height="140"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="140" id="YBa-NT-jkW"/>
@@ -159,7 +159,7 @@
                                                             </collectionViewCellContentView>
                                                             <size key="customSize" width="150" height="150"/>
                                                         </collectionViewCell>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cell0" id="hOm-DZ-9JJ" customClass="HomeCollectionViewCell" customModule="Walayem" customModuleProvider="target">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="recommendedCell0" id="hOm-DZ-9JJ" customClass="HomeCollectionViewCell" customModule="Walayem" customModuleProvider="target">
                                                             <rect key="frame" x="540" y="20.666666666666668" width="334" height="234"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="6Nl-CZ-k3U">
@@ -229,14 +229,14 @@
                                                                 <outlet property="price" destination="e9P-pv-5TV" id="xST-6h-eze"/>
                                                             </connections>
                                                         </collectionViewCell>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cell4" id="bmN-BE-KZj">
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cuisinesCell4" id="bmN-BE-KZj">
                                                             <rect key="frame" x="884" y="72.666666666666671" width="100" height="130"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="DQa-SD-Lol">
                                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodImageEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="9zg-kL-3lO">
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="500" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arabic" translatesAutoresizingMaskIntoConstraints="NO" id="9zg-kL-3lO">
                                                                         <rect key="frame" x="5" y="5" width="90" height="84"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="90" id="iOP-KV-i9Z"/>
@@ -248,7 +248,7 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emirati" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLQ-jS-fDy">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="501" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emirati" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLQ-jS-fDy">
                                                                         <rect key="frame" x="5" y="100" width="90" height="21"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="21" id="9SV-Rj-FNC"/>
@@ -357,7 +357,7 @@
         <scene sceneID="eM1-Zu-Ufj">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2SF-dD-v4x" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home" id="1LO-qZ-yzi"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house.fill" catalog="system" id="1LO-qZ-yzi"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3Lr-Na-ehx">
@@ -376,9 +376,10 @@
     </scenes>
     <resources>
         <image name="Image" width="1125" height="257"/>
+        <image name="arabic" width="2000" height="2000"/>
         <image name="bookmark" width="15" height="19"/>
         <image name="foodImageEmpty" width="512" height="512"/>
-        <image name="home" width="16" height="16"/>
+        <image name="house.fill" catalog="system" width="64" height="52"/>
         <image name="launchScreen2" width="203" height="423"/>
     </resources>
 </document>

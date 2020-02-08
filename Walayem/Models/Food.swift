@@ -9,11 +9,11 @@
 import Foundation
 
 class Food: Equatable{
+    
+    
 static func == (lhs: Food, rhs: Food) -> Bool {
     return (lhs.id == rhs.id)
 }
-
-
 
     var id: Int
     var name: String

@@ -17,55 +17,100 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource {
     
     var cellPriceLabel = UILabel()
     var cellNameLabel = UILabel()
-    var foods = [Food]()
     
-//
-//    var food: Food!{
-//        didSet{
-//            updateUI()
-//        }
-//    }
+    var identifier = ""
+    var todays_meals = [PromotedItem]()
+    var bestSellers = [PromotedItem]()
+    var recommendedMeals = [PromotedItem]()
     
-    private func updateUI(){
-        
-//        cellNameLabel.text = food.name
-//        collectionView.reloadData()
-    }
+    var cuisine = ["Arabic", "Emirati", "Asian", "Chinese"]
+    var cuisineImages: [UIImage] = [
+        UIImage(named: "arabic.jpg")!,
+        UIImage(named: "hindi.jpg")!,
+        UIImage(named: "phalasteeni.jpg")!,
+        UIImage(named: "arabic.jpg")!,
+        UIImage(named: "arabic.jpg")!
+    ]
     
     
-    
-    var identifier = "cell1"
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        if identifier == "recommendedCell0" {
+            return recommendedMeals.count
+//            return 4
+        }
+        else if identifier == "mealDayCell1"{
+            return todays_meals.count
+        }
+        else if identifier == "cuisinesCell4"{
+            return cuisine.count
+        }
+        else{
+            return 0
+        }
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-        
-        if identifier == "cell0"{
-            let cellPriceLabel = collectionView.viewWithTag(8801) as? UILabel
-            let cellImage = collectionView.viewWithTag(8800) as? UIImageView
-            let cellView = collectionView.viewWithTag(8802) as? UIView
-            let cellNameLabel = collectionView.viewWithTag(8803) as? UILabel
+        if identifier == "recommendedCell0"{
+
+            let recommendedCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+
+            let cellPriceLabel = recommendedCell.viewWithTag(8801) as? UILabel
+            let cellImage = recommendedCell.viewWithTag(8800) as? UIImageView
+            let cellView = recommendedCell.viewWithTag(8802)
+            let cellNameLabel = recommendedCell.viewWithTag(8803) as? UILabel
             
-            cellPriceLabel?.text = "1,200 AED"
-//            let food = foods[indexPath.section]
-//            cellNameLabel?.text = food.name
+            cellPriceLabel?.text =  "\(recommendedMeals[indexPath.row].item_details?.list_price)"
+            cellNameLabel?.text = "\(recommendedMeals[indexPath.row].item_details?.name)"
             cellView?.roundCorners([.bottomRight,.bottomLeft], radius: 15)
             
-//            let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(876)/image")
-//            cellImage?.image?.kf.setImage(with: imageUrl)
+            let imgId = recommendedMeals[indexPath.section].item_details?.id
+            let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(imgId)/image")
+            cellImage?.kf.setImage(with: imageUrl)
+            
+            return recommendedCell
         }
         
-        if identifier == "cuisinesCVCell"{
-            print(cell.tag)
-        }
+            else if identifier == "mealDayCell1"{
 
+            let mealCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+            
+            let mealImage = mealCell.viewWithTag(600) as? UIImageView
+            let imgId = todays_meals[indexPath.row].item_details?.id
+            let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(imgId)/image")
+            mealImage?.kf.setImage(with: imageUrl)
+            
+            return mealCell
+        }
         
-        return cell
+        else if identifier == "cuisinesCell4"{
+
+            let cuisineCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+            
+            print(indexPath.row)
+            print("Section --- \(indexPath.section)")
+            
+            let cuisineImg = cuisineCell.viewWithTag(500) as? UIImageView
+            let cuisineLabel = cuisineCell.viewWithTag(501) as? UILabel
+            
+            cuisineLabel?.text = self.cuisine[indexPath.row]
+            cuisineImg?.image = self.cuisineImages[indexPath.row]
+            
+//            let imgId = todays_meals[indexPath.section].item_details?.id
+//            let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(imgId)/image")
+//            cuisineImg?.kf.setImage(with: imageUrl)
+            return cuisineCell
+        }
+        else{
+            return collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+            
+        }
+            
+        
+        
+        
     }
     
     

@@ -12,10 +12,20 @@ import UIKit
 class MainHomeViewController: UIViewController {
     
     var partnerId: Int?
-    var recommendedFoods = [Food]()
+    
+    var todays_meals = [PromotedItem]()
+    var bestSellers = [PromotedItem]()
+    var recommendedMeals = [PromotedItem]()
+    
     var foods = [Food]()
     let bookmarks = ["Recommended", "Meals of the day", "Cuisines", "Best Chefs"]
-//    let markImages = [UIImage(named: "bookmark")]
+    var bookmarkImages: [UIImage] = [
+         UIImage(named: "bookmark.jpg")!,
+         UIImage(named: "fire.jpg")!,
+         UIImage(named: "bookmark.jpg")!,
+         UIImage(named: "bookmark.jpeg")!,
+         UIImage(named: "bookmark.jpg")!
+     ]
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -25,35 +35,59 @@ class MainHomeViewController: UIViewController {
         tableView.delegate = self
         getRecommendations()
         
-        print(recommendedFoods)
        
     }
     
     private func getRecommendations(){
-        let params : [String: Any] = ["partner_id": partnerId ?? 0]
-        
-        RestClient().request(WalayemApi.recommendation, params) { (result, error) in
-//            self.hideActivityIndicator()
-            self.tableView.refreshControl?.endRefreshing()
+            let params : [String: Any] = ["partner_id": partnerId ?? 0]
             
-            if let error = error{
-                self.handleNetworkError(error)
-                return
-            }
-            let data = result!["result"] as! [String: Any]
-            if let status = data["status"] as? Int, status == 0{
-                return
-            }
-            self.recommendedFoods.removeAll()
-            let records = data["data"] as! [Any]
-            for record in records{
-                let food = Food(record: record as! [String : Any])
-                self.recommendedFoods.append(food)
-                print(food.chefName as Any)
-
+            RestClient().requestPromotedApi(WalayemApi.homeRecommendation, params) { (result, error) in
+                self.tableView.refreshControl?.endRefreshing()
+                
+                if let error = error{
+                    self.handleNetworkError(error)
+                    return
+                }
+                
+                let data = result!["result"] as! [String: Any]
+                let status_api = data["status"] as? Int
+                
+                
+                
+                if let status = status_api, status == 0{
+                    print("STatus Value------------->\(status)")
+                    return
+                }else{
+                    if let best_sellers = data["best_sellers"] as? [Any]{
+                        for best_seller in best_sellers{
+                            let best_seller = PromotedItem(records: best_seller as! [String : Any])
+                            self.bestSellers.append(best_seller)
+                        }
+                    }
+                    if let recommendedMeals = data["recommended"] as? [Any]{
+                        for recommended in recommendedMeals{
+                            let recommend = PromotedItem(records: recommended as! [String : Any])
+                            self.recommendedMeals.append(recommend)
+                        }
+                    }
+                    if let todaysMeals = data["todays_meals"] as? [Any]{
+                        for meal in todaysMeals {
+                            let todays_meal = PromotedItem(records: meal as! [String : Any])
+                            self.todays_meals.append(todays_meal)
+                        }
+                    }
+                }
+                
+                self.tableView.reloadData()
+                
+                
+                if let advertisment_image = data["advertisment_image"] as? Int, advertisment_image == 0{
+                    print(advertisment_image)
+                    print("no image available")
+                }
+    
             }
         }
-    }
     
     private func handleNetworkError(_ error: NSError){
            let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
@@ -76,22 +110,29 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
         var collectionViewCellIdentifier = "cell1"
         
         if indexPath.row == 0 {
-            collectionViewCellIdentifier = "cell0"
+            collectionViewCellIdentifier = "recommendedCell0"
         }
         if indexPath.row == 1 {
-            collectionViewCellIdentifier = "cell1"
+            collectionViewCellIdentifier = "mealDayCell1"
         }
         if indexPath.row == 2 {
-            collectionViewCellIdentifier = "cell4"
+            collectionViewCellIdentifier = "cuisinesCell4"
         }
         
         if indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2 {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "mainHomeTableViewCell") as? HomeTableViewCell  else { fatalError("mainHomeTableViewCell") }
+            
             cell.identifier = collectionViewCellIdentifier;
             cell.bookmarkText.text = self.bookmarks[indexPath.row]
+            cell.bookmarkImage.image = self.bookmarkImages[indexPath.row]
+            
+            cell.recommendedMeals = self.recommendedMeals
+            cell.todays_meals = self.todays_meals
+            cell.bestSellers = self.bestSellers
+            
+            cell.collectionView.reloadData()
             cell.selectionStyle = .none
-//            cell.foods = foods
             
             return cell
         }
@@ -99,7 +140,7 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
         
         
         else if indexPath.row == 3 {
-            guard let cell : HomeButtonTableViewCell = tableView.dequeueReusableCell(withIdentifier: "mainHomeTableViewCell1") as! HomeButtonTableViewCell else { fatalError("mainHomeTableViewCell1") }
+            guard let cell : HomeButtonTableViewCell = tableView.dequeueReusableCell(withIdentifier: "mainHomeTableViewCell1") as? HomeButtonTableViewCell else { fatalError("mainHomeTableViewCell1") }
             
             cell.parent = self
             cell.selectionStyle = .none

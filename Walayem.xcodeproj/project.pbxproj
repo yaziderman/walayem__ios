@@ -123,6 +123,7 @@
 		5B467DF823B882CE008620FF /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DEF23B882CD008620FF /* Tag.swift */; };
 		5B467DF923B882CE008620FF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DF023B882CD008620FF /* User.swift */; };
 		5B467DFA23B882CE008620FF /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DF123B882CE008620FF /* Food.swift */; };
+		BE4501EC23EEE5F600E3AB68 /* Promoted.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4501EB23EEE5F600E3AB68 /* Promoted.swift */; };
 		BE6B334923C5EF6400CB01D6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6B334823C5EF6400CB01D6 /* Extensions.swift */; };
 		BE81C7FB23E8215200EBE520 /* HomeRecommendedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE81C7FA23E8215200EBE520 /* HomeRecommendedCell.swift */; };
 		BE9B441B23E95C5D000F6225 /* CuisineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9B441923E95C5D000F6225 /* CuisineCollectionViewCell.swift */; };
@@ -260,6 +261,7 @@
 		5B467DF023B882CD008620FF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5B467DF123B882CE008620FF /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		7B1A71D8F45A96894E6650A3 /* Pods-Walayem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Walayem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Walayem/Pods-Walayem.debug.xcconfig"; sourceTree = "<group>"; };
+		BE4501EB23EEE5F600E3AB68 /* Promoted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promoted.swift; sourceTree = "<group>"; };
 		BE6B334823C5EF6400CB01D6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BE81C7FA23E8215200EBE520 /* HomeRecommendedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecommendedCell.swift; sourceTree = "<group>"; };
 		BE9B441923E95C5D000F6225 /* CuisineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 			isa = PBXGroup;
 			children = (
 				5B467DED23B882CD008620FF /* Account.swift */,
+				BE4501EB23EEE5F600E3AB68 /* Promoted.swift */,
 				5B467DEB23B882CD008620FF /* Address.swift */,
 				5B467DEE23B882CD008620FF /* Cart.swift */,
 				5B467DEA23B882CD008620FF /* Chef.swift */,
@@ -786,6 +789,7 @@
 				0ADC140E20B68A990003FC8B /* OrderHeaderCell.swift in Sources */,
 				040CA40420AEE88400E64BFE /* ChefOrderFoodHeaderCell.swift in Sources */,
 				04C596C52084BB5D00B284D3 /* LocationPermissionViewController.swift in Sources */,
+				BE4501EC23EEE5F600E3AB68 /* Promoted.swift in Sources */,
 				04A6594F20A0378100DBCF86 /* DatabaseHandler.swift in Sources */,
 				BE9B441B23E95C5D000F6225 /* CuisineCollectionViewCell.swift in Sources */,
 				5B467DF823B882CE008620FF /* Tag.swift in Sources */,
@@ -945,7 +949,7 @@
 				CODE_SIGN_ENTITLEMENTS = Walayem/Walayem.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jasim Al Ali (8QR6D3RTX5)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Walayem/Info.plist;
@@ -954,7 +958,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.17;
+				MARKETING_VERSION = 2.18;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inceptionworld.Walayem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -972,7 +976,7 @@
 				CODE_SIGN_ENTITLEMENTS = Walayem/Walayem.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jasim Al Ali (8QR6D3RTX5)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Walayem/Info.plist;
@@ -981,7 +985,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.17;
+				MARKETING_VERSION = 2.18;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inceptionworld.Walayem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
