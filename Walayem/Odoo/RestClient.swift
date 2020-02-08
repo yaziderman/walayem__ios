@@ -52,38 +52,57 @@ class RestClient{
     }
     
     
-    func requestNewApi(_ url: String, _ params: [String: Any], _ completionHandler: @escaping(_ result: [String: Any]?, _ error: NSError?) -> Void){
+    func requestPromotedApi(_ url: String, _ params: [String: Any], _ completionHandler: @escaping(_ result: [String: Any]?, _ error: NSError?) -> Void){
         
         
         var parameter = [String:AnyObject]()
         
-        Alamofire.request(url, method: .post, parameters: parameter , encoding: JSONEncoding.default, headers: headers)
-        .validate()
+        Alamofire.request(url, method: .post, parameters: parameter , encoding: JSONEncoding.default, headers: headers).validate()
         .responseJSON { (response) in
             
-            let result = response.result
-            let result2 = response.result.ifSuccess {
-                
-                print(result)
-                
-                let value: [String: Any] = response.result.value as! [String: Any]
-            }
+//            do{
+//                let promoted = try JSONDecoder().decode(Promoted.self, from: response )
+//                    print(promoted)
+//                }catch let err {
+//
+//                    print(err)
+//            }
+//
             
-            print(result)
-            
-            if response.result.isSuccess{
-                
-//                response.
-                
-                let value: [String: Any] = response.result.value as! [String: Any]
-                if let error = value["error"] as? [String: Any]{
-                    completionHandler(nil, NSError(domain: "", code: error["code"] as! Int, userInfo: [NSLocalizedDescriptionKey: error["message"] as! String]))
-                }else{
-                    completionHandler(value, nil)
-                }
-            }else{
-                completionHandler(nil, response.result.error as NSError?)
-            }
+//            print(Promoted)
+
+//            let promoted : Promoted
+//            let result = response.result
+//            let result2 = response.result.ifSuccess {
+//
+//                print(result)
+//
+////                 do{
+////                    let promoted = try JSONDecoder().decode(promoted.self, from: response )
+////                            print(promoted)
+////                    }catch let err {
+////                        print(err)
+////                }
+//
+//
+//                let value: [String: Any] = response.result.value as! [String: Any]
+//            }
+//
+//            print(result)
+//
+//            if response.result.isSuccess{
+//
+////                response.
+//
+//                let value: [String: Any] = response.result.value as! [String: Any]
+//                if let error = value["error"] as? [String: Any]{
+//                    completionHandler(nil, NSError(domain: "", code: error["code"] as! Int, userInfo: [NSLocalizedDescriptionKey: error["message"] as! String]))
+//                }else{
+//                    completionHandler(value, nil)
+//                }
+//            }else{
+//                completionHandler(nil, response.result.error as NSError?)
+//            }
         }
         
         
@@ -263,7 +282,6 @@ class RestClient{
     func requestHomeApis(_ url: String, _ params: [String: Any], _ completionHandler: @escaping(_ result: [String: Any]?, _ error: NSError?) -> Void){
 
         let jsonParam : [String: Any] = ["":""]
-
          headers = ["Content-Type": "application/json"]
 
         Alamofire.request(url, method: .get, parameters: jsonParam, encoding: JSONEncoding.default, headers: headers)
@@ -282,4 +300,81 @@ class RestClient{
         }
     }
 //
+}
+
+
+
+struct Promoted: Decodable{
+    
+    let id: Int?
+    let result: [result]?
+    let jsonrpc: String?
+}
+
+struct result: Decodable{
+    let status: Bool?
+    let best_sellers: [best_seller]?
+    let recommended: [recommended]?
+    let todays_meals: [TodaysMeal]?
+    let advertisment_image: String?
+}
+
+struct best_seller: Decodable{
+    let kitchen_name: String
+    let end_date: String
+    let id: Int
+    let item_id: [Int: String]
+    let start_date: String
+    let item_details: [bestSellerItemDetails]
+}
+
+struct bestSellerItemDetails: Decodable{
+    let image_hash: String
+    let comment: String
+    let name: String
+    let id: Int
+    let kitchen_id: [Int: String]
+    let products: String?
+    let favorite_products: [Int]?
+}
+
+struct recommended: Decodable{
+    let end_date: String?
+    let cuisine: String?
+    let id: Int?
+    let item_id: [Int: String]?
+    let start_date: String?
+    let item_details : [recommendedItemDetail]?
+}
+
+struct recommendedItemDetail: Decodable{
+    let name: String
+    let preparation_time: String
+    let id: Int
+    let cuisine_id: [Int: String]?
+    let food_image_ids: [Int]
+    let serves: Int
+    let list_price: Int
+    let food_type: String
+    let description_sale: String
+    let food_tags: [Int]
+}
+
+struct TodaysMeal: Decodable{
+    let id: Int
+    let end_date: String
+    let start_date: String
+    let item_details: MealItemDetail
+    let item_id: [String]
+    let kitchen_name: String
+}
+
+struct MealItemDetail: Decodable{
+    let comment:Int
+    let favorite_products: [String]
+    let id:Int
+    let image_hash:Int
+    let kitchen_id: [String]
+    let name:String
+    let products:String
 }

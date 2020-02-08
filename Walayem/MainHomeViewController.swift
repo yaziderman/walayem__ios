@@ -9,25 +9,7 @@
 import Foundation
 import UIKit
 
-struct TodaysMeal{
-    
-    let id: Int
-    let end_date: String
-    let start_date: String
-    let item_details: MealItemDetail
-    let item_id: ()
-    let kitchen_name: String
-}
 
-struct MealItemDetail{
-    let comment:Int
-    let favorite_products:()
-    let id:Int
-    let image_hash:Int
-    let kitchen_id:()
-    let name:String
-    let products:String
-}
 
 class MainHomeViewController: UIViewController {
     
@@ -62,7 +44,7 @@ class MainHomeViewController: UIViewController {
     private func getRecommendations(){
         let params : [String: Any] = ["partner_id": partnerId ?? 0]
         
-        RestClient().requestNewApi(WalayemApi.homeRecommendation, params) { (result, error) in
+        RestClient().requestPromotedApi(WalayemApi.homeRecommendation, params) { (result, error) in
             self.tableView.refreshControl?.endRefreshing()
             
             if let error = error{
@@ -70,54 +52,45 @@ class MainHomeViewController: UIViewController {
                 return
             }
             
-            do{
-//                let json = JSONSerialization.jsonObject(with: result, options: .mutableContainers) as? [Any]
-                
-//                print(json)
-            }catch let err {
-                print(err)
-            }
+           
             
-            let data = result!["result"] as! [String: Any]
-            
-//            let best_sellers = data["best_sellers"]
-//            let advertisment_image = data["advertisment_image"]
-            let status_api = data["status"]
-//            let recommended = data["recommended"]
-            
-            if let status = status_api as? Int, status == 0{
-//                return
-                print(status)
-            }
-            if let advertisment_image = data["advertisment_image"] as? Int, advertisment_image == 0{
-                print(advertisment_image)
-                print("no image available")
-            }
-            
-            
-            self.recommendedFoods.removeAll()
-            
-            for best_seller in data["best_sellers"] as! [Any]{
-                print(best_seller)
-            }
-            for todays_meal in data["todays_meals"] as! [Any]{
-                print(todays_meal)
-            }
-            
-//            if let recommended = data["recommended"] as! [Any]{
-//                print(recommended)
+//            let data = result!["result"] as! [String: Any]
+//            let status_api = data["status"]
+//
+//            if let status = status_api as? Int, status == 0{
+////                return
+//                print(status)
 //            }
-            
-            for recommended in data["recommended"] as! [Any] {
-                print(recommended)
-                
-//                let food = Food(recommended)
-//                self.recommendedFoods.append(rFood)
-            }
-            
-            print(self.recommendedFoods)
-            
-//            let records = data["data"] as! [Any]
+//            if let advertisment_image = data["advertisment_image"] as? Int, advertisment_image == 0{
+//                print(advertisment_image)
+//                print("no image available")
+//            }
+//
+//
+//            self.recommendedFoods.removeAll()
+//
+//            for best_seller in data["best_sellers"] as! [Any]{
+//                print(best_seller)
+//            }
+//            for todays_meal in data["todays_meals"] as! [Any]{
+//                print(todays_meal)
+////                do{
+////                    let tMeals = try JSONDecoder().decode(TodaysMeal.self, from: todays_meal as! Data)
+////                    print(tMeals.end_date)
+////                }catch let err {
+////                   print(err)
+////                }
+//            }
+//            for recommended in data["recommended"] as! [Any] {
+//                print(recommended)
+//
+////                let food = Food(recommended)
+////                self.recommendedFoods.append(rFood)
+//            }
+//
+//            print(self.recommendedFoods)
+//
+////            let records = data["data"] as! [Any]
 //            for record in records{
 //                let food = Food(record: record as! [String : Any])
 //                self.recommendedFoods.append(food)
@@ -215,3 +188,79 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
 //        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
+
+//
+//struct promoted: Decodable{
+//    
+//    let id: Int?
+//    let result: [result]?
+//    let jsonrpc: String?
+//}
+//
+//struct result: Decodable{
+//    let status: Bool?
+//    let best_sellers: [best_seller]?
+//    let recommended: [recommended]?
+//    let todays_meals: [TodaysMeal]?
+//    let advertisment_image: String?
+//}
+//
+//struct best_seller: Decodable{
+//    let kitchen_name: String
+//    let end_date: String
+//    let id: Int
+//    let item_id: [Int: String]
+//    let start_date: String
+//    let item_details: [bestSellerItemDetails]
+//}
+//
+//struct bestSellerItemDetails: Decodable{
+//    let image_hash: String
+//    let comment: String
+//    let name: String
+//    let id: Int
+//    let kitchen_id: [Int: String]
+//    let products: String?
+//    let favorite_products: [Int]?
+//}
+//
+//struct recommended: Decodable{
+//    let end_date: String?
+//    let cuisine: String?
+//    let id: Int?
+//    let item_id: [Int: String]?
+//    let start_date: String?
+//    let item_details : [recommendedItemDetail]?
+//}
+//
+//struct recommendedItemDetail: Decodable{
+//    let name: String
+//    let preparation_time: String
+//    let id: Int
+//    let cuisine_id: [Int: String]?
+//    let food_image_ids: [Int]
+//    let serves: Int
+//    let list_price: Int
+//    let food_type: String
+//    let description_sale: String
+//    let food_tags: [Int]
+//}
+//
+//struct TodaysMeal: Decodable{
+//    let id: Int
+//    let end_date: String
+//    let start_date: String
+//    let item_details: MealItemDetail
+//    let item_id: [String]
+//    let kitchen_name: String
+//}
+//
+//struct MealItemDetail: Decodable{
+//    let comment:Int
+//    let favorite_products: [String]
+//    let id:Int
+//    let image_hash:Int
+//    let kitchen_id: [String]
+//    let name:String
+//    let products:String
+//}
