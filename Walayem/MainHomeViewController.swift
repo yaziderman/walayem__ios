@@ -16,6 +16,9 @@ class MainHomeViewController: UIViewController {
     var todays_meals = [PromotedItem]()
     var bestSellers = [PromotedItem]()
     var recommendedMeals = [PromotedItem]()
+    var mealsURLs = [URL]()
+    var recommendMealURLs = [URL]()
+    
     
     var foods = [Food]()
     let bookmarks = ["Recommended", "Meals of the day", "Cuisines", "Best Chefs"]
@@ -38,23 +41,39 @@ class MainHomeViewController: UIViewController {
        
     }
     
+    
+    
+    private func setupRefreshControl(){
+        let refreshControl = UIRefreshControl()
+        if #available(iOS 10.0, *){
+            tableView.refreshControl = refreshControl
+        }else{
+            tableView.addSubview(refreshControl)
+        }
+        
+        refreshControl.addTarget(self, action: #selector(refreshData(sender:)), for: .valueChanged)
+    }
+    
+    @objc private func refreshData(sender: UIRefreshControl){
+        
+        getRecommendations()
+        tableView.reloadData()
+    }
+    
     private func getRecommendations(){
             let params : [String: Any] = ["partner_id": partnerId ?? 0]
             
             RestClient().requestPromotedApi(WalayemApi.homeRecommendation, params) { (result, error) in
                 self.tableView.refreshControl?.endRefreshing()
                 
+                let data = result!["result"] as! [String: Any]
+                let status_api = data["status"] as? Int
+                
                 if let error = error{
                     self.handleNetworkError(error)
                     return
                 }
-                
-                let data = result!["result"] as! [String: Any]
-                let status_api = data["status"] as? Int
-                
-                
-                
-                if let status = status_api, status == 0{
+                else if let status = status_api, status == 0{
                     print("STatus Value------------->\(status)")
                     return
                 }else{
@@ -68,12 +87,20 @@ class MainHomeViewController: UIViewController {
                         for recommended in recommendedMeals{
                             let recommend = PromotedItem(records: recommended as! [String : Any])
                             self.recommendedMeals.append(recommend)
+                            
+                            let id = recommend.item_details?.id
+                            let url = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(id ?? 0)/image")
+                            self.recommendMealURLs.append(url!)
+                            
                         }
                     }
                     if let todaysMeals = data["todays_meals"] as? [Any]{
                         for meal in todaysMeals {
                             let todays_meal = PromotedItem(records: meal as! [String : Any])
                             self.todays_meals.append(todays_meal)
+                            let id = todays_meal.item_details?.id
+                            let url = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(id ?? 0)/image")
+                            self.mealsURLs.append(url!)
                         }
                     }
                 }
@@ -128,8 +155,11 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
             cell.bookmarkImage.image = self.bookmarkImages[indexPath.row]
             
             cell.recommendedMeals = self.recommendedMeals
+            cell.recommendedImagesURLS = self.recommendMealURLs
             cell.todays_meals = self.todays_meals
+            cell.mealImagesURLS = self.mealsURLs
             cell.bestSellers = self.bestSellers
+            
             
             cell.collectionView.reloadData()
             cell.selectionStyle = .none

@@ -18,10 +18,13 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource {
     var cellPriceLabel = UILabel()
     var cellNameLabel = UILabel()
     
+    var mealImagesURLS = [URL]()
+    var recommendedImagesURLS = [URL]()
+    
     var identifier = ""
-    var todays_meals = [PromotedItem]()
+//    var todays_meals = [PromotedItem]()
     var bestSellers = [PromotedItem]()
-    var recommendedMeals = [PromotedItem]()
+//    var recommendedMeals = [PromotedItem]()
     
     var cuisine = ["Arabic", "Emirati", "Asian", "Chinese"]
     var cuisineImages: [UIImage] = [
@@ -32,6 +35,21 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource {
         UIImage(named: "arabic.jpg")!
     ]
     
+    var recommendedMeals: [PromotedItem]!{
+        didSet{
+            updateUI()
+        }
+    }
+    
+    var todays_meals: [PromotedItem]!{
+        didSet{
+            updateUI()
+        }
+    }
+    
+    func updateUI(){
+        collectionView.reloadData()
+    }
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -55,20 +73,18 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource {
         
         if identifier == "recommendedCell0"{
 
+            var price: String!
             let recommendedCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-
             let cellPriceLabel = recommendedCell.viewWithTag(8801) as? UILabel
             let cellImage = recommendedCell.viewWithTag(8800) as? UIImageView
             let cellView = recommendedCell.viewWithTag(8802)
             let cellNameLabel = recommendedCell.viewWithTag(8803) as? UILabel
+    
+            cellPriceLabel?.text = "\(recommendedMeals[indexPath.row].item_details?.list_price ?? 0). AED"
+            cellNameLabel?.text = String(recommendedMeals[indexPath.row].item_details?.name ?? "")
             
-            cellPriceLabel?.text =  "\(recommendedMeals[indexPath.row].item_details?.list_price)"
-            cellNameLabel?.text = "\(recommendedMeals[indexPath.row].item_details?.name)"
             cellView?.roundCorners([.bottomRight,.bottomLeft], radius: 15)
-            
-            let imgId = recommendedMeals[indexPath.section].item_details?.id
-            let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(imgId)/image")
-            cellImage?.kf.setImage(with: imageUrl)
+            cellImage?.kf.setImage(with: recommendedImagesURLS[indexPath.row])
             
             return recommendedCell
         }
@@ -76,11 +92,8 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource {
             else if identifier == "mealDayCell1"{
 
             let mealCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-            
             let mealImage = mealCell.viewWithTag(600) as? UIImageView
-            let imgId = todays_meals[indexPath.row].item_details?.id
-            let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(imgId)/image")
-            mealImage?.kf.setImage(with: imageUrl)
+            mealImage?.kf.setImage(with: mealImagesURLS[indexPath.row])
             
             return mealCell
         }
@@ -98,9 +111,6 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource {
             cuisineLabel?.text = self.cuisine[indexPath.row]
             cuisineImg?.image = self.cuisineImages[indexPath.row]
             
-//            let imgId = todays_meals[indexPath.section].item_details?.id
-//            let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(imgId)/image")
-//            cuisineImg?.kf.setImage(with: imageUrl)
             return cuisineCell
         }
         else{
@@ -108,9 +118,6 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource {
             
         }
             
-        
-        
-        
     }
     
     

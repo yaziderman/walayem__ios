@@ -585,36 +585,6 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         }
     }
     
-//    func didRefreshRow(sender: FoodTableViewCell){
-//        guard let indexPath = tableView.indexPath(for: sender) else {
-//            fatalError("Cell does not exist")
-//        }
-//        let food = foods[indexPath.row]
-//    }
-    
-    
-    
-    
-    
-//    private func getCartItems(){
-//        let foods = db.getFoods()
-//        validateFoods(foods: foods) { (success) in
-//            self.cartItems.removeAll()
-//            let chefs = self.db.getCartItems()
-//            if chefs.count == 0{
-//                self.changeView(true)
-//            }else{
-//                self.changeView(false)
-//                for chef in chefs{
-//                    let cartItem = CartItem(opened: true, chef: chef, note: "")
-//                    self.cartItems.append(cartItem)
-//                }
-//                self.calculateCost()
-//            }
-//            self.tableView.reloadData()
-//        }
-//    }
-
     
     /*
     // MARK: - Navigation
