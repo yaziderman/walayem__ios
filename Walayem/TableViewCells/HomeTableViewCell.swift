@@ -26,6 +26,7 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
     var cuisinesObj = [Cuisine]()
     
     var staticCuisines = [Cuisine]()
+    
     var recommendedMeals: [PromotedItem]!{
         didSet{
             updateUI()
@@ -66,7 +67,9 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "FoodDetailVC") as? FoodDetailViewController else{
                 fatalError("Unexpected destination VC")
             }
-            let food = Food(id: recommendedMeals[indexPath.row].item_details?.id ?? 0, name: recommendedMeals[indexPath.row].item_details?.name! ?? "", price: recommendedMeals[indexPath.row].item_details?.list_price ?? 0.0, quantity: recommendedMeals[indexPath.row].item_details?.serves ?? 0, preparationTime: recommendedMeals[indexPath.row].item_details?.preparation_time ?? 0, kitcherName: recommendedMeals[indexPath.row].kitchen_name ?? "", description: recommendedMeals[indexPath.row].item_details?.description_sale ?? "", chefName: recommendedMeals[indexPath.row].kitchen_name ?? "" , foodType: recommendedMeals[indexPath.row].item_details?.food_type! ?? "", imageIds: recommendedMeals[indexPath.row].item_details?.food_image_ids ?? [0] )
+            
+            let food = Food(id: recommendedMeals[indexPath.row].item_details?.id ?? 0, name: recommendedMeals[indexPath.row].item_details?.name! ?? "", price: recommendedMeals[indexPath.row].item_details?.list_price ?? 0.0, quantity: recommendedMeals[indexPath.row].item_details?.serves ?? 0, preparationTime: recommendedMeals[indexPath.row].item_details?.preparation_time ?? 0, kitcherName: recommendedMeals[indexPath.row].kitchen_name ?? "", description: recommendedMeals[indexPath.row].item_details?.description_sale ?? "", chefName: recommendedMeals[indexPath.row].kitchen_name ?? "" , foodType: recommendedMeals[indexPath.row].item_details?.food_type! ?? "", imageIds: recommendedMeals[indexPath.row].item_details?.food_image_ids ?? [0], chefId: 291 ?? 0, chefImage: recommendedMeals[indexPath.row].item_details?.image_hash ?? "", cuisine: recommendedMeals[indexPath.row].item_details?.cuisine_id ?? Cuisine(id: 0, name: ""), tags: recommendedMeals[indexPath.row].item_details?.food_tags ?? [Tag(id: 0, name: "")])
+            
             
             destinationVC.food = food
             navigationController?.pushViewController(destinationVC, animated: true)
@@ -78,7 +81,20 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "FoodDetailVC") as? FoodDetailViewController else{
                 fatalError("Unexpected destination VC")
             }
-            let food = Food(id: todays_meals[indexPath.row].item_details?.id ?? 0, name: todays_meals[indexPath.row].item_details?.name! ?? "", price: todays_meals[indexPath.row].item_details?.list_price ?? 0.0, quantity: todays_meals[indexPath.row].item_details?.serves ?? 0, preparationTime: todays_meals[indexPath.row].item_details?.preparation_time ?? 0, kitcherName: todays_meals[indexPath.row].kitchen_name ?? "", description: todays_meals[indexPath.row].item_details?.description_sale ?? "", chefName: todays_meals[indexPath.row].kitchen_name ?? "" , foodType: todays_meals[indexPath.row].item_details?.food_type! ?? "", imageIds: todays_meals[indexPath.row].item_details?.food_image_ids ?? [0] )
+            let food = Food(id: todays_meals[indexPath.row].item_details?.id ?? 0,
+                name: todays_meals[indexPath.row].item_details?.name! ?? "",
+                price: todays_meals[indexPath.row].item_details?.list_price ?? 0.0,
+                quantity: todays_meals[indexPath.row].item_details?.serves ?? 0,
+                preparationTime: todays_meals[indexPath.row].item_details?.preparation_time ?? 0,
+                kitcherName: todays_meals[indexPath.row].kitchen_name ?? "",
+                description: todays_meals[indexPath.row].item_details?.description_sale ?? "",
+                chefName: todays_meals[indexPath.row].kitchen_name ?? "" ,
+                foodType: todays_meals[indexPath.row].item_details?.food_type! ?? "",
+                imageIds: todays_meals[indexPath.row].item_details?.food_image_ids ?? [0],
+                chefId: 291 ?? 0,
+                chefImage: todays_meals[indexPath.row].item_details?.image_hash ?? "",
+                cuisine: todays_meals[indexPath.row].item_details?.cuisine_id ?? Cuisine(id: 0, name: ""),
+                tags: todays_meals[indexPath.row].item_details?.food_tags ?? [Tag(id: 0, name: "")] )
             
             destinationVC.food = food
             navigationController?.pushViewController(destinationVC, animated: true)
@@ -86,7 +102,8 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         
         if identifier == "cuisinesCell4"{
             
-            StaticLinker.discoverViewController?.homeSelectedCuisines = [self.cuisinesObj[indexPath.row]]
+//            StaticLinker.discoverViewController?.homeSelectedCuisines = [self.cuisinesObj[indexPath.row]]
+            StaticLinker.selectedCuisine = nil
             StaticLinker.selectedCuisine = self.staticCuisines[indexPath.row]
             StaticLinker.mainVC?.selectedIndex = 1;
             
@@ -119,6 +136,11 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             let mealCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
             let mealImage = mealCell.viewWithTag(600) as? UIImageView
             mealImage?.kf.setImage(with: mealImagesURLS[indexPath.row])
+            
+            let mealName = mealCell.viewWithTag(610) as? UILabel
+            mealName?.roundCorners([.bottomLeft,.bottomRight], radius: 15)
+            mealName?.text = String(todays_meals[indexPath.row].item_details?.name ?? "")
+            //            mealImage?.kf.setImage(with: mealImagesURLS[indexPath.row])
             
             return mealCell
         }

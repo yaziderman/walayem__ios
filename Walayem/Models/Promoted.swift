@@ -78,8 +78,8 @@ class ItemDetail{
     var food_type: String?
     var description_sale: String?
     
-    var food_tags : [Int]?
-    var cuisine_id: [Int]?
+    var food_tags : [Tag]?
+    var cuisine_id: Cuisine?
     var food_image_ids: [Int]?
     
     init(_ records: [Any]?) {
@@ -91,15 +91,30 @@ class ItemDetail{
                 self.kitchen_id = record["kitchen_id"] as? [Int: String]
                 self.products = record["products"] as? String
                 self.favorite_products = record["favorite_products"] as? [Int]
-                self.cuisine_id = record["cuisine_id"] as? [Int]
+//                self.cuisine_id = record["cuisine_id"] as? [Int]
                 
                 if record["food_image_ids"] != nil{
                     self.food_image_ids?.removeAll()
                     let tempImageIds = record["food_image_ids"] as! [Int]
                     self.food_image_ids = tempImageIds
                 }
+                if let tags = record["food_tags"] as? [Int] {
+                    var tags_list = [Tag]()
+                    for tag in tags{
+                        let tempTag = Tag(id: tag, name: "TAG NAME")
+                        tags_list.append(tempTag)
+//                        self.food_tags?.append(tempTag)
+                    }
+                    print(tags_list)
+                    self.food_tags = tags_list
+                    
+                }
                 
-                self.food_tags = record["food_tags"] as? [Int]
+                if record["cuisine_id"] != nil {
+                    let cuisine = record["cuisine_id"] as! [Any]
+                    self.cuisine_id = Cuisine(id: cuisine[0] as! Int, name: cuisine[1] as! String)
+                    print(self.cuisine_id)
+                }
                 self.id = record["id"] as? Int
                 self.preparation_time = record["preparation_time"] as? Int
                 self.serves = record["serves"] as? Int

@@ -32,6 +32,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     var isLoading = false
     var addressList = [Address]()
     var isSearching = false
+    var isFirtTime = true
 //    var lastIndex
 //    var indexPath = []
 //    var cartItems = [CartItem]()
@@ -153,10 +154,11 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         print(StaticLinker.selectedCuisine)
         initialCustomDate()
         
-        if StaticLinker.selectedCuisine != nil {
-            self.selectedCuisines.append(StaticLinker.selectedCuisine!)
-            self.showCuisineFromHome()
-        }
+//        if StaticLinker.selectedCuisine != nil {
+//            self.selectedCuisines.append(StaticLinker.selectedCuisine!)
+//            self.showCuisineFromHome()
+            isFirtTime = false
+//        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -170,16 +172,19 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
 //        getAddress()
 //        hideActivityIndicator()
         
-        if StaticLinker.selectedCuisine != nil {
+        if StaticLinker.selectedCuisine != nil && !isFirtTime{
             self.selectedCuisines.append(StaticLinker.selectedCuisine!)
             self.showCuisineFromHome()
+            isFirtTime = false
         }
         
     }
     
     
     override func viewWillDisappear(_ animated: Bool){
-        
+        print("V------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------viewWillDisappear")
+        selectedCuisines.removeAll()
+        StaticLinker.selectedCuisine = nil
     }
     
     

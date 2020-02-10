@@ -81,7 +81,8 @@ static func == (lhs: Food, rhs: Food) -> Bool {
         self.preparationTime = preparationTime
     }
     
-    init(id: Int, name: String, price: Double, quantity: Int, preparationTime: Int, kitcherName: String, description: String, chefName: String, foodType: String, imageIds: [Int]) {
+    init(id: Int, name: String, price: Double, quantity: Int, preparationTime: Int, kitcherName: String, description: String, chefName: String, foodType: String, imageIds: [Int], chefId: Int,  chefImage: String, cuisine: Cuisine, tags: [Tag]
+    ) {
         
         self.id = id
         self.name = name
@@ -93,6 +94,9 @@ static func == (lhs: Food, rhs: Food) -> Bool {
         self.chefName = chefName
         self.foodType = foodType
         self.imageIds = imageIds
-        
+        self.chefId = chefId
+        self.chefImage = chefImage
+        self.cuisine = cuisine
+        self.tags = tags
     }
 }
