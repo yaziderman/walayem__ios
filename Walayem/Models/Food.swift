@@ -15,11 +15,11 @@ static func == (lhs: Food, rhs: Food) -> Bool {
     return (lhs.id == rhs.id)
 }
 
-    var id: Int
-    var name: String
+    var id: Int?
+    var name: String?
     var description: String?
     var foodType: String?
-    var price : Double
+    var price : Double?
     var preparationTime: Int = 0
     var quantity: Int = 0
     var servingQunatity: Int = 0
@@ -34,11 +34,11 @@ static func == (lhs: Food, rhs: Food) -> Bool {
     var isFav: Bool = false
     
     init(record: [String: Any]){
-        self.id = record["id"] as! Int
-        self.name = record["name"] as! String
+        self.id = (record["id"] as! Int)
+        self.name = (record["name"] as! String)
         self.description = record["description_sale"] as? String
         self.foodType = record["food_type"] as? String
-        self.price = record["list_price"] as! Double
+        self.price = (record["list_price"] as! Double)
         self.preparationTime = record["preparation_time"] as! Int
         self.servingQunatity = record["serves"] as! Int
         self.imageIds = record["food_image_ids"] as? [Int]
@@ -59,9 +59,9 @@ static func == (lhs: Food, rhs: Food) -> Bool {
     }
     
     init(dict: [String: Any]){
-        self.id = dict["id"] as! Int
-        self.name = dict["name"] as! String
-        self.price = dict["price"] as! Double
+        self.id = (dict["id"] as! Int)
+        self.name = (dict["name"] as! String)
+        self.price = (dict["price"] as! Double)
         self.quantity = dict["quantity"] as! Int
         self.preparationTime = dict["preparation_time"] as! Int
     }
@@ -79,5 +79,20 @@ static func == (lhs: Food, rhs: Food) -> Bool {
         self.price = price
         self.quantity = quantity
         self.preparationTime = preparationTime
+    }
+    
+    init(id: Int, name: String, price: Double, quantity: Int, preparationTime: Int, kitcherName: String, description: String, chefName: String, foodType: String, imageIds: [Int]) {
+        
+        self.id = id
+        self.name = name
+        self.price = price
+        self.quantity = quantity
+        self.preparationTime = preparationTime
+        self.kitcherName = kitcherName
+        self.description = description
+        self.chefName = chefName
+        self.foodType = foodType
+        self.imageIds = imageIds
+        
     }
 }

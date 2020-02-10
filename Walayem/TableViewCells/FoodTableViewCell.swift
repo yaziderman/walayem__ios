@@ -68,7 +68,7 @@ class FoodTableViewCell: UITableViewCell{
 //        let time = Int(max(1, round( Double(food.preparationTime) / 60.0)))
 //        timeLabel.text = "\(time) hour(s)"
         numberOfServesLabel = "Serves \(food.servingQunatity) people"
-        priceLabel.text = "AED \(food.price)"
+        priceLabel.text = "AED \(food.price ?? 0)"
         quantityLabel.text =  String(food.quantity)
         descriptionLabel.text = food.kitcherName! + " \u{2022} " + food.chefName!
         
@@ -76,7 +76,7 @@ class FoodTableViewCell: UITableViewCell{
         
         timeLabel.text = numberOfServesLabel
         
-        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id)/image")
+        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image")
         foodImageView.kf.setImage(with: imageUrl)
     }
     

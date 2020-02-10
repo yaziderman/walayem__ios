@@ -30,10 +30,10 @@ class ChefFoodCell: UITableViewCell {
         if !food.paused{
             nameLabel.text = food.name
         }else{
-            nameLabel.text = "\u{23F8} " + food.name
+            nameLabel.text = "\u{23F8} " + (food.name ?? "")
         }
         
-        priceLabel.text = "AED \(food.price)"
+        priceLabel.text = "AED \(food.price ?? 0)"
         var tagString = ""
         for tag in food.tags{
             tagString.append(tag.name ?? "")
@@ -43,7 +43,7 @@ class ChefFoodCell: UITableViewCell {
         }
         tagsLabel.text = tagString
         
-        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id)/image")
+        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image")
         foodImageView.kf.setImage(with: imageUrl)
     }
 }

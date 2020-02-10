@@ -29,7 +29,7 @@ class OrderFoodTableViewCell: UITableViewCell {
         
         nameLabel.text = food.name
         priceLabel.text = "AED \(food.price)"
-        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id)/image")
+        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image")
         foodImageView.kf.setImage(with: imageUrl)
     }
 }

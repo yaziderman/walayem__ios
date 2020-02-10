@@ -444,11 +444,11 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 //            print("active ids--->\(data)")
             for food in foods{
 //                print("food id:\(food.id) is in list?")
-                if(data.contains(food.id)){
+                if(data.contains(food.id ?? 0)){
 //                    print("yes")
                 }else{
 //                    print("no so delete it")
-                    let _ = self.db.removeFood(foodId: food.id)
+                    let _ = self.db.removeFood(foodId: food.id ?? 0)
                 }
             }
             completion(true)
@@ -505,7 +505,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         var totalCost: Double = 0.0
         for item in cartItems{
             for food in item.chef.foods{
-                totalCost += Double(food.quantity) * food.price
+                totalCost += Double(food.quantity) * (food.price ?? 0.0)
             }
         }
         
@@ -585,7 +585,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
             fatalError("Cell does not exist")
         }
         let food = cartItems[indexPath.section].chef.foods[indexPath.row]
-        if db.addQuantity(foodId: food.id){
+        if db.addQuantity(foodId: food.id ?? 0){
             print("Quantity added---- on Cart screen")
             calculateCost()
         }
@@ -600,7 +600,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         }
         let food = cartItems[indexPath.section].chef.foods[indexPath.row]
         if food.quantity == 0{
-            if db.removeFood(foodId: food.id){
+            if db.removeFood(foodId: food.id ?? 0){
                 cartItems[indexPath.section].chef.foods.remove(at: indexPath.row)
                 if cartItems[indexPath.section].chef.foods.count == 0{
                     cartItems.remove(at: indexPath.section)
@@ -614,7 +614,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
                 updateBadge()
             }
         }else{
-            if db.subtractQuantity(foodId: food.id){
+            if db.subtractQuantity(foodId: food.id ?? 0){
                 print("Quantity Subtracted")
             }
         }

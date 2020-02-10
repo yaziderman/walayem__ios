@@ -814,7 +814,7 @@
         <!--Discover-->
         <scene sceneID="g6O-t2-flu">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="fI6-tx-xDH" customClass="DiscoverTableViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiscoverTableViewController" modalPresentationStyle="fullScreen" id="fI6-tx-xDH" customClass="DiscoverTableViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z9B-pC-Tiw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

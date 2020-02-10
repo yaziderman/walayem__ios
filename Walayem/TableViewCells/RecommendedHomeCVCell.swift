@@ -30,9 +30,9 @@ class RecommendedHomeCVCell: UICollectionViewCell {
         bottomView.roundCorners([.bottomLeft, .bottomRight], radius: 15)
                 
         nameLabel.text = food.name
-        priceLabel.text = "AED \(food.price)"
+        priceLabel.text = "AED \(food.price ?? 0)"
         
-        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id)/image")
+        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image")
         foodImageView.kf.setImage(with: imageUrl)
     }
     

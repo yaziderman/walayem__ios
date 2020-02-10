@@ -52,7 +52,7 @@ class FoodSearchResultController: UIViewController, FoodCellDelegate {
             fatalError("Cell does not exist")
         }
         let food = foods[indexPath.row]
-        if db.subtractFoodDirectly(foodId: food.id){
+        if db.subtractFoodDirectly(foodId: food.id ?? 0){
             print ("Qunatity subtracted")
             updateBadge()
         }

@@ -73,7 +73,7 @@ class ItemDetail{
     var favorite_products: [Int]?
     var preparation_time: Int?
     var serves: Int?
-    var list_price: Int?
+    var list_price: Double?
     
     var food_type: String?
     var description_sale: String?
@@ -92,13 +92,19 @@ class ItemDetail{
                 self.products = record["products"] as? String
                 self.favorite_products = record["favorite_products"] as? [Int]
                 self.cuisine_id = record["cuisine_id"] as? [Int]
-                self.food_image_ids = record["food_image_ids"] as? [Int]
+                
+                if record["food_image_ids"] != nil{
+                    self.food_image_ids?.removeAll()
+                    let tempImageIds = record["food_image_ids"] as! [Int]
+                    self.food_image_ids = tempImageIds
+                }
+                
                 self.food_tags = record["food_tags"] as? [Int]
                 self.id = record["id"] as? Int
                 self.preparation_time = record["preparation_time"] as? Int
                 self.serves = record["serves"] as? Int
                 if let price = record["list_price"]{
-                    self.list_price = price as? Int
+                    self.list_price = price as? Double
                 }else{
                     self.list_price = 0
                 }

@@ -18,7 +18,6 @@ class HomeButtonTableViewCell: UITableViewCell {
 
     @IBAction func browseMealsPressed(_ sender: Any) {
         print("This will take you towards Root of Discover food tab.")
-        
         StaticLinker.mainVC?.selectedIndex = 1;
     }
     override func setSelected(_ selected: Bool, animated: Bool) {

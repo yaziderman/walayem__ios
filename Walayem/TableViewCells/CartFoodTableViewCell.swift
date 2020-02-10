@@ -69,7 +69,7 @@ class CartFoodTableViewCell: UITableViewCell {
         
         
         
-        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id)/image")
+        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image")
         foodImageView.kf.setImage(with: imageUrl)
     }
 }

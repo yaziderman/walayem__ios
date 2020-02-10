@@ -350,7 +350,7 @@ extension ChefFoodTableViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let food = self.foods[indexPath.row]
         let deleteAction = UITableViewRowAction(style: .normal, title: "       ") { (delete, indexPath) in
-            self.pauseRemoveFood(foodId: food.id, action: ChefFoodTableViewController.FOOD_REMOVE)
+            self.pauseRemoveFood(foodId: food.id ?? 0, action: ChefFoodTableViewController.FOOD_REMOVE)
             self.foods.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
@@ -372,10 +372,10 @@ extension ChefFoodTableViewController: UITableViewDelegate, UITableViewDataSourc
         
         let pauseAction = UITableViewRowAction(style: .normal, title: "") { (pause, indexPath) in
             if food.paused{
-                self.pauseRemoveFood(foodId: food.id, action: ChefFoodTableViewController.FOOD_RESUME)
+                self.pauseRemoveFood(foodId: food.id ?? 0, action: ChefFoodTableViewController.FOOD_RESUME)
                 food.paused = false
             }else {
-                self.pauseRemoveFood(foodId: food.id, action: ChefFoodTableViewController.FOOD_PAUSE)
+                self.pauseRemoveFood(foodId: food.id ?? 0, action: ChefFoodTableViewController.FOOD_PAUSE)
                 food.paused = true
             }
             tableView.reloadRows(at: [indexPath], with: .none)

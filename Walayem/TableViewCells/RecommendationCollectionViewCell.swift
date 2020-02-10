@@ -28,9 +28,9 @@ class RecommendationCollectionViewCell: UICollectionViewCell {
         foodImageView.layer.masksToBounds = true
         
         nameLabel.text = food.name
-        priceLabel.text = "AED \(food.price)"
+        priceLabel.text = "AED \(food.price ?? 0)"
         
-        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id)/image")
+        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image")
         foodImageView.kf.setImage(with: imageUrl)
     }
     

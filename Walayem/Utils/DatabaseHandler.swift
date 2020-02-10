@@ -67,7 +67,7 @@ class DatabaseHandler{
     
     func addFoodDirectly(item: Food) -> Int{
 
-        let cartItem = cartFood.filter(id == item.id)
+        let cartItem = cartFood.filter(id == item.id ?? 0)
         // Add quantity if food already existe in cart
         do{
             if try db!.run(cartItem.update(quantity += 1)) > 0{
@@ -81,7 +81,7 @@ class DatabaseHandler{
         
         addChef(chefId: item.chefId!, chefName: item.chefName!, chefImage: item.chefImage!, kitchen: item.kitcherName!)
         do{
-            let insert = cartFood.insert(self.id <- item.id, chefId <- item.chefId!, name <- item.name, price <- Double(item.price), quantity <- 1, preparationTime <- item.preparationTime)
+            let insert = cartFood.insert(self.id <- item.id ?? 0, chefId <- item.chefId!, name <- item.name ?? "", price <- Double(item.price ?? 0.0), quantity <- 1, preparationTime <- item.preparationTime)
             let id = try db!.run(insert)
             return Int(id)
         }catch let error{
@@ -91,7 +91,7 @@ class DatabaseHandler{
     }
     
     func addFood(item: Food) -> Int{
-        let cartItem = cartFood.filter(id == item.id)
+        let cartItem = cartFood.filter(id == item.id ?? 0)
         // Add quantity if food already existe in cart
         do{
             if try db!.run(cartItem.update(quantity += item.quantity)) > 0{
@@ -101,11 +101,12 @@ class DatabaseHandler{
             print ("Update Failed \(error)")
             return -1
         }
+        
         // ====================
         
         addChef(chefId: item.chefId!, chefName: item.chefName!, chefImage: item.chefImage!, kitchen: item.kitcherName!)
         do{
-            let insert = cartFood.insert(self.id <- item.id, chefId <- item.chefId!, name <- item.name, price <- Double(item.price), quantity <- item.quantity, preparationTime <- item.preparationTime)
+            let insert = cartFood.insert(self.id <- item.id ?? 0, chefId <- item.chefId!, name <- item.name ?? "", price <- Double(item.price ?? 0.0), quantity <- item.quantity, preparationTime <- item.preparationTime)
             let id = try db!.run(insert)
             return Int(id)
         }catch let error{

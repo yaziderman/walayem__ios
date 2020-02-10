@@ -18,6 +18,9 @@ class MainHomeViewController: UIViewController {
     var recommendedMeals = [PromotedItem]()
     var mealsURLs = [URL]()
     var recommendMealURLs = [URL]()
+    var cuisines = [Cuisine]()
+    var selectedCuisine: Cuisine?
+//    var selectedIndexPath: IndexPath?
     
     
     var foods = [Food]()
@@ -37,7 +40,7 @@ class MainHomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         getRecommendations()
-        
+        getCuisines()
        
     }
     
@@ -126,6 +129,37 @@ class MainHomeViewController: UIViewController {
                self.onSessionExpired()
            }
        }
+    
+    
+    
+    private func getCuisines(){
+        let fields = ["id", "name"]
+        OdooClient.sharedInstance().searchRead(model: "product.cuisine", domain: [], fields: fields, offset: 0, limit: 500, order: "name ASC") { (result, error) in
+            if error != nil{
+                return
+            }
+            let records = result!["records"] as! [Any]
+            for record in records{
+//                let tempRecord = record as! [String: Any]
+                let tag = Cuisine(record: record as! [String : Any])
+//                let cuisine = Cuisine(id: tempRecord["id"] as? Int ?? 0, name: tempRecord["name"] as? String ?? "", img: "")
+                self.cuisines.append(tag)
+//                self.cuisines.append(cuisine)
+            }
+
+            self.setSelectedCuisine()
+        }
+    }
+    
+    private func setSelectedCuisine(){
+        for index in 0...cuisines.count - 1{
+            if selectedCuisine?.id == cuisines[index].id{
+                let indexPath = IndexPath(row: index, section: 0)
+//                collectionView?.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
+                break
+            }
+        }
+    }
 }
 
 extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
@@ -159,8 +193,8 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
             cell.todays_meals = self.todays_meals
             cell.mealImagesURLS = self.mealsURLs
             cell.bestSellers = self.bestSellers
-            
-            
+            cell.navigationController = self.navigationController
+            cell.cuisinesObj = self.cuisines
             cell.collectionView.reloadData()
             cell.selectionStyle = .none
             

@@ -12,10 +12,16 @@ class Cuisine{
     
     var id: Int?
     var name: String?
+    var imageName: String?
     
     init(id: Int, name: String){
-        self.id = id
-        self.name = name
+           self.id = id
+           self.name = name
+       }
+    init(id: Int, name: String, img: String){
+          self.id = id
+          self.name = name
+          self.imageName = "\(self.id ?? 1).jpg"
     }
     
     init(record: [String: Any]){

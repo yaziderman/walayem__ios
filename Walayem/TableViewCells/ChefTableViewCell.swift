@@ -74,7 +74,7 @@ extension ChefTableViewCell: UICollectionViewDataSource, UICollectionViewDelegat
         let id = chef.foods[indexPath.row].id
         cell.foodImageView.layer.cornerRadius = 15
         cell.foodImageView.layer.masksToBounds = true
-        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(id)/image")
+        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(id ?? 0)/image")
         cell.foodImageView.kf.setImage(with: imageUrl)
         return cell
     }

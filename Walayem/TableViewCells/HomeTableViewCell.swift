@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource {
+class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var bookmarkImage: UIImageView!
@@ -17,24 +17,15 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource {
     
     var cellPriceLabel = UILabel()
     var cellNameLabel = UILabel()
-    
     var mealImagesURLS = [URL]()
     var recommendedImagesURLS = [URL]()
+    weak var navigationController: UINavigationController?
     
     var identifier = ""
-//    var todays_meals = [PromotedItem]()
     var bestSellers = [PromotedItem]()
-//    var recommendedMeals = [PromotedItem]()
+    var cuisinesObj = [Cuisine]()
     
-    var cuisine = ["Arabic", "Emirati", "Asian", "Chinese"]
-    var cuisineImages: [UIImage] = [
-        UIImage(named: "arabic.jpg")!,
-        UIImage(named: "hindi.jpg")!,
-        UIImage(named: "phalasteeni.jpg")!,
-        UIImage(named: "arabic.jpg")!,
-        UIImage(named: "arabic.jpg")!
-    ]
-    
+    var staticCuisines = [Cuisine]()
     var recommendedMeals: [PromotedItem]!{
         didSet{
             updateUI()
@@ -61,10 +52,44 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource {
             return todays_meals.count
         }
         else if identifier == "cuisinesCell4"{
-            return cuisine.count
+            return staticCuisines.count
         }
         else{
             return 0
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if identifier == "recommendedCell0"{
+            print(recommendedMeals[indexPath.row].item_details?.name)
+            let storyboard : UIStoryboard = UIStoryboard(name: "Discover", bundle: nil)
+            guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "FoodDetailVC") as? FoodDetailViewController else{
+                fatalError("Unexpected destination VC")
+            }
+            let food = Food(id: recommendedMeals[indexPath.row].item_details?.id ?? 0, name: recommendedMeals[indexPath.row].item_details?.name! ?? "", price: recommendedMeals[indexPath.row].item_details?.list_price ?? 0.0, quantity: recommendedMeals[indexPath.row].item_details?.serves ?? 0, preparationTime: recommendedMeals[indexPath.row].item_details?.preparation_time ?? 0, kitcherName: recommendedMeals[indexPath.row].kitchen_name ?? "", description: recommendedMeals[indexPath.row].item_details?.description_sale ?? "", chefName: recommendedMeals[indexPath.row].kitchen_name ?? "" , foodType: recommendedMeals[indexPath.row].item_details?.food_type! ?? "", imageIds: recommendedMeals[indexPath.row].item_details?.food_image_ids ?? [0] )
+            
+            destinationVC.food = food
+            navigationController?.pushViewController(destinationVC, animated: true)
+        }
+        
+        if identifier == "mealDayCell1"{
+            
+            let storyboard : UIStoryboard = UIStoryboard(name: "Discover", bundle: nil)
+            guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "FoodDetailVC") as? FoodDetailViewController else{
+                fatalError("Unexpected destination VC")
+            }
+            let food = Food(id: todays_meals[indexPath.row].item_details?.id ?? 0, name: todays_meals[indexPath.row].item_details?.name! ?? "", price: todays_meals[indexPath.row].item_details?.list_price ?? 0.0, quantity: todays_meals[indexPath.row].item_details?.serves ?? 0, preparationTime: todays_meals[indexPath.row].item_details?.preparation_time ?? 0, kitcherName: todays_meals[indexPath.row].kitchen_name ?? "", description: todays_meals[indexPath.row].item_details?.description_sale ?? "", chefName: todays_meals[indexPath.row].kitchen_name ?? "" , foodType: todays_meals[indexPath.row].item_details?.food_type! ?? "", imageIds: todays_meals[indexPath.row].item_details?.food_image_ids ?? [0] )
+            
+            destinationVC.food = food
+            navigationController?.pushViewController(destinationVC, animated: true)
+        }
+        
+        if identifier == "cuisinesCell4"{
+            
+            StaticLinker.discoverViewController?.homeSelectedCuisines = [self.cuisinesObj[indexPath.row]]
+            StaticLinker.selectedCuisine = self.staticCuisines[indexPath.row]
+            StaticLinker.mainVC?.selectedIndex = 1;
+            
         }
     }
     
@@ -101,15 +126,14 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource {
         else if identifier == "cuisinesCell4"{
 
             let cuisineCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-            
             print(indexPath.row)
             print("Section --- \(indexPath.section)")
             
             let cuisineImg = cuisineCell.viewWithTag(500) as? UIImageView
             let cuisineLabel = cuisineCell.viewWithTag(501) as? UILabel
-            
-            cuisineLabel?.text = self.cuisine[indexPath.row]
-            cuisineImg?.image = self.cuisineImages[indexPath.row]
+
+            cuisineLabel?.text = self.staticCuisines[indexPath.row].name
+            cuisineImg?.image = UIImage(named: self.staticCuisines[indexPath.row].imageName ?? "1.jpg")
             
             return cuisineCell
         }
@@ -126,7 +150,29 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.collectionView.dataSource = self
-        // Initialization code
+        self.collectionView.delegate = self
+        
+        staticCuisines = [Cuisine(id: 1, name: "Indian", img: ""),
+                          Cuisine(id: 2, name: "Arabic", img: ""),
+                          Cuisine(id: 4, name: "Emirati", img: ""),
+                          Cuisine(id: 5, name: "English", img: ""),
+                          Cuisine(id: 9, name: "Sudanese", img: ""),
+//                          Cuisine(id: 10, name: "Shami", img: ""),
+//                          Cuisine(id: 11, name: "Gulf", img: ""),
+                          Cuisine(id: 12, name: "Palestinian", img: ""),
+                          Cuisine(id: 13, name: "Iraqi", img: ""),
+                          Cuisine(id: 14, name: "Jordanian", img: ""),
+                          Cuisine(id: 15, name: "Lebanese", img: ""),
+                          Cuisine(id: 16, name: "Egyptian", img: ""),
+                          Cuisine(id: 17, name: "The Maghreb", img: ""),
+//                          Cuisine(id: 18, name: "Italian", img: ""),
+                          Cuisine(id: 19, name: "Other", img: ""),
+                          Cuisine(id: 20, name: "Asian", img: ""),
+                          Cuisine(id: 21, name: "Mexican", img: ""),
+                          Cuisine(id: 22, name: "Chinese", img: ""),
+//                          Cuisine(id: 23, name: "Thai", img: ""),
+//                          Cuisine(id: 24, name: "Turkish", img: "")
+        ]
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

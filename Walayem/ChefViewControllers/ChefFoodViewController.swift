@@ -231,7 +231,7 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
             navigationItem.leftBarButtonItem = nil
             
             nameTextField.text = food.name
-            priceTextField.text = String(food.price)
+            priceTextField.text = String("\(food.price ?? 0)")
             let hour = Int(max(1, round( Double(food.preparationTime) / 60.0)))
             timeTextField.text = String(hour)
             serveTextField.text = String(food.servingQunatity)

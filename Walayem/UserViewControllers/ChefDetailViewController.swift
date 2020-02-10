@@ -297,7 +297,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
             fatalError("Cell does not exist")
         }
         let food = filteredFoods[indexPath.row]
-        if db.subtractFoodDirectly(foodId: food.id){
+        if db.subtractFoodDirectly(foodId: food.id ?? 0){
             print ("Quantity subtracted")
             updateBadge()
         }

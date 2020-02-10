@@ -17,5 +17,6 @@ class StaticLinker
     public static var signupVC : UIViewController? = nil
     public static var loginVC : UIViewController? = nil
     public static var mainVC : UITabBarController? = nil
+    public static var selectedCuisine : Cuisine? = nil
     
 }
