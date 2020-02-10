@@ -99,7 +99,18 @@ class AddressTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
+
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        
+        var user = User().getUserDefaults()
+        if(user != nil)
+        {
+            partnerId = user.partner_id;
+        }
+    }
     private func deleteAddress(addressId: Int){
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let params = ["partner_id": partnerId as Any, "address_id": addressId as Any]

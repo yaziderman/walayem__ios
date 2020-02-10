@@ -214,13 +214,23 @@ class ChefTableViewController: UIViewController {
         }
         let selectedAddressId = UserDefaults.standard.integer(forKey: "OrderAddress") as Int?
         
-        if(selectedAddressId != nil){
-            for addr in (StaticLinker.discoverViewController?.addressList)!{
-                if(addr.id == selectedAddressId){
-                    locationPickButton.setTitle(addr.name, for: .normal)
+        do
+        {
+            if(selectedAddressId != nil){
+                if((StaticLinker.discoverViewController) != nil)
+                {
+                    for addr in (StaticLinker.discoverViewController?.addressList)!{
+                        if(addr.id == selectedAddressId){
+                            locationPickButton.setTitle(addr.name, for: .normal)
+                        }
+                    }
                 }
             }
         }
+        catch {
+            
+        }
+
         
         tableView.reloadData()
     }
