@@ -18,4 +18,5 @@ class StaticLinker
     public static var loginVC : UIViewController? = nil
     public static var mainVC : UITabBarController? = nil
     
+    public static var showSkip : Bool = true
 }

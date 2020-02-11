@@ -130,9 +130,17 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
          Utils.setupNavigationBar(nav: self.navigationController!)
         self.tableView.separatorColor = UIColor.silverEleven
         
-        getAddress()
         
         NotificationCenter.default.addObserver(self, selector: #selector(refresh) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
+    }
+    
+    func checkLogin()
+    {
+        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        if(session == nil)
+        {
+            onSessionExpired(showSkip: false)
+        }
     }
     
     @objc func refresh() {
@@ -168,15 +176,16 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         if let selectedIndexPath = self.tableView.indexPathForSelectedRow{
             self.tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        getAddress()
+        super.viewDidAppear(animated)
         updateUI()
+        checkLogin()
     }
     
     

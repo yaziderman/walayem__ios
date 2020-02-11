@@ -204,10 +204,13 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
                 print (errmsg)
                 return
             }
-            let record = result!["result"] as! [String: Any]
-            self.chef!.isFav = record["is_favorite"] as! Bool
-            
-            self.changeFavouriteBarItemIcon(isFav: self.chef!.isFav)
+            let record = result!["result"] as? [String: Any]
+            if(record != nil)
+            {
+                self.chef!.isFav = record!["is_favorite"] as! Bool
+                
+                self.changeFavouriteBarItemIcon(isFav: self.chef!.isFav)
+            }
         }
     }
     
