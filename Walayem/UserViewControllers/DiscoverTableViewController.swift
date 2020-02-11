@@ -130,13 +130,6 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         datePickerButton.setTitle("ASAP", for: .normal)
         setupSearch()
         setupRefreshControl()
-
-//        let strNumber: NSString = "Today at 5pm to Address" as NSString
-//        let range = (strNumber).range(of: "to")
-//        let attribute = NSMutableAttributedString.init(string: strNumber as String)
-//        attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.lightGray , range: range)
-//        scheduleButton.setAttributedTitle(attribute, for: .normal)
-
         tableView.delegate = self
         tableView.dataSource = self
         collectionView.delegate = self
@@ -145,20 +138,36 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
 
         showActivityIndicator()
         getRecommendations()
-        getFoods()
-        updateBadge()
+//        getFoods()
+//        updateBadge()
 //        getAddress()
         Utils.setupNavigationBar(nav: self.navigationController!)
         StaticLinker.discoverViewController = self
         
         print(StaticLinker.selectedCuisine)
         initialCustomDate()
-        
-//        if StaticLinker.selectedCuisine != nil {
-//            self.selectedCuisines.append(StaticLinker.selectedCuisine!)
-//            self.showCuisineFromHome()
-            isFirtTime = false
+//        if StaticLinker.selectedCuisine != nil{
+//            isFirtTime = true
+//            if isFirtTime{
+//                self.selectedCuisines.append(StaticLinker.selectedCuisine!)
+//                self.showCuisineFromHome()
+//            }
 //        }
+        
+        if isFirtTime {
+            isFirtTime = false
+            if (StaticLinker.selectedCuisine != nil){
+                self.selectedCuisines.append(StaticLinker.selectedCuisine!)
+                self.showCuisineFromHome()
+            }else{
+                getFoods()
+                updateBadge()
+            }
+//        }else{
+//            getRecommendations()
+//            getFoods()
+//            updateBadge()
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -169,8 +178,6 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         }
         
         self.tableView.reloadData()
-//        getAddress()
-//        hideActivityIndicator()
         
         if StaticLinker.selectedCuisine != nil && !isFirtTime{
             self.selectedCuisines.append(StaticLinker.selectedCuisine!)
@@ -183,8 +190,8 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     
     override func viewWillDisappear(_ animated: Bool){
         print("V------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------viewWillDisappear")
-        selectedCuisines.removeAll()
-        StaticLinker.selectedCuisine = nil
+//        selectedCuisines.removeAll()
+//        StaticLinker.selectedCuisine = nil
     }
     
     
@@ -540,6 +547,9 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             }
             self.tableView.reloadData()
         }
+        
+        selectedCuisines.removeAll()
+        StaticLinker.selectedCuisine = nil
     }
     
     private func handleNetworkError(_ error: NSError){

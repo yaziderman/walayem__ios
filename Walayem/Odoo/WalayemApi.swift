@@ -10,6 +10,9 @@ import Foundation
 
 class WalayemApi{
     
+//    http://app.walayem.com/api/promoted
+    
+    
     static let BASE_URL: String = "http://18.139.224.233"
 //static let BASE_URL: String = "http://app.walayem.com"
 //static let BASE_URL: String = "http://192.168.1.103:8073"

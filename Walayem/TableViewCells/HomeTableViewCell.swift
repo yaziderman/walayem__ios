@@ -46,18 +46,20 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if identifier == "recommendedCell0" {
-            return recommendedMeals.count
+//            return recommendedMeals.count
 //            return 4
         }
         else if identifier == "mealDayCell1"{
-            return todays_meals.count
+//            return todays_meals.count
         }
         else if identifier == "cuisinesCell4"{
-            return staticCuisines.count
+//            return staticCuisines.count
         }
         else{
             return 0
         }
+
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -68,7 +70,7 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
                 fatalError("Unexpected destination VC")
             }
             
-            let food = Food(id: recommendedMeals[indexPath.row].item_details?.id ?? 0, name: recommendedMeals[indexPath.row].item_details?.name! ?? "", price: recommendedMeals[indexPath.row].item_details?.list_price ?? 0.0, quantity: recommendedMeals[indexPath.row].item_details?.serves ?? 0, preparationTime: recommendedMeals[indexPath.row].item_details?.preparation_time ?? 0, kitcherName: recommendedMeals[indexPath.row].kitchen_name ?? "", description: recommendedMeals[indexPath.row].item_details?.description_sale ?? "", chefName: recommendedMeals[indexPath.row].kitchen_name ?? "" , foodType: recommendedMeals[indexPath.row].item_details?.food_type! ?? "", imageIds: recommendedMeals[indexPath.row].item_details?.food_image_ids ?? [0], chefId: 291 ?? 0, chefImage: recommendedMeals[indexPath.row].item_details?.image_hash ?? "", cuisine: recommendedMeals[indexPath.row].item_details?.cuisine_id ?? Cuisine(id: 0, name: ""), tags: recommendedMeals[indexPath.row].item_details?.food_tags ?? [Tag(id: 0, name: "")])
+            let food = Food(id: recommendedMeals[indexPath.row].item_details?.id ?? 0, name: recommendedMeals[indexPath.row].item_details?.name! ?? "", price: recommendedMeals[indexPath.row].item_details?.list_price ?? 0.0, quantity: recommendedMeals[indexPath.row].item_details?.serves ?? 0, preparationTime: recommendedMeals[indexPath.row].item_details?.preparation_time ?? 0, kitcherName: recommendedMeals[indexPath.row].kitchen_name ?? "No Kitcher Name", description: recommendedMeals[indexPath.row].item_details?.description_sale ?? "", chefName: recommendedMeals[indexPath.row].kitchen_name ?? "No Chef Name" , foodType: recommendedMeals[indexPath.row].item_details?.food_type! ?? "", imageIds: recommendedMeals[indexPath.row].item_details?.food_image_ids ?? [0], chefId: 291 ?? 0, chefImage: recommendedMeals[indexPath.row].item_details?.image_hash ?? "no-Image", cuisine: recommendedMeals[indexPath.row].item_details?.cuisine_id ?? Cuisine(id: 0, name: ""), tags: recommendedMeals[indexPath.row].item_details?.food_tags ?? [Tag(id: 0, name: "")])
             
             
             destinationVC.food = food
@@ -122,11 +124,12 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             let cellView = recommendedCell.viewWithTag(8802)
             let cellNameLabel = recommendedCell.viewWithTag(8803) as? UILabel
     
-            cellPriceLabel?.text = "\(recommendedMeals[indexPath.row].item_details?.list_price ?? 0). AED"
-            cellNameLabel?.text = String(recommendedMeals[indexPath.row].item_details?.name ?? "")
-            
-            cellView?.roundCorners([.bottomRight,.bottomLeft], radius: 15)
-            cellImage?.kf.setImage(with: recommendedImagesURLS[indexPath.row])
+//            cellPriceLabel?.text = "\(recommendedMeals[indexPath.row].item_details?.list_price ?? 0). AED"
+//            cellNameLabel?.text = String(recommendedMeals[indexPath.row].item_details?.name ?? "")
+//
+//            cellView?.layer.masksToBounds = true
+//            cellView?.roundCorners([.bottomRight,.bottomLeft], radius: 15)
+//            cellImage?.kf.setImage(with: recommendedImagesURLS[indexPath.row])
             
             return recommendedCell
         }
@@ -135,12 +138,13 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
 
             let mealCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
             let mealImage = mealCell.viewWithTag(600) as? UIImageView
-            mealImage?.kf.setImage(with: mealImagesURLS[indexPath.row])
-            
-            let mealName = mealCell.viewWithTag(610) as? UILabel
-            mealName?.roundCorners([.bottomLeft,.bottomRight], radius: 15)
-            mealName?.text = String(todays_meals[indexPath.row].item_details?.name ?? "")
-            //            mealImage?.kf.setImage(with: mealImagesURLS[indexPath.row])
+//            mealImage?.kf.setImage(with: mealImagesURLS[indexPath.row])
+//
+//            let mealName = mealCell.viewWithTag(610) as? UILabel
+//            mealName?.roundCorners([.bottomLeft,.bottomRight], radius: 15)
+//            mealName?.text = String(todays_meals[indexPath.row].item_details?.name ?? "")
+//            print(mealName?.frame.size.width)
+//            mealName?.frame.size.width = 224
             
             return mealCell
         }

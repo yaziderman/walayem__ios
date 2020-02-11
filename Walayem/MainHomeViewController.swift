@@ -39,7 +39,7 @@ class MainHomeViewController: UIViewController {
            super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        getRecommendations()
+//        getPromoted()
         getCuisines()
        
     }
@@ -59,63 +59,68 @@ class MainHomeViewController: UIViewController {
     
     @objc private func refreshData(sender: UIRefreshControl){
         
-        getRecommendations()
+//        getPromoted()
         tableView.reloadData()
     }
     
-    private func getRecommendations(){
+    private func getPromoted(){
             let params : [String: Any] = ["partner_id": partnerId ?? 0]
             
             RestClient().requestPromotedApi(WalayemApi.homeRecommendation, params) { (result, error) in
                 self.tableView.refreshControl?.endRefreshing()
                 
-                let data = result!["result"] as! [String: Any]
-                let status_api = data["status"] as? Int
-                
-                if let error = error{
-                    self.handleNetworkError(error)
+                if result!["result"] == nil {
                     return
                 }
-                else if let status = status_api, status == 0{
-                    print("STatus Value------------->\(status)")
-                    return
-                }else{
-                    if let best_sellers = data["best_sellers"] as? [Any]{
-                        for best_seller in best_sellers{
-                            let best_seller = PromotedItem(records: best_seller as! [String : Any])
-                            self.bestSellers.append(best_seller)
-                        }
+                
+                if result!["result"] != nil {
+                    let data = result!["result"] as! [String: Any]
+                    let status_api = data["status"] as? Int
+                    
+                    if let error = error{
+                        self.handleNetworkError(error)
+                        return
                     }
-                    if let recommendedMeals = data["recommended"] as? [Any]{
-                        for recommended in recommendedMeals{
-                            let recommend = PromotedItem(records: recommended as! [String : Any])
-                            self.recommendedMeals.append(recommend)
-                            
-                            let id = recommend.item_details?.id
-                            let url = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(id ?? 0)/image")
-                            self.recommendMealURLs.append(url!)
-                            
+                    else if let status = status_api, status == 0{
+                        print("STatus Value------------->\(status)")
+                        return
+                    }else{
+                        if let best_sellers = data["best_sellers"] as? [Any]{
+                            for best_seller in best_sellers{
+                                let best_seller = PromotedItem(records: best_seller as! [String : Any])
+                                self.bestSellers.append(best_seller)
+                            }
                         }
-                    }
-                    if let todaysMeals = data["todays_meals"] as? [Any]{
-                        for meal in todaysMeals {
-                            let todays_meal = PromotedItem(records: meal as! [String : Any])
-                            self.todays_meals.append(todays_meal)
-                            let id = todays_meal.item_details?.id
-                            let url = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(id ?? 0)/image")
-                            self.mealsURLs.append(url!)
+                        if let recommendedMeals = data["recommended"] as? [Any]{
+                            for recommended in recommendedMeals{
+                                let recommend = PromotedItem(records: recommended as! [String : Any])
+                                self.recommendedMeals.append(recommend)
+                                
+                                let id = recommend.item_details?.id
+                                let url = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(id ?? 0)/image")
+                                self.recommendMealURLs.append(url!)
+                                
+                            }
                         }
-                    }
+                        if let todaysMeals = data["todays_meals"] as? [Any]{
+                            for meal in todaysMeals {
+                                let todays_meal = PromotedItem(records: meal as! [String : Any])
+                                self.todays_meals.append(todays_meal)
+                                let id = todays_meal.item_details?.id
+                                let url = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(id ?? 0)/image")
+                                self.mealsURLs.append(url!)
+                            }
+                        }
                 }
                 
-                self.tableView.reloadData()
-                
-                
-                if let advertisment_image = data["advertisment_image"] as? Int, advertisment_image == 0{
-                    print(advertisment_image)
-                    print("no image available")
+                    self.tableView.reloadData()
+                    
+                    
+                    if let advertisment_image = data["advertisment_image"] as? Int, advertisment_image == 0{
+                        print(advertisment_image)
+                        print("no image available")
+                    }
                 }
-    
             }
         }
     
@@ -130,7 +135,9 @@ class MainHomeViewController: UIViewController {
            }
        }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        StaticLinker.selectedCuisine = nil
+    }
     
     private func getCuisines(){
         let fields = ["id", "name"]
