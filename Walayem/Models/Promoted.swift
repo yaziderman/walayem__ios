@@ -41,12 +41,30 @@ import Foundation
 //    }
 //}
 
+class ChefInfo {
+    let id: Int?
+    let name: String?
+    
+    init(id:Int, name:String) {
+        self.id = id as? Int ?? 0
+        self.name = name as? String ?? ""
+    }
+    init(record: [String: Any]){
+        self.id = record["id"] as? Int ?? 0
+        self.name = record["name"] as? String ?? ""
+    }
+}
+
 class PromotedItem{
     var kitchen_name: String?
     var end_date: String?
     var id: Int?
-    var item_id: Int?
     var cuisine: String?
+    
+    var chefInfo: ChefInfo?
+    
+//    var chef_id: Int?
+//    var chef_name: String?
     var start_date: String?
     var item_details: ItemDetail?
     
@@ -54,9 +72,12 @@ class PromotedItem{
         self.kitchen_name = records["kitchen_name"] as? String
         self.end_date = records["end_date"] as? String
         self.id = records["id"] as? Int
-        if let itemIdArr = records["item_id"] as? [Any]{
-            self.item_id = itemIdArr[0] as? Int
+        
+        if records["item_id"] != nil {
+            let item_Ids = records["item_id"] as![Any]
+            self.chefInfo = ChefInfo(id: item_Ids[0] as! Int, name: item_Ids[1]as! String)
         }
+        
         self.cuisine = records["cuisine"] as? String
         self.start_date = records["start_date"] as? String
         self.item_details = ItemDetail(records["item_details"] as! [Any])
@@ -98,17 +119,70 @@ class ItemDetail{
                     let tempImageIds = record["food_image_ids"] as! [Int]
                     self.food_image_ids = tempImageIds
                 }
-                if let tags = record["food_tags"] as? [Int] {
-                    var tags_list = [Tag]()
-                    for tag in tags{
-                        let tempTag = Tag(id: tag, name: "TAG NAME")
-                        tags_list.append(tempTag)
-//                        self.food_tags?.append(tempTag)
-                    }
-                    print(tags_list)
-                    self.food_tags = tags_list
+                
+                
+                if record["food_tags"] != nil{
+
+//                    let tags = records["food_tags"] as! [String: Any]
                     
+//                    for tag in records!["food_tags"]{
+//                        print(tag)
+//                    }
+//
+//                    se÷lf.chefInfo = ChefInfo(id: item_Ids[0] as! Int, name: item_Ids[1]as! String)
+//                    for tag in records!["food_tags"] as [Any]{
+//                        print(tag)
+//                    }
                 }
+                
+                
+//                if let tags = record["food_tags"]{
+//                    for t in tags as! [String: Any]{
+//                        let tempTag = Tag(record: t as! [String: Any])
+//                    }
+//                }
+                
+                if let tags = record["food_tags"]{
+//                    print()
+                    var tags_list = [Tag]()
+//                    tags_list = [Tag(record: record["food_tags"] as! [String : Any])]
+                    
+//                    for tag in tags as! [Tag]{
+//                        print(tag)
+//                    }
+                    
+                    
+//                    for tag in tags as! [String: Any]{
+//                        let nTag = Tag(record: tag)
+//                        print(nTag)
+//                        print(tag)
+//                        print(tag)
+//                        let tempTag = Tag(record: tag)
+//                        tags_list.append(tempTag)
+//                        self.food_tags?.append(tempTag)
+//                    }
+//                    print(tags_list)
+////                    self.food_tags = tags_list
+//
+                }
+                
+                if record["food_tags"] != nil{
+                    let tags = record["food_tags"] as! [Any]
+                    print(tags[0])
+                    for tag in tags{
+                        let mTag = Tag(record: tag as! [String : Any])
+                        print(mTag)
+                        var mTagsList = [Tag]()
+                        mTagsList.append(mTag)
+                    }
+                }
+                
+//                let foodTags = record["food_tags"] as! [Any]
+//                for foodTag in foodTags{
+//                    let tag = Tag(record: foodTag as! [String : Any])
+//                    self.food_tags?.append(tag)
+//                }
+                
                 
                 if record["cuisine_id"] != nil {
                     let cuisine = record["cuisine_id"] as! [Any]

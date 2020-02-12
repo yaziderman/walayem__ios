@@ -39,29 +39,29 @@ class MainHomeViewController: UIViewController {
            super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-//        getPromoted()
+        getPromoted()
         getCuisines()
        
     }
     
     
     
-    private func setupRefreshControl(){
-        let refreshControl = UIRefreshControl()
-        if #available(iOS 10.0, *){
-            tableView.refreshControl = refreshControl
-        }else{
-            tableView.addSubview(refreshControl)
-        }
-        
-        refreshControl.addTarget(self, action: #selector(refreshData(sender:)), for: .valueChanged)
-    }
+//    private func setupRefreshControl(){
+//        let refreshControl = UIRefreshControl()
+//        if #available(iOS 10.0, *){
+//            tableView.refreshControl = refreshControl
+//        }else{
+//            tableView.addSubview(refreshControl)
+//        }
+//        
+//        refreshControl.addTarget(self, action: #selector(refreshData(sender:)), for: .valueChanged)
+//    }
     
-    @objc private func refreshData(sender: UIRefreshControl){
-        
+//    @objc private func refreshData(sender: UIRefreshControl){
+//
 //        getPromoted()
-        tableView.reloadData()
-    }
+//        tableView.reloadData()
+//    }
     
     private func getPromoted(){
             let params : [String: Any] = ["partner_id": partnerId ?? 0]
