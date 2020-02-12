@@ -30,7 +30,8 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     var totalPage: Int?
     var isLoading = false
     var addressList = [Address]()
-//    var lastIndex
+        
+    //    var lastIndex
 //    var indexPath = []
 //    var cartItems = [CartItem]()
     
@@ -145,6 +146,8 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         StaticLinker.discoverViewController = self
 
         initialCustomDate()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateFav) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -157,6 +160,22 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
 //        getAddress()
         
 //        hideActivityIndicator()
+       
+        updateFav();
+    }
+    
+    @objc func updateFav()
+    {
+        
+        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        if(session == nil)
+        {
+            self.navigationItem.rightBarButtonItems![0].isEnabled = false;
+        }
+        else
+        {
+            self.navigationItem.rightBarButtonItems![0].isEnabled = true;
+        }
         
     }
     

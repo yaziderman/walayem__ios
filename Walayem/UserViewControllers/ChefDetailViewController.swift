@@ -111,10 +111,31 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
             Utils.setupNavigationBar(nav: self.navigationController!)
             loadPrevFoods()
         }
+                
+        NotificationCenter.default.addObserver(self, selector: #selector(updateFav) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
         
+        updateFav()
     }
 
+    @objc func updateFav()
+    {
+        
+        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        if(session == nil)
+        {
+            self.navigationItem.rightBarButtonItems![0].isEnabled = false;
+        }
+        else
+        {
+            self.navigationItem.rightBarButtonItems![0].isEnabled = true;
+        }
+        
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         guard let indexPath = foodTableView.indexPathForSelectedRow else {
             os_log("No cell has been selected", log: .default, type: .debug)
             return
@@ -123,6 +144,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
 //        filterFoods(chef!.foods)
         foodTableView.reloadData()
         
+        updateFav();
     }
     
     // MARK: Private methods

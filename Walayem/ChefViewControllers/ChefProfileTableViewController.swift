@@ -270,10 +270,13 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
             Messaging.messaging().unsubscribe(fromTopic: "allchefi")
             User().clearUserDefaults()
             OdooClient.destroy()
-    
-            let viewController: UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
+            User().clearUserDefaults();
+            
+            let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
             self.present(viewController, animated: true, completion: nil)
         })
+        
+        
     }
     
     private func showAlert(title: String, msg: String){

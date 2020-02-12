@@ -442,6 +442,30 @@ class FoodDetailViewController: UIViewController {
             collectionView.reloadData()
         }
          Utils.setupNavigationBar(nav: self.navigationController!)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateFav) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateFav()
+    }
+    
+    
+    @objc func updateFav()
+    {
+        
+        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        if(session == nil)
+        {
+            self.navigationItem.rightBarButtonItems![0].isEnabled = false;
+        }
+        else
+        {
+            self.navigationItem.rightBarButtonItems![0].isEnabled = true;
+        }
+        
     }
     
     // MARK: Private methods
