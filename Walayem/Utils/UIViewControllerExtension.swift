@@ -10,7 +10,7 @@ import UIKit
 
 extension UIViewController{
     
-    func onSessionExpired() {
+    func onSessionExpired(showSkip: Bool = true) {
         User().clearUserDefaults()
 //        DatabaseHandler().clearDatabase()
         OdooClient.destroy()
@@ -26,6 +26,8 @@ extension UIViewController{
             // Fallback on earlier versions
         }
         StaticLinker.loginNav = navigationController
+        StaticLinker.showSkip = showSkip
+        
         self.present(navigationController, animated: true, completion: nil)
     }
     

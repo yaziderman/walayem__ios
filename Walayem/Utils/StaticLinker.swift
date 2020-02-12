@@ -19,4 +19,5 @@ class StaticLinker
     public static var mainVC : UITabBarController? = nil
     public static var selectedCuisine : Cuisine? = nil
     
+    public static var showSkip : Bool = true
 }

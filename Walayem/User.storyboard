@@ -149,6 +149,7 @@ that easy</string>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="btnSkip" destination="tUf-vI-E1B" id="A5m-dC-NjK"/>
                         <outlet property="signupButton" destination="XQv-cq-EmJ" id="Z94-2w-NYJ"/>
                         <outlet property="userSwitch" destination="Lko-ZG-Jt3" id="XFR-Y1-9yd"/>
                         <segue destination="IRQ-UA-oYI" kind="presentation" identifier="SignupVCSegue" id="XNp-bu-7AW"/>
@@ -174,14 +175,14 @@ that easy</string>
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sjP-DM-qyu">
-                                                <rect key="frame" x="16" y="12" width="20" height="32"/>
+                                                <rect key="frame" x="16" y="12" width="10" height="22"/>
                                                 <state key="normal" image="back"/>
                                                 <connections>
                                                     <action selector="back:" destination="rQG-dw-03r" eventType="touchUpInside" id="c39-vK-baU"/>
                                                 </connections>
                                             </button>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="88G-a7-dNl">
-                                                <rect key="frame" x="123" y="76" width="129" height="98"/>
+                                                <rect key="frame" x="123" y="76" width="129" height="98.000000000000028"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="129" id="CDz-9M-bhi"/>
                                                     <constraint firstAttribute="height" constant="98" id="wvm-jn-8ye"/>

@@ -16,6 +16,7 @@ class LoginPriorViewController: UIViewController {
     @IBOutlet weak var userSwitch: UISwitch!
     // MARK: Actions
     
+    @IBOutlet weak var btnSkip: UIButton!
     @IBAction func signup(_ sender: UIButton) {
         performSegue(withIdentifier: "SignupVCSegue", sender: sender)
 
@@ -33,6 +34,19 @@ class LoginPriorViewController: UIViewController {
         // Do not show onboarding screen
         
         StaticLinker.loginVC = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if(StaticLinker.showSkip)
+        {
+            self.btnSkip.isHidden = false
+        }
+        else
+        {
+            self.btnSkip.isHidden = true
+        }
     }
     // MARK: - Navigation
 
