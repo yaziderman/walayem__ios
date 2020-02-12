@@ -101,7 +101,7 @@ class DatabaseHandler{
             print ("Update Failed \(error)")
             return -1
         }
-        
+        print(item.chefImage)
         // ====================
         
         addChef(chefId: item.chefId!, chefName: item.chefName!, chefImage: item.chefImage!, kitchen: item.kitcherName!)

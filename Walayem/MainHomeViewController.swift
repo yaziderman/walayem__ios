@@ -11,8 +11,9 @@ import UIKit
 
 class MainHomeViewController: UIViewController {
     
-    var partnerId: Int?
     
+    @IBOutlet weak var tableView: UITableView!
+    var partnerId: Int?
     var todays_meals = [PromotedItem]()
     var bestSellers = [PromotedItem]()
     var recommendedMeals = [PromotedItem]()
@@ -20,9 +21,6 @@ class MainHomeViewController: UIViewController {
     var recommendMealURLs = [URL]()
     var cuisines = [Cuisine]()
     var selectedCuisine: Cuisine?
-//    var selectedIndexPath: IndexPath?
-    
-    
     var foods = [Food]()
     let bookmarks = ["Recommended", "Meals of the day", "Cuisines", "Best Chefs"]
     var bookmarkImages: [UIImage] = [
@@ -33,7 +31,6 @@ class MainHomeViewController: UIViewController {
          UIImage(named: "bookmark.jpg")!
      ]
     
-    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
            super.viewDidLoad()

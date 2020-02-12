@@ -45,6 +45,7 @@ class FoodDetailViewController: UIViewController {
     
     @IBAction func saveToCart(_ sender: UIButton){
         let r = db.addFood(item: food!)
+        print(food!)
         if r != -1{
             let alert = UIAlertController(title: "Success", message: "Food is added to your cart.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Add more", style: .default, handler: { (action) in

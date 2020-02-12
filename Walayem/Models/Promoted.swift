@@ -29,9 +29,6 @@ class PromotedItem{
     var cuisine: String?
     
     var chefInfo: ChefInfo?
-    
-//    var chef_id: Int?
-//    var chef_name: String?
     var start_date: String?
     var chef_name: String?
     var chef_image_hash: String?
@@ -42,11 +39,13 @@ class PromotedItem{
         self.end_date = records["end_date"] as? String
         self.id = records["id"] as? Int
         self.chef_name = records["chef_name"] as? String
+        
         self.chef_image_hash = records["chef_image_hash"] as? String
         if records["item_id"] != nil {
             let item_Ids = records["item_id"] as![Any]
             self.chefInfo = ChefInfo(id: item_Ids[0] as! Int, name: item_Ids[1]as! String)
         }
+        
         
         self.cuisine = records["cuisine"] as? String
         self.start_date = records["start_date"] as? String
@@ -66,7 +65,7 @@ class ItemDetail{
     var preparation_time: Int?
     var serves: Int?
     var list_price: Double?
-    
+    var chef_id: Int?
     var food_type: String?
     var description_sale: String?
     
@@ -90,7 +89,10 @@ class ItemDetail{
                     let tempImageIds = record["food_image_ids"] as! [Int]
                     self.food_image_ids = tempImageIds
                 }
-                
+                if record["chef_id"] != nil{
+                   let tempChef = record["chef_id"] as! [Any]
+                    self.chef_id = tempChef[0] as! Int
+                }
                 if record["food_tags"] != nil{
                     let tags = record["food_tags"] as! [Any]
                     print(tags[0])
