@@ -256,8 +256,6 @@ extension FoodDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         print(cell.layer.frame.width)
         print(cell.layer.frame)
         
-        
-        
         let id = food?.imageIds![indexPath.row] ?? 0
         let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/food.image/\(id)/image")
         cell.foodImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "foodImageEmpty"))

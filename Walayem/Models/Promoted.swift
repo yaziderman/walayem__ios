@@ -8,39 +8,6 @@
 
 import Foundation
 
-
-//
-//class Promoted{
-//
-//    var id: Int?
-//    var result: PResults?
-//    var jsonrpc: String?
-//
-//
-//
-//    init(records: [String: Any]) {
-//        self.id = records["id"] as? Int
-//        self.result = PResults(records: records["result"] as? [String: Any] ?? ["No results":false])
-//        self.jsonrpc = records["jsonrpc"] as? String
-//    }
-//}
-//
-//class PResults{
-//    var status: Bool?
-//    var best_sellers: [PromotedItem]?
-//    var recommended: [HRecommended]?
-//    var todays_meals: [PTodaysMeal]?
-//    var advertisment_image: String?
-//
-//    init(records: [String: Any]) {
-//        self.status = records["status"] as? Bool
-//        self.recommended = [HRecommended(records: records["recommended"] as? [String: Any] ?? ["No recommended":false])]
-//        self.best_sellers = [PromotedItem(records: records["best_sellers"] as? [String: Any] ?? ["No best_sellers":false])]
-//        self.todays_meals = [PTodaysMeal(records: records["todays_meals"] as? [String: Any] ?? ["No todays_meals":false])]
-//        self.advertisment_image = records[""] as? String
-//    }
-//}
-
 class ChefInfo {
     let id: Int?
     let name: String?
@@ -66,13 +33,16 @@ class PromotedItem{
 //    var chef_id: Int?
 //    var chef_name: String?
     var start_date: String?
+    var chef_name: String?
+    var chef_image_hash: String?
     var item_details: ItemDetail?
     
     init(records: [String: Any]) {
         self.kitchen_name = records["kitchen_name"] as? String
         self.end_date = records["end_date"] as? String
         self.id = records["id"] as? Int
-        
+        self.chef_name = records["chef_name"] as? String
+        self.chef_image_hash = records["chef_image_hash"] as? String
         if records["item_id"] != nil {
             let item_Ids = records["item_id"] as![Any]
             self.chefInfo = ChefInfo(id: item_Ids[0] as! Int, name: item_Ids[1]as! String)
@@ -88,6 +58,7 @@ class ItemDetail{
     var image_hash: String?
     var comment: String?
     var name: String?
+//    var chef_name: String?
     var id: Int?
     var kitchen_id: [Int: String]?
     var products: String?
@@ -107,12 +78,12 @@ class ItemDetail{
         if let tempRecords = records{
             if tempRecords.count > 0, let record = tempRecords[0] as? [String:Any]{
                 self.name = record["name"] as? String
+//                self.chef_name = record["chef_name"] as? String
                 self.comment = record["comment"] as? String
                 self.image_hash = record["image_hash"] as? String
                 self.kitchen_id = record["kitchen_id"] as? [Int: String]
                 self.products = record["products"] as? String
                 self.favorite_products = record["favorite_products"] as? [Int]
-//                self.cuisine_id = record["cuisine_id"] as? [Int]
                 
                 if record["food_image_ids"] != nil{
                     self.food_image_ids?.removeAll()
@@ -120,69 +91,16 @@ class ItemDetail{
                     self.food_image_ids = tempImageIds
                 }
                 
-                
-                if record["food_tags"] != nil{
-
-//                    let tags = records["food_tags"] as! [String: Any]
-                    
-//                    for tag in records!["food_tags"]{
-//                        print(tag)
-//                    }
-//
-//                    se÷lf.chefInfo = ChefInfo(id: item_Ids[0] as! Int, name: item_Ids[1]as! String)
-//                    for tag in records!["food_tags"] as [Any]{
-//                        print(tag)
-//                    }
-                }
-                
-                
-//                if let tags = record["food_tags"]{
-//                    for t in tags as! [String: Any]{
-//                        let tempTag = Tag(record: t as! [String: Any])
-//                    }
-//                }
-                
-                if let tags = record["food_tags"]{
-//                    print()
-                    var tags_list = [Tag]()
-//                    tags_list = [Tag(record: record["food_tags"] as! [String : Any])]
-                    
-//                    for tag in tags as! [Tag]{
-//                        print(tag)
-//                    }
-                    
-                    
-//                    for tag in tags as! [String: Any]{
-//                        let nTag = Tag(record: tag)
-//                        print(nTag)
-//                        print(tag)
-//                        print(tag)
-//                        let tempTag = Tag(record: tag)
-//                        tags_list.append(tempTag)
-//                        self.food_tags?.append(tempTag)
-//                    }
-//                    print(tags_list)
-////                    self.food_tags = tags_list
-//
-                }
-                
                 if record["food_tags"] != nil{
                     let tags = record["food_tags"] as! [Any]
                     print(tags[0])
+                    var mTagsList = [Tag]()
                     for tag in tags{
-                        let mTag = Tag(record: tag as! [String : Any])
-                        print(mTag)
-                        var mTagsList = [Tag]()
+                        let mTag = Tag(rec: tag as! [String : Any])
                         mTagsList.append(mTag)
                     }
+                    self.food_tags = mTagsList
                 }
-                
-//                let foodTags = record["food_tags"] as! [Any]
-//                for foodTag in foodTags{
-//                    let tag = Tag(record: foodTag as! [String : Any])
-//                    self.food_tags?.append(tag)
-//                }
-                
                 
                 if record["cuisine_id"] != nil {
                     let cuisine = record["cuisine_id"] as! [Any]
