@@ -127,7 +127,7 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             cellPriceLabel?.text = "\(recommendedMeals[indexPath.row].item_details?.list_price ?? 0) AED"
             cellNameLabel?.text = String(recommendedMeals[indexPath.row].item_details?.name ?? "")
 
-            cellView?.layer.masksToBounds = true
+//            cellView?.layer.masksToBounds = true
             cellView?.roundCorners([.bottomRight,.bottomLeft], radius: 15)
             cellImage?.kf.setImage(with: recommendedImagesURLS[indexPath.row])
             
@@ -178,26 +178,25 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         
-        staticCuisines = [Cuisine(id: 1, name: "Indian", img: ""),
-                          Cuisine(id: 2, name: "Arabic", img: ""),
-                          Cuisine(id: 4, name: "Emirati", img: ""),
-                          Cuisine(id: 5, name: "English", img: ""),
-                          Cuisine(id: 9, name: "Sudanese", img: ""),
-//                          Cuisine(id: 10, name: "Shami", img: ""),
-//                          Cuisine(id: 11, name: "Gulf", img: ""),
-                          Cuisine(id: 12, name: "Palestinian", img: ""),
-                          Cuisine(id: 13, name: "Iraqi", img: ""),
-                          Cuisine(id: 14, name: "Jordanian", img: ""),
-                          Cuisine(id: 15, name: "Lebanese", img: ""),
-                          Cuisine(id: 16, name: "Egyptian", img: ""),
-                          Cuisine(id: 17, name: "The Maghreb", img: ""),
-//                          Cuisine(id: 18, name: "Italian", img: ""),
-                          Cuisine(id: 19, name: "Other", img: ""),
-                          Cuisine(id: 20, name: "Asian", img: ""),
-                          Cuisine(id: 21, name: "Mexican", img: ""),
-                          Cuisine(id: 22, name: "Chinese", img: ""),
-//                          Cuisine(id: 23, name: "Thai", img: ""),
-//                          Cuisine(id: 24, name: "Turkish", img: "")
+        staticCuisines = [Cuisine(id: 1, name: "Indian", img: ""), Cuisine(id: 2, name: "Arabic", img: ""),
+                  Cuisine(id: 4, name: "Emirati", img: ""),
+                  Cuisine(id: 5, name: "English", img: ""),
+                  Cuisine(id: 9, name: "Sudanese", img: ""),
+        //                          Cuisine(id: 10, name: "Shami", img: ""),
+        //                          Cuisine(id: 11, name: "Gulf", img: ""),
+                  Cuisine(id: 12, name: "Palestinian", img: ""),
+                  Cuisine(id: 13, name: "Iraqi", img: ""),
+                  Cuisine(id: 14, name: "Jordanian", img: ""),
+                  Cuisine(id: 15, name: "Lebanese", img: ""),
+                  Cuisine(id: 16, name: "Egyptian", img: ""),
+                  Cuisine(id: 17, name: "The Maghreb", img: ""),
+        //                          Cuisine(id: 18, name: "Italian", img: ""),
+                  Cuisine(id: 19, name: "Other", img: ""),
+                  Cuisine(id: 20, name: "Asian", img: ""),
+                  Cuisine(id: 21, name: "Mexican", img: ""),
+                  Cuisine(id: 22, name: "Chinese", img: ""),
+        //                          Cuisine(id: 23, name: "Thai", img: ""),
+        //                          Cuisine(id: 24, name: "Turkish", img: "")
         ]
     }
 

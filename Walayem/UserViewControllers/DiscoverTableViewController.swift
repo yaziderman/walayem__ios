@@ -31,14 +31,9 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     var totalPage: Int?
     var isLoading = false
     var addressList = [Address]()
-<<<<<<< HEAD
     var isSearching = false
     var isFirtTime = true
 //    var lastIndex
-=======
-        
-    //    var lastIndex
->>>>>>> origin/dan
 //    var indexPath = []
 //    var cartItems = [CartItem]()
     
@@ -73,6 +68,22 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     }
     
     @IBAction func datePickerClicked(_ sender: Any) {
+//        let alert = UIAlertController(title: "", message: "When do you want your meal?", preferredStyle: .actionSheet)
+//        alert.addAction(UIAlertAction(title: "ASAP", style: .default, handler: { (action) in
+//            self.datePickerButton.setTitle("ASAP", for: .normal)
+//            let userDefaults = UserDefaults.standard
+//            userDefaults.set("asap", forKey: "OrderType")
+//            userDefaults.synchronize()
+//        }))
+//        alert.addAction(UIAlertAction(title: "Custom time", style: .default, handler: { (action) in
+//            self.datePickerTapped()
+//        }))
+//        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
+//            self.navigationController?.popViewController(animated: true)
+//        }))
+//
+//        self.present(alert, animated: true, completion: nil)
+//
         datePickerTapped()
     }
     @IBOutlet weak var locationPickButton: UIButton!
@@ -100,26 +111,6 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         }
     }
     
-    func showCuisineFromHome() {
-//        self.selectedCuisines = [cuisine]
-//        let badge = 1
-//        searchFood()
-//        filterBarButton.addBadge(number: badge, withOffset: CGPoint(x: 0, y: 5), andColor: UIColor.colorPrimary, andFilled: true)
-        let badgeNumber = 1
-        do{
-            if badgeNumber > 0{
-                searchFood()
-                filterBarButton.addBadge(number: badgeNumber, withOffset: CGPoint(x: 0, y: 5), andColor: UIColor.colorPrimary, andFilled: true)
-            }else {
-                getFoods()
-                filterBarButton.removeBadge()
-            }
-        }
-        catch {
-        
-        }
-    }
-    
     @IBAction func showFilter(sender: UIBarButtonItem){
         guard let filterVC = UIStoryboard(name: "Discover", bundle: Bundle.main).instantiateViewController(withIdentifier: "FilterVC") as? FilterViewController else {
             fatalError("Unexpected view controller")
@@ -135,6 +126,12 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         datePickerButton.setTitle("ASAP", for: .normal)
         setupSearch()
         setupRefreshControl()
+
+//        let strNumber: NSString = "Today at 5pm to Address" as NSString
+//        let range = (strNumber).range(of: "to")
+//        let attribute = NSMutableAttributedString.init(string: strNumber as String)
+//        attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.lightGray , range: range)
+//        scheduleButton.setAttributedTitle(attribute, for: .normal)
         tableView.delegate = self
         tableView.dataSource = self
         collectionView.delegate = self
@@ -148,18 +145,10 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
 //        getAddress()
         Utils.setupNavigationBar(nav: self.navigationController!)
         StaticLinker.discoverViewController = self
-        
-        print(StaticLinker.selectedCuisine)
+
         initialCustomDate()
-<<<<<<< HEAD
-//        if StaticLinker.selectedCuisine != nil{
-//            isFirtTime = true
-//            if isFirtTime{
-//                self.selectedCuisines.append(StaticLinker.selectedCuisine!)
-//                self.showCuisineFromHome()
-//            }
-//        }
         
+
         if isFirtTime {
             isFirtTime = false
             if (StaticLinker.selectedCuisine != nil){
@@ -168,16 +157,11 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             }else{
                 getFoods()
                 updateBadge()
-            }
-//        }else{
-//            getRecommendations()
-//            getFoods()
-//            updateBadge()
         }
-=======
+        
+    }
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateFav) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
->>>>>>> origin/dan
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -187,14 +171,16 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FoodTableViewCell", for: selectedIndexPath)
         }
         
-        self.tableView.reloadData()
-        
-<<<<<<< HEAD
-        if StaticLinker.selectedCuisine != nil && !isFirtTime{
+         if StaticLinker.selectedCuisine != nil && !isFirtTime{
             self.selectedCuisines.append(StaticLinker.selectedCuisine!)
             self.showCuisineFromHome()
             isFirtTime = false
-=======
+            
+        }
+        self.tableView.reloadData()
+        
+//        getAddress()
+        
 //        hideActivityIndicator()
        
         updateFav();
@@ -211,16 +197,13 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         else
         {
             self.navigationItem.rightBarButtonItems![0].isEnabled = true;
->>>>>>> origin/dan
         }
         
     }
     
     
     override func viewWillDisappear(_ animated: Bool){
-        print("V------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------viewWillDisappear")
-//        selectedCuisines.removeAll()
-//        StaticLinker.selectedCuisine = nil
+        
     }
     
     
@@ -449,6 +432,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         selectedTags.removeAll()
         selectedCuisines.removeAll()
         filterBarButton.removeBadge()
+        
         getRecommendations()
         getFoods()
         isSearching = false
@@ -480,7 +464,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     }
     
     private func getFoods(){
-        if isLoading {
+        if isLoading{
             return
         }
         let params : [String: Int] = ["page": 1]
@@ -502,8 +486,6 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             let records = value["data"] as! [Any]
             for record in records{
                 let food = Food(record: record as! [String: Any])
-//                self.foods.append(food)
-                
                 if !self.foods.contains(food){
                     self.foods.append(food)
                 }
@@ -534,8 +516,6 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             let records = value["data"] as! [Any]
             for record in records{
                 let food = Food(record: record as! [String: Any])
-//                self.foods.append(food)
-                
                 if !self.foods.contains(food){
                     self.foods.append(food)
                 }
@@ -548,8 +528,6 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     
     private func searchFood(){
         isSearching = true
-//        self.foods.removeAll()
-        
         let tagIds: [Int] = selectedTags.map { (tag) -> Int in
             (tag.id ?? 0)
         }
@@ -568,15 +546,14 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
                 return
             }
             self.foods.removeAll()
-            
             let records = value["data"] as! [Any]
             for record in records{
                 let food = Food(record: record as! [String: Any])
                 self.foods.append(food)
             }
+            
             self.tableView.reloadData()
         }
-        
         selectedCuisines.removeAll()
         StaticLinker.selectedCuisine = nil
     }
@@ -643,10 +620,59 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         }
     }
     
+     func showCuisineFromHome() {
+    //        self.selectedCuisines = [cuisine]
+    //        let badge = 1
+    //        searchFood()
+    //        filterBarButton.addBadge(number: badge, withOffset: CGPoint(x: 0, y: 5), andColor: UIColor.colorPrimary, andFilled: true)
+            let badgeNumber = 1
+            do{
+                if badgeNumber > 0{
+                    searchFood()
+                    filterBarButton.addBadge(number: badgeNumber, withOffset: CGPoint(x: 0, y: 5), andColor: UIColor.colorPrimary, andFilled: true)
+                }else {
+                    getFoods()
+                    filterBarButton.removeBadge()
+                }
+            }
+            catch {
+    
+            }
+        }
+    
+    
+//    func didRefreshRow(sender: FoodTableViewCell){
+//        guard let indexPath = tableView.indexPath(for: sender) else {
+//            fatalError("Cell does not exist")
+//        }
+//        let food = foods[indexPath.row]
+//    }
+    
+    
+    
+    
+    
+//    private func getCartItems(){
+//        let foods = db.getFoods()
+//        validateFoods(foods: foods) { (success) in
+//            self.cartItems.removeAll()
+//            let chefs = self.db.getCartItems()
+//            if chefs.count == 0{
+//                self.changeView(true)
+//            }else{
+//                self.changeView(false)
+//                for chef in chefs{
+//                    let cartItem = CartItem(opened: true, chef: chef, note: "")
+//                    self.cartItems.append(cartItem)
+//                }
+//                self.calculateCost()
+//            }
+//            self.tableView.reloadData()
+//        }
+//    }
     
     /*
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
@@ -688,15 +714,14 @@ extension DiscoverTableViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
         if !isSearching{
             if indexPath.row == foods.count - 1 && page < totalPage!{
                 getMoreFoods()
-                
+
                 let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
                 activityIndicator.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44)
                 activityIndicator.startAnimating()
-                
+
                 tableView.tableFooterView = activityIndicator
             }
         }
@@ -724,10 +749,6 @@ extension DiscoverTableViewController: UICollectionViewDelegate, UICollectionVie
         cell.food = food
         
         return cell
-    }
-    
-    func setSelectedCuisines(cuisines: [Cuisine]){
-        self.selectedCuisines = cuisines
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

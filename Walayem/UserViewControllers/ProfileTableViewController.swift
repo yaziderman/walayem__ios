@@ -41,33 +41,34 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     
     @IBAction func email(_ sender: UIButton) {
         
-        if let urlStr = NSURL(string: "https://itunes.apple.com/us/app/myapp/idxxxxxxxx?ls=1&mt=8") {
-            let objectsToShare = [urlStr]
-            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+//        if let urlStr = NSURL(string: "https://apps.apple.com/ae/app/walayem/id1385676754") {
+//            let string = "Hi I am using WALAYEM. It is a platform for foodies where anyone at home can prepare food and sell easily to the customer.  Install it using the link "
+//            let objectsToShare = [string, urlStr] as! [Any]
+//            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+//
+//            if UI_USER_INTERFACE_IDIOM() == .pad {
+//                if let popup = activityVC.popoverPresentationController {
+//                    popup.sourceView = self.view
+//                    popup.sourceRect = CGRect(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 4, width: 0, height: 0)
+//                }
+//            }
+//
+//            self.present(activityVC, animated: true, completion: nil)
+//        }
+        var email = UserDefaults.standard.string(forKey: "ContactEmail")
 
-            if UI_USER_INTERFACE_IDIOM() == .pad {
-                if let popup = activityVC.popoverPresentationController {
-                    popup.sourceView = self.view
-                    popup.sourceRect = CGRect(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 4, width: 0, height: 0)
-                }
-            }
-
-            self.present(activityVC, animated: true, completion: nil)
+        if(email == nil)
+        {
+            email = "walayem@gmail.com"
         }
-//        var email = UserDefaults.standard.string(forKey: "ContactEmail")
-//
-//        if(email == nil)
-//        {
-//            email = "walayem@gmail.com"
-//        }
-//
-//        let url = URL(string: "mailto:\(email!)")
-//        if #available(iOS 10.0, *) {
-//            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-//        } else {
-//            // Fallback on earlier versions
-//            UIApplication.shared.openURL(url!)
-//        }
+
+        let url = URL(string: "mailto:\(email!)")
+        if #available(iOS 10.0, *) {
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+        } else {
+            // Fallback on earlier versions
+            UIApplication.shared.openURL(url!)
+        }
     }
     
     @IBAction func connectFacebook(_ sender: UIButton) {
