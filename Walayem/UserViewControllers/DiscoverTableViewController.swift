@@ -31,9 +31,14 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     var totalPage: Int?
     var isLoading = false
     var addressList = [Address]()
+<<<<<<< HEAD
     var isSearching = false
     var isFirtTime = true
 //    var lastIndex
+=======
+        
+    //    var lastIndex
+>>>>>>> origin/dan
 //    var indexPath = []
 //    var cartItems = [CartItem]()
     
@@ -146,6 +151,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         
         print(StaticLinker.selectedCuisine)
         initialCustomDate()
+<<<<<<< HEAD
 //        if StaticLinker.selectedCuisine != nil{
 //            isFirtTime = true
 //            if isFirtTime{
@@ -168,6 +174,10 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
 //            getFoods()
 //            updateBadge()
         }
+=======
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateFav) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
+>>>>>>> origin/dan
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -179,10 +189,29 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         
         self.tableView.reloadData()
         
+<<<<<<< HEAD
         if StaticLinker.selectedCuisine != nil && !isFirtTime{
             self.selectedCuisines.append(StaticLinker.selectedCuisine!)
             self.showCuisineFromHome()
             isFirtTime = false
+=======
+//        hideActivityIndicator()
+       
+        updateFav();
+    }
+    
+    @objc func updateFav()
+    {
+        
+        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        if(session == nil)
+        {
+            self.navigationItem.rightBarButtonItems![0].isEnabled = false;
+        }
+        else
+        {
+            self.navigationItem.rightBarButtonItems![0].isEnabled = true;
+>>>>>>> origin/dan
         }
         
     }

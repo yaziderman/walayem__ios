@@ -205,8 +205,29 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         NotificationCenter.default.addObserver(self, selector: #selector(updateButtonTitle) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
         
         updateButtonTitle()
+        
+         NotificationCenter.default.addObserver(self, selector: #selector(updateFav) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
 
     }
+    
+    
+    @objc func updateFav()
+    {
+        
+        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        if(session == nil)
+        {
+            self.addressNameLabel.isHidden = true
+            self.addressDetailLabel.isHidden = true
+        }
+        else
+        {
+            self.addressNameLabel.isHidden = false
+            self.addressDetailLabel.isHidden = false
+        }
+        
+    }
+    
     
     @objc func updateButtonTitle() {
         
@@ -262,7 +283,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         }else{
             orderForLabel.text = "Delivery as soon as possible"
         }
-                
+            
+        updateFav()
     }
 
     @objc func checkAction(sender : UITapGestureRecognizer) {

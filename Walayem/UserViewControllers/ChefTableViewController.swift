@@ -203,7 +203,8 @@ class ChefTableViewController: UIViewController {
             let str_loc = StaticLinker.discoverViewController?.locationPickButton.titleLabel?.text
             self.locationPickButton.setTitle(str_loc, for: .normal)
         }
-       
+               
+        NotificationCenter.default.addObserver(self, selector: #selector(updateFav) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -233,8 +234,26 @@ class ChefTableViewController: UIViewController {
 
         
         tableView.reloadData()
+        
+        updateFav();
     }
 
+    @objc func updateFav()
+    {
+        
+        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        if(session == nil)
+        {
+            self.navigationItem.rightBarButtonItems![0].isEnabled = false;
+        }
+        else
+        {
+            self.navigationItem.rightBarButtonItems![0].isEnabled = true;
+        }
+        
+    }
+    
+    
     // MARK: Private methods
     
     private func setupSearch(){
