@@ -85,7 +85,7 @@
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" tag="610" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fgg-bA-7XL">
-                                                                        <rect key="frame" x="2" y="119.00000000000007" width="224" height="25"/>
+                                                                        <rect key="frame" x="2" y="119" width="224" height="25"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                         <color key="backgroundColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
@@ -194,14 +194,14 @@
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" tag="8803" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fish Biryani" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgi-N2-qVE">
-                                                                                <rect key="frame" x="15" y="-2.8421709430404007e-14" width="190" height="35"/>
+                                                                                <rect key="frame" x="15" y="0.0" width="190" height="35"/>
                                                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" tag="8801" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="80 AED" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9P-pv-5TV">
-                                                                                <rect key="frame" x="223" y="-2.8421709430404007e-14" width="95" height="35"/>
+                                                                                <rect key="frame" x="222" y="0.0" width="96" height="35"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
                                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -321,12 +321,23 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="5000" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Image" translatesAutoresizingMaskIntoConstraints="NO" id="6HL-Pw-Wrb">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
                                                 </imageView>
+                                                <button opaque="NO" tag="5010" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5u3-is-vsk">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="130"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="414" id="TGo-3K-YVR"/>
+                                                        <constraint firstAttribute="height" constant="130" id="h8X-nl-Pvc"/>
+                                                    </constraints>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="5u3-is-vsk" secondAttribute="trailing" id="2Zk-18-hJp"/>
                                                 <constraint firstItem="6HL-Pw-Wrb" firstAttribute="top" secondItem="MBP-3z-HHK" secondAttribute="top" id="JiL-FL-2Vf"/>
                                                 <constraint firstAttribute="bottom" secondItem="6HL-Pw-Wrb" secondAttribute="bottom" id="Qqg-Wb-spp"/>
                                                 <constraint firstItem="6HL-Pw-Wrb" firstAttribute="leading" secondItem="MBP-3z-HHK" secondAttribute="leading" id="SHG-hP-AfE"/>
+                                                <constraint firstItem="5u3-is-vsk" firstAttribute="top" secondItem="MBP-3z-HHK" secondAttribute="top" id="a3t-lF-7EQ"/>
+                                                <constraint firstItem="5u3-is-vsk" firstAttribute="leading" secondItem="MBP-3z-HHK" secondAttribute="leading" id="hEJ-1H-G71"/>
                                                 <constraint firstAttribute="trailing" secondItem="6HL-Pw-Wrb" secondAttribute="trailing" id="qxs-CH-KrO"/>
+                                                <constraint firstAttribute="bottom" secondItem="5u3-is-vsk" secondAttribute="bottom" id="ybR-tc-N42"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

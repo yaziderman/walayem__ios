@@ -418,7 +418,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         chefPasswordTextField.placeHolderColor = UIColor.placeholderColor
         chefPasswordTextField.textColor = UIColor.textColor
         
+        
         StaticLinker.signupVC = self
+        
     }
 
     override func viewWillLayoutSubviews() {
@@ -578,6 +580,13 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                     self.showMessagePrompt("An account with the provided email address already exists.")
                 })
             }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if (StaticLinker.chefLoginFromHome){
+            self.onChef(self)
+            StaticLinker.chefLoginFromHome = false
         }
     }
     
@@ -853,9 +862,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     }
     
     @IBAction func onChef(_ sender: Any) {
+        
+//        onChef(sender)
         self.btnCustomer.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         self.btnChef.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
-        
+
         self.btnChef.setTitleColor(UIColor.white, for: .normal)
         self.btnChef.backgroundColor = .colorPrimary
 
@@ -865,7 +876,27 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         self.isChef = true
         self.chefView.isHidden = false
         self.customerView.isHidden = true
+
+        self.lbSocialSignUp.isHidden = true
+        self.socialPanel.isHidden = true
+        self.vDivider.isHidden = true
+    }
+    
+    func onChefButtonPressed(_ sender: Any){
         
+        self.btnCustomer.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        self.btnChef.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+       
+        self.btnChef.setTitleColor(UIColor.white, for: .normal)
+        self.btnChef.backgroundColor = .colorPrimary
+
+        self.btnCustomer.setTitleColor(UIColor.colorPrimary, for: .normal)
+        self.btnCustomer.backgroundColor = .white
+
+        self.isChef = true
+        self.chefView.isHidden = false
+        self.customerView.isHidden = true
+           
         self.lbSocialSignUp.isHidden = true
         self.socialPanel.isHidden = true
         self.vDivider.isHidden = true

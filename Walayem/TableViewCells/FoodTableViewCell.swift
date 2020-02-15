@@ -61,7 +61,7 @@ class FoodTableViewCell: UITableViewCell{
     
     
     func updateUI(){
-        food.quantity = 0
+//        food.quantity = 0
         foodImageView.layer.cornerRadius = 12
         foodImageView.layer.masksToBounds = true
         nameLabel.text = food.name

@@ -184,6 +184,7 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
             collectionViewCellIdentifier = "cuisinesCell4"
         }
         
+        
         if indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2 {
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "mainHomeTableViewCell") as? HomeTableViewCell  else { fatalError("mainHomeTableViewCell") }
@@ -213,19 +214,49 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
             cell.parent = self
             cell.selectionStyle = .none
             return cell
+            
         }
-        else{
+        else if indexPath.row == 4 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "mainHomeTableViewCellLast") else { fatalError("mainHomeTableViewCellLast")  }
             cell.selectionStyle = .none
             
+            _ = cell.viewWithTag(5000) as! UIImageView
             
+            let imageButton = cell.viewWithTag(5010) as! UIButton
+            
+            imageButton.addTarget(self, action:#selector(handleImageButton(_:)), for: .touchUpInside)
+            return cell
+            
+        }
+                
+        else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "mainHomeTableViewCellLast") else { fatalError("mainHomeTableViewCellLast")  }
+            cell.selectionStyle = .none
             return cell
         }
         
+        
     }
+    
+    
     
     @objc func browseMealsTapped(sender: UIButton){
         print("browse meals tapped!")
+    }
+    
+    
+    @objc func handleImageButton(_: UIButton){
+        print("Image Add tapped!")
+        StaticLinker.chefLoginFromHome = true
+        
+        if #available(iOS 13.0, *) {
+            let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateViewController(identifier: "SignupViewController") as! SignupViewController
+                self.present(viewController, animated: true, completion: nil)
+        } else {
+            let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
+                self.present(viewController, animated: true, completion: nil)
+        }
+        
     }
     
     

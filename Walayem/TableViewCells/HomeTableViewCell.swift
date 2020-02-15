@@ -58,7 +58,7 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             return 0
         }
 
-        return 5
+//        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -69,8 +69,21 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
                 fatalError("Unexpected destination VC")
             }
             
-            let food = Food(id: recommendedMeals[indexPath.row].item_details?.id ?? 0, name: recommendedMeals[indexPath.row].item_details?.name! ?? "", price: recommendedMeals[indexPath.row].item_details?.list_price ?? 0.0, quantity: recommendedMeals[indexPath.row].item_details?.serves ?? 0, preparationTime: recommendedMeals[indexPath.row].item_details?.preparation_time ?? 0, kitcherName:recommendedMeals[indexPath.row].kitchen_name  ?? "---", description: recommendedMeals[indexPath.row].item_details?.description_sale ?? "", chefName: recommendedMeals[indexPath.row].chef_name ?? "No Chef Name" , foodType: recommendedMeals[indexPath.row].item_details?.food_type! ?? "", imageIds: recommendedMeals[indexPath.row].item_details?.food_image_ids ?? [0], chefId: recommendedMeals[indexPath.row].item_details?.chef_id ?? 0, chefImage: recommendedMeals[indexPath.row].chef_image_hash ?? "no-Image", cuisine: recommendedMeals[indexPath.row].item_details?.cuisine_id ?? Cuisine(id: 0, name: ""), tags: recommendedMeals[indexPath.row].item_details?.food_tags ?? [Tag(id: 0, name: "")], serves: recommendedMeals[indexPath.row].item_details?.serves ?? 0)
-            
+            let food = Food(id: recommendedMeals[indexPath.row].item_details?.id ?? 0,
+                            name: recommendedMeals[indexPath.row].item_details?.name! ?? "",
+                            price: recommendedMeals[indexPath.row].item_details?.list_price ?? 0.0,
+                            quantity: recommendedMeals[indexPath.row].item_details?.serves ?? 0,
+                            preparationTime: recommendedMeals[indexPath.row].item_details?.preparation_time ?? 0,
+                            kitcherName:recommendedMeals[indexPath.row].kitchen_name  ?? "=> ",
+                            description: recommendedMeals[indexPath.row].item_details?.description_sale ?? "",
+                            chefName: recommendedMeals[indexPath.row].chef_name ?? "No Chef Name",
+                            foodType: recommendedMeals[indexPath.row].item_details?.food_type! ?? "",
+                            imageIds: recommendedMeals[indexPath.row].item_details?.food_image_ids ?? [0],
+                            chefId: recommendedMeals[indexPath.row].item_details?.chef_id ?? 0,
+                            chefImage: recommendedMeals[indexPath.row].chef_image_hash ?? "no-Image",
+                            cuisine: recommendedMeals[indexPath.row].item_details?.cuisine_id ?? Cuisine(id: 0, name: ""),
+                            tags: recommendedMeals[indexPath.row].item_details?.food_tags ?? [Tag(id: 0, name: "")],
+                            serves: recommendedMeals[indexPath.row].item_details?.serves ?? 0)
             
             destinationVC.food = food
             navigationController?.pushViewController(destinationVC, animated: true)

@@ -41,7 +41,7 @@ static func == (lhs: Food, rhs: Food) -> Bool {
         self.price = (record["list_price"] as! Double)
         self.preparationTime = record["preparation_time"] as! Int
         self.servingQunatity = record["serves"] as! Int
-        self.imageIds = record["food_image_ids"] as? [Int]
+        self.imageIds = record["food_image_ids"] as? [Int] ?? [0]
         self.chefId = record["chef_id"] as? Int ?? 0
 //        self.quantity = record["quantity"] as? Int ?? 0
         self.chefName = record["chef_name"] as? String ?? ""
