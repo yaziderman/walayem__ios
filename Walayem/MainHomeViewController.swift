@@ -13,6 +13,7 @@ class MainHomeViewController: UIViewController {
     
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var mActivityIndicator: UIActivityIndicatorView!
     var partnerId: Int?
     var todays_meals = [PromotedItem]()
     var bestSellers = [PromotedItem]()
@@ -36,35 +37,18 @@ class MainHomeViewController: UIViewController {
            super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        mActivityIndicator.startAnimating()
         getPromoted()
         getCuisines()
        
     }
-    
-    
-    
-//    private func setupRefreshControl(){
-//        let refreshControl = UIRefreshControl()
-//        if #available(iOS 10.0, *){
-//            tableView.refreshControl = refreshControl
-//        }else{
-//            tableView.addSubview(refreshControl)
-//        }
-//        
-//        refreshControl.addTarget(self, action: #selector(refreshData(sender:)), for: .valueChanged)
-//    }
-    
-//    @objc private func refreshData(sender: UIRefreshControl){
-//
-//        getPromoted()
-//        tableView.reloadData()
-//    }
     
     private func getPromoted(){
             let params : [String: Any] = ["partner_id": partnerId ?? 0]
             
             RestClient().requestPromotedApi(WalayemApi.homeRecommendation, params) { (result, error) in
                 self.tableView.refreshControl?.endRefreshing()
+                self.mActivityIndicator.stopAnimating()
                 
                 if result!["result"] == nil {
                     return

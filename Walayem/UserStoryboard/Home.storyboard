@@ -201,7 +201,7 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" tag="8801" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="80 AED" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9P-pv-5TV">
-                                                                                <rect key="frame" x="222" y="0.0" width="96" height="35"/>
+                                                                                <rect key="frame" x="223" y="0.0" width="95" height="35"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
                                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -343,18 +343,28 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Oai-X0-g6K">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="color" red="0.36951097849999998" green="0.90207427740000001" blue="0.79985219240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="Oai-X0-g6K" firstAttribute="top" secondItem="Io6-65-Rfy" secondAttribute="top" id="5E6-IW-qZI"/>
+                            <constraint firstItem="Oai-X0-g6K" firstAttribute="height" secondItem="aAK-pw-AgJ" secondAttribute="height" multiplier="1.12138" id="ND4-Rl-LMl"/>
                             <constraint firstItem="dZI-7y-IzS" firstAttribute="trailing" secondItem="aAK-pw-AgJ" secondAttribute="trailing" id="Ock-Zb-NIc"/>
+                            <constraint firstItem="Oai-X0-g6K" firstAttribute="width" secondItem="aAK-pw-AgJ" secondAttribute="width" id="ctR-mM-j6a"/>
                             <constraint firstItem="dZI-7y-IzS" firstAttribute="top" secondItem="aAK-pw-AgJ" secondAttribute="top" id="e6l-iz-fBF"/>
                             <constraint firstItem="dZI-7y-IzS" firstAttribute="leading" secondItem="aAK-pw-AgJ" secondAttribute="leading" id="hcE-Pw-Saa"/>
                             <constraint firstAttribute="bottom" secondItem="dZI-7y-IzS" secondAttribute="bottom" id="oAb-LH-QfN"/>
+                            <constraint firstItem="Oai-X0-g6K" firstAttribute="leading" secondItem="aAK-pw-AgJ" secondAttribute="leading" id="vlP-of-o4Q"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aAK-pw-AgJ"/>
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="WRN-ho-Taf"/>
                     <connections>
+                        <outlet property="mActivityIndicator" destination="Oai-X0-g6K" id="6rr-yq-Zyz"/>
                         <outlet property="tableView" destination="dZI-7y-IzS" id="CEv-D8-qhF"/>
                     </connections>
                 </viewController>

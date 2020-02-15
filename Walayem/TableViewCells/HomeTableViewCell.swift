@@ -58,7 +58,7 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             return 0
         }
 
-//        return 5
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -156,7 +156,6 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             let mealName = mealCell.viewWithTag(610) as? UILabel
             mealName?.roundCorners([.bottomLeft,.bottomRight], radius: 15)
             mealName?.text = String(todays_meals[indexPath.row].item_details?.name ?? "")
-            print(mealName?.frame.size.width)
             mealName?.frame.size.width = 224
             
             return mealCell
