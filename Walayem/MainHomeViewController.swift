@@ -51,8 +51,14 @@ class MainHomeViewController: UIViewController {
                 self.mActivityIndicator.stopAnimating()
                 
                 if result!["result"] == nil {
+                    if result!["error"] != nil{
+//                        self.tableView.deleteRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+                        self.showSorryAlertWithMessage(result!["error"] as! String)
+                    }
                     return
                 }
+                
+                
                 
                 if result!["result"] != nil {
                     let data = result!["result"] as! [String: Any]
@@ -115,6 +121,12 @@ class MainHomeViewController: UIViewController {
                self.onSessionExpired()
            }
        }
+    
+    private func showSorryAlertWithMessage(_ msg: String){
+        let alert = UIAlertController(title: "Sorry", message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         StaticLinker.selectedCuisine = nil
@@ -246,10 +258,25 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 310
+            if recommendedMeals.count > 0 {
+                return 310
+            }
+            else{
+                return 0
+                
+            }
+            
         }
         if indexPath.row == 1 {
-            return 200
+            if recommendedMeals.count > 0 {
+                return 200
+            }
+            else{
+                return 0
+                
+            }
+            
+//            return 200
         }
         if indexPath.row == 2 {
             return 180

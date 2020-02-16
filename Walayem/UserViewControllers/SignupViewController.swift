@@ -585,6 +585,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     
     override func viewWillAppear(_ animated: Bool) {
         if (StaticLinker.chefLoginFromHome){
+//            self.btnCustomer. = true/
+            self.btnCustomer.isEnabled = false
             self.onChef(self)
             StaticLinker.chefLoginFromHome = false
         }

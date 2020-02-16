@@ -33,6 +33,8 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     var addressList = [Address]()
     var isSearching = false
     var isFirtTime = true
+    
+    var mCells = [FoodTableViewCell]()
 //    var lastIndex
 //    var indexPath = []
 //    var cartItems = [CartItem]()
@@ -127,11 +129,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         setupSearch()
         setupRefreshControl()
 
-//        let strNumber: NSString = "Today at 5pm to Address" as NSString
-//        let range = (strNumber).range(of: "to")
-//        let attribute = NSMutableAttributedString.init(string: strNumber as String)
-//        attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.lightGray , range: range)
-//        scheduleButton.setAttributedTitle(attribute, for: .normal)
+
         tableView.delegate = self
         tableView.dataSource = self
         collectionView.delegate = self
@@ -163,6 +161,10 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateFav) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
     }
+    
+    func refreshItemsQuantity(){
+        
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         
@@ -171,13 +173,24 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FoodTableViewCell", for: selectedIndexPath)
         }
         
+        refreshItemsQuantity()
+        
          if StaticLinker.selectedCuisine != nil && !isFirtTime{
             self.selectedCuisines.append(StaticLinker.selectedCuisine!)
             self.showCuisineFromHome()
             isFirtTime = false
             
         }
+        
+//        let cells = self.tableView.cells
+//            as! [FoodTableViewCell]
+        
+        for cell in mCells{
+            cell.food.quantity = 0
+        }
+        
         self.tableView.reloadData()
+       
         
 //        getAddress()
         
@@ -204,6 +217,9 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     
     override func viewWillDisappear(_ animated: Bool){
         
+       
+        
+        tableView.reloadData()
     }
     
     
@@ -382,6 +398,8 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             }
         }
     }
+    
+    
    
     private func setupSearch(){
         
@@ -432,6 +450,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         selectedTags.removeAll()
         selectedCuisines.removeAll()
         filterBarButton.removeBadge()
+        mCells.removeAll()
         
         getRecommendations()
         getFoods()
@@ -639,47 +658,6 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     
             }
         }
-    
-    
-//    func didRefreshRow(sender: FoodTableViewCell){
-//        guard let indexPath = tableView.indexPath(for: sender) else {
-//            fatalError("Cell does not exist")
-//        }
-//        let food = foods[indexPath.row]
-//    }
-    
-    
-    
-    
-    
-//    private func getCartItems(){
-//        let foods = db.getFoods()
-//        validateFoods(foods: foods) { (success) in
-//            self.cartItems.removeAll()
-//            let chefs = self.db.getCartItems()
-//            if chefs.count == 0{
-//                self.changeView(true)
-//            }else{
-//                self.changeView(false)
-//                for chef in chefs{
-//                    let cartItem = CartItem(opened: true, chef: chef, note: "")
-//                    self.cartItems.append(cartItem)
-//                }
-//                self.calculateCost()
-//            }
-//            self.tableView.reloadData()
-//        }
-//    }
-    
-    /*
-    // MARK: - Navigation
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
 
 extension DiscoverTableViewController: UITableViewDelegate, UITableViewDataSource{
@@ -700,6 +678,7 @@ extension DiscoverTableViewController: UITableViewDelegate, UITableViewDataSourc
         cell.delegate = self
         let food = foods[indexPath.row]
         cell.food = food
+        self.mCells.append(cell)
 //        cell.food.quantity = 0
         return cell
     }
@@ -726,6 +705,7 @@ extension DiscoverTableViewController: UITableViewDelegate, UITableViewDataSourc
             }
         }
     }
+    
     
 }
 

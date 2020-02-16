@@ -74,17 +74,7 @@ class UserTabBarController: UITabBarController{
             tabItem.badgeValue = "*"
         }
     }
-    
-//
-//    @objc private func setUpTabSeletion(_ notification : Notification){
-//        if let tabItem = self.tabBar.items?[1]{
-//            tabItem.badgeColor = UIColor.colorPrimary
-////            tabItem.badgeValue = "*"
-//            print("in setUpTabSeletion")
-//        }
-//        self.selectedIndex = 1
-//
-//    }
+ 
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
@@ -92,6 +82,32 @@ class UserTabBarController: UITabBarController{
            case .phone:
                // It's an iPhone
             print("phone----------------------------------------------------------------------")
+            
+            
+            if self.selectedIndex == 4 {
+
+//                let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+//
+//                if(session == nil){
+//
+//                    if let currentViewController = self.selectedViewController as? UISplitViewController{
+//                      guard let userVC = UIStoryboard.init(name: "User", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginPriorViewController") as? LoginPriorViewController else {
+//                          fatalError("Unexpected view controller")
+//                      }
+//                      let navigationVC = UINavigationController(rootViewController: userVC)
+//                        currentViewController.showDetailViewController(navigationVC, sender: self)
+//                    }
+//                }
+//                else{
+//                    if let currentViewController = self.selectedViewController as? UISplitViewController{
+//                       guard let orderVC = UIStoryboard.init(name: "Profile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileTableViewController") as? ProfileTableViewController else {
+//                           fatalError("Unexpected view controller")
+//                       }
+//                       let navigationVC = UINavigationController(rootViewController: orderVC)
+//                       currentViewController.showDetailViewController(navigationVC, sender: self)
+//                    }
+//                }
+            }
            case .pad:
            print("pad")
                // It's an iPad

@@ -52,6 +52,9 @@ class RestClient{
     
     func requestPromotedApi(_ url: String, _ params: [String: Any], _ completionHandler: @escaping(_ result: [String: Any]?, _ error: NSError?) -> Void){
             
+        headers = [
+            "Content-Type": "application/json"
+        ]
             
         let parameter = [String:AnyObject]()
         
@@ -59,14 +62,14 @@ class RestClient{
             .responseJSON { (response) in
                 
                 if response.result.isSuccess{
-                    let value: [String: Any] = response.result.value as! [String: Any]
+                    let value: [String: Any] = response.result.value as? [String: Any] ?? ["error": "Something went wrong...!"]
                     if let error = value["error"] as? [String: Any]{
                         completionHandler(nil, NSError(domain: "", code: error["code"] as! Int, userInfo: [NSLocalizedDescriptionKey: error["message"] as! String]))
                     }else{
                         completionHandler(value, nil)
                     }
                 }else{
-                    completionHandler(nil, response.result.error as NSError?)
+                    completionHandler( ["error": "Something went wrong...!"], response.result.error as NSError?)
                 }
             }
             

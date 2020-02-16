@@ -85,8 +85,6 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         else {
  
         }
-        
-        
     }
     
     @IBAction func connectInsta(_ sender: UIButton) {
@@ -154,7 +152,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
         if(session == nil)
         {
-            onSessionExpired(showSkip: false)
+            onSessionExpired(showSkip: true)
         }
     }
     

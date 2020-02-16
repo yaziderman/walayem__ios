@@ -64,12 +64,37 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     
     
     @IBAction func addAddress(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Profile", bundle: nil)
-        guard let addressVC = storyboard.instantiateViewController(withIdentifier: "AddressTableVC") as? AddressTableViewController else{
-            fatalError("Unexpected ViewController")
+        
+        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        if(session == nil)
+        {
+            let alert = UIAlertController(title: "", message: "Please login to add address.", preferredStyle: .actionSheet)
+                   
+                       alert.addAction(UIAlertAction(title: "Login / Signup", style: .default, handler: { (action) in
+                            
+                            print("Login/Signup is pressed")
+                        
+                            let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
+                            self.present(viewController, animated: true, completion: nil)
+                           }
+                       ))
+                   
+                   alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
+                       self.navigationController?.popViewController(animated: true)
+                   }))
+                   
+            self.present(alert, animated: true, completion: nil)
         }
-        addressVC.partnerId = user?.partner_id
-        navigationController?.pushViewController(addressVC, animated: true)
+        else{
+        
+            let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+            guard let addressVC = storyboard.instantiateViewController(withIdentifier: "AddressTableVC") as? AddressTableViewController else{
+                fatalError("Unexpected ViewController")
+            }
+            addressVC.partnerId = user?.partner_id
+                navigationController?.pushViewController(addressVC, animated: true)
+                
+        }
     }
     
     @IBAction func placeOrder(_ sender: UIButton) {

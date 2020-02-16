@@ -91,6 +91,7 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
     //MARK: Actions
     
     @IBAction func unwindToTags(sender: UIStoryboardSegue){
+        self.resignFirstResponder()
         if let sourceVC = sender.source as? ChooseFilterViewController{
             selectedTags = sourceVC.selectedTags
             updateTags()
