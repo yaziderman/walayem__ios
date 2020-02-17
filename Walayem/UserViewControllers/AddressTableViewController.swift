@@ -49,8 +49,13 @@ class AddressTableViewController: UITableViewController {
         setupRefreshControl()
         
         showActivityIndicator()
-        getAddress()
         Utils.setupNavigationBar(nav: self.navigationController!)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        getAddress()
     }
     
     // MARK: Private methods
