@@ -39,14 +39,14 @@ class LoginPriorViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if(StaticLinker.showSkip)
-        {
-            self.btnSkip.isHidden = false
-        }
-        else
-        {
-            self.btnSkip.isHidden = true
-        }
+//        if(StaticLinker.showSkip)
+//        {
+//            self.btnSkip.isHidden = false
+//        }
+//        else
+//        {
+//            self.btnSkip.isHidden = true
+//        }
     }
     // MARK: - Navigation
 
@@ -66,7 +66,10 @@ class LoginPriorViewController: UIViewController {
     }
     @IBAction func onSkep(_ sender: Any) {        
         self.dismiss(animated: true) {
-//            StaticLinker.mainVC?.selectedIndex = 0
+            if(!StaticLinker.showSkip)
+            {
+                StaticLinker.mainVC?.selectedIndex = 0
+            }
         }
     }
 }
