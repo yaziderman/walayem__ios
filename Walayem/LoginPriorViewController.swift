@@ -17,6 +17,13 @@ class LoginPriorViewController: UIViewController {
     // MARK: Actions
     
     @IBOutlet weak var btnSkip: UIButton!
+    
+    
+    @IBAction func skipAction(_ sender: UIButton){
+        StaticLinker.mainVC?.selectedIndex = 0
+    }
+    
+    
     @IBAction func signup(_ sender: UIButton) {
         performSegue(withIdentifier: "SignupVCSegue", sender: sender)
 
@@ -25,9 +32,36 @@ class LoginPriorViewController: UIViewController {
 //        }else{
 //            performSegue(withIdentifier: "SignupVCSegue", sender: sender)
 //        }
+        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+//        if(session != nil){
+//            print("User is Logged-In")
+//
+//            let currentVC = self
+//
+//            guard let profileVC = UIStoryboard.init(name: "Profile", bundle: Bundle.main).instantiateInitialViewController() else {
+//                fatalError("Unexpected view controller")
+//            }
+//            self.pre
+            
+//            self.present(profileVC, animated: false, completion: nil)
+            
+//            self.navigationController?.pushViewController(profileVC, animated: false)
+            
+//            currentVC.showDetailViewController(profileVC, sender: self)
+            
+            //                        fatalError("Unexpected view controller")
+            //                    }
+            //                    let navigationVC = UINavigationController(rootViewController: orderVC)
+            //                    currentViewController.showDetailViewController(navigationVC, sender: self)
+            
+            
+//        }
+        
         signupButton.layer.cornerRadius = 12
         signupButton.layer.masksToBounds = false
         userSwitch.setOn(false, animated: false)

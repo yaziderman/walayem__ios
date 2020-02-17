@@ -27,7 +27,7 @@ class MainHomeViewController: UIViewController {
     var bookmarkImages: [UIImage] = [
          UIImage(named: "bookmark.jpg")!,
          UIImage(named: "fire.jpg")!,
-         UIImage(named: "bookmark.jpg")!,
+         UIImage(named: "cuisine_dark.png")!,
          UIImage(named: "bookmark.jpeg")!,
          UIImage(named: "bookmark.jpg")!
      ]
@@ -112,13 +112,18 @@ class MainHomeViewController: UIViewController {
         }
     
     private func handleNetworkError(_ error: NSError){
-           let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
-           if error.domain == NSURLErrorDomain && error.code == URLError.notConnectedToInternet.rawValue{
-               let alert = UIAlertController(title: "Cannot get Foods", message: errmsg, preferredStyle: .alert)
-               alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-               present(alert, animated: true, completion: nil)
-           }else if errmsg == OdooClient.SESSION_EXPIRED{
-               self.onSessionExpired()
+           if error.userInfo[NSLocalizedDescriptionKey] != nil{
+               let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
+               if error.domain == NSURLErrorDomain && error.code == URLError.notConnectedToInternet.rawValue{
+                   let alert = UIAlertController(title: "Cannot get Foods", message: errmsg, preferredStyle: .alert)
+                   alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                   present(alert, animated: true, completion: nil)
+               }else if errmsg == OdooClient.SESSION_EXPIRED{
+                   self.onSessionExpired()
+               }
+           }
+           else{
+               showSorryAlertWithMessage("Some thing wrong in backend ...!")
            }
        }
     

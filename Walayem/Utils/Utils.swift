@@ -190,4 +190,10 @@ class Utils{
     static func notifyRefresh() {
         NotificationCenter.default.post(name: NSNotification.Name.init(NOTIFIER_KEY), object: nil);
     }
+    
+//    static func showSorryAlertWithMessage(_ msg: String){
+//        let alert = UIAlertController(title: "Sorry", message: msg, preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+//        present(alert, animated: true, completion: nil)
+//    }
 }

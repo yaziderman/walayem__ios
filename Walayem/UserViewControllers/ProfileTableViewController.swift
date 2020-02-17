@@ -214,7 +214,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         let fields = ["image"]
         
         OdooClient.sharedInstance().read(model: "res.partner", ids: [partnerId], fields: fields) { (result, error) in
-            if error != nil{
+            if error?.userInfo[NSLocalizedDescriptionKey] != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 print (errmsg)
                 return
@@ -255,6 +255,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
 //            StaticLinker.mainVC?.dismiss(animated: true, completion: nil)
 //            let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
 //            self.present(viewController, animated: true, completion: nil)
+            
         })
     }
     

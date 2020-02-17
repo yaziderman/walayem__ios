@@ -23,7 +23,7 @@ class WalayemApi{
     // Customer Api
     static let signup: String = "\(BASE_URL)/api/signup"
     static let recommendation: String = "\(BASE_URL)/api/recommended"
-    static let homeRecommendation: String = "\(BASE_URL)/api/promoted"
+    static let homeRecommendation: String = "\(BASE_URL)/api/promoted/"
     static let mealsOfDay: String = "\(BASE_URL)/api/recommended"
     static let discoverFood: String = "\(BASE_URL)/api/discover/food"
     static let searchFood: String = "\(BASE_URL)/api/food/search"

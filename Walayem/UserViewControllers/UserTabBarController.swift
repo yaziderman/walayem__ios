@@ -17,8 +17,13 @@ enum UIUserInterfaceIdiom : Int {
 
 class UserTabBarController: UITabBarController{
 
+    var session : String?
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
 
         NotificationCenter.default.addObserver(self, selector: #selector(setBadge(_:)), name: NSNotification.Name(rawValue: "showOrderDetail"), object: nil)
         
@@ -29,22 +34,48 @@ class UserTabBarController: UITabBarController{
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateProfileTitle) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
         
+        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        
+//        self.tabBar.items.s
+//        if(session != nil){
+//            if let currentViewController = self.selectedViewController as? UISplitViewController{
+//                               guard let orderVC = UIStoryboard.init(name: "Profile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileTableViewController") as? ProfileTableViewController else {
+//                                   fatalError("Unexpected view controller")
+//                               }
+//                               let navigationVC = UINavigationController(rootViewController: orderVC)
+//                               currentViewController.showDetailViewController(navigationVC, sender: self)
+//                            }
+//                        }
+        
+//        self.viewControllers?.remove(at: 3)
+        
         updateProfileTitle()
         StaticLinker.mainVC = self
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         updateProfileTitle()
+        
+        
+//        if(session == nil)
+//        {
+//            self.viewControllers?.remove(at: 5)
+//        }else {
+//            self.viewControllers?.remove(at: 4)
+//        }
+        
+        
     }
     
     @objc func updateProfileTitle() {
         
-        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
         if(session == nil)
         {
             self.tabBar.items![4].title = "Log In"
+//            self.tabBar.items![4].image?.imageAsset = UIImage(named:"login_grey.png")
         }
         else
         {
@@ -87,18 +118,7 @@ class UserTabBarController: UITabBarController{
             if self.selectedIndex == 4 {
 
 //                let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
-//
-//                if(session == nil){
-//
-//                    if let currentViewController = self.selectedViewController as? UISplitViewController{
-//                      guard let userVC = UIStoryboard.init(name: "User", bundle: Bundle.main).instantiateViewController(withIdentifier: "LoginPriorViewController") as? LoginPriorViewController else {
-//                          fatalError("Unexpected view controller")
-//                      }
-//                      let navigationVC = UINavigationController(rootViewController: userVC)
-//                        currentViewController.showDetailViewController(navigationVC, sender: self)
-//                    }
-//                }
-//                else{
+//                if(session != nil){
 //                    if let currentViewController = self.selectedViewController as? UISplitViewController{
 //                       guard let orderVC = UIStoryboard.init(name: "Profile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileTableViewController") as? ProfileTableViewController else {
 //                           fatalError("Unexpected view controller")
@@ -111,35 +131,49 @@ class UserTabBarController: UITabBarController{
            case .pad:
            print("pad")
                // It's an iPad
+           
+           if self.selectedIndex == 4 {
+
+                           let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+                           if(session != nil){
+           //                    if let currentViewController = self.selectedViewController as? UISplitViewController{
+                                  guard let orderVC = UIStoryboard.init(name: "Profile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileTableViewController") as? ProfileTableViewController else {
+                                      fatalError("Unexpected view controller")
+                                  }
+                                  let navigationVC = UINavigationController(rootViewController: orderVC)
+           //                       currentViewController.showDetailViewController(navigationVC, sender: self)
+           //                    }
+                           }
+                       }
             
-           if item.title == "Profile" {
-                        selectedIndex = 4
-           }
-           else if item.title == "History" {
-                    selectedIndex = 3
-           }
+//           if item.title == "Profile" {
+//                        selectedIndex = 4
+//           }
+//           else if item.title == "History" {
+//                    selectedIndex = 3
+//           }
         //        self.selectedIndex = 3
-           if self.selectedIndex == 3 {
-                if let currentViewController = self.selectedViewController as? UISplitViewController{
-                    guard let orderVC = UIStoryboard.init(name: "Order", bundle: Bundle.main).instantiateViewController(withIdentifier: "OrderNav") as? OrderTableViewController else {
-                        fatalError("Unexpected view controller")
-                    }
-                    let navigationVC = UINavigationController(rootViewController: orderVC)
-                    currentViewController.showDetailViewController(navigationVC, sender: self)
-                }
-                
-            }
+//           if self.selectedIndex == 3 {
+//                if let currentViewController = self.selectedViewController as? UISplitViewController{
+//                    guard let orderVC = UIStoryboard.init(name: "Order", bundle: Bundle.main).instantiateViewController(withIdentifier: "OrderNav") as? OrderTableViewController else {
+//                        fatalError("Unexpected view controller")
+//                    }
+//                    let navigationVC = UINavigationController(rootViewController: orderVC)
+//                    currentViewController.showDetailViewController(navigationVC, sender: self)
+//                }
+//
+//            }
             
-            if self.selectedIndex == 4 {
-                if let currentViewController = self.selectedViewController as? UISplitViewController{
-                    guard let orderVC = UIStoryboard.init(name: "Profile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileTableViewController") as? ProfileTableViewController else {
-                        fatalError("Unexpected view controller")
-                    }
-                    let navigationVC = UINavigationController(rootViewController: orderVC)
-                    currentViewController.showDetailViewController(navigationVC, sender: self)
-                }
-                
-            }
+//            if self.selectedIndex == 4 {
+//                if let currentViewController = self.selectedViewController as? UISplitViewController{
+//                    guard let orderVC = UIStoryboard.init(name: "Profile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileTableViewController") as? ProfileTableViewController else {
+//                        fatalError("Unexpected view controller")
+//                    }
+//                    let navigationVC = UINavigationController(rootViewController: orderVC)
+//                    currentViewController.showDetailViewController(navigationVC, sender: self)
+//                }
+//
+//            }
         
             
            case .unspecified:

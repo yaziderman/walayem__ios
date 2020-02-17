@@ -490,6 +490,12 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         isLoading = true
         RestClient().request(WalayemApi.discoverFood, params) { (result, error) in
             self.isLoading = false
+            
+            if let error = error{
+                self.handleNetworkError(error)
+                return
+            }
+            
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 print (errmsg)
@@ -578,16 +584,26 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     }
     
     private func handleNetworkError(_ error: NSError){
-        let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
-        if error.domain == NSURLErrorDomain && error.code == URLError.notConnectedToInternet.rawValue{
-            let alert = UIAlertController(title: "Cannot get Foods", message: errmsg, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
-        }else if errmsg == OdooClient.SESSION_EXPIRED{
-            self.onSessionExpired()
+        if error.userInfo[NSLocalizedDescriptionKey] != nil{
+            let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
+            if error.domain == NSURLErrorDomain && error.code == URLError.notConnectedToInternet.rawValue{
+                let alert = UIAlertController(title: "Cannot get Foods", message: errmsg, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
+            }else if errmsg == OdooClient.SESSION_EXPIRED{
+                self.onSessionExpired()
+            }
+        }
+        else{
+            showSorryAlertWithMessage("Some thing wrong in backend ...!")
         }
     }
     
+    private func showSorryAlertWithMessage(_ msg: String){
+        let alert = UIAlertController(title: "Sorry", message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
     private func showActivityIndicator(){
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityIndicator.color = UIColor.colorPrimary

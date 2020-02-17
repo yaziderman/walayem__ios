@@ -508,6 +508,12 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         RestClient().request(WalayemApi.address, params) { (result, error) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            
+            if let error = error{
+                self.handleNetworkError(error)
+                return
+            }
+            
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 print (errmsg)
@@ -541,6 +547,28 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
             }
             
         }
+    }
+    
+    private func handleNetworkError(_ error: NSError){
+        if error.userInfo[NSLocalizedDescriptionKey] != nil{
+            let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
+            if error.domain == NSURLErrorDomain && error.code == URLError.notConnectedToInternet.rawValue{
+                let alert = UIAlertController(title: "Cannot get Foods", message: errmsg, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
+            }else if errmsg == OdooClient.SESSION_EXPIRED{
+                self.onSessionExpired()
+            }
+        }
+        else{
+            showSorryAlertWithMessage("Some thing wrong in backend ...!")
+        }
+    }
+    
+    private func showSorryAlertWithMessage(_ msg: String){
+        let alert = UIAlertController(title: "Sorry", message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     private func setAddress(){

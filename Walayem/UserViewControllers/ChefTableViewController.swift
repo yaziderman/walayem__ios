@@ -411,16 +411,40 @@ class ChefTableViewController: UIViewController {
         navigationController?.pushViewController(foodDetailVC, animated: true)
     }
     
+//    private func handleNetworkError(_ error: NSError){
+//        let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
+//        if error.domain == NSURLErrorDomain && error.code == URLError.notConnectedToInternet.rawValue{
+//            let alert = UIAlertController(title: "Cannot get Chefs", message: errmsg, preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+//            present(alert, animated: true, completion: nil)
+//        }else if errmsg == OdooClient.SESSION_EXPIRED{
+//            self.onSessionExpired()
+//        }
+//    }
+    
+    
     private func handleNetworkError(_ error: NSError){
-        let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
-        if error.domain == NSURLErrorDomain && error.code == URLError.notConnectedToInternet.rawValue{
-            let alert = UIAlertController(title: "Cannot get Chefs", message: errmsg, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            present(alert, animated: true, completion: nil)
-        }else if errmsg == OdooClient.SESSION_EXPIRED{
-            self.onSessionExpired()
-        }
+           if error.userInfo[NSLocalizedDescriptionKey] != nil{
+               let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
+               if error.domain == NSURLErrorDomain && error.code == URLError.notConnectedToInternet.rawValue{
+                   let alert = UIAlertController(title: "Cannot get Foods", message: errmsg, preferredStyle: .alert)
+                   alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                   present(alert, animated: true, completion: nil)
+               }else if errmsg == OdooClient.SESSION_EXPIRED{
+                   self.onSessionExpired()
+               }
+           }
+           else{
+               showSorryAlertWithMessage("Some thing wrong in backend ...!")
+           }
+       }
+    
+    private func showSorryAlertWithMessage(_ msg: String){
+        let alert = UIAlertController(title: "Sorry", message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
+    
     
     private func showActivityIndicator(){
         if activityIndicator == nil{

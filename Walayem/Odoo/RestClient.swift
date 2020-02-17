@@ -44,7 +44,8 @@ class RestClient{
                     completionHandler(value, nil)
                 }
             }else{
-                completionHandler(nil, response.result.error as NSError?)
+                print(response.result.error as NSError?)
+                completionHandler(["error": "Something wrong in backend...!"], response.result.error as NSError?)
             }
         }
     }
@@ -53,7 +54,7 @@ class RestClient{
     func requestPromotedApi(_ url: String, _ params: [String: Any], _ completionHandler: @escaping(_ result: [String: Any]?, _ error: NSError?) -> Void){
             
         headers = [
-            "Content-Type": "application/json"
+            "Content-Type":"application/json"
         ]
             
         let parameter = [String:AnyObject]()
@@ -69,7 +70,7 @@ class RestClient{
                         completionHandler(value, nil)
                     }
                 }else{
-                    completionHandler( ["error": "Something went wrong...!"], response.result.error as NSError?)
+                    completionHandler( ["error": "Something wrong in backend...!"], response.result.error as NSError?)
                 }
             }
             
