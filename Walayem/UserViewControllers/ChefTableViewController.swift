@@ -52,9 +52,7 @@ class ChefTableViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }else
         {
-            let alert = UIAlertController(title: "Walayem", message: "Please add your address!", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+            self.showAlertBeforeLogin(message: "Please login to add Address...!")
         }
         
         

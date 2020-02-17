@@ -591,6 +591,7 @@
                     </navigationItem>
                     <size key="freeformSize" width="375" height="1100"/>
                     <connections>
+                        <outlet property="addAddressButton" destination="pnl-sr-re7" id="u4m-dw-wjS"/>
                         <outlet property="addressDetailLabel" destination="icw-fv-A4k" id="q0x-NV-q3r"/>
                         <outlet property="addressIcon" destination="PTm-Nc-3SB" id="rRC-ND-XyX"/>
                         <outlet property="addressNameLabel" destination="XSo-Uu-KJg" id="2WQ-XH-OeP"/>

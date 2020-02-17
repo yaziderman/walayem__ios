@@ -54,6 +54,8 @@ extension UIAlertController {
     func setTint(color: UIColor) {
         self.view.tintColor = color
     }
+    
+   
 }
 
 
@@ -67,6 +69,24 @@ extension UIViewController {
 
     @objc func dismissKeyboard() {
         view.endEditing(true)
+    }
+    
+    
+    
+    func showAlertBeforeLogin(message: String) {
+       
+        StaticLinker.skipToSameView = true
+        
+        let alert = UIAlertController(title: "Join WALAYEM", message: message, preferredStyle: .actionSheet)
+            alert.addAction(UIAlertAction(title: "Login / Signup", style: .default, handler: { (action) in
+                    let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
+                    self.present(viewController, animated: true, completion: nil)
+                   }
+               ))
+               alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
+                alert.dismiss(animated: true, completion: nil)
+               }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

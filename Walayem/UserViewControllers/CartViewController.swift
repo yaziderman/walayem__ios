@@ -26,6 +26,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     @IBOutlet weak var addressNameLabel: UILabel!
     @IBOutlet weak var addressDetailLabel: UILabel!
     @IBOutlet weak var orderButton: UIButton!
+    @IBOutlet weak var addAddressButton: UIButton!
     @IBOutlet weak var emptyView: UIView!
     
     @IBOutlet weak var orderSummaryIcon: UIImageView!
@@ -68,22 +69,6 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
         if(session == nil)
         {
-            let alert = UIAlertController(title: "", message: "Please login to add address.", preferredStyle: .actionSheet)
-                   
-                       alert.addAction(UIAlertAction(title: "Login / Signup", style: .default, handler: { (action) in
-                            
-                            print("Login/Signup is pressed")
-                        
-                            let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
-                            self.present(viewController, animated: true, completion: nil)
-                           }
-                       ))
-                   
-                   alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
-                       self.navigationController?.popViewController(animated: true)
-                   }))
-                   
-            self.present(alert, animated: true, completion: nil)
         }
         else{
         
@@ -97,119 +82,140 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         }
     }
     
+//    func showAlertForLogin(){
+//
+//        StaticLinker.skipToSameView = true
+//        
+//        let alert = UIAlertController(title: "", message: "Please login to continue...", preferredStyle: .actionSheet)
+//                alert.addAction(UIAlertAction(title: "Login / Signup", style: .default, handler: { (action) in
+//                        print("Login/Signup is pressed")
+//                        let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
+//                        self.present(viewController, animated: true, completion: nil)
+//                       }
+//                   ))
+//               
+//               alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
+//                alert.dismiss(animated: true, completion: nil)
+//               }))
+//               
+//        self.present(alert, animated: true, completion: nil)
+//    }
+    
     @IBAction func placeOrder(_ sender: UIButton) {
         let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
         if(session == nil)
         {
-            onSessionExpired()
+//            onSessionExpired()
+//            self.showAlertForLogin()
+            self.showAlertBeforeLogin(message: "Please login to place order!")
         }
         else
         {
             if selectedAddress == nil {
-                        let alert = UIAlertController(title: "", message: "Add address before placing an order", preferredStyle: .actionSheet)
-                        alert.addAction(UIAlertAction(title: "Select Address", style: .default, handler: { (action) in
-                            self.performSegue(withIdentifier: "SelectAddressSegue", sender: self)
-                        }))
-                        alert.addAction(UIAlertAction(title: "Add Address", style: .destructive, handler: { (action) in
-                            self.addAddress(UIButton())
-                        }))
-                        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                        if let popoverController = alert.popoverPresentationController {
-                            popoverController.sourceView = sender
-                            popoverController.sourceRect = CGRect(x: sender.bounds.midX, y: sender.bounds.minY, width: 0, height: 0)
-                            popoverController.permittedArrowDirections = [.down]
-                        }
-                        self.present(alert, animated: true, completion: nil)
+                let alert = UIAlertController(title: "", message: "Add address before placing an order", preferredStyle: .actionSheet)
+                alert.addAction(UIAlertAction(title: "Select Address", style: .default, handler: { (action) in
+                    self.performSegue(withIdentifier: "SelectAddressSegue", sender: self)
+                }))
+                alert.addAction(UIAlertAction(title: "Add Address", style: .destructive, handler: { (action) in
+                    self.addAddress(UIButton())
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                if let popoverController = alert.popoverPresentationController {
+                    popoverController.sourceView = sender
+                    popoverController.sourceRect = CGRect(x: sender.bounds.midX, y: sender.bounds.minY, width: 0, height: 0)
+                    popoverController.permittedArrowDirections = [.down]
+                }
+                self.present(alert, animated: true, completion: nil)
+                return
+            }else if user!.phone!.isEmpty{
+                let alert = UIAlertController(title: "", message: "You need to add your phone number before placing an order", preferredStyle: .actionSheet)
+                alert.addAction(UIAlertAction(title: "Add", style: .destructive, handler: { (action) in
+                    let storyboard = UIStoryboard(name: "EditProfile", bundle: nil)
+                    guard let profileVC = storyboard.instantiateViewController(withIdentifier: "updateProfileVC") as? UpdateProfileViewController else{
+                        fatalError("Unexpected ViewController")
+                    }
+    //                guard let profileVC = UIStoryboard(name: "EditProfile", bundle: Bundle.main).instantiateInitialViewController() as? UpdateProfileViewController else {
+    //                    fatalError("Unexpected view controller")
+    //                }
+                
+                    profileVC.user = self.user
+                    self.navigationController?.pushViewController(profileVC, animated: true)
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                if let popoverController = alert.popoverPresentationController {
+                    popoverController.sourceView = sender
+                    popoverController.sourceRect = CGRect(x: sender.bounds.midX, y: sender.bounds.minY, width: 0, height: 0)
+                    popoverController.permittedArrowDirections = [.down]
+                }
+                self.present(alert, animated: true, completion: nil)
+                return
+            }
+            
+            let progressAlert = showProgressAlert()
+            var orderItems = [Any]()
+            for item in cartItems{
+                // add food details
+                var products = [Any]()
+                for food in item.chef.foods{
+                    var dict = [String: Int]()
+                    dict["product_id"] = food.id
+                    dict["product_uom_qty"] = food.quantity
+                    
+                    products.append(dict)
+                }
+                // add chef details
+                var dict = [String: Any]()
+                dict["chef_id"] = item.chef.id
+                dict["note"] = item.note
+                dict["products"] = products
+                
+                orderItems.append(dict)
+            }
+            
+            var params: [String: Any] = ["partner_id": user?.partner_id as Any,
+                                         "address_id": selectedAddress!.id,
+                                         "orders": orderItems]
+            let orderType = UserDefaults.standard.string(forKey: "OrderType") ?? "asap"
+            params.updateValue(orderType, forKey: "order_type")
+            
+            print("order type-->"+orderType)
+            
+            if(orderType == "future"){
+                let orderDate = UserDefaults.standard.string(forKey: "OrderDate") ?? ""
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                let date = dateFormatter.date(from: orderDate)
+                
+                let dateTimeFormatter = DateFormatter()
+                dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                dateTimeFormatter.timeZone = TimeZone(abbreviation: "UTC")
+                let date_time_str = dateTimeFormatter.string(from: date!)
+                params.updateValue(date_time_str, forKey: "order_for")
+            }
+            
+            RestClient().request(WalayemApi.placeOrder, params) { (result, error) in
+                progressAlert.dismiss(animated: true, completion: {
+                    if error != nil{
+                        let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+                        self.showAlert(title: "Error", msg: errmsg)
                         return
-                    }else if user!.phone!.isEmpty{
-                        let alert = UIAlertController(title: "", message: "You need to add your phone number before placing an order", preferredStyle: .actionSheet)
-                        alert.addAction(UIAlertAction(title: "Add", style: .destructive, handler: { (action) in
-                            let storyboard = UIStoryboard(name: "EditProfile", bundle: nil)
-                            guard let profileVC = storyboard.instantiateViewController(withIdentifier: "updateProfileVC") as? UpdateProfileViewController else{
-                                fatalError("Unexpected ViewController")
-                            }
-            //                guard let profileVC = UIStoryboard(name: "EditProfile", bundle: Bundle.main).instantiateInitialViewController() as? UpdateProfileViewController else {
-            //                    fatalError("Unexpected view controller")
-            //                }
-                        
-                            profileVC.user = self.user
-                            self.navigationController?.pushViewController(profileVC, animated: true)
-                        }))
-                        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                        if let popoverController = alert.popoverPresentationController {
-                            popoverController.sourceView = sender
-                            popoverController.sourceRect = CGRect(x: sender.bounds.midX, y: sender.bounds.minY, width: 0, height: 0)
-                            popoverController.permittedArrowDirections = [.down]
-                        }
-                        self.present(alert, animated: true, completion: nil)
+                    }
+                    let value = result!["result"] as! [String: Any]
+                    let msg = value["message"] as! String
+                    if let status = value["status"] as? Int, status == 0{
+                        self.showAlert(title: "Error", msg: msg)
                         return
                     }
                     
-                    let progressAlert = showProgressAlert()
-                    var orderItems = [Any]()
-                    for item in cartItems{
-                        // add food details
-                        var products = [Any]()
-                        for food in item.chef.foods{
-                            var dict = [String: Int]()
-                            dict["product_id"] = food.id
-                            dict["product_uom_qty"] = food.quantity
-                            
-                            products.append(dict)
-                        }
-                        // add chef details
-                        var dict = [String: Any]()
-                        dict["chef_id"] = item.chef.id
-                        dict["note"] = item.note
-                        dict["products"] = products
-                        
-                        orderItems.append(dict)
+                    self.clearCartItems()
+                    let records = value["orders"] as! [Any]
+                    guard let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "OrderSuccessVC") as? OrderSuccessViewController else {
+                        fatalError("Unexpected destiation view controller")
                     }
-                    
-                    var params: [String: Any] = ["partner_id": user?.partner_id as Any,
-                                                 "address_id": selectedAddress!.id,
-                                                 "orders": orderItems]
-                    let orderType = UserDefaults.standard.string(forKey: "OrderType") ?? "asap"
-                    params.updateValue(orderType, forKey: "order_type")
-                    
-                    print("order type-->"+orderType)
-                    
-                    if(orderType == "future"){
-                        let orderDate = UserDefaults.standard.string(forKey: "OrderDate") ?? ""
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                        let date = dateFormatter.date(from: orderDate)
-                        
-                        let dateTimeFormatter = DateFormatter()
-                        dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                        dateTimeFormatter.timeZone = TimeZone(abbreviation: "UTC")
-                        let date_time_str = dateTimeFormatter.string(from: date!)
-                        params.updateValue(date_time_str, forKey: "order_for")
-                    }
-                    
-                    RestClient().request(WalayemApi.placeOrder, params) { (result, error) in
-                        progressAlert.dismiss(animated: true, completion: {
-                            if error != nil{
-                                let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
-                                self.showAlert(title: "Error", msg: errmsg)
-                                return
-                            }
-                            let value = result!["result"] as! [String: Any]
-                            let msg = value["message"] as! String
-                            if let status = value["status"] as? Int, status == 0{
-                                self.showAlert(title: "Error", msg: msg)
-                                return
-                            }
-                            
-                            self.clearCartItems()
-                            let records = value["orders"] as! [Any]
-                            guard let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "OrderSuccessVC") as? OrderSuccessViewController else {
-                                fatalError("Unexpected destiation view controller")
-                            }
-                            destinationVC.orders = records
-                            self.present(destinationVC, animated: true, completion: nil)
-                        })
-                    }
+                    destinationVC.orders = records
+                    self.present(destinationVC, animated: true, completion: nil)
+                })
+            }
         }
         
     }
@@ -245,11 +251,13 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         {
             self.addressNameLabel.isHidden = true
             self.addressDetailLabel.isHidden = true
+            self.addAddressButton.isHidden = true
         }
         else
         {
             self.addressNameLabel.isHidden = false
             self.addressDetailLabel.isHidden = false
+            self.addAddressButton.isHidden = false
         }
         
         getAddress()
