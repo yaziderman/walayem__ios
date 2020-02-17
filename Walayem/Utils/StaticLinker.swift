@@ -22,4 +22,5 @@ class StaticLinker
     public static var chefLoginFromHome : Bool = false
     
     public static var showSkip : Bool = true
+    public static var previosSeletedTab : Int = 0
 }

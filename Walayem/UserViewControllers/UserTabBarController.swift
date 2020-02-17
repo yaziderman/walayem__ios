@@ -90,6 +90,10 @@ class UserTabBarController: UITabBarController{
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
+        StaticLinker.previosSeletedTab = self.selectedIndex
+
+        print("--------oooooooooooooooooo-------\(StaticLinker.previosSeletedTab)")
+        
         switch UIDevice.current.userInterfaceIdiom {
            case .phone:
                // It's an iPhone
