@@ -213,6 +213,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     
     @objc func updateFav()
     {
+        user = User().getUserDefaults()
         
         let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
         if(session == nil)
@@ -226,6 +227,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
             self.addressDetailLabel.isHidden = false
         }
         
+        getAddress()
     }
     
     
