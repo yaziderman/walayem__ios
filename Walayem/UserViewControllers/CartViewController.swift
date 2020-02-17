@@ -509,10 +509,10 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         RestClient().request(WalayemApi.address, params) { (result, error) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             
-            if let error = error{
-                self.handleNetworkError(error)
-                return
-            }
+//            if let error = error{
+//                self.handleNetworkError(error)
+//                return
+//            }
             
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String

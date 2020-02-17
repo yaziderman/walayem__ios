@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xwQ-5C-coZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7sD-th-m69">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginPrior" translatesAutoresizingMaskIntoConstraints="NO" id="aCS-pV-rUJ">
-                                <rect key="frame" x="97.5" y="108" width="180" height="180"/>
+                                <rect key="frame" x="97.5" y="64" width="180" height="180"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="180" id="XpX-rb-9UH">
                                         <variation key="heightClass=regular-widthClass=regular" constant="210"/>
@@ -28,13 +28,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walayem" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VlU-RX-AjX">
-                                <rect key="frame" x="144.5" y="308" width="86.5" height="24"/>
+                                <rect key="frame" x="144.5" y="264" width="86.5" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XGm-zI-Uj8">
-                                <rect key="frame" x="71.5" y="337" width="232" height="57.5"/>
+                                <rect key="frame" x="71.5" y="293" width="232" height="57.5"/>
                                 <string key="text">Get food delivered right to your
 door in just one single tap. It’s
 that easy</string>
@@ -43,7 +43,7 @@ that easy</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQM-Pm-H1Z">
-                                <rect key="frame" x="0.0" y="569" width="375" height="33"/>
+                                <rect key="frame" x="0.0" y="618" width="375" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal">
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -53,7 +53,7 @@ that easy</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQv-cq-EmJ">
-                                <rect key="frame" x="32" y="505" width="311" height="52"/>
+                                <rect key="frame" x="32" y="554" width="311" height="52"/>
                                 <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="kP5-wQ-c4f"/>
@@ -67,7 +67,7 @@ that easy</string>
                                 </connections>
                             </button>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="x5W-Kz-zOt">
-                                <rect key="frame" x="114.5" y="442" width="146.5" height="31"/>
+                                <rect key="frame" x="114.5" y="491" width="146.5" height="31"/>
                                 <subviews>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Lko-ZG-Jt3">
                                         <rect key="frame" x="0.0" y="0.0" width="51" height="31"/>
@@ -82,7 +82,7 @@ that easy</string>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tUf-vI-E1B">
-                                <rect key="frame" x="325" y="44" width="34" height="30"/>
+                                <rect key="frame" x="325" y="0.0" width="34" height="30"/>
                                 <state key="normal" title="Skip ">
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -91,7 +91,7 @@ that easy</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an account?             " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jgs-ww-IwP">
-                                <rect key="frame" x="64" y="575" width="247" height="21"/>
+                                <rect key="frame" x="64" y="624" width="247" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="6B1-HA-4jo"/>
                                     <constraint firstAttribute="width" constant="247" id="pBR-Mo-sBc"/>
@@ -101,7 +101,7 @@ that easy</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j7L-HN-nNT">
-                                <rect key="frame" x="64" y="575" width="247" height="21"/>
+                                <rect key="frame" x="64" y="624" width="247" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="0y2-s6-csc"/>
                                     <constraint firstAttribute="width" constant="247" id="xdk-Z0-RZH"/>
@@ -1421,33 +1421,12 @@ scan of your Emirates ID</string>
             </objects>
             <point key="canvasLocation" x="334" y="930"/>
         </scene>
-        <!--Item-->
-        <scene sceneID="DcU-6B-GdA">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="xwQ-5C-coZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" image="lock.fill" catalog="system" id="jfR-gE-Bdb"/>
-                    <toolbarItems/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="a7O-7P-KbT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="7sD-th-m69" kind="relationship" relationship="rootViewController" id="8Gg-gV-Ih0"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JaP-xL-rlp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-466.39999999999998" y="223.53823088455775"/>
-        </scene>
     </scenes>
     <resources>
         <image name="back" width="10" height="16"/>
         <image name="facebook" width="192" height="192"/>
         <image name="google" width="192" height="192"/>
         <image name="idEmpty" width="100" height="100"/>
-        <image name="lock.fill" catalog="system" width="64" height="64"/>
         <image name="loginPrior" width="157" height="181"/>
         <image name="logo" width="128" height="98"/>
         <image name="logoNoText" width="23" height="45"/>
