@@ -64,6 +64,7 @@ class UserTabBarController: UITabBarController{
     
     @objc func updateProfileTitle() {
         
+        session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
         if(session == nil)
         {
             self.tabBar.items![4].title = "Log In"
