@@ -25,19 +25,51 @@ class ChefTableViewController: UIViewController {
     var page: Int = 0
     var totalPage: Int?
     var isLoading = false
+    var partnerId: Int?
     var discover = DiscoverTableViewController()
+    var addressList = [Address]()
+    var isSearching = false
     
     @IBOutlet weak var timePickerButton: UIButton!
     @IBOutlet weak var locationPickButton: UIButton!
     @IBAction func locationPickClicked(_ sender: Any) {
+        
+//        if ((StaticLinker.discoverViewController?.addressList) != nil){
+//
+//            let alert = UIAlertController(title: "", message: "Select an address", preferredStyle: .actionSheet)
+//            for address in (StaticLinker.discoverViewController?.addressList)!
+//            {
+//                alert.addAction(UIAlertAction(title: address.name, style: .default, handler: { (action) in
+//                    self.locationPickButton.setTitle(address.name, for: .normal)
+//
+//                    if(StaticLinker.discoverViewController != nil){
+//                        StaticLinker.discoverViewController?.locationPickButton.setTitle(address.name, for: .normal)
+//                    }
+//                    let userDefaults = UserDefaults.standard
+//                    userDefaults.set(address.id, forKey: "OrderAddress")
+//                    userDefaults.synchronize()
+//                }))
+//            }
+//            alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
+//                self.navigationController?.popViewController(animated: true)
+//            }))
+//
+//            if((StaticLinker.discoverViewController?.addressList.count)! > 0){
+//                self.present(alert, animated: true, completion: nil)
+//            }
+//        }
+//        else{
+//            self.showAlertBeforeLogin(message: "Please login to add Address...!")
+//        }
+        
         let alert = UIAlertController(title: "", message: "Select an address", preferredStyle: .actionSheet)
-        for address in (StaticLinker.discoverViewController?.addressList)!
+        
+        for address in self.addressList
         {
             alert.addAction(UIAlertAction(title: address.name, style: .default, handler: { (action) in
                 self.locationPickButton.setTitle(address.name, for: .normal)
-                
-                if(StaticLinker.discoverViewController != nil){
-                    StaticLinker.discoverViewController?.locationPickButton.setTitle(address.name, for: .normal)
+                if(StaticLinker.chefViewController != nil){
+                    StaticLinker.chefViewController?.locationPickButton.setTitle(address.name, for: .normal)
                 }
                 let userDefaults = UserDefaults.standard
                 userDefaults.set(address.id, forKey: "OrderAddress")
@@ -48,12 +80,20 @@ class ChefTableViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
         }))
         
-        if((StaticLinker.discoverViewController?.addressList.count)! > 0){
+        if(addressList.count > 0){
             self.present(alert, animated: true, completion: nil)
-        }else
-        {
-            self.showAlertBeforeLogin(message: "Please login to add Address...!")
         }
+        else
+        {
+            let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+            if(session == nil){
+                self.showAlertBeforeLogin(message: "Please login to add Address...!")
+            }
+//            else{
+//                self.present(alert, animated: true, completion: nil)
+//            }
+        }
+
         
         
     }
@@ -184,13 +224,49 @@ class ChefTableViewController: UIViewController {
         present(filterVC, animated: true, completion: nil)
     }
     
+    private func getAddress(){
+        let params = ["partner_id": partnerId!]
+        
+        RestClient().request(WalayemApi.address, params) { (result, error) in
+            if error != nil{
+                let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+                if errmsg == OdooClient.SESSION_EXPIRED{
+//                    self.onSessionExpired()
+                }
+                print (errmsg)
+                return
+            }
+            let value = result!["result"] as! [String: Any]
+            self.addressList.removeAll()
+            let records = value["addresses"] as! [Any]
+            if records.count == 0{
+                return
+            }
+            for record in records{
+                let address = Address(record: record as! [String : Any])
+                self.addressList.append(address)
+            }
+            
+            let selectedAddressId = UserDefaults.standard.integer(forKey: "OrderAddress") as Int?
+            if(selectedAddressId != nil){
+                for addr in self.addressList{
+                    if(addr.id == selectedAddressId){
+                        self.locationPickButton.setTitle(addr.name, for: .normal)
+                    }
+                }
+            }
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        partnerId = UserDefaults.standard.integer(forKey: UserDefaultsKeys.PARTNER_ID)
         setupSearch()
         setupRefreshControl()
         tableView.delegate = self
         tableView.dataSource = self
+        getAddress()
         
 //        let strNumber: NSString = "Today at 5pm to Address" as NSString
 //        let range = (strNumber).range(of: "to")
@@ -300,7 +376,7 @@ class ChefTableViewController: UIViewController {
         selectedTags.removeAll()
         selectedCuisines.removeAll()
         filterBarButton.removeBadge()
-        
+        isSearching = false
         getChefs()
     }
     
@@ -339,7 +415,7 @@ class ChefTableViewController: UIViewController {
     }
     
     private func getMoreChefs(){
-        if isLoading{
+        if (isLoading || isSearching){
             return
         }
         let params : [String: Int] = ["page": page + 1]
@@ -370,6 +446,9 @@ class ChefTableViewController: UIViewController {
     }
     
     private func searchChef(){
+        
+        isSearching = true
+        
         let tagIds: [Int] = selectedTags.map { (tag) -> Int in
             (tag.id ?? 0)
         }
@@ -516,14 +595,16 @@ extension ChefTableViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == chefs.count - 1 && page < totalPage!{
-            getMoreChefs()
-            
-            let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
-            activityIndicator.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44)
-            activityIndicator.startAnimating()
-            
-            tableView.tableFooterView = activityIndicator
+        if (!isSearching) {
+            if indexPath.row == chefs.count - 1 && page < totalPage!{
+                getMoreChefs()
+                
+                let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+                activityIndicator.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44)
+                activityIndicator.startAnimating()
+                
+                tableView.tableFooterView = activityIndicator
+            }
         }
     }
     

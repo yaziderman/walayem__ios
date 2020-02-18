@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="95s-Cd-9GM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="95s-Cd-9GM">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -197,14 +197,14 @@
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gj-YC-yNd">
                                                             <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
-                                                            <state key="normal" image="call"/>
+                                                            <state key="normal" image="phoneIcon"/>
                                                             <connections>
                                                                 <action selector="call:" destination="RLz-5N-n5R" eventType="touchUpInside" id="emr-c0-gkh"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5HG-ZS-Jmh">
                                                             <rect key="frame" x="48" y="0.0" width="38" height="38"/>
-                                                            <state key="normal" image="sms"/>
+                                                            <state key="normal" image="mailIcon"/>
                                                             <connections>
                                                                 <action selector="email:" destination="RLz-5N-n5R" eventType="touchUpInside" id="kTJ-5y-M7I"/>
                                                             </connections>
@@ -271,7 +271,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="38" id="MSj-2c-ubg"/>
                                                             </constraints>
-                                                            <state key="normal" image="insta"/>
+                                                            <state key="normal" image="instagramIcon-pdf"/>
                                                             <connections>
                                                                 <action selector="connectInsta:" destination="RLz-5N-n5R" eventType="touchUpInside" id="nRV-p8-rvL"/>
                                                             </connections>
@@ -797,20 +797,20 @@ Walayem</string>
     <resources>
         <image name="address" width="36" height="36"/>
         <image name="addressEmpty" width="130" height="148"/>
-        <image name="call" width="38" height="38"/>
         <image name="camera" width="30" height="30"/>
         <image name="connect" width="36" height="36"/>
         <image name="contactUs" width="36" height="36"/>
         <image name="facebook" width="192" height="192"/>
         <image name="gift" width="130" height="143"/>
         <image name="info" width="37" height="37"/>
-        <image name="insta" width="38" height="38"/>
+        <image name="instagramIcon-pdf" width="76" height="76"/>
         <image name="invite" width="36" height="36"/>
         <image name="logout" width="36" height="36"/>
+        <image name="mailIcon" width="38" height="38"/>
+        <image name="phoneIcon" width="38" height="38"/>
         <image name="privacy" width="36" height="36"/>
         <image name="profile" width="16" height="18"/>
         <image name="profileEdit" width="36" height="36"/>
-        <image name="sms" width="38" height="38"/>
         <image name="terms" width="36" height="36"/>
         <image name="userEmpty" width="60" height="60"/>
     </resources>

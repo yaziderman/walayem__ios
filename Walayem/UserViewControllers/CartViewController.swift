@@ -282,6 +282,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         user = User().getUserDefaults()
         getCartItems()
         getAddress()
+        updateButtonTitle()
         
         if (delegate != nil){
             
@@ -530,28 +531,31 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
                 return
             }
             let value = result!["result"] as! [String: Any]
-            self.addressList.removeAll()
-            let records = value["addresses"] as! [Any]
-            if records.count == 0{
-                self.addressView.isHidden = true
-                return
-            }
-            self.addressView.isHidden = false
-            for record in records{
-                let address = Address(record: record as! [String : Any])
-                self.addressList.append(address)
-            }
-            if self.selectedAddress == nil{
-                self.selectedAddress = self.addressList[0]
-                self.setAddress()
-            }
-            
-            let selectedAddressId = UserDefaults.standard.integer(forKey: "OrderAddress") as Int?
-            if(selectedAddressId != nil){
-                for addr in self.addressList{
-                    if(addr.id == selectedAddressId){
-                        self.selectedAddress = addr
-                        self.setAddress()
+            let status = value["status"] as! Int
+                if (status != 0) {
+                self.addressList.removeAll()
+                let records = value["addresses"] as! [Any]
+                if records.count == 0{
+                    self.addressView.isHidden = true
+                    return
+                }
+                self.addressView.isHidden = false
+                for record in records{
+                    let address = Address(record: record as! [String : Any])
+                    self.addressList.append(address)
+                }
+                if self.selectedAddress == nil{
+                    self.selectedAddress = self.addressList[0]
+                    self.setAddress()
+                }
+                
+                let selectedAddressId = UserDefaults.standard.integer(forKey: "OrderAddress") as Int?
+                if(selectedAddressId != nil){
+                    for addr in self.addressList{
+                        if(addr.id == selectedAddressId){
+                            self.selectedAddress = addr
+                            self.setAddress()
+                        }
                     }
                 }
             }

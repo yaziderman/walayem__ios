@@ -77,7 +77,7 @@ extension UIViewController {
        
         StaticLinker.skipToSameView = true
         
-        let alert = UIAlertController(title: "Join WALAYEM", message: message, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: message, message: "", preferredStyle: .actionSheet)
             alert.addAction(UIAlertAction(title: "Login / Signup", style: .default, handler: { (action) in
                     let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
                     self.present(viewController, animated: true, completion: nil)

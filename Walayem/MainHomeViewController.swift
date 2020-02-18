@@ -27,7 +27,7 @@ class MainHomeViewController: UIViewController {
     var bookmarkImages: [UIImage] = [
          UIImage(named: "bookmark.jpg")!,
          UIImage(named: "fire.jpg")!,
-         UIImage(named: "cuisine_dark.png")!,
+         UIImage(named: "cuisine.png")!,
          UIImage(named: "bookmark.jpeg")!,
          UIImage(named: "bookmark.jpg")!
      ]
@@ -35,6 +35,9 @@ class MainHomeViewController: UIViewController {
     
     override func viewDidLoad() {
            super.viewDidLoad()
+        
+        
+        
         tableView.dataSource = self
         tableView.delegate = self
         mActivityIndicator.startAnimating()
@@ -264,7 +267,7 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             if recommendedMeals.count > 0 {
-                return 310
+                return 340
             }
             else{
                 return 0
@@ -274,7 +277,7 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
         }
         if indexPath.row == 1 {
             if recommendedMeals.count > 0 {
-                return 200
+                return 240
             }
             else{
                 return 0

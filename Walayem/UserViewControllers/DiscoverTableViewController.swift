@@ -63,7 +63,13 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         }
         else
         {
-            self.showAlertBeforeLogin(message: "Please login to add Address...!")
+            let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+            if(session == nil){
+                self.showAlertBeforeLogin(message: "Please login to add Address...!")
+            }
+//            else{
+//                self.present(alert, animated: true, completion: nil)
+//            }
         }
     }
     
@@ -166,12 +172,16 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         
+        getAddress()
+        
         if let selectedIndexPath = tableView.indexPathForSelectedRow{
             tableView.deselectRow(at: selectedIndexPath, animated: true)
             let cell = tableView.dequeueReusableCell(withIdentifier: "FoodTableViewCell", for: selectedIndexPath)
         }
         
         refreshItemsQuantity()
+        
+//        updateBadge()
         
          if StaticLinker.selectedCuisine != nil && !isFirtTime{
             self.selectedCuisines.append(StaticLinker.selectedCuisine!)
@@ -190,7 +200,6 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         self.tableView.reloadData()
        
         
-//        getAddress()
         
 //        hideActivityIndicator()
        
@@ -216,7 +225,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     override func viewWillDisappear(_ animated: Bool){
         
        
-        
+        filterBarButton.removeBadge()
         tableView.reloadData()
     }
     
@@ -233,27 +242,30 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 if errmsg == OdooClient.SESSION_EXPIRED{
-                    self.onSessionExpired()
+//                    self.onSessionExpired()
                 }
                 print (errmsg)
                 return
             }
             let value = result!["result"] as! [String: Any]
-            self.addressList.removeAll()
-            let records = value["addresses"] as! [Any]
-            if records.count == 0{
-                return
-            }
-            for record in records{
-                let address = Address(record: record as! [String : Any])
-                self.addressList.append(address)
-            }
-            
-            let selectedAddressId = UserDefaults.standard.integer(forKey: "OrderAddress") as Int?
-            if(selectedAddressId != nil){
-                for addr in self.addressList{
-                    if(addr.id == selectedAddressId){
-                        self.locationPickButton.setTitle(addr.name, for: .normal)
+            let status = value["status"] as! Int
+            if (status != 0) {
+                self.addressList.removeAll()
+                let records = value["addresses"] as! [Any]
+                if records.count == 0{
+                    return
+                }
+                for record in records{
+                    let address = Address(record: record as! [String : Any])
+                    self.addressList.append(address)
+                }
+                
+                let selectedAddressId = UserDefaults.standard.integer(forKey: "OrderAddress") as Int?
+                if(selectedAddressId != nil){
+                    for addr in self.addressList{
+                        if(addr.id == selectedAddressId){
+                            self.locationPickButton.setTitle(addr.name, for: .normal)
+                        }
                     }
                 }
             }
@@ -559,6 +571,8 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         }
         let params: [String: Any] = ["search": false, "food_tags": tagIds, "cuisine": cuisineIds]
         RestClient().request(WalayemApi.searchFood, params) { (result, error) in
+            self.hideActivityIndicator()
+            
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 print (errmsg)

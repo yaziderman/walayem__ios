@@ -14,6 +14,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     // MARK: Properties
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    var session: String?
     
     var user: User?
     
@@ -134,6 +135,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         self.splitViewController?.preferredDisplayMode = .allVisible
         self.splitViewController?.delegate = self
         
+        session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
         user = User().getUserDefaults()
         if let image = user?.image{
             userImageView.image = Utils.decodeImage(image)
@@ -147,9 +149,22 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         NotificationCenter.default.addObserver(self, selector: #selector(refresh) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
     }
     
+    func updateProfileTitle() {
+            
+            if(session == nil)
+            {
+                StaticLinker.mainVC?.tabBar.items![4].title = "Log In"
+            }
+            else
+            {
+                StaticLinker.mainVC?.tabBar.items![4].title = "Profile"
+            }
+            
+        }
+    
     func checkLogin()
     {
-        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        updateProfileTitle()
         if(session == nil)
         {
             onSessionExpired(showSkip: true)
@@ -197,8 +212,8 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        updateUI()
         checkLogin()
+        updateUI()
     }
     
     
@@ -220,12 +235,14 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
                 return
             }
             let records = result!["result"] as! [Any]
-            if let record = records[0] as? [String: Any]{
-                if let image = record["image"] as? String {
-                    UserDefaults.standard.set(image, forKey: UserDefaultsKeys.IMAGE)
-                    self.userImageView.image = Utils.decodeImage(image)
-                }else{
-                    print("no image available.")
+            if (records.count > 0){
+                if let record = records[0] as? [String: Any]{
+                    if let image = record["image"] as? String {
+                        UserDefaults.standard.set(image, forKey: UserDefaultsKeys.IMAGE)
+                        self.userImageView.image = Utils.decodeImage(image)
+                    }else{
+                        print("no image available.")
+                    }
                 }
             }
         }

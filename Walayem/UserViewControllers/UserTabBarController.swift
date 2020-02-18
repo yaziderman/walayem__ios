@@ -43,13 +43,24 @@ class UserTabBarController: UITabBarController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         updateProfileTitle()
         
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
+        updateProfileTitle()
         
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        updateProfileTitle()
+    }
+    
+    
     
     @objc func updateProfileTitle() {
         

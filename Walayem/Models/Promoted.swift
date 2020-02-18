@@ -90,12 +90,16 @@ class ItemDetail{
                     self.food_image_ids = tempImageIds
                 }
                 if record["chef_id"] != nil{
-                   let tempChef = record["chef_id"] as! [Any]
-                    self.chef_id = tempChef[0] as! Int
+                   let tempChef = record["chef_id"] as? [Any]
+                    if tempChef?[0] != nil {
+                        self.chef_id = tempChef![0] as? Int
+                    }
+//                    self.chef_id = tempChef[0] as! Int
+                    
                 }
                 if record["food_tags"] != nil{
                     let tags = record["food_tags"] as! [Any]
-                    print(tags[0])
+//                    print(tags[0])
                     var mTagsList = [Tag]()
                     for tag in tags{
                         let mTag = Tag(rec: tag as! [String : Any])

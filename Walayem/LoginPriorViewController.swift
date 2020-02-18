@@ -76,6 +76,7 @@ class LoginPriorViewController: UIViewController {
     }
     @IBAction func onSkep(_ sender: Any) {        
         self.dismiss(animated: true) {
+            
             if(!StaticLinker.skipToSameView){
                 StaticLinker.mainVC?.selectedIndex = StaticLinker.previosSeletedTab
             }
