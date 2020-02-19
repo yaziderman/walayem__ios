@@ -103,7 +103,6 @@ class UserTabBarController: UITabBarController{
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
         StaticLinker.previosSeletedTab = self.selectedIndex
-
         print("--------oooooooooooooooooo-------\(StaticLinker.previosSeletedTab)")
         
         switch UIDevice.current.userInterfaceIdiom {
@@ -133,19 +132,20 @@ class UserTabBarController: UITabBarController{
 //
 //                           let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
 //                           if(session != nil){
-//           //                    if let currentViewController = self.selectedViewController as? UISplitViewController{
+//                               if let currentViewController = self.selectedViewController as? UISplitViewController{
 //                                  guard let orderVC = UIStoryboard.init(name: "Profile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileTableViewController") as? ProfileTableViewController else {
 //                                      fatalError("Unexpected view controller")
 //                                  }
 //                                  let navigationVC = UINavigationController(rootViewController: orderVC)
-//           //                       currentViewController.showDetailViewController(navigationVC, sender: self)
+//                                  currentViewController.showDetailViewController(navigationVC, sender: self)
 //           //                    }
 //                           }
 //                       }
-            
-//           if item.title == "Profile" {
-//                        selectedIndex = 4
 //           }
+//
+           if item.title == "Profile" {
+                        selectedIndex = 4
+           }
 //           else if item.title == "History" {
 //                    selectedIndex = 3
 //           }
@@ -161,16 +161,16 @@ class UserTabBarController: UITabBarController{
 //
 //            }
             
-//            if self.selectedIndex == 4 {
-//                if let currentViewController = self.selectedViewController as? UISplitViewController{
-//                    guard let orderVC = UIStoryboard.init(name: "Profile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileTableViewController") as? ProfileTableViewController else {
-//                        fatalError("Unexpected view controller")
-//                    }
-//                    let navigationVC = UINavigationController(rootViewController: orderVC)
-//                    currentViewController.showDetailViewController(navigationVC, sender: self)
-//                }
-//
-//            }
+            if self.selectedIndex == 4 {
+                if let currentViewController = self.selectedViewController as? UISplitViewController{
+                    guard let profileVC = UIStoryboard.init(name: "Profile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ProfileTableViewController") as? ProfileTableViewController else {
+                        fatalError("Unexpected view controller")
+                    }
+                    let navigationVC = UINavigationController(rootViewController: profileVC)
+                    currentViewController.showDetailViewController(navigationVC, sender: self)
+                }
+
+            }
         
             
            case .unspecified:
