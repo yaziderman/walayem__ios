@@ -137,6 +137,10 @@
 		BEC27A0523E8B16600DE7874 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC27A0423E8B16600DE7874 /* HomeTableViewCell.swift */; };
 		BEC27A0723E93A8200DE7874 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC27A0623E93A8200DE7874 /* HomeCollectionViewCell.swift */; };
 		C3E01AAB1E1B439F32F34F23 /* Pods_Walayem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF272E4C0EC903E149663133 /* Pods_Walayem.framework */; };
+		C689B0DB23FD2EF50059BD7F /* AreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C689B0DA23FD2EF50059BD7F /* AreaViewController.swift */; };
+		C689B0DD23FD2F120059BD7F /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = C689B0DC23FD2F120059BD7F /* Area.swift */; };
+		C689B0DF23FD2F300059BD7F /* AreaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C689B0DE23FD2F300059BD7F /* AreaViewCell.swift */; };
+		C689B0E123FD38880059BD7F /* ChefLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C689B0E023FD38880059BD7F /* ChefLocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -275,6 +279,10 @@
 		BEC27A0423E8B16600DE7874 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		BEC27A0623E93A8200DE7874 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF272E4C0EC903E149663133 /* Pods_Walayem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Walayem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C689B0DA23FD2EF50059BD7F /* AreaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaViewController.swift; sourceTree = "<group>"; };
+		C689B0DC23FD2F120059BD7F /* Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
+		C689B0DE23FD2F300059BD7F /* AreaViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaViewCell.swift; sourceTree = "<group>"; };
+		C689B0E023FD38880059BD7F /* ChefLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefLocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +301,7 @@
 		04831C4720AC38D400195B1A /* ChefViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C689B0DA23FD2EF50059BD7F /* AreaViewController.swift */,
 				04CCB83F20AD68870011BD95 /* VerifyEmiratesViewController.swift */,
 				52F2D1D0209F121B00FAE72C /* ChefSignupViewController.swift */,
 				0A79101E20DF885F00FA7DA9 /* ChefReviewViewController.swift */,
@@ -308,6 +317,7 @@
 				04E854B520B159CB00A26562 /* ChefProfileTableViewController.swift */,
 				521F2ED020B153A7000DF518 /* AccountsTableViewController.swift */,
 				0A10A5EB211C2E4800112D6D /* UpdateEmiratesIDViewController.swift */,
+				C689B0E023FD38880059BD7F /* ChefLocationViewController.swift */,
 			);
 			path = ChefViewControllers;
 			sourceTree = "<group>";
@@ -341,6 +351,7 @@
 		04C596BB2084765400B284D3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C689B0DC23FD2F120059BD7F /* Area.swift */,
 				5B467DED23B882CD008620FF /* Account.swift */,
 				BE4501EB23EEE5F600E3AB68 /* Promoted.swift */,
 				5B467DEB23B882CD008620FF /* Address.swift */,
@@ -378,6 +389,7 @@
 		04C596C120848F4E00B284D3 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				C689B0DE23FD2F300059BD7F /* AreaViewCell.swift */,
 				BEBB0FEC23E7E65E00D43789 /* MealOfDayCollectionViewCell.swift */,
 				BEBB0FED23E7E65E00D43789 /* RecommendedHomeCVCell.swift */,
 				04C596C220848F9700B284D3 /* OnboardingCollectionViewCell.swift */,
@@ -707,12 +719,14 @@
 				5B467DF223B882CE008620FF /* Cuisine.swift in Sources */,
 				BEC27A0323E89F2100DE7874 /* MainHomeViewController.swift in Sources */,
 				043532FA20A2C5C400D90035 /* OrderTableViewCell.swift in Sources */,
+				C689B0DB23FD2EF50059BD7F /* AreaViewController.swift in Sources */,
 				041AE59F209EFFCC007C05D9 /* AddressTableViewCell.swift in Sources */,
 				04C596C020848ED900B284D3 /* OnBoardingViewController.swift in Sources */,
 				04D9E8AB2085D31A002E1B51 /* SignupViewController.swift in Sources */,
 				5B467DF323B882CE008620FF /* Chef.swift in Sources */,
 				5B467DF623B882CE008620FF /* Account.swift in Sources */,
 				52EA619C20B3E53E001DB6CC /* TermsViewController.swift in Sources */,
+				C689B0DD23FD2F120059BD7F /* Area.swift in Sources */,
 				47FF3DEE20A1F62800A6289F /* OrderTableViewController.swift in Sources */,
 				0409E71420A426FB00C95E10 /* OrderFoodHeaderCell.swift in Sources */,
 				040902D620B2A01500059F1D /* ChooseCuisineViewController.swift in Sources */,
@@ -742,6 +756,7 @@
 				04F2158320887622003D47AD /* RecommendedCollectionTableViewCell.swift in Sources */,
 				5B467DF423B882CE008620FF /* Address.swift in Sources */,
 				0A08C4A320C13B2D00E006AB /* ChangePasswordViewController.swift in Sources */,
+				C689B0E123FD38880059BD7F /* ChefLocationViewController.swift in Sources */,
 				04DE41E7208C797100A14C30 /* ProfileTableViewController.swift in Sources */,
 				04CAD477208F464C00DD48C6 /* RatingControl.swift in Sources */,
 				04DE41EB208CA30F00A14C30 /* AddressTableViewController.swift in Sources */,
@@ -798,6 +813,7 @@
 				04AD0D3F209B0F33002C072D /* FilterCollectionViewCell.swift in Sources */,
 				04C596C72084C15F00B284D3 /* LoginPriorViewController.swift in Sources */,
 				04E854BA20B1824F00A26562 /* ChefFoodCell.swift in Sources */,
+				C689B0DF23FD2F300059BD7F /* AreaViewCell.swift in Sources */,
 				BEBB0FEB23E7E4B500D43789 /* HomeViewController.swift in Sources */,
 				04A6594520A0350400DBCF86 /* CartFoodTableViewCell.swift in Sources */,
 				04CCB84020AD68870011BD95 /* VerifyEmiratesViewController.swift in Sources */,
