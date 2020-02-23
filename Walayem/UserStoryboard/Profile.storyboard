@@ -212,9 +212,9 @@
                                                                 <constraint firstAttribute="width" constant="38" id="ETT-oZ-5Ae"/>
                                                                 <constraint firstAttribute="height" constant="38" id="fMf-PB-qcM"/>
                                                             </constraints>
-                                                            <state key="normal" image="cancelled"/>
+                                                            <state key="normal" image="whatsapp_ico"/>
                                                             <connections>
-                                                                <action selector="call:" destination="RLz-5N-n5R" eventType="touchUpInside" id="IlO-tE-VS8"/>
+                                                                <action selector="openWhatsapp" destination="RLz-5N-n5R" eventType="touchUpInside" id="s3p-6F-tmv"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5HG-ZS-Jmh">
@@ -825,7 +825,6 @@ Walayem</string>
         <image name="address" width="36" height="36"/>
         <image name="addressEmpty" width="130" height="148"/>
         <image name="camera" width="30" height="30"/>
-        <image name="cancelled" width="46" height="46"/>
         <image name="connect" width="36" height="36"/>
         <image name="contactUs" width="36" height="36"/>
         <image name="facebook" width="192" height="192"/>
@@ -841,6 +840,7 @@ Walayem</string>
         <image name="profileEdit" width="36" height="36"/>
         <image name="terms" width="36" height="36"/>
         <image name="userEmpty" width="60" height="60"/>
+        <image name="whatsapp_ico" width="64" height="64"/>
         <image name="withdraw" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
