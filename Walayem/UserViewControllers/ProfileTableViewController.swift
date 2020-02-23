@@ -262,6 +262,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
                 print (errmsg)
                 return
             }
+            if result != nil {
             let records = result!["result"] as! [Any]
             if (records.count > 0){
                 if let record = records[0] as? [String: Any]{
@@ -272,6 +273,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
                         print("no image available.")
                     }
                 }
+            }
             }
         }
     }

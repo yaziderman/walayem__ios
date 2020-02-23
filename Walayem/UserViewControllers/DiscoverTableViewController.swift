@@ -16,6 +16,8 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var scheduleButton: UIButton!
     @IBOutlet weak var filterBarButton: UIBarButtonItem!
+    @IBOutlet weak var areaFilterBarButton: UIBarButtonItem!
+
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var popularView: UIStackView!
     weak var activityIndicator: UIActivityIndicatorView!
@@ -23,6 +25,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     let db = DatabaseHandler()
     var partnerId: Int?
     var selectedTags = [Tag]()
+    var selectedAreas = [Area]()
     var selectedCuisines = [Cuisine]()
     var homeSelectedCuisines = [Cuisine]()
     var recommendedFoods = [Food]()
@@ -117,6 +120,27 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         }
     }
     
+    @IBAction func unwindFromAreasFilterVC(sender: UIStoryboardSegue){
+        if let sourceVC = sender.source as? AreaFilterViewController{
+            self.selectedAreas = sourceVC.selectedAreas
+            let badgeNumber = selectedAreas.count
+            
+            do{
+                if badgeNumber > 0{
+                    searchFood()
+                    areaFilterBarButton.addBadge(number: badgeNumber, withOffset: CGPoint(x: 0, y: 5), andColor: UIColor.colorPrimary, andFilled: true)
+                }else {
+                    getFoods()
+                    areaFilterBarButton.removeBadge()
+                }
+            }
+            catch {
+            
+            }
+        }
+    }
+
+    
     @IBAction func showFilter(sender: UIBarButtonItem){
         guard let filterVC = UIStoryboard(name: "Discover", bundle: Bundle.main).instantiateViewController(withIdentifier: "FilterVC") as? FilterViewController else {
             fatalError("Unexpected view controller")
@@ -125,6 +149,15 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         filterVC.selectedCuisines = selectedCuisines
         present(filterVC, animated: true, completion: nil)
     }
+    
+    @IBAction func showAreaFilter(sender: UIBarButtonItem){
+        guard let filterVC = UIStoryboard(name: "Discover", bundle: Bundle.main).instantiateViewController(withIdentifier: "AreaFilterVC") as? AreaFilterViewController else {
+            fatalError("Unexpected view controller")
+        }
+        filterVC.selectedAreas = selectedAreas
+        present(filterVC, animated: true, completion: nil)
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -569,6 +602,10 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         let cuisineIds: [Int] = selectedCuisines.map { (cuisine) -> Int in
             (cuisine.id ?? 0)
         }
+        let areaIds: [Int] = selectedAreas.map { (area) -> Int in
+            (area.id ?? 0)
+        }
+
         let params: [String: Any] = ["search": false, "food_tags": tagIds, "cuisine": cuisineIds]
         RestClient().request(WalayemApi.searchFood, params) { (result, error) in
             self.hideActivityIndicator()

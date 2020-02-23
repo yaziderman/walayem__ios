@@ -8,14 +8,14 @@
 
 import Foundation
 class Area {
-    var id: String?
+    var id: Int?
     var name: String?
     var isSelected: Bool
     
     init(record: [String: Any]){
-        self.id = record["id"] as? String
+        self.id = record["city_id"] as? Int
         self.name = record["name"] as? String
-        self.isSelected = record["isSelected"] as! Bool
+        self.isSelected = false
     }
     
     func toogle()  {

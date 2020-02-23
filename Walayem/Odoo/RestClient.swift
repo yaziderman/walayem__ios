@@ -32,7 +32,9 @@ class RestClient{
                                          "id": Int(Date().timeIntervalSince1970),
                                          "params": params]
         print(Int(Date().timeIntervalSince1970))
-        
+        print(url)
+        print(params)
+
         Alamofire.request(url, method: .post, parameters: jsonParam, encoding: JSONEncoding.default, headers: headers)
         .validate()
         .responseJSON { (response) in
@@ -58,7 +60,9 @@ class RestClient{
         ]
             
         let parameter = [String:AnyObject]()
-        
+        print(url)
+        print(params)
+
             Alamofire.request(url, method: .post, parameters: parameter , encoding: JSONEncoding.default, headers: headers).validate()
             .responseJSON { (response) in
                 

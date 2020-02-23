@@ -595,7 +595,7 @@ we’ll send you instructions</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="311" height="40"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nLR-3y-Zfw">
-                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="283" height="40"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="cne-h5-4M1"/>
@@ -605,7 +605,7 @@ we’ll send you instructions</string>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                             </textField>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verify" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H94-EJ-rfp">
-                                                                <rect key="frame" x="297" y="13" width="14" height="14"/>
+                                                                <rect key="frame" x="283" y="6" width="28" height="28"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                         </subviews>
@@ -614,7 +614,7 @@ we’ll send you instructions</string>
                                                         <rect key="frame" x="0.0" y="56" width="311" height="40"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Z60-9b-nQS">
-                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="283" height="40"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="sPw-p7-kaa"/>
@@ -624,7 +624,7 @@ we’ll send you instructions</string>
                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                                                             </textField>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verify" translatesAutoresizingMaskIntoConstraints="NO" id="7sT-ye-Tcr">
-                                                                <rect key="frame" x="297" y="13" width="14" height="14"/>
+                                                                <rect key="frame" x="283" y="6" width="28" height="28"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                         </subviews>
@@ -633,7 +633,7 @@ we’ll send you instructions</string>
                                                         <rect key="frame" x="0.0" y="112" width="311" height="40"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+971 XXXXXXXXX" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cui-GD-s2M">
-                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="283" height="40"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="OzF-5Q-l7K"/>
@@ -643,7 +643,7 @@ we’ll send you instructions</string>
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
                                                             </textField>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verify" translatesAutoresizingMaskIntoConstraints="NO" id="6gz-fn-Btk">
-                                                                <rect key="frame" x="297" y="13" width="14" height="14"/>
+                                                                <rect key="frame" x="283" y="6" width="28" height="28"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                         </subviews>
@@ -652,7 +652,7 @@ we’ll send you instructions</string>
                                                         <rect key="frame" x="0.0" y="168" width="311" height="40"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZHY-ru-hvw">
-                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="283" height="40"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="xEg-I8-aqg"/>
@@ -662,7 +662,7 @@ we’ll send you instructions</string>
                                                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                             </textField>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verify" translatesAutoresizingMaskIntoConstraints="NO" id="jLZ-7C-1hF">
-                                                                <rect key="frame" x="297" y="13" width="14" height="14"/>
+                                                                <rect key="frame" x="283" y="6" width="28" height="28"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                         </subviews>
@@ -690,7 +690,7 @@ we’ll send you instructions</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="311" height="40"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Kitchen Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tc9-N3-FeO">
-                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="283" height="40"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="zzb-8g-wrA"/>
@@ -700,7 +700,7 @@ we’ll send you instructions</string>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                             </textField>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verify" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jKd-90-HfN">
-                                                                <rect key="frame" x="297" y="13" width="14" height="14"/>
+                                                                <rect key="frame" x="283" y="6" width="28" height="28"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                         </subviews>
@@ -709,7 +709,7 @@ we’ll send you instructions</string>
                                                         <rect key="frame" x="0.0" y="56" width="311" height="40"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ox6-2I-fzL">
-                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="283" height="40"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="3ZK-hq-KVA"/>
@@ -719,7 +719,7 @@ we’ll send you instructions</string>
                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                                                             </textField>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verify" translatesAutoresizingMaskIntoConstraints="NO" id="EnZ-95-Ms7">
-                                                                <rect key="frame" x="297" y="13" width="14" height="14"/>
+                                                                <rect key="frame" x="283" y="6" width="28" height="28"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                         </subviews>
@@ -728,7 +728,7 @@ we’ll send you instructions</string>
                                                         <rect key="frame" x="0.0" y="112" width="311" height="40"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+971 XXXXXXXXX" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fVC-fF-ix8">
-                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="283" height="40"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="PYn-zS-ba3"/>
@@ -738,7 +738,7 @@ we’ll send you instructions</string>
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
                                                             </textField>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verify" translatesAutoresizingMaskIntoConstraints="NO" id="iiR-hA-aw2">
-                                                                <rect key="frame" x="297" y="13" width="14" height="14"/>
+                                                                <rect key="frame" x="283" y="6" width="28" height="28"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                         </subviews>
@@ -747,7 +747,7 @@ we’ll send you instructions</string>
                                                         <rect key="frame" x="0.0" y="168" width="311" height="40"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BML-TK-Gdp">
-                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="283" height="40"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="85v-d7-TEF"/>
@@ -757,7 +757,7 @@ we’ll send you instructions</string>
                                                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                             </textField>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verify" translatesAutoresizingMaskIntoConstraints="NO" id="sIg-cs-UJV">
-                                                                <rect key="frame" x="297" y="13" width="14" height="14"/>
+                                                                <rect key="frame" x="283" y="6" width="28" height="28"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                         </subviews>
@@ -810,7 +810,7 @@ we’ll send you instructions</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5KB-Fz-oB4">
-                                                <rect key="frame" x="6" y="2" width="30" height="42"/>
+                                                <rect key="frame" x="6" y="2" width="40" height="52"/>
                                                 <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
                                                 <state key="normal" image="back"/>
                                                 <connections>
@@ -983,6 +983,7 @@ we’ll send you instructions</string>
                         <outlet property="socialPanel" destination="PgO-uu-DRX" id="8XG-wN-n5P"/>
                         <outlet property="vDivider" destination="oKz-g2-X0o" id="7Lg-Lz-6nf"/>
                         <segue destination="Wej-BK-cMk" kind="presentation" identifier="VerifyPhoneSegue" id="UTf-rf-nrC"/>
+                        <segue destination="jg2-NG-gMh" kind="presentation" identifier="AreasSegue" id="O9W-Bb-hQO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oN8-9b-Pfj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1226,7 +1227,7 @@ scan of your Emirates ID</string>
                                                         <rect key="frame" x="0.0" y="0.0" width="311" height="40"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kUY-An-MNA">
-                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="283" height="40"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="CyZ-gk-rWx"/>
@@ -1236,7 +1237,7 @@ scan of your Emirates ID</string>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                             </textField>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verify" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fj4-Mc-JHL">
-                                                                <rect key="frame" x="297" y="13" width="14" height="14"/>
+                                                                <rect key="frame" x="283" y="6" width="28" height="28"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                         </subviews>
@@ -1245,7 +1246,7 @@ scan of your Emirates ID</string>
                                                         <rect key="frame" x="0.0" y="56" width="311" height="40"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TxQ-XX-w2L">
-                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="283" height="40"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="9ZJ-nQ-0c1"/>
@@ -1255,7 +1256,7 @@ scan of your Emirates ID</string>
                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                                                             </textField>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verify" translatesAutoresizingMaskIntoConstraints="NO" id="nxt-sZ-gSD">
-                                                                <rect key="frame" x="297" y="13" width="14" height="14"/>
+                                                                <rect key="frame" x="283" y="6" width="28" height="28"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                         </subviews>
@@ -1264,7 +1265,7 @@ scan of your Emirates ID</string>
                                                         <rect key="frame" x="0.0" y="112" width="311" height="40"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="+971 XXXXXXXXX" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cSB-sa-Qen">
-                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="283" height="40"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="g4G-Dv-CDb"/>
@@ -1274,7 +1275,7 @@ scan of your Emirates ID</string>
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
                                                             </textField>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verify" translatesAutoresizingMaskIntoConstraints="NO" id="DhU-mb-CP9">
-                                                                <rect key="frame" x="297" y="13" width="14" height="14"/>
+                                                                <rect key="frame" x="283" y="6" width="28" height="28"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                         </subviews>
@@ -1283,7 +1284,7 @@ scan of your Emirates ID</string>
                                                         <rect key="frame" x="0.0" y="168" width="311" height="40"/>
                                                         <subviews>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="srB-QL-yBf">
-                                                                <rect key="frame" x="0.0" y="0.0" width="297" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="283" height="40"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="MHD-RD-k3L"/>
@@ -1293,7 +1294,7 @@ scan of your Emirates ID</string>
                                                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                             </textField>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verify" translatesAutoresizingMaskIntoConstraints="NO" id="hiL-p1-frs">
-                                                                <rect key="frame" x="297" y="13" width="14" height="14"/>
+                                                                <rect key="frame" x="283" y="6" width="28" height="28"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </imageView>
                                                         </subviews>
@@ -1339,7 +1340,7 @@ scan of your Emirates ID</string>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tsm-d6-Ewq">
-                                                <rect key="frame" x="16" y="12" width="10" height="22"/>
+                                                <rect key="frame" x="16" y="12" width="20" height="32"/>
                                                 <state key="normal" image="back"/>
                                                 <connections>
                                                     <action selector="cancel:" destination="nT7-XL-oOp" eventType="touchUpInside" id="snT-ZX-qy5"/>
@@ -1426,9 +1427,17 @@ scan of your Emirates ID</string>
             <objects>
                 <viewController id="jg2-NG-gMh" customClass="AreaViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oOS-da-drr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Rq-LF-3r9">
+                                <rect key="frame" x="6" y="2" width="30" height="42"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" image="back"/>
+                                <connections>
+                                    <action selector="back:" destination="jg2-NG-gMh" eventType="touchUpInside" id="l30-nx-Bel"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoNoText" translatesAutoresizingMaskIntoConstraints="NO" id="LT6-E3-434">
                                 <rect key="frame" x="170" y="76" width="35" height="74"/>
                                 <constraints>
@@ -1437,7 +1446,7 @@ scan of your Emirates ID</string>
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="m94-Ud-wfb">
-                                <rect key="frame" x="0.0" y="213" width="375" height="289"/>
+                                <rect key="frame" x="0.0" y="213" width="375" height="269"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="AreaViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AreaViewCell" id="Q3I-fQ-A99" customClass="AreaViewCell" customModule="Walayem" customModuleProvider="target">
@@ -1482,7 +1491,7 @@ scan of your Emirates ID</string>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hqj-ss-gUH">
-                                <rect key="frame" x="32" y="522" width="311" height="52"/>
+                                <rect key="frame" x="32" y="502" width="311" height="52"/>
                                 <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="400" id="d7p-pO-bFy"/>
@@ -1517,6 +1526,7 @@ scan of your Emirates ID</string>
                         <constraints>
                             <constraint firstItem="m94-Ud-wfb" firstAttribute="top" secondItem="gOp-1q-fl2" secondAttribute="bottom" constant="20" id="64t-Vw-KE2"/>
                             <constraint firstItem="m94-Ud-wfb" firstAttribute="leading" secondItem="4qb-Pt-zcy" secondAttribute="leading" id="6Ae-yf-LVt"/>
+                            <constraint firstItem="9Rq-LF-3r9" firstAttribute="leading" secondItem="4qb-Pt-zcy" secondAttribute="leading" constant="6" id="7EP-Zv-EiU"/>
                             <constraint firstItem="Hqj-ss-gUH" firstAttribute="leading" secondItem="4qb-Pt-zcy" secondAttribute="leading" constant="32" id="CA1-NV-nRR"/>
                             <constraint firstItem="LT6-E3-434" firstAttribute="centerX" secondItem="4qb-Pt-zcy" secondAttribute="centerX" id="DHy-Ld-50h"/>
                             <constraint firstItem="gOp-1q-fl2" firstAttribute="centerX" secondItem="4qb-Pt-zcy" secondAttribute="centerX" id="Fmw-Cr-kNS"/>
@@ -1526,23 +1536,25 @@ scan of your Emirates ID</string>
                             <constraint firstItem="Hqj-ss-gUH" firstAttribute="top" secondItem="m94-Ud-wfb" secondAttribute="bottom" constant="20" id="VAG-Ym-t53"/>
                             <constraint firstItem="LT6-E3-434" firstAttribute="top" secondItem="4qb-Pt-zcy" secondAttribute="top" constant="76" id="fx5-yY-sRZ"/>
                             <constraint firstItem="4qb-Pt-zcy" firstAttribute="bottom" secondItem="Hqj-ss-gUH" secondAttribute="bottom" constant="93" id="i5U-GZ-S7q"/>
+                            <constraint firstItem="9Rq-LF-3r9" firstAttribute="top" secondItem="4qb-Pt-zcy" secondAttribute="top" constant="2" id="urd-0p-LoN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4qb-Pt-zcy"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="m94-Ud-wfb" id="bo1-kw-u1d"/>
+                        <segue destination="UW8-4v-S9c" kind="presentation" identifier="SelectAreaLocationSeque" id="DSV-Hw-yHX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0y4-5W-ZEY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="582" y="1925"/>
+            <point key="canvasLocation" x="945" y="1903"/>
         </scene>
         <!--Chef Location View Controller-->
         <scene sceneID="elE-Fd-h4w">
             <objects>
                 <viewController id="UW8-4v-S9c" customClass="ChefLocationViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4b3-th-fb3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoNoText" translatesAutoresizingMaskIntoConstraints="NO" id="vuk-sa-YuO">
@@ -1553,7 +1565,7 @@ scan of your Emirates ID</string>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yXT-NP-Y2N">
-                                <rect key="frame" x="32" y="522" width="311" height="52"/>
+                                <rect key="frame" x="32" y="502" width="311" height="52"/>
                                 <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="400" id="HN5-qg-dEg"/>
@@ -1584,14 +1596,24 @@ scan of your Emirates ID</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="jkW-wC-DCS">
-                                <rect key="frame" x="0.0" y="213" width="375" height="289"/>
+                                <rect key="frame" x="0.0" y="213" width="375" height="269"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LRr-de-pZ5">
+                                <rect key="frame" x="6" y="2" width="30" height="42"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="10" maxX="10" maxY="10"/>
+                                <state key="normal" image="back"/>
+                                <connections>
+                                    <action selector="back:" destination="UW8-4v-S9c" eventType="touchUpInside" id="nvn-8H-yAF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="uWh-HZ-gSt" firstAttribute="top" secondItem="vuk-sa-YuO" secondAttribute="bottom" constant="20" id="2Un-FS-nBv"/>
+                            <constraint firstItem="LRr-de-pZ5" firstAttribute="top" secondItem="ddx-ge-H1R" secondAttribute="top" constant="2" id="DRr-hu-6i2"/>
                             <constraint firstItem="uWh-HZ-gSt" firstAttribute="centerX" secondItem="ddx-ge-H1R" secondAttribute="centerX" id="G5m-2g-CIo"/>
                             <constraint firstItem="vuk-sa-YuO" firstAttribute="top" secondItem="ddx-ge-H1R" secondAttribute="top" constant="76" id="Hgp-VD-NPH"/>
+                            <constraint firstItem="LRr-de-pZ5" firstAttribute="leading" secondItem="ddx-ge-H1R" secondAttribute="leading" constant="6" id="PzP-x5-Jwn"/>
                             <constraint firstItem="vuk-sa-YuO" firstAttribute="centerX" secondItem="ddx-ge-H1R" secondAttribute="centerX" id="SdS-ME-98x"/>
                             <constraint firstItem="ddx-ge-H1R" firstAttribute="trailing" secondItem="yXT-NP-Y2N" secondAttribute="trailing" constant="32" id="Y5o-go-Wva"/>
                             <constraint firstItem="jkW-wC-DCS" firstAttribute="leading" secondItem="ddx-ge-H1R" secondAttribute="leading" id="aeA-ap-ndd"/>
@@ -1605,11 +1627,12 @@ scan of your Emirates ID</string>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="jkW-wC-DCS" id="s1h-hs-TwW"/>
+                        <segue destination="Wej-BK-cMk" kind="presentation" identifier="VerifyPhoneSegue" id="s6z-Wh-Xp7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oGa-1d-jMc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1328.8" y="1924.5877061469266"/>
+            <point key="canvasLocation" x="1806" y="1903"/>
         </scene>
     </scenes>
     <resources>
@@ -1623,7 +1646,7 @@ scan of your Emirates ID</string>
         <image name="verify" width="14" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UTf-rf-nrC"/>
+        <segue reference="s6z-Wh-Xp7"/>
         <segue reference="0aj-Gx-qSv"/>
         <segue reference="gbp-bA-3SQ"/>
     </inferredMetricsTieBreakers>

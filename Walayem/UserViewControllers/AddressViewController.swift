@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class AddressViewController: UIViewController, UITextFieldDelegate {
 
@@ -23,13 +24,17 @@ class AddressViewController: UIViewController, UITextFieldDelegate {
     
     var user: User?
     var address: Address?
-    
+    var userCoordinate: CLLocationCoordinate2D?
     // MARK: Actions
     
     @IBAction func close(_ sender: UIBarButtonItem){
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func back(_ sender: UIButton){
+        dismiss(animated: true, completion: nil)
+    }
+
     @IBAction func saveAddress(_ sender: UIButton) {
         let name = nameTextField.text ?? ""
         let street = streetTextField.text ?? ""
@@ -78,7 +83,32 @@ class AddressViewController: UIViewController, UITextFieldDelegate {
             streetTextField.text = address.street
             extraTextField.text = address.extra
         }
-         Utils.setupNavigationBar(nav: self.navigationController!)
+        if let coordinate = userCoordinate{
+            let ceo: CLGeocoder = CLGeocoder()
+
+            let loc: CLLocation = CLLocation(latitude:coordinate.latitude, longitude: coordinate.longitude)
+
+            ceo.reverseGeocodeLocation(loc, completionHandler:
+                {(placemarks, error) in
+                    if (error != nil)
+                    {
+                        print("reverse geodcode fail: \(error!.localizedDescription)")
+                    }
+                    let pm = placemarks! as [CLPlacemark]
+
+                    if pm.count > 0 {
+                        let pm = placemarks![0]
+                        if pm.thoroughfare != nil {
+                            self.streetTextField.text = pm.thoroughfare
+                        }
+                        if pm.locality != nil {
+                            self.cityTextField.text = pm.locality
+                        }
+                  }
+            })
+
+        }
+        
         
         nameTextField.textColor = UIColor.textColor
         nameTextField.placeHolderColor = UIColor.placeholderColor

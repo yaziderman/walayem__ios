@@ -79,7 +79,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     @IBOutlet weak var lbSocialSignUp: UILabel!
     @IBOutlet weak var socialPanel: UIStackView!
     @IBOutlet weak var vDivider: UIView!
-    
+    var params: [String : Any] = [:]
+
     
     @IBAction func back(_ sender: UIButton){
         dismiss(animated: true, completion: nil)
@@ -251,53 +252,24 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
             let phone = countryCode + (chefPhoneTextField.text ?? "")
             let password = chefPasswordTextField.text ?? ""
             
-            let params: [String : Any] = ["name": name,
+             params = ["name": name,
                                           "login": email,
                                           "password": password,
                                           "confirm_password": password,
-                                          "is_chef": true]
+                                          "is_chef": true,
+                                        "phone": phone]
             
-            progressAlert = showProgressAlert()
-            
-            RestClient().request(WalayemApi.signup, params) { (result, error) in
-                if error != nil{
-                    self.progressAlert?.dismiss(animated: false, completion: {
-                        let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
-                        self.showMessagePrompt(errmsg)
-                    })
-                    return
-                }
-                let record = result!["result"] as! [String: Any]
-                if let errmsg = record["error"] as? String{
-                    self.progressAlert?.dismiss(animated: false, completion: {
-                        self.showMessagePrompt(errmsg)
-                    })
-                    return
-                }
-                else{
-                    
-                    PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
-                        if let error = error {
-                            self.progressAlert?.dismiss(animated: false, completion: {
-                                self.showMessagePrompt(error.localizedDescription)
-                            })
-                            return
-                        }
-                        UserDefaults.standard.set(verificationID, forKey: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
+            self.performSegue(withIdentifier: "AreasSegue", sender: self)
 
-                    })
-                    
-                }
-                
-                let data = record["data"] as! [String: Any]
-                let sessionId: String = data["session_id"] as! String
-                UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
-                self.loadUserDetails()
-            }
-            
         }
         
-        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AreasSegue" {
+            if let destinationVC = segue.destination as? AreaViewController {
+                destinationVC.params = params
+            }
+        }
     }
     
     @IBAction func signupViaFb(_ sender: UIButton) {
