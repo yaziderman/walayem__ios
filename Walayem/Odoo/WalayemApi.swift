@@ -15,6 +15,8 @@ class WalayemApi{
 //    static let BASE_URL: String = "http://18.139.224.233"
 //    static let BASE_URL: String = "http://staging.walayem.com"
     static let BASE_URL: String = "http://app.walayem.com"
+    static let BASE_URL2: String = "http://backend.walayem.com"
+    
 //    static let BASE_URL: String = "http://192.168.1.103:8073"
     
     static let DB_NAME: String = "walayem"
@@ -46,6 +48,8 @@ class WalayemApi{
     static let viewPrivacy: String = "\(BASE_URL)/api/viewPrivacy"
     static let orderedFoods: String = "\(BASE_URL)/api/orderedFoods"
     static let getActiveFoodIds: String = "\(BASE_URL)/api/getActiveProductIds"
+    
+    static let getAreas: String = "\(BASE_URL2)/api/areas"
 
     // Chef Api
     static let chefOrders: String = "\(BASE_URL)/api/chef/vieworder"

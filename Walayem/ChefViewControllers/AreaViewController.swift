@@ -9,11 +9,12 @@
 import UIKit
 
 class AreaViewController: UIViewController {
-
+    var params: [String : Any] = [:]
     
     @IBOutlet weak var tableView: UITableView!
 
-    
+    var progressAlert: UIAlertController?
+
     var areas = [Area]()
 
     override func viewDidLoad() {
@@ -24,27 +25,98 @@ class AreaViewController: UIViewController {
     
     private func getAreas(){
         
-        let area1=Area(record: ["name":"Area 1","id":"1","isSelected":false])
-        let area2=Area(record: ["name":"Area 2","id":"2","isSelected":false])
-        let area3=Area(record: ["name":"Area 3","id":"3","isSelected":false])
-        let area4=Area(record: ["name":"Area 4","id":"4","isSelected":false])
-        let area5=Area(record: ["name":"Area 5","id":"5","isSelected":false])
-
-        areas.append(area1)
-        areas.append(area2)
-        areas.append(area3)
-        areas.append(area4)
-        areas.append(area5)
-
-        self.tableView.reloadData()
+        
+    let params: [String : Any] = ["login": ""]
+        progressAlert = showProgressAlert()
+        
+        RestClient().request(WalayemApi.getAreas, params) { (result, error) in
+            if error != nil{
+                self.progressAlert?.dismiss(animated: false, completion: {
+                    self.showMessagePrompt("Unknown Error")
+                })
+                return
+            }
+            let record = result!["result"] as! [String: Any]
+            if let errmsg = record["error"] as? String{
+                self.progressAlert?.dismiss(animated: false, completion: {
+                    self.showMessagePrompt(errmsg)
+                })
+                return
+            }
+            let value = result!["result"] as! [String: Any]
+            let status = value["status"] as! Int
+             if (status != 0) {
+                self.areas.removeAll()
+                 let records = value["data"] as! [Any]
+                 if records.count == 0{
+                     return
+                 }
+                 for record in records{
+                     let area = Area(record: record as! [String : Any])
+                     self.areas.append(area)
+                 }
+                self.tableView.reloadData()
+             }
+        }
+    }
+    @IBAction func back(_ sender: UIButton){
+        dismiss(animated: true, completion: nil)
     }
 
    
     @IBAction func next(_ sender: UIButton){
+        var selectedAreas = [Int]()
+        for area in areas {
+            if area.isSelected {
+                selectedAreas.append(area.id ?? 0)
+            }
+        }
+        if selectedAreas.isEmpty {
+            showMessagePrompt("Please select at least one area")
+        }else {
+            params["areas"]=selectedAreas
+            self.performSegue(withIdentifier: "SelectAreaLocationSeque", sender: self)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SelectAreaLocationSeque" {
+            if let destinationVC = segue.destination as? ChefLocationViewController {
+                destinationVC.params = params
+            }
+        }
+    }
+
+    
+
+    private func showProgressAlert() -> UIAlertController{
+        let alert = UIAlertController(title: "Signing up", message: "Please wait...", preferredStyle: .alert)
+        let indicator = UIActivityIndicatorView()
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        alert.view.addSubview(indicator)
         
+        let views = ["pending" : alert.view, "indicator" : indicator]
+        
+        var constraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[indicator]-(-50)-|", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views as [String : Any])
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|[indicator]|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: views as [String : Any])
+        alert.view.addConstraints(constraints)
+        
+        indicator.isUserInteractionEnabled = false
+        indicator.startAnimating()
+        
+        present(alert, animated: false, completion: nil)
+        
+        return alert
+    }
+    
+    private func showMessagePrompt(_ message: String){
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        present(alert, animated: false, completion: nil)
     }
 
 
+    
 }
 
 extension AreaViewController: UITableViewDelegate, UITableViewDataSource{

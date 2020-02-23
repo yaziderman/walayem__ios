@@ -137,6 +137,8 @@
 		BEC27A0523E8B16600DE7874 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC27A0423E8B16600DE7874 /* HomeTableViewCell.swift */; };
 		BEC27A0723E93A8200DE7874 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC27A0623E93A8200DE7874 /* HomeCollectionViewCell.swift */; };
 		C3E01AAB1E1B439F32F34F23 /* Pods_Walayem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF272E4C0EC903E149663133 /* Pods_Walayem.framework */; };
+		C6629A442402ABFF00F269F3 /* AddressLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6629A432402ABFF00F269F3 /* AddressLocationViewController.swift */; };
+		C6629A462402B85500F269F3 /* AreaFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6629A452402B85500F269F3 /* AreaFilterViewController.swift */; };
 		C689B0DB23FD2EF50059BD7F /* AreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C689B0DA23FD2EF50059BD7F /* AreaViewController.swift */; };
 		C689B0DD23FD2F120059BD7F /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = C689B0DC23FD2F120059BD7F /* Area.swift */; };
 		C689B0DF23FD2F300059BD7F /* AreaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C689B0DE23FD2F300059BD7F /* AreaViewCell.swift */; };
@@ -279,6 +281,8 @@
 		BEC27A0423E8B16600DE7874 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		BEC27A0623E93A8200DE7874 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF272E4C0EC903E149663133 /* Pods_Walayem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Walayem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6629A432402ABFF00F269F3 /* AddressLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressLocationViewController.swift; sourceTree = "<group>"; };
+		C6629A452402B85500F269F3 /* AreaFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaFilterViewController.swift; sourceTree = "<group>"; };
 		C689B0DA23FD2EF50059BD7F /* AreaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaViewController.swift; sourceTree = "<group>"; };
 		C689B0DC23FD2F120059BD7F /* Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 		C689B0DE23FD2F300059BD7F /* AreaViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreaViewCell.swift; sourceTree = "<group>"; };
@@ -344,6 +348,8 @@
 				04D2C83020AABBBB00BA32A1 /* OrderSuccessViewController.swift */,
 				04B824FC20A2F4CF00458DA6 /* OrderViewController.swift */,
 				04D2C82E20AA9DD600BA32A1 /* ChooseAddressTableViewController.swift */,
+				C6629A432402ABFF00F269F3 /* AddressLocationViewController.swift */,
+				C6629A452402B85500F269F3 /* AreaFilterViewController.swift */,
 			);
 			path = UserViewControllers;
 			sourceTree = "<group>";
@@ -723,6 +729,7 @@
 				041AE59F209EFFCC007C05D9 /* AddressTableViewCell.swift in Sources */,
 				04C596C020848ED900B284D3 /* OnBoardingViewController.swift in Sources */,
 				04D9E8AB2085D31A002E1B51 /* SignupViewController.swift in Sources */,
+				C6629A442402ABFF00F269F3 /* AddressLocationViewController.swift in Sources */,
 				5B467DF323B882CE008620FF /* Chef.swift in Sources */,
 				5B467DF623B882CE008620FF /* Account.swift in Sources */,
 				52EA619C20B3E53E001DB6CC /* TermsViewController.swift in Sources */,
@@ -796,6 +803,7 @@
 				04F38A22208F231100223B82 /* AddressViewController.swift in Sources */,
 				04CCB84220AD74420011BD95 /* ChefOrderViewController.swift in Sources */,
 				0A0F54BD2110845E004F2006 /* FontsOverride.swift in Sources */,
+				C6629A462402B85500F269F3 /* AreaFilterViewController.swift in Sources */,
 				04AD0D3D209B0ED1002C072D /* FilterViewController.swift in Sources */,
 				0437932A208725E90050C7D8 /* ResetPasswordViewController.swift in Sources */,
 				04CAD475208F395100DD48C6 /* FavFoodTableViewController.swift in Sources */,
