@@ -93,7 +93,7 @@ class FoodDetailViewController: UIViewController {
             let time = Int(max(1, round( Double(food.preparationTime) / 60.0)))
 
             estimatedTimeLabel.text = "Prep. Time \(time) hour(s)"
-            priceLabel.text = "AED \(food.price ?? 0)"
+            priceLabel.text = "AED \(food.price)"
             descriptionLabel.text = food.description
             deliveryLabel.text = "Home delivery"
             timeLabel.text = "Preparation \(time) hour(s)"

@@ -19,7 +19,7 @@ static func == (lhs: Food, rhs: Food) -> Bool {
     var name: String?
     var description: String?
     var foodType: String?
-    var price : Double?
+    var price : Double = 0
     var preparationTime: Int = 0
     var quantity: Int = 0
     var servingQunatity: Int = 0

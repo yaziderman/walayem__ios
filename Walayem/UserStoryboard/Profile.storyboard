@@ -175,7 +175,7 @@
                                                     <color key="textColor" red="0.42352941179999998" green="0.4549019608" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="invite" id="d24-Dx-VM8">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="withdraw" id="d24-Dx-VM8">
                                                     <rect key="frame" x="16" y="17" width="36" height="36"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
@@ -197,19 +197,35 @@
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gj-YC-yNd">
                                                             <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
-                                                            <state key="normal" image="phoneIcon"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="38" id="9zk-iC-WNG"/>
+                                                                <constraint firstAttribute="width" constant="38" id="c4K-gm-zfU"/>
+                                                            </constraints>
+                                                            <state key="normal" image="phoneIcon-pdf"/>
                                                             <connections>
                                                                 <action selector="call:" destination="RLz-5N-n5R" eventType="touchUpInside" id="emr-c0-gkh"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5HG-ZS-Jmh">
                                                             <rect key="frame" x="48" y="0.0" width="38" height="38"/>
-                                                            <state key="normal" image="mailIcon"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="38" id="5QL-S8-1bQ"/>
+                                                                <constraint firstAttribute="width" constant="38" id="mW5-5A-NZl"/>
+                                                            </constraints>
+                                                            <state key="normal" image="mailIcon-pdf"/>
                                                             <connections>
                                                                 <action selector="email:" destination="RLz-5N-n5R" eventType="touchUpInside" id="kTJ-5y-M7I"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="2gj-YC-yNd" firstAttribute="leading" secondItem="C4O-CW-Cio" secondAttribute="leading" id="36a-HX-k20"/>
+                                                        <constraint firstItem="2gj-YC-yNd" firstAttribute="top" secondItem="C4O-CW-Cio" secondAttribute="top" id="FRy-pR-fVo"/>
+                                                        <constraint firstItem="5HG-ZS-Jmh" firstAttribute="top" secondItem="C4O-CW-Cio" secondAttribute="top" id="j4T-4z-4is"/>
+                                                        <constraint firstAttribute="bottom" secondItem="2gj-YC-yNd" secondAttribute="bottom" id="tdg-WD-T6e"/>
+                                                        <constraint firstAttribute="bottom" secondItem="5HG-ZS-Jmh" secondAttribute="bottom" id="ui3-jr-i2n"/>
+                                                        <constraint firstAttribute="trailing" secondItem="5HG-ZS-Jmh" secondAttribute="trailing" id="wty-68-gjC"/>
+                                                    </constraints>
                                                 </stackView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contactUs" translatesAutoresizingMaskIntoConstraints="NO" id="llu-m0-4cu">
                                                     <rect key="frame" x="16" y="17" width="36" height="36"/>
@@ -806,13 +822,14 @@ Walayem</string>
         <image name="instagramIcon-pdf" width="76" height="76"/>
         <image name="invite" width="36" height="36"/>
         <image name="logout" width="36" height="36"/>
-        <image name="mailIcon" width="38" height="38"/>
-        <image name="phoneIcon" width="38" height="38"/>
+        <image name="mailIcon-pdf" width="76" height="76"/>
+        <image name="phoneIcon-pdf" width="76" height="76"/>
         <image name="privacy" width="36" height="36"/>
         <image name="profile" width="16" height="18"/>
         <image name="profileEdit" width="36" height="36"/>
         <image name="terms" width="36" height="36"/>
         <image name="userEmpty" width="60" height="60"/>
+        <image name="withdraw" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Jyr-DE-dEJ"/>

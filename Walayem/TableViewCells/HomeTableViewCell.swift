@@ -54,6 +54,9 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         else if identifier == "cuisinesCell4"{
             return staticCuisines.count
         }
+        else if identifier == "tagCell"{
+            return 7
+        }
         else{
             return 0
         }
@@ -123,6 +126,10 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             StaticLinker.mainVC?.selectedIndex = 1;
             
         }
+        
+        if identifier == "tagCell" {
+            print("tag clicked")
+        }
     }
     
     
@@ -130,7 +137,7 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         
         if identifier == "recommendedCell0"{
 
-            var price: String!
+//            var price: String!
             let recommendedCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
             let cellPriceLabel = recommendedCell.viewWithTag(8801) as? UILabel
             let cellImage = recommendedCell.viewWithTag(8800) as? UIImageView
@@ -174,6 +181,13 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
             cuisineImg?.image = UIImage(named: self.staticCuisines[indexPath.row].imageName ?? "1.jpg")
             
             return cuisineCell
+        }
+        else if identifier == "tagCell"{
+            let tagCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+            let label = tagCell.viewWithTag(900) as! UILabel
+            label.roundCorners([.bottomLeft, .bottomRight, .topLeft, .topRight], radius: 15)
+            
+            return tagCell
         }
         else{
             return collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)

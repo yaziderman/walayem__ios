@@ -184,7 +184,7 @@ class Utils{
     }
     
     static func getDelayMsg() -> String {
-        return "Order delivery is available during day hours, after \(DELAY_TIME) hours from now.";
+        return "Pick a delivery time!  Must be \(DELAY_TIME) hours later, and during day time.";
     }
     
     static func notifyRefresh() {

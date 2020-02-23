@@ -23,11 +23,11 @@ class MainHomeViewController: UIViewController {
     var cuisines = [Cuisine]()
     var selectedCuisine: Cuisine?
     var foods = [Food]()
-    let bookmarks = ["Recommended", "Meals of the day", "Cuisines", "Best Chefs"]
+    let bookmarks = ["Recommended", "Meals of the day", "Cuisines", "Categories"]
     var bookmarkImages: [UIImage] = [
          UIImage(named: "bookmark.jpg")!,
          UIImage(named: "fire.jpg")!,
-         UIImage(named: "cuisine.png")!,
+         UIImage(named: "cuisine_green.png")!,
          UIImage(named: "bookmark.jpeg")!,
          UIImage(named: "bookmark.jpg")!
      ]
@@ -172,7 +172,7 @@ class MainHomeViewController: UIViewController {
 
 extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 6
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -187,9 +187,12 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
         if indexPath.row == 2 {
             collectionViewCellIdentifier = "cuisinesCell4"
         }
+        if indexPath.row == 3 {
+            collectionViewCellIdentifier = "tagCell"
+        }
         
         
-        if indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2 {
+        if indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3{
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "mainHomeTableViewCell") as? HomeTableViewCell  else { fatalError("mainHomeTableViewCell") }
             
@@ -212,7 +215,7 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
         
         
         
-        else if indexPath.row == 3 {
+        else if indexPath.row == 4 {
             guard let cell : HomeButtonTableViewCell = tableView.dequeueReusableCell(withIdentifier: "mainHomeTableViewCell1") as? HomeButtonTableViewCell else { fatalError("mainHomeTableViewCell1") }
             
             cell.parent = self
@@ -220,7 +223,7 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
             return cell
             
         }
-        else if indexPath.row == 4 {
+        else if indexPath.row == 5 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "mainHomeTableViewCellLast") else { fatalError("mainHomeTableViewCellLast")  }
             cell.selectionStyle = .none
             
@@ -290,10 +293,14 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
             return 180
             
         }
-        if indexPath.row == 3 {
+        if indexPath.row == 4 {
             return 90
         }
-        return 98
+        if indexPath.row == 3 {
+//            return 140
+            return 0
+        }
+        return 90
     }
     
     

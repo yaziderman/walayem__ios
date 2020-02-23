@@ -40,6 +40,24 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         }
     }
     
+    func openWhatsapp(){
+        let urlWhats = "whatsapp://send?phone=+971585668800"
+        if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
+            if let whatsappURL = URL(string: urlString) {
+                if UIApplication.shared.canOpenURL(whatsappURL){
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(whatsappURL)
+                    }
+                }
+                else {
+                    print("Install Whatsapp")
+                }
+            }
+        }
+    }
+    
     @IBAction func email(_ sender: UIButton) {
         
 //        if let urlStr = NSURL(string: "https://apps.apple.com/ae/app/walayem/id1385676754") {
@@ -56,6 +74,9 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
 //
 //            self.present(activityVC, animated: true, completion: nil)
 //        }
+        
+//        self.openWhatsapp()
+        
         var email = UserDefaults.standard.string(forKey: "ContactEmail")
 
         if(email == nil)
@@ -205,6 +226,10 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
+        session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        
         if let selectedIndexPath = self.tableView.indexPathForSelectedRow{
             self.tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
@@ -212,6 +237,9 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        
         checkLogin()
         updateUI()
     }

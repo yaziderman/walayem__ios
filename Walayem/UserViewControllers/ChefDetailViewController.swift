@@ -19,6 +19,10 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
 
     // MARK:Properties
     
+    @IBOutlet weak var chefDescTitleStack: UIStackView!
+    @IBOutlet weak var img: UIImageView!
+    @IBOutlet weak var desc: UILabel!
+    
     @IBOutlet weak var chefImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var kitchenLabel: UILabel!
@@ -29,6 +33,9 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     @IBOutlet weak var foodTableView: UITableView!
     @IBOutlet weak var foodTableViewHeightCnstrnt: NSLayoutConstraint!
     @IBOutlet weak var emptyView: UIView!
+    
+    var isChefDescAvailable = true
+    
     
     var favouriteBarItem: UIBarButtonItem?
     
@@ -97,6 +104,16 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
             kitchenLabel.text = chef.kitchen
             descriptionLabel.text = chef.description
             
+            print(" \(chef.description) -< this is chef.description")
+            
+            if chef.description == ""{
+                isChefDescAvailable = false
+//                self.descriptionLabel.isHidden = true
+//                self.desc.isHidden = true
+//                self.img.isHidden = true
+//
+            }
+            
             var tagString: String = ""
             for tag in chef.foods[0].tags{
                 tagString.append(tag.name ?? "")
@@ -136,6 +153,12 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        if !isChefDescAvailable{
+            self.desc.isHidden = true
+            self.img.isHidden = true
+            self.view.layoutIfNeeded()
+        }
+        
         guard let indexPath = foodTableView.indexPathForSelectedRow else {
             os_log("No cell has been selected", log: .default, type: .debug)
             return
@@ -144,7 +167,9 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
 //        filterFoods(chef!.foods)
         foodTableView.reloadData()
         
-        updateFav();
+        updateFav()
+        
+        print("")
     }
     
     // MARK: Private methods
@@ -412,6 +437,9 @@ extension ChefDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodCategCollectioViewCell", for: indexPath) as? FoodCategCollectionViewCell else {
             fatalError("Unexpected cell")
         }
+        
+        
+        
         cell.titleLabel.text = foodCategs[indexPath.row]
         cell.iconImageView.tintColor = UIColor.perrywinkle
 //        cell.frame.size.width.x

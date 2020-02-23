@@ -362,9 +362,8 @@ open class DatePickerDialog: UIView {
         minDateComponents.setValue(sTime, for: .hour)
         minDateComponents.minute = 0
 
-        self.titleLabel.text = title
+        self.titleLabel.text = "Delivery Time"
         self.descLabel.text = "Select Time 7:00 AM - 11:00 PM"
-//        self.descLabel.text = "Delay is created, as home chefs can busy"
         self.doneButton.setTitle(doneButtonTitle, for: .normal)
         if showCancelButton { self.cancelButton.setTitle(cancelButtonTitle, for: .normal) }
         self.datePickerMode = datePickerMode
