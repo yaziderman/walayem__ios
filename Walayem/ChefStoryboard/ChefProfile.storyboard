@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mit-d0-Gv5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mit-d0-Gv5">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -294,18 +294,36 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="NCf-3r-Bho">
-                                                    <rect key="frame" x="273" y="16" width="86" height="38"/>
+                                                    <rect key="frame" x="225" y="16" width="134" height="38"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n5R-lN-ih3">
                                                             <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
-                                                            <state key="normal" image="call"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="38" id="Kzb-NX-LwC"/>
+                                                                <constraint firstAttribute="width" constant="38" id="kZz-iw-64t"/>
+                                                            </constraints>
+                                                            <state key="normal" image="phoneIcon"/>
                                                             <connections>
                                                                 <action selector="call:" destination="XAd-Ib-C3d" eventType="touchUpInside" id="EE5-hZ-OoQ"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ga3-yh-4eU">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hg4-A2-gQo">
                                                             <rect key="frame" x="48" y="0.0" width="38" height="38"/>
-                                                            <state key="normal" image="sms"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="38" id="fmV-pM-aNd"/>
+                                                            </constraints>
+                                                            <state key="normal" image="new_whatsapp_icon"/>
+                                                            <connections>
+                                                                <action selector="openWhatsapp" destination="XAd-Ib-C3d" eventType="touchUpInside" id="Asx-fu-YdM"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ga3-yh-4eU">
+                                                            <rect key="frame" x="96" y="0.0" width="38" height="38"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="38" id="nDU-Fv-Zgw"/>
+                                                                <constraint firstAttribute="height" constant="38" id="w1C-jI-3q7"/>
+                                                            </constraints>
+                                                            <state key="normal" image="mailIcon"/>
                                                             <connections>
                                                                 <action selector="email:" destination="XAd-Ib-C3d" eventType="touchUpInside" id="aZd-5s-XhC"/>
                                                             </connections>
@@ -320,7 +338,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kAV-qT-C8X">
-                                                    <rect key="frame" x="68" y="11" width="189" height="48"/>
+                                                    <rect key="frame" x="68" y="11" width="141" height="48"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" red="0.41481223699999997" green="0.43908476829999998" blue="0.45541816950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -354,7 +372,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Fen-li-du9">
-                                                    <rect key="frame" x="273" y="16" width="86" height="38"/>
+                                                    <rect key="frame" x="225" y="16" width="134" height="38"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPI-Q3-v0c">
                                                             <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
@@ -362,17 +380,28 @@
                                                                 <constraint firstAttribute="width" constant="38" id="Ube-Zv-LQU"/>
                                                                 <constraint firstAttribute="height" constant="38" id="qpj-xe-B4c"/>
                                                             </constraints>
+                                                            <state key="normal" image="share_icon"/>
+                                                            <connections>
+                                                                <action selector="shareApp" destination="XAd-Ib-C3d" eventType="touchUpInside" id="rNu-7G-W1k"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N6w-yz-29U">
+                                                            <rect key="frame" x="48" y="0.0" width="38" height="38"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="38" id="oFf-Ot-0AF"/>
+                                                                <constraint firstAttribute="height" constant="38" id="u2y-9t-plS"/>
+                                                            </constraints>
                                                             <state key="normal" image="facebook"/>
                                                             <connections>
-                                                                <action selector="connectFacebook:" destination="XAd-Ib-C3d" eventType="touchUpInside" id="05t-XJ-wgR"/>
+                                                                <action selector="connectFacebook:" destination="XAd-Ib-C3d" eventType="touchUpInside" id="F9b-OA-UcF"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tY-Bh-UW5">
-                                                            <rect key="frame" x="48" y="0.0" width="38" height="38"/>
+                                                            <rect key="frame" x="96" y="0.0" width="38" height="38"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="38" id="MnC-cA-Eej"/>
                                                             </constraints>
-                                                            <state key="normal" image="insta"/>
+                                                            <state key="normal" image="instagramIcon-pdf"/>
                                                             <connections>
                                                                 <action selector="connectInsta:" destination="XAd-Ib-C3d" eventType="touchUpInside" id="azW-rl-Hdy"/>
                                                             </connections>
@@ -380,7 +409,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Connect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XEj-Vb-aoA">
-                                                    <rect key="frame" x="68" y="11" width="189" height="48"/>
+                                                    <rect key="frame" x="68" y="11" width="141" height="48"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" red="0.41481223699999997" green="0.43908476829999998" blue="0.45541816950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -630,21 +659,23 @@
         </scene>
     </scenes>
     <resources>
-        <image name="call" width="38" height="38"/>
         <image name="camera" width="30" height="30"/>
         <image name="chefUpdateProfileIcon" width="36" height="36"/>
         <image name="completed" width="46" height="46"/>
         <image name="connect" width="36" height="36"/>
         <image name="contactUs" width="36" height="36"/>
-        <image name="facebook" width="46" height="46"/>
+        <image name="facebook" width="192" height="192"/>
         <image name="graph" width="36" height="36"/>
         <image name="income" width="36" height="36"/>
-        <image name="insta" width="38" height="38"/>
+        <image name="instagramIcon-pdf" width="76" height="76"/>
         <image name="kitchen" width="36" height="36"/>
         <image name="logout" width="36" height="36"/>
+        <image name="mailIcon" width="38" height="38"/>
+        <image name="new_whatsapp_icon" width="64" height="64"/>
+        <image name="phoneIcon" width="38" height="38"/>
         <image name="privacy" width="36" height="36"/>
         <image name="profile" width="16" height="18"/>
-        <image name="sms" width="38" height="38"/>
+        <image name="share_icon" width="64" height="64"/>
         <image name="terms" width="36" height="36"/>
         <image name="updateKitchen" width="36" height="36"/>
         <image name="userEmpty" width="60" height="60"/>

@@ -29,13 +29,28 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     @IBOutlet weak var socialLoginView: UIStackView!
     @IBOutlet weak var socialLoginLabel: UILabel!
     
+    @IBOutlet weak var showPass: UIButton!
+    
     var emailVerified: Bool = false
     var passwordVerified: Bool = false
     var progressAlert: UIAlertController?
     var image64: String?
     var isChef = false
     
-
+    @IBAction func showPassPressed(_ sender: Any) {
+        if showPass.isEnabled{
+            passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+            if (!passwordTextField.isSecureTextEntry){
+                showPass.setImage(UIImage(named: "open_eye.png"), for: .normal)
+                showPass.setImage(#imageLiteral(resourceName: "close_eye"), for: .normal)
+            }else{
+                showPass.setImage(#imageLiteral(resourceName: "open_eye"), for: .normal)
+    //            #imageLiteral(resourceName: "close_eye")
+            }
+        }
+        
+    }
+    
     // MARK: Actions
     
     @IBAction func back(_ sender: UIButton){
@@ -135,6 +150,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         
         passwordTextField.textColor = UIColor.textColor
         passwordTextField.placeHolderColor = UIColor.placeholderColor
+        
+        showPass.isEnabled = false
     }
     
     override func viewWillLayoutSubviews() {
@@ -352,9 +369,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             let password = passwordTextField.text ?? ""
             if Verification.isValidLoginPassword(password){
                 passwordVerifyImageView.tintColor = UIColor.colorPrimary
+                showPass.setImage(#imageLiteral(resourceName: "open_eye"), for: .normal)
+                showPass.isEnabled = true
                 passwordVerified = true
             }else{
+                
+                showPass.isEnabled = false
                 passwordVerifyImageView.tintColor = UIColor.silver
+                showPass.setImage(UIImage(named: "close_eye_grey.png"), for: .normal)
                 passwordVerified = false
             }
         default:

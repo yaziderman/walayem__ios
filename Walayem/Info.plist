@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Allows you to take your location to add it to your profile</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -65,6 +63,8 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Allows you to take photos to add to your profile or foods</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Allows you to take your location to add it to your profile</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allows you to add photos to your profile or foods</string>
 	<key>UILaunchStoryboardName</key>

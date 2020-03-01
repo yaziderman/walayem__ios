@@ -40,6 +40,25 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         }
     }
     
+    
+    
+    @IBAction func shareApp(){
+        if let urlStr = NSURL(string: Utils.getShareURL()) {
+               let string = Utils.getShareText()
+                    let objectsToShare = [string, urlStr] as [Any]
+                    let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+        
+                    if UI_USER_INTERFACE_IDIOM() == .pad {
+                        if let popup = activityVC.popoverPresentationController {
+                            popup.sourceView = self.view
+                            popup.sourceRect = CGRect(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 4, width: 0, height: 0)
+                        }
+                    }
+        
+                    self.present(activityVC, animated: true, completion: nil)
+                }
+    }
+    
     @IBAction func openWhatsapp(){
         let urlWhats = "whatsapp://send?phone=+971585668800"
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
@@ -59,24 +78,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     }
     
     @IBAction func email(_ sender: UIButton) {
-        
-//        if let urlStr = NSURL(string: "https://apps.apple.com/ae/app/walayem/id1385676754") {
-//            let string = "Hi I am using WALAYEM. It is a platform for foodies where anyone at home can prepare food and sell easily to the customer.  Install it using the link "
-//            let objectsToShare = [string, urlStr] as! [Any]
-//            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-//
-//            if UI_USER_INTERFACE_IDIOM() == .pad {
-//                if let popup = activityVC.popoverPresentationController {
-//                    popup.sourceView = self.view
-//                    popup.sourceRect = CGRect(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 4, width: 0, height: 0)
-//                }
-//            }
-//
-//            self.present(activityVC, animated: true, completion: nil)
-//        }
-        
-//        self.openWhatsapp()
-        
+
         var email = UserDefaults.standard.string(forKey: "ContactEmail")
 
         if(email == nil)

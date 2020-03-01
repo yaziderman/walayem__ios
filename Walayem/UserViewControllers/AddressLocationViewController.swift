@@ -32,7 +32,7 @@ class AddressLocationViewController: UIViewController {
         }
 
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(addAnnotationOnLongPress(gesture:)))
-        longPressGesture.minimumPressDuration = 1.0
+        longPressGesture.minimumPressDuration = 0.01
         self.mapView.addGestureRecognizer(longPressGesture)
         
         self.navigationController?.setNavigationBarHidden(true, animated: false)

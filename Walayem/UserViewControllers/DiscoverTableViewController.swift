@@ -37,6 +37,9 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     var isSearching = false
     var isFirtTime = true
     
+    @IBOutlet weak var toLabel: UILabel!
+    @IBOutlet weak var locationPickButton: UIButton!
+    
     var mCells = [FoodTableViewCell]()
 //    var lastIndex
 //    var indexPath = []
@@ -95,7 +98,6 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
 //
         datePickerTapped()
     }
-    @IBOutlet weak var locationPickButton: UIButton!
     
     // MARK: Actions
     
@@ -195,6 +197,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         }
         
     }
+       
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateFav) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
     }
@@ -211,6 +214,12 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             tableView.deselectRow(at: selectedIndexPath, animated: true)
             let cell = tableView.dequeueReusableCell(withIdentifier: "FoodTableViewCell", for: selectedIndexPath)
         }
+        
+//        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+//           if(session == nil){
+//               toLabel.isHidden = true
+//               locationPickButton.isHidden = true
+//           }
         
         refreshItemsQuantity()
         
@@ -544,21 +553,29 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
                 print (errmsg)
                 return
             }
+            if (result!["result"] != nil){
             let value = result!["result"] as! [String: Any]
-            if let status = value["status"] as? Int, status == 0{
-                return
-            }
-            self.foods.removeAll()
-            self.page = value["current_page"] as! Int
-            self.totalPage = value["total_pages"] as? Int
-            let records = value["data"] as! [Any]
-            for record in records{
-                let food = Food(record: record as! [String: Any])
-                if !self.foods.contains(food){
-                    self.foods.append(food)
+                if let status = value["status"] as? Int, status == 0{
+                    return
                 }
-            }
-            self.tableView.reloadData()
+           
+            
+                self.foods.removeAll()
+                self.page = value["current_page"] as! Int
+                self.totalPage = value["total_pages"] as? Int
+                let records = value["data"] as! [Any]
+                for record in records{
+                    let food = Food(record: record as! [String: Any])
+                    if !self.foods.contains(food){
+                        self.foods.append(food)
+                    }
+                }
+                self.tableView.reloadData()
+                
+                }
+               else{
+                   return
+               }
         }
     }
     
