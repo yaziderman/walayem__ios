@@ -34,11 +34,38 @@ class ChefOrderDetailViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func callCustomer(_ sender: UIButton) {
-        if let orderDetail = orderDetail, let address = orderDetail.address{
-            if let url = URL(string: "tel://\(address.phone!)"){
-                UIApplication.shared.open(url, options: [:], completionHandler: { (Success) in
-                    print("Make call \(Success)")
-                })
+          if let orderDetail = orderDetail, let address = orderDetail.address{
+              if let url = URL(string: "tel://\(address.phone!)"){
+                  UIApplication.shared.open(url, options: [:], completionHandler: { (Success) in
+                      print("Make call \(Success)")
+                  })
+              }
+          }
+      }
+
+    
+    @IBAction func whatsAppCustomer(_ sender: UIButton) {
+            if let orderDetail = orderDetail, let address = orderDetail.address{
+//                if let url = URL(string: "tel://\(address.phone!)"){
+//                    UIApplication.shared.open(url, options: [:], completionHandler: { (Success) in
+//                        print("Make call \(Success)")
+//                    })
+//                }
+                
+        let urlWhats = "whatsapp://send?phone=\(address.phone!)"
+            if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
+                    if let whatsappURL = URL(string: urlString) {
+                        if UIApplication.shared.canOpenURL(whatsappURL){
+                            if #available(iOS 10.0, *) {
+                                      UIApplication.shared.open(whatsappURL, options: [:],completionHandler: nil)
+                            } else {
+                                UIApplication.shared.openURL(whatsappURL)
+                            }
+                    }
+                    else {
+                        print("Install Whatsapp")
+                    }
+                }
             }
         }
     }
