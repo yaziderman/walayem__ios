@@ -40,7 +40,8 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         }
     }
     
-    func openWhatsapp(){
+    
+    @IBAction func openWhatsapp(){
         let urlWhats = "whatsapp://send?phone=+971585668800"
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
             if let whatsappURL = URL(string: urlString) {
@@ -262,18 +263,37 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
                 print (errmsg)
                 return
             }
-            let records = result!["result"] as! [Any]
-            if (records.count > 0){
-                if let record = records[0] as? [String: Any]{
-                    if let image = record["image"] as? String {
-                        UserDefaults.standard.set(image, forKey: UserDefaultsKeys.IMAGE)
-                        self.userImageView.image = Utils.decodeImage(image)
-                    }else{
-                        print("no image available.")
+            if result != nil {
+                let records = result!["result"] as! [Any]
+                if (records.count > 0){
+                    if let record = records[0] as? [String: Any]{
+                        if let image = record["image"] as? String {
+                            UserDefaults.standard.set(image, forKey: UserDefaultsKeys.IMAGE)
+                            self.userImageView.image = Utils.decodeImage(image)
+                        }else{
+                            print("no image available.")
+                        }
                     }
                 }
             }
         }
+    }
+    
+    @IBAction func shareApp(){
+        if let urlStr = NSURL(string: Utils.getShareURL()) {
+            let string = Utils.getShareText()
+                let objectsToShare = [string, urlStr] as [Any]
+                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+
+                if UI_USER_INTERFACE_IDIOM() == .pad {
+                    if let popup = activityVC.popoverPresentationController {
+                        popup.sourceView = self.view
+                        popup.sourceRect = CGRect(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 4, width: 0, height: 0)
+                    }
+                }
+
+            self.present(activityVC, animated: true, completion: nil)
+            }
     }
     
     private func logout(){

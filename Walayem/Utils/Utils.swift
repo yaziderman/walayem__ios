@@ -183,6 +183,14 @@ class Utils{
 
     }
     
+    static func getShareText() -> String {
+        return "Hi, I am using WALAYEM, a mobile app where you can find all kinds of Home Made Food! \n\nDownload from here: \nhttp://bit.ly/walayem-android-app OR ";
+    }
+
+    static func getShareURL() -> String {
+        return "https://apple.co/2X1Cs0J";
+    }
+    
     static func getDelayMsg() -> String {
         return "Pick a delivery time!  Must be \(DELAY_TIME) hours later, and during day time.";
     }

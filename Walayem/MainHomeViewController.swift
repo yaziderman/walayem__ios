@@ -41,6 +41,7 @@ class MainHomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         mActivityIndicator.startAnimating()
+        setupRefreshControl()
         getPromoted()
         getCuisines()
        
@@ -75,6 +76,11 @@ class MainHomeViewController: UIViewController {
                         print("STatus Value------------->\(status)")
                         return
                     }else{
+                        self.recommendedMeals.removeAll()
+                        self.todays_meals.removeAll()
+                        self.mealsURLs.removeAll()
+                        self.recommendMealURLs.removeAll()
+                        
                         if let best_sellers = data["best_sellers"] as? [Any]{
                             for best_seller in best_sellers{
                                 let best_seller = PromotedItem(records: best_seller as! [String : Any])
@@ -174,6 +180,24 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 6
     }
+    
+    private func setupRefreshControl(){
+           let refreshControl = UIRefreshControl()
+           if #available(iOS 10.0, *){
+               tableView.refreshControl = refreshControl
+           }else{
+               tableView.addSubview(refreshControl)
+           }
+           
+           refreshControl.addTarget(self, action: #selector(refreshData(sender:)), for: .valueChanged)
+       }
+       
+       @objc private func refreshData(sender: UIRefreshControl){
+           // reset filter
+            getPromoted()
+        
+       }
+       
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var collectionViewCellIdentifier = "cell1"

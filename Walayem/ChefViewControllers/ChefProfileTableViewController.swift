@@ -72,23 +72,64 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
     }
 
     @IBAction func connectFacebook(_ sender: UIButton) {
-        let url = URL(string: UserDefaults.standard.string(forKey: "ContactFacebook")!)
+      if let url = URL(string: UserDefaults.standard.string(forKey: "ContactFacebook") ?? "https://www.facebook.com/WalayemApp"){
+        
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+            else {
+                  // Fallback on earlier versions
+                  UIApplication.shared.openURL(url)
+            }
+        }
+        else {
+
+        }
+    }
+
+    @IBAction func connectInsta(_ sender: UIButton) {
+      let url = URL(string: UserDefaults.standard.string(forKey: "ContactInstagram") ?? "https://www.instagram.com/walayem")
+
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url!, options: [:], completionHandler: nil)
         } else {
             // Fallback on earlier versions
             UIApplication.shared.openURL(url!)
         }
- 
     }
+    
+    @IBAction func shareApp(){
+     if let urlStr = NSURL(string: Utils.getShareURL()) {
+         let string = Utils.getShareText()
+                    let objectsToShare = [string, urlStr] as [Any]
+                    let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
 
-    @IBAction func connectInsta(_ sender: UIButton) {
-        let url = URL(string: UserDefaults.standard.string(forKey: "ContactInstagram")!)
-        if #available(iOS 10.0, *) {
-            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
-        } else {
-            // Fallback on earlier versions
-            UIApplication.shared.openURL(url!)
+                    if UI_USER_INTERFACE_IDIOM() == .pad {
+                        if let popup = activityVC.popoverPresentationController {
+                            popup.sourceView = self.view
+                            popup.sourceRect = CGRect(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 4, width: 0, height: 0)
+                        }
+                    }
+
+                    self.present(activityVC, animated: true, completion: nil)
+                }
+    }
+    
+    @IBAction func openWhatsapp(){
+        let urlWhats = "whatsapp://send?phone=+971585668800"
+        if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
+            if let whatsappURL = URL(string: urlString) {
+                if UIApplication.shared.canOpenURL(whatsappURL){
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(whatsappURL)
+                    }
+                }
+                else {
+                    print("Install Whatsapp")
+                }
+            }
         }
     }
 

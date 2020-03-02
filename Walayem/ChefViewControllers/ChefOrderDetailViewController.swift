@@ -156,6 +156,27 @@ class ChefOrderDetailViewController: UIViewController {
         summaryIcon.tintColor = UIColor.babyBlue
     }
     
+    @IBAction func whatsAppCustomer(_ sender: UIButton) {
+                if let orderDetail = orderDetail, let address = orderDetail.address{
+                    
+            let urlWhats = "whatsapp://send?phone=\(address.phone!)"
+                if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
+                        if let whatsappURL = URL(string: urlString) {
+                            if UIApplication.shared.canOpenURL(whatsappURL){
+                                if #available(iOS 10.0, *) {
+                                          UIApplication.shared.open(whatsappURL, options: [:],completionHandler: nil)
+                                } else {
+                                    UIApplication.shared.openURL(whatsappURL)
+                                }
+                        }
+                        else {
+                            print("Install Whatsapp")
+                        }
+                }
+            }
+        }
+    }
+    
     private func getOrderDetail(){
         showActivityIndicator()
         let params: [String: Int] = ["partner_id": user!.partner_id!, "order_id": orderId!]
@@ -188,33 +209,35 @@ class ChefOrderDetailViewController: UIViewController {
             }
              print("order type--->>>\(order_type)")
             if(order_type == "future"){
-                let orderDate = record["order_for"] as! String
-                
-                let formatter = DateFormatter()
-                formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                formatter.timeZone = TimeZone(abbreviation: "UTC")
-                let date = formatter.date(from: orderDate)
-                
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MMM dd yyyy hh:mm aa"
-                dateFormatter.timeZone = TimeZone.current
-                let date_str = dateFormatter.string(from: date!)
-                deliveryForTitle = "Delivery for \(date_str)"
-                
-                let calendar = NSCalendar.current
-                
-                let timeFormatter = DateFormatter()
-                timeFormatter.timeZone = TimeZone.current
-                timeFormatter.dateFormat = "hh:mm aa"
-                
-                let time_str = timeFormatter.string(from: date!)
-                
-                if calendar.isDateInToday(date!) {
-                    deliveryForTitle = "Delivery for today at \(time_str)"
+                if record["order_for"] != nil{
+                    let orderDate = record["order_for"] as? String ?? "00-00-00"
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                    formatter.timeZone = TimeZone(abbreviation: "UTC")
+                    let date = formatter.date(from: orderDate)
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "MMM dd yyyy hh:mm aa"
+                    dateFormatter.timeZone = TimeZone.current
+                    let date_str = dateFormatter.string(from: date!)
+                    deliveryForTitle = "Delivery for \(date_str)"
+                    
+                    let calendar = NSCalendar.current
+                    
+                    let timeFormatter = DateFormatter()
+                    timeFormatter.timeZone = TimeZone.current
+                    timeFormatter.dateFormat = "hh:mm aa"
+                    
+                    let time_str = timeFormatter.string(from: date!)
+                    
+                    if calendar.isDateInToday(date!) {
+                        deliveryForTitle = "Delivery for today at \(time_str)"
+                    }
+                    else if calendar.isDateInTomorrow(date!) {
+                        deliveryForTitle = "Delivery for tomorrow at \(time_str)"
+                    }
                 }
-                else if calendar.isDateInTomorrow(date!) {
-                    deliveryForTitle = "Delivery for tomorrow at \(time_str)"
-                }
+                
             }
             
             //delivery for row at the end

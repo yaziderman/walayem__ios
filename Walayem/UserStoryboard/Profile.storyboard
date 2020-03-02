@@ -169,14 +169,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MJh-E9-su1">
-                                                    <rect key="frame" x="67" y="0.0" width="273" height="70"/>
+                                                    <rect key="frame" x="69" y="0.0" width="271" height="70"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" red="0.42352941179999998" green="0.4549019608" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="withdraw" id="d24-Dx-VM8">
-                                                    <rect key="frame" x="16" y="17" width="36" height="36"/>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="history_small_icon" id="d24-Dx-VM8">
+                                                    <rect key="frame" x="16" y="16" width="38" height="38"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
@@ -212,9 +212,9 @@
                                                                 <constraint firstAttribute="width" constant="38" id="ETT-oZ-5Ae"/>
                                                                 <constraint firstAttribute="height" constant="38" id="fMf-PB-qcM"/>
                                                             </constraints>
-                                                            <state key="normal" image="cancelled"/>
+                                                            <state key="normal" image="new_whatsapp_icon"/>
                                                             <connections>
-                                                                <action selector="call:" destination="RLz-5N-n5R" eventType="touchUpInside" id="IlO-tE-VS8"/>
+                                                                <action selector="openWhatsapp" destination="RLz-5N-n5R" eventType="touchUpInside" id="z9J-SM-Egl"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5HG-ZS-Jmh">
@@ -280,10 +280,22 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IBH-hW-Ht7">
-                                                    <rect key="frame" x="273" y="16" width="86" height="38"/>
+                                                    <rect key="frame" x="225" y="16" width="134" height="38"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PbP-dF-kSc">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IKx-Pk-hsH">
                                                             <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="38" id="AEs-82-EwZ"/>
+                                                                <constraint firstAttribute="width" constant="38" id="UgC-rR-kcA"/>
+                                                            </constraints>
+                                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <state key="normal" image="share_icon"/>
+                                                            <connections>
+                                                                <action selector="shareApp" destination="RLz-5N-n5R" eventType="touchUpInside" id="shp-tp-GuP"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PbP-dF-kSc">
+                                                            <rect key="frame" x="48" y="0.0" width="38" height="38"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="38" id="6uS-IP-OqZ"/>
                                                                 <constraint firstAttribute="width" constant="38" id="c9l-0G-500"/>
@@ -294,7 +306,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9wp-bE-7Kp">
-                                                            <rect key="frame" x="48" y="0.0" width="38" height="38"/>
+                                                            <rect key="frame" x="96" y="0.0" width="38" height="38"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="38" id="MSj-2c-ubg"/>
                                                             </constraints>
@@ -306,7 +318,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Connect" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFv-Ja-8jL">
-                                                    <rect key="frame" x="68" y="11" width="189" height="48"/>
+                                                    <rect key="frame" x="68" y="11" width="141" height="48"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" red="0.41481223699999997" green="0.43908476829999998" blue="0.45541816950000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -825,23 +837,24 @@ Walayem</string>
         <image name="address" width="36" height="36"/>
         <image name="addressEmpty" width="130" height="148"/>
         <image name="camera" width="30" height="30"/>
-        <image name="cancelled" width="46" height="46"/>
         <image name="connect" width="36" height="36"/>
         <image name="contactUs" width="36" height="36"/>
         <image name="facebook" width="192" height="192"/>
         <image name="gift" width="130" height="143"/>
+        <image name="history_small_icon" width="38" height="38"/>
         <image name="info" width="37" height="37"/>
         <image name="instagramIcon-pdf" width="76" height="76"/>
         <image name="invite" width="36" height="36"/>
         <image name="logout" width="36" height="36"/>
         <image name="mailIcon-pdf" width="76" height="76"/>
+        <image name="new_whatsapp_icon" width="64" height="64"/>
         <image name="phoneIcon-pdf" width="76" height="76"/>
         <image name="privacy" width="36" height="36"/>
         <image name="profile" width="16" height="18"/>
         <image name="profileEdit" width="36" height="36"/>
+        <image name="share_icon" width="64" height="64"/>
         <image name="terms" width="36" height="36"/>
         <image name="userEmpty" width="60" height="60"/>
-        <image name="withdraw" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Jyr-DE-dEJ"/>
