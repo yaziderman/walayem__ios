@@ -80,7 +80,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                 let myGraphRequest = GraphRequest(graphPath: "me", parameters: ["fields": "id, name, first_name, last_name, email, picture.width(400), gender"], tokenString:accessToken.tokenString, version: Settings.defaultGraphAPIVersion, httpMethod: .get)
                 myGraphRequest.start(completionHandler: { (connection, result, error) in
                     if let res = result {
-                        var responseDict = res as! [String:Any]
+                        let responseDict = res as! [String:Any]
                         _ = responseDict["name"] as! String
                         _ = responseDict["email"] as! String
                         _ = responseDict["id"] as! String

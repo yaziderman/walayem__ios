@@ -58,11 +58,12 @@ class CartFoodTableViewCell: UITableViewCell {
         let stringValue = "\(red)Subject to delivery fees"
         subjectToDeliveryLabel.textColor = UIColor.rosa
         subjectToDeliveryLabel.text = stringValue
-        let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: stringValue)
+//        let attributedString: NSMutableAttributedString = NSMutableAttributedString(string: stringValue)
 //        attributedString.setColor(color: UIColor.red, forText: red)   // or use direct value for text "red"
 //        attributedString.setColor(color: UIColor.blue, forText: blue)   // or use direct value for text "blue"
 //        attributedString.setColor(color: UIColor.green, forText: green)   // or use direct value for text "green"
-        subjectToDeliveryLabel.font = UIFont.systemFont(ofSize: 13)
+//        subjectToDeliveryLabel.font = UIFont.systemFont(ofSize: 13)
+        
 //        subjectToDeliveryLabel.attributedText = attributedString
 //        self.addSubview(label)
 //        self.view.addSubview(label)

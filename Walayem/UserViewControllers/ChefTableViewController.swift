@@ -238,6 +238,7 @@ class ChefTableViewController: UIViewController {
             }
             let value = result!["result"] as! [String: Any]
             self.addressList.removeAll()
+            
             let records = value["addresses"] as! [Any]
             if records.count == 0{
                 return

@@ -175,7 +175,7 @@
                                                     <color key="textColor" red="0.42352941179999998" green="0.4549019608" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="invite" id="d24-Dx-VM8">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="withdraw" id="d24-Dx-VM8">
                                                     <rect key="frame" x="16" y="17" width="36" height="36"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
@@ -193,23 +193,50 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="C4O-CW-Cio">
-                                                    <rect key="frame" x="273" y="16" width="86" height="38"/>
+                                                    <rect key="frame" x="225" y="16" width="134" height="38"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gj-YC-yNd">
                                                             <rect key="frame" x="0.0" y="0.0" width="38" height="38"/>
-                                                            <state key="normal" image="phoneIcon"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="38" id="9zk-iC-WNG"/>
+                                                                <constraint firstAttribute="width" constant="38" id="c4K-gm-zfU"/>
+                                                            </constraints>
+                                                            <state key="normal" image="phoneIcon-pdf"/>
                                                             <connections>
                                                                 <action selector="call:" destination="RLz-5N-n5R" eventType="touchUpInside" id="emr-c0-gkh"/>
                                                             </connections>
                                                         </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5HG-ZS-Jmh">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f5F-r5-6gm">
                                                             <rect key="frame" x="48" y="0.0" width="38" height="38"/>
-                                                            <state key="normal" image="mailIcon"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="38" id="ETT-oZ-5Ae"/>
+                                                                <constraint firstAttribute="height" constant="38" id="fMf-PB-qcM"/>
+                                                            </constraints>
+                                                            <state key="normal" image="cancelled"/>
+                                                            <connections>
+                                                                <action selector="call:" destination="RLz-5N-n5R" eventType="touchUpInside" id="IlO-tE-VS8"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5HG-ZS-Jmh">
+                                                            <rect key="frame" x="96" y="0.0" width="38" height="38"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="38" id="5QL-S8-1bQ"/>
+                                                                <constraint firstAttribute="width" constant="38" id="mW5-5A-NZl"/>
+                                                            </constraints>
+                                                            <state key="normal" image="mailIcon-pdf"/>
                                                             <connections>
                                                                 <action selector="email:" destination="RLz-5N-n5R" eventType="touchUpInside" id="kTJ-5y-M7I"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="2gj-YC-yNd" firstAttribute="leading" secondItem="C4O-CW-Cio" secondAttribute="leading" id="36a-HX-k20"/>
+                                                        <constraint firstItem="2gj-YC-yNd" firstAttribute="top" secondItem="C4O-CW-Cio" secondAttribute="top" id="FRy-pR-fVo"/>
+                                                        <constraint firstItem="5HG-ZS-Jmh" firstAttribute="top" secondItem="C4O-CW-Cio" secondAttribute="top" id="j4T-4z-4is"/>
+                                                        <constraint firstAttribute="bottom" secondItem="2gj-YC-yNd" secondAttribute="bottom" id="tdg-WD-T6e"/>
+                                                        <constraint firstAttribute="bottom" secondItem="5HG-ZS-Jmh" secondAttribute="bottom" id="ui3-jr-i2n"/>
+                                                        <constraint firstAttribute="trailing" secondItem="5HG-ZS-Jmh" secondAttribute="trailing" id="wty-68-gjC"/>
+                                                    </constraints>
                                                 </stackView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contactUs" translatesAutoresizingMaskIntoConstraints="NO" id="llu-m0-4cu">
                                                     <rect key="frame" x="16" y="17" width="36" height="36"/>
@@ -219,7 +246,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="Contact Us" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAB-Sv-gA4">
-                                                    <rect key="frame" x="68" y="11" width="189" height="48"/>
+                                                    <rect key="frame" x="68" y="11" width="141" height="48"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                     <color key="textColor" red="0.41481223702430725" green="0.43908476829528809" blue="0.4554181694984436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -896,6 +923,7 @@ Walayem</string>
         <image name="addressEmpty" width="130" height="148"/>
         <image name="back" width="10" height="16"/>
         <image name="camera" width="30" height="30"/>
+        <image name="cancelled" width="46" height="46"/>
         <image name="connect" width="36" height="36"/>
         <image name="contactUs" width="36" height="36"/>
         <image name="facebook" width="192" height="192"/>
@@ -905,13 +933,14 @@ Walayem</string>
         <image name="invite" width="36" height="36"/>
         <image name="logoNoText" width="23" height="45"/>
         <image name="logout" width="36" height="36"/>
-        <image name="mailIcon" width="38" height="38"/>
-        <image name="phoneIcon" width="38" height="38"/>
+        <image name="mailIcon-pdf" width="76" height="76"/>
+        <image name="phoneIcon-pdf" width="76" height="76"/>
         <image name="privacy" width="36" height="36"/>
         <image name="profile" width="16" height="18"/>
         <image name="profileEdit" width="36" height="36"/>
         <image name="terms" width="36" height="36"/>
         <image name="userEmpty" width="60" height="60"/>
+        <image name="withdraw" width="36" height="36"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="du1-1G-8Pd"/>

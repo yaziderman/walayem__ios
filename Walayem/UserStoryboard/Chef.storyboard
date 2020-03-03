@@ -465,7 +465,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="687"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6VP-ny-vM7" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="712"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="699"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="MKh-oL-TE9">
                                                 <rect key="frame" x="20" y="20" width="374" height="106"/>
@@ -528,28 +528,28 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uNS-nM-GHG">
-                                                <rect key="frame" x="20" y="142" width="374" height="44"/>
+                                                <rect key="frame" x="20" y="142" width="374" height="23"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="description" translatesAutoresizingMaskIntoConstraints="NO" id="QgN-cB-LQ3">
-                                                        <rect key="frame" x="0.0" y="12" width="20" height="20"/>
+                                                        <rect key="frame" x="0.0" y="1.6666666666666572" width="20" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="EgW-OH-7CD"/>
                                                             <constraint firstAttribute="width" constant="20" id="gMK-og-UW3"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RdU-Hc-M4a">
-                                                        <rect key="frame" x="30" y="10.666666666666657" width="344" height="23"/>
+                                                        <rect key="frame" x="30" y="0.0" width="344" height="23"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                                         <color key="textColor" red="0.35294117650000001" green="0.37647058820000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="Y2y-or-D4P"/>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="44" id="Y2y-or-D4P"/>
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a5R-fg-U3a">
-                                                <rect key="frame" x="20" y="194" width="374" height="64"/>
+                                                <rect key="frame" x="20" y="181" width="374" height="64"/>
                                                 <attributedString key="attributedText">
                                                     <fragment>
                                                         <string key="content">Ferran Adrià Acosta was born on May 14th, 1962.  He began his culinary career in 1980 at age 18, as a dishwasher at the Hotel Playafels in Castelldefels.</string>
@@ -563,14 +563,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kwK-Av-vW5" userLabel="Divider">
-                                                <rect key="frame" x="20" y="274" width="374" height="1"/>
+                                                <rect key="frame" x="20" y="261" width="374" height="1"/>
                                                 <color key="backgroundColor" red="0.81176470590000005" green="0.81176470590000005" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="7fq-CK-gwa"/>
                                                 </constraints>
                                             </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="N18-eE-b5e">
-                                                <rect key="frame" x="0.0" y="275" width="414" height="44"/>
+                                                <rect key="frame" x="0.0" y="262" width="414" height="44"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="w1B-Sv-RtZ"/>
@@ -619,7 +619,7 @@
                                                 </cells>
                                             </collectionView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z2S-0v-3Xo">
-                                                <rect key="frame" x="0.0" y="319" width="414" height="393"/>
+                                                <rect key="frame" x="0.0" y="306" width="414" height="393"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="393" id="MeT-v5-uYi"/>
@@ -767,7 +767,7 @@
                                             <constraint firstAttribute="width" constant="550" id="oT6-id-ddg"/>
                                             <constraint firstItem="kwK-Av-vW5" firstAttribute="top" secondItem="a5R-fg-U3a" secondAttribute="bottom" constant="16" id="qy1-2d-R9a"/>
                                             <constraint firstItem="z2S-0v-3Xo" firstAttribute="top" secondItem="N18-eE-b5e" secondAttribute="bottom" id="rqs-N0-3na"/>
-                                            <constraint firstItem="a5R-fg-U3a" firstAttribute="top" secondItem="uNS-nM-GHG" secondAttribute="bottom" constant="8" id="tXn-qf-1fj"/>
+                                            <constraint firstItem="a5R-fg-U3a" firstAttribute="top" secondItem="uNS-nM-GHG" secondAttribute="bottom" constant="16" id="tXn-qf-1fj"/>
                                             <constraint firstItem="z2S-0v-3Xo" firstAttribute="leading" secondItem="6VP-ny-vM7" secondAttribute="leadingMargin" id="u86-rX-q09"/>
                                             <constraint firstItem="N18-eE-b5e" firstAttribute="leading" secondItem="6VP-ny-vM7" secondAttribute="leadingMargin" id="udP-wV-Jv9"/>
                                             <constraint firstItem="z2S-0v-3Xo" firstAttribute="trailing" secondItem="6VP-ny-vM7" secondAttribute="trailingMargin" id="vTz-PZ-Nzh"/>
@@ -833,12 +833,15 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="chefDescTitleStack" destination="uNS-nM-GHG" id="m4R-5u-3eI"/>
                         <outlet property="chefImageView" destination="9za-IM-vUy" id="hvE-fN-3fc"/>
                         <outlet property="collectionView" destination="N18-eE-b5e" id="o3S-TG-FLp"/>
+                        <outlet property="desc" destination="RdU-Hc-M4a" id="PNm-vp-gho"/>
                         <outlet property="descriptionLabel" destination="a5R-fg-U3a" id="kF7-4g-qea"/>
                         <outlet property="emptyView" destination="es2-7a-7qZ" id="iM5-7o-CxI"/>
                         <outlet property="foodTableView" destination="z2S-0v-3Xo" id="4NC-VP-bsl"/>
                         <outlet property="foodTableViewHeightCnstrnt" destination="MeT-v5-uYi" id="Jqg-Fa-Z8U"/>
+                        <outlet property="img" destination="QgN-cB-LQ3" id="bsD-zd-lKN"/>
                         <outlet property="kitchenLabel" destination="fPn-or-i3q" id="Fwf-aD-zcD"/>
                         <outlet property="nameLabel" destination="jJe-oN-L42" id="sf6-vq-4Zk"/>
                         <outlet property="ratingControl" destination="O1n-NV-hea" id="t9t-gG-lZv"/>
@@ -890,10 +893,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MkJ-hX-dEG" userLabel="DialogView">
-                                <rect key="frame" x="23" y="185" width="330" height="399"/>
+                                <rect key="frame" x="23" y="185" width="368" height="399"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrh-uK-YNr">
-                                        <rect key="frame" x="0.0" y="0.0" width="330" height="54"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="368" height="54"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notes" translatesAutoresizingMaskIntoConstraints="NO" id="ghf-oo-JBK">
                                                 <rect key="frame" x="20" y="15" width="22" height="24"/>
@@ -902,13 +905,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate Chef" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpD-NH-9Iz">
-                                                <rect key="frame" x="54" y="0.0" width="256" height="54"/>
+                                                <rect key="frame" x="54" y="0.0" width="294" height="54"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="textColor" red="0.3529411764705882" green="0.37647058823529411" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SbK-2o-Gc6">
-                                                <rect key="frame" x="290" y="16" width="20" height="22"/>
+                                                <rect key="frame" x="328" y="16" width="20" height="22"/>
                                             </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -950,17 +953,17 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPh-Uy-kI4" userLabel="Divider">
-                                        <rect key="frame" x="0.0" y="130" width="330" height="1"/>
+                                        <rect key="frame" x="0.0" y="130" width="368" height="1"/>
                                         <color key="backgroundColor" red="0.88235294117647056" green="0.8901960784313725" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="XnB-M7-O2K"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fev-go-s7I" customClass="RatingControl" customModule="Walayem" customModuleProvider="target">
-                                        <rect key="frame" x="95" y="303" width="140" height="24"/>
+                                        <rect key="frame" x="95" y="213" width="178" height="114"/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sR7-zQ-mWp">
-                                        <rect key="frame" x="0.0" y="343" width="330" height="56"/>
+                                        <rect key="frame" x="0.0" y="343" width="368" height="56"/>
                                         <color key="backgroundColor" red="0.31372549019607843" green="0.8901960784313725" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="67r-8p-Spq"/>
@@ -974,17 +977,17 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RGx-6O-MAO" userLabel="Divider">
-                                        <rect key="frame" x="0.0" y="186" width="330" height="90"/>
+                                        <rect key="frame" x="0.0" y="186" width="368" height="0.0"/>
                                         <color key="backgroundColor" red="0.88235294119999996" green="0.89019607840000003" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5B-em-tm5">
-                                        <rect key="frame" x="0.0" y="130" width="330" height="146"/>
+                                        <rect key="frame" x="0.0" y="130" width="368" height="56"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yt5-tN-lCZ">
-                                                <rect key="frame" x="0.0" y="4" width="330" height="138"/>
+                                                <rect key="frame" x="0.0" y="4" width="368" height="48"/>
                                                 <subviews>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGi-7b-0Vq">
-                                                        <rect key="frame" x="0.0" y="0.0" width="330" height="138"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="368" height="48"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                         <color key="textColor" red="0.70588235290000001" green="0.72549019609999998" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
