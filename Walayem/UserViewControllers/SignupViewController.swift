@@ -91,7 +91,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func signup(_ sender: UIButton) {
+    @IBAction func signup(_ sender: Any) {
+        
         if(!self.isChef)
         {
             if(nameTextField.text!.isEmpty || emailTextField.text!.isEmpty ||
@@ -172,133 +173,123 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 self.loadUserDetails()
             }
 
-            
-            
-//
-//            PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
-//                if let error = error {
-//                    self.progressAlert?.dismiss(animated: false, completion: {
-//                        self.showMessagePrompt(error.localizedDescription)
-//                    })
-//                    return
-//                }
-//            })
-            
-            
-//            PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
-//                if let error = error {
-//                    self.progressAlert?.dismiss(animated: false, completion: {
-//                        self.showMessagePrompt(error.localizedDescription)
-//                    })
-//                    return
-//                }
-////                UserDefaults.standard.set(verificationID, forKey: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
-//
-////                RestClient().request(WalayemApi.signup, params) { (result, error) in
-////                    if error != nil{
-////                        self.progressAlert?.dismiss(animated: false, completion: {
-////                            let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
-////                            self.showMessagePrompt(errmsg)
-////                        })
-////                        return
-////                    }
-////                    let record = result!["result"] as! [String: Any]
-////                    if let errmsg = record["error"] as? String{
-////                        self.progressAlert?.dismiss(animated: false, completion: {
-////                            self.showMessagePrompt(errmsg)
-////                        })
-////                        return
-////                    }
-////                    let data = record["data"] as! [String: Any]
-////                    let sessionId: String = data["session_id"] as! String
-////                    UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
-////                    self.loadUserDetails()
-////                }
-//            })
         }
         else{
-            if(chefNameTextField.text!.isEmpty || chefEmailTextField.text!.isEmpty ||
-                chefPhoneTextField.text!.isEmpty ||
-                chefPasswordTextField.text!.isEmpty)
-            {
-                self.showMessagePrompt("All the fields are mandatory.")
-                return;
-            }
+    // MARK: Chef SIGN UP
+            let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+            if (session == nil){
                 
-            if(!chefNameVerified)
-            {
-                self.showMessagePrompt("Invalid name.")
-                return;
-            }
-            else if(!chefEmailVerified)
-            {
-                self.showMessagePrompt("Invalid email.")
-                return;
-            }
-            else if(!chefPhoneVerified)
-            {
-                self.showMessagePrompt("Phone number should be valid and start with 971.")
-                return;
-            }
-            else if(!chefPasswordVerified)
-            {
-                self.showMessagePrompt("Password must be at least 6 characters.")
-                return;
-            }
-            let countryCode = "+971"
-            let name = chefNameTextField.text ?? ""
-            let email = chefEmailTextField.text ?? ""
-            let phone = countryCode + (chefPhoneTextField.text ?? "")
-            let password = chefPasswordTextField.text ?? ""
-            
-            let params: [String : Any] = ["name": name,
-                                          "login": email,
-                                          "password": password,
-                                          "confirm_password": password,
-                                          "is_chef": true]
-            
-            progressAlert = showProgressAlert()
-            
-            RestClient().request(WalayemApi.signup, params) { (result, error) in
-                if error != nil{
-                    self.progressAlert?.dismiss(animated: false, completion: {
-                        let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
-                        self.showMessagePrompt(errmsg)
-                    })
-                    return
+                if(chefNameTextField.text!.isEmpty || chefEmailTextField.text!.isEmpty ||
+                    chefPhoneTextField.text!.isEmpty ||
+                    chefPasswordTextField.text!.isEmpty)
+                {
+                    self.showMessagePrompt("All the fields are mandatory.")
+                    return;
                 }
-                let record = result!["result"] as! [String: Any]
-                if let errmsg = record["error"] as? String{
-                    self.progressAlert?.dismiss(animated: false, completion: {
-                        self.showMessagePrompt(errmsg)
-                    })
-                    return
-                }
-                else{
                     
-                    PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
-                        if let error = error {
-                            self.progressAlert?.dismiss(animated: false, completion: {
-                                self.showMessagePrompt(error.localizedDescription)
-                            })
-                            return
-                        }
-                        UserDefaults.standard.set(verificationID, forKey: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
+                if(!chefNameVerified)
+                {
+                    self.showMessagePrompt("Invalid name.")
+                    return;
+                }
+                else if(!chefEmailVerified)
+                {
+                    self.showMessagePrompt("Invalid email.")
+                    return;
+                }
+                else if(!chefPhoneVerified)
+                {
+                    self.showMessagePrompt("Phone number should be valid and start with 971.")
+                    return;
+                }
+                else if(!chefPasswordVerified)
+                {
+                    self.showMessagePrompt("Password must be at least 6 characters.")
+                    return;
+                }
+                let countryCode = "+971"
+                let name = chefNameTextField.text ?? ""
+                let email = chefEmailTextField.text ?? ""
+                let phone = countryCode + (chefPhoneTextField.text ?? "")
+                let password = chefPasswordTextField.text ?? ""
+                
+                let params: [String : Any] = ["name": name,
+                                              "login": email,
+                                              "password": password,
+                                              "confirm_password": password,
+                                              "is_chef": true]
+                
+                progressAlert = showProgressAlert()
+                
+                RestClient().request(WalayemApi.signup, params) { (result, error) in
+                    if error != nil{
+                        self.progressAlert?.dismiss(animated: false, completion: {
+                            let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+                            self.showMessagePrompt(errmsg)
+                        })
+                        return
+                    }
+                    let record = result!["result"] as! [String: Any]
+                    if let errmsg = record["error"] as? String{
+                        self.progressAlert?.dismiss(animated: false, completion: {
+                            self.showMessagePrompt(errmsg)
+                        })
+                        return
+                    }
+                    else{
+                        
+                        PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
+                            if let error = error {
+//                                self.progressAlert?.dismiss(animated: false, completion: {
+////                                    self.showMessagePrompt(error.localizedDescription)
+//                                })
+                                print(error.localizedDescription)
+                                return
+                            }
+                            UserDefaults.standard.set(verificationID, forKey: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
 
-                    })
+                        })
+                        
+                    }
                     
+                    let data = record["data"] as! [String: Any]
+                    let sessionId: String = data["session_id"] as! String
+                    UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
+                    self.loadUserDetails()
                 }
-                
-                let data = record["data"] as! [String: Any]
-                let sessionId: String = data["session_id"] as! String
-                UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
-                self.loadUserDetails()
+            } else {
+                self.logout()
             }
             
         }
         
         
     }
+    
+    
+       private func logout(){
+            let client = OdooClient.sharedInstance()
+            client.logout(completionHandler: { (result, error) in
+//                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                if let error = error{
+                    let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
+                    self.showAlert(title: "cannot logout", msg: errmsg)
+                    return
+                }
+                let userId = UserDefaults.standard.integer(forKey: UserDefaultsKeys.PARTNER_ID)
+                Messaging.messaging().unsubscribe(fromTopic: "alli")
+                Messaging.messaging().unsubscribe(fromTopic: "\(userId)i")
+                Messaging.messaging().unsubscribe(fromTopic: "alluseri")
+                User().clearUserDefaults()
+                OdooClient.destroy()
+                
+                StaticLinker.mainVC?.selectedIndex = 0
+//                Utils.notifyRefresh()
+                self.signup(self)
+            })
+        
+            
+        }
     
     @IBAction func signupViaFb(_ sender: UIButton) {
         let loginManager = LoginManager()
@@ -585,7 +576,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     
     override func viewWillAppear(_ animated: Bool) {
         if (StaticLinker.chefLoginFromHome){
-//            self.btnCustomer. = true/
             self.btnCustomer.isEnabled = false
             self.onChef(self)
             StaticLinker.chefLoginFromHome = false
@@ -605,28 +595,34 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
             }
             
             let records = result!["records"] as? [Any]
-            if(!self.isChef)
-            {
-                if records![0] != nil{
+            
+            if records!.count > 0 {
+                if(!self.isChef)
+                {
+                    if records![0] != nil{
+                        if let record = records![0] as? [String : Any]{
+                            let partnerId = record["id"] as! Int
+                            let isImageSet = record["is_image_set"] as! Bool
+                            let user = User(record: record)
+                            self.saveUserInDevice(user: user, partnerId: partnerId)
+                            self.uploadImage(partnerId: partnerId, isImageSet: isImageSet)
+                        }
+                    }
+                }
+                else
+                {   do{
                     if let record = records![0] as? [String : Any]{
                         let partnerId = record["id"] as! Int
-                        let isImageSet = record["is_image_set"] as! Bool
                         let user = User(record: record)
+                        self.subscribeToFirebaseTopics(partnerId)
                         self.saveUserInDevice(user: user, partnerId: partnerId)
-                        self.uploadImage(partnerId: partnerId, isImageSet: isImageSet)
+                    }
+                    }
+                catch{
+                    
                     }
                 }
             }
-            else
-            {
-                if let record = records![0] as? [String : Any]{
-                    let partnerId = record["id"] as! Int
-                    let user = User(record: record)
-                    self.subscribeToFirebaseTopics(partnerId)
-                    self.saveUserInDevice(user: user, partnerId: partnerId)
-                }
-            }
-
         }
     }
     
@@ -660,6 +656,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
             self.progressAlert?.dismiss(animated: false, completion: {
                 self.performSegue(withIdentifier: "VerifyPhoneSegue", sender: self)
             })
+
+//            self.performSegue(withIdentifier: "VerifyPhoneSegue", sender: self)
         }
     }
     

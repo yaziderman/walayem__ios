@@ -37,9 +37,10 @@ class VerifyEmiratesViewController: UIViewController {
                 if let error = error{
                     let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
                     self.showMessagePrompt(msg: errmsg)
+//                    self.onSessionExpired()
                     return
                 }
-                print (result)
+                print (result!)
                 self.performSegue(withIdentifier: "ChefMainSegue", sender: self)
             }
         }
