@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ChefOrderFoodCell: UITableViewCell {
 
@@ -32,7 +33,10 @@ class ChefOrderFoodCell: UITableViewCell {
         priceLabel.text = "AED \(food.price ?? 0)"
         
         let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image")
-        foodImageView.kf.setImage(with: imageUrl)
+        
+        foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        foodImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
+//        foodImageView.kf.setImage(with: imageUrl)
     }
     
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ChefRatingViewController: UIViewController {
 
@@ -94,7 +95,9 @@ class ChefRatingViewController: UIViewController {
     
     private func updateUI(){
         let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/api/chefImage/\(chef!.id)-\(chef!.image!)/image_medium")
-        chefImageView.kf.setImage(with: imageUrl)
+//        chefImageView.kf.setImage(with: imageUrl)
+        chefImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        chefImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
         nameLabel.text = self.chef?.name
         kitchenLabel.text = self.chef?.kitchen
         var foodString = ""

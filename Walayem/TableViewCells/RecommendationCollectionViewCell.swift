@@ -8,6 +8,8 @@
 
 import UIKit
 import Kingfisher
+import SDWebImage
+import ImageLoader
 
 class RecommendationCollectionViewCell: UICollectionViewCell {
     
@@ -31,7 +33,10 @@ class RecommendationCollectionViewCell: UICollectionViewCell {
         priceLabel.text = "AED \(food.price ?? 0)"
         
         let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image")
-        foodImageView.kf.setImage(with: imageUrl)
+//        foodImageView.kf.setImage(with: imageUrl)
+        foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        foodImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
+//        foodImageView.load.request(with: imageUrl!) // using ImageLoader
     }
     
 }

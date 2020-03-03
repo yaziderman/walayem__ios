@@ -1,5 +1,7 @@
 import UIKit
-import Kingfisher
+//import Kingfisher
+import ImageLoader
+import SDWebImage
 
 class FoodDetailViewController: UIViewController {
 
@@ -81,7 +83,13 @@ class FoodDetailViewController: UIViewController {
             checkIfFavourite(food.id ?? 0)
 
             let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image")
-            foodImageView.kf.setImage(with: imageUrl)
+//            foodImageView.kf.setImage(with: imageUrl)
+
+//            foodImageView.load.request(with: imageUrl!)
+//            foodImageView.sd_setImage(with: imageUrl, completed: nil)
+
+            foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+            foodImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
             
             food.quantity = 1
 //            if food.quantity != 1 || food.quantity == nil{
@@ -283,7 +291,9 @@ extension FoodDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         
         let id = food?.imageIds![indexPath.row] ?? 0
         let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/food.image/\(id)/image")
-        cell.foodImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "foodImageEmpty"))
+//        cell.foodImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "foodImageEmpty"))
+        foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        cell.foodImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
         
         return cell
     }

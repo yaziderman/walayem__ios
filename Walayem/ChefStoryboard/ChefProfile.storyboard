@@ -313,7 +313,7 @@
                                                                 <constraint firstAttribute="height" constant="38" id="LD9-PE-xMW"/>
                                                                 <constraint firstAttribute="width" constant="38" id="WGP-ED-NGa"/>
                                                             </constraints>
-                                                            <state key="normal" image="new_whatsapp_icon"/>
+                                                            <state key="normal" image="whatsapp_smaal_new"/>
                                                             <connections>
                                                                 <action selector="openWhatsapp" destination="XAd-Ib-C3d" eventType="touchUpInside" id="e3w-vn-kQW"/>
                                                             </connections>
@@ -573,13 +573,13 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="CuR-yM-prz">
                                             <rect key="frame" x="82" y="22.5" width="163" height="43.5"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ed-pC-9Zy">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ed-pC-9Zy">
                                                     <rect key="frame" x="0.0" y="0.0" width="163" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" red="0.35294117650000001" green="0.37647058820000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4di-To-90d">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4di-To-90d">
                                                     <rect key="frame" x="0.0" y="25.5" width="163" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -672,7 +672,6 @@
         <image name="kitchen" width="36" height="36"/>
         <image name="logout" width="36" height="36"/>
         <image name="mailIcon-pdf" width="76" height="76"/>
-        <image name="new_whatsapp_icon" width="64" height="64"/>
         <image name="phoneIcon" width="38" height="38"/>
         <image name="privacy" width="36" height="36"/>
         <image name="profile" width="16" height="18"/>
@@ -680,6 +679,7 @@
         <image name="terms" width="36" height="36"/>
         <image name="updateKitchen" width="36" height="36"/>
         <image name="userEmpty" width="60" height="60"/>
+        <image name="whatsapp_smaal_new" width="512" height="512"/>
         <image name="withdraw" width="36" height="36"/>
     </resources>
 </document>

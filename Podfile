@@ -6,7 +6,9 @@ target 'Walayem' do
 
   pod 'Alamofire', '~> 4.7'
   pod 'Kingfisher', '~> 4.0'
+  pod 'SDWebImage', '~> 5.0'
   pod 'SQLite.swift'
+  pod 'ImageLoader'
   pod 'FacebookCore'
   pod 'FacebookLogin'
   pod 'FacebookShare'

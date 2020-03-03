@@ -125,6 +125,7 @@ PODS:
   - GTMSessionFetcher/Core (1.3.0)
   - GTMSessionFetcher/Full (1.3.0):
     - GTMSessionFetcher/Core (= 1.3.0)
+  - ImageLoader (0.15.0)
   - Kingfisher (4.10.1)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
@@ -132,6 +133,9 @@ PODS:
   - nanopb/decode (0.3.9011)
   - nanopb/encode (0.3.9011)
   - Protobuf (3.11.2)
+  - SDWebImage (5.5.1):
+    - SDWebImage/Core (= 5.5.1)
+  - SDWebImage/Core (5.5.1)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
@@ -148,7 +152,9 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Messaging
   - GoogleSignIn
+  - ImageLoader
   - Kingfisher (~> 4.0)
+  - SDWebImage (~> 5.0)
   - SQLite.swift
 
 SPEC REPOS:
@@ -181,9 +187,11 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
+    - ImageLoader
     - Kingfisher
     - nanopb
     - Protobuf
+    - SDWebImage
     - SQLite.swift
 
 SPEC CHECKSUMS:
@@ -215,11 +223,13 @@ SPEC CHECKSUMS:
   GoogleUtilities: 29bd0d8f850efbd28cff6d99e8b7da1f8d236bcf
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 43b8b64263023d4f32caa0b40f4c8bfa3c5f36d8
+  ImageLoader: e0635d52020d64dc7687e3a3b14dc53212ac0442
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   Protobuf: dd1aaea7140debfe4dd0683fb8ef208e527ae153
+  SDWebImage: 1245d058b7b8f59adef7a6da6bbafd4f1ab67041
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
 
-PODFILE CHECKSUM: 15d7b8849eb6ab340f0548aecdbedd5f81cb4a09
+PODFILE CHECKSUM: 333a454d381d9f9af140df35adc729514396691a
 
 COCOAPODS: 1.8.4

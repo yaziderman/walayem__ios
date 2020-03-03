@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import SDWebImage
 
 class ChefTableViewCell: UITableViewCell {
 
@@ -46,7 +47,9 @@ class ChefTableViewCell: UITableViewCell {
         countLabel.text = String (chef.foods.count)
         descriptionLabel.text = description
         let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/api/chefImage/\(chef.id)-\(chef.image!)/image_medium")
-        chefImageView.kf.setImage(with: imageUrl)
+//        chefImageView.kf.setImage(with: imageUrl)
+        chefImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        chefImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
         
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         collectionView.delegate = self
@@ -75,7 +78,10 @@ extension ChefTableViewCell: UICollectionViewDataSource, UICollectionViewDelegat
         cell.foodImageView.layer.cornerRadius = 15
         cell.foodImageView.layer.masksToBounds = true
         let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(id ?? 0)/image")
-        cell.foodImageView.kf.setImage(with: imageUrl)
+//        cell.foodImageView.kf.setImage(with: imageUrl)
+        
+        cell.foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        cell.foodImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
         return cell
     }
     

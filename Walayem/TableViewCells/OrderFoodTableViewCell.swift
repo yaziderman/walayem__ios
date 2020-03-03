@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import SDWebImage
 
 class OrderFoodTableViewCell: UITableViewCell {
     
@@ -30,6 +31,8 @@ class OrderFoodTableViewCell: UITableViewCell {
         nameLabel.text = food.name
         priceLabel.text = "AED \(food.price)"
         let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image")
-        foodImageView.kf.setImage(with: imageUrl)
+//        foodImageView.kf.setImage(with: imageUrl)
+        foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        foodImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
     }
 }

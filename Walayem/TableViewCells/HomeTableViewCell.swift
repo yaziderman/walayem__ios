@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import SDWebImage
 
 class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     
@@ -149,7 +150,12 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
 
 //            cellView?.layer.masksToBounds = true
             cellView?.roundCorners([.bottomRight,.bottomLeft], radius: 15)
-            cellImage?.kf.setImage(with: recommendedImagesURLS[indexPath.row])
+//            cellImage?.kf.setImage(with: recommendedImagesURLS[indexPath.row])
+            
+            
+            cellImage?.sd_imageIndicator = SDWebImageActivityIndicator.gray
+            cellImage?.sd_setImage(with: recommendedImagesURLS[indexPath.row], placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
+            
             
             return recommendedCell
         }
@@ -158,7 +164,10 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
 
             let mealCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
             let mealImage = mealCell.viewWithTag(600) as? UIImageView
-            mealImage?.kf.setImage(with: mealImagesURLS[indexPath.row])
+//            mealImage?.kf.setImage(with: mealImagesURLS[indexPath.row])
+
+            mealImage?.sd_imageIndicator = SDWebImageActivityIndicator.gray
+            mealImage?.sd_setImage(with: mealImagesURLS[indexPath.row], placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
 
             let mealName = mealCell.viewWithTag(610) as? UILabel
             mealName?.roundCorners([.bottomLeft,.bottomRight], radius: 15)

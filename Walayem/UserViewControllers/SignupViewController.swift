@@ -604,20 +604,22 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 return
             }
             
-            let records = result!["records"] as! [Any]
+            let records = result!["records"] as? [Any]
             if(!self.isChef)
             {
-                if let record = records[0] as? [String : Any]{
-                    let partnerId = record["id"] as! Int
-                    let isImageSet = record["is_image_set"] as! Bool
-                    let user = User(record: record)
-                    self.saveUserInDevice(user: user, partnerId: partnerId)
-                    self.uploadImage(partnerId: partnerId, isImageSet: isImageSet)
+                if records![0] != nil{
+                    if let record = records![0] as? [String : Any]{
+                        let partnerId = record["id"] as! Int
+                        let isImageSet = record["is_image_set"] as! Bool
+                        let user = User(record: record)
+                        self.saveUserInDevice(user: user, partnerId: partnerId)
+                        self.uploadImage(partnerId: partnerId, isImageSet: isImageSet)
+                    }
                 }
             }
             else
             {
-                if let record = records[0] as? [String : Any]{
+                if let record = records![0] as? [String : Any]{
                     let partnerId = record["id"] as! Int
                     let user = User(record: record)
                     self.subscribeToFirebaseTopics(partnerId)

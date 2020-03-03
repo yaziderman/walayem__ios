@@ -455,6 +455,7 @@ extension ChefFoodViewController: UICollectionViewDelegate, UICollectionViewData
             
         }else{
             let image64 = foodImages[indexPath.row - 1]
+            cell.foodImageView.image = #imageLiteral(resourceName: "foodImageEmpty")
             cell.foodImageView.image = Utils.decodeImage(image64)
         }
         

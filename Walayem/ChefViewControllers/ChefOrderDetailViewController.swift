@@ -158,8 +158,9 @@ class ChefOrderDetailViewController: UIViewController {
     
     @IBAction func whatsAppCustomer(_ sender: UIButton) {
                 if let orderDetail = orderDetail, let address = orderDetail.address{
+            let textMsg = "*Greetings from Walayem*, This is *\(user?.name ?? "CHEF_NAME")*.\nI got your order and would like to confirm."
                     
-            let urlWhats = "whatsapp://send?phone=\(address.phone!)"
+            let urlWhats = "whatsapp://send?phone=\(address.phone!)&abid=12354&text=\(textMsg)"
                 if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
                         if let whatsappURL = URL(string: urlString) {
                             if UIApplication.shared.canOpenURL(whatsappURL){
@@ -210,7 +211,7 @@ class ChefOrderDetailViewController: UIViewController {
              print("order type--->>>\(order_type)")
             if(order_type == "future"){
                 if record["order_for"] != nil{
-                    let orderDate = record["order_for"] as? String ?? "00-00-00"
+                    let orderDate = record["order_for"] as? String ?? "1987-12-31 12:00:00"
                     let formatter = DateFormatter()
                     formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
                     formatter.timeZone = TimeZone(abbreviation: "UTC")

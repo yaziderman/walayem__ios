@@ -42,7 +42,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     
     
     @IBAction func openWhatsapp(){
-        let urlWhats = "whatsapp://send?phone=+971585668800"
+        let urlWhats = "whatsapp://send?phone=+971585668800&abid=12354&text=Hi, I am \(user?.name ?? "CUSTOMER_NAME")"
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
             if let whatsappURL = URL(string: urlString) {
                 if UIApplication.shared.canOpenURL(whatsappURL){

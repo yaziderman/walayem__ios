@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SDWebImage
 
 class MealOfDayCollectionViewCell:UICollectionViewCell {
     
@@ -30,7 +31,10 @@ class MealOfDayCollectionViewCell:UICollectionViewCell {
                 
 //          let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id)/image")
         let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/987/image")
-        imageView.kf.setImage(with: imageUrl)
+//        imageView.kf.setImage(with: imageUrl)
+
+                imageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+                imageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
     }
     
 }

@@ -103,14 +103,14 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     
     @IBAction func placeOrder(_ sender: UIButton) {
         let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+                
         if(session == nil)
         {
-//            onSessionExpired()
-//            self.showAlertForLogin()
             self.showAlertBeforeLogin(message: "Please login to place order!")
         }
         else
         {
+
             if selectedAddress == nil {
                 let alert = UIAlertController(title: "", message: "Add address before placing an order", preferredStyle: .actionSheet)
                 alert.addAction(UIAlertAction(title: "Select Address", style: .default, handler: { (action) in
@@ -127,17 +127,14 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
                 }
                 self.present(alert, animated: true, completion: nil)
                 return
-            }else if user!.phone!.isEmpty{
+            }else if(user?.phone == nil || user!.phone!.isEmpty){
+
                 let alert = UIAlertController(title: "", message: "You need to add your phone number before placing an order", preferredStyle: .actionSheet)
                 alert.addAction(UIAlertAction(title: "Add", style: .destructive, handler: { (action) in
                     let storyboard = UIStoryboard(name: "EditProfile", bundle: nil)
                     guard let profileVC = storyboard.instantiateViewController(withIdentifier: "updateProfileVC") as? UpdateProfileViewController else{
                         fatalError("Unexpected ViewController")
                     }
-    //                guard let profileVC = UIStoryboard(name: "EditProfile", bundle: Bundle.main).instantiateInitialViewController() as? UpdateProfileViewController else {
-    //                    fatalError("Unexpected view controller")
-    //                }
-                
                     profileVC.user = self.user
                     self.navigationController?.pushViewController(profileVC, animated: true)
                 }))
@@ -149,7 +146,13 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
                 }
                 self.present(alert, animated: true, completion: nil)
                 return
+                
             }
+           
+        }
+       
+            
+//        }
             
             let progressAlert = showProgressAlert()
             var orderItems = [Any]()
@@ -171,6 +174,10 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
                 
                 orderItems.append(dict)
             }
+            
+        if (selectedAddress == nil) {
+            return
+        }
             
             var params: [String: Any] = ["partner_id": user?.partner_id as Any,
                                          "address_id": selectedAddress!.id,
@@ -215,7 +222,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
                     destinationVC.orders = records
                     self.present(destinationVC, animated: true, completion: nil)
                 })
-            }
+            
         }
         
     }

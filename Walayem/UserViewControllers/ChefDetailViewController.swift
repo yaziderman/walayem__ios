@@ -8,6 +8,7 @@
 
 import UIKit
 import os.log
+import SDWebImage
 
 enum FoodCategEnum: String{
     case appetizer
@@ -99,7 +100,9 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
             checkIsFavourite(chef.id)
             
             let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/api/chefImage/\(chef.id)-\(chef.image!)/image_medium")
-            chefImageView.kf.setImage(with: imageUrl)
+//            chefImageView.kf.setImage(with: imageUrl)
+            chefImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+            chefImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
             nameLabel.text = chef.name
             kitchenLabel.text = chef.kitchen
             descriptionLabel.text = chef.description

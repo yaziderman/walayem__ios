@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import ImageLoader
+import SDWebImage
 
 protocol CartFoodCellDelegate {
     func didTapAddItem(sender: CartFoodTableViewCell)
@@ -70,7 +72,13 @@ class CartFoodTableViewCell: UITableViewCell {
         
         
         
-        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image")
-        foodImageView.kf.setImage(with: imageUrl)
+        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image")!
+//        foodImageView.kf.setImage(with: imageUrl)
+//        foodImageView.load.request(with: imageUrl)
+//        foodImageView.sd_setImage(with: imageUrl, completed: nil)
+        
+        foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        foodImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
+        
     }
 }

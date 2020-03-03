@@ -28,7 +28,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     @IBOutlet weak var passwordVerifyImageView: UIImageView!
     @IBOutlet weak var socialLoginView: UIStackView!
     @IBOutlet weak var socialLoginLabel: UILabel!
-    @IBOutlet weak var showPass: UIButton!
+    @IBOutlet weak var showPassword: UIButton!
 
     
     var emailVerified: Bool = false
@@ -62,20 +62,21 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             self.loadUserDetails()
         }
     }
-    
-    @IBAction func showPassPressed(_ sender: Any) {
-        if showPass.isEnabled{
+    @IBAction func showPasswordPressed(_ sender: Any) {
+        if showPassword.isEnabled{
             passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
             if (!passwordTextField.isSecureTextEntry){
-                showPass.setImage(UIImage(named: "open_eye.png"), for: .normal)
-                showPass.setImage(#imageLiteral(resourceName: "close_eye"), for: .normal)
+                showPassword.setImage(UIImage(named: "open_eye.png"), for: .normal)
+//                showPassword.setImage(#imageLiteral(resourceName: "close_eye"), for: .normal)
             }else{
-                showPass.setImage(#imageLiteral(resourceName: "open_eye"), for: .normal)
+                showPassword.setImage(UIImage(named: "close_eye.png"), for: .normal)
     //            #imageLiteral(resourceName: "close_eye")
             }
         }
 
     }
+    
+    
     
     
     @IBAction func forgotPassword(_ sender: UIButton) {
@@ -153,7 +154,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         passwordTextField.textColor = UIColor.textColor
         passwordTextField.placeHolderColor = UIColor.placeholderColor
         
-        showPass.isEnabled = false
+        showPassword.isEnabled = false
+//        passwordVerifyImageView.isHidden = true
     }
     
     override func viewWillLayoutSubviews() {
@@ -371,13 +373,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             let password = passwordTextField.text ?? ""
             if Verification.isValidLoginPassword(password){
                 passwordVerifyImageView.tintColor = UIColor.colorPrimary
-                showPass.setImage(#imageLiteral(resourceName: "open_eye"), for: .normal)
-                showPass.isEnabled = true
+                showPassword.isEnabled = true
+                showPassword.setImage(UIImage(named: "close_eye.png"), for: .normal)
+                showPassword.setImage(#imageLiteral(resourceName: "close_eye"), for: .normal)
+//                #imageLiteral(resourceName: "open_eye")
                 passwordVerified = true
             }else{
-                showPass.isEnabled = false
+                showPassword.isEnabled = false
                 passwordVerifyImageView.tintColor = UIColor.silver
-                showPass.setImage(#imageLiteral(resourceName: "close_eye_grey") ,for: .normal)
+                showPassword.setImage(UIImage(named: "close_eye_grey.png"), for: .normal)
                 passwordVerified = false
             }
         default:
