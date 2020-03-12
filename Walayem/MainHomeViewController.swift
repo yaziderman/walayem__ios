@@ -243,17 +243,21 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
             guard let cell : HomeButtonTableViewCell = tableView.dequeueReusableCell(withIdentifier: "mainHomeTableViewCell1") as? HomeButtonTableViewCell else { fatalError("mainHomeTableViewCell1") }
             
             cell.parent = self
+//            cell.button.shake()
             cell.selectionStyle = .none
             return cell
             
         }
         else if indexPath.row == 5 {
+            
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "mainHomeTableViewCellLast") else { fatalError("mainHomeTableViewCellLast")  }
             cell.selectionStyle = .none
             
-            _ = cell.viewWithTag(5000) as! UIImageView
+            let image = cell.viewWithTag(5000) as! UIImageView
+//            image.shake()
             
             let imageButton = cell.viewWithTag(5010) as! UIButton
+//            imageButton.shake()
             
             imageButton.addTarget(self, action:#selector(handleImageButton(_:)), for: .touchUpInside)
             return cell
@@ -280,6 +284,7 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
         print("Image Add tapped!")
         StaticLinker.chefLoginFromHome = true
         
+        
         if #available(iOS 13.0, *) {
             let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateViewController(identifier: "SignupViewController") as! SignupViewController
                 self.present(viewController, animated: true, completion: nil)
@@ -294,11 +299,10 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
             if recommendedMeals.count > 0 {
-                return 340
+                return 310
             }
             else{
                 return 0
-                
             }
             
         }

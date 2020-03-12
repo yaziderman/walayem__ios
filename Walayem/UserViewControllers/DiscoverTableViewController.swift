@@ -160,6 +160,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
                 getFoods()
                 updateBadge()
         }
+            tableView.reloadData()
         
     }
         
@@ -181,6 +182,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         
         refreshItemsQuantity()
         
+        
 //        updateBadge()
         
          if StaticLinker.selectedCuisine != nil && !isFirtTime{
@@ -197,12 +199,17 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             cell.food.quantity = 0
         }
         
+        
+        
+        
+//        tableView.scroll(to: .top, animated: true)
+        
+        
         self.tableView.reloadData()
        
         
         
-//        hideActivityIndicator()
-       
+        hideActivityIndicator()
         updateFav();
     }
     
@@ -224,9 +231,9 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     
     override func viewWillDisappear(_ animated: Bool){
         
-       
+        
         filterBarButton.removeBadge()
-        tableView.reloadData()
+//        tableView.reloadData()
     }
     
     

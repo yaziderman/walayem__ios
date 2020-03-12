@@ -11,6 +11,7 @@ target 'Walayem' do
   pod 'ImageLoader'
   pod 'FacebookCore'
   pod 'FacebookLogin'
+  pod 'FBSDKLoginKit'
   pod 'FacebookShare'
   pod 'GoogleSignIn'
   pod 'Firebase/Core'

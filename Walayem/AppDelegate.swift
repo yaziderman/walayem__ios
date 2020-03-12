@@ -10,6 +10,7 @@ import UIKit
 import UserNotifications
 
 import FBSDKCoreKit
+import FacebookCore
 import GoogleSignIn
 import Firebase
 
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let fcmMessageIDKey = "fcm.message_id"
+    var firebaseToken: String = ""
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -44,6 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        getChefSettings()
         return true
     }
+    
+   
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let google = GIDSignIn.sharedInstance().handle(url)
@@ -83,7 +87,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        AppEvents.activateApp()
     }
+    
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
@@ -218,14 +224,16 @@ extension AppDelegate : MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
         
+        
         // Note: This callback is fired at each app startup and whenever a new token is generated.
-        //Utils.sendFirebaseTokenToServer(token: fcmToken)
+//        Utils.sendFirebaseTokenToServer(token: fcmToken)
     }
     // [END refresh_token]
     // [START ios_10_data_message]
     // Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.
     // To enable direct data messages, you can set Messaging.messaging().shouldEstablishDirectChannel to true.
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+        
         print("Received data message: \(remoteMessage.appData)")
     }
     // [END ios_10_data_message]

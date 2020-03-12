@@ -124,6 +124,7 @@
 		5B467DF923B882CE008620FF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DF023B882CD008620FF /* User.swift */; };
 		5B467DFA23B882CE008620FF /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B467DF123B882CE008620FF /* Food.swift */; };
 		BE4501EC23EEE5F600E3AB68 /* Promoted.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4501EB23EEE5F600E3AB68 /* Promoted.swift */; };
+		BE51C4552416CCE1003C6524 /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51C4542416CCE1003C6524 /* LanguageSelectionViewController.swift */; };
 		BE6B334923C5EF6400CB01D6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6B334823C5EF6400CB01D6 /* Extensions.swift */; };
 		BE81C7FB23E8215200EBE520 /* HomeRecommendedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE81C7FA23E8215200EBE520 /* HomeRecommendedCell.swift */; };
 		BE9B441B23E95C5D000F6225 /* CuisineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE9B441923E95C5D000F6225 /* CuisineCollectionViewCell.swift */; };
@@ -262,6 +263,7 @@
 		5B467DF123B882CE008620FF /* Food.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		7B1A71D8F45A96894E6650A3 /* Pods-Walayem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Walayem.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Walayem/Pods-Walayem.debug.xcconfig"; sourceTree = "<group>"; };
 		BE4501EB23EEE5F600E3AB68 /* Promoted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promoted.swift; sourceTree = "<group>"; };
+		BE51C4542416CCE1003C6524 /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
 		BE6B334823C5EF6400CB01D6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BE81C7FA23E8215200EBE520 /* HomeRecommendedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecommendedCell.swift; sourceTree = "<group>"; };
 		BE9B441923E95C5D000F6225 /* CuisineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuisineCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 				BEBB0FEA23E7E4B500D43789 /* HomeViewController.swift */,
 				04C596C42084BB5D00B284D3 /* LocationPermissionViewController.swift */,
 				BEC27A0223E89F2100DE7874 /* MainHomeViewController.swift */,
+				BE51C4542416CCE1003C6524 /* LanguageSelectionViewController.swift */,
 				04C596C62084C15F00B284D3 /* LoginPriorViewController.swift */,
 				04D9E8A12085B38D002E1B51 /* LoginViewController.swift */,
 				0A08C49A20C12CB500E006AB /* UpdateProfileViewController.swift */,
@@ -792,6 +795,7 @@
 				BE4501EC23EEE5F600E3AB68 /* Promoted.swift in Sources */,
 				04A6594F20A0378100DBCF86 /* DatabaseHandler.swift in Sources */,
 				BE9B441B23E95C5D000F6225 /* CuisineCollectionViewCell.swift in Sources */,
+				BE51C4552416CCE1003C6524 /* LanguageSelectionViewController.swift in Sources */,
 				5B467DF823B882CE008620FF /* Tag.swift in Sources */,
 				0AD0350120C550B10030E1E8 /* ImageViewController.swift in Sources */,
 				04F215852088ABBD003D47AD /* UIView + border.swift in Sources */,
@@ -949,7 +953,7 @@
 				CODE_SIGN_ENTITLEMENTS = Walayem/Walayem.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jasim Al Ali (8QR6D3RTX5)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Walayem/Info.plist;
@@ -958,7 +962,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.02;
+				MARKETING_VERSION = 3.06;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inceptionworld.Walayem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -976,7 +980,7 @@
 				CODE_SIGN_ENTITLEMENTS = Walayem/Walayem.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Jasim Al Ali (8QR6D3RTX5)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Walayem/Info.plist;
@@ -985,7 +989,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.02;
+				MARKETING_VERSION = 3.06;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inceptionworld.Walayem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

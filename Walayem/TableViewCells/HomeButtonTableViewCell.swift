@@ -9,14 +9,19 @@
 import UIKit
 
 class HomeButtonTableViewCell: UITableViewCell {
-
+    
+    @IBOutlet weak var button: UIButton!
     var parent: UIViewController?
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+//        button.shake()
+//         Initialization code
     }
 
     @IBAction func browseMealsPressed(_ sender: Any) {
+        
+//        button.shake()
+        
         print("This will take you towards Root of Discover food tab.")
         StaticLinker.mainVC?.selectedIndex = 1;
     }

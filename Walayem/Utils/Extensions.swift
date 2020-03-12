@@ -99,3 +99,77 @@ extension NSMutableAttributedString {
     }
 
 }
+
+extension UITableView {
+
+    public func reloadData(_ completion: @escaping ()->()) {
+        UIView.animate(withDuration: 0, animations: {
+            self.reloadData()
+        }, completion:{ _ in
+            completion()
+        })
+    }
+
+    func scroll(to: scrollsTo, animated: Bool) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
+            let numberOfSections = self.numberOfSections
+            let numberOfRows = self.numberOfRows(inSection: numberOfSections-1)
+            switch to{
+            case .top:
+                if numberOfRows > 0 {
+                     let indexPath = IndexPath(row: 0, section: 0)
+                     self.scrollToRow(at: indexPath, at: .top, animated: animated)
+                }
+                break
+            case .bottom:
+                if numberOfRows > 0 {
+                    let indexPath = IndexPath(row: numberOfRows-1, section: (numberOfSections-1))
+                    self.scrollToRow(at: indexPath, at: .bottom, animated: animated)
+                }
+                break
+            }
+        }
+    }
+
+    enum scrollsTo {
+        case top,bottom
+    }
+}
+
+extension UIScrollView {
+    func scrollToTop() {
+        let desiredOffset = CGPoint(x: 0, y: -contentInset.top)
+        setContentOffset(desiredOffset, animated: true)
+   }
+}
+
+
+extension UIViewController {
+
+  func scrollToTop(animated: Bool) {
+    if let tv = self as? UITableViewController {
+        tv.tableView.setContentOffset(CGPoint.zero, animated: animated)
+    } else if let cv = self as? UICollectionViewController{
+        cv.collectionView?.setContentOffset(CGPoint.zero, animated: animated)
+    } else {
+        for v in view.subviews {
+            if let sv = v as? UIScrollView {
+                sv.setContentOffset(CGPoint.zero, animated: animated)
+            }
+        }
+    }
+  }
+}
+
+extension UIButton {
+    func shake() {
+        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+//        animation.repeatDuration = 1.0
+        animation.repeatCount = 1
+        animation.duration = 0.9
+        animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
+        layer.add(animation, forKey: "shake")
+    }
+
+}

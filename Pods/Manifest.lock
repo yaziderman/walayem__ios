@@ -148,6 +148,7 @@ DEPENDENCIES:
   - FacebookCore
   - FacebookLogin
   - FacebookShare
+  - FBSDKLoginKit
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Messaging
@@ -230,6 +231,6 @@ SPEC CHECKSUMS:
   SDWebImage: 1245d058b7b8f59adef7a6da6bbafd4f1ab67041
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
 
-PODFILE CHECKSUM: 333a454d381d9f9af140df35adc729514396691a
+PODFILE CHECKSUM: 481b583f466340ec24bb296d4c28d8a0ea8222e3
 
 COCOAPODS: 1.8.4

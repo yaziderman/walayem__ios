@@ -22,7 +22,8 @@ class Verification{
     }
     
     static func isValidPhoneNumber(_ phone: String) -> Bool{
-        return (9...12).contains(phone.count) && (phone.prefix(1) == "5")
+        return (9...12).contains(phone.count)
+//            && (phone.prefix(1) == "5")
 //        return (9...12).contains(phone.count) && (phone.prefix(3) == "971" || phone.prefix(4) == "+971")
     }
     

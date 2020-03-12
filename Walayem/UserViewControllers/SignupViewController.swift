@@ -308,7 +308,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                     if let res = result {
                         var responseDict = res as! [String:Any]
                         _ = responseDict["name"] as! String
-                        _ = responseDict["email"] as! String
+//                        _ = responseDict["email"] as! String
                         _ = responseDict["id"] as! String
                         let pictureDict = responseDict["picture"] as! [String:Any]
                         let imageDict = pictureDict["data"] as! [String:Any]

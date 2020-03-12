@@ -35,23 +35,18 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
     }
     
     @IBAction func call(_ sender: UIButton) {
-        var phone = UserDefaults.standard.string(forKey: "ContactNumber")
-        
-        
-        if(phone == nil)
-        {
-            phone = "+971 58 566 8800";
-        }
-        
-        phone = phone!.replacingOccurrences( of:"[^0-9]", with: "", options: .regularExpression)
 
-        if let phoneNumber = phone{
-            if let url = URL(string: "tel://\(phoneNumber)") {
-             UIApplication.shared.open(url, options: [:], completionHandler: { (Success) in
-                 print("Make call \(Success)")
-             })
-         }
+        guard let popupVC = UIStoryboard(name: "More", bundle: nil).instantiateViewController(withIdentifier: "LanguageSelectionViewController") as? LanguageSelectionViewController else{
+            fatalError("Unexpected destination VC")
         }
+        self.addChildViewController(popupVC)
+        
+        popupVC.view.frame = self.view.frame
+        popupVC.modalPresentationStyle = .fullScreen
+        popupVC.modalTransitionStyle = .crossDissolve
+        self.view.addSubview(popupVC.view)
+        popupVC.didMove(toParentViewController: self)
+
     }
 
     @IBAction func email(_ sender: UIButton) {
