@@ -35,17 +35,14 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
     }
     
     @IBAction func call(_ sender: UIButton) {
-
+        
         guard let popupVC = UIStoryboard(name: "More", bundle: nil).instantiateViewController(withIdentifier: "LanguageSelectionViewController") as? LanguageSelectionViewController else{
             fatalError("Unexpected destination VC")
         }
-        self.addChildViewController(popupVC)
         
-        popupVC.view.frame = self.view.frame
-        popupVC.modalPresentationStyle = .fullScreen
+        popupVC.modalPresentationStyle = .overFullScreen
         popupVC.modalTransitionStyle = .crossDissolve
-        self.view.addSubview(popupVC.view)
-        popupVC.didMove(toParentViewController: self)
+        self.present(popupVC, animated: true, completion: nil)
 
     }
 

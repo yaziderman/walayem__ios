@@ -307,8 +307,8 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
             
         }
         if indexPath.row == 1 {
-            if recommendedMeals.count > 0 {
-                return 240
+            if todays_meals.count > 0 {
+                return 260
             }
             else{
                 return 0

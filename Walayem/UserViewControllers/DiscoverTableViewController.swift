@@ -33,6 +33,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     var addressList = [Address]()
     var isSearching = false
     var isFirtTime = true
+    @IBOutlet weak var recommendedHeight: NSLayoutConstraint!
     
     var mCells = [FoodTableViewCell]()
 //    var lastIndex
@@ -138,13 +139,20 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         tableView.dataSource = self
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        
+//        collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+//        tableView.tableHeaderView?.frame.size.height = 0
+//        collectionView.frame.size.height = 0
+        
+//        popularView.frame.size = CGRect(x: 15, y: 90, width: popularView.frame.width, height: popularView.frame.height).size
+        
 
         showActivityIndicator()
-        getRecommendations()
+//        getRecommendations()
 //        getFoods()
 //        updateBadge()
 //        getAddress()
+        
         Utils.setupNavigationBar(nav: self.navigationController!)
         StaticLinker.discoverViewController = self
 
@@ -469,7 +477,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         filterBarButton.removeBadge()
         mCells.removeAll()
         
-        getRecommendations()
+//        getRecommendations()
         getFoods()
         isSearching = false
     }
@@ -506,6 +514,9 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         let params : [String: Int] = ["page": 1]
         isLoading = true
         RestClient().request(WalayemApi.discoverFood, params) { (result, error) in
+            
+            self.hideActivityIndicator()
+            self.tableView.refreshControl?.endRefreshing()
             self.isLoading = false
             
             if let error = error{
@@ -522,6 +533,8 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             if let status = value["status"] as? Int, status == 0{
                 return
             }
+            
+            self.hideActivityIndicator()
             self.foods.removeAll()
             self.page = value["current_page"] as! Int
             self.totalPage = value["total_pages"] as? Int
@@ -542,6 +555,8 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         }
         let params : [String: Int] = ["page": page + 1]
         isLoading = true
+        self.hideActivityIndicator()
+        self.tableView.refreshControl?.endRefreshing()
         RestClient().request(WalayemApi.discoverFood, params) { (result, error) in
             self.isLoading = false
             
@@ -570,6 +585,8 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     
     private func searchFood(){
         isSearching = true
+        self.hideActivityIndicator()
+        self.tableView.refreshControl?.endRefreshing()
         let tagIds: [Int] = selectedTags.map { (tag) -> Int in
             (tag.id ?? 0)
         }
@@ -614,7 +631,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             }
         }
         else{
-            showSorryAlertWithMessage("Some thing wrong in backend ...!")
+            showSorryAlertWithMessage("No internet connection...!")
         }
     }
     
@@ -638,7 +655,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     
     private func hideActivityIndicator(){
         self.activityIndicator?.stopAnimating()
-        tableView.tableHeaderView?.frame.size.height = 390
+        tableView.tableHeaderView?.frame.size.height = 110
         self.tableView.separatorStyle = .singleLine
     }
     
@@ -753,6 +770,7 @@ extension DiscoverTableViewController: UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return recommendedFoods.count
+//        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -764,7 +782,10 @@ extension DiscoverTableViewController: UICollectionViewDelegate, UICollectionVie
         cell.food = food
         
         return cell
+        
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "FoodDetailVC") as? FoodDetailViewController else{
@@ -774,5 +795,7 @@ extension DiscoverTableViewController: UICollectionViewDelegate, UICollectionVie
         destinationVC.food = food
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
+    
+   
     
 }

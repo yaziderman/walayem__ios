@@ -31,13 +31,6 @@ class ChangePhoneViewController: UIViewController, UITextFieldDelegate {
         let countryCode = "+971"
         let phoneNumber = countryCode + (phoneTextField.text ?? "")
         
-//        if(phoneNumber.prefix(3) != "971" && phoneNumber.prefix(4) != "+971")
-//        {
-//            self.showAlert(title: "Invalid phone number", msg: "Phone number should start with +971.")
-//            return;
-//        }
-        
-        
         let alert = UIAlertController(title: "", message: "Is \(phoneNumber) your phone number?", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Verify", style: .default, handler: { (action) in
             let activityIndicator = self.showActivityIndicator()

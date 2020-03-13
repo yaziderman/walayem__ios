@@ -22,46 +22,14 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     
     @IBAction func call(_ sender: UIButton) {
         
-//        let newView = UIView()
-//               newView.backgroundColor = UIColor.red
-//               view.addSubview(newView)
-////        view.bindFrameToSuperviewBounds()
-//
-//               newView.translatesAutoresizingMaskIntoConstraints = false
-//               let horizontalConstraint = NSLayoutConstraint(item: newView, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-//               let verticalConstraint = NSLayoutConstraint(item: newView, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
-//        let widthConstraint = NSLayoutConstraint(item: newView, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: self.view.frame.width)
-//
-//        let heightConstraint = NSLayoutConstraint(item: newView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: self.view.frame.height)
-//               view.addConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
-
-        
-//
         guard let popupVC = UIStoryboard(name: "More", bundle: nil).instantiateViewController(withIdentifier: "LanguageSelectionViewController") as? LanguageSelectionViewController else{
             fatalError("Unexpected destination VC")
         }
-
-        self.addChildViewController(popupVC)
-
-        popupVC.view.frame = self.tableView.frame
-
-
-        print("POPUP Frame VIEW   -- \(popupVC.view.frame)")
-        print("SElF VIEW   -- \(self.tableView.frame)")
-
-        popupVC.view.frame = self.tableView.frame
-
-
-        print("POPUP Frame VIEW   -- \(popupVC.view.frame)")
-        print("SElF VIEW   -- \(self.view.frame)")
-
-        popupVC.modalPresentationStyle = .currentContext
+        
+        popupVC.modalPresentationStyle = .overFullScreen
         popupVC.modalTransitionStyle = .crossDissolve
-        popupVC.view.bindFrameToSuperviewBounds()
-        self.view.addSubview(popupVC.view)
-        popupVC.didMove(toParentViewController: self)
-
-
+        self.present(popupVC, animated: true, completion: nil)
+        
     }
     
     

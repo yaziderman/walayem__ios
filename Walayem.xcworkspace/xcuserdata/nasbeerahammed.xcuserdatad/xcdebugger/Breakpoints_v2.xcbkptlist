@@ -199,22 +199,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6BB71EF6-C092-45BD-B975-62B8511A1AD9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Walayem/UserViewControllers/DiscoverTableViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "611"
-            endingLineNumber = "611"
-            landmarkName = "handleNetworkError(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "2950B51F-39FB-4721-9DA7-5D5728E39205"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -744,7 +728,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "124B4D05-3718-4A33-B169-DB612FA1793A"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Walayem/UserViewControllers/SignupViewController.swift"
@@ -757,7 +741,7 @@
             <Locations>
                <Location
                   uuid = "124B4D05-3718-4A33-B169-DB612FA1793A - ce8a7b08102742fb"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (FacebookLogin.LoginResult) -&gt; () in Walayem.SignupViewController.signupViaFb(__C.UIButton) -&gt; ()"
@@ -772,7 +756,7 @@
                </Location>
                <Location
                   uuid = "124B4D05-3718-4A33-B169-DB612FA1793A - ce8a7b08102742fb"
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "closure #1 (FacebookLogin.LoginResult) -&gt; () in Walayem.SignupViewController.signupViaFb(__C.UIButton) -&gt; ()"
@@ -792,7 +776,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "AE37209C-E861-446C-A5D8-0CA51EA226E8"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Walayem/UserViewControllers/SignupViewController.swift"
@@ -801,6 +785,22 @@
             startingLineNumber = "300"
             endingLineNumber = "300"
             landmarkName = "signupViaFb(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0922D556-D005-437E-BAB9-A7BCF1FDE6E7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Walayem/ChangePhoneViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "verify(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

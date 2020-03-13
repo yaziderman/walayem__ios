@@ -95,7 +95,10 @@ class LanguageSelectionViewController: UIViewController {
                 self.removeFromParentViewController()
             }
         })
+        dismiss(animated: true, completion: nil)
     }
+
+    
 
     /*
     // MARK: - Navigation
