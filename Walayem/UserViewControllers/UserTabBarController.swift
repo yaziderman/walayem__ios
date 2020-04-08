@@ -68,21 +68,20 @@ class UserTabBarController: UITabBarController{
         if(session == nil)
         {
             self.tabBar.items![4].title = "Log In"
-//            self.tabBar.items![4].image?.imageAsset = UIImage(named:"login_grey.png")
+//        self.tabBar.items![4].image?.imageAsset = UIImage(named:"login_grey.png")
         }
         else
         {
             self.tabBar.items![4].title = "Profile"
         }
-        
     }
     
     func setupTabBar(){
+        
         //hide divider
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
         UITabBar.appearance().backgroundColor = UIColor.white
-        
         
         //show shadow
         tabBar.layer.shadowColor = UIColor.black.cgColor
@@ -103,12 +102,11 @@ class UserTabBarController: UITabBarController{
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
         StaticLinker.previosSeletedTab = self.selectedIndex
-        print("--------oooooooooooooooooo-------\(StaticLinker.previosSeletedTab)")
         
         switch UIDevice.current.userInterfaceIdiom {
            case .phone:
                // It's an iPhone
-            print("phone----------------------------------------------------------------------")
+            print("It's an iPhone")
             
             
             if self.selectedIndex == 4 {
@@ -127,6 +125,8 @@ class UserTabBarController: UITabBarController{
            case .pad:
            print("pad")
                // It's an iPad
+
+           print("It's an iPhone")
            
 //           if self.selectedIndex == 4 {
 //

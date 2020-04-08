@@ -17,8 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Oai-X0-g6K">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="color" red="0.36951097849999998" green="0.90207427740000001" blue="0.79985219240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="260" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dZI-7y-IzS">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="109" width="414" height="787"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mainHomeTableViewCell" rowHeight="293" id="ihE-h2-jjN" customClass="HomeTableViewCell" customModule="Walayem" customModuleProvider="target">
@@ -50,7 +55,7 @@
                                                     </constraints>
                                                 </stackView>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="100" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" prefetchingEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8O-nJ-vKg">
-                                                    <rect key="frame" x="15" y="49" width="399" height="240"/>
+                                                    <rect key="frame" x="0.0" y="49" width="414" height="240"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" relation="lessThanOrEqual" constant="240" id="Qmz-Za-Vyf"/>
@@ -59,11 +64,11 @@
                                                         <size key="itemSize" width="50" height="50"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                        <inset key="sectionInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mealDayCell1" id="6hy-hd-Vdq">
-                                                            <rect key="frame" x="0.0" y="28" width="228" height="184"/>
+                                                            <rect key="frame" x="16" y="28" width="228" height="184"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kCo-7i-J5Y">
                                                                 <rect key="frame" x="0.0" y="0.0" width="228" height="184"/>
@@ -99,7 +104,7 @@
                                                             </collectionViewCellContentView>
                                                         </collectionViewCell>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="7777" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cell2" id="ve1-1A-NfM">
-                                                            <rect key="frame" x="238" y="50" width="100" height="140"/>
+                                                            <rect key="frame" x="254" y="50" width="100" height="140"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="hDQ-pS-lQc">
                                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="140"/>
@@ -127,7 +132,7 @@
                                                             <size key="customSize" width="100" height="140"/>
                                                         </collectionViewCell>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cell3" id="Ut7-rn-gph">
-                                                            <rect key="frame" x="348" y="45" width="150" height="150"/>
+                                                            <rect key="frame" x="364" y="45" width="150" height="150"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" horizontalHuggingPriority="249" insetsLayoutMarginsFromSafeArea="NO" id="7CN-Xg-ldv">
                                                                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
@@ -164,7 +169,7 @@
                                                             <size key="customSize" width="150" height="150"/>
                                                         </collectionViewCell>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="recommendedCell0" id="hOm-DZ-9JJ" customClass="HomeCollectionViewCell" customModule="Walayem" customModuleProvider="target">
-                                                            <rect key="frame" x="508" y="3" width="334" height="234"/>
+                                                            <rect key="frame" x="524" y="3" width="334" height="234"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6Nl-CZ-k3U">
                                                                 <rect key="frame" x="0.0" y="0.0" width="334" height="234"/>
@@ -224,7 +229,7 @@
                                                             </connections>
                                                         </collectionViewCell>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cuisinesCell4" id="bmN-BE-KZj">
-                                                            <rect key="frame" x="852" y="0.0" width="100" height="130"/>
+                                                            <rect key="frame" x="868" y="0.0" width="100" height="130"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DQa-SD-Lol">
                                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
@@ -266,7 +271,7 @@
                                                             <size key="customSize" width="100" height="130"/>
                                                         </collectionViewCell>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="tagCell" id="JQs-lk-QNQ">
-                                                            <rect key="frame" x="862" y="140" width="80" height="80"/>
+                                                            <rect key="frame" x="878" y="140" width="80" height="80"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Dqc-S8-not">
                                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -297,7 +302,7 @@
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="K8O-nJ-vKg" firstAttribute="leading" secondItem="Q8U-AE-ZCH" secondAttribute="leadingMargin" constant="-5" id="Ljg-gm-ybe"/>
+                                                <constraint firstItem="K8O-nJ-vKg" firstAttribute="leading" secondItem="Q8U-AE-ZCH" secondAttribute="leadingMargin" constant="-20" id="Ljg-gm-ybe"/>
                                                 <constraint firstAttribute="bottom" secondItem="K8O-nJ-vKg" secondAttribute="bottom" constant="4" id="Sg7-5o-Ne4"/>
                                                 <constraint firstItem="fah-nZ-tQC" firstAttribute="leading" secondItem="Q8U-AE-ZCH" secondAttribute="leadingMargin" constant="-5" id="b7U-cz-p07"/>
                                                 <constraint firstItem="K8O-nJ-vKg" firstAttribute="top" secondItem="fah-nZ-tQC" secondAttribute="bottom" constant="10" id="edw-IW-xyb"/>
@@ -383,22 +388,28 @@
                                     <constraint firstAttribute="height" constant="90" id="RDj-A2-62p"/>
                                 </constraints>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Oai-X0-g6K">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="color" red="0.36951097849999998" green="0.90207427740000001" blue="0.79985219240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We operate currently in Abu Dhabi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaB-6a-a0c">
+                                <rect key="frame" x="0.0" y="88" width="414" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.36951097849999998" green="0.90207427740000001" blue="0.79985219240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Oai-X0-g6K" firstAttribute="top" secondItem="Io6-65-Rfy" secondAttribute="top" id="5E6-IW-qZI"/>
+                            <constraint firstItem="dZI-7y-IzS" firstAttribute="top" secondItem="gaB-6a-a0c" secondAttribute="bottom" id="5hY-6b-c8r"/>
                             <constraint firstItem="0vI-pa-xod" firstAttribute="trailing" secondItem="aAK-pw-AgJ" secondAttribute="trailing" id="Aeb-cV-3Kl"/>
                             <constraint firstItem="0vI-pa-xod" firstAttribute="bottom" secondItem="aAK-pw-AgJ" secondAttribute="bottom" id="IuX-S0-ui1"/>
                             <constraint firstItem="Oai-X0-g6K" firstAttribute="height" secondItem="aAK-pw-AgJ" secondAttribute="height" multiplier="1.12138" id="ND4-Rl-LMl"/>
+                            <constraint firstItem="gaB-6a-a0c" firstAttribute="top" secondItem="aAK-pw-AgJ" secondAttribute="top" id="O2D-ft-Nu8"/>
                             <constraint firstItem="dZI-7y-IzS" firstAttribute="trailing" secondItem="aAK-pw-AgJ" secondAttribute="trailing" id="Ock-Zb-NIc"/>
+                            <constraint firstItem="gaB-6a-a0c" firstAttribute="leading" secondItem="aAK-pw-AgJ" secondAttribute="leading" id="P85-xT-dJX"/>
+                            <constraint firstItem="gaB-6a-a0c" firstAttribute="trailing" secondItem="aAK-pw-AgJ" secondAttribute="trailing" id="V7S-Lj-MSk"/>
                             <constraint firstItem="0vI-pa-xod" firstAttribute="leading" secondItem="aAK-pw-AgJ" secondAttribute="leading" id="YBl-8P-qib"/>
                             <constraint firstItem="Oai-X0-g6K" firstAttribute="width" secondItem="aAK-pw-AgJ" secondAttribute="width" id="ctR-mM-j6a"/>
-                            <constraint firstItem="dZI-7y-IzS" firstAttribute="top" secondItem="aAK-pw-AgJ" secondAttribute="top" id="e6l-iz-fBF"/>
+                            <constraint firstItem="dZI-7y-IzS" firstAttribute="top" secondItem="aAK-pw-AgJ" secondAttribute="top" constant="21" id="e6l-iz-fBF"/>
                             <constraint firstItem="dZI-7y-IzS" firstAttribute="leading" secondItem="aAK-pw-AgJ" secondAttribute="leading" id="hcE-Pw-Saa"/>
                             <constraint firstAttribute="bottom" secondItem="dZI-7y-IzS" secondAttribute="bottom" id="oAb-LH-QfN"/>
                             <constraint firstItem="Oai-X0-g6K" firstAttribute="leading" secondItem="aAK-pw-AgJ" secondAttribute="leading" id="vlP-of-o4Q"/>
@@ -442,6 +453,6 @@
         <image name="bookmark" width="15" height="19"/>
         <image name="foodImageEmpty" width="512" height="512"/>
         <image name="house.fill" catalog="system" width="64" height="52"/>
-        <image name="launchScreen2" width="203" height="423"/>
+        <image name="launchScreen2" width="135.33332824707031" height="282"/>
     </resources>
 </document>

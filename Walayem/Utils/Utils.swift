@@ -12,9 +12,7 @@ class Utils{
     public static var SHOW_NEWDISH = false
     public static var ADDED_FOODTYPE = ""
     public static var DELAY_TIME = 15
-    
     public static var NOTIFIER_KEY = "NOTIFIER_KEY"
-    
     
     static func formatDate(_ date: String) -> String {
         let dateFormatter = DateFormatter()
@@ -144,7 +142,7 @@ class Utils{
         userDefaults.synchronize()
     }
     
-    
+        
     
     static func addChefInfoInNavigationBar(nav: UINavigationController){
     }
@@ -197,6 +195,24 @@ class Utils{
     
     static func notifyRefresh() {
         NotificationCenter.default.post(name: NSNotification.Name.init(NOTIFIER_KEY), object: nil);
+    }
+    
+    static func openWhatsapp(name: String){
+        let urlWhats = "whatsapp://send?phone=+971585668800&abid=12354&text=Hi, I am \(name)"
+        if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
+            if let whatsappURL = URL(string: urlString) {
+                if UIApplication.shared.canOpenURL(whatsappURL){
+                    if #available(iOS 10.0, *) {
+                        UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
+                    } else {
+                        UIApplication.shared.openURL(whatsappURL)
+                    }
+                }
+                else {
+                    print("Install Whatsapp")
+                }
+            }
+        }
     }
     
 //    static func getView(_ identifier: String) -> UIView? {

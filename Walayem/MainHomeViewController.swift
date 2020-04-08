@@ -32,93 +32,112 @@ class MainHomeViewController: UIViewController {
          UIImage(named: "bookmark.jpg")!
      ]
     
+    var activityIndicator: UIActivityIndicatorView!
+    var spinnerView = UIView()
+    
+    func showSpinner(){
+        spinnerView = getSpinnerView()
+        self.view.addSubview(spinnerView)
+    }
+    
+    func hideSpinner(){
+        spinnerView.removeFromSuperview()
+    }
     
     override func viewDidLoad() {
-           super.viewDidLoad()
-        
-        
-        
+        super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        mActivityIndicator.startAnimating()
+        showSpinner()
+        mActivityIndicator.stopAnimating()
         setupRefreshControl()
         getPromoted()
         getCuisines()
+    
+        tableView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(handleTapAnimation)))
        
     }
     
+    @objc func handleTapAnimation(){
+        print("handleTapAnimation")
+    }
+    
     private func getPromoted(){
-            let params : [String: Any] = ["partner_id": partnerId ?? 0]
+        let params : [String: Any] = ["partner_id": partnerId ?? 0]
+        
+        RestClient().requestPromotedApi(WalayemApi.homeRecommendation, params) { (result, error) in
+            self.tableView.refreshControl?.endRefreshing()
+            self.mActivityIndicator.stopAnimating()
+            self.hideSpinner()
             
-            RestClient().requestPromotedApi(WalayemApi.homeRecommendation, params) { (result, error) in
-                self.tableView.refreshControl?.endRefreshing()
-                self.mActivityIndicator.stopAnimating()
+            if(result != nil){
+            
+            if (result == nil || result!["result"] == nil) {
+                if result!["error"] != nil{
+                    self.showSorryAlertWithMessage(result!["error"] as! String)
+                }
+                return
+            }
                 
-                if result!["result"] == nil {
-                    if result!["error"] != nil{
-//                        self.tableView.deleteRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
-                        self.showSorryAlertWithMessage(result!["error"] as! String)
-                    }
+            if result!["result"] != nil {
+                let data = result!["result"] as! [String: Any]
+                let status_api = data["status"] as? Int
+                
+                if let error = error{
+                    self.handleNetworkError(error)
                     return
                 }
-                
-                
-                
-                if result!["result"] != nil {
-                    let data = result!["result"] as! [String: Any]
-                    let status_api = data["status"] as? Int
+                else if let status = status_api, status == 0{
+                    print("Status Value------------->\(status)")
+                    return
+                }else{
+                    self.recommendedMeals.removeAll()
+                    self.todays_meals.removeAll()
+                    self.mealsURLs.removeAll()
+                    self.recommendMealURLs.removeAll()
                     
-                    if let error = error{
-                        self.handleNetworkError(error)
-                        return
+                    if let best_sellers = data["best_sellers"] as? [Any]{
+                        for best_seller in best_sellers{
+                            let best_seller = PromotedItem(records: best_seller as! [String : Any])
+                            self.bestSellers.append(best_seller)
+                        }
                     }
-                    else if let status = status_api, status == 0{
-                        print("STatus Value------------->\(status)")
-                        return
-                    }else{
-                        self.recommendedMeals.removeAll()
-                        self.todays_meals.removeAll()
-                        self.mealsURLs.removeAll()
-                        self.recommendMealURLs.removeAll()
-                        
-                        if let best_sellers = data["best_sellers"] as? [Any]{
-                            for best_seller in best_sellers{
-                                let best_seller = PromotedItem(records: best_seller as! [String : Any])
-                                self.bestSellers.append(best_seller)
-                            }
+                    if let recommendedMeals = data["recommended"] as? [Any]{
+                        for recommended in recommendedMeals{
+                            let recommend = PromotedItem(records: recommended as! [String : Any])
+                            self.recommendedMeals.append(recommend)
+                            
+                            let id = recommend.item_details?.id
+                            let url = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(id ?? 0)/image")
+                            self.recommendMealURLs.append(url!)
+                            
                         }
-                        if let recommendedMeals = data["recommended"] as? [Any]{
-                            for recommended in recommendedMeals{
-                                let recommend = PromotedItem(records: recommended as! [String : Any])
-                                self.recommendedMeals.append(recommend)
-                                
-                                let id = recommend.item_details?.id
-                                let url = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(id ?? 0)/image")
-                                self.recommendMealURLs.append(url!)
-                                
-                            }
-                        }
-                        if let todaysMeals = data["todays_meals"] as? [Any]{
-                            for meal in todaysMeals {
-                                let todays_meal = PromotedItem(records: meal as! [String : Any])
-                                self.todays_meals.append(todays_meal)
-                                let id = todays_meal.item_details?.id
-                                let url = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(id ?? 0)/image")
-                                self.mealsURLs.append(url!)
-                            }
-                        }
-                }
-                
-                    self.tableView.reloadData()
-                    
-                    
-                    if let advertisment_image = data["advertisment_image"] as? Int, advertisment_image == 0{
-                        print(advertisment_image)
-                        print("no image available")
                     }
+                    if let todaysMeals = data["todays_meals"] as? [Any]{
+                        for meal in todaysMeals {
+                            let todays_meal = PromotedItem(records: meal as! [String : Any])
+                            self.todays_meals.append(todays_meal)
+                            let id = todays_meal.item_details?.id
+                            let url = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(id ?? 0)/image")
+                            self.mealsURLs.append(url!)
+                        }
+                    }
+            }
+            
+                self.tableView.reloadData()
+                
+                
+                if let advertisment_image = data["advertisment_image"] as? Int, advertisment_image == 0{
+                    print(advertisment_image)
+                    print("no image available")
                 }
             }
+            }
+            else{
+                self.showSorryAlertWithMessage("No Internet Connection!")
+            }
         }
+    }
     
     private func handleNetworkError(_ error: NSError){
            if error.userInfo[NSLocalizedDescriptionKey] != nil{
@@ -169,7 +188,6 @@ class MainHomeViewController: UIViewController {
         for index in 0...cuisines.count - 1{
             if selectedCuisine?.id == cuisines[index].id{
                 let indexPath = IndexPath(row: index, section: 0)
-//                collectionView?.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
                 break
             }
         }
@@ -182,21 +200,22 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     private func setupRefreshControl(){
-           let refreshControl = UIRefreshControl()
-           if #available(iOS 10.0, *){
-               tableView.refreshControl = refreshControl
-           }else{
-               tableView.addSubview(refreshControl)
-           }
-           
-           refreshControl.addTarget(self, action: #selector(refreshData(sender:)), for: .valueChanged)
-       }
+        let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor.colorPrimary
+        if #available(iOS 10.0, *){
+            tableView.refreshControl = refreshControl
+        }else{
+            tableView.addSubview(refreshControl)
+        }
        
-       @objc private func refreshData(sender: UIRefreshControl){
-           // reset filter
-            getPromoted()
-        
-       }
+        refreshControl.addTarget(self, action: #selector(refreshData(sender:)), for: .valueChanged)
+        }
+       
+   @objc private func refreshData(sender: UIRefreshControl){
+       // reset filter
+        getPromoted()
+    
+   }
        
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -297,6 +316,26 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+//        switch UIDevice.current.userInterfaceIdiom {
+//           case .phone:
+//               // It's an iPhone
+//            print("It's an iPhone")
+//
+//           case .pad:
+//           print("pad")
+//               // It's an iPad
+//
+//           case .unspecified:
+//           print("unspecified")
+//                   // Uh, oh! What could it be?
+//            case .tv:
+//            print("tv")
+//            case .carPlay:
+//            print("carplay")
+//        }
+        
+        
         if indexPath.row == 0 {
             if recommendedMeals.count > 0 {
                 return 310
@@ -329,6 +368,52 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
             return 0
         }
         return 90
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+            if indexPath.row == 1{
+                var frame = cell.contentView.frame
+                    UIView.animate(withDuration: 1.5, delay: 0, options: [.curveEaseInOut], animations: {
+                    frame.origin.x = -80
+                    cell.contentView.frame = frame
+                })
+            }
+            
+           if indexPath.row == 5{
+               var frame = cell.contentView.frame
+               UIView.animate(withDuration: 1.5, delay: 0, options: .curveEaseIn, animations: {
+                    frame.origin.y = -50
+                    cell.contentView.frame = frame
+               })
+            
+            }
+               
+   
+//          if indexPath.row == 4{
+//          var frame = cell.contentView.frame
+//          UIView.animate(withDuration: 1.5, delay: 0, options: .curveEaseInOut, animations: {
+//              frame.origin.x = -20
+//              cell.contentView.frame = frame
+//          })
+//
+//
+//        UIView.animate(withDuration: 1.5, delay: 1.5, options: .curveEaseInOut, animations: {
+//            frame.origin.x = +10
+//            cell.contentView.frame = frame
+//        })
+//
+//        UIView.animate(withDuration: 1.5, delay: 3, options: .curveEaseInOut, animations: {
+//            frame.origin.x = -20
+//            cell.contentView.frame = frame
+//        })
+//
+//
+//        UIView.animate(withDuration: 1.5, delay: 4.5, options: .curveEaseInOut, animations: {
+//            frame.origin.x = +10
+//            cell.contentView.frame = frame
+//        })
+//    }
     }
     
     

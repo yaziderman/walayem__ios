@@ -156,14 +156,17 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 }
                 else {
                     PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
+
+                        Utils.setUserDefaults(value: verificationID ?? "", key: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
+                        
                             if let error = error {
                                 self.progressAlert?.dismiss(animated: false, completion: {
                                     self.showMessagePrompt(error.localizedDescription)
                                 })
                                 return
                             }
+                            print("VERRRRR---- :\(verificationID)")
                         })
-//
                 }
                 
                 

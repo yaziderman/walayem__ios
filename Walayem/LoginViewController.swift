@@ -62,6 +62,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             self.loadUserDetails()
         }
     }
+    
     @IBAction func showPasswordPressed(_ sender: Any) {
         if showPassword.isEnabled{
             passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
@@ -255,7 +256,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         
         OdooClient.sharedInstance().searchRead(model: "res.partner", domain: [], fields: fields, offset: 0, limit: 1, order: "name ASC") { (result, error) in
             if error != nil{
-                let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+                let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as? String
                 print (errmsg)
                 self.progressAlert?.dismiss(animated: true, completion: {
                     self.showMessagePrompt("Passwords donot match")

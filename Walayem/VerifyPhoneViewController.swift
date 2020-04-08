@@ -87,12 +87,26 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate {
         let code = codeTextField.text ?? ""
         
         if code.count == 6{
+            
+            
+//            activityIndicator.startAnimating()
+//            PhoneAuthProvider.provider().verifyPhoneNumber(self.user!.phone ?? "", uiDelegate: nil, completion: { (verificationID, error) in
+//                          if let error = error {
+//                              self.showMessagePrompt(error.localizedDescription)
+//                              return
+//                          }
+//                Utils.setUserDefaults(value: verificationID, key: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
+//                      })
+//            
+            
+            
             guard let verificationID = UserDefaults.standard.string(forKey: UserDefaultsKeys.FIREBASE_VERIFICATION_ID) else {
                 return
             }
             
             activityIndicator.startAnimating()
-            let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: code)
+            let credential =
+            PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: code)
             Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
                 if let error = error {
                     self.activityIndicator.stopAnimating()

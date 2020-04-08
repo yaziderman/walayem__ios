@@ -60,6 +60,10 @@
 	<string>Allows you to take photos to add to your profile or foods</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allows you to add photos to your profile or foods</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

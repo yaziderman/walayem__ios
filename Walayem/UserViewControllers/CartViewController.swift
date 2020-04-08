@@ -35,6 +35,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     @IBOutlet weak var addressIcon: UIImageView!
     @IBOutlet weak var orderForLabel: UILabel!
     @IBOutlet weak var orderView: UIView!
+//  @IBOutlet weak var abuDhabiOnlyText: UILabel!
+//   @IBOutlet weak var contactUsBtn: UIButton!
     
     var delegate: CartViewDelegate? = nil
     
@@ -101,6 +103,14 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 //        self.present(alert, animated: true, completion: nil)
 //    }
     
+    @IBAction func contactWhatsApp(_ sender: UIButton) {
+//        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+//        if(session == nil){
+//            let name = "Anonymous"}
+//        else{
+            Utils.openWhatsapp(name: user?.name ?? "Anonymous")
+//        }
+    }
     @IBAction func placeOrder(_ sender: UIButton) {
         let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
                 
@@ -248,6 +258,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 
     }
     
+    @IBOutlet weak var cAddressView: UIView!
     
     @objc func updateFav()
     {
@@ -256,12 +267,14 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
         if(session == nil)
         {
+            self.addressView.isHidden = true
             self.addressNameLabel.isHidden = true
             self.addressDetailLabel.isHidden = true
             self.addAddressButton.isHidden = true
         }
         else
         {
+            self.addressView.isHidden = false
             self.addressNameLabel.isHidden = false
             self.addressDetailLabel.isHidden = false
             self.addAddressButton.isHidden = false
@@ -659,12 +672,14 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         {
             return
         }
-        
-        
-        
-        cartItems[section].opened = !cartItems[section].opened!
-        
+
+        self.cartItems[section].opened = !self.cartItems[section].opened!
+//        UIView.animate(withDuration: 1.0, delay: 0, options:.beginFromCurrentState, animations: {
+
+//            self.tableView.reloadSections([section], with: .fade)
+//        })
         tableView.reloadSections([section], with: .automatic)
+//        cartItems[section].opened = !cartItems[section].opened!
     }
     
     // MARK: CartFoodFooter delegate

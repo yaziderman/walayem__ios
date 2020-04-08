@@ -32,6 +32,19 @@ class ChefTableViewController: UIViewController {
     
     @IBOutlet weak var timePickerButton: UIButton!
     @IBOutlet weak var locationPickButton: UIButton!
+    
+    var spinnerView = UIView()
+        
+     func showSpinner(){
+         spinnerView = getSpinnerView()
+         self.view.addSubview(spinnerView)
+     }
+    
+     func hideSpinner(){
+         spinnerView.removeFromSuperview()
+     }
+        
+    
     @IBAction func locationPickClicked(_ sender: Any) {
         
 //        if ((StaticLinker.discoverViewController?.addressList) != nil){
@@ -276,6 +289,7 @@ class ChefTableViewController: UIViewController {
 //        scheduleButton.setAttributedTitle(attribute, for: .normal)
         Utils.setupNavigationBar(nav: self.navigationController!)
         showActivityIndicator()
+        showSpinner()
         getChefs()
         StaticLinker.chefViewController = self
         
@@ -364,6 +378,7 @@ class ChefTableViewController: UIViewController {
     
     private func setupRefreshControl(){
         let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor.colorPrimary
         if #available(iOS 10.0, *){
             tableView.refreshControl = refreshControl
         }else{
@@ -388,6 +403,7 @@ class ChefTableViewController: UIViewController {
         let params : [String: Int] = ["page": 1]
         isLoading = true
         RestClient().request(WalayemApi.discoverChef, params) { (result, error) in
+            self.hideSpinner()
             self.hideActivityIndicator()
             self.tableView.refreshControl?.endRefreshing()
             self.isLoading = false
@@ -513,7 +529,7 @@ class ChefTableViewController: UIViewController {
                }
            }
            else{
-               showSorryAlertWithMessage("Some thing wrong in backend ...!")
+               showSorryAlertWithMessage("Please check your internet connection...!")
            }
        }
     
@@ -531,6 +547,7 @@ class ChefTableViewController: UIViewController {
             activityIndicator.hidesWhenStopped = true
         }
         tableView.backgroundView = activityIndicator
+        activityIndicator.color = UIColor.colorPrimary
         tableView.separatorStyle = .none
         activityIndicator.startAnimating()
     }
@@ -601,6 +618,8 @@ extension ChefTableViewController: UITableViewDataSource, UITableViewDelegate{
                 getMoreChefs()
                 
                 let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+
+                activityIndicator.color = UIColor.colorPrimary
                 activityIndicator.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44)
                 activityIndicator.startAnimating()
                 

@@ -61,11 +61,37 @@ extension UIAlertController {
 
 
 extension UIViewController {
+    
+    func getSpinnerView() -> UIView{
+        let aView = UIView(frame: self.view.frame)
+        aView.backgroundColor = UIColor.white
+        let v = self.view.frame
+        let h = v.height
+        let w = v.width
+        let imageView = UIImageView.init(frame: CGRect(x: w/2 - 30, y: h/2 - 60 - 50, width: 60, height: 120))
+        imageView.image = #imageLiteral(resourceName: "logo")
+        var frame = imageView.frame
+        UIView.animate(withDuration: 2, delay: 0.2, options: .repeat, animations: {
+             frame.origin.y = h/2 - 130 - 50
+            imageView.alpha = 0.1
+             imageView.frame = frame
+        }) { (success) in
+            UIView.animate(withDuration: 2) {
+                frame.origin.y = h/2 - 130 + 50
+                imageView.alpha = 1
+            }
+        }
+        aView.addSubview(imageView)
+        self.view.addSubview(aView)
+        return aView
+    }
+    
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
+    
 
     @objc func dismissKeyboard() {
         view.endEditing(true)

@@ -39,7 +39,17 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
 //    var lastIndex
 //    var indexPath = []
 //    var cartItems = [CartItem]()
-    
+    var spinnerView = UIView()
+       
+    func showSpinner(){
+        spinnerView = getSpinnerView()
+        self.view.addSubview(spinnerView)
+    }
+   
+    func hideSpinner(){
+        spinnerView.removeFromSuperview()
+    }
+       
     @IBAction func locationPickClicked(_ sender: Any) {
         let alert = UIAlertController(title: "", message: "Select an address", preferredStyle: .actionSheet)
         
@@ -133,20 +143,13 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         datePickerButton.setTitle("ASAP", for: .normal)
         setupSearch()
         setupRefreshControl()
-
+        showSpinner()
 
         tableView.delegate = self
         tableView.dataSource = self
         collectionView.delegate = self
         collectionView.dataSource = self
         
-//        collectionView.contentInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-//        tableView.tableHeaderView?.frame.size.height = 0
-//        collectionView.frame.size.height = 0
-        
-//        popularView.frame.size = CGRect(x: 15, y: 90, width: popularView.frame.width, height: popularView.frame.height).size
-        
-
         showActivityIndicator()
 //        getRecommendations()
 //        getFoods()
@@ -461,6 +464,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     
     private func setupRefreshControl(){
         let refreshControl = UIRefreshControl()
+        refreshControl.tintColor = UIColor.colorPrimary
         if #available(iOS 10.0, *){
             tableView.refreshControl = refreshControl
         }else{
@@ -472,13 +476,13 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     
     @objc private func refreshData(sender: UIRefreshControl){
         // reset filter
+//        showSpinner()
         selectedTags.removeAll()
         selectedCuisines.removeAll()
         filterBarButton.removeBadge()
         mCells.removeAll()
-        
-//        getRecommendations()
         getFoods()
+        getMoreFoods()
         isSearching = false
     }
     
@@ -514,7 +518,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         let params : [String: Int] = ["page": 1]
         isLoading = true
         RestClient().request(WalayemApi.discoverFood, params) { (result, error) in
-            
+            self.hideSpinner()
             self.hideActivityIndicator()
             self.tableView.refreshControl?.endRefreshing()
             self.isLoading = false
@@ -556,6 +560,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         let params : [String: Int] = ["page": page + 1]
         isLoading = true
         self.hideActivityIndicator()
+        self.hideSpinner()
         self.tableView.refreshControl?.endRefreshing()
         RestClient().request(WalayemApi.discoverFood, params) { (result, error) in
             self.isLoading = false
@@ -586,6 +591,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     private func searchFood(){
         isSearching = true
         self.hideActivityIndicator()
+        self.hideSpinner()
         self.tableView.refreshControl?.endRefreshing()
         let tagIds: [Int] = selectedTags.map { (tag) -> Int in
             (tag.id ?? 0)
@@ -750,6 +756,7 @@ extension DiscoverTableViewController: UITableViewDelegate, UITableViewDataSourc
                 getMoreFoods()
 
                 let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+                activityIndicator.color = UIColor.colorPrimary
                 activityIndicator.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44)
                 activityIndicator.startAnimating()
 

@@ -12,6 +12,9 @@ class ChefTabController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        print(self.selectedIndex)
+        print("viewDidLoad 1  \(self.selectedIndex)")
         NotificationCenter.default.addObserver(self, selector: #selector(setBadge(_:)), name: NSNotification.Name(rawValue: "UpdateBadgeNotification"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(showOrderDetail(_:)), name: NSNotification.Name(rawValue: "OrderStateNotification"), object: nil)
         setupTabBar()
@@ -63,6 +66,53 @@ class ChefTabController: UITabBarController {
         }
     
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if self.selectedIndex == 2 {
+            if let currentViewController = self.selectedViewController as? UISplitViewController{
+               guard let orderVC = UIStoryboard.init(name: "ChefProfile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChefProfileTableViewController") as? ChefProfileTableViewController else {
+                   fatalError("Unexpected view controller")
+               }
+               let navigationVC = UINavigationController(rootViewController: orderVC)
+               currentViewController.showDetailViewController(navigationVC, sender: self)
+            }
+        }
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+
+            print("viewDidLoad  tabBar  \(self.selectedIndex)")
+            switch UIDevice.current.userInterfaceIdiom {
+               case .phone:
+                   // It's an iPhone
+                print("It's an iPhone")
+               
+               case .pad:
+               print("pad")
+                   // It's an iPad
+               
+               
+               if self.selectedIndex == 2 {
+
+                      if let currentViewController = self.selectedViewController as? UISplitViewController{
+                         guard let orderVC = UIStoryboard.init(name: "ChefProfile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChefProfileTableViewController") as? ChefProfileTableViewController else {
+                             fatalError("Unexpected view controller")
+                         }
+                         let navigationVC = UINavigationController(rootViewController: orderVC)
+                         currentViewController.showDetailViewController(navigationVC, sender: self)
+                      }
+              }
+
+               case .unspecified:
+               print("unspecified")
+                       // Uh, oh! What could it be?
+                case .tv:
+                print("tv")
+                case .carPlay:
+                print("carplay")
+            }
+            
+        }
 
     /*
     // MARK: - Navigation

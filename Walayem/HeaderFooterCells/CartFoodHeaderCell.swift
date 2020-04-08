@@ -38,7 +38,10 @@ class CartFoodHeaderCell: UITableViewHeaderFooterView {
     }
     
     @objc private func selectAction(sender: UITapGestureRecognizer){
-        delegate?.toggleSection(section: section!)
+        UIView.animate(withDuration: 0.5) {
+            
+            self.delegate?.toggleSection(section: self.section!)
+        }
     }
     
     private func updateUI(){

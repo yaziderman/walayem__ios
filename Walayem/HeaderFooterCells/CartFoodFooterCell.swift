@@ -19,7 +19,7 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
     
     let iconView: UIImageView = {
         let imageView = UIImageView()
-        let icon = UIImage(named: "shoppingBag")
+        let icon = UIImage(named: "money")
         imageView.image = icon
         imageView.tintColor = UIColor.silver
         imageView.contentMode = .scaleAspectFit
@@ -45,7 +45,7 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
         let imageView = UIImageView()
         let icon = UIImage(named: "information")
         imageView.image = icon
-        imageView.tintColor = UIColor.silver
+        imageView.tintColor = UIColor.colorPrimary
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -68,7 +68,7 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
         let textField = UILabel()
         textField.textColor = UIColor.lightGray
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.text = "Home delivery"
+        textField.text = "Cash on delivery"
         textField.font = textField.font.withSize(16)
         return textField
     }()

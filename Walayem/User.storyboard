@@ -182,7 +182,7 @@ that easy</string>
                                                     <action selector="back:" destination="rQG-dw-03r" eventType="touchUpInside" id="c39-vK-baU"/>
                                                 </connections>
                                             </button>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="88G-a7-dNl">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="88G-a7-dNl">
                                                 <rect key="frame" x="123" y="76" width="129" height="98"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="129" id="CDz-9M-bhi"/>
@@ -573,7 +573,7 @@ we’ll send you instructions</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b7A-EN-In5" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="719.5"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoNoText" translatesAutoresizingMaskIntoConstraints="NO" id="SO9-qP-dnO">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="SO9-qP-dnO">
                                                 <rect key="frame" x="170" y="55" width="35" height="74"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="BQv-HG-pEK"/>
@@ -1448,7 +1448,7 @@ scan of your Emirates ID</string>
         <image name="google" width="192" height="192"/>
         <image name="idEmpty" width="100" height="100"/>
         <image name="loginPrior" width="157" height="181"/>
-        <image name="logo" width="128" height="98"/>
+        <image name="logo" width="135" height="282"/>
         <image name="logoNoText" width="23" height="45"/>
         <image name="verify" width="14" height="14"/>
     </resources>
