@@ -46,7 +46,7 @@ class ChefReviewViewController: UIViewController {
         
         let url = URL(string: "mailto:\(email!)")
         if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+                UIApplication.shared.open(url!, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         } else {
             // Fallback on earlier versions
             UIApplication.shared.openURL(url!)
@@ -74,7 +74,7 @@ class ChefReviewViewController: UIViewController {
         supportButton.layer.cornerRadius = 15
         supportButton.layer.masksToBounds = true
         
-        NotificationCenter.default.addObserver(self, selector:#selector(checkChefVerification), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(checkChefVerification), name: UIApplication.willEnterForegroundNotification, object: nil)
         checkChefVerification()
     }
     
@@ -165,4 +165,9 @@ class ChefReviewViewController: UIViewController {
     }
     */
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

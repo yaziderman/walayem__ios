@@ -36,7 +36,7 @@ class ChefOrderDetailViewController: UIViewController {
     @IBAction func callCustomer(_ sender: UIButton) {
         if let orderDetail = orderDetail, let address = orderDetail.address{
             if let url = URL(string: "tel://\(address.phone!)"){
-                UIApplication.shared.open(url, options: [:], completionHandler: { (Success) in
+                UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: { (Success) in
                     print("Make call \(Success)")
                 })
             }
@@ -165,7 +165,7 @@ class ChefOrderDetailViewController: UIViewController {
                         if let whatsappURL = URL(string: urlString) {
                             if UIApplication.shared.canOpenURL(whatsappURL){
                                 if #available(iOS 10.0, *) {
-                                          UIApplication.shared.open(whatsappURL, options: [:],completionHandler: nil)
+                                          UIApplication.shared.open(whatsappURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]),completionHandler: nil)
                                 } else {
                                     UIApplication.shared.openURL(whatsappURL)
                                 }
@@ -262,7 +262,7 @@ class ChefOrderDetailViewController: UIViewController {
     
     private func showActivityIndicator(){
         if activityIndicator == nil{
-            activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            activityIndicator = UIActivityIndicatorView(style: .gray)
             activityIndicator.hidesWhenStopped = true
         }
         tableView.backgroundView = activityIndicator
@@ -281,7 +281,7 @@ class ChefOrderDetailViewController: UIViewController {
     }
     
     private func showProgressAlert() -> UIActivityIndicatorView{
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.hidesWhenStopped = true
         let rightBarButton = UIBarButtonItem(customView: activityIndicator)
         self.navigationItem.setRightBarButton(rightBarButton, animated: true)
@@ -386,4 +386,9 @@ extension ChefOrderDetailViewController: UITableViewDataSource, UITableViewDeleg
     }
 
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

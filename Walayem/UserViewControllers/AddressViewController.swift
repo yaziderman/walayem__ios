@@ -248,7 +248,7 @@ class AddressViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func showActivityIndicator() -> UIActivityIndicatorView{
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.hidesWhenStopped = true
         let rightBarButton = UIBarButtonItem(customView: activityIndicator)
         self.navigationItem.setRightBarButton(rightBarButton, animated: true)

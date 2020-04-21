@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let fcmMessageIDKey = "fcm.message_id"
     var firebaseToken: String = ""
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         let navigationBarAppearance = UINavigationBar.appearance()
         // Change navigationbar items color
@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
    
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let google = GIDSignIn.sharedInstance().handle(url)
         
         let facebook = ApplicationDelegate.shared.application(app, open: url, options: options)

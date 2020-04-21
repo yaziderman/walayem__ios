@@ -292,8 +292,8 @@ class ChefSignupViewController: UIViewController, UITextFieldDelegate{
         
         let views = ["pending" : alert.view, "indicator" : indicator]
         
-        var constraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[indicator]-(-50)-|", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views)
-        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|[indicator]|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: views)
+        var constraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[indicator]-(-50)-|", options: NSLayoutConstraint.FormatOptions.alignAllCenterY, metrics: nil, views: views)
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|[indicator]|", options: NSLayoutConstraint.FormatOptions.alignAllCenterX, metrics: nil, views: views)
         alert.view.addConstraints(constraints)
         
         indicator.isUserInteractionEnabled = false

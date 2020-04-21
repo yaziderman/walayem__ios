@@ -187,7 +187,7 @@ class ChangePhoneViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func showActivityIndicator() -> UIActivityIndicatorView{
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.hidesWhenStopped = true
         
         let rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)

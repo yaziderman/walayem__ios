@@ -69,7 +69,7 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         
         let emailImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
         emailImageView.image = UIImage(named: "email")
-        emailImageView.contentMode = UIViewContentMode.left
+        emailImageView.contentMode = UIView.ContentMode.left
         emailTextField.leftViewMode = .always
         emailTextField.leftView = emailImageView
         
@@ -91,7 +91,7 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
     // MARK: Private methods
     
     private func showActivityIndicator() -> UIActivityIndicatorView{
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.hidesWhenStopped = true
         
         let rightBarItem = UIBarButtonItem(customView: activityIndicator)

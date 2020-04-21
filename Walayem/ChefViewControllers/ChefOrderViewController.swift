@@ -79,13 +79,13 @@ class ChefOrderViewController: UIViewController {
     }
     
     private func addViewControllerAsChild(childViewController: UITableViewController){
-        addChildViewController(childViewController)
+        addChild(childViewController)
         
         containerView.addSubview(childViewController.view)
         childViewController.view.frame = containerView.bounds
         childViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
-        childViewController.didMove(toParentViewController: self)
+        childViewController.didMove(toParent: self)
     }
 
 

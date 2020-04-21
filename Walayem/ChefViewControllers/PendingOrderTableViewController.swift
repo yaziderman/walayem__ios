@@ -119,7 +119,7 @@ class PendingOrderTableViewController: UITableViewController, OrderHeaderCellDel
             }
         
             for section in self.sections!{
-                let index = self.sections?.index(where: { (sec) -> Bool in
+                let index = self.sections?.firstIndex(where: { (sec) -> Bool in
                     sec.orderState == section.orderState
                 })
                 if(section.orders.count>0){
@@ -147,7 +147,7 @@ class PendingOrderTableViewController: UITableViewController, OrderHeaderCellDel
     
     private func showActivityIndicator(){
         if activityIndicator == nil{
-            activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            activityIndicator = UIActivityIndicatorView(style: .gray)
             activityIndicator.color = UIColor.colorPrimary
             activityIndicator.hidesWhenStopped = true
         }

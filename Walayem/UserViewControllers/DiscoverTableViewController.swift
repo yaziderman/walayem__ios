@@ -647,7 +647,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         present(alert, animated: true, completion: nil)
     }
     private func showActivityIndicator(){
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.color = UIColor.colorPrimary
         activityIndicator.hidesWhenStopped = true
         
@@ -755,7 +755,7 @@ extension DiscoverTableViewController: UITableViewDelegate, UITableViewDataSourc
             if indexPath.row == foods.count - 1 && page < totalPage!{
                 getMoreFoods()
 
-                let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+                let activityIndicator = UIActivityIndicatorView(style: .gray)
                 activityIndicator.color = UIColor.colorPrimary
                 activityIndicator.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44)
                 activityIndicator.startAnimating()

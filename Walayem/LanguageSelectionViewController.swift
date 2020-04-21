@@ -34,7 +34,7 @@ class LanguageSelectionViewController: UIViewController {
 
            if let phoneNumber = phone{
                if let url = URL(string: "tel://\(engContact)") {
-                UIApplication.shared.open(url, options: [:], completionHandler: { (Success) in
+                UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: { (Success) in
                     print("Make call \(Success)")
                 })
             }
@@ -55,7 +55,7 @@ class LanguageSelectionViewController: UIViewController {
 
         if let phoneNumber = phone{
             if let url = URL(string: "tel://\(phoneNumber)") {
-             UIApplication.shared.open(url, options: [:], completionHandler: { (Success) in
+             UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: { (Success) in
                  print("Make call \(Success)")
              })
          }
@@ -90,9 +90,9 @@ class LanguageSelectionViewController: UIViewController {
         }, completion: {(finished : Bool) in
             if(finished)
             {
-                self.willMove(toParentViewController: nil)
+                self.willMove(toParent: nil)
                 self.view.removeFromSuperview()
-                self.removeFromParentViewController()
+                self.removeFromParent()
             }
         })
         dismiss(animated: true, completion: nil)
@@ -110,4 +110,9 @@ class LanguageSelectionViewController: UIViewController {
     }
     */
 
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

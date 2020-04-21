@@ -332,7 +332,7 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
     private func showHideProgress(isLoading: Bool) {
         if isLoading{
             if activityIndicator == nil{
-                activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+                activityIndicator = UIActivityIndicatorView(style: .gray)
                 activityIndicator?.hidesWhenStopped = true
                 let rightBarButton = UIBarButtonItem(customView: activityIndicator!)
                 navigationItem.rightBarButtonItem = rightBarButton
@@ -347,8 +347,11 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
     
     // MARK: UIImagePickerControllerDelegate
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let selectedImage = info[UIImagePickerControllerEditedImage] as? UIImage else {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
+        guard let selectedImage = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.editedImage)] as? UIImage else {
             fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
         }
 
@@ -394,7 +397,7 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
         textField.resignFirstResponder()
         return true
     }
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
         textField.resignFirstResponder()
     }
     
@@ -538,4 +541,14 @@ extension ChefFoodViewController: UIViewControllerPreviewingDelegate{
         show(viewControllerToCommit, sender: self)
     }
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
 }

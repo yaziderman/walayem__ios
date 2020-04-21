@@ -73,7 +73,7 @@ class HomeViewController: UIViewController{
     }
     
     private func showActivityIndicator(){
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.color = UIColor.colorPrimary
         activityIndicator.hidesWhenStopped = true
         

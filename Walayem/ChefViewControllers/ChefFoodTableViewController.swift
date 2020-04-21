@@ -300,7 +300,7 @@ class ChefFoodTableViewController: UIViewController {
     
     private func showActivityIndicator(){
         if activityIndicator == nil{
-            activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            activityIndicator = UIActivityIndicatorView(style: .gray)
             activityIndicator.color = UIColor.colorPrimary
             activityIndicator.hidesWhenStopped = true
         }

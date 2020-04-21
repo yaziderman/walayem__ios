@@ -172,13 +172,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         
         let emailImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
         emailImageView.image = UIImage(named: "email")
-        emailImageView.contentMode = UIViewContentMode.left
+        emailImageView.contentMode = UIView.ContentMode.left
         emailTextField.leftViewMode = .always
         emailTextField.leftView = emailImageView
         
         let lockImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
         lockImageView.image = UIImage(named: "lock")
-        lockImageView.contentMode = UIViewContentMode.left
+        lockImageView.contentMode = UIView.ContentMode.left
         passwordTextField.leftViewMode = .always
         passwordTextField.leftView = lockImageView
         
@@ -345,8 +345,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         
         let views = ["pending" : alert.view, "indicator" : indicator]
         
-        var constraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[indicator]-(-50)-|", options: NSLayoutFormatOptions.alignAllCenterY, metrics: nil, views: views)
-        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|[indicator]|", options: NSLayoutFormatOptions.alignAllCenterX, metrics: nil, views: views)
+        var constraints = NSLayoutConstraint.constraints(withVisualFormat: "V:[indicator]-(-50)-|", options: NSLayoutConstraint.FormatOptions.alignAllCenterY, metrics: nil, views: views)
+        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|[indicator]|", options: NSLayoutConstraint.FormatOptions.alignAllCenterX, metrics: nil, views: views)
         alert.view.addConstraints(constraints)
         
         indicator.isUserInteractionEnabled = false

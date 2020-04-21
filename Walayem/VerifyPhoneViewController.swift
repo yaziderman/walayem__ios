@@ -57,8 +57,8 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate {
         codeTextField.becomeFirstResponder()
         codeTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         codeTextField.textColor = UIColor.textColor
         codeTextField.placeHolderColor = UIColor.placeholderColor
@@ -68,7 +68,7 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate {
     
     @objc private func keyboardWillShow(notification: Notification){
         if let userInfo = notification.userInfo{
-            guard let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect else{
+            guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else{
                 fatalError("Cannot convert to CGRect")
             }
             if self.view.frame.height == UIScreen.main.bounds.height{

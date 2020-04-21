@@ -79,7 +79,7 @@ class Utils{
     }
     
     static func encodeImage(_ image: UIImage) -> String?{
-        let imageData = UIImagePNGRepresentation(image)
+        let imageData = image.pngData()
         return imageData?.base64EncodedString(options: .lineLength64Characters)
     }
     
@@ -203,7 +203,7 @@ class Utils{
             if let whatsappURL = URL(string: urlString) {
                 if UIApplication.shared.canOpenURL(whatsappURL){
                     if #available(iOS 10.0, *) {
-                        UIApplication.shared.open(whatsappURL, options: [:], completionHandler: nil)
+                        UIApplication.shared.open(whatsappURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                     } else {
                         UIApplication.shared.openURL(whatsappURL)
                     }
@@ -225,4 +225,9 @@ class Utils{
 //        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
 //        present(alert, animated: true, completion: nil)
 //    }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

@@ -542,7 +542,7 @@ class ChefTableViewController: UIViewController {
     
     private func showActivityIndicator(){
         if activityIndicator == nil{
-            activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            activityIndicator = UIActivityIndicatorView(style: .gray)
             activityIndicator.color = UIColor.colorPrimary
             activityIndicator.hidesWhenStopped = true
         }
@@ -617,7 +617,7 @@ extension ChefTableViewController: UITableViewDataSource, UITableViewDelegate{
             if indexPath.row == chefs.count - 1 && page < totalPage!{
                 getMoreChefs()
                 
-                let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+                let activityIndicator = UIActivityIndicatorView(style: .gray)
 
                 activityIndicator.color = UIColor.colorPrimary
                 activityIndicator.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44)

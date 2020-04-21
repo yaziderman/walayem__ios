@@ -121,7 +121,7 @@ extension NSMutableAttributedString {
 
     func setColor(color: UIColor, forText stringValue: String) {
         let range: NSRange = self.mutableString.range(of: stringValue, options: .caseInsensitive)
-        self.addAttribute(NSAttributedStringKey.foregroundColor, value: color, range: range)
+        self.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
     }
 
 }
@@ -190,7 +190,7 @@ extension UIViewController {
 extension UIButton {
     func shake() {
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
 //        animation.repeatDuration = 1.0
         animation.repeatCount = 1
         animation.duration = 0.9

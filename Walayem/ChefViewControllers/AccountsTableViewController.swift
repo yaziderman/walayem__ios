@@ -87,7 +87,7 @@ class AccountsTableViewController: UITableViewController, OrderHeaderCellDelegat
     
     private func showActivityIndicator(){
         if activityIndicator == nil{
-            activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            activityIndicator = UIActivityIndicatorView(style: .gray)
             activityIndicator.hidesWhenStopped = true
         }
         tableView.backgroundView = activityIndicator

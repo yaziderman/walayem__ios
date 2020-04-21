@@ -243,8 +243,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         tableView.delegate = self
         tableView.dataSource = self
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         Utils.setupNavigationBar(nav: self.navigationController!)
         
         let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.checkAction))
@@ -435,14 +435,14 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     
     @objc private func keyboardWillShow(notification: Notification){
         if let userInfo = notification.userInfo{
-            guard let keyboardFrame = userInfo[UIKeyboardFrameEndUserInfoKey] as? CGRect else{
+            guard let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else{
                 fatalError("Cannot convert to CGRect")
             }
             print(keyboardFrame.height)
             
             do
             {
-                let contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardFrame.height - self.tabBarController!.tabBar.frame.height, 0.0);
+                let contentInsets = UIEdgeInsets.init(top: 0.0, left: 0.0, bottom: keyboardFrame.height - self.tabBarController!.tabBar.frame.height, right: 0.0);
                 UIView.animate(withDuration: 0.5) {
                     self.tableView.contentInset = contentInsets;
                     self.tableView.scrollIndicatorInsets = contentInsets;
