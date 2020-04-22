@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="95s-Cd-9GM">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -587,13 +587,13 @@ start by adding one down below</string>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: * required fields" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlX-2E-Uuj">
                                                         <rect key="frame" x="0.0" y="256" width="327" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" red="0.81176470590000005" green="0.81176470590000005" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="lQo-h6-bbE" secondAttribute="trailing" constant="24" id="6bS-CG-tRA"/>
                                             <constraint firstItem="lQo-h6-bbE" firstAttribute="top" secondItem="VPn-c5-jFC" secondAttribute="top" constant="32" id="8Yp-yS-4sE"/>
@@ -623,7 +623,7 @@ start by adding one down below</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="jx1-sa-dvr" firstAttribute="trailing" secondItem="FcE-9U-MSL" secondAttribute="trailing" id="2V9-ba-3cg"/>
                             <constraint firstItem="FcE-9U-MSL" firstAttribute="top" secondItem="XdS-9W-GaV" secondAttribute="bottom" id="5xD-Yu-VHw"/>
@@ -700,7 +700,7 @@ Walayem</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Pvq-GJ-yyL" firstAttribute="centerX" secondItem="XO6-8g-1K6" secondAttribute="centerX" id="7eQ-RX-vR0"/>
                             <constraint firstItem="BbD-mj-2Ry" firstAttribute="centerX" secondItem="XO6-8g-1K6" secondAttribute="centerX" id="EM9-vL-rbk"/>
@@ -758,6 +758,7 @@ Walayem</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ufS-5l-uE0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </navigationBar>
                     <connections>
                         <segue destination="RLz-5N-n5R" kind="relationship" relationship="rootViewController" id="rCf-ng-ZMz"/>

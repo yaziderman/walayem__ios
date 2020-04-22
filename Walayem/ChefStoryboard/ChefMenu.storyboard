@@ -218,7 +218,7 @@ button and add some items</string>
                             </constraints>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="pfw-Da-w72" firstAttribute="top" secondItem="YzA-2c-0fd" secondAttribute="bottom" constant="8" id="H0Q-0w-ug4"/>
                         <constraint firstItem="YzA-2c-0fd" firstAttribute="centerX" secondItem="5tT-VI-VjZ" secondAttribute="centerX" id="W47-V1-KPC"/>
@@ -616,7 +616,7 @@ button and add some items</string>
                                 </variation>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Jpg-E5-CXl" firstAttribute="width" secondItem="0Uq-oo-b4I" secondAttribute="width" id="ajf-gk-dXt"/>
                             <constraint firstItem="Jpg-E5-CXl" firstAttribute="height" secondItem="A01-5v-0WY" secondAttribute="height" priority="250" id="kar-aq-CjA"/>
@@ -773,7 +773,7 @@ button and add some items</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G52-tD-alO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1023" y="-445"/>
+            <point key="canvasLocation" x="983" y="-525"/>
         </scene>
         <!--Select Cuisine-->
         <scene sceneID="uDT-nk-xW0">
@@ -849,6 +849,6 @@ button and add some items</string>
         <image name="timer" width="13" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="FKH-XN-cDH"/>
+        <segue reference="xGp-qv-a8M"/>
     </inferredMetricsTieBreakers>
 </document>

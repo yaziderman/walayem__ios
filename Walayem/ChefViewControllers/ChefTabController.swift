@@ -31,7 +31,7 @@ class ChefTabController: UITabBarController {
         //hide divider
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
-        UITabBar.appearance().backgroundColor = UIColor.white
+        UITabBar.appearance().backgroundColor = UIColor.init(light: .white, dark: .black)
         
         
         //show shadow

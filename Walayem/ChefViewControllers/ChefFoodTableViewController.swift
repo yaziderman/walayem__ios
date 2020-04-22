@@ -44,6 +44,7 @@ class ChefFoodTableViewController: UIViewController {
         tableView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 0, right: 0)
         tableView.tableFooterView = UIView()
         Utils.setupNavigationBar(nav: self.navigationController!)
+        collectionView.backgroundColor = UIColor.init(light: .white, dark: .black)
         
         initialCustomDate()
         NotificationCenter.default.addObserver(self, selector: #selector(addedDish(_:)), name: NSNotification.Name(rawValue: "AddedDish"), object: nil)
@@ -356,14 +357,15 @@ extension ChefFoodTableViewController: UICollectionViewDelegate, UICollectionVie
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FoodCategCell", for: indexPath) as? FoodCategCollectionViewCell else {
             fatalError("Unexpected cell")
         }
+        cell.backgroundColor = UIColor.init(light: .white, dark: .black)
         cell.titleLabel.text = foodCategs[indexPath.row]
         cell.iconImageView.image = UIImage(named: "discover")?.withRenderingMode(.alwaysTemplate)
         cell.iconImageView.tintColor = UIColor.colorPrimary
         if indexPath.row == selectedCateg{
-            cell.titleLabel.textColor = UIColor.steel
+            cell.titleLabel.textColor = UIColor.init(light: UIColor.steel, dark: UIColor.silver)
             cell.iconImageView.isHidden = false
         }else{
-            cell.titleLabel.textColor = UIColor.silverTen
+            cell.titleLabel.textColor = UIColor.init(light: UIColor.silverTen, dark: UIColor.steel)
             cell.iconImageView.isHidden = true
         }
         return cell

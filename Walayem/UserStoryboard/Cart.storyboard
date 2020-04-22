@@ -408,7 +408,7 @@
                                             <rect key="frame" x="0.0" y="629" width="375" height="35"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We operate currently in Abu Dhabi." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WB0-D6-Loh">
-                                                    <rect key="frame" x="20" y="0.0" width="299" height="35"/>
+                                                    <rect key="frame" x="20" y="0.0" width="305" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="yic-UG-ji6"/>
                                                     </constraints>
@@ -417,10 +417,10 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ggg-SB-t6c">
-                                                    <rect key="frame" x="319" y="0.0" width="35" height="35"/>
+                                                    <rect key="frame" x="325" y="0.0" width="29" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="GQT-G3-hdp"/>
-                                                        <constraint firstAttribute="width" constant="35" id="HlE-e9-ZwE"/>
+                                                        <constraint firstAttribute="width" constant="29" id="HlE-e9-ZwE"/>
                                                     </constraints>
                                                     <inset key="imageEdgeInsets" minX="0.0" minY="7" maxX="7" maxY="7"/>
                                                     <state key="normal" image="wp_icon"/>

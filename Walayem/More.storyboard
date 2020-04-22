@@ -58,7 +58,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="JTg-eJ-kNk" firstAttribute="leading" secondItem="HJF-p0-kSW" secondAttribute="leading" id="Qr0-ha-v9t"/>
                             <constraint firstItem="JTg-eJ-kNk" firstAttribute="trailing" secondItem="HJF-p0-kSW" secondAttribute="trailing" id="cU4-CC-k5v"/>
@@ -127,7 +127,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="M5d-5n-N1Z" firstAttribute="leading" secondItem="cYb-HM-nc0" secondAttribute="leading" id="8rB-kK-bEQ"/>
                             <constraint firstItem="Twl-UW-7Za" firstAttribute="width" secondItem="q4e-mm-a5X" secondAttribute="width" id="JkI-CI-icf"/>
@@ -272,7 +272,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.019466307014226913" green="0.0039262250065803528" blue="0.0039230235852301121" alpha="0.54662990196078431" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="3at-AU-zhl" firstAttribute="centerY" secondItem="swl-VQ-xlA" secondAttribute="centerY" id="D8O-fx-SQf"/>
                             <constraint firstItem="3at-AU-zhl" firstAttribute="top" secondItem="S8b-qO-fSD" secondAttribute="bottom" constant="-9.5" id="E9P-b1-LBw"/>

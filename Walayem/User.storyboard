@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7sD-th-m69">
-    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -201,7 +201,7 @@ that easy</string>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="gkv-Od-Jlk"/>
                                                                 </constraints>
-                                                                <color key="textColor" red="0.70588235290000001" green="0.72549019609999998" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" enablesReturnKeyAutomatically="YES"/>
                                                             </textField>
@@ -224,7 +224,7 @@ that easy</string>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="8gG-qj-ZET"/>
                                                                 </constraints>
-                                                                <color key="textColor" red="0.70588235290000001" green="0.72549019609999998" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                             </textField>
@@ -393,7 +393,7 @@ that easy</string>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="P3d-YL-VUT" firstAttribute="bottom" secondItem="MdQ-RB-jV0" secondAttribute="bottom" id="28X-9X-I9b"/>
                             <constraint firstItem="AlU-km-1RG" firstAttribute="height" secondItem="MdQ-RB-jV0" secondAttribute="height" priority="250" id="9zu-QI-gwW"/>
@@ -1251,7 +1251,7 @@ scan of your Emirates ID</string>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="CyZ-gk-rWx"/>
                                                                 </constraints>
-                                                                <color key="textColor" red="0.70588235290000001" green="0.72549019609999998" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                             </textField>
@@ -1270,7 +1270,7 @@ scan of your Emirates ID</string>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="9ZJ-nQ-0c1"/>
                                                                 </constraints>
-                                                                <color key="textColor" red="0.70588235290000001" green="0.72549019609999998" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="email"/>
                                                             </textField>
@@ -1289,7 +1289,7 @@ scan of your Emirates ID</string>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="g4G-Dv-CDb"/>
                                                                 </constraints>
-                                                                <color key="textColor" red="0.70588235290000001" green="0.72549019609999998" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" keyboardType="phonePad" returnKeyType="next" enablesReturnKeyAutomatically="YES" textContentType="tel"/>
                                                             </textField>
@@ -1308,7 +1308,7 @@ scan of your Emirates ID</string>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="MHD-RD-k3L"/>
                                                                 </constraints>
-                                                                <color key="textColor" red="0.70588235290000001" green="0.72549019609999998" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
                                                             </textField>
@@ -1455,7 +1455,7 @@ scan of your Emirates ID</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="rMc-2J-veb"/>
-        <segue reference="rZk-oN-2GR"/>
-        <segue reference="gbp-bA-3SQ"/>
+        <segue reference="0aj-Gx-qSv"/>
+        <segue reference="zhq-LA-1dd"/>
     </inferredMetricsTieBreakers>
 </document>
