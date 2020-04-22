@@ -146,6 +146,8 @@ class OrderTableViewController: UITableViewController, UISplitViewControllerDele
         let header = UIView()
         header.backgroundColor = UIColor(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
         
+        header.backgroundColor = UIColor.init(light: .white, dark: .black)
+        
         let imageView = UIImageView(image: UIImage(named: "calendar"))
         imageView.frame.size = CGSize(width: 22, height: 22)
         imageView.contentMode = .scaleAspectFit

@@ -281,7 +281,7 @@ class OrderViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         if self.tableView(tableView, numberOfRowsInSection: section) > 0{
             let footerView = UIView()
-            footerView.backgroundColor = UIColor.white
+            footerView.backgroundColor = UIColor.init(light: .white, dark: .black)
             
             let titleLabel = UILabel()
             titleLabel.text = (orderDetail?.note.isEmpty)! ? "No note added" : orderDetail?.note
@@ -295,7 +295,7 @@ class OrderViewController: UITableViewController {
             
             footerView.addSubview(imageView)
             footerView.addSubview(titleLabel)
-            
+//            footerView.backgroundColor = UIColor.init(light: .white, dark: .black)
             imageView.heightAnchor.constraint(equalToConstant: 16).isActive = true
             imageView.widthAnchor.constraint(equalToConstant: 16).isActive = true
             

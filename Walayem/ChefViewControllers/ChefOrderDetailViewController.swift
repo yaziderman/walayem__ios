@@ -374,6 +374,7 @@ extension ChefOrderDetailViewController: UITableViewDataSource, UITableViewDeleg
             let time = Int(max(1, round( Double(totalTime) / 60.0)))
             footerCell.preparationTimeLabel.text = "\(time) hour(s) preparation time"
         }
+        footerCell.backgroundColor = UIColor.init(light: .white, dark: .black)
         return footerCell.contentView
     }
     

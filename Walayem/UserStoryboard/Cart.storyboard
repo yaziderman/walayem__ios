@@ -362,6 +362,7 @@
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="cxy-Cb-w7f" secondAttribute="bottom" id="1SK-3S-Skf"/>
+                                                        <constraint firstItem="cxy-Cb-w7f" firstAttribute="height" secondItem="xRB-f3-w9E" secondAttribute="height" multiplier="0.543307" id="57f-mk-kd3"/>
                                                         <constraint firstItem="xRB-f3-w9E" firstAttribute="leading" secondItem="cxy-Cb-w7f" secondAttribute="trailing" constant="17" id="D4G-iz-DAN"/>
                                                         <constraint firstItem="xRB-f3-w9E" firstAttribute="leading" secondItem="cxy-Cb-w7f" secondAttribute="trailing" constant="17" id="Qvy-Em-Omc"/>
                                                         <constraint firstItem="cxy-Cb-w7f" firstAttribute="leading" secondItem="86T-il-Okc" secondAttribute="leading" id="Sxm-PJ-Vdt"/>
