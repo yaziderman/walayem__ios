@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import FirebaseMessaging
+var user: User?
 
 extension UIViewController{
     
+    
     func onSessionExpired(showSkip: Bool = true) {
+        
+       logout()
         User().clearUserDefaults()
-//        DatabaseHandler().clearDatabase()
+        DatabaseHandler().clearDatabase()
         OdooClient.destroy()
         
         let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
@@ -29,6 +34,29 @@ extension UIViewController{
         StaticLinker.showSkip = showSkip
         
         self.present(navigationController, animated: true, completion: nil)
+    }
+    
+    private func logout(){
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        let client = OdooClient.sharedInstance()
+        client.logout(completionHandler: { (result, error) in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            if let error = error{
+                let errmsg = error.userInfo[NSLocalizedDescriptionKey] as? String
+                print(errmsg!)
+                return
+            }
+            user = User().getUserDefaults()
+            Messaging.messaging().unsubscribe(fromTopic: "alli")
+            Messaging.messaging().unsubscribe(fromTopic: "\(user!.partner_id!)i")
+            Messaging.messaging().unsubscribe(fromTopic: "alluseri")
+            User().clearUserDefaults()
+            OdooClient.destroy()
+            StaticLinker.mainVC?.selectedIndex = 0
+            Utils.notifyRefresh()
+
+            
+        })
     }
     
 }

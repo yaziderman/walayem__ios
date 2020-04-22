@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ztq-0G-sZ2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ztq-0G-sZ2">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -695,23 +695,23 @@
                                                                     </subviews>
                                                                 </stackView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Or8-6D-0iq">
-                                                                    <rect key="frame" x="230.66666666666663" y="46" width="163.33333333333337" height="68"/>
+                                                                    <rect key="frame" x="298.66666666666669" y="80" width="95.333333333333314" height="34"/>
                                                                     <subviews>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzp-Cx-EGt">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="68" height="68"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="34" height="34"/>
                                                                             <state key="normal" image="subtract"/>
                                                                             <connections>
                                                                                 <action selector="subtractItem:" destination="bHb-jm-Dta" eventType="touchUpInside" id="Ffc-QQ-VRy"/>
                                                                             </connections>
                                                                         </button>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xng-e0-7m8">
-                                                                            <rect key="frame" x="76.000000000000028" y="0.0" width="11.333333333333329" height="68"/>
+                                                                            <rect key="frame" x="42" y="0.0" width="11.333333333333336" height="34"/>
                                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                                             <color key="textColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wbk-cB-DR3">
-                                                                            <rect key="frame" x="95.333333333333343" y="0.0" width="68" height="68"/>
+                                                                            <rect key="frame" x="61.333333333333314" y="0.0" width="34" height="34"/>
                                                                             <state key="normal" image="add"/>
                                                                             <connections>
                                                                                 <action selector="addItem:" destination="bHb-jm-Dta" eventType="touchUpInside" id="hQq-zM-cyq"/>
@@ -893,10 +893,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MkJ-hX-dEG" userLabel="DialogView">
-                                <rect key="frame" x="23" y="185" width="330" height="399"/>
+                                <rect key="frame" x="23" y="185" width="368" height="399"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrh-uK-YNr">
-                                        <rect key="frame" x="0.0" y="0.0" width="330" height="54"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="368" height="54"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notes" translatesAutoresizingMaskIntoConstraints="NO" id="ghf-oo-JBK">
                                                 <rect key="frame" x="20" y="15" width="22" height="24"/>
@@ -905,13 +905,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate Chef" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpD-NH-9Iz">
-                                                <rect key="frame" x="54" y="0.0" width="256" height="54"/>
+                                                <rect key="frame" x="54" y="0.0" width="294" height="54"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="textColor" red="0.3529411764705882" green="0.37647058823529411" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SbK-2o-Gc6">
-                                                <rect key="frame" x="290" y="16" width="20" height="22"/>
+                                                <rect key="frame" x="328" y="16" width="20" height="22"/>
                                             </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -953,17 +953,17 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPh-Uy-kI4" userLabel="Divider">
-                                        <rect key="frame" x="0.0" y="130" width="330" height="1"/>
+                                        <rect key="frame" x="0.0" y="130" width="368" height="1"/>
                                         <color key="backgroundColor" red="0.88235294117647056" green="0.8901960784313725" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="XnB-M7-O2K"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fev-go-s7I" customClass="RatingControl" customModule="Walayem" customModuleProvider="target">
-                                        <rect key="frame" x="95" y="303" width="140" height="24"/>
+                                        <rect key="frame" x="95" y="213" width="178" height="114"/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sR7-zQ-mWp">
-                                        <rect key="frame" x="0.0" y="343" width="330" height="56"/>
+                                        <rect key="frame" x="0.0" y="343" width="368" height="56"/>
                                         <color key="backgroundColor" red="0.31372549019607843" green="0.8901960784313725" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="67r-8p-Spq"/>
@@ -977,17 +977,17 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RGx-6O-MAO" userLabel="Divider">
-                                        <rect key="frame" x="0.0" y="186" width="330" height="90"/>
+                                        <rect key="frame" x="0.0" y="186" width="368" height="0.0"/>
                                         <color key="backgroundColor" red="0.88235294119999996" green="0.89019607840000003" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5B-em-tm5">
-                                        <rect key="frame" x="0.0" y="130" width="330" height="146"/>
+                                        <rect key="frame" x="0.0" y="130" width="368" height="56"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yt5-tN-lCZ">
-                                                <rect key="frame" x="0.0" y="4" width="330" height="138"/>
+                                                <rect key="frame" x="0.0" y="4" width="368" height="48"/>
                                                 <subviews>
-                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MGi-7b-0Vq">
-                                                        <rect key="frame" x="0.0" y="0.0" width="330" height="138"/>
+                                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MGi-7b-0Vq">
+                                                        <rect key="frame" x="0.0" y="0.0" width="368" height="48"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                         <color key="textColor" red="0.70588235290000001" green="0.72549019609999998" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -1082,6 +1082,9 @@
             <point key="canvasLocation" x="78" y="107"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="HDH-9h-mnR"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="add" width="34" height="34"/>
         <image name="chef" width="18" height="18"/>
@@ -1096,7 +1099,4 @@
         <image name="subtract" width="34" height="34"/>
         <image name="timer" width="13" height="14"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="HDH-9h-mnR"/>
-    </inferredMetricsTieBreakers>
 </document>
