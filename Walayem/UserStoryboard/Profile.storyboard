@@ -202,7 +202,7 @@
                                                                 <constraint firstAttribute="height" constant="38" id="9zk-iC-WNG"/>
                                                                 <constraint firstAttribute="width" constant="38" id="c4K-gm-zfU"/>
                                                             </constraints>
-                                                            <state key="normal" image="phoneIcon-pdf"/>
+                                                            <state key="normal" image="phone-n"/>
                                                             <connections>
                                                                 <action selector="call:" destination="RLz-5N-n5R" eventType="touchUpInside" id="emr-c0-gkh"/>
                                                             </connections>
@@ -224,7 +224,7 @@
                                                                 <constraint firstAttribute="height" constant="38" id="5QL-S8-1bQ"/>
                                                                 <constraint firstAttribute="width" constant="38" id="mW5-5A-NZl"/>
                                                             </constraints>
-                                                            <state key="normal" image="mailIcon-pdf"/>
+                                                            <state key="normal" image="mail"/>
                                                             <connections>
                                                                 <action selector="email:" destination="RLz-5N-n5R" eventType="touchUpInside" id="kTJ-5y-M7I"/>
                                                             </connections>
@@ -311,7 +311,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="38" id="MSj-2c-ubg"/>
                                                             </constraints>
-                                                            <state key="normal" image="instagramIcon-pdf"/>
+                                                            <state key="normal" image="instagram"/>
                                                             <connections>
                                                                 <action selector="connectInsta:" destination="RLz-5N-n5R" eventType="touchUpInside" id="nRV-p8-rvL"/>
                                                             </connections>
@@ -845,11 +845,11 @@ Walayem</string>
         <image name="gift" width="130" height="143"/>
         <image name="history_small_icon" width="38" height="38"/>
         <image name="info" width="37" height="37"/>
-        <image name="instagramIcon-pdf" width="76" height="76"/>
+        <image name="instagram" width="76" height="76"/>
         <image name="invite" width="36" height="36"/>
         <image name="logout" width="36" height="36"/>
-        <image name="mailIcon-pdf" width="76" height="76"/>
-        <image name="phoneIcon-pdf" width="76" height="76"/>
+        <image name="mail" width="76" height="76"/>
+        <image name="phone-n" width="76" height="76"/>
         <image name="privacy" width="36" height="36"/>
         <image name="profile" width="16" height="18"/>
         <image name="profileEdit" width="36" height="36"/>

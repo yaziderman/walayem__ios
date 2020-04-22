@@ -134,21 +134,14 @@
                             <color key="textColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZQ-Qa-8bl">
-                            <rect key="frame" x="0.0" y="269.5" width="240" height="41"/>
-                            <attributedString key="attributedText">
-                                <fragment content="You don’t have any orders yet, start by searching for food">
-                                    <attributes>
-                                        <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                        <font key="NSFont" metaFont="system" size="17"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don’t have any orders yet, start by searching for food" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZQ-Qa-8bl">
+                            <rect key="frame" x="0.0" y="269.5" width="240" height="31.5"/>
+                            <fontDescription key="fontDescription" name=".SFNSText" family=".SF NS Text" pointSize="14"/>
+                            <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="GsL-Kh-MWn" firstAttribute="centerY" secondItem="X7e-4i-Xsh" secondAttribute="centerY" id="5nm-eJ-93f"/>
                         <constraint firstAttribute="trailing" secondItem="1ZQ-Qa-8bl" secondAttribute="trailing" id="7Xq-2C-6Zd"/>
@@ -908,6 +901,7 @@ Time</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="5fO-ni-x03">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </navigationBar>
                     <connections>
                         <segue destination="Il5-kr-7FO" kind="relationship" relationship="rootViewController" id="P51-Jh-NNP"/>
