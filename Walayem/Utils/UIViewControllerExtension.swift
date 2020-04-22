@@ -35,6 +35,28 @@ extension UIViewController{
         
         self.present(navigationController, animated: true, completion: nil)
     }
+    func onSessionExpiredChef(showSkip: Bool = true) {
+        
+      
+        User().clearUserDefaults()
+        DatabaseHandler().clearDatabase()
+        OdooClient.destroy()
+        
+        let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
+        
+        let navigationController : UINavigationController = UINavigationController.init(rootViewController: viewController);
+        
+        navigationController.setNavigationBarHidden(true, animated: false)
+        if #available(iOS 13.0, *) {
+            navigationController.isModalInPresentation = true
+        } else {
+            // Fallback on earlier versions
+        }
+        StaticLinker.loginNav = navigationController
+        StaticLinker.showSkip = showSkip
+        
+        self.present(navigationController, animated: true, completion: nil)
+    }
     
     private func logout(){
         UIApplication.shared.isNetworkActivityIndicatorVisible = true

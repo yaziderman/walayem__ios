@@ -260,7 +260,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 if errmsg == OdooClient.SESSION_EXPIRED{
-//                    self.onSessionExpired()
+//              self.onSessionExpired()
                 }
                 print (errmsg)
                 return
