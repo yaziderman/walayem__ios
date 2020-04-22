@@ -53,7 +53,7 @@ class FoodDetailViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Add more", style: .default, handler: { (action) in
                 
             }))
-            alert.addAction(UIAlertAction(title: "Done", style: .destructive, handler: { (action) in
+            alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (action) in
                 self.navigationController?.popViewController(animated: true)
             }))
             

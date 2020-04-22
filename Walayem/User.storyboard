@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7sD-th-m69">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -111,7 +111,7 @@ that easy</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="aCS-pV-rUJ" firstAttribute="top" secondItem="lvl-Bt-4nc" secondAttribute="top" constant="64" id="2yk-tA-J43"/>
                             <constraint firstItem="lvl-Bt-4nc" firstAttribute="trailing" secondItem="XQv-cq-EmJ" secondAttribute="trailing" constant="32" id="36p-4H-rKa"/>
@@ -343,7 +343,7 @@ that easy</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="fvV-Kv-DjX" firstAttribute="top" relation="greaterThanOrEqual" secondItem="z29-m1-bou" secondAttribute="bottom" constant="64" id="6cP-5X-ojI"/>
                                             <constraint firstItem="wv0-iX-UBx" firstAttribute="top" secondItem="NFa-00-SUp" secondAttribute="bottom" constant="48" id="AhB-yu-jix"/>
@@ -506,7 +506,7 @@ we’ll send you instructions</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ugK-GM-uAF" firstAttribute="top" secondItem="oi8-Af-CIz" secondAttribute="bottom" constant="30" id="2HN-nG-VgM"/>
                             <constraint firstItem="ugK-GM-uAF" firstAttribute="centerX" secondItem="7sv-cE-u5V" secondAttribute="centerX" id="79u-dK-7aj"/>
@@ -897,7 +897,7 @@ we’ll send you instructions</string>
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="oKz-g2-X0o" firstAttribute="top" secondItem="Ixp-g0-i9v" secondAttribute="bottom" constant="38" id="0md-Ht-fmp"/>
                                             <constraint firstItem="5KB-Fz-oB4" firstAttribute="leading" secondItem="b7A-EN-In5" secondAttribute="leading" constant="6" id="3CG-2Z-Vyh"/>
@@ -949,6 +949,7 @@ we’ll send you instructions</string>
                                         </variation>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="b7A-EN-In5" firstAttribute="leading" secondItem="vhI-0T-7HG" secondAttribute="leading" id="JxE-Fm-cOP"/>
                                     <constraint firstAttribute="bottom" secondItem="b7A-EN-In5" secondAttribute="bottom" id="LIk-8l-aU6"/>
@@ -957,7 +958,7 @@ we’ll send you instructions</string>
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="b7A-EN-In5" firstAttribute="width" secondItem="SfJ-m5-O0K" secondAttribute="width" id="28w-uG-w6n"/>
                             <constraint firstItem="vhI-0T-7HG" firstAttribute="top" secondItem="2ym-ma-XGK" secondAttribute="top" id="6cP-TQ-A8s"/>
@@ -1092,7 +1093,7 @@ code.</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="enr-03-2Kl" firstAttribute="top" secondItem="69G-NN-F6Z" secondAttribute="bottom" constant="110" id="9RD-qy-u4X"/>
                             <constraint firstItem="voD-p5-f2k" firstAttribute="top" secondItem="enr-03-2Kl" secondAttribute="bottom" constant="16" id="BdC-m4-Gjv"/>
@@ -1181,7 +1182,7 @@ scan of your Emirates ID</string>
                                 <rect key="frame" x="339" y="25.5" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ghR-4a-9hf" firstAttribute="top" secondItem="OVY-WN-4ih" secondAttribute="bottom" constant="80" id="D6J-Po-RtN"/>
                             <constraint firstItem="EaM-lm-TuZ" firstAttribute="centerY" secondItem="OVY-WN-4ih" secondAttribute="centerY" id="LrI-kL-wtM"/>
@@ -1365,7 +1366,7 @@ scan of your Emirates ID</string>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="8Ce-vP-8Rv" firstAttribute="top" secondItem="91V-pU-NIj" secondAttribute="bottom" constant="55" id="C4H-Ma-HaE"/>
                                             <constraint firstItem="tsm-d6-Ewq" firstAttribute="top" secondItem="9PM-9S-JuO" secondAttribute="top" constant="12" id="Jir-bP-VYy"/>
@@ -1453,8 +1454,8 @@ scan of your Emirates ID</string>
         <image name="verify" width="14" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UTf-rf-nrC"/>
-        <segue reference="0aj-Gx-qSv"/>
-        <segue reference="zhq-LA-1dd"/>
+        <segue reference="rMc-2J-veb"/>
+        <segue reference="rZk-oN-2GR"/>
+        <segue reference="gbp-bA-3SQ"/>
     </inferredMetricsTieBreakers>
 </document>

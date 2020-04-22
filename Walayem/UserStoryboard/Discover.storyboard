@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hdw-ES-F0F">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -809,7 +809,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="woZ-RH-97U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2527.1999999999998" y="163.71814092953525"/>
+            <point key="canvasLocation" x="2394" y="140"/>
         </scene>
         <!--Discover-->
         <scene sceneID="g6O-t2-flu">
@@ -825,6 +825,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="550" id="VKi-36-X5L"/>
                                 </constraints>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="HG9-Eo-ekF" userLabel="HeaderView">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -872,7 +873,7 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="C74-iC-8EI" firstAttribute="leading" secondItem="2ew-y2-jtC" secondAttribute="trailing" constant="7" id="A3u-FH-DbC"/>
                                                 <constraint firstItem="2ew-y2-jtC" firstAttribute="top" secondItem="ctN-RJ-gLT" secondAttribute="top" constant="7" id="ATW-ih-Yen"/>
@@ -977,6 +978,7 @@
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="ys6-AW-Gqp"/>
                                             </constraints>
@@ -989,7 +991,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="oTw-G6-yKD" firstAttribute="leading" secondItem="HG9-Eo-ekF" secondAttribute="leading" constant="20" id="Bfq-ms-11t"/>
                                         <constraint firstItem="OKT-7w-FMe" firstAttribute="top" secondItem="ctN-RJ-gLT" secondAttribute="bottom" constant="12" id="KSN-KY-MO2"/>
@@ -1128,7 +1130,7 @@
                                 <sections/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="66c-ki-x9h" firstAttribute="trailing" secondItem="OSb-cM-hxm" secondAttribute="trailing" priority="750" id="D1i-AE-0JK"/>
                             <constraint firstAttribute="bottom" secondItem="OSb-cM-hxm" secondAttribute="bottom" id="S50-jD-EEs"/>
@@ -1160,6 +1162,7 @@
                         <outlet property="locationPickButton" destination="GNs-Hs-Y3V" id="0AE-5L-WP4"/>
                         <outlet property="popularView" destination="PII-TF-p1I" id="MHD-Ll-YvR"/>
                         <outlet property="tableView" destination="OSb-cM-hxm" id="3fo-Fv-Mue"/>
+                        <outlet property="topView" destination="ctN-RJ-gLT" id="xge-37-yzp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fdh-qw-9qM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1176,6 +1179,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="Pn7-z2-10N">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

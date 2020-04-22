@@ -18,6 +18,8 @@ class ChefTableViewController: UIViewController {
     @IBOutlet weak var scheduleButton: UIButton!
     @IBOutlet weak var filterBarButton: UIBarButtonItem!
     var activityIndicator: UIActivityIndicatorView!
+    var dateC = Date()
+    var dateN = Date()
     
     var selectedTags = [Tag]()
     var selectedCuisines = [Cuisine]()
@@ -305,7 +307,7 @@ class ChefTableViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        
+        self.tableView.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
         if let selectedIndexPath = tableView.indexPathForSelectedRow{
             tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
@@ -355,7 +357,7 @@ class ChefTableViewController: UIViewController {
     private func setupSearch(){
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
-                appearance.backgroundColor = .white
+                appearance.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
                 appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
                 navigationItem.standardAppearance = appearance
                 navigationItem.scrollEdgeAppearance = appearance
@@ -635,42 +637,68 @@ extension ChefTableViewController: UITableViewDataSource, UITableViewDelegate{
     //        tableView.setNeedsLayout()
 //            getFoods()
 //            getMoreFoods()
-            getChefs()
-            getMoreChefs()
-            self.tableView.reloadData()
-    //        print("viewWillDisappear")
+//            getChefs()
+//            getMoreChefs()
+//            self.tableView.reloadData()
+            print("viewWillDisappear")
         }
     
 }
 
 extension ChefTableViewController: UISearchResultsUpdating{
     
+    
+    
+    
     func updateSearchResults(for searchController: UISearchController) {
+        
+
+        dateC = Date()
+        let calendar = Calendar.current
+        dateN = calendar.date(byAdding: .second, value: 5, to: dateC)!
+        
         if searchController.isActive{
-            let sb = searchController.searchBar
-            let searchQuery = sb.text!
             
-            let params: [String: Any] = ["search": true, "search_keyword": searchQuery]
-            RestClient().request(WalayemApi.searchChef, params) { (result, error) in
-                if error != nil{
-                    let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
-                    print (errmsg)
-                    return
-                }
-                let value = result!["result"] as! [String: Any]
-                if let status = value["status"] as? Int, status == 0{
-                    return
-                }
-                self.chefs.removeAll()
-                let records = value["data"] as! [Any]
-                for record in records{
-                    let chef = Chef(record: record as! [String: Any])
-                    self.chefs.append(chef)
-                }
-                self.tableView.reloadData()
+        let sb = searchController.searchBar
+        let searchQuery = sb.text!
+        let trimmedString = searchQuery.trimmingCharacters(in: .whitespacesAndNewlines)
+                  
+      
+      var doSearch = false
+      
+        if searchQuery.count >= 1 {
+//            dateC = Date()
+//            if dateC <= dateN{
+                doSearch = true
+//            }
+        }
+            
+//            searchQuery = sb.text!
+//            trimmedString = searchQuery.trimmingCharacters(in: .whitespacesAndNewlines)
+      
+        if doSearch{
+                let params: [String: Any] = ["search": true, "search_keyword": sb.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""]
+                RestClient().request(WalayemApi.searchChef, params) { (result, error) in
+                        if error != nil{
+                            let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+                            print (errmsg)
+                            return
+                        }
+                        let value = result!["result"] as! [String: Any]
+                        if let status = value["status"] as? Int, status == 0{
+                            return
+                        }
+                        self.chefs.removeAll()
+                        let records = value["data"] as! [Any]
+                        for record in records{
+                            let chef = Chef(record: record as! [String: Any])
+                            self.chefs.append(chef)
+                        }
+                        self.tableView.reloadData()
+                    }
+            }else{
+                getChefs()
             }
-        }else{
-            getChefs()
         }
     }
     

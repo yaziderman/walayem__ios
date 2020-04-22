@@ -52,6 +52,23 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     }
     var cartItems = [CartItem]()
     
+//    public var tint: UIColor = {
+//        if #available(iOS 13, *) {
+//            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+//                if UITraitCollection.userInterfaceStyle == .dark {
+//                    /// Return the color for Dark Mode
+//                    return .black
+//                } else {
+//                    /// Return the color for Light Mode
+//                    return .white
+//                }
+//            }
+//        } else {
+//            /// Return a fallback color for iOS 12 and lower.
+//            return .white
+//        }
+//    }()
+    
     // MARK: Actions
     
     @IBAction func unwindToAddressList(sender: UIStoryboardSegue){
@@ -104,12 +121,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 //    }
     
     @IBAction func contactWhatsApp(_ sender: UIButton) {
-//        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
-//        if(session == nil){
-//            let name = "Anonymous"}
-//        else{
             Utils.openWhatsapp(name: user?.name ?? "Anonymous")
-//        }
     }
     @IBAction func placeOrder(_ sender: UIButton) {
         let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
@@ -240,6 +252,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     override func viewDidLoad() {
         super.viewDidLoad()
         setViews()
+        tableView.backgroundColor = tint
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -303,6 +316,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         getCartItems()
         getAddress()
         updateButtonTitle()
+        self.tableView.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
         
         if (delegate != nil){
             
@@ -330,10 +344,10 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
             let time_str = timeFormatter.string(from: date!)
         
             if calendar.isDateInToday(date!) {
-                orderForLabel.text = "today at \(time_str)"
+                orderForLabel.text = "Today at \(time_str)"
             }
             else if calendar.isDateInTomorrow(date!) {
-                orderForLabel.text = "tomorrow at \(time_str)"
+                orderForLabel.text = "Tomorrow at \(time_str)"
             }
             
         }else{
@@ -482,27 +496,6 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     }
     
     private func validateFoods(foods: [Food], completion: @escaping(Bool) -> Void){
-//        let foodIds = foods.map { (food) -> Int in
-//            return food.id
-//        }
-//        let domain = [["id", "in", foodIds], ["paused", "=", true], ["active", "=", false]]
-//        let fields = ["id"]
-//
-//        OdooClient.sharedInstance().searchRead(model: "product.template", domain: domain, fields: fields, offset: 0, limit: 100, order: "name ASC") { (result, error) in
-//            if let _ = error{
-//                completion(false)
-//                return
-//            }
-//            let records = result!["records"] as! [Any]
-//            for record in records{
-//                guard let record = record as? [String: Any] else {
-//                    break;
-//                }
-//                let id = record["id"] as! Int
-//                let _ = self.db.removeFood(foodId: id)
-//            }
-//            completion(true)
-//        }
         
         let params: [String: Any] = [:]
         RestClient().request(WalayemApi.getActiveFoodIds, params) { (result, error) in
@@ -810,7 +803,7 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
         footerView.foods = cartItems[section].chef.foods
         
         footerView.update()
-        
+        footerView.backgroundColor = UIColor.init(light: .white, dark: .black)
         return footerView
     }
     

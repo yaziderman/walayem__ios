@@ -63,8 +63,24 @@ extension UIAlertController {
 extension UIViewController {
     
     func getSpinnerView() -> UIView{
+        
+        let tint: UIColor = {
+            if #available(iOS 13, *) {
+                return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+                    if UITraitCollection.userInterfaceStyle == .dark {
+                        return .black
+                    } else {
+                        return .white
+                    }
+                }
+            } else {
+                return .white
+            }
+        }()
+        
+        
         let aView = UIView(frame: self.view.frame)
-        aView.backgroundColor = UIColor.white
+        aView.backgroundColor = tint
         let v = self.view.frame
         let h = v.height
         let w = v.width
@@ -187,6 +203,42 @@ extension UIViewController {
   }
 }
 
+//public var tint: UIColor = {
+//    if #available(iOS 13, *) {
+//        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+//            if UITraitCollection.userInterfaceStyle == .dark {
+//                /// Return the color for Dark Mode
+//                return .black
+//            } else {
+//                /// Return the color for Light Mode
+//                return .white
+//            }
+//        }
+//    } else {
+//        /// Return a fallback color for iOS 12 and lower.
+//        return .white
+//    }
+//}()
+
+extension UIColor {
+    func getTint()-> UIColor {
+        if #available(iOS 13, *) {
+            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+                if UITraitCollection.userInterfaceStyle == .dark {
+                    /// Return the color for Dark Mode
+                    return .black
+                } else {
+                    /// Return the color for Light Mode
+                    return .white
+                }
+            }
+        } else {
+            /// Return a fallback color for iOS 12 and lower.
+            return .white
+        }
+    }
+}
+
 extension UIButton {
     func shake() {
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
@@ -198,4 +250,26 @@ extension UIButton {
         layer.add(animation, forKey: "shake")
     }
 
+}
+
+
+public extension UIColor {
+
+    /// Creates a color object that generates its color data dynamically using the specified colors. For early SDKs creates light color.
+    /// - Parameters:
+    ///   - light: The color for light mode.
+    ///   - dark: The color for dark mode.
+    convenience init(light: UIColor, dark: UIColor) {
+        if #available(iOS 13.0, tvOS 13.0, *) {
+            self.init { traitCollection in
+                if traitCollection.userInterfaceStyle == .dark {
+                    return dark
+                }
+                return light
+            }
+        }
+        else {
+            self.init(cgColor: light.cgColor)
+        }
+    }
 }

@@ -69,7 +69,7 @@
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="mealDayCell1" id="6hy-hd-Vdq">
                                                             <rect key="frame" x="16" y="28" width="228" height="184"/>
-                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kCo-7i-J5Y">
                                                                 <rect key="frame" x="0.0" y="0.0" width="228" height="184"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
@@ -86,10 +86,10 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="610" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="224" translatesAutoresizingMaskIntoConstraints="NO" id="fgg-bA-7XL">
-                                                                        <rect key="frame" x="2" y="159" width="224" height="24"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="610" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" preferredMaxLayoutWidth="224" id="fgg-bA-7XL">
+                                                                        <rect key="frame" x="2" y="158" width="224" height="24"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                                        <color key="backgroundColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5035692401960784" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
@@ -102,6 +102,7 @@
                                                                     <constraint firstItem="2N1-cm-o5U" firstAttribute="top" secondItem="kCo-7i-J5Y" secondAttribute="top" constant="2" id="pqY-rp-bIl"/>
                                                                 </constraints>
                                                             </collectionViewCellContentView>
+                                                            <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                         </collectionViewCell>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="7777" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cell2" id="ve1-1A-NfM">
                                                             <rect key="frame" x="254" y="50" width="100" height="140"/>
@@ -209,7 +210,7 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
-                                                                        <color key="backgroundColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.50356924020000005" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     </view>
                                                                 </subviews>
                                                                 <constraints>
@@ -424,7 +425,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pg0-O3-oLh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2339.130434782609" y="6.6964285714285712"/>
+            <point key="canvasLocation" x="2200" y="7"/>
         </scene>
         <!--Home-->
         <scene sceneID="eM1-Zu-Ufj">

@@ -89,6 +89,8 @@ class ChefRatingViewController: UIViewController {
                 self.updateUI()
             }
         }
+        
+        self.view.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
     }
     
     // MARK: Private methods

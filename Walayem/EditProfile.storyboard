@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rz3-nl-Jv2">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -80,7 +80,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="20Y-IX-eYd" firstAttribute="top" secondItem="yLC-PY-HoX" secondAttribute="bottom" constant="32" id="FlQ-nU-WEh"/>
                             <constraint firstItem="om7-mj-zgV" firstAttribute="trailing" secondItem="yLC-PY-HoX" secondAttribute="trailing" constant="20" id="hL2-ta-hhG"/>
@@ -301,7 +301,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="meV-mI-xQi" firstAttribute="top" secondItem="dGg-ih-Pdb" secondAttribute="bottom" constant="24" id="3wU-k8-Xah"/>
                             <constraint firstItem="meV-mI-xQi" firstAttribute="leading" secondItem="uG4-kg-tOs" secondAttribute="leading" constant="20" id="LLX-lN-mjB"/>
@@ -404,7 +404,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="uDY-Wo-80Q" firstAttribute="trailing" secondItem="OYU-er-9BR" secondAttribute="trailing" constant="20" id="463-DE-n23"/>
                             <constraint firstItem="KKB-PN-xcR" firstAttribute="top" secondItem="OYU-er-9BR" secondAttribute="bottom" constant="8" id="MeP-2c-bj7"/>
@@ -443,6 +443,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="GuO-cT-Cof">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -486,7 +487,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="G0Z-em-Uhn" secondAttribute="bottom" constant="20" symbolic="YES" id="2Ve-He-xh9"/>
                             <constraint firstItem="G0Z-em-Uhn" firstAttribute="centerX" secondItem="CcC-lM-Za9" secondAttribute="centerX" id="YqS-Zj-DvU"/>

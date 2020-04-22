@@ -15,9 +15,43 @@ enum UIUserInterfaceIdiom : Int {
     case pad // iPad style UI
 }
 
+public enum DefaultStyle {
+
+    public enum Colors {
+
+        public static let label: UIColor = {
+            if #available(iOS 13.0, *) {
+                return .white
+            } else {
+                return .black
+            }
+        }()
+    }
+}
+
+
+public var tint: UIColor = {
+    if #available(iOS 13, *) {
+        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+            if UITraitCollection.userInterfaceStyle == .dark {
+                /// Return the color for Dark Mode
+                return .black
+            } else {
+                /// Return the color for Light Mode
+                return .white
+            }
+        }
+    } else {
+        /// Return a fallback color for iOS 12 and lower.
+        return .white
+    }
+}()
+
 class UserTabBarController: UITabBarController{
 
     var session : String?
+    public let Style = DefaultStyle.self
+    let bgColor = tint
     
 
     override func viewDidLoad() {
@@ -40,6 +74,7 @@ class UserTabBarController: UITabBarController{
         StaticLinker.mainVC = self
         
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -64,6 +99,7 @@ class UserTabBarController: UITabBarController{
     
     @objc func updateProfileTitle() {
         
+        
         session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
         if(session == nil)
         {
@@ -78,10 +114,32 @@ class UserTabBarController: UITabBarController{
     
     func setupTabBar(){
         
+        
+
+//        let label = UILabel()
+//        label.textColor = Style.Colors.label
+//
         //hide divider
         UITabBar.appearance().shadowImage = UIImage()
         UITabBar.appearance().backgroundImage = UIImage()
-        UITabBar.appearance().backgroundColor = UIColor.white
+        
+//        UITabBar.appearance().backgroundColor = UIColor.white
+        UITabBar.appearance().backgroundColor = bgColor
+
+//
+//        if #available(iOS 13.0, *) {
+//            if UITraitCollection.current.userInterfaceStyle == .dark {
+//                print("Dark mode")
+//
+//                UITabBar.appearance().backgroundColor = .steel
+//            }
+//            else {
+//                print("Light mode")
+//
+//                UITabBar.appearance().backgroundColor = UIColor.white
+//            }
+//        }
+//
         
         //show shadow
         tabBar.layer.shadowColor = UIColor.black.cgColor

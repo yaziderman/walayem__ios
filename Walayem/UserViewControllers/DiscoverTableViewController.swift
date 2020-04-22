@@ -14,6 +14,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     // MARK: Properties
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var scheduleButton: UIButton!
     @IBOutlet weak var filterBarButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -65,7 +66,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
                 userDefaults.synchronize()
             }))
         }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
             self.navigationController?.popViewController(animated: true)
         }))
         
@@ -185,6 +186,8 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     override func viewWillAppear(_ animated: Bool) {
         
         getAddress()
+        
+        self.view.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
         
         if let selectedIndexPath = tableView.indexPathForSelectedRow{
             tableView.deselectRow(at: selectedIndexPath, animated: true)
@@ -433,7 +436,7 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
         
         if #available(iOS 13.0, *) {
             let appearance = UINavigationBarAppearance()
-                appearance.backgroundColor = .white
+            appearance.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
                 appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
                 navigationItem.standardAppearance = appearance
                 navigationItem.scrollEdgeAppearance = appearance
@@ -716,6 +719,8 @@ class DiscoverTableViewController: UIViewController, FoodCellDelegate {
     
             }
         }
+    
+   
 }
 
 extension DiscoverTableViewController: UITableViewDelegate, UITableViewDataSource{
