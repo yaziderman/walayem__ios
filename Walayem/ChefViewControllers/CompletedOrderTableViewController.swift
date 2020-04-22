@@ -88,7 +88,7 @@ class CompletedOrderTableViewController: UITableViewController, OrderHeaderCellD
             if let error = error{
                 let errmsg: String = error.userInfo[NSLocalizedDescriptionKey] as! String
                 if errmsg == OdooClient.SESSION_EXPIRED{
-                    self.onSessionExpiredChef()
+                    self.onSessionExpired()
                 }else{
                    self.showAlert(title: "Cannot get orders", msg: errmsg)
                 }

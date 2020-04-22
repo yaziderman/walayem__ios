@@ -37,7 +37,7 @@ class VerifyEmiratesViewController: UIViewController {
                 if let error = error{
                     let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
                     self.showMessagePrompt(msg: errmsg)
-//                    self.onSessionExpiredChef()
+//                    self.onSessionExpired()
                     return
                 }
                 print (result!)
