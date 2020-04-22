@@ -153,7 +153,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         
         session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
         
-        checkLogin()
+      //  checkLogin()
         
         user = User().getUserDefaults()
         if let image = user?.image{
@@ -186,7 +186,8 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         updateProfileTitle()
         if(session == nil)
         {
-            onSessionExpired(showSkip: true)
+           PresentLoginScreen(showSkip: true)
+            
         }
     }
     
