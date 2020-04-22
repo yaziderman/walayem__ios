@@ -155,7 +155,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        self.view.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
         if !isChefDescAvailable{
             self.desc.isHidden = true
             self.img.isHidden = true

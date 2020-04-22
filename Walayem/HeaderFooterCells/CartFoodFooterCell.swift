@@ -24,7 +24,7 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
         imageView.tintColor = UIColor.silver
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        
+        imageView.backgroundColor = UIColor.init(light: .white, dark: .black)
         return imageView
     }()
     
@@ -36,6 +36,7 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
         imageView.tintColor = UIColor.silver
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.backgroundColor = UIColor.init(light: .white, dark: .black)
         
         return imageView
     }()
@@ -48,6 +49,7 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
         imageView.tintColor = UIColor.colorPrimary
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
+//        imageView.backgroundColor = UIColor.init(light: .white, dark: .black)
         
         return imageView
     }()
@@ -60,7 +62,7 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
         textField.tintColor = UIColor.colorPrimary
         textField.textColor = UIColor.lightGray
         textField.translatesAutoresizingMaskIntoConstraints = false
-        
+//        textField.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
         return textField
     }()
     
@@ -70,6 +72,7 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.text = "Cash on delivery"
         textField.font = textField.font.withSize(16)
+        textField.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
         return textField
     }()
     
@@ -79,6 +82,8 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.text = "Delivery in approximately"
         textField.font = textField.font.withSize(16)
+        textField.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
+
         return textField
     }()
     
@@ -89,6 +94,7 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
+        self.contentView.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
         setViews()
     }
     
@@ -127,6 +133,7 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
                 self.addSubview(homeLabel)
                 self.addSubview(deliveryLabel)
                 self.addSubview(noteTextField)
+                
                 noteTextField.delegate = self
                 
                 iconView.heightAnchor.constraint(equalToConstant: 17).isActive = true
@@ -204,6 +211,7 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
             }
             
         
+        self.contentView.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
         
         var preparationTime = 0
         for i in 0..<foods.count

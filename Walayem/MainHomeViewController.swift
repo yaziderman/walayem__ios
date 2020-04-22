@@ -23,13 +23,18 @@ class MainHomeViewController: UIViewController {
     var cuisines = [Cuisine]()
     var selectedCuisine: Cuisine?
     var foods = [Food]()
-    let bookmarks = ["Recommended", "Meals of the day", "Cuisines", "Categories"]
+//    let bookmarks = ["Recommended", "Meals of the day", "Cuisines", "Categories"]
+    let bookmarks = ["Recommended", "Ramadan meals", "Cuisines", "Categories"]
+//    let bookmarks = ["مختارات السحور","رمضانيات", "Cuisines", "Categories"]
+    
     var bookmarkImages: [UIImage] = [
-         UIImage(named: "bookmark.jpg")!,
-         UIImage(named: "fire.jpg")!,
-         UIImage(named: "cuisine_green.png")!,
-         UIImage(named: "bookmark.jpeg")!,
-         UIImage(named: "bookmark.jpg")!
+        UIImage(named: "bookmark.jpg")!,
+        UIImage(named: "moon.png")!,
+//         UIImage(named: "bookmark.jpg")!,
+    //         UIImage(named: "fire.jpg")!,
+        UIImage(named: "cuisine_green.png")!,
+        UIImage(named: "bookmark.jpeg")!,
+        UIImage(named: "bookmark.jpg")!
      ]
     
     var activityIndicator: UIActivityIndicatorView!
@@ -54,6 +59,7 @@ class MainHomeViewController: UIViewController {
         getPromoted()
         getCuisines()
     
+        
         tableView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(handleTapAnimation)))
        
     }
@@ -162,6 +168,7 @@ class MainHomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        getPromoted()
         StaticLinker.selectedCuisine = nil
     }
     
@@ -317,25 +324,6 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-//        switch UIDevice.current.userInterfaceIdiom {
-//           case .phone:
-//               // It's an iPhone
-//            print("It's an iPhone")
-//
-//           case .pad:
-//           print("pad")
-//               // It's an iPad
-//
-//           case .unspecified:
-//           print("unspecified")
-//                   // Uh, oh! What could it be?
-//            case .tv:
-//            print("tv")
-//            case .carPlay:
-//            print("carplay")
-//        }
-        
-        
         if indexPath.row == 0 {
             if recommendedMeals.count > 0 {
                 return 310
@@ -389,31 +377,6 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
             
             }
                
-   
-//          if indexPath.row == 4{
-//          var frame = cell.contentView.frame
-//          UIView.animate(withDuration: 1.5, delay: 0, options: .curveEaseInOut, animations: {
-//              frame.origin.x = -20
-//              cell.contentView.frame = frame
-//          })
-//
-//
-//        UIView.animate(withDuration: 1.5, delay: 1.5, options: .curveEaseInOut, animations: {
-//            frame.origin.x = +10
-//            cell.contentView.frame = frame
-//        })
-//
-//        UIView.animate(withDuration: 1.5, delay: 3, options: .curveEaseInOut, animations: {
-//            frame.origin.x = -20
-//            cell.contentView.frame = frame
-//        })
-//
-//
-//        UIView.animate(withDuration: 1.5, delay: 4.5, options: .curveEaseInOut, animations: {
-//            frame.origin.x = +10
-//            cell.contentView.frame = frame
-//        })
-//    }
     }
     
     

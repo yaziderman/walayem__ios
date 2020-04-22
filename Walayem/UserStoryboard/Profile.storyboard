@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="95s-Cd-9GM">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -15,7 +15,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="jBD-Lr-8j2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.99215686274509807" green="0.9882352941176471" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection id="7CJ-2J-yum">
                                 <cells>
@@ -31,6 +31,7 @@
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="userEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="EBJ-hu-KEd">
                                                             <rect key="frame" x="0.0" y="0.0" width="81" height="81"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="81" id="UPw-ci-0O5"/>
                                                                 <constraint firstAttribute="height" constant="81" id="dYa-bD-ErE"/>
@@ -48,7 +49,7 @@
                                                             </connections>
                                                         </button>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="85" id="5La-Ab-mdH"/>
                                                         <constraint firstItem="EBJ-hu-KEd" firstAttribute="top" secondItem="JlT-pe-Vcw" secondAttribute="top" id="FLv-uu-N8Y"/>
@@ -201,7 +202,7 @@
                                                                 <constraint firstAttribute="height" constant="38" id="9zk-iC-WNG"/>
                                                                 <constraint firstAttribute="width" constant="38" id="c4K-gm-zfU"/>
                                                             </constraints>
-                                                            <state key="normal" image="phoneIcon-pdf"/>
+                                                            <state key="normal" image="phone-n"/>
                                                             <connections>
                                                                 <action selector="call:" destination="RLz-5N-n5R" eventType="touchUpInside" id="emr-c0-gkh"/>
                                                             </connections>
@@ -223,7 +224,7 @@
                                                                 <constraint firstAttribute="height" constant="38" id="5QL-S8-1bQ"/>
                                                                 <constraint firstAttribute="width" constant="38" id="mW5-5A-NZl"/>
                                                             </constraints>
-                                                            <state key="normal" image="mailIcon-pdf"/>
+                                                            <state key="normal" image="mail"/>
                                                             <connections>
                                                                 <action selector="email:" destination="RLz-5N-n5R" eventType="touchUpInside" id="kTJ-5y-M7I"/>
                                                             </connections>
@@ -310,7 +311,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="38" id="MSj-2c-ubg"/>
                                                             </constraints>
-                                                            <state key="normal" image="instagramIcon-pdf"/>
+                                                            <state key="normal" image="instagram"/>
                                                             <connections>
                                                                 <action selector="connectInsta:" destination="RLz-5N-n5R" eventType="touchUpInside" id="nRV-p8-rvL"/>
                                                             </connections>
@@ -586,13 +587,13 @@ start by adding one down below</string>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note: * required fields" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlX-2E-Uuj">
                                                         <rect key="frame" x="0.0" y="256" width="327" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <color key="textColor" red="0.81176470590000005" green="0.81176470590000005" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="textColor" systemColor="separatorColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="lQo-h6-bbE" secondAttribute="trailing" constant="24" id="6bS-CG-tRA"/>
                                             <constraint firstItem="lQo-h6-bbE" firstAttribute="top" secondItem="VPn-c5-jFC" secondAttribute="top" constant="32" id="8Yp-yS-4sE"/>
@@ -622,7 +623,7 @@ start by adding one down below</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="jx1-sa-dvr" firstAttribute="trailing" secondItem="FcE-9U-MSL" secondAttribute="trailing" id="2V9-ba-3cg"/>
                             <constraint firstItem="FcE-9U-MSL" firstAttribute="top" secondItem="XdS-9W-GaV" secondAttribute="bottom" id="5xD-Yu-VHw"/>
@@ -699,7 +700,7 @@ Walayem</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Pvq-GJ-yyL" firstAttribute="centerX" secondItem="XO6-8g-1K6" secondAttribute="centerX" id="7eQ-RX-vR0"/>
                             <constraint firstItem="BbD-mj-2Ry" firstAttribute="centerX" secondItem="XO6-8g-1K6" secondAttribute="centerX" id="EM9-vL-rbk"/>
@@ -757,6 +758,7 @@ Walayem</string>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ufS-5l-uE0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </navigationBar>
                     <connections>
                         <segue destination="RLz-5N-n5R" kind="relationship" relationship="rootViewController" id="rCf-ng-ZMz"/>
@@ -843,11 +845,11 @@ Walayem</string>
         <image name="gift" width="130" height="143"/>
         <image name="history_small_icon" width="38" height="38"/>
         <image name="info" width="37" height="37"/>
-        <image name="instagramIcon-pdf" width="76" height="76"/>
+        <image name="instagram" width="76" height="76"/>
         <image name="invite" width="36" height="36"/>
         <image name="logout" width="36" height="36"/>
-        <image name="mailIcon-pdf" width="76" height="76"/>
-        <image name="phoneIcon-pdf" width="76" height="76"/>
+        <image name="mail" width="76" height="76"/>
+        <image name="phone-n" width="76" height="76"/>
         <image name="privacy" width="36" height="36"/>
         <image name="profile" width="16" height="18"/>
         <image name="profileEdit" width="36" height="36"/>

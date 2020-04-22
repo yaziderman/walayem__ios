@@ -2,8 +2,9 @@ import Foundation
 import UIKit
 
 let ORDER_TIME_GAP = 15
-let START_HOUR = 8
+let START_HOUR = 7
 let END_HOUR = 22
+//let END_HOUR = 20
 
 private extension Selector {
     static let buttonTapped = #selector(DatePickerDialog.buttonTapped)
@@ -21,12 +22,15 @@ open class DatePickerDialog: UIView {
 
     // MARK: - Views
     private var dialogView: UIView!
+    
     private var titleLabel: UILabel!
     private var descLabel: UILabel!
+//    private var timeSlot: UILabel!
     private var timeDelayLabel: UILabel!
+    
     open var datePicker: UIDatePicker!
-    var startTime:Int! = 7
-    var endTime:Int! = 22
+    var startTime:Int! = START_HOUR
+    var endTime:Int! = END_HOUR
     private var cancelButton: UIButton!
     private var doneButton: UIButton!
 
@@ -40,6 +44,23 @@ open class DatePickerDialog: UIView {
     private var textColor: UIColor!
     private var buttonColor: UIColor!
     private var font: UIFont!
+    
+//    public var tint: UIColor = {
+//        if #available(iOS 13, *) {
+//            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+//                if UITraitCollection.userInterfaceStyle == .dark {
+//                    /// Return the color for Dark Mode
+//                    return .gray
+//                } else {
+//                    /// Return the color for Light Mode
+//                    return .white
+//                }
+//            }
+//        } else {
+//            /// Return a fallback color for iOS 12 and lower.
+//            return .white
+//        }
+//    }()
 
     // MARK: - Dialog initialization
     @objc public init(textColor: UIColor = UIColor.black,
@@ -72,8 +93,7 @@ open class DatePickerDialog: UIView {
 
         dialogView?.layer.opacity = 0.5
         dialogView?.layer.transform = CATransform3DMakeScale(1.3, 1.3, 1)
-
-        backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+//        dialogView?.backgroundColor = self.tint
 
         if let dialogView = dialogView {
             addSubview(dialogView)
@@ -109,10 +129,10 @@ open class DatePickerDialog: UIView {
         self.datePickerMode = datePickerMode
         self.callback = callback
         self.defaultDate = defaultDate
+//        defaultDate.
         self.datePicker.datePickerMode = self.datePickerMode ?? UIDatePicker.Mode.date
         self.datePicker.date = self.defaultDate ?? Date()
-//        self.datePicker.maximumDate = maximumDate
-//        self.datePicker.minimumDate = minimumDate
+        
         if let locale = self.locale { self.datePicker.locale = locale }
 
         /* Add dialog to main window */
@@ -130,11 +150,10 @@ open class DatePickerDialog: UIView {
 
         /* Anim */
         UIView.animate(
-            withDuration: 0.2,
+            withDuration: 0.5,
             delay: 0,
             options: .curveEaseInOut,
             animations: {
-                self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
                 self.dialogView?.layer.opacity = 1
                 self.dialogView?.layer.transform = CATransform3DMakeScale(1, 1, 1)
             }
@@ -152,11 +171,12 @@ open class DatePickerDialog: UIView {
         self.dialogView.layer.opacity = 1
 
         UIView.animate(
-            withDuration: 0.2,
+            withDuration: 0.5,
             delay: 0,
             options: [],
             animations: {
                 self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0)
+//                self.backgroundColor = self.tint
                 let transform = CATransform3DConcat(currentTransform, CATransform3DMakeScale(0.6, 0.6, 1))
                 self.dialogView.layer.transform = transform
                 self.dialogView.layer.opacity = 0
@@ -211,6 +231,12 @@ open class DatePickerDialog: UIView {
             roundedRect: container.bounds,
             cornerRadius: container.layer.cornerRadius
         ).cgPath
+        
+        
+        
+        
+        
+//        container.backgroundColor = self.tint
 
         // There is a line above the button
         let yPosition = container.bounds.size.height - kDefaultButtonHeight - kDefaultButtonSpacerHeight
@@ -237,6 +263,13 @@ open class DatePickerDialog: UIView {
         self.descLabel.textColor = self.textColor
         self.descLabel.font = self.font.withSize(12)
         container.addSubview(self.descLabel)
+//
+//
+//        self.timeSlot = UILabel(frame: CGRect(x: 10, y: 40, width: 320, height: 20))
+//        self.timeSlot.textAlignment = .center
+//        self.timeSlot.textColor = self.textColor
+//        self.timeSlot.font = self.font.withSize(12)
+//        container.addSubview(self.timeSlot)
         
         
         //Title
@@ -245,6 +278,14 @@ open class DatePickerDialog: UIView {
         self.timeDelayLabel.textColor = self.textColor
         self.timeDelayLabel.font = self.font.withSize(12)
         container.addSubview(self.timeDelayLabel)
+        
+        
+        //Time Slot
+//        self.timeSlot = UILabel(frame: CGRect(x: 10, y: 60, width: 320, height: 20))
+//        self.timeSlot.textAlignment = .center
+//        self.timeSlot.textColor = self.textColor
+//        self.timeSlot.font = self.font.withSize(12)
+//        container.addSubview(self.timeSlot)
 
         self.datePicker = configuredDatePicker()
         container.addSubview(self.datePicker)
@@ -260,8 +301,10 @@ open class DatePickerDialog: UIView {
         datePicker.setValue(self.textColor, forKeyPath: "textColor")
         datePicker.autoresizingMask = .flexibleRightMargin
         datePicker.frame.size.width = 340
+//        datePicker.date.addTimeInterval(50000)
         datePicker.frame.size.height = 216
         datePicker.addTarget(self, action: #selector(datePickerChanged(picker:)), for: .valueChanged)
+//        datePicker.backgroundColor = self.tint
         return datePicker
     }
 
@@ -337,44 +380,79 @@ open class DatePickerDialog: UIView {
         datePickerMode: UIDatePicker.Mode = .dateAndTime,
         callback: @escaping DatePickerCallback
     ) {
-        
+//
+//        let mate = Date()
+//        Calendar.current.date(byAdding: .day, value: 2, to: mate)
         let calendar = Calendar.current
-
+//        let date = calendar.date(bySettingHour: 18, minute: 2, second: 2, of: Date())!
         let date = Date()
-        var sTime = startTime
+        
+        var timeInterval = DateComponents()
+//        timeInterval.month = 2
+//        timeInterval.day = 3
+        timeInterval.hour = 3
+//        timeInterval.minute = 5
+//        timeInterval.second = 6
+//        let futureDate = Calendar.current.date(byAdding: timeInterval, to: Date())!
+
+        var sTime = START_HOUR
         let hour = calendar.component(.hour, from: date)
-        let gap = 15
         var isNextDay:Bool = false;
-        if(hour+gap > endTime){
+        let minGapPlusCTime = hour + ORDER_TIME_GAP
+        if(minGapPlusCTime > endTime){
             isNextDay = true
         }
-        let diff = (hour + gap) - (startTime+24)
-        if(isNextDay && diff > 0){
-            sTime = startTime + diff
+        
+        if(isNextDay){
+            let diff = (minGapPlusCTime) - (24)
+            
+            if diff <= startTime {
+                sTime = diff + (startTime - diff)
+            }
+            else{
+                sTime = diff
+            }
+            
+            
+        } else {
+            sTime = minGapPlusCTime
         }
         
-        
-        
-        
+
 
         let cDate = isNextDay ? Calendar.current.date(byAdding: .day, value: 1, to: date) : date
+//        cDate?.addingTimeInterval(TimeInterval(10 * 60))
+        
         var minDateComponents = calendar.dateComponents([.day, .month, .year], from: cDate!)
+        
         minDateComponents.setValue(sTime, for: .hour)
         minDateComponents.minute = 0
 
         self.titleLabel.text = "Delivery Time"
         self.descLabel.text = "Select Time 7:00 AM - 11:00 PM"
+        
+//        self.timeSlot.text = "Expected delivery time between \(getTime(time: hour)) - \(getTime(time: hour + 2))"
+        
         self.doneButton.setTitle(doneButtonTitle, for: .normal)
         if showCancelButton { self.cancelButton.setTitle(cancelButtonTitle, for: .normal) }
         self.datePickerMode = datePickerMode
         self.callback = callback
-        self.datePicker.date = Calendar.current.date(from: minDateComponents)!//self.defaultDate ?? Date()
-        self.datePicker.minimumDate = Calendar.current.date(from: minDateComponents)//minimumDate-----------------
+//        self.datePicker.minuteInterval = 30
+//        self.datePicker.date.addingTimeInterval(30.0 * 60)
         
-        if let locale = self.locale { self.datePicker.locale = locale }
+        self.datePicker.date = Calendar.current.date(from: minDateComponents)! //self.defaultDate ?? Date()
         
+        self.datePicker.minimumDate = Calendar.current.date(from: minDateComponents)
+        
+//        self.datePicker.minimumDate = Calendar.current.date(byAdding: timeInterval, to: self.datePicker.date)
+        
+//        self.datePicker.minimumDate?.addingTimeInterval(TimeInterval(30 * 60))
+        if let locale = self.locale {
+            self.datePicker.locale = locale
+        }
 
         /* Add dialog to main window */
+        
         guard let appDelegate = UIApplication.shared.delegate else { fatalError() }
         guard let window = appDelegate.window else { fatalError() }
         window?.addSubview(self)
@@ -393,6 +471,7 @@ open class DatePickerDialog: UIView {
             delay: 0,
             options: .curveEaseInOut,
             animations: {
+                
                 self.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.4)
                 self.dialogView?.layer.opacity = 1
                 self.dialogView?.layer.transform = CATransform3DMakeScale(1, 1, 1)
@@ -404,23 +483,32 @@ open class DatePickerDialog: UIView {
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: picker.date)
         let minute = calendar.component(.minute, from: picker.date)
+        
+        
         if(hour < self.startTime){
             var minDateComponents = calendar.dateComponents([.day, .month, .year], from: picker.date)
             minDateComponents.setValue(self.startTime, for: .hour)
             self.datePicker.setDate(Calendar.current.date(from: minDateComponents)!, animated: true)
+//            self.timeSlot.text = "Expected delivery time between \(getTime(time: hour)) - \(getTime(time: hour + 2))"
+            
         }else if(hour >= self.endTime && minute >= 0){
             var maxDateComponents = calendar.dateComponents([.day, .month, .year], from: picker.date)
             maxDateComponents.setValue(self.endTime, for: .hour)
                 maxDateComponents.setValue(0, for: .minute)
                 self.datePicker.setDate(Calendar.current.date(from: maxDateComponents)!, animated: true)
+//                self.timeSlot.text = "Expected delivery time between \(getTime(time: hour)) - \(getTime(time: hour + 2))"
                 
         }
     }
+    
+    func getTime(time: Int) -> String {
+        if (time < 12){
+            return "\(time):00Am"
+        }else {
+            return "\(time - 12):00Pm"
+        }
+    }
 
-    
-
-    
-    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }

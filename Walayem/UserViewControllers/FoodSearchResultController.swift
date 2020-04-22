@@ -21,8 +21,8 @@ class FoodSearchResultController: UIViewController, FoodCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+        tableView.delegate = self as! UITableViewDelegate
+        tableView.dataSource = self as! UITableViewDataSource
     }
     
     // MARK: Private methods
@@ -86,7 +86,7 @@ class FoodSearchResultController: UIViewController, FoodCellDelegate {
 
 }
 
-extension FoodSearchResultController: UITableViewDataSource, UITableViewDelegate{
+extension FoodSearchResultController : UITableViewDataSource, UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -95,7 +95,7 @@ extension FoodSearchResultController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return foods.count
+        return self.foods.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -103,7 +103,7 @@ extension FoodSearchResultController: UITableViewDataSource, UITableViewDelegate
             fatalError("Unexpected cell")
         }
         cell.delegate = self
-        let food = foods[indexPath.row]
+        let food = self.foods[indexPath.row]
         cell.food = food
         
         return cell
@@ -113,7 +113,7 @@ extension FoodSearchResultController: UITableViewDataSource, UITableViewDelegate
         guard let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "FoodDetailVC") as? FoodDetailViewController else{
             fatalError("Unexpected destination VC")
         }
-        let food = foods[indexPath.row]
+        let food = self.foods[indexPath.row]
         destinationVC.food = food
         self.presentingViewController?.navigationController?.pushViewController(destinationVC, animated: true)
     }
@@ -125,25 +125,35 @@ extension FoodSearchResultController: UISearchResultsUpdating{
     func updateSearchResults(for searchController: UISearchController) {
         let sb = searchController.searchBar
         let searchQuery = sb.text!
+        let trimmedString = searchQuery.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        let params: [String: Any] = ["search": true, "search_keyword": searchQuery]
-        RestClient().request(WalayemApi.searchFood, params) { (result, error) in
-            if error != nil{
-                let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
-                print (errmsg)
-                return
+        
+        var doSearch = false
+        
+        if searchQuery.count >= 1 {
+            doSearch = true
+        }
+        
+        if doSearch{
+        let params: [String: Any] = ["search": true, "search_keyword": trimmedString]
+            RestClient().request(WalayemApi.searchFood, params) { (result, error) in
+                if error != nil{
+                    let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+                    print (errmsg)
+                    return
+                }
+                let value = result!["result"] as! [String: Any]
+                if let status = value["status"] as? Int, status == 0{
+                    return
+                }
+                self.foods.removeAll()
+                let records = value["data"] as! [Any]
+                for record in records{
+                    let food = Food(record: record as! [String: Any])
+                    self.foods.append(food)
+                }
+                self.tableView.reloadData()
             }
-            let value = result!["result"] as! [String: Any]
-            if let status = value["status"] as? Int, status == 0{
-                return
-            }
-            self.foods.removeAll()
-            let records = value["data"] as! [Any]
-            for record in records{
-                let food = Food(record: record as! [String: Any])
-                self.foods.append(food)
-            }
-            self.tableView.reloadData()
         }
     }
     

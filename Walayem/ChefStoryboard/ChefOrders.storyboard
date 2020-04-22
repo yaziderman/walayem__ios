@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gED-4n-0pb">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -24,7 +24,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vg7-CN-LFI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-183" y="-224"/>
+            <point key="canvasLocation" x="-138" y="-264"/>
         </scene>
         <!--Orders-->
         <scene sceneID="2Zo-RI-fID">
@@ -36,14 +36,14 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v0J-Q5-Ylf">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="550" id="dvZ-cG-upi"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PLH-9w-7Bc">
                                 <rect key="frame" x="0.0" y="44" width="375" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="DgN-NA-4WN"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="550" id="Km3-sS-1td"/>
@@ -116,7 +116,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yfj-wA-1Nt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="645.60000000000002" y="-224.4377811094453"/>
+            <point key="canvasLocation" x="767" y="-264"/>
         </scene>
         <!--Pending Order Table View Controller-->
         <scene sceneID="LGu-cT-Uej">
@@ -238,7 +238,7 @@ menu</string>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="DsS-fc-1Eu" firstAttribute="centerX" secondItem="5RN-QR-000" secondAttribute="centerX" id="3FU-jb-NFV"/>
                         <constraint firstItem="5s6-8g-dZl" firstAttribute="centerX" secondItem="5RN-QR-000" secondAttribute="centerX" id="8On-Mu-Zb2"/>
@@ -250,7 +250,7 @@ menu</string>
                     <viewLayoutGuide key="safeArea" id="SJ2-KL-phx"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="1508" y="-717"/>
+            <point key="canvasLocation" x="1508" y="-963"/>
         </scene>
         <!--Completed Order Table View Controller-->
         <scene sceneID="qEi-qn-QTq">
@@ -371,7 +371,7 @@ menu</string>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="Syi-3K-23t" firstAttribute="centerX" secondItem="As4-rM-I4u" secondAttribute="centerX" id="46Z-9a-4aI"/>
                         <constraint firstItem="Bij-W1-W7t" firstAttribute="centerY" secondItem="As4-rM-I4u" secondAttribute="centerY" id="CAs-bx-AbP"/>
@@ -383,7 +383,7 @@ menu</string>
                     <viewLayoutGuide key="safeArea" id="Iz0-yg-Yjc"/>
                 </view>
             </objects>
-            <point key="canvasLocation" x="1508" y="50"/>
+            <point key="canvasLocation" x="1508" y="278"/>
         </scene>
         <!--Chef Order Detail View Controller-->
         <scene sceneID="znq-Sf-vGe">
@@ -523,7 +523,7 @@ menu</string>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="PNQ-dX-kFu" secondAttribute="bottom" constant="16" id="1OS-kM-fnS"/>
                                                 <constraint firstItem="PNQ-dX-kFu" firstAttribute="leading" secondItem="ywn-Lq-WbN" secondAttribute="leading" constant="20" id="5JQ-NZ-4Ay"/>
@@ -579,7 +579,7 @@ menu</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                             <constraints>
                                                                 <constraint firstItem="SYf-hf-qJE" firstAttribute="top" secondItem="Ha5-Uk-Dpm" secondAttribute="top" id="0js-wE-8IM"/>
                                                                 <constraint firstAttribute="bottom" secondItem="SYf-hf-qJE" secondAttribute="bottom" id="8dA-HA-FYS"/>
@@ -606,7 +606,7 @@ menu</string>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="44" id="5CS-uf-vlF"/>
                                                                 <constraint firstItem="aBh-lg-JWa" firstAttribute="leading" secondItem="Iuk-ee-sEw" secondAttribute="leading" id="9Zn-9S-ic9"/>
@@ -640,7 +640,7 @@ menu</string>
                                                                     </constraints>
                                                                 </view>
                                                             </subviews>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="trailing" secondItem="gYh-RO-dJd" secondAttribute="trailing" id="2oq-sk-fGL"/>
                                                                 <constraint firstItem="5oc-wa-SRJ" firstAttribute="centerY" secondItem="ieC-Ra-Asg" secondAttribute="centerY" id="9V7-Xp-y0V"/>
@@ -655,7 +655,7 @@ menu</string>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="hLB-Da-hNc" secondAttribute="bottom" id="3Ri-M5-7W9"/>
                                                 <constraint firstItem="1b8-Nj-Kdy" firstAttribute="top" secondItem="F4s-3u-g3L" secondAttribute="top" id="54H-xl-Fbh"/>
@@ -693,6 +693,7 @@ menu</string>
                                             </connections>
                                         </button>
                                     </subviews>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="Rel-FN-rvj" secondAttribute="bottom" constant="45" id="4sr-OC-VLn"/>
                                         <constraint firstAttribute="trailing" secondItem="F4s-3u-g3L" secondAttribute="trailing" id="IRH-Fh-mmL"/>
@@ -738,7 +739,7 @@ menu</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstItem="1R3-u8-pDq" firstAttribute="top" secondItem="rJq-qM-tUw" secondAttribute="top" constant="15" id="Dc2-7b-Mga"/>
                                                 <constraint firstItem="9R7-Tn-lD3" firstAttribute="leading" secondItem="1R3-u8-pDq" secondAttribute="trailing" constant="12" id="FQ8-DI-FFc"/>
@@ -872,7 +873,7 @@ menu</string>
                                                     </subviews>
                                                 </stackView>
                                             </subviews>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="rx8-Hn-NLK" secondAttribute="trailing" constant="20" id="0rl-Ol-4I9"/>
                                                 <constraint firstItem="rx8-Hn-NLK" firstAttribute="leading" secondItem="pCx-V1-FqA" secondAttribute="leading" constant="20" id="KxD-9W-sO6"/>
@@ -947,7 +948,7 @@ menu</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N7u-G6-8px" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2404" y="-225"/>
+            <point key="canvasLocation" x="2338" y="-264"/>
         </scene>
     </scenes>
     <resources>

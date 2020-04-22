@@ -56,5 +56,6 @@ class CartFoodHeaderCell: UITableViewHeaderFooterView {
         chefImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         chefImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
         
+        self.backgroundColor = UIColor.init(light: .white, dark: .black)
     }
 }

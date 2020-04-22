@@ -215,6 +215,37 @@ class Utils{
         }
     }
     
+    
+    
+//    public var tint: UIColor = {
+//        if #available(iOS 13, *) {
+//            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+//                if UITraitCollection.userInterfaceStyle == .dark {
+//                    /// Return the color for Dark Mode
+//                    return .black
+//                } else {
+//                    /// Return the color for Light Mode
+//                    return .white
+//                }
+//            }
+//        } else {
+//            /// Return a fallback color for iOS 12 and lower.
+//            return .white
+//        }
+//    }()
+    
+    static func getMinTime(_ date: Date) -> Date? {
+        
+        let calendar = Calendar.current
+        let date = Date()
+     
+        return date
+    }
+//    static func getColor() -> UIColor{
+//        let color = tint
+//        return tint
+//    }
+    
 //    static func getView(_ identifier: String) -> UIView? {
 //        let tempViewController = mainStoryboard().instantiateViewController(withIdentifier: identifier) as UIViewController
 //        return tempViewController.view

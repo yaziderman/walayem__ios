@@ -276,7 +276,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
 //                UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 if let error = error{
                     let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
-                    self.showAlert(title: "cannot logout", msg: errmsg)
+//                    self.showAlert(title: "cannot logout", msg: errmsg)
+                    User().clearUserDefaults()
+                    OdooClient.destroy()
                     return
                 }
                 let userId = UserDefaults.standard.integer(forKey: UserDefaultsKeys.PARTNER_ID)

@@ -152,6 +152,9 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         self.splitViewController?.delegate = self
         
         session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        
+        checkLogin()
+        
         user = User().getUserDefaults()
         if let image = user?.image{
             userImageView.image = Utils.decodeImage(image)
@@ -224,6 +227,9 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         
         
         session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        
+        
+        checkLogin()
         
         if let selectedIndexPath = self.tableView.indexPathForSelectedRow{
             self.tableView.deselectRow(at: selectedIndexPath, animated: true)

@@ -218,7 +218,7 @@ button and add some items</string>
                             </constraints>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="pfw-Da-w72" firstAttribute="top" secondItem="YzA-2c-0fd" secondAttribute="bottom" constant="8" id="H0Q-0w-ug4"/>
                         <constraint firstItem="YzA-2c-0fd" firstAttribute="centerX" secondItem="5tT-VI-VjZ" secondAttribute="centerX" id="W47-V1-KPC"/>
@@ -248,7 +248,7 @@ button and add some items</string>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ktl-Lf-i7f">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="165"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="165" id="Zpg-Yr-oL3"/>
                                                 </constraints>
@@ -571,7 +571,7 @@ button and add some items</string>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="Ktl-Lf-i7f" firstAttribute="top" secondItem="Jpg-E5-CXl" secondAttribute="top" id="1g9-ck-TWn"/>
                                             <constraint firstAttribute="width" constant="550" id="5oW-Go-8CY"/>
@@ -616,7 +616,7 @@ button and add some items</string>
                                 </variation>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Jpg-E5-CXl" firstAttribute="width" secondItem="0Uq-oo-b4I" secondAttribute="width" id="ajf-gk-dXt"/>
                             <constraint firstItem="Jpg-E5-CXl" firstAttribute="height" secondItem="A01-5v-0WY" secondAttribute="height" priority="250" id="kar-aq-CjA"/>
@@ -685,7 +685,7 @@ button and add some items</string>
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="SH5-2C-zcj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7UR-bF-xyc">
                             <size key="itemSize" width="150" height="52"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -708,7 +708,7 @@ button and add some items</string>
                                         </label>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstItem="s9s-xU-MoJ" firstAttribute="top" secondItem="43U-DE-aFX" secondAttribute="top" id="8EN-nF-FVj"/>
                                     <constraint firstAttribute="bottom" secondItem="s9s-xU-MoJ" secondAttribute="bottom" id="EGd-uI-eos"/>
@@ -773,7 +773,7 @@ button and add some items</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G52-tD-alO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1023" y="-445"/>
+            <point key="canvasLocation" x="983" y="-525"/>
         </scene>
         <!--Select Cuisine-->
         <scene sceneID="uDT-nk-xW0">
@@ -782,7 +782,7 @@ button and add some items</string>
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="CT0-ni-uCM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="mEw-WV-ZuI">
                             <size key="itemSize" width="150" height="52"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -805,7 +805,7 @@ button and add some items</string>
                                         </label>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="9OK-E2-dMz" secondAttribute="bottom" id="5pa-TX-er6"/>
                                     <constraint firstItem="9OK-E2-dMz" firstAttribute="leading" secondItem="hx4-I3-Fzr" secondAttribute="leading" constant="16" id="U2u-BR-dHK"/>
@@ -851,4 +851,7 @@ button and add some items</string>
         <image name="plusIcon-1" width="24" height="25"/>
         <image name="timer" width="13" height="14"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="xGp-qv-a8M"/>
+    </inferredMetricsTieBreakers>
 </document>
