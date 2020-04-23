@@ -138,11 +138,6 @@
 		BEC27A0523E8B16600DE7874 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC27A0423E8B16600DE7874 /* HomeTableViewCell.swift */; };
 		BEC27A0723E93A8200DE7874 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC27A0623E93A8200DE7874 /* HomeCollectionViewCell.swift */; };
 		C3E01AAB1E1B439F32F34F23 /* Pods_Walayem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF272E4C0EC903E149663133 /* Pods_Walayem.framework */; };
-		D0A0164A245BBA1D0025AA58 /* ChefAreaTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A01649245BBA1D0025AA58 /* ChefAreaTabelViewCell.swift */; };
-		D0A0164D245BC2F50025AA58 /* ChefCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A0164B245BC2F50025AA58 /* ChefCityTableViewCell.swift */; };
-		D0A0164E245BC2F50025AA58 /* ChefCityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A0164C245BC2F50025AA58 /* ChefCityTableViewCell.xib */; };
-		D0A223582458EFAC009C90B2 /* ChefCoverageArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A223572458EFAC009C90B2 /* ChefCoverageArea.swift */; };
-		D0A2235A2458EFE5009C90B2 /* PickChefAreaMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A223592458EFE5009C90B2 /* PickChefAreaMap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
