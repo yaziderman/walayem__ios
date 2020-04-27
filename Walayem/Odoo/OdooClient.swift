@@ -156,6 +156,8 @@ class OdooClient{
     func call_kw(model: String, method: String, arguments: [Any], completionHandler: @escaping(_ result: [String : Any]?, _ error: NSError?) -> Void){
         let url = "\(WalayemApi.BASE_URL)/web/dataset/call_kw/\(model)/\(method)"
         
+        
+        
         let params: [String : Any] = [
             "model": model,
             "method": method,

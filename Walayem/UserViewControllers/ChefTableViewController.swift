@@ -396,6 +396,7 @@ class ChefTableViewController: UIViewController {
         filterBarButton.removeBadge()
         isSearching = false
         getChefs()
+        getMoreChefs()
     }
     
     private func getChefs(){
@@ -646,9 +647,6 @@ extension ChefTableViewController: UITableViewDataSource, UITableViewDelegate{
 }
 
 extension ChefTableViewController: UISearchResultsUpdating{
-    
-    
-    
     
     func updateSearchResults(for searchController: UISearchController) {
         
