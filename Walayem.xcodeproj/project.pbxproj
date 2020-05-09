@@ -138,6 +138,11 @@
 		BEC27A0523E8B16600DE7874 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC27A0423E8B16600DE7874 /* HomeTableViewCell.swift */; };
 		BEC27A0723E93A8200DE7874 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC27A0623E93A8200DE7874 /* HomeCollectionViewCell.swift */; };
 		C3E01AAB1E1B439F32F34F23 /* Pods_Walayem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF272E4C0EC903E149663133 /* Pods_Walayem.framework */; };
+		D0A0164A245BBA1D0025AA58 /* ChefAreaTabelViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A01649245BBA1D0025AA58 /* ChefAreaTabelViewCell.swift */; };
+		D0A0164D245BC2F50025AA58 /* ChefCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A0164B245BC2F50025AA58 /* ChefCityTableViewCell.swift */; };
+		D0A0164E245BC2F50025AA58 /* ChefCityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A0164C245BC2F50025AA58 /* ChefCityTableViewCell.xib */; };
+		D0A223582458EFAC009C90B2 /* ChefCoverageArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A223572458EFAC009C90B2 /* ChefCoverageArea.swift */; };
+		D0A2235A2458EFE5009C90B2 /* PickChefAreaMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A223592458EFE5009C90B2 /* PickChefAreaMap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -277,6 +282,11 @@
 		BEC27A0423E8B16600DE7874 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		BEC27A0623E93A8200DE7874 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF272E4C0EC903E149663133 /* Pods_Walayem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Walayem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0A01649245BBA1D0025AA58 /* ChefAreaTabelViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefAreaTabelViewCell.swift; sourceTree = "<group>"; };
+		D0A0164B245BC2F50025AA58 /* ChefCityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefCityTableViewCell.swift; sourceTree = "<group>"; };
+		D0A0164C245BC2F50025AA58 /* ChefCityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChefCityTableViewCell.xib; sourceTree = "<group>"; };
+		D0A223572458EFAC009C90B2 /* ChefCoverageArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefCoverageArea.swift; sourceTree = "<group>"; };
+		D0A223592458EFE5009C90B2 /* PickChefAreaMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickChefAreaMap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -310,6 +320,8 @@
 				04E854B520B159CB00A26562 /* ChefProfileTableViewController.swift */,
 				521F2ED020B153A7000DF518 /* AccountsTableViewController.swift */,
 				0A10A5EB211C2E4800112D6D /* UpdateEmiratesIDViewController.swift */,
+				D0A223572458EFAC009C90B2 /* ChefCoverageArea.swift */,
+				D0A223592458EFE5009C90B2 /* PickChefAreaMap.swift */,
 			);
 			path = ChefViewControllers;
 			sourceTree = "<group>";
@@ -407,6 +419,9 @@
 				BEC27A0423E8B16600DE7874 /* HomeTableViewCell.swift */,
 				BEC27A0623E93A8200DE7874 /* HomeCollectionViewCell.swift */,
 				BE9B441D23E9A30B000F6225 /* HomeButtonTableViewCell.swift */,
+				D0A01649245BBA1D0025AA58 /* ChefAreaTabelViewCell.swift */,
+				D0A0164B245BC2F50025AA58 /* ChefCityTableViewCell.swift */,
+				D0A0164C245BC2F50025AA58 /* ChefCityTableViewCell.xib */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -459,7 +474,6 @@
 			children = (
 				044416B2230C1AA5007413F6 /* GoogleService-Info.plist */,
 				0ADC140F20B6AE7D0003FC8B /* Walayem.entitlements */,
-				04D9E8A32085B97E002E1B51 /* Odoo */,
 				04C596BC2084766900B284D3 /* Utils */,
 				0A3B841A20B57EAF00E1E24C /* HeaderFooterCells */,
 				BE9B441823E95C34000F6225 /* CollectionViewCells */,
@@ -511,6 +525,7 @@
 		0A3B841A20B57EAF00E1E24C /* HeaderFooterCells */ = {
 			isa = PBXGroup;
 			children = (
+				04D9E8A32085B97E002E1B51 /* Odoo */,
 				0A3B841B20B57F0400E1E24C /* CartFoodHeaderCell.swift */,
 				0A3B841D20B57F2100E1E24C /* CartFoodHeaderCell.xib */,
 				0A20D5C620B82AC300F4E15D /* CartFoodFooterCell.swift */,
@@ -633,6 +648,7 @@
 				04CF06E0208468AD0064B18A /* Discover.storyboard in Resources */,
 				523CDF8A20A070B60090C3E6 /* ChefProfile.storyboard in Resources */,
 				04CF06E2208468BE0064B18A /* Chef.storyboard in Resources */,
+				D0A0164E245BC2F50025AA58 /* ChefCityTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,9 +715,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				04B7FE872091D4D000018304 /* FoodCategCollectionViewCell.swift in Sources */,
+				D0A0164D245BC2F50025AA58 /* ChefCityTableViewCell.swift in Sources */,
 				0AD7E9FF212592DE00C0B546 /* StaticLinker.swift in Sources */,
 				04D9E8A22085B38D002E1B51 /* LoginViewController.swift in Sources */,
+				D0A2235A2458EFE5009C90B2 /* PickChefAreaMap.swift in Sources */,
 				526C962523AA97DF008D5FE4 /* UITextFieldExtension.swift in Sources */,
+				D0A223582458EFAC009C90B2 /* ChefCoverageArea.swift in Sources */,
 				BE81C7FB23E8215200EBE520 /* HomeRecommendedCell.swift in Sources */,
 				04B7FE852091A49700018304 /* ChefDetailViewController.swift in Sources */,
 				04CCB84620AD9CFA0011BD95 /* CompletedOrderTableViewController.swift in Sources */,
@@ -768,6 +787,7 @@
 				040CA40620AEE8B100E64BFE /* ChefOrderFoodFooterCell.swift in Sources */,
 				04F215892088B35F003D47AD /* ChefFoodCollectionViewCell.swift in Sources */,
 				04BBB3AC20ADDBE3009D697F /* ChefOrderTableViewCell.swift in Sources */,
+				D0A0164A245BBA1D0025AA58 /* ChefAreaTabelViewCell.swift in Sources */,
 				04FB0C252089CDF700C30660 /* FoodDetailViewController.swift in Sources */,
 				5B467DF723B882CE008620FF /* Cart.swift in Sources */,
 				04D9E8AD2085FC98002E1B51 /* DiscoverTableViewController.swift in Sources */,
