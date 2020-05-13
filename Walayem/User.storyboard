@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7sD-th-m69">
-    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -1232,7 +1232,7 @@ scan of your Emirates ID</string>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9PM-9S-JuO" userLabel="ContentView">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoNoText" translatesAutoresizingMaskIntoConstraints="NO" id="xmY-7F-ggb">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo no text" translatesAutoresizingMaskIntoConstraints="NO" id="xmY-7F-ggb">
                                                 <rect key="frame" x="170" y="55" width="35" height="74"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="35" id="Z95-YY-6mG"/>
@@ -1450,6 +1450,7 @@ scan of your Emirates ID</string>
         <image name="idEmpty" width="100" height="100"/>
         <image name="loginPrior" width="157" height="181"/>
         <image name="logo" width="135" height="282"/>
+        <image name="logo no text" width="23" height="45"/>
         <image name="logoNoText" width="23" height="45"/>
         <image name="verify" width="14" height="14"/>
     </resources>

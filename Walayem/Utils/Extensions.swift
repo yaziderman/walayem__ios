@@ -85,7 +85,7 @@ extension UIViewController {
         let h = v.height
         let w = v.width
         let imageView = UIImageView.init(frame: CGRect(x: w/2 - 30, y: h/2 - 60 - 50, width: 60, height: 120))
-        imageView.image = #imageLiteral(resourceName: "logo")
+        imageView.image = #imageLiteral(resourceName: "logo no text")
         var frame = imageView.frame
         UIView.animate(withDuration: 2, delay: 0.2, options: .repeat, animations: {
              frame.origin.y = h/2 - 130 - 50

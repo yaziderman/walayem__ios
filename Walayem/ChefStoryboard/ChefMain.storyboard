@@ -51,7 +51,7 @@
                                 <color key="color" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="fPs-4T-HIj" firstAttribute="centerX" secondItem="x6X-ib-5oL" secondAttribute="centerX" id="a6V-tG-hqM"/>
                             <constraint firstItem="fPs-4T-HIj" firstAttribute="centerY" secondItem="x6X-ib-5oL" secondAttribute="centerY" id="iPT-F4-208"/>
@@ -143,7 +143,7 @@ as soon as it’s approved, the users will be able to view and order foods f
                                     </subviews>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             <constraints>
                                 <constraint firstItem="Lik-Y4-eSZ" firstAttribute="centerX" secondItem="LMh-oU-cwn" secondAttribute="centerX" id="MjC-j3-Q10"/>
                                 <constraint firstAttribute="height" constant="57" id="el9-09-3Ed"/>
@@ -163,7 +163,7 @@ as soon as it’s approved, the users will be able to view and order foods f
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <constraints>
                         <constraint firstItem="LMh-oU-cwn" firstAttribute="top" secondItem="kSO-oJ-uha" secondAttribute="bottom" constant="8" id="2zC-sa-BTx"/>
                         <constraint firstItem="9H7-5w-ydb" firstAttribute="trailing" secondItem="LMh-oU-cwn" secondAttribute="trailing" id="4s6-au-Xdv"/>
