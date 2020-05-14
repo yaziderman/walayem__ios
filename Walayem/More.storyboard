@@ -272,7 +272,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="3at-AU-zhl" firstAttribute="centerY" secondItem="swl-VQ-xlA" secondAttribute="centerY" id="D8O-fx-SQf"/>
                             <constraint firstItem="3at-AU-zhl" firstAttribute="top" secondItem="S8b-qO-fSD" secondAttribute="bottom" constant="-9.5" id="E9P-b1-LBw"/>
