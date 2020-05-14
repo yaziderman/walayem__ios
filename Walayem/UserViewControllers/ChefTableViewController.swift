@@ -49,33 +49,6 @@ class ChefTableViewController: UIViewController {
     
     @IBAction func locationPickClicked(_ sender: Any) {
         
-//        if ((StaticLinker.discoverViewController?.addressList) != nil){
-//
-//            let alert = UIAlertController(title: "", message: "Select an address", preferredStyle: .actionSheet)
-//            for address in (StaticLinker.discoverViewController?.addressList)!
-//            {
-//                alert.addAction(UIAlertAction(title: address.name, style: .default, handler: { (action) in
-//                    self.locationPickButton.setTitle(address.name, for: .normal)
-//
-//                    if(StaticLinker.discoverViewController != nil){
-//                        StaticLinker.discoverViewController?.locationPickButton.setTitle(address.name, for: .normal)
-//                    }
-//                    let userDefaults = UserDefaults.standard
-//                    userDefaults.set(address.id, forKey: "OrderAddress")
-//                    userDefaults.synchronize()
-//                }))
-//            }
-//            alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
-//                self.navigationController?.popViewController(animated: true)
-//            }))
-//
-//            if((StaticLinker.discoverViewController?.addressList.count)! > 0){
-//                self.present(alert, animated: true, completion: nil)
-//            }
-//        }
-//        else{
-//            self.showAlertBeforeLogin(message: "Please login to add Address...!")
-//        }
         
         let alert = UIAlertController(title: "", message: "Select an address", preferredStyle: .actionSheet)
         
@@ -104,33 +77,13 @@ class ChefTableViewController: UIViewController {
             if(session == nil){
                 self.showAlertBeforeLogin(message: "Please login to add Address...!")
             }
-//            else{
-//                self.present(alert, animated: true, completion: nil)
-//            }
         }
 
-        
-        
     }
     
     
     @IBAction func onTimePickerClicked(_ sender: Any) {
-        
-//        let alert = UIAlertController(title: "", message: "When do you want your meal?", preferredStyle: .actionSheet)
-//        alert.addAction(UIAlertAction(title: "ASAP", style: .default, handler: { (action) in
-//            self.timePickerButton.setTitle("ASAP", for: .normal)
-//            let userDefaults = UserDefaults.standard
-//            userDefaults.set("asap", forKey: "OrderType")
-//            userDefaults.synchronize()
-//        }))
-//        alert.addAction(UIAlertAction(title: "Custom time", style: .default, handler: { (action) in
              self.datePickerTapped()
-//        }))
-//        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
-//            self.navigationController?.popViewController(animated: true)
-//        }))
-//
-//        self.present(alert, animated: true, completion: nil)
     }
     
     
@@ -283,12 +236,6 @@ class ChefTableViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         getAddress()
-        
-//        let strNumber: NSString = "Today at 5pm to Address" as NSString
-//        let range = (strNumber).range(of: "to")
-//        let attribute = NSMutableAttributedString.init(string: strNumber as String)
-//        attribute.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.lightGray , range: range)
-//        scheduleButton.setAttributedTitle(attribute, for: .normal)
         Utils.setupNavigationBar(nav: self.navigationController!)
         showActivityIndicator()
         showSpinner()
@@ -464,6 +411,7 @@ class ChefTableViewController: UIViewController {
         }
     }
     
+    // search for cuisine and tags
     private func searchChef(){
         
         isSearching = true
@@ -661,20 +609,13 @@ extension ChefTableViewController: UISearchResultsUpdating{
             
         let sb = searchController.searchBar
         let searchQuery = sb.text!
-        let trimmedString = searchQuery.trimmingCharacters(in: .whitespacesAndNewlines)
                   
       
       var doSearch = false
       
         if searchQuery.count >= 1 {
-//            dateC = Date()
-//            if dateC <= dateN{
                 doSearch = true
-//            }
         }
-            
-//            searchQuery = sb.text!
-//            trimmedString = searchQuery.trimmingCharacters(in: .whitespacesAndNewlines)
       
         if doSearch{
                 let params: [String: Any] = ["search": true, "search_keyword": sb.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""]
@@ -697,7 +638,7 @@ extension ChefTableViewController: UISearchResultsUpdating{
                         self.tableView.reloadData()
                     }
             }else{
-                getChefs()
+            
             }
         }
     }

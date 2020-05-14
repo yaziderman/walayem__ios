@@ -854,7 +854,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="N1U-kY-Y6J">
-                            <rect key="frame" x="56" y="100" width="128" height="128"/>
+                            <rect key="frame" x="56" y="99.999999999999986" width="128" height="128.00000000000003"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="128" id="UTk-KV-CdM"/>
                                 <constraint firstAttribute="width" constant="128" id="iCr-VB-XbL"/>
@@ -1097,6 +1097,6 @@
         <image name="timer" width="13" height="14"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HDH-9h-mnR"/>
+        <segue reference="Ld4-tu-toR"/>
     </inferredMetricsTieBreakers>
 </document>
