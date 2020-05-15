@@ -21,8 +21,8 @@ class FoodSearchResultController: UIViewController, FoodCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self as! UITableViewDelegate
-        tableView.dataSource = self as! UITableViewDataSource
+        tableView.delegate = self as UITableViewDelegate
+        tableView.dataSource = self as UITableViewDataSource
     }
     
     // MARK: Private methods
