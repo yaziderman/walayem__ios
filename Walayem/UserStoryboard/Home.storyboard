@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2SF-dD-v4x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2SF-dD-v4x">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,7 +23,7 @@
                                 <color key="color" red="0.36951097849999998" green="0.90207427740000001" blue="0.79985219240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="260" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dZI-7y-IzS">
-                                <rect key="frame" x="0.0" y="109" width="414" height="787"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mainHomeTableViewCell" rowHeight="293" id="ihE-h2-jjN" customClass="HomeTableViewCell" customModule="Walayem" customModuleProvider="target">
@@ -231,7 +231,7 @@
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cuisinesCell4" id="bmN-BE-KZj">
                                                             <rect key="frame" x="868" y="0.0" width="100" height="130"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DQa-SD-Lol">
+                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="DQa-SD-Lol">
                                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
@@ -273,7 +273,7 @@
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="tagCell" id="JQs-lk-QNQ">
                                                             <rect key="frame" x="878" y="140" width="80" height="80"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Dqc-S8-not">
+                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="Dqc-S8-not">
                                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
@@ -388,28 +388,17 @@
                                     <constraint firstAttribute="height" constant="90" id="RDj-A2-62p"/>
                                 </constraints>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We operate currently in Abu Dhabi" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gaB-6a-a0c">
-                                <rect key="frame" x="0.0" y="88" width="414" height="21"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.36951097849999998" green="0.90207427740000001" blue="0.79985219240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Oai-X0-g6K" firstAttribute="top" secondItem="Io6-65-Rfy" secondAttribute="top" id="5E6-IW-qZI"/>
-                            <constraint firstItem="dZI-7y-IzS" firstAttribute="top" secondItem="gaB-6a-a0c" secondAttribute="bottom" id="5hY-6b-c8r"/>
                             <constraint firstItem="0vI-pa-xod" firstAttribute="trailing" secondItem="aAK-pw-AgJ" secondAttribute="trailing" id="Aeb-cV-3Kl"/>
                             <constraint firstItem="0vI-pa-xod" firstAttribute="bottom" secondItem="aAK-pw-AgJ" secondAttribute="bottom" id="IuX-S0-ui1"/>
                             <constraint firstItem="Oai-X0-g6K" firstAttribute="height" secondItem="aAK-pw-AgJ" secondAttribute="height" multiplier="1.12138" id="ND4-Rl-LMl"/>
-                            <constraint firstItem="gaB-6a-a0c" firstAttribute="top" secondItem="aAK-pw-AgJ" secondAttribute="top" id="O2D-ft-Nu8"/>
                             <constraint firstItem="dZI-7y-IzS" firstAttribute="trailing" secondItem="aAK-pw-AgJ" secondAttribute="trailing" id="Ock-Zb-NIc"/>
-                            <constraint firstItem="gaB-6a-a0c" firstAttribute="leading" secondItem="aAK-pw-AgJ" secondAttribute="leading" id="P85-xT-dJX"/>
-                            <constraint firstItem="gaB-6a-a0c" firstAttribute="trailing" secondItem="aAK-pw-AgJ" secondAttribute="trailing" id="V7S-Lj-MSk"/>
                             <constraint firstItem="0vI-pa-xod" firstAttribute="leading" secondItem="aAK-pw-AgJ" secondAttribute="leading" id="YBl-8P-qib"/>
                             <constraint firstItem="Oai-X0-g6K" firstAttribute="width" secondItem="aAK-pw-AgJ" secondAttribute="width" id="ctR-mM-j6a"/>
-                            <constraint firstItem="dZI-7y-IzS" firstAttribute="top" secondItem="aAK-pw-AgJ" secondAttribute="top" constant="21" id="e6l-iz-fBF"/>
+                            <constraint firstItem="dZI-7y-IzS" firstAttribute="top" secondItem="aAK-pw-AgJ" secondAttribute="top" id="e6l-iz-fBF"/>
                             <constraint firstItem="dZI-7y-IzS" firstAttribute="leading" secondItem="aAK-pw-AgJ" secondAttribute="leading" id="hcE-Pw-Saa"/>
                             <constraint firstAttribute="bottom" secondItem="dZI-7y-IzS" secondAttribute="bottom" id="oAb-LH-QfN"/>
                             <constraint firstItem="Oai-X0-g6K" firstAttribute="leading" secondItem="aAK-pw-AgJ" secondAttribute="leading" id="vlP-of-o4Q"/>
@@ -424,7 +413,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pg0-O3-oLh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2691" y="-41"/>
+            <point key="canvasLocation" x="2605.7971014492755" y="-20.089285714285712"/>
         </scene>
         <!--Home-->
         <scene sceneID="eM1-Zu-Ufj">
@@ -452,7 +441,7 @@
         <image name="arabic" width="400" height="400"/>
         <image name="bookmark" width="15" height="19"/>
         <image name="foodImageEmpty" width="512" height="512"/>
-        <image name="house.fill" catalog="system" width="64" height="52"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="launchScreen2" width="135.33332824707031" height="282"/>
     </resources>
 </document>

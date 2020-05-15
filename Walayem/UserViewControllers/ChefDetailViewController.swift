@@ -51,19 +51,32 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     var hasDesserts: Bool = false
     var hadOrdered: Bool = true
     var orderedFoods = [String]()
+    
+    var session: String?
+    
     // MARK: Actions
     
     @IBAction func addRating(_ sender: UITapGestureRecognizer) {
-        guard let chefRatingVC = self.storyboard?.instantiateViewController(withIdentifier: "ChefRatingVC") as? ChefRatingViewController else {
-            fatalError("Unexpected View controller")
-        }
-        chefRatingVC.chef = chef
-        chefRatingVC.foods = self.orderedFoods
-        if(hadOrdered){
-            present(chefRatingVC, animated: true, completion: nil)
+        
+        session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        if(session == nil)
+        {
+          // PresentLoginScreen(showSkip: true)
+            print("not logged IN")
         }else{
-            showAlert(title: "", msg: "You can rate a chef only if you've ordered from them before.")
+            guard let chefRatingVC = self.storyboard?.instantiateViewController(withIdentifier: "ChefRatingVC") as? ChefRatingViewController else {
+                fatalError("Unexpected View controller")
+            }
+            chefRatingVC.chef = chef
+            chefRatingVC.foods = self.orderedFoods
+            if(hadOrdered){
+                present(chefRatingVC, animated: true, completion: nil)
+            }else{
+                showAlert(title: "", msg: "You can rate a chef only if you've ordered from them before.")
+            }
         }
+        
+        
         
         
     }
