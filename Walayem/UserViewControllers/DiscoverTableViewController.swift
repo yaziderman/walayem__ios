@@ -807,7 +807,5 @@ extension DiscoverTableViewController: UICollectionViewDelegate, UICollectionVie
         destinationVC.food = food
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
-    
-   
-    
+  
 }

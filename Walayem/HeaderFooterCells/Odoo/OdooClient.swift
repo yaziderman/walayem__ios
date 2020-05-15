@@ -51,9 +51,11 @@ class OdooClient{
             "password": password,
             "db": database
         ]
+        
         call(url: url, params: params) { (result, error) in
             if error == nil{
                 let result : [String : Any] = result!["result"] as! [String : Any]
+                // Todo: handle when invalid username / password is returned.
                 completionHandler(result, error)
             }else{
                 completionHandler(result, error)

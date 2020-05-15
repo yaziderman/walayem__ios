@@ -826,7 +826,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="550" id="VKi-36-X5L"/>
                                 </constraints>
-                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <view key="tableHeaderView" contentMode="scaleToFill" id="HG9-Eo-ekF" userLabel="HeaderView">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -874,7 +874,7 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstItem="C74-iC-8EI" firstAttribute="leading" secondItem="2ew-y2-jtC" secondAttribute="trailing" constant="7" id="A3u-FH-DbC"/>
                                                 <constraint firstItem="2ew-y2-jtC" firstAttribute="top" secondItem="ctN-RJ-gLT" secondAttribute="top" constant="7" id="ATW-ih-Yen"/>
@@ -973,13 +973,14 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
                                                         <constraint firstItem="VVd-Rr-gUM" firstAttribute="top" secondItem="PII-TF-p1I" secondAttribute="top" constant="2" id="a6u-pm-61w"/>
                                                         <constraint firstItem="5v6-de-hhs" firstAttribute="top" secondItem="PII-TF-p1I" secondAttribute="top" id="nqV-v7-6xl"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="ys6-AW-Gqp"/>
                                             </constraints>
@@ -992,7 +993,7 @@
                                             </constraints>
                                         </view>
                                     </subviews>
-                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
                                         <constraint firstItem="oTw-G6-yKD" firstAttribute="leading" secondItem="HG9-Eo-ekF" secondAttribute="leading" constant="20" id="Bfq-ms-11t"/>
                                         <constraint firstItem="OKT-7w-FMe" firstAttribute="top" secondItem="ctN-RJ-gLT" secondAttribute="bottom" constant="12" id="KSN-KY-MO2"/>
