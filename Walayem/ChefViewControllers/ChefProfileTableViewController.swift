@@ -108,7 +108,7 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
     }
     
     @IBAction func openWhatsapp(){
-        let urlWhats = "whatsapp://send?phone=+971585668800&abid=12354&text=Hi, I am Chef \(user?.name ?? "CHEF_NAME")"
+        let urlWhats = "https://wa.me/send?phone=0585668800&abid=12354&text=Hi, I am Chef \(user?.name ?? "CHEF_NAME")"
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
             if let whatsappURL = URL(string: urlString) {
                 if UIApplication.shared.canOpenURL(whatsappURL){

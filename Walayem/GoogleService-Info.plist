@@ -3,23 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>685466919055-mg1tqlbdomrl6spk56opmle5tm8gpbsk.apps.googleusercontent.com</string>
+	<string>1521866125-gtq1k6hrbq22hc5kvim3p0fq8qme3bbp.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.685466919055-mg1tqlbdomrl6spk56opmle5tm8gpbsk</string>
-	<key>ANDROID_CLIENT_ID</key>
-	<string>685466919055-4gqqgq4pkec2rqerkmjojp669t5u6o1j.apps.googleusercontent.com</string>
+	<string>com.googleusercontent.apps.1521866125-gtq1k6hrbq22hc5kvim3p0fq8qme3bbp</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDoLMxvir2OmwU2wJmMosY8lFuHHDVi84M</string>
+	<string>AIzaSyDV88RXh7LfCdF5iqQxo_Tto02JkKxRcTc</string>
 	<key>GCM_SENDER_ID</key>
-	<string>685466919055</string>
+	<string>1521866125</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.inceptionworld.Walayem</string>
 	<key>PROJECT_ID</key>
-	<string>walayem-2292b</string>
+	<string>walayem-enhanced</string>
 	<key>STORAGE_BUCKET</key>
-	<string>walayem-2292b.appspot.com</string>
+	<string>walayem-enhanced.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:685466919055:ios:a38a16c6145cc0e2</string>
+	<string>1:1521866125:ios:ef5fa984edadb4884bd9c4</string>
 	<key>DATABASE_URL</key>
-	<string>https://walayem-2292b.firebaseio.com</string>
+	<string>https://walayem-enhanced.firebaseio.com</string>
 </dict>
 </plist>

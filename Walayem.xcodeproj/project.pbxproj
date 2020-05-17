@@ -19,7 +19,6 @@
 		043532FA20A2C5C400D90035 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043532F920A2C5C400D90035 /* OrderTableViewCell.swift */; };
 		0437932A208725E90050C7D8 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04379329208725E90050C7D8 /* ResetPasswordViewController.swift */; };
 		0437932C20874D880050C7D8 /* RestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0437932B20874D880050C7D8 /* RestClient.swift */; };
-		044416B3230C1AA5007413F6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 044416B2230C1AA5007413F6 /* GoogleService-Info.plist */; };
 		04831C4620AC150400195B1A /* FoodSearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04831C4520AC150400195B1A /* FoodSearchResultController.swift */; };
 		04831C4920AC39FE00195B1A /* BadgeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04831C4820AC39FE00195B1A /* BadgeButton.swift */; };
 		04A6594520A0350400DBCF86 /* CartFoodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A6594420A0350400DBCF86 /* CartFoodTableViewCell.swift */; };
@@ -138,6 +137,7 @@
 		BEC27A0523E8B16600DE7874 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC27A0423E8B16600DE7874 /* HomeTableViewCell.swift */; };
 		BEC27A0723E93A8200DE7874 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC27A0623E93A8200DE7874 /* HomeCollectionViewCell.swift */; };
 		C3E01AAB1E1B439F32F34F23 /* Pods_Walayem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF272E4C0EC903E149663133 /* Pods_Walayem.framework */; };
+		D08330162470B9A900B9B67A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08330152470B9A900B9B67A /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,7 +153,6 @@
 		043532F920A2C5C400D90035 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		04379329208725E90050C7D8 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		0437932B20874D880050C7D8 /* RestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestClient.swift; sourceTree = "<group>"; };
-		044416B2230C1AA5007413F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04831C4520AC150400195B1A /* FoodSearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodSearchResultController.swift; sourceTree = "<group>"; };
 		04831C4820AC39FE00195B1A /* BadgeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeButton.swift; sourceTree = "<group>"; };
 		04A6594420A0350400DBCF86 /* CartFoodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartFoodTableViewCell.swift; sourceTree = "<group>"; };
@@ -277,6 +276,7 @@
 		BEC27A0423E8B16600DE7874 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		BEC27A0623E93A8200DE7874 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF272E4C0EC903E149663133 /* Pods_Walayem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Walayem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D08330152470B9A900B9B67A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -457,7 +457,7 @@
 		04CF06C62084634F0064B18A /* Walayem */ = {
 			isa = PBXGroup;
 			children = (
-				044416B2230C1AA5007413F6 /* GoogleService-Info.plist */,
+				D08330152470B9A900B9B67A /* GoogleService-Info.plist */,
 				0ADC140F20B6AE7D0003FC8B /* Walayem.entitlements */,
 				04D9E8A32085B97E002E1B51 /* Odoo */,
 				04C596BC2084766900B284D3 /* Utils */,
@@ -621,7 +621,6 @@
 				BE9B441C23E95C5D000F6225 /* CuisineCollectionViewCell.xib in Resources */,
 				0A08C49F20C1309500E006AB /* EditProfile.storyboard in Resources */,
 				0ADC141520B6DD350003FC8B /* More.storyboard in Resources */,
-				044416B3230C1AA5007413F6 /* GoogleService-Info.plist in Resources */,
 				04B8250120A3112200458DA6 /* Assets.xcassets in Resources */,
 				04CF06DC208465B00064B18A /* User.storyboard in Resources */,
 				04CF06CF2084634F0064B18A /* Main.storyboard in Resources */,
@@ -631,6 +630,7 @@
 				523CDF8620A0708E0090C3E6 /* ChefOrders.storyboard in Resources */,
 				BEBB0FF123E7EC6700D43789 /* Home.storyboard in Resources */,
 				04CF06E0208468AD0064B18A /* Discover.storyboard in Resources */,
+				D08330162470B9A900B9B67A /* GoogleService-Info.plist in Resources */,
 				523CDF8A20A070B60090C3E6 /* ChefProfile.storyboard in Resources */,
 				04CF06E2208468BE0064B18A /* Chef.storyboard in Resources */,
 			);
@@ -954,7 +954,7 @@
 				CODE_SIGN_ENTITLEMENTS = Walayem/Walayem.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Walayem/Info.plist;
@@ -981,7 +981,7 @@
 				CODE_SIGN_ENTITLEMENTS = Walayem/Walayem.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Walayem/Info.plist;
