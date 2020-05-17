@@ -510,7 +510,7 @@
                                                     </stackView>
                                                 </subviews>
                                             </stackView>
-                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="i3W-Jn-LDt">
+                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="i3W-Jn-LDt">
                                                 <rect key="frame" x="20" y="155" width="335" height="0.0"/>
                                                 <subviews>
                                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="description" translatesAutoresizingMaskIntoConstraints="NO" id="aIb-UM-UtL">
@@ -648,6 +648,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="fER-XF-4gR" secondAttribute="trailing" constant="20" id="AcO-Wl-CGs"/>
+                                            <constraint firstItem="i3W-Jn-LDt" firstAttribute="top" secondItem="ezr-VA-lJK" secondAttribute="top" constant="155" id="FpF-n2-EW0"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="YEy-rU-0Zk" secondAttribute="trailing" constant="12" id="JgB-8p-yDJ"/>
                                             <constraint firstAttribute="width" constant="550" id="WxA-mI-Kcj"/>
                                             <constraint firstItem="48N-gJ-NjM" firstAttribute="leading" secondItem="ezr-VA-lJK" secondAttribute="leadingMargin" constant="12" id="c2Q-Q0-eEp"/>

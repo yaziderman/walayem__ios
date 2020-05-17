@@ -198,7 +198,7 @@ class Utils{
     }
     
     static func openWhatsapp(name: String){
-        let urlWhats = "https://wa.me/send?phone=0585668800&abid=12354&text=Hi, I am \(name)"
+        let urlWhats = "whatsapp://send?phone=971585668800&abid=12354&text=Hi, I am \(name)"
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
             if let whatsappURL = URL(string: urlString) {
                 if UIApplication.shared.canOpenURL(whatsappURL){

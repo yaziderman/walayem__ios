@@ -24,7 +24,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dwO-AF-KBW">
-                                            <rect key="frame" x="24" y="6" width="47" height="34"/>
+                                            <rect key="frame" x="24" y="6" width="47" height="33.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                             <state key="normal" title="ASAP">
                                                 <color key="titleColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -40,7 +40,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mDN-1I-LA9">
-                                            <rect key="frame" x="104" y="6" width="71" height="34"/>
+                                            <rect key="frame" x="104" y="6" width="71" height="33.5"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                             <state key="normal" title="Location">
                                                 <color key="titleColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -50,7 +50,7 @@
                                             </connections>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="twT-FO-9pR">
-                                            <rect key="frame" x="24" y="44" width="360" height="1"/>
+                                            <rect key="frame" x="24" y="43.5" width="360" height="1"/>
                                             <color key="backgroundColor" red="0.89411764709999997" green="0.93333333330000001" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="5Eh-T7-u2u"/>
@@ -61,15 +61,19 @@
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <constraints>
-                                        <constraint firstItem="twT-FO-9pR" firstAttribute="leading" secondItem="dwO-AF-KBW" secondAttribute="trailing" constant="-47" id="5GA-VD-Ktw"/>
-                                        <constraint firstItem="dwO-AF-KBW" firstAttribute="leading" secondItem="4R9-1O-Rll" secondAttribute="leading" constant="24" id="5eK-np-Wex"/>
-                                        <constraint firstItem="2T2-wy-e40" firstAttribute="leading" secondItem="dwO-AF-KBW" secondAttribute="trailing" constant="8" id="RgS-KH-uyh"/>
+                                        <constraint firstItem="dwO-AF-KBW" firstAttribute="leading" secondItem="twT-FO-9pR" secondAttribute="leading" id="23d-U7-zPP"/>
+                                        <constraint firstItem="mDN-1I-LA9" firstAttribute="top" secondItem="dwO-AF-KBW" secondAttribute="top" id="3bM-Nn-xc6"/>
+                                        <constraint firstItem="dwO-AF-KBW" firstAttribute="baseline" secondItem="mDN-1I-LA9" secondAttribute="baseline" id="Bor-HL-8oG"/>
+                                        <constraint firstItem="dwO-AF-KBW" firstAttribute="firstBaseline" secondItem="2T2-wy-e40" secondAttribute="baseline" id="KJj-hs-2fH"/>
+                                        <constraint firstItem="mDN-1I-LA9" firstAttribute="firstBaseline" secondItem="2T2-wy-e40" secondAttribute="baseline" id="VyK-Mg-tOG"/>
                                         <constraint firstItem="2T2-wy-e40" firstAttribute="top" secondItem="4R9-1O-Rll" secondAttribute="top" constant="12" id="a44-b7-qDK"/>
                                         <constraint firstItem="twT-FO-9pR" firstAttribute="top" secondItem="mDN-1I-LA9" secondAttribute="bottom" constant="4" id="gYo-YR-JZO"/>
+                                        <constraint firstItem="dwO-AF-KBW" firstAttribute="leading" secondItem="4R9-1O-Rll" secondAttribute="leading" constant="24" id="li1-cs-yTC"/>
                                         <constraint firstItem="mDN-1I-LA9" firstAttribute="top" secondItem="4R9-1O-Rll" secondAttribute="top" constant="6" id="oSY-zG-hAn"/>
+                                        <constraint firstItem="mDN-1I-LA9" firstAttribute="centerY" secondItem="2T2-wy-e40" secondAttribute="centerY" id="pOk-xf-nsv"/>
+                                        <constraint firstItem="2T2-wy-e40" firstAttribute="leading" secondItem="dwO-AF-KBW" secondAttribute="trailing" constant="8" id="paY-dU-oTG"/>
+                                        <constraint firstItem="mDN-1I-LA9" firstAttribute="firstBaseline" secondItem="2T2-wy-e40" secondAttribute="firstBaseline" id="q3Y-fq-Zw8"/>
                                         <constraint firstItem="mDN-1I-LA9" firstAttribute="leading" secondItem="2T2-wy-e40" secondAttribute="trailing" constant="8" id="uZo-Ii-P93"/>
-                                        <constraint firstItem="mDN-1I-LA9" firstAttribute="top" secondItem="dwO-AF-KBW" secondAttribute="top" id="wwb-Jk-2v9"/>
-                                        <constraint firstItem="dwO-AF-KBW" firstAttribute="top" secondItem="4R9-1O-Rll" secondAttribute="top" constant="6" id="z5K-v2-SOR"/>
                                     </constraints>
                                 </view>
                                 <prototypes>
