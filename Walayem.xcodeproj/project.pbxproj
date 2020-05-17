@@ -137,7 +137,7 @@
 		BEC27A0523E8B16600DE7874 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC27A0423E8B16600DE7874 /* HomeTableViewCell.swift */; };
 		BEC27A0723E93A8200DE7874 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC27A0623E93A8200DE7874 /* HomeCollectionViewCell.swift */; };
 		C3E01AAB1E1B439F32F34F23 /* Pods_Walayem.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF272E4C0EC903E149663133 /* Pods_Walayem.framework */; };
-		D08330162470B9A900B9B67A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D08330152470B9A900B9B67A /* GoogleService-Info.plist */; };
+		D0BB1EFA24715EAF0029B3D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0BB1EF924715EAF0029B3D1 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -276,7 +276,7 @@
 		BEC27A0423E8B16600DE7874 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		BEC27A0623E93A8200DE7874 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		BF272E4C0EC903E149663133 /* Pods_Walayem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Walayem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D08330152470B9A900B9B67A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D0BB1EF924715EAF0029B3D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -457,7 +457,7 @@
 		04CF06C62084634F0064B18A /* Walayem */ = {
 			isa = PBXGroup;
 			children = (
-				D08330152470B9A900B9B67A /* GoogleService-Info.plist */,
+				D0BB1EF924715EAF0029B3D1 /* GoogleService-Info.plist */,
 				0ADC140F20B6AE7D0003FC8B /* Walayem.entitlements */,
 				04D9E8A32085B97E002E1B51 /* Odoo */,
 				04C596BC2084766900B284D3 /* Utils */,
@@ -630,7 +630,7 @@
 				523CDF8620A0708E0090C3E6 /* ChefOrders.storyboard in Resources */,
 				BEBB0FF123E7EC6700D43789 /* Home.storyboard in Resources */,
 				04CF06E0208468AD0064B18A /* Discover.storyboard in Resources */,
-				D08330162470B9A900B9B67A /* GoogleService-Info.plist in Resources */,
+				D0BB1EFA24715EAF0029B3D1 /* GoogleService-Info.plist in Resources */,
 				523CDF8A20A070B60090C3E6 /* ChefProfile.storyboard in Resources */,
 				04CF06E2208468BE0064B18A /* Chef.storyboard in Resources */,
 			);

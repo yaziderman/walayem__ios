@@ -523,7 +523,7 @@ class ChefTableViewController: UIViewController {
             }
             
             guard let selectedCell = sender as? ChefTableViewCell else {
-                fatalError("Unexpected sender \(sender)")
+                fatalError("Unexpected sender \(String(describing: sender))")
             }
             
             guard let indexPath = tableView.indexPath(for: selectedCell) else {
@@ -533,7 +533,7 @@ class ChefTableViewController: UIViewController {
             let selectedChef = chefs[indexPath.row]
             chefViewController.chef = selectedChef
         default:
-            fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+            fatalError("Unexpected Segue Identifier; \(String(describing: segue.identifier))")
         }
     }
 
