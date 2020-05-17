@@ -954,7 +954,7 @@
 				CODE_SIGN_ENTITLEMENTS = Walayem/Walayem.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Walayem/Info.plist;
@@ -981,7 +981,7 @@
 				CODE_SIGN_ENTITLEMENTS = Walayem/Walayem.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Walayem/Info.plist;
