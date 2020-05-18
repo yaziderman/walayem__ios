@@ -974,9 +974,9 @@
             filePath = "Walayem/UserViewControllers/ChefTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "682"
-            endingLineNumber = "682"
-            landmarkName = "updateSearchResults(for:)"
+            startingLineNumber = "648"
+            endingLineNumber = "648"
+            landmarkName = "viewWillDisappear(_:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -1022,9 +1022,9 @@
             filePath = "Walayem/UserViewControllers/ChefTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "686"
-            endingLineNumber = "686"
-            landmarkName = "updateSearchResults(for:)"
+            startingLineNumber = "648"
+            endingLineNumber = "648"
+            landmarkName = "viewWillDisappear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1038,9 +1038,9 @@
             filePath = "Walayem/UserViewControllers/ChefTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "692"
-            endingLineNumber = "692"
-            landmarkName = "updateSearchResults(for:)"
+            startingLineNumber = "648"
+            endingLineNumber = "648"
+            landmarkName = "viewWillDisappear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1054,9 +1054,9 @@
             filePath = "Walayem/UserViewControllers/ChefTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "673"
-            endingLineNumber = "673"
-            landmarkName = "updateSearchResults(for:)"
+            startingLineNumber = "648"
+            endingLineNumber = "648"
+            landmarkName = "viewWillDisappear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1070,9 +1070,9 @@
             filePath = "Walayem/UserViewControllers/ChefTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "667"
-            endingLineNumber = "667"
-            landmarkName = "updateSearchResults(for:)"
+            startingLineNumber = "648"
+            endingLineNumber = "648"
+            landmarkName = "viewWillDisappear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1454,9 +1454,9 @@
             filePath = "Walayem/UserViewControllers/ChefTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "700"
-            endingLineNumber = "700"
-            landmarkName = "updateSearchResults(for:)"
+            startingLineNumber = "648"
+            endingLineNumber = "648"
+            landmarkName = "viewWillDisappear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

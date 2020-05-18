@@ -58,11 +58,68 @@ class MainHomeViewController: UIViewController {
         setupRefreshControl()
         getPromoted()
         getCuisines()
+        initialCustomDate()
     
         
         tableView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(handleTapAnimation)))
        
     }
+    
+    func initialCustomDate() {
+            
+                let startTime = Utils.getChefStartTime()
+                let endTime = Utils.getChefEndTime()
+                let minHours = Utils.getMinHours()
+                
+                let cal = Calendar.current
+                var dt = cal.date(byAdding: .hour, value: minHours, to: Date())
+                
+
+                var components = cal.dateComponents([.year, .month, .day, .hour], from: dt!)
+
+                if components.hour! < startTime {
+                    components.hour = startTime
+                    components.minute = 0
+                }
+                else if components.hour! > endTime - 1 {
+                    components.hour = endTime - 1
+                    components.minute = 59
+                }
+                
+                dt = cal.date(from: components)! // 2018-10-10
+                
+                
+                let calendar = NSCalendar.current
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MMM dd yyyy"
+        //        dateFormatter.dateFormat = "dd MMM yyyy"
+                
+                let timeFormatter = DateFormatter()
+                timeFormatter.dateFormat = "hh:mm aa"
+                
+                let time_str = timeFormatter.string(from: dt!)
+                var date_str = dateFormatter.string(from: dt!)
+                
+                if calendar.isDateInToday(dt!) { date_str = "Today" }
+                else if calendar.isDateInTomorrow(dt!) { date_str = "Tomorrow" }
+                
+                let dateTimeFormatter = DateFormatter()
+                dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                let date_time_str = dateTimeFormatter.string(from: dt!)
+                
+                let userDefaults = UserDefaults.standard
+                userDefaults.set("future", forKey: "OrderType")
+                userDefaults.set(date_time_str, forKey: "OrderDate")
+                userDefaults.synchronize()
+        //
+                if(StaticLinker.chefViewController != nil){
+                    StaticLinker.chefViewController?.timePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
+                }
+    //            self.datePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
+        //        self.datePickerButton.setTitle("ASAP", for: .normal)
+                
+            }
+            
     
     @objc func handleTapAnimation(){
         print("handleTapAnimation")
