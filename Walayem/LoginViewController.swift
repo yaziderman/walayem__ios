@@ -56,8 +56,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                 })
                 return
             }
-//            Jasim.Alali@me.com
-//            Walayem@2020
             
             let sessionId = result!["session_id"] as! String
             UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
