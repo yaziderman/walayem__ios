@@ -441,6 +441,7 @@
                     <connections>
                         <outlet property="nameLabel" destination="bj8-TX-SbY" id="xaT-iA-VoQ"/>
                         <outlet property="userImageView" destination="EBJ-hu-KEd" id="dFa-c9-gCg"/>
+                        <outlet property="versionno" destination="ku9-vU-k8z" id="cb7-j8-fS0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EXo-PX-yby" userLabel="First Responder" sceneMemberID="firstResponder"/>

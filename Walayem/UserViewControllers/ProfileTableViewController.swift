@@ -14,6 +14,9 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     // MARK: Properties
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var versionno: UILabel!
+    
     var session: String?
     
     var user: User?
@@ -166,6 +169,11 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(refresh) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
+        
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        
+        versionno.text = "Version Number - \(appVersion ?? "") "
+
     }
     
     func updateProfileTitle() {
