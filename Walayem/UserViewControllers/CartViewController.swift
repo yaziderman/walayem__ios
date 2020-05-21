@@ -127,8 +127,13 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
                 
         if(session == nil)
+            
         {
-            self.showAlertBeforeLogin(message: "Please login to place order!")
+//            self.showAlertBeforeLogin(message: "Please login to place order!")
+//            self.onSessionExpired()
+
+            let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
+            self.present(viewController, animated: true, completion: nil)
         }
         else
         {
