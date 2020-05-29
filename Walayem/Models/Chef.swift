@@ -16,7 +16,7 @@ class Chef: Equatable{
     
     var id: Int
     var name: String
-    var kitchen: String
+    var kitchen: String = ""
     var description: String = ""
     var image: String?
     var rating: Int?
@@ -35,6 +35,23 @@ class Chef: Equatable{
             let food = Food(record: product as! [String : Any])
             self.foods.append(food)
         }
+    }
+    
+    init(record: [String: Any], name: String){
+        self.id = record["id"] as! Int
+        self.name = record["name"] as! String
+//        self.kitchen = record["kitchen_name"] as! String
+        let kitchenDetail = record["kitchen"] as! [String: Any]
+        self.kitchen = kitchenDetail["name"] as? String ?? ""
+        self.image = record["chef_image_hash"] as? String
+        self.description = record["chef_description"] as? String ?? ""
+        
+        let products = record["products"] as! [Any]
+        for product in products{
+            let food = Food(record: product as! [String : Any])
+            self.foods.append(food)
+        }
+        print(self.foods)
     }
     
     init(id: Int, name: String, image: String, kitchen: String, foods: [Food]){

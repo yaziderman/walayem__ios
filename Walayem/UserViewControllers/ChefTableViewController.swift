@@ -636,18 +636,6 @@ extension ChefTableViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     
-    
-    override func viewWillDisappear(_ animated: Bool){
-    //        tableView.layoutIfNeeded()
-    //        tableView.setNeedsLayout()
-//            getFoods()
-//            getMoreFoods()
-//            getChefs()
-//            getMoreChefs()
-//            self.tableView.reloadData()
-            print("viewWillDisappear")
-        }
-    
 }
 
 extension ChefTableViewController: UISearchResultsUpdating{

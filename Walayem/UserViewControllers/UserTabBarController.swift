@@ -52,11 +52,14 @@ class UserTabBarController: UITabBarController{
     var session : String?
     public let Style = DefaultStyle.self
     let bgColor = tint
+    static private(set) var currentInstance: UserTabBarController?
+
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UserTabBarController.currentInstance = self
         session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
 
         NotificationCenter.default.addObserver(self, selector: #selector(setBadge(_:)), name: NSNotification.Name(rawValue: "showOrderDetail"), object: nil)

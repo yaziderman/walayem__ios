@@ -23,15 +23,12 @@ class MainHomeViewController: UIViewController {
     var cuisines = [Cuisine]()
     var selectedCuisine: Cuisine?
     var foods = [Food]()
-//    let bookmarks = ["Recommended", "Meals of the day", "Cuisines", "Categories"]
     let bookmarks = ["Recommended", "Meals of the day", "Cuisines", "Categories"]
-//    let bookmarks = ["مختارات السحور","رمضانيات", "Cuisines", "Categories"]
     
     var bookmarkImages: [UIImage] = [
         UIImage(named: "bookmark.jpg")!,
 //        UIImage(named: "moon.png")!,
-//         UIImage(named: "bookmark.jpg")!,
-             UIImage(named: "fire.jpg")!,
+        UIImage(named: "fire.jpg")!,
         UIImage(named: "cuisine_green.png")!,
         UIImage(named: "bookmark.jpeg")!,
         UIImage(named: "bookmark.jpg")!

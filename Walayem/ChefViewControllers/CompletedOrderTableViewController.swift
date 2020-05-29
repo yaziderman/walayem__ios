@@ -33,6 +33,13 @@ class CompletedOrderTableViewController: UITableViewController, OrderHeaderCellD
         tableView.contentInset = UIEdgeInsets(top: 50, left: 0, bottom: 100, right: 0)
         tableView.tableFooterView = UIView()
         tableView.register(OrderHeaderCell.self, forHeaderFooterViewReuseIdentifier: "OrderHeaderCell")
+        
+        if state == CompletedOrderTableViewController.STATE_COMPLETED{
+            getCompletedOrders()
+        }else if state == CompletedOrderTableViewController.STATE_CANCELLED{
+            getCancelledOrders()
+        }
+        
         setupRefreshControl()
     }
 

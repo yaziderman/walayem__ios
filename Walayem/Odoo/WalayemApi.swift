@@ -29,6 +29,7 @@ class WalayemApi{
     static let discoverFood: String = "\(BASE_URL)/api/discover/food"
     static let searchFood: String = "\(BASE_URL)/api/food/search"
     static let discoverChef: String = "\(BASE_URL)/api/discover/chef"
+    static let getChefById: String = "\(BASE_URL)/api/chef/id"
     static let searchChef: String = "\(BASE_URL)/api/chef/search"
     static let rateChef: String = "\(BASE_URL)/api/rate"
     static let address: String = "\(BASE_URL)/api/readAddress"
