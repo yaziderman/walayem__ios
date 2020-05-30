@@ -383,7 +383,7 @@
         <!--Food Detail View Controller-->
         <scene sceneID="srd-Hb-RZJ">
             <objects>
-                <viewController storyboardIdentifier="FoodDetailVC" modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="OwT-uC-fSO" customClass="FoodDetailViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FoodDetailVC" modalPresentationStyle="fullScreen" id="OwT-uC-fSO" customClass="FoodDetailViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="htK-UN-aNM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -418,7 +418,7 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="360" height="231"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodImageEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="QIa-ez-ZXu">
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QIa-ez-ZXu">
                                                                     <rect key="frame" x="0.0" y="0.0" width="360" height="231"/>
                                                                 </imageView>
                                                             </subviews>

@@ -856,7 +856,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="foodEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="N1U-kY-Y6J">
-                            <rect key="frame" x="56" y="144" width="128" height="128"/>
+                            <rect key="frame" x="56" y="144" width="128" height="128.00000000000003"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="128" id="UTk-KV-CdM"/>
                                 <constraint firstAttribute="width" constant="128" id="iCr-VB-XbL"/>
@@ -895,10 +895,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MkJ-hX-dEG" userLabel="DialogView">
-                                <rect key="frame" x="42" y="229" width="330" height="481"/>
+                                <rect key="frame" x="112" y="229" width="190" height="481"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrh-uK-YNr">
-                                        <rect key="frame" x="0.0" y="0.0" width="330" height="54"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="190" height="54"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notes" translatesAutoresizingMaskIntoConstraints="NO" id="ghf-oo-JBK">
                                                 <rect key="frame" x="20" y="15" width="22" height="24"/>
@@ -907,13 +907,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rate Chef" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpD-NH-9Iz">
-                                                <rect key="frame" x="54" y="0.0" width="256" height="54"/>
+                                                <rect key="frame" x="54" y="0.0" width="116" height="54"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                 <color key="textColor" red="0.3529411764705882" green="0.37647058823529411" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="SbK-2o-Gc6">
-                                                <rect key="frame" x="290" y="16" width="20" height="22"/>
+                                                <rect key="frame" x="150" y="16" width="20" height="22"/>
                                             </activityIndicatorView>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -955,17 +955,17 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vPh-Uy-kI4" userLabel="Divider">
-                                        <rect key="frame" x="0.0" y="130" width="330" height="1"/>
+                                        <rect key="frame" x="0.0" y="130" width="190" height="1"/>
                                         <color key="backgroundColor" red="0.88235294117647056" green="0.8901960784313725" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="XnB-M7-O2K"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fev-go-s7I" customClass="RatingControl" customModule="Walayem" customModuleProvider="target">
-                                        <rect key="frame" x="95" y="385" width="140" height="24"/>
+                                        <rect key="frame" x="95" y="213" width="0.0" height="196"/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sR7-zQ-mWp">
-                                        <rect key="frame" x="0.0" y="425" width="330" height="56"/>
+                                        <rect key="frame" x="0.0" y="425" width="190" height="56"/>
                                         <color key="backgroundColor" red="0.31372549019607843" green="0.8901960784313725" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="67r-8p-Spq"/>
@@ -979,17 +979,17 @@
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RGx-6O-MAO" userLabel="Divider">
-                                        <rect key="frame" x="0.0" y="186" width="330" height="172"/>
+                                        <rect key="frame" x="0.0" y="186" width="190" height="0.0"/>
                                         <color key="backgroundColor" red="0.88235294119999996" green="0.89019607840000003" blue="0.89411764709999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b5B-em-tm5">
-                                        <rect key="frame" x="0.0" y="130" width="330" height="228"/>
+                                        <rect key="frame" x="0.0" y="130" width="190" height="56"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yt5-tN-lCZ">
-                                                <rect key="frame" x="0.0" y="4" width="330" height="220"/>
+                                                <rect key="frame" x="0.0" y="4" width="190" height="48"/>
                                                 <subviews>
                                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MGi-7b-0Vq">
-                                                        <rect key="frame" x="0.0" y="0.0" width="330" height="220"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="190" height="48"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                         <color key="textColor" red="0.70588235290000001" green="0.72549019609999998" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>

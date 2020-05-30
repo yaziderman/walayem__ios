@@ -167,54 +167,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "7D65CE79-1FB4-4FAA-815C-E01B2D61BF68"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Walayem/UserViewControllers/ChefTableViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "479"
-            endingLineNumber = "479"
-            landmarkName = "searchChef()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "7D65CE79-1FB4-4FAA-815C-E01B2D61BF68 - 97a3343e38f075da"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Walayem.ChefTableViewController.(searchChef in _48A4779E39CFB051C96E7F311D2E24ED)() -&gt; ()"
-                  moduleName = "Walayem"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nasbeerahammed/Documents/Walayem/walayem-ios/walayem-ios/Walayem/UserViewControllers/ChefTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "479"
-                  endingLineNumber = "479"
-                  offsetFromSymbolStart = "296">
-               </Location>
-               <Location
-                  uuid = "7D65CE79-1FB4-4FAA-815C-E01B2D61BF68 - 22216a18a6f24434"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (Walayem.Cuisine) -&gt; Swift.Int in Walayem.ChefTableViewController.(searchChef in _48A4779E39CFB051C96E7F311D2E24ED)() -&gt; ()"
-                  moduleName = "Walayem"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nasbeerahammed/Documents/Walayem/walayem-ios/walayem-ios/Walayem/UserViewControllers/ChefTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "480"
-                  endingLineNumber = "480"
-                  offsetFromSymbolStart = "41">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "4EC3DC23-4D8C-4A29-897D-9827234F656B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1095,22 +1047,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "55A01EFA-9FB2-4D14-A4A1-5871F92794F0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Walayem/UserViewControllers/ChefTableViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "489"
-            endingLineNumber = "489"
-            landmarkName = "searchChef()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "F4BBF9C0-EC5C-4792-8164-DD1A27CCF03E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -1271,22 +1207,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C64FB0F4-810C-4C9E-90D2-14BA41A2FED0"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Walayem/UserViewControllers/FoodSearchResultController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "updateSearchResults(for:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "467CEACB-B13F-4A2E-8EC1-40A95919280A"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -1313,6 +1233,22 @@
             startingLineNumber = "54"
             endingLineNumber = "54"
             landmarkName = "init(record:name:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "83AE798A-007B-40E0-9D4B-6B06108C3279"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Walayem/UserViewControllers/FoodDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

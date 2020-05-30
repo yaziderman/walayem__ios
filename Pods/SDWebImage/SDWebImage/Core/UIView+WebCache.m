@@ -309,7 +309,8 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
     return objc_getAssociatedObject(self, @selector(sd_imageIndicator));
 }
 
-- (void)setSd_imageIndicator:(id<SDWebImageIndicator>)sd_imageIndicator {
+- (void)
+setSd_imageIndicator:(id<SDWebImageIndicator>)sd_imageIndicator {
     // Remove the old indicator view
     id<SDWebImageIndicator> previousIndicator = self.sd_imageIndicator;
     [previousIndicator.indicatorView removeFromSuperview];

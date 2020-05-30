@@ -53,10 +53,8 @@ class FoodDetailViewController: UIViewController {
             fatalError("Unexpected destination VC")
         }
         
-        self.tabBarController?.selectedIndex = 2
         destinationVC.chef_id = self.food?.chefId
-//        navigationController?.pushViewController(destinationVC, animated: true)
-
+        
         (UserTabBarController.currentInstance?.selectedViewController as? UINavigationController)?.pushViewController(destinationVC, animated: true)
         
     }
@@ -83,7 +81,7 @@ class FoodDetailViewController: UIViewController {
         Utils.setupNavigationBar(nav: self.navigationController!)
         user = User().getUserDefaults()
         
-        // MARK: To open chef connection from food detail uncomment following 3 lines
+// MARK:    To open chef connection from food detail uncomment following 3 lines
         
         let kitchenLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(openChefDetail))
         kitchenLabel.isUserInteractionEnabled = true
@@ -105,15 +103,15 @@ class FoodDetailViewController: UIViewController {
         if let food = food{
             checkIfFavourite(food.id ?? 0)
 
-            let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image/350x350")
+            let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image")
             
 //            foodImageView.kf.setImage(with: imageUrl)
 //            foodImageView.load.request(with: imageUrl!)
 //            foodImageView.sd_setImage(with: imageUrl, completed: nil)
             
-            foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-            foodImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
-            foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+            foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.white
+            foodImageView.sd_setImage(with: imageUrl, placeholderImage: nil)
+//            foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
             food.quantity = 1
             nameLabel.text = food.name
             kitchenLabel.text = food.kitcherName! + " \u{2022} " + food.chefName!
@@ -313,9 +311,9 @@ extension FoodDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         let id = food?.imageIds![indexPath.row] ?? 0
         let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/food.image/\(id)/image")
 //        cell.foodImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "foodImageEmpty"))
-        foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        
+        foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.medium
         cell.foodImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
-        foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         
         return cell
     }

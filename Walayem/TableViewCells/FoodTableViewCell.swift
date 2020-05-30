@@ -78,7 +78,7 @@ class FoodTableViewCell: UITableViewCell{
         
         timeLabel.text = numberOfServesLabel
         
-        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image/150x150")
+        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image")
 //        foodImageView.kf.setImage(with: imageUrl)
 //        foodImageView.load
 //        foodImageView.load.request(with: imageUrl) // using ImageLoader
