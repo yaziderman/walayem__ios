@@ -18,9 +18,6 @@ SDImageCoderOption const SDImageCoderEncodeCompressionQuality = @"encodeCompress
 SDImageCoderOption const SDImageCoderEncodeBackgroundColor = @"encodeBackgroundColor";
 SDImageCoderOption const SDImageCoderEncodeMaxPixelSize = @"encodeMaxPixelSize";
 SDImageCoderOption const SDImageCoderEncodeMaxFileSize = @"encodeMaxFileSize";
-<<<<<<< HEAD
 SDImageCoderOption const SDImageCoderEncodeEmbedThumbnail = @"encodeEmbedThumbnail";
-=======
->>>>>>> Production
 
 SDImageCoderOption const SDImageCoderWebImageContext = @"webImageContext";

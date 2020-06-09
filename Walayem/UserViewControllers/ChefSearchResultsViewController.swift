@@ -41,7 +41,7 @@ class ChefSearchResultsViewController: UIViewController, UITableViewDataSource, 
             self.totalPages = value["total_pages"] as? Int ?? 0
             let records = value["data"] as! [Any]
             for record in records{
-                let chef = Chef(record: record as! [String: Any])
+				let chef = Chef(record: record as! [String: Any], name: "")
                 self.chefs.append(chef)
             }
             self.tableView.reloadData()
@@ -68,7 +68,7 @@ class ChefSearchResultsViewController: UIViewController, UITableViewDataSource, 
             self.totalPages = value["total_pages"] as? Int ?? 0
             let records = value["data"] as! [Any]
             for record in records{
-                let chef = Chef(record: record as! [String: Any])
+				let chef = Chef(record: record as! [String: Any], name: "")
                 if !self.chefs.contains(chef){
                     self.chefs.append(chef)
                 }

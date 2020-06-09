@@ -35,8 +35,6 @@ class LocationPermissionViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-<<<<<<< HEAD
-=======
     
 
     /*
@@ -48,6 +46,5 @@ class LocationPermissionViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
->>>>>>> Production
 
 }

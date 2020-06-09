@@ -191,9 +191,9 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
         
     
     
-    @IBAction func onTimePickerClicked(_ sender: Any) {
-             self.datePickerTapped()
-    }
+//    @IBAction func onTimePickerClicked(_ sender: Any) {
+//             self.datePickerTapped()
+//    }
     
     
     func datePickerTapped() {
@@ -434,9 +434,6 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
         } else {
             // Fallback on earlier versions
         }
-        
-        let searchController = UISearchController(searchResultsController: nil)
-        searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
 
 		searchController.searchBar.tintColor = UIColor.colorPrimary
@@ -499,7 +496,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
             self.totalPage = value["total_pages"] as? Int ?? 0
             let records = value["data"] as! [Any]
             for record in records{
-                let chef = Chef(record: record as! [String : Any])
+                let chef = Chef(record: record as! [String : Any], name: "")
 //                self.chefs.append(chef)
                 if !self.chefs.contains(chef){
                    self.chefs.append(chef)
@@ -516,13 +513,16 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
         var params = AreaFilter.shared.coverageParams
         params["page"] = page + 1
         isLoading = true
-        RestClient().request(WalayemApi.discoverChef, params) { (result, error) in
+        RestClient().request(WalayemApi.discoverChef, params) { [weak self] (result, error) in
+			
+			guard let self  = self else { return }
+			
             self.tableView.tableFooterView = nil
-        if (isLoading || isSearching){
-            return
+			if (self.isLoading || self.isSearching){
+				return
         }
-        let params : [String: Int] = ["page": page + 1]
-        isLoading = true
+			let params : [String: Int] = ["page": self.page + 1]
+			self.isLoading = true
         RestClient().request(WalayemApi.discoverChef, params) { (result, error) in
             self.isLoading = false
             
@@ -538,7 +538,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
             self.totalPage = value["total_pages"] as? Int ?? 0
             let records = value["data"] as! [Any]
             for record in records{
-                let chef = Chef(record: record as! [String : Any])
+				let chef = Chef(record: record as! [String : Any], name: "")
                 if !self.chefs.contains(chef){
                     self.chefs.append(chef)
                 }
@@ -548,10 +548,10 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
     }
 }
     
-    private func searchChef() {
-        isSearching = true
-            self.tableView.tableFooterView = nil
-    }
+//    private func searchChef() {
+//        isSearching = true
+//            self.tableView.tableFooterView = nil
+//    }
     
     // search for cuisine and tags
     private func searchChef(){
@@ -585,7 +585,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
             self.totalPage = value["total_pages"] as? Int ?? 0
             let records = value["data"] as! [Any]
             for record in records{
-                let chef = Chef(record: record as! [String: Any])
+                let chef = Chef(record: record as! [String: Any], name: "")
                 self.chefs.append(chef)
             }
             self.tableView.reloadData()
@@ -619,7 +619,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
             self.totalPage = value["total_pages"] as? Int ?? 0
             let records = value["data"] as! [Any]
             for record in records{
-                let chef = Chef(record: record as! [String: Any])
+				let chef = Chef(record: record as! [String: Any], name:  "")
                 if !self.chefs.contains(chef){
                     self.chefs.append(chef)
                 }
@@ -629,7 +629,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
     }
     
 
-    func showFoodDetailVC(food: Food){
+	func foodSelected(_ food: Food){
         let storyBoard = UIStoryboard(name: "Discover", bundle: nil)
         guard let foodDetailVC = storyBoard.instantiateViewController(withIdentifier: "FoodDetailVC") as? FoodDetailViewController else {
             fatalError("Unexpected viewController")
@@ -799,7 +799,7 @@ extension ChefTableViewController: UISearchResultsUpdating{
                         self.chefs.removeAll()
                         let records = value["data"] as! [Any]
                         for record in records{
-                            let chef = Chef(record: record as! [String: Any])
+							let chef = Chef(record: record as! [String: Any], name: "")
                             self.chefs.append(chef)
                         }
                         self.tableView.reloadData()

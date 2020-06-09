@@ -20,27 +20,15 @@ static NSString *const kFinalizeMFASignInEndPoint = @"accounts/mfaSignIn:finaliz
 
 @implementation FIRFinalizeMFASignInRequest
 
-<<<<<<< HEAD
 - (nullable instancetype)
     initWithMFAPendingCredential:(NSString *)MFAPendingCredential
                 verificationInfo:(FIRAuthProtoFinalizeMFAPhoneRequestInfo *)verificationInfo
             requestConfiguration:(FIRAuthRequestConfiguration *)requestConfiguration {
-=======
-- (nullable instancetype)initWithMFAProvider:(NSString *)MFAProvider
-                        MFAPendingCredential:(NSString *)MFAPendingCredential
-                            verificationInfo:
-                                (FIRAuthProtoFinalizeMFAPhoneRequestInfo *)verificationInfo
-                        requestConfiguration:(FIRAuthRequestConfiguration *)requestConfiguration {
->>>>>>> Production
   self = [super initWithEndpoint:kFinalizeMFASignInEndPoint
             requestConfiguration:requestConfiguration
              useIdentityPlatform:YES
                       useStaging:NO];
   if (self) {
-<<<<<<< HEAD
-=======
-    _MFAProvider = MFAProvider;
->>>>>>> Production
     _MFAPendingCredential = MFAPendingCredential;
     _verificationInfo = verificationInfo;
   }
@@ -49,12 +37,6 @@ static NSString *const kFinalizeMFASignInEndPoint = @"accounts/mfaSignIn:finaliz
 
 - (nullable id)unencodedHTTPRequestBodyWithError:(NSError *__autoreleasing _Nullable *)error {
   NSMutableDictionary *postBody = [NSMutableDictionary dictionary];
-<<<<<<< HEAD
-=======
-  if (_MFAProvider) {
-    postBody[@"mfaProvider"] = _MFAProvider;
-  }
->>>>>>> Production
   if (_MFAPendingCredential) {
     postBody[@"mfaPendingCredential"] = _MFAPendingCredential;
   }

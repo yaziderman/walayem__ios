@@ -23,10 +23,6 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
     // MARK: Actions
     @IBAction func `switch`(_ sender: UISwitch) {
         self.setKitchenStatus()
-<<<<<<< HEAD
-        
-=======
->>>>>>> Production
 //        if(sender.isOn){
 //            let alert = UIAlertController(title: "ON", message: "switch ON", preferredStyle: UIAlertControllerStyle.alert)
 //            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
@@ -37,12 +33,7 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
 //            self.present(alert, animated: true, completion: nil)
 //        }
     }
-    
-<<<<<<< HEAD
-    
-    
-=======
->>>>>>> Production
+	
     @IBAction func call(_ sender: UIButton) {
         
         guard let popupVC = UIStoryboard(name: "More", bundle: nil).instantiateViewController(withIdentifier: "LanguageSelectionViewController") as? LanguageSelectionViewController else{
@@ -117,11 +108,8 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
     }
     
     @IBAction func openWhatsapp(){
-<<<<<<< HEAD
-        let urlWhats = "whatsapp://send?phone=+971585668800&abid=12354&text=Hi, I am Chef \(user?.name ?? "CHEF_NAME")"
-=======
         let urlWhats = "whatsapp://send?phone=971585668800&abid=12354&text=Hi, I am Chef \(user?.name ?? "CHEF_NAME")"
->>>>>>> Production
+		
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
             if let whatsappURL = URL(string: urlString) {
                 if UIApplication.shared.canOpenURL(whatsappURL){

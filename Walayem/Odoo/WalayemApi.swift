@@ -22,6 +22,8 @@ class WalayemApi{
     
     
     // Customer Api
+	static let getAreas: String = "\(BASE_URL)/api/areas"
+	static let editProfile: String = "\(BASE_URL)/api/chef/updateprofile"
     static let signup: String = "\(BASE_URL)/api/signup"
     static let recommendation: String = "\(BASE_URL)/api/recommended"
     static let homeRecommendation: String = "\(BASE_URL)/api/promoted/"
@@ -48,6 +50,7 @@ class WalayemApi{
     static let viewPrivacy: String = "\(BASE_URL)/api/viewPrivacy"
     static let orderedFoods: String = "\(BASE_URL)/api/orderedFoods"
     static let getActiveFoodIds: String = "\(BASE_URL)/api/getActiveProductIds"
+	static let cartDetails: String = "\(BASE_URL)/api/order/cost"
 
     // Chef Api
     static let chefOrders: String = "\(BASE_URL)/api/chef/vieworder"

@@ -51,7 +51,7 @@ class ChefTableViewCell: UITableViewCell {
         nameLabel.text = "\(chef.name) \u{2022} \(chef.kitchen)"
         countLabel.text = String (chef.foods.count)
         descriptionLabel.text = description
-        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/api/chefImage/\(chef.id)-\(chef.image!)/image_medium")
+		let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/api/chefImage/\(chef.id)-\(chef.image)/image_medium")
 //        chefImageView.kf.setImage(with: imageUrl)
         chefImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         chefImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
@@ -98,11 +98,11 @@ extension ChefTableViewCell: UICollectionViewDataSource, UICollectionViewDelegat
         self.delegate?.foodSelected(food)
 
 		if let chefTableVC = chefTableVC{
-            chefTableVC.showFoodDetailVC(food: food)
+            chefTableVC.foodSelected(food)
         }
         
         if let favChefTableVC = favChefTableVC{
-            favChefTableVC.showFoodDetailVC(food: food)
+            favChefTableVC.foodSelected(food)
         }
     }
     

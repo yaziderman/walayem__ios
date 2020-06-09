@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # v6.5.3
 - [changed] Remove unused mfa request field "mfa_provider" (#5397)
 - [fixed] Suppress deprecation warnings when targeting iOS versions up to iOS 13. (#5437)
@@ -8,12 +7,6 @@
 
 # v6.5.1
 - [changed] File structure changes. No functional change.
-=======
-# v6.5.2
-- [changed] File structure changes. No functional change.
-
-# v6.5.1
->>>>>>> Production
 - [changed] Code formatting changes.
 
 # v6.5.0

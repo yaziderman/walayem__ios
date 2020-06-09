@@ -60,10 +60,6 @@ static NSString *kUserCodingKey = @"user";
              verificationCode:phoneAssertion.authCredential.verificationCode];
   FIRFinalizeMFAEnrollmentRequest *request =
       [[FIRFinalizeMFAEnrollmentRequest alloc] initWithIDToken:self.user.rawAccessToken
-<<<<<<< HEAD
-=======
-                                                   MFAProvider:phoneAssertion.factorID
->>>>>>> Production
                                                    displayName:displayName
                                               verificationInfo:finalizeMFAPhoneRequestInfo
                                           requestConfiguration:self.user.requestConfiguration];

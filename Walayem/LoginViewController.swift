@@ -49,7 +49,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         let password = passwordTextField.text!
         
         progressAlert = showProgressAlert()
-<<<<<<< HEAD
         OdooClient.sharedInstance().authenticate(email: email, password: password, database: WalayemApi.DB_NAME) { (result, error) in
             if let error = error {
                 let errmsg = (error.userInfo[NSLocalizedDescriptionKey] as? String) ?? "Something went wrong"
@@ -95,20 +94,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             return
         }
         chefCoverage.saveToUserDefaults()
-=======
-        OdooClient().authenticate(email: email, password: password, database: WalayemApi.DB_NAME) { (result, error) in
-            if error != nil{
-                self.progressAlert?.dismiss(animated: true, completion: {
-                    self.showMessagePrompt("Passwords do not match")
-                })
-                return
-            }
-            
-            let sessionId = result!["session_id"] as! String
-            UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
-            self.loadUserDetails()
-        }
->>>>>>> Production
     }
     
     @IBAction func showPasswordPressed(_ sender: Any) {
@@ -124,13 +109,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         }
 
     }
-    
-<<<<<<< HEAD
-=======
-    
-    
-    
->>>>>>> Production
+	
     @IBAction func forgotPassword(_ sender: UIButton) {
         
     }
@@ -221,11 +200,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         loginButton.layer.cornerRadius = 12
         loginButton.layer.masksToBounds = false
         
-<<<<<<< HEAD
         emailTextField.addImageAtLeft(UIImage(named: "email"))
         passwordTextField.addImageAtLeft(UIImage(named: "lock"))
-=======
-        let emailImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+
+		let emailImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
         emailImageView.image = UIImage(named: "email")
         emailImageView.contentMode = UIView.ContentMode.left
         emailTextField.leftViewMode = .always
@@ -236,7 +214,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         lockImageView.contentMode = UIView.ContentMode.left
         passwordTextField.leftViewMode = .always
         passwordTextField.leftView = lockImageView
->>>>>>> Production
         
         if isChef{
             socialLoginView.isHidden = true
@@ -262,15 +239,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                 let value = response.result.value as! [String : Any]
                 if let sessionId = value["result"] as? String
                 {
-<<<<<<< HEAD
                     UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
                     UserDefaults.standard.set(token, forKey: UserDefaultsKeys.AUTH_TOKEN)
                     self.loadUserDetails(nil)
-=======
-                UserDefaults.standard.set(sessionId, forKey: "sessionId")
-                UserDefaults.standard.set(token, forKey: "authToken")
-                self.loadUserDetails()
->>>>>>> Production
                 }
                 else
                 {
@@ -295,15 +266,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                 let value = response.result.value as! [String : Any]
                 if let sessionId = value["result"] as? String
                 {
-<<<<<<< HEAD
                     UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
                     UserDefaults.standard.set(token, forKey: UserDefaultsKeys.AUTH_TOKEN)
                     self.loadUserDetails(nil)
-=======
-                UserDefaults.standard.set(sessionId, forKey: "sessionId")
-                UserDefaults.standard.set(token, forKey: "authToken")
-                self.loadUserDetails()
->>>>>>> Production
                 }
                 else
                 {
@@ -319,7 +284,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         }
     }
     
-<<<<<<< HEAD
     private func loadUserDetails(_ authResult: [String: Any]?){
         let fields = ["id", "name", "email", "phone", "is_chef", "is_chef_verified", "is_image_set"]
         
@@ -328,23 +292,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                 let errmsg = (error.userInfo[NSLocalizedDescriptionKey] as? String) ?? "Something went wrong"
                 self.progressAlert?.dismiss(animated: true, completion: {
                     self.showMessagePrompt(errmsg)
-=======
-    private func loadUserDetails(){
-        let fields = ["id", "name", "email", "phone", "is_chef", "is_chef_verified", "is_image_set"]
-        
-        OdooClient.sharedInstance().searchRead(model: "res.partner", domain: [], fields: fields, offset: 0, limit: 1, order: "name ASC") { (result, error) in
-            if error != nil{
-                let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as? String
-                print (errmsg)
-                self.progressAlert?.dismiss(animated: true, completion: {
-                    self.showMessagePrompt("Passwords donot match")
->>>>>>> Production
+						
                 })
                 return
             }
             
             let records = result!["records"] as! [Any]
-<<<<<<< HEAD
             if records.count > 0,
                 let record = records[0] as? [String : Any]{
                 let partnerId = record["id"] as! Int
@@ -355,12 +308,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                     self.saveAreaCoverage(authResult)
                     self.saveLocation(authResult)
                 }
-                
-=======
-            if let record = records[0] as? [String : Any]{
-                let partnerId = record["id"] as! Int
-                let isImageSet = record["is_image_set"] as! Bool
->>>>>>> Production
                 let user = User(record: record)
                 self.subscribeToFirebaseTopics(partnerId)
                 self.saveUserInDevice(user: user, partnerId: partnerId)
@@ -410,10 +357,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         userDefaults.set(user.phone, forKey: UserDefaultsKeys.PHONE)
         userDefaults.set(user.isChef, forKey: UserDefaultsKeys.IS_CHEF)
         userDefaults.set(partnerId, forKey: UserDefaultsKeys.PARTNER_ID)
-<<<<<<< HEAD
-=======
         //userDefaults.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
->>>>>>> Production
     }
     
     private func subscribeToFirebaseTopics(_ partnerId: Int){

@@ -274,10 +274,6 @@ static NSString *const kFIREventSearch NS_SWIFT_NAME(AnalyticsEventSearch) = @"s
 ///     <li>@c kFIRParameterContentType (NSString)</li>
 ///     <li>@c kFIRParameterItemID (NSString)</li>
 /// </ul>
-<<<<<<< HEAD
-=======
-/// <b>This constant has been deprecated. Use @c kFIREventSelectItem constant instead.</b>
->>>>>>> Production
 static NSString *const kFIREventSelectContent NS_SWIFT_NAME(AnalyticsEventSelectContent) =
     @"select_content";
 
@@ -370,10 +366,6 @@ static NSString *const kFIREventViewItemList NS_SWIFT_NAME(AnalyticsEventViewIte
 /// <ul>
 ///     <li>@c kFIRParameterSearchTerm (NSString)</li>
 /// </ul>
-<<<<<<< HEAD
-=======
-/// <b>This constant has been deprecated.</b>
->>>>>>> Production
 static NSString *const kFIREventViewSearchResults NS_SWIFT_NAME(AnalyticsEventViewSearchResults) =
     @"view_search_results";
 

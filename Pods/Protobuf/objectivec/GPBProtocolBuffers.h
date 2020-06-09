@@ -52,7 +52,6 @@
 
 // Well-known proto types
 #if GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS
-<<<<<<< HEAD
  #import <Protobuf/GPBAny.pbobjc.h>
  #import <Protobuf/GPBApi.pbobjc.h>
  #import <Protobuf/GPBDuration.pbobjc.h>
@@ -74,27 +73,4 @@
  #import "GPBTimestamp.pbobjc.h"
  #import "GPBType.pbobjc.h"
  #import "GPBWrappers.pbobjc.h"
-=======
- #import <protobuf/Any.pbobjc.h>
- #import <protobuf/Api.pbobjc.h>
- #import <protobuf/Duration.pbobjc.h>
- #import <protobuf/Empty.pbobjc.h>
- #import <protobuf/FieldMask.pbobjc.h>
- #import <protobuf/SourceContext.pbobjc.h>
- #import <protobuf/Struct.pbobjc.h>
- #import <protobuf/Timestamp.pbobjc.h>
- #import <protobuf/Type.pbobjc.h>
- #import <protobuf/Wrappers.pbobjc.h>
-#else
- #import "google/protobuf/Any.pbobjc.h"
- #import "google/protobuf/Api.pbobjc.h"
- #import "google/protobuf/Duration.pbobjc.h"
- #import "google/protobuf/Empty.pbobjc.h"
- #import "google/protobuf/FieldMask.pbobjc.h"
- #import "google/protobuf/SourceContext.pbobjc.h"
- #import "google/protobuf/Struct.pbobjc.h"
- #import "google/protobuf/Timestamp.pbobjc.h"
- #import "google/protobuf/Type.pbobjc.h"
- #import "google/protobuf/Wrappers.pbobjc.h"
->>>>>>> Production
 #endif

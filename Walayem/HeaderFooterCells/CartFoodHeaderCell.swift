@@ -50,8 +50,8 @@ class CartFoodHeaderCell: UITableViewHeaderFooterView {
         
         nameLabel.text = chef.name
         kitchenLabel.text = chef.kitchen
-        print("\(WalayemApi.BASE_URL)/api/chefImage/\(chef.id)-\(chef.image!)/image_medium")
-        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/api/chefImage/\(chef.id)-\(chef.image!)/image_medium")
+        print("\(WalayemApi.BASE_URL)/api/chefImage/\(chef.id)-\(chef.image)/image_medium")
+        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/api/chefImage/\(chef.id)-\(chef.image)/image_medium")
 //        chefImageView.kf.setImage(with: imageUrl)
         chefImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         chefImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))

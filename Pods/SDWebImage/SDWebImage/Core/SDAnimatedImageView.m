@@ -93,10 +93,7 @@
 {
     // Pay attention that UIKit's `initWithImage:` will trigger a `setImage:` during initialization before this `commonInit`.
     // So the properties which rely on this order, should using lazy-evaluation or do extra check in `setImage:`.
-<<<<<<< HEAD
     self.autoPlayAnimatedImage = YES;
-=======
->>>>>>> Production
     self.shouldCustomLoopCount = NO;
     self.shouldIncrementalLoad = YES;
     self.playbackRate = 1.0;
@@ -187,13 +184,8 @@
         // Ensure disabled highlighting; it's not supported (see `-setHighlighted:`).
         super.highlighted = NO;
         
-<<<<<<< HEAD
         [self stopAnimating];
         [self checkPlay];
-=======
-        // Start animating
-        [self startAnimating];
->>>>>>> Production
 
         [self.imageViewLayer setNeedsDisplay];
     }
@@ -267,16 +259,7 @@
     [super didMoveToSuperview];
 #endif
     
-<<<<<<< HEAD
     [self checkPlay];
-=======
-    [self updateShouldAnimate];
-    if (self.shouldAnimate) {
-        [self startAnimating];
-    } else {
-        [self stopAnimating];
-    }
->>>>>>> Production
 }
 
 #if SD_MAC
@@ -291,16 +274,7 @@
     [super didMoveToWindow];
 #endif
     
-<<<<<<< HEAD
     [self checkPlay];
-=======
-    [self updateShouldAnimate];
-    if (self.shouldAnimate) {
-        [self startAnimating];
-    } else {
-        [self stopAnimating];
-    }
->>>>>>> Production
 }
 
 #if SD_MAC
@@ -315,32 +289,14 @@
     [super setAlpha:alpha];
 #endif
     
-<<<<<<< HEAD
     [self checkPlay];
-=======
-    [self updateShouldAnimate];
-    if (self.shouldAnimate) {
-        [self startAnimating];
-    } else {
-        [self stopAnimating];
-    }
->>>>>>> Production
 }
 
 - (void)setHidden:(BOOL)hidden
 {
     [super setHidden:hidden];
     
-<<<<<<< HEAD
     [self checkPlay];
-=======
-    [self updateShouldAnimate];
-    if (self.shouldAnimate) {
-        [self startAnimating];
-    } else {
-        [self stopAnimating];
-    }
->>>>>>> Production
 }
 
 #pragma mark - UIImageView Method Overrides
@@ -369,11 +325,8 @@
     } else {
 #if SD_UIKIT
         [super startAnimating];
-<<<<<<< HEAD
 #else
         [super setAnimates:YES];
-=======
->>>>>>> Production
 #endif
     }
 }
@@ -392,11 +345,8 @@
     } else {
 #if SD_UIKIT
         [super stopAnimating];
-<<<<<<< HEAD
 #else
         [super setAnimates:NO];
-=======
->>>>>>> Production
 #endif
     }
 }
@@ -413,7 +363,6 @@
 #endif
 
 #if SD_MAC
-<<<<<<< HEAD
 - (BOOL)animates
 {
     if (self.player) {
@@ -425,11 +374,6 @@
 
 - (void)setAnimates:(BOOL)animates
 {
-=======
-- (void)setAnimates:(BOOL)animates
-{
-    [super setAnimates:animates];
->>>>>>> Production
     if (animates) {
         [self startAnimating];
     } else {
@@ -452,7 +396,6 @@
 #pragma mark - Private Methods
 #pragma mark Animation
 
-<<<<<<< HEAD
 /// Check if it should be played
 - (void)checkPlay
 {
@@ -466,8 +409,6 @@
     }
 }
 
-=======
->>>>>>> Production
 // Don't repeatedly check our window & superview in `-displayDidRefresh:` for performance reasons.
 // Just update our cached value whenever the animated image or visibility (window, superview, hidden, alpha) is changed.
 - (void)updateShouldAnimate

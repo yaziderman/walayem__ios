@@ -19,7 +19,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
     @IBOutlet weak var filterBarButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var popularView: UIStackView!
-    @IBOutlet weak var datePickerButton: UIButton!
+//    @IBOutlet weak var datePickerButton: UIButton!
     @IBOutlet weak var recommendedHeight: NSLayoutConstraint!
     
     weak var activityIndicator: UIActivityIndicatorView!
@@ -37,7 +37,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
     var addressList = [Address]()
     var isSearching = false
     var isFirtTime = true
-    @IBOutlet weak var recommendedHeight: NSLayoutConstraint!
+//    @IBOutlet weak var recommendedHeight: NSLayoutConstraint!
     
     var mCells = [FoodTableViewCell]()
 //    var lastIndex
@@ -356,7 +356,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         userDefaults.synchronize()
 //
         if(StaticLinker.chefViewController != nil){
-            StaticLinker.chefViewController?.timePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
+            StaticLinker.chefViewController?.timePickerButton?.setTitle("\(date_str) at \(time_str)", for: .normal)
         }
         self.datePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
 //        self.datePickerButton.setTitle("ASAP", for: .normal)
@@ -509,7 +509,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
     private func getRecommendations(){
         var params = AreaFilter.shared.coverageParams
         params["partner_id"] = partnerId ?? 0
-        let params : [String: Any] = ["partner_id": partnerId ?? 0]
+//        let params : [String: Any] = ["partner_id": partnerId ?? 0]
         
         RestClient().request(WalayemApi.recommendation, params) { (result, error) in
             self.hideActivityIndicator()
@@ -586,7 +586,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
 		if (isLoading || isSearching){
             return
         }
-        let params : [String: Int] = ["page": page + 1]
+//        let params : [String: Int] = ["page": page + 1]
 
 		isLoading = true
         self.hideActivityIndicator()
@@ -619,9 +619,9 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         }
     }
     
-    private func searchFood() {
-		self.tableView.tableFooterView = nil
-    }
+//    private func searchFood() {
+//		self.tableView.tableFooterView = nil
+//    }
     
     private func searchFood(){
         isSearching = true
@@ -851,7 +851,7 @@ extension DiscoverTableViewController: UITableViewDelegate, UITableViewDataSourc
             
             tableView.tableFooterView = activityIndicator
         if !isSearching{
-            if indexPath.row == foods.count - 1 && page < totalPage!{
+			if indexPath.row == foods.count - 1 && page < totalPage{
                 getMoreFoods()
 
                 let activityIndicator = UIActivityIndicatorView(style: .gray)

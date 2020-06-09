@@ -8,63 +8,52 @@
 
 import Foundation
 
-<<<<<<< HEAD
-class Chef: Equatable {
-=======
 class Chef: Equatable{
->>>>>>> Production
+	
     static func == (lhs: Chef, rhs: Chef) -> Bool {
         return (lhs.id == rhs.id)
     }
     
-    
-    var id: Int
-    var name: String
-<<<<<<< HEAD
-    var kitchen: String
-=======
+    var id: Int = 0
+    var name: String = ""
     var kitchen: String = ""
->>>>>>> Production
     var description: String = ""
-    var image: String?
-    var rating: Int?
+    var image: String = ""
+    var rating: Int = 0
     var isFav: Bool = false
     var foods = [Food]()
   
-    init(record: [String: Any]){
-        self.id = record["chef_id"] as! Int
-        self.name = record["chef_name"] as! String
-        self.kitchen = record["kitchen_name"] as! String
-        self.image = record["chef_image_hash"] as? String
-        self.description = record["chef_description"] as? String ?? ""
-        
-        let products = record["products"] as! [Any]
-        for product in products{
-            let food = Food(record: product as! [String : Any])
-            self.foods.append(food)
-        }
-    }
-    
-<<<<<<< HEAD
-=======
-    init(record: [String: Any], name: String){
-        self.id = record["id"] as! Int
-        self.name = record["name"] as! String
+//    init(record: [String: Any]){
+//        self.id = record["chef_id"] as! Int
+//        self.name = record["chef_name"] as! String
 //        self.kitchen = record["kitchen_name"] as! String
-        let kitchenDetail = record["kitchen"] as! [String: Any]
+//        self.image = record["chef_image_hash"] as? String
+//        self.description = record["chef_description"] as? String ?? ""
+//
+//        let products = record["products"] as! [Any]
+//        for product in products{
+//            let food = Food(record: product as! [String : Any])
+//            self.foods.append(food)
+//        }
+//    }
+	
+    init(record: [String: Any], name: String){
+        self.id = record["id"] as? Int ?? 0
+        self.name = record["name"] as? String ?? ""
+//        self.kitchen = record["kitchen_name"] as! String
+		let kitchenDetail = record["kitchen"] as? [String: Any] ?? [String: Any]()
         self.kitchen = kitchenDetail["name"] as? String ?? ""
-        self.image = record["chef_image_hash"] as? String
+		self.image = record["chef_image_hash"] as? String ?? ""
         self.description = record["chef_description"] as? String ?? ""
         
-        let products = record["products"] as! [Any]
+        let products = record["products"] as? [Any] ?? [Any]()
         for product in products{
-            let food = Food(record: product as! [String : Any])
+			let food = Food(record: (product as? [String : Any] ?? [String: Any]()))
             self.foods.append(food)
         }
         print(self.foods)
     }
     
->>>>>>> Production
     init(id: Int, name: String, image: String, kitchen: String, foods: [Food]){
         self.id = id
         self.name = name

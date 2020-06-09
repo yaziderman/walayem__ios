@@ -54,18 +54,18 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     var orderedFoods = [String]()
     // MARK: Actions
     
-    @IBAction func addRating(_ sender: UITapGestureRecognizer) {
-        guard let chefRatingVC = self.storyboard?.instantiateViewController(withIdentifier: "ChefRatingVC") as? ChefRatingViewController else {
-            fatalError("Unexpected View controller")
-        }
-        chefRatingVC.chef = chef
-        chefRatingVC.foods = self.orderedFoods
-        if(hadOrdered){
-            present(chefRatingVC, animated: true, completion: nil)
-        }else{
-            showAlert(title: "", msg: "You can rate a chef only if you've ordered from them before.")
-        }
-	}
+//    @IBAction func addRating(_ sender: UITapGestureRecognizer) {
+//        guard let chefRatingVC = self.storyboard?.instantiateViewController(withIdentifier: "ChefRatingVC") as? ChefRatingViewController else {
+//            fatalError("Unexpected View controller")
+//        }
+//        chefRatingVC.chef = chef
+//        chefRatingVC.foods = self.orderedFoods
+//        if(hadOrdered){
+//            present(chefRatingVC, animated: true, completion: nil)
+//        }else{
+//            showAlert(title: "", msg: "You can rate a chef only if you've ordered from them before.")
+//        }
+//	}
         
 	var session: String?
     
@@ -144,7 +144,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
         if let chef = chef{
             checkIsFavourite(chef.id)
             
-            let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/api/chefImage/\(chef.id)-\(chef.image!)/image_medium")
+            let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/api/chefImage/\(chef.id)-\(chef.image)/image_medium")
 //            chefImageView.kf.setImage(with: imageUrl)
             chefImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
             chefImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))

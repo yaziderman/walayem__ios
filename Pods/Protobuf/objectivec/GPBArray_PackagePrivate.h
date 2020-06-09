@@ -54,10 +54,7 @@
 
 //%PDDM-EXPAND DECLARE_ARRAY_EXTRAS()
 // This block of code is generated, do not edit it directly.
-<<<<<<< HEAD
 // clang-format off
-=======
->>>>>>> Production
 
 #pragma mark - Int32
 
@@ -123,10 +120,7 @@
 }
 @end
 
-<<<<<<< HEAD
 // clang-format on
-=======
->>>>>>> Production
 //%PDDM-EXPAND-END DECLARE_ARRAY_EXTRAS()
 
 #pragma mark - NSArray Subclass

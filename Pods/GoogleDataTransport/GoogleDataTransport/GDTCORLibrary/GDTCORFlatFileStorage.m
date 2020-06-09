@@ -51,30 +51,6 @@
   return archivePath;
 }
 
-<<<<<<< HEAD
-+ (NSString *)libraryDataPath {
-  static NSString *libraryDataPath;
-  static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    libraryDataPath =
-        [GDTCORRootDirectory() URLByAppendingPathComponent:NSStringFromClass([self class])
-                                               isDirectory:YES]
-            .path;
-    libraryDataPath = [libraryDataPath stringByAppendingPathComponent:@"gdt_library_data"];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:libraryDataPath isDirectory:NULL]) {
-      NSError *error;
-      [[NSFileManager defaultManager] createDirectoryAtPath:libraryDataPath
-                                withIntermediateDirectories:YES
-                                                 attributes:0
-                                                      error:&error];
-      GDTCORAssert(error == nil, @"Creating the library data path failed: %@", error);
-    }
-  });
-  return libraryDataPath;
-}
-
-=======
->>>>>>> Production
 + (instancetype)sharedInstance {
   static GDTCORFlatFileStorage *sharedStorage;
   static dispatch_once_t onceToken;
@@ -211,57 +187,6 @@
   });
 }
 
-<<<<<<< HEAD
-#pragma mark - GDTCORStorageProtocol
-
-- (void)libraryDataForKey:(nonnull NSString *)key
-               onComplete:
-                   (nonnull void (^)(NSData *_Nullable, NSError *_Nullable error))onComplete {
-  dispatch_async(_storageQueue, ^{
-    NSString *dataPath = [[[self class] libraryDataPath] stringByAppendingPathComponent:key];
-    NSError *error;
-    NSData *data = [NSData dataWithContentsOfFile:dataPath options:0 error:&error];
-    if (onComplete) {
-      onComplete(data, error);
-    }
-  });
-}
-
-- (void)storeLibraryData:(NSData *)data
-                  forKey:(nonnull NSString *)key
-              onComplete:(nonnull void (^)(NSError *_Nullable error))onComplete {
-  if (!data || data.length <= 0) {
-    if (onComplete) {
-      onComplete([NSError errorWithDomain:NSInternalInconsistencyException code:-1 userInfo:nil]);
-    }
-    return;
-  }
-  dispatch_async(_storageQueue, ^{
-    NSError *error;
-    NSString *dataPath = [[[self class] libraryDataPath] stringByAppendingPathComponent:key];
-    [data writeToFile:dataPath options:NSDataWritingAtomic error:&error];
-    if (onComplete) {
-      onComplete(error);
-    }
-  });
-}
-
-- (void)removeLibraryDataForKey:(nonnull NSString *)key
-                     onComplete:(nonnull void (^)(NSError *_Nullable error))onComplete {
-  dispatch_async(_storageQueue, ^{
-    NSError *error;
-    NSString *dataPath = [[[self class] libraryDataPath] stringByAppendingPathComponent:key];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:dataPath]) {
-      [[NSFileManager defaultManager] removeItemAtPath:dataPath error:&error];
-      if (onComplete) {
-        onComplete(error);
-      }
-    }
-  });
-}
-
-=======
->>>>>>> Production
 #pragma mark - Private helper methods
 
 /** Saves the event's dataObject to a file using NSData mechanisms.

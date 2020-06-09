@@ -29,7 +29,6 @@ typedef NSURLResponse * _Nullable (^SDWebImageDownloaderResponseModifierBlock)(N
  */
 @interface SDWebImageDownloaderResponseModifier : NSObject <SDWebImageDownloaderResponseModifier>
 
-<<<<<<< HEAD
 /// Create the response modifier with block
 /// @param block A block to control modifier logic
 - (nonnull instancetype)initWithBlock:(nonnull SDWebImageDownloaderResponseModifierBlock)block;
@@ -68,9 +67,3 @@ A convenient response modifier to provide the HTTP response including HTTP Statu
 - (nonnull instancetype)initWithStatusCode:(NSInteger)statusCode version:(nullable NSString *)version headers:(nullable NSDictionary<NSString *, NSString *> *)headers;
 
 @end
-=======
-- (nonnull instancetype)initWithBlock:(nonnull SDWebImageDownloaderResponseModifierBlock)block;
-+ (nonnull instancetype)responseModifierWithBlock:(nonnull SDWebImageDownloaderResponseModifierBlock)block;
-
-@end
->>>>>>> Production

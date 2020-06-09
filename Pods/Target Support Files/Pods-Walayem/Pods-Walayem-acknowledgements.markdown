@@ -3324,7 +3324,6 @@ Copyright 2020 Google
    limitations under the License.
 
 
-<<<<<<< HEAD
 ## GoogleMaps
 
 Copyright 2020 Google
@@ -3333,8 +3332,6 @@ Copyright 2020 Google
 
 Copyright 2020 Google
 
-=======
->>>>>>> Production
 ## GoogleSignIn
 
 Copyright 2019 Google

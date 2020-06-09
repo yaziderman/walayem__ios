@@ -9,21 +9,12 @@
 import UIKit
 import os.log
 
-<<<<<<< HEAD
 class UpdateProfileViewController: UITableViewController, ChefCoverageAreaDelegate, LocationSelectionDelegate {
-    
-    // MARK: Properties
-=======
-class UpdateProfileViewController: UITableViewController {
-
-    // MARK: Properties
-    
->>>>>>> Production
+	
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     
-<<<<<<< HEAD
     @IBOutlet weak var coverageAreaBtn: UIButton!
     @IBOutlet weak var locationBtn: UIButton!
     
@@ -31,9 +22,7 @@ class UpdateProfileViewController: UITableViewController {
     var selectedLng: Double?
     var selectedAreas: [Int]?
     private var selectedEmirates: [Int]?
-    
-=======
->>>>>>> Production
+	
     var user: User?
     
     // MARK: Actions
@@ -56,7 +45,6 @@ class UpdateProfileViewController: UITableViewController {
         }
     }
     
-<<<<<<< HEAD
     private func showCoverageSelectionScreen() {
         let controller = UIStoryboard(name: "User", bundle: nil).instantiateViewController(withIdentifier: "ChefCoverageArea") as! ChefCoverageArea
         controller.delegate = self
@@ -98,9 +86,7 @@ class UpdateProfileViewController: UITableViewController {
         self.locationBtn.titleLabel?.textColor = color
         self.locationBtn.titleLabel?.font = UIFont.systemFont(ofSize: 17)
     }
-    
-=======
->>>>>>> Production
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         if #available(iOS 11.0, *) {
@@ -110,7 +96,6 @@ class UpdateProfileViewController: UITableViewController {
         updateUI()
     }
     
-<<<<<<< HEAD
     @IBAction func saveBtnClicked(_ sender: Any) {
         guard self.checkAreaAndLocation() else {
             return
@@ -174,20 +159,13 @@ class UpdateProfileViewController: UITableViewController {
     }
     
     // MARK: Private methods
-    
-    private func updateUI(){
-        if let user = user {
-=======
-    // MARK: Private methods
-    
+
     private func updateUI(){
         if let user = user{
->>>>>>> Production
             nameLabel.text = user.name
             emailLabel.text = user.email
             phoneLabel.text = user.phone
         }
-<<<<<<< HEAD
         let isChef = UserDefaults.standard.bool(forKey: UserDefaultsKeys.IS_CHEF)
         if isChef {
             if let coverage = ChefAreaCoverage.loadFromUserDefaults() {
@@ -220,14 +198,11 @@ class UpdateProfileViewController: UITableViewController {
         } else {
             self.navigationItem.rightBarButtonItem = nil
         }
-=======
->>>>>>> Production
     }
     
     // MARK: TableView delegate
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-<<<<<<< HEAD
         if let _ = UserDefaults.standard.string(forKey: UserDefaultsKeys.AUTH_TOKEN), indexPath.row == 4{
             return 0
         }
@@ -237,21 +212,19 @@ class UpdateProfileViewController: UITableViewController {
         
         let isChef = UserDefaults.standard.bool(forKey: UserDefaultsKeys.IS_CHEF)
         if !isChef && (indexPath.row == 5 || indexPath.row == 6) {
-=======
-        if let _ = UserDefaults.standard.string(forKey: "authToken"), indexPath.row == 4{
-            return 0
-        }
+			if let _ = UserDefaults.standard.string(forKey: "authToken"), indexPath.row == 4{
+				return 0
+			}
+		}
         //remove update emirates id row if not chef
 //        if !UserDefaults.standard.bool(forKey: UserDefaultsKeys.IS_CHEF) && indexPath.row == 3{
         
         if indexPath.row == 3{
->>>>>>> Production
             return 0
         }
         return 70
     }
 
-<<<<<<< HEAD
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0, indexPath.row == 5 {
             self.showCoverageSelectionScreen()
@@ -260,9 +233,6 @@ class UpdateProfileViewController: UITableViewController {
             self.showLocationSelection()
         }
     }
-    
-=======
->>>>>>> Production
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

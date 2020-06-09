@@ -214,11 +214,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ImageLoader/ImageLoader.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework"
-<<<<<<< HEAD
   install_framework "${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework"
-=======
-  install_framework "${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework"
->>>>>>> Production
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
@@ -241,11 +237,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/ImageLoader/ImageLoader.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework"
-<<<<<<< HEAD
   install_framework "${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework"
-=======
-  install_framework "${BUILT_PRODUCTS_DIR}/Protobuf/protobuf.framework"
->>>>>>> Production
   install_framework "${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SQLite.swift/SQLite.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"

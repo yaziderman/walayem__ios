@@ -10,11 +10,8 @@ import UIKit
 
 class ChefTabController: UITabBarController {
 
-<<<<<<< HEAD
     private var profileVCIsShown = false
-    
-=======
->>>>>>> Production
+	
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -71,9 +68,7 @@ class ChefTabController: UITabBarController {
         }
     
     }
-    
-<<<<<<< HEAD
-=======
+	
     override func viewDidAppear(_ animated: Bool) {
         if self.selectedIndex == 2 {
             if let currentViewController = self.selectedViewController as? UISplitViewController{
@@ -86,7 +81,6 @@ class ChefTabController: UITabBarController {
         }
     }
     
->>>>>>> Production
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
 
             print("viewDidLoad  tabBar  \(self.selectedIndex)")

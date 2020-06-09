@@ -9,19 +9,11 @@
 import Foundation
 import UIKit
 
-<<<<<<< HEAD
 class MainHomeViewController: BaseTabViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mActivityIndicator: UIActivityIndicatorView!
-    
-=======
-class MainHomeViewController: UIViewController {
-    
-    
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var mActivityIndicator: UIActivityIndicatorView!
->>>>>>> Production
+	
     var partnerId: Int?
     var todays_meals = [PromotedItem]()
     var bestSellers = [PromotedItem]()
@@ -31,24 +23,16 @@ class MainHomeViewController: UIViewController {
     var cuisines = [Cuisine]()
     var selectedCuisine: Cuisine?
     var foods = [Food]()
-<<<<<<< HEAD
+
 //    let bookmarks = ["Recommended", "Meals of the day", "Cuisines", "Categories"]
     let bookmarks = ["Recommended", "Ramadan meals", "Cuisines", "Categories"]
 //    let bookmarks = ["مختارات السحور","رمضانيات", "Cuisines", "Categories"]
-    
-    var bookmarkImages: [UIImage] = [
-        UIImage(named: "bookmark.jpg")!,
-        UIImage(named: "moon.png")!,
-//         UIImage(named: "bookmark.jpg")!,
-    //         UIImage(named: "fire.jpg")!,
-=======
-    let bookmarks = ["Recommended", "Meals of the day", "Cuisines", "Categories"]
+
     
     var bookmarkImages: [UIImage] = [
         UIImage(named: "bookmark.jpg")!,
 //        UIImage(named: "moon.png")!,
         UIImage(named: "fire.jpg")!,
->>>>>>> Production
         UIImage(named: "cuisine_green.png")!,
         UIImage(named: "bookmark.jpeg")!,
         UIImage(named: "bookmark.jpg")!
@@ -73,21 +57,15 @@ class MainHomeViewController: UIViewController {
         showSpinner()
         mActivityIndicator.stopAnimating()
         setupRefreshControl()
-<<<<<<< HEAD
         getCuisines()
-=======
         getPromoted()
         getCuisines()
         initialCustomDate()
-    
->>>>>>> Production
-        
+            
         tableView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(handleTapAnimation)))
        
     }
     
-<<<<<<< HEAD
-=======
     func initialCustomDate() {
             
                 let startTime = Utils.getChefStartTime()
@@ -144,12 +122,10 @@ class MainHomeViewController: UIViewController {
             }
             
     
->>>>>>> Production
     @objc func handleTapAnimation(){
         print("handleTapAnimation")
     }
     
-<<<<<<< HEAD
     override func deliveryLocationSelected(_ location: Location, title: String) {
         super.deliveryLocationSelected(location, title: title)
         refreshData(sender: UIRefreshControl())
@@ -158,10 +134,6 @@ class MainHomeViewController: UIViewController {
     private func getPromoted(){
         var params = AreaFilter.shared.coverageParams
         params["partner_id"] = partnerId ?? 0
-=======
-    private func getPromoted(){
-        let params : [String: Any] = ["partner_id": partnerId ?? 0]
->>>>>>> Production
         
         RestClient().requestPromotedApi(WalayemApi.homeRecommendation, params) { (result, error) in
             self.tableView.refreshControl?.endRefreshing()
@@ -260,10 +232,7 @@ class MainHomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-<<<<<<< HEAD
         super.viewWillAppear(animated)
-=======
->>>>>>> Production
         getPromoted()
         StaticLinker.selectedCuisine = nil
     }
@@ -317,10 +286,6 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
    @objc private func refreshData(sender: UIRefreshControl){
        // reset filter
         getPromoted()
-<<<<<<< HEAD
-=======
-    
->>>>>>> Production
    }
        
     
@@ -477,13 +442,9 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
             }
                
     }
-<<<<<<< HEAD
-=======
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
     }
->>>>>>> Production
 }

@@ -122,7 +122,7 @@ class DatabaseHandler{
                 let insert = cartChef.insert(self.id <- chefId, name <- chefName, image <- chefImage, self.kitchen <- kitchen)
                 try db!.run(insert)
             }
-        } catch let error {`
+        } catch let error {
             print("Insert failed \(error)")
         }
     }

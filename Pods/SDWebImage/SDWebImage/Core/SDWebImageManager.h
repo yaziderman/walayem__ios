@@ -262,7 +262,6 @@ SDWebImageManager *manager = [SDWebImageManager sharedManager];
 - (void)cancelAll;
 
 /**
-<<<<<<< HEAD
  * Remove the specify URL from failed black list.
  * @param url The failed URL.
  */
@@ -274,8 +273,6 @@ SDWebImageManager *manager = [SDWebImageManager sharedManager];
 - (void)removeAllFailedURLs;
 
 /**
-=======
->>>>>>> Production
  * Return the cache key for a given URL, does not considerate transformer or thumbnail.
  * @note This method does not have context option, only use the url and manager level cacheKeyFilter to generate the cache key.
  */

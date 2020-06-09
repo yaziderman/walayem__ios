@@ -11,10 +11,7 @@
 #import "UIView+WebCacheOperation.h"
 #import "SDWebImageError.h"
 #import "SDInternalMacros.h"
-<<<<<<< HEAD
 #import "SDWebImageTransitionInternal.h"
-=======
->>>>>>> Production
 
 const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
 
@@ -56,7 +53,6 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
                      setImageBlock:(nullable SDSetImageBlock)setImageBlock
                           progress:(nullable SDImageLoaderProgressBlock)progressBlock
                          completed:(nullable SDInternalCompletionBlock)completedBlock {
-<<<<<<< HEAD
     if (context) {
         // copy to avoid mutable object
         context = [context copy];
@@ -70,12 +66,6 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
         SDWebImageMutableContext *mutableContext = [context mutableCopy];
         mutableContext[SDWebImageContextSetImageOperationKey] = validOperationKey;
         context = [mutableContext copy];
-=======
-    context = [context copy]; // copy to avoid mutable object
-    NSString *validOperationKey = context[SDWebImageContextSetImageOperationKey];
-    if (!validOperationKey) {
-        validOperationKey = NSStringFromClass([self class]);
->>>>>>> Production
     }
     self.sd_latestOperationKey = validOperationKey;
     [self sd_cancelImageLoadOperationWithKey:validOperationKey];
@@ -103,14 +93,11 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
         SDWebImageManager *manager = context[SDWebImageContextCustomManager];
         if (!manager) {
             manager = [SDWebImageManager sharedManager];
-<<<<<<< HEAD
         } else {
             // remove this manager to avoid retain cycle (manger -> loader -> operation -> context -> manager)
             SDWebImageMutableContext *mutableContext = [context mutableCopy];
             mutableContext[SDWebImageContextCustomManager] = nil;
             context = [mutableContext copy];
-=======
->>>>>>> Production
         }
         
         SDImageLoaderProgressBlock combinedProgressBlock = ^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
@@ -288,7 +275,6 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
         } completionHandler:^{
             [NSAnimationContext runAnimationGroup:^(NSAnimationContext * _Nonnull context) {
                 context.duration = transition.duration;
-<<<<<<< HEAD
                 #pragma clang diagnostic push
                 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
                 CAMediaTimingFunction *timingFunction = transition.timingFunction;
@@ -297,20 +283,14 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
                     timingFunction = SDTimingFunctionFromAnimationOptions(transition.animationOptions);
                 }
                 context.timingFunction = timingFunction;
-=======
-                context.timingFunction = transition.timingFunction;
->>>>>>> Production
                 context.allowsImplicitAnimation = SD_OPTIONS_CONTAINS(transition.animationOptions, SDWebImageAnimationOptionAllowsImplicitAnimation);
                 if (finalSetImageBlock && !transition.avoidAutoSetImage) {
                     finalSetImageBlock(image, imageData, cacheType, imageURL);
                 }
-<<<<<<< HEAD
                 CATransition *trans = SDTransitionFromAnimationOptions(transition.animationOptions);
                 if (trans) {
                     [view.layer addAnimation:trans forKey:kCATransition];
                 }
-=======
->>>>>>> Production
                 if (transition.animations) {
                     transition.animations(view, image);
                 }
@@ -355,12 +335,7 @@ const int64_t SDWebImageProgressUnitCountUnknown = 1LL;
     return objc_getAssociatedObject(self, @selector(sd_imageIndicator));
 }
 
-<<<<<<< HEAD
 - (void)setSd_imageIndicator:(id<SDWebImageIndicator>)sd_imageIndicator {
-=======
-- (void)
-setSd_imageIndicator:(id<SDWebImageIndicator>)sd_imageIndicator {
->>>>>>> Production
     // Remove the old indicator view
     id<SDWebImageIndicator> previousIndicator = self.sd_imageIndicator;
     [previousIndicator.indicatorView removeFromSuperview];

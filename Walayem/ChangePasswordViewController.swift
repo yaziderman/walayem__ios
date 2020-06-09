@@ -76,22 +76,21 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
     // MARK: Private methods
     
     private func setupViews(){
-<<<<<<< HEAD
         oldPwdTextField.addImageAtLeft(UIImage(named: "lock"))
         newPwdTextField.addImageAtLeft(UIImage(named: "lock"))
-=======
-        let lockImageView1 = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
-        lockImageView1.image = UIImage(named: "lock")
-        lockImageView1.contentMode = .left
-        oldPwdTextField.leftViewMode = .always
-        oldPwdTextField.leftView = lockImageView1
-        
-        let lockImageView2 = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
-        lockImageView2.image = UIImage(named: "lock")
-        lockImageView2.contentMode = .left
-        newPwdTextField.leftViewMode = .always
-        newPwdTextField.leftView = lockImageView2
->>>>>>> Production
+//=======
+//        let lockImageView1 = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+//        lockImageView1.image = UIImage(named: "lock")
+//        lockImageView1.contentMode = .left
+//        oldPwdTextField.leftViewMode = .always
+//        oldPwdTextField.leftView = lockImageView1
+//
+//        let lockImageView2 = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+//        lockImageView2.image = UIImage(named: "lock")
+//        lockImageView2.contentMode = .left
+//        newPwdTextField.leftViewMode = .always
+//        newPwdTextField.leftView = lockImageView2
+//>>>>>>> Production
         
         submitButton.layer.cornerRadius = 15
         submitButton.layer.masksToBounds = true

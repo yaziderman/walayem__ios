@@ -44,11 +44,6 @@ NSString *const kFIRInstallationIDDidChangeNotificationAppNameKey =
 
 NSTimeInterval const kFIRInstallationsTokenExpirationThreshold = 60 * 60;  // 1 hour.
 
-<<<<<<< HEAD
-static NSString *const kKeychainService = @"com.firebase.FIRInstallations.installations";
-
-=======
->>>>>>> Production
 @interface FIRInstallationsIDController ()
 @property(nonatomic, readonly) NSString *appID;
 @property(nonatomic, readonly) NSString *appName;
@@ -76,15 +71,9 @@ static NSString *const kKeychainService = @"com.firebase.FIRInstallations.instal
                              APIKey:(NSString *)APIKey
                           projectID:(NSString *)projectID
                         GCMSenderID:(NSString *)GCMSenderID
-<<<<<<< HEAD
-                        accessGroup:(nullable NSString *)accessGroup {
-  NSString *serviceName = [FIRInstallationsIDController keychainServiceWithAppID:appID];
-  GULKeychainStorage *secureStorage = [[GULKeychainStorage alloc] initWithService:serviceName];
-=======
                         accessGroup:(NSString *)accessGroup {
   GULKeychainStorage *secureStorage =
       [[GULKeychainStorage alloc] initWithService:@"com.firebase.FIRInstallations.installations"];
->>>>>>> Production
   FIRInstallationsStore *installationsStore =
       [[FIRInstallationsStore alloc] initWithSecureStorage:secureStorage accessGroup:accessGroup];
 
@@ -267,15 +256,9 @@ static NSString *const kKeychainService = @"com.firebase.FIRInstallations.instal
         if ([self doesRegistrationErrorRequireConfigChange:error]) {
           FIRLogError(kFIRLoggerInstallations,
                       kFIRInstallationsMessageCodeInvalidFirebaseConfiguration,
-<<<<<<< HEAD
-                      @"Firebase Installation registration failed for app with name: %@, error:\n"
-                      @"%@\nPlease make sure you use valid GoogleService-Info.plist",
-                      self.appName, error.userInfo[NSLocalizedFailureReasonErrorKey]);
-=======
                       @"Firebase Installation registration failed for app with name: %@, error: "
                       @"%@\nPlease make sure you use valid GoogleService-Info.plist",
                       self.appName, error);
->>>>>>> Production
         }
       })
       .then(^id(FIRInstallationsItem *registeredInstallation) {
@@ -473,26 +456,4 @@ static NSString *const kKeychainService = @"com.firebase.FIRInstallations.instal
   return [self.appName isEqualToString:kFIRDefaultAppName];
 }
 
-<<<<<<< HEAD
-#pragma mark - Keychain
-
-+ (NSString *)keychainServiceWithAppID:(NSString *)appID {
-#if TARGET_OS_MACCATALYST || TARGET_OS_OSX
-  // We need to keep service name unique per application on macOS.
-  // Applications on macOS may request access to Keychain items stored by other applications. It
-  // means that when the app looks up for a relevant Keychain item in the service scope it will
-  // request user password to grant access to the Keychain if there are other Keychain items from
-  // other applications stored under the same Keychain Service.
-  return [kKeychainService stringByAppendingFormat:@".%@", appID];
-#else
-  // Use a constant Keychain service for non-macOS because:
-  // 1. Keychain items cannot be shared between apps until configured specifically so the service
-  // name collisions are not a concern
-  // 2. We don't want to change the service name to avoid doing a migration.
-  return kKeychainService;
-#endif
-}
-
-=======
->>>>>>> Production
 @end

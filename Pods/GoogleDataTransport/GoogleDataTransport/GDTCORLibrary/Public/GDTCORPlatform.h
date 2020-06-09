@@ -19,19 +19,13 @@
 #if !TARGET_OS_WATCH
 #import <SystemConfiguration/SystemConfiguration.h>
 #endif
-<<<<<<< HEAD
 
-=======
->>>>>>> Production
 #if TARGET_OS_IOS || TARGET_OS_TV
 #import <UIKit/UIKit.h>
 #elif TARGET_OS_OSX
 #import <AppKit/AppKit.h>
-<<<<<<< HEAD
 #elif TARGET_OS_WATCH
 #import <WatchKit/WatchKit.h>
-=======
->>>>>>> Production
 #endif  // TARGET_OS_IOS || TARGET_OS_TV
 
 #if TARGET_OS_IOS
@@ -75,7 +69,6 @@ typedef NS_ENUM(NSInteger, GDTCORNetworkMobileSubtype) {
   GDTCORNetworkMobileSubtypeLTE = 11,
 };
 
-<<<<<<< HEAD
 #if !TARGET_OS_WATCH
 /** Define SCNetworkReachabilityFlags as GDTCORNetworkReachabilityFlags on non-watchOS. */
 typedef SCNetworkReachabilityFlags GDTCORNetworkReachabilityFlags;
@@ -99,15 +92,12 @@ typedef struct {
 } GDTCORNetworkReachabilityRef;
 #endif
 
-=======
->>>>>>> Production
 /** Returns a URL to the root directory under which all GDT-associated data must be saved.
  *
  * @return A URL to the root directory under which all GDT-associated data must be saved.
  */
 NSURL *GDTCORRootDirectory(void);
 
-<<<<<<< HEAD
 /** Compares flags with the reachable flag (on non-watchos with both reachable and
  * connectionRequired flags), if available, and returns YES if network reachable.
  *
@@ -116,20 +106,12 @@ NSURL *GDTCORRootDirectory(void);
  */
 BOOL GDTCORReachabilityFlagsReachable(GDTCORNetworkReachabilityFlags flags);
 
-=======
-#if !TARGET_OS_WATCH
->>>>>>> Production
 /** Compares flags with the WWAN reachability flag, if available, and returns YES if present.
  *
  * @param flags The set of reachability flags.
  * @return YES if the WWAN flag is set, NO otherwise.
  */
-<<<<<<< HEAD
 BOOL GDTCORReachabilityFlagsContainWWAN(GDTCORNetworkReachabilityFlags flags);
-=======
-BOOL GDTCORReachabilityFlagsContainWWAN(SCNetworkReachabilityFlags flags);
-#endif
->>>>>>> Production
 
 /** Generates an enum message GDTCORNetworkType representing network connection type.
  *
@@ -175,7 +157,6 @@ typedef volatile NSUInteger GDTCORBackgroundIdentifier;
 FOUNDATION_EXPORT const GDTCORBackgroundIdentifier GDTCORBackgroundIdentifierInvalid;
 
 #if TARGET_OS_IOS || TARGET_OS_TV
-<<<<<<< HEAD
 /** A protocol that wraps UIApplicationDelegate, WKExtensionDelegate or NSObject protocol, depending
  * on the platform.
  */
@@ -184,12 +165,6 @@ FOUNDATION_EXPORT const GDTCORBackgroundIdentifier GDTCORBackgroundIdentifierInv
 @protocol GDTCORApplicationDelegate <NSApplicationDelegate>
 #elif TARGET_OS_WATCH
 @protocol GDTCORApplicationDelegate <WKExtensionDelegate>
-=======
-/** A protocol that wraps UIApplicationDelegate or NSObject protocol, depending on the platform. */
-@protocol GDTCORApplicationDelegate <UIApplicationDelegate>
-#elif TARGET_OS_OSX
-@protocol GDTCORApplicationDelegate <NSApplicationDelegate>
->>>>>>> Production
 #else
 @protocol GDTCORApplicationDelegate <NSObject>
 #endif  // TARGET_OS_IOS || TARGET_OS_TV

@@ -294,14 +294,11 @@ static NSString * kSDCGImageDestinationRequestedFileSize = @"kCGImageDestination
         // Remove the quality if we have file size limit
         properties[(__bridge NSString *)kCGImageDestinationLossyCompressionQuality] = nil;
     }
-<<<<<<< HEAD
     BOOL embedThumbnail = NO;
     if (options[SDImageCoderEncodeEmbedThumbnail]) {
         embedThumbnail = [options[SDImageCoderEncodeEmbedThumbnail] boolValue];
     }
     properties[(__bridge NSString *)kCGImageDestinationEmbedThumbnail] = @(embedThumbnail);
-=======
->>>>>>> Production
     
     // Add your image to the destination.
     CGImageDestinationAddImage(imageDestination, imageRef, (__bridge CFDictionaryRef)properties);

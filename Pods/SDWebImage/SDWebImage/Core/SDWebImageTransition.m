@@ -11,7 +11,6 @@
 #if SD_UIKIT || SD_MAC
 
 #if SD_MAC
-<<<<<<< HEAD
 #import "SDWebImageTransitionInternal.h"
 #import "SDInternalMacros.h"
 
@@ -68,9 +67,6 @@ CATransition * SDTransitionFromAnimationOptions(SDWebImageAnimationOptions optio
         return nil;
     }
 }
-=======
-#import <QuartzCore/QuartzCore.h>
->>>>>>> Production
 #endif
 
 @implementation SDWebImageTransition
@@ -92,15 +88,7 @@ CATransition * SDTransitionFromAnimationOptions(SDWebImageAnimationOptions optio
 #if SD_UIKIT
     transition.animationOptions = UIViewAnimationOptionTransitionCrossDissolve | UIViewAnimationOptionAllowUserInteraction;
 #else
-<<<<<<< HEAD
     transition.animationOptions = SDWebImageAnimationOptionTransitionCrossDissolve;
-=======
-    transition.animations = ^(__kindof NSView * _Nonnull view, NSImage * _Nullable image) {
-        CATransition *trans = [CATransition animation];
-        trans.type = kCATransitionFade;
-        [view.layer addAnimation:trans forKey:kCATransition];
-    };
->>>>>>> Production
 #endif
     return transition;
 }
@@ -110,16 +98,7 @@ CATransition * SDTransitionFromAnimationOptions(SDWebImageAnimationOptions optio
 #if SD_UIKIT
     transition.animationOptions = UIViewAnimationOptionTransitionFlipFromLeft | UIViewAnimationOptionAllowUserInteraction;
 #else
-<<<<<<< HEAD
     transition.animationOptions = SDWebImageAnimationOptionTransitionFlipFromLeft;
-=======
-    transition.animations = ^(__kindof NSView * _Nonnull view, NSImage * _Nullable image) {
-        CATransition *trans = [CATransition animation];
-        trans.type = kCATransitionPush;
-        trans.subtype = kCATransitionFromLeft;
-        [view.layer addAnimation:trans forKey:kCATransition];
-    };
->>>>>>> Production
 #endif
     return transition;
 }
@@ -129,16 +108,7 @@ CATransition * SDTransitionFromAnimationOptions(SDWebImageAnimationOptions optio
 #if SD_UIKIT
     transition.animationOptions = UIViewAnimationOptionTransitionFlipFromRight | UIViewAnimationOptionAllowUserInteraction;
 #else
-<<<<<<< HEAD
     transition.animationOptions = SDWebImageAnimationOptionTransitionFlipFromRight;
-=======
-    transition.animations = ^(__kindof NSView * _Nonnull view, NSImage * _Nullable image) {
-        CATransition *trans = [CATransition animation];
-        trans.type = kCATransitionPush;
-        trans.subtype = kCATransitionFromRight;
-        [view.layer addAnimation:trans forKey:kCATransition];
-    };
->>>>>>> Production
 #endif
     return transition;
 }
@@ -148,16 +118,7 @@ CATransition * SDTransitionFromAnimationOptions(SDWebImageAnimationOptions optio
 #if SD_UIKIT
     transition.animationOptions = UIViewAnimationOptionTransitionFlipFromTop | UIViewAnimationOptionAllowUserInteraction;
 #else
-<<<<<<< HEAD
     transition.animationOptions = SDWebImageAnimationOptionTransitionFlipFromTop;
-=======
-    transition.animations = ^(__kindof NSView * _Nonnull view, NSImage * _Nullable image) {
-        CATransition *trans = [CATransition animation];
-        trans.type = kCATransitionPush;
-        trans.subtype = kCATransitionFromTop;
-        [view.layer addAnimation:trans forKey:kCATransition];
-    };
->>>>>>> Production
 #endif
     return transition;
 }
@@ -167,16 +128,7 @@ CATransition * SDTransitionFromAnimationOptions(SDWebImageAnimationOptions optio
 #if SD_UIKIT
     transition.animationOptions = UIViewAnimationOptionTransitionFlipFromBottom | UIViewAnimationOptionAllowUserInteraction;
 #else
-<<<<<<< HEAD
     transition.animationOptions = SDWebImageAnimationOptionTransitionFlipFromBottom;
-=======
-    transition.animations = ^(__kindof NSView * _Nonnull view, NSImage * _Nullable image) {
-        CATransition *trans = [CATransition animation];
-        trans.type = kCATransitionPush;
-        trans.subtype = kCATransitionFromBottom;
-        [view.layer addAnimation:trans forKey:kCATransition];
-    };
->>>>>>> Production
 #endif
     return transition;
 }
@@ -186,16 +138,7 @@ CATransition * SDTransitionFromAnimationOptions(SDWebImageAnimationOptions optio
 #if SD_UIKIT
     transition.animationOptions = UIViewAnimationOptionTransitionCurlUp | UIViewAnimationOptionAllowUserInteraction;
 #else
-<<<<<<< HEAD
     transition.animationOptions = SDWebImageAnimationOptionTransitionCurlUp;
-=======
-    transition.animations = ^(__kindof NSView * _Nonnull view, NSImage * _Nullable image) {
-        CATransition *trans = [CATransition animation];
-        trans.type = kCATransitionReveal;
-        trans.subtype = kCATransitionFromTop;
-        [view.layer addAnimation:trans forKey:kCATransition];
-    };
->>>>>>> Production
 #endif
     return transition;
 }
@@ -205,16 +148,7 @@ CATransition * SDTransitionFromAnimationOptions(SDWebImageAnimationOptions optio
 #if SD_UIKIT
     transition.animationOptions = UIViewAnimationOptionTransitionCurlDown | UIViewAnimationOptionAllowUserInteraction;
 #else
-<<<<<<< HEAD
     transition.animationOptions = SDWebImageAnimationOptionTransitionCurlDown;
-=======
-    transition.animations = ^(__kindof NSView * _Nonnull view, NSImage * _Nullable image) {
-        CATransition *trans = [CATransition animation];
-        trans.type = kCATransitionReveal;
-        trans.subtype = kCATransitionFromBottom;
-        [view.layer addAnimation:trans forKey:kCATransition];
-    };
->>>>>>> Production
 #endif
     return transition;
 }

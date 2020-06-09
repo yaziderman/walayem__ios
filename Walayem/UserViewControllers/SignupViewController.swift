@@ -516,11 +516,12 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     }
 
     // MARK: Private methods
-    private func addImageInsideTextField(){
-        //Customer
-        nameTextField.addImageAtLeft(UIImage(named: "user"))
-        emailTextField.addImageAtLeft(UIImage(named: "email"))
-        passwordTextField.addImageAtLeft(UIImage(named: "lock"))
+//    private func addImageInsideTextField(){
+//        //Customer
+//        nameTextField.addImageAtLeft(UIImage(named: "user"))
+//        emailTextField.addImageAtLeft(UIImage(named: "email"))
+//        passwordTextField.addImageAtLeft(UIImage(named: "lock"))
+//	}
     
     private func addImageInsideTextField(){
         let userImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
@@ -599,7 +600,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         chefPhoneTextField.leftView = leftView2
         chefPhoneTextField.placeholder = "50XXXXXXX"
 
-        let leftView2 = UIView(frame: CGRect(x: 0, y: 0, width: 20 + 50, height: 20))
+//        let leftView2 = UIView(frame: CGRect(x: 0, y: 0, width: 20 + 50, height: 20))
 
         leftView2.addSubview(chefPhoneImageView)
         leftView2.addSubview(prefix2)

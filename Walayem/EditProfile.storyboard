@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rz3-nl-Jv2">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
-=======
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rz3-nl-Jv2">
-    <device id="retina4_7" orientation="portrait" appearance="dark"/>
-    <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
->>>>>>> Production
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -243,7 +235,6 @@
                                             <segue destination="LMt-HH-glT" kind="show" identifier="ChangePasswordVCSegue" id="yqZ-oQ-MYZ"/>
                                         </connections>
                                     </tableViewCell>
-<<<<<<< HEAD
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="tvY-Pn-BwB" userLabel="CoverageAreaCell">
                                         <rect key="frame" x="0.0" y="368" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
@@ -316,8 +307,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-=======
->>>>>>> Production
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -328,7 +317,6 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Update Profile" id="ewC-k9-xaL">
                         <barButtonItem key="backBarButtonItem" title=" " id="b7X-7a-Qpx"/>
-<<<<<<< HEAD
                         <barButtonItem key="rightBarButtonItem" title="Save" style="done" id="zsI-e8-10P">
                             <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -340,22 +328,13 @@
                         <outlet property="coverageAreaBtn" destination="mJj-Uf-PVY" id="Oww-RW-wnS"/>
                         <outlet property="emailLabel" destination="nKO-Cp-dTf" id="mIz-Ep-bcY"/>
                         <outlet property="locationBtn" destination="kx8-vX-yFh" id="Vgb-2g-bUV"/>
-=======
-                    </navigationItem>
-                    <connections>
-                        <outlet property="emailLabel" destination="nKO-Cp-dTf" id="mIz-Ep-bcY"/>
->>>>>>> Production
                         <outlet property="nameLabel" destination="fUb-1E-YD4" id="Gce-RE-2NV"/>
                         <outlet property="phoneLabel" destination="z9g-g5-f1m" id="e8E-DL-aDq"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yrK-nt-5UQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-<<<<<<< HEAD
             <point key="canvasLocation" x="2024.8" y="-1505.3973013493255"/>
-=======
-            <point key="canvasLocation" x="2026" y="-1505"/>
->>>>>>> Production
         </scene>
         <!--Change Phone Number-->
         <scene sceneID="HGC-7b-dmP">
@@ -608,11 +587,8 @@
     </scenes>
     <resources>
         <image name="idEmpty" width="100" height="100"/>
-<<<<<<< HEAD
         <image name="mapPin" width="60.333332061767578" height="77.333335876464844"/>
         <image name="pins" width="91.666664123535156" height="71.333335876464844"/>
-=======
->>>>>>> Production
         <image name="verify" width="14" height="14"/>
     </resources>
 </document>

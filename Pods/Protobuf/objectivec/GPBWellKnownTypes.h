@@ -37,7 +37,6 @@
 #endif
 
 #if GPB_USE_PROTOBUF_FRAMEWORK_IMPORTS
-<<<<<<< HEAD
  #import <Protobuf/GPBAny.pbobjc.h>
  #import <Protobuf/GPBDuration.pbobjc.h>
  #import <Protobuf/GPBTimestamp.pbobjc.h>
@@ -45,15 +44,6 @@
  #import "GPBAny.pbobjc.h"
  #import "GPBDuration.pbobjc.h"
  #import "GPBTimestamp.pbobjc.h"
-=======
- #import <protobuf/Any.pbobjc.h>
- #import <protobuf/Duration.pbobjc.h>
- #import <protobuf/Timestamp.pbobjc.h>
-#else
- #import "google/protobuf/Any.pbobjc.h"
- #import "google/protobuf/Duration.pbobjc.h"
- #import "google/protobuf/Timestamp.pbobjc.h"
->>>>>>> Production
 #endif
 
 NS_ASSUME_NONNULL_BEGIN

@@ -452,10 +452,7 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
 //%
 //%PDDM-EXPAND WRITE_PACKABLE_DEFNS(Double, Double, double, )
 // This block of code is generated, do not edit it directly.
-<<<<<<< HEAD
 // clang-format off
-=======
->>>>>>> Production
 
 - (void)writeDoubleArray:(int32_t)fieldNumber
                   values:(GPBDoubleArray *)values
@@ -481,15 +478,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_PACKABLE_DEFNS(Float, Float, float, )
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_PACKABLE_DEFNS(Float, Float, float, )
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeFloatArray:(int32_t)fieldNumber
                  values:(GPBFloatArray *)values
@@ -515,15 +507,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_PACKABLE_DEFNS(UInt64, UInt64, uint64_t, )
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_PACKABLE_DEFNS(UInt64, UInt64, uint64_t, )
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeUInt64Array:(int32_t)fieldNumber
                   values:(GPBUInt64Array *)values
@@ -549,15 +536,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_PACKABLE_DEFNS(Int64, Int64, int64_t, )
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_PACKABLE_DEFNS(Int64, Int64, int64_t, )
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeInt64Array:(int32_t)fieldNumber
                  values:(GPBInt64Array *)values
@@ -583,15 +565,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_PACKABLE_DEFNS(Int32, Int32, int32_t, )
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_PACKABLE_DEFNS(Int32, Int32, int32_t, )
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeInt32Array:(int32_t)fieldNumber
                  values:(GPBInt32Array *)values
@@ -617,15 +594,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_PACKABLE_DEFNS(UInt32, UInt32, uint32_t, )
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_PACKABLE_DEFNS(UInt32, UInt32, uint32_t, )
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeUInt32Array:(int32_t)fieldNumber
                   values:(GPBUInt32Array *)values
@@ -651,15 +623,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_PACKABLE_DEFNS(Fixed64, UInt64, uint64_t, )
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_PACKABLE_DEFNS(Fixed64, UInt64, uint64_t, )
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeFixed64Array:(int32_t)fieldNumber
                    values:(GPBUInt64Array *)values
@@ -685,15 +652,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_PACKABLE_DEFNS(Fixed32, UInt32, uint32_t, )
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_PACKABLE_DEFNS(Fixed32, UInt32, uint32_t, )
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeFixed32Array:(int32_t)fieldNumber
                    values:(GPBUInt32Array *)values
@@ -719,15 +681,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_PACKABLE_DEFNS(SInt32, Int32, int32_t, )
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_PACKABLE_DEFNS(SInt32, Int32, int32_t, )
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeSInt32Array:(int32_t)fieldNumber
                   values:(GPBInt32Array *)values
@@ -753,15 +710,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_PACKABLE_DEFNS(SInt64, Int64, int64_t, )
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_PACKABLE_DEFNS(SInt64, Int64, int64_t, )
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeSInt64Array:(int32_t)fieldNumber
                   values:(GPBInt64Array *)values
@@ -787,15 +739,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_PACKABLE_DEFNS(SFixed64, Int64, int64_t, )
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_PACKABLE_DEFNS(SFixed64, Int64, int64_t, )
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeSFixed64Array:(int32_t)fieldNumber
                     values:(GPBInt64Array *)values
@@ -821,15 +768,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_PACKABLE_DEFNS(SFixed32, Int32, int32_t, )
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_PACKABLE_DEFNS(SFixed32, Int32, int32_t, )
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeSFixed32Array:(int32_t)fieldNumber
                     values:(GPBInt32Array *)values
@@ -855,15 +797,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_PACKABLE_DEFNS(Bool, Bool, BOOL, )
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_PACKABLE_DEFNS(Bool, Bool, BOOL, )
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeBoolArray:(int32_t)fieldNumber
                 values:(GPBBoolArray *)values
@@ -889,15 +826,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_PACKABLE_DEFNS(Enum, Enum, int32_t, Raw)
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_PACKABLE_DEFNS(Enum, Enum, int32_t, Raw)
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeEnumArray:(int32_t)fieldNumber
                 values:(GPBEnumArray *)values
@@ -923,15 +855,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_UNPACKABLE_DEFNS(String, NSString)
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_UNPACKABLE_DEFNS(String, NSString)
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeStringArray:(int32_t)fieldNumber values:(NSArray *)values {
   for (NSString *value in values) {
@@ -939,15 +866,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_UNPACKABLE_DEFNS(Message, GPBMessage)
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_UNPACKABLE_DEFNS(Message, GPBMessage)
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeMessageArray:(int32_t)fieldNumber values:(NSArray *)values {
   for (GPBMessage *value in values) {
@@ -955,15 +877,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_UNPACKABLE_DEFNS(Bytes, NSData)
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_UNPACKABLE_DEFNS(Bytes, NSData)
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeBytesArray:(int32_t)fieldNumber values:(NSArray *)values {
   for (NSData *value in values) {
@@ -971,15 +888,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_UNPACKABLE_DEFNS(Group, GPBMessage)
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_UNPACKABLE_DEFNS(Group, GPBMessage)
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeGroupArray:(int32_t)fieldNumber values:(NSArray *)values {
   for (GPBMessage *value in values) {
@@ -987,15 +899,10 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND WRITE_UNPACKABLE_DEFNS(UnknownGroup, GPBUnknownFieldSet)
 // This block of code is generated, do not edit it directly.
 // clang-format off
-=======
-//%PDDM-EXPAND WRITE_UNPACKABLE_DEFNS(UnknownGroup, GPBUnknownFieldSet)
-// This block of code is generated, do not edit it directly.
->>>>>>> Production
 
 - (void)writeUnknownGroupArray:(int32_t)fieldNumber values:(NSArray *)values {
   for (GPBUnknownFieldSet *value in values) {
@@ -1003,10 +910,7 @@ static void GPBWriteRawLittleEndian64(GPBOutputBufferState *state,
   }
 }
 
-<<<<<<< HEAD
 // clang-format on
-=======
->>>>>>> Production
 //%PDDM-EXPAND-END (19 expansions)
 
 - (void)writeMessageSetExtension:(int32_t)fieldNumber

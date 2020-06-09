@@ -33,9 +33,9 @@ class CartFoodTableViewCell: UITableViewCell {
         self.food = food
         updateUI(deliveryCharge: deliveryCharge)
 
-        didSet{
-            updateUI()
-        }
+//        didSet{
+//            updateUI()
+//        }
     }
     
     // MARK: Actions

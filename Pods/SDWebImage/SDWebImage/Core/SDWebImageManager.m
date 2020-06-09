@@ -194,13 +194,9 @@ static id<SDImageLoader> _defaultImageLoader;
     }
 
     if (url.absoluteString.length == 0 || (!(options & SDWebImageRetryFailed) && isFailedUrl)) {
-<<<<<<< HEAD
         NSString *description = isFailedUrl ? @"Image url is blacklisted" : @"Image url is nil";
         NSInteger code = isFailedUrl ? SDWebImageErrorBlackListed : SDWebImageErrorInvalidURL;
         [self callCompletionBlockForOperation:operation completion:completedBlock error:[NSError errorWithDomain:SDWebImageErrorDomain code:code userInfo:@{NSLocalizedDescriptionKey : description}] url:url];
-=======
-        [self callCompletionBlockForOperation:operation completion:completedBlock error:[NSError errorWithDomain:SDWebImageErrorDomain code:SDWebImageErrorInvalidURL userInfo:@{NSLocalizedDescriptionKey : @"Image url is nil"}] url:url];
->>>>>>> Production
         return operation;
     }
 
@@ -232,7 +228,6 @@ static id<SDImageLoader> _defaultImageLoader;
     return isRunning;
 }
 
-<<<<<<< HEAD
 - (void)removeFailedURL:(NSURL *)url {
     if (!url) {
         return;
@@ -251,11 +246,6 @@ static id<SDImageLoader> _defaultImageLoader;
 #pragma mark - Private
 
 // Query normal cache process
-=======
-#pragma mark - Private
-
-// Query cache process
->>>>>>> Production
 - (void)callCacheProcessForOperation:(nonnull SDWebImageCombinedOperation *)operation
                                  url:(nonnull NSURL *)url
                              options:(SDWebImageOptions)options
@@ -269,23 +259,15 @@ static id<SDImageLoader> _defaultImageLoader;
     } else {
         imageCache = self.imageCache;
     }
-<<<<<<< HEAD
     
-=======
-    // Check whether we should query cache
-    BOOL shouldQueryCache = !SD_OPTIONS_CONTAINS(options, SDWebImageFromLoaderOnly);
->>>>>>> Production
     // Get the query cache type
     SDImageCacheType queryCacheType = SDImageCacheTypeAll;
     if (context[SDWebImageContextQueryCacheType]) {
         queryCacheType = [context[SDWebImageContextQueryCacheType] integerValue];
     }
-<<<<<<< HEAD
     
     // Check whether we should query cache
     BOOL shouldQueryCache = !SD_OPTIONS_CONTAINS(options, SDWebImageFromLoaderOnly);
-=======
->>>>>>> Production
     if (shouldQueryCache) {
         NSString *key = [self cacheKeyForURL:url context:context];
         @weakify(operation);
@@ -296,16 +278,12 @@ static id<SDImageLoader> _defaultImageLoader;
                 [self callCompletionBlockForOperation:operation completion:completedBlock error:[NSError errorWithDomain:SDWebImageErrorDomain code:SDWebImageErrorCancelled userInfo:@{NSLocalizedDescriptionKey : @"Operation cancelled by user during querying the cache"}] url:url];
                 [self safelyRemoveOperationFromRunning:operation];
                 return;
-<<<<<<< HEAD
             } else if (context[SDWebImageContextImageTransformer] && !cachedImage) {
                 // Have a chance to quary original cache instead of downloading
                 [self callOriginalCacheProcessForOperation:operation url:url options:options context:context progress:progressBlock completed:completedBlock];
                 return;
             }
             
-=======
-            }
->>>>>>> Production
             // Continue download process
             [self callDownloadProcessForOperation:operation url:url options:options context:context cachedImage:cachedImage cachedData:cachedData cacheType:cacheType progress:progressBlock completed:completedBlock];
         }];
@@ -315,7 +293,6 @@ static id<SDImageLoader> _defaultImageLoader;
     }
 }
 
-<<<<<<< HEAD
 // Query original cache process
 - (void)callOriginalCacheProcessForOperation:(nonnull SDWebImageCombinedOperation *)operation
                                          url:(nonnull NSURL *)url
@@ -379,8 +356,6 @@ static id<SDImageLoader> _defaultImageLoader;
     }
 }
 
-=======
->>>>>>> Production
 // Download process
 - (void)callDownloadProcessForOperation:(nonnull SDWebImageCombinedOperation *)operation
                                     url:(nonnull NSURL *)url
@@ -398,10 +373,7 @@ static id<SDImageLoader> _defaultImageLoader;
     } else {
         imageLoader = self.imageLoader;
     }
-<<<<<<< HEAD
     
-=======
->>>>>>> Production
     // Check whether we should download image from network
     BOOL shouldDownload = !SD_OPTIONS_CONTAINS(options, SDWebImageFromCacheOnly);
     shouldDownload &= (!cachedImage || options & SDWebImageRefreshCached);

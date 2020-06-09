@@ -15,7 +15,6 @@
 typedef UIViewAnimationOptions SDWebImageAnimationOptions;
 #else
 typedef NS_OPTIONS(NSUInteger, SDWebImageAnimationOptions) {
-<<<<<<< HEAD
     SDWebImageAnimationOptionAllowsImplicitAnimation   = 1 << 0, // specify `allowsImplicitAnimation` for the `NSAnimationContext`
     
     SDWebImageAnimationOptionCurveEaseInOut            = 0 << 16, // default
@@ -31,9 +30,6 @@ typedef NS_OPTIONS(NSUInteger, SDWebImageAnimationOptions) {
     SDWebImageAnimationOptionTransitionCrossDissolve   = 5 << 20,
     SDWebImageAnimationOptionTransitionFlipFromTop     = 6 << 20,
     SDWebImageAnimationOptionTransitionFlipFromBottom  = 7 << 20,
-=======
-    SDWebImageAnimationOptionAllowsImplicitAnimation = 1 << 0, // specify `allowsImplicitAnimation` for the `NSAnimationContext`
->>>>>>> Production
 };
 #endif
 
@@ -60,11 +56,7 @@ typedef void (^SDWebImageTransitionCompletionBlock)(BOOL finished);
 /**
  The timing function used for all animations within this transition animation (macOS).
  */
-<<<<<<< HEAD
 @property (nonatomic, strong, nullable) CAMediaTimingFunction *timingFunction API_UNAVAILABLE(ios, tvos, watchos) API_DEPRECATED("Use SDWebImageAnimationOptions instead, or grab NSAnimationContext.currentContext and modify the timingFunction", macos(10.10, 10.10));
-=======
-@property (nonatomic, strong, nullable) CAMediaTimingFunction *timingFunction API_UNAVAILABLE(ios, tvos, watchos);
->>>>>>> Production
 /**
  A mask of options indicating how you want to perform the animations.
  */

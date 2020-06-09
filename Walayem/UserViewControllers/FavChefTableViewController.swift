@@ -9,6 +9,7 @@
 import UIKit
 
 class FavChefTableViewController: UIViewController, ChefCellDelegate {
+	
 
     // MARK: Properties
     
@@ -69,14 +70,14 @@ class FavChefTableViewController: UIViewController, ChefCellDelegate {
             }
             let records = data["data"] as! [Any]
             for record in records{
-                let chef = Chef(record: record as! [String : Any])
+				let chef = Chef(record: record as! [String : Any], name: "")
                 self.chefs.append(chef)
             }
             self.tableView.reloadData()
         }
     }
     
-    func showFoodDetailVC(food: Food){
+	func foodSelected(_ food: Food){
         let storyBoard = UIStoryboard(name: "Discover", bundle: nil)
         guard let foodDetailVC = storyBoard.instantiateViewController(withIdentifier: "FoodDetailVC") as? FoodDetailViewController else {
             fatalError("Unexpected viewController")

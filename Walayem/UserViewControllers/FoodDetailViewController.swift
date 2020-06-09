@@ -79,7 +79,7 @@ class FoodDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Utils.setupNavigationBar(nav: self.navigationController!)
-        user = User().getUserDefaults()\
+        user = User().getUserDefaults()
 		
 // MARK:    To open chef connection from food detail uncomment following 3 lines
         

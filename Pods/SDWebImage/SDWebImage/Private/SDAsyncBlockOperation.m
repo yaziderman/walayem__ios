@@ -35,7 +35,6 @@
 }
 
 - (void)start {
-<<<<<<< HEAD
     @synchronized (self) {
         if (self.isCancelled) {
             self.finished = YES;
@@ -51,25 +50,10 @@
             self.executing = NO;
             self.finished = YES;
         }
-=======
-    if (self.isCancelled) {
-        return;
-    }
-    
-    [self willChangeValueForKey:@"isExecuting"];
-    self.executing = YES;
-    [self didChangeValueForKey:@"isExecuting"];
-    
-    if (self.executionBlock) {
-        self.executionBlock(self);
-    } else {
-        [self complete];
->>>>>>> Production
     }
 }
 
 - (void)cancel {
-<<<<<<< HEAD
     @synchronized (self) {
         [super cancel];
         if (self.isExecuting) {
@@ -103,19 +87,6 @@
 
 - (BOOL)isConcurrent {
     return YES;
-=======
-    [super cancel];
-    [self complete];
-}
-
-- (void)complete {
-    [self willChangeValueForKey:@"isExecuting"];
-    [self willChangeValueForKey:@"isFinished"];
-    self.executing = NO;
-    self.finished = YES;
-    [self didChangeValueForKey:@"isExecuting"];
-    [self didChangeValueForKey:@"isFinished"];
->>>>>>> Production
 }
 
 @end
