@@ -15,6 +15,7 @@ protocol CartFoodFooterDelegate{
 class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 
     // MARK: Properties
+<<<<<<< HEAD
     private var deliveryCharge: Double?
     
     private var iconView: UIImageView!
@@ -31,6 +32,20 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
         imageView.backgroundColor = UIColor.init(light: .white, dark: .black)
         self.iconView = imageView
     }
+=======
+    public var foods = [Food]()
+    
+    let iconView: UIImageView = {
+        let imageView = UIImageView()
+        let icon = UIImage(named: "money")
+        imageView.image = icon
+        imageView.tintColor = UIColor.silver
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.backgroundColor = UIColor.init(light: .white, dark: .black)
+        return imageView
+    }()
+>>>>>>> Production
     
     
     let iconView1: UIImageView = {
@@ -70,6 +85,7 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
         return textField
     }()
     
+<<<<<<< HEAD
     private var homeLabel: UILabel!
     private func setupHomeLable() {
         let label = UILabel()
@@ -89,6 +105,17 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
         label.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
         self.homeLabel = label
     }
+=======
+    let homeLabel: UILabel = {
+        let textField = UILabel()
+        textField.textColor = UIColor.lightGray
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.text = "Cash on delivery"
+        textField.font = textField.font.withSize(16)
+        textField.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
+        return textField
+    }()
+>>>>>>> Production
     
     let deliveryLabel: UILabel = {
         let textField = UILabel()
@@ -109,17 +136,35 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
         self.contentView.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
+<<<<<<< HEAD
+=======
+        setViews()
+>>>>>>> Production
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
+<<<<<<< HEAD
     public func update(foods: [Food], deliveryCharge: Double?) {
         self.deliveryCharge = deliveryCharge
         setupIconView()
         setupHomeLable()
         
+=======
+    
+    // MARK: Private methods
+    
+    private func setViews(){
+
+        //self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-13.5-[v0]-13.5-|", options: [], metrics: nil, views: ["v0" : iconView]))
+        //self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-12-[v1]-20-|", options: .alignAllCenterY, metrics: nil, views: ["v0": iconView, "v1": noteTextField]))
+    }
+    
+    public func update()
+    {
+>>>>>>> Production
         iconView.removeFromSuperview()
         iconView2.removeFromSuperview()
         iconView1.removeFromSuperview()

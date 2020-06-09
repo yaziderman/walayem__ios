@@ -45,10 +45,13 @@ typedef NS_OPTIONS(uint16_t, GPBFieldFlags) {
   GPBFieldOptional        = 1 << 3,
   GPBFieldHasDefaultValue = 1 << 4,
 
+<<<<<<< HEAD
   // Indicate that the field should "clear" when set to zero value. This is the
   // proto3 non optional behavior for singular data (ints, data, string, enum)
   // fields.
   GPBFieldClearHasIvarOnZero = 1 << 5,
+=======
+>>>>>>> Production
   // Indicates the field needs custom handling for the TextFormat name, if not
   // set, the name can be derived from the ObjC name.
   GPBFieldTextFormatNameCustom = 1 << 6,
@@ -84,11 +87,15 @@ typedef struct GPBMessageFieldDescription {
   // Name of ivar.
   const char *name;
   union {
+<<<<<<< HEAD
     // className is deprecated and will be removed in favor of clazz.
     // kept around right now for backwards compatibility.
     // clazz is used iff GPBDescriptorInitializationFlag_UsesClassRefs is set.
     char *className;  // Name of the class of the message.
     Class clazz;  // Class of the message.
+=======
+    const char *className;  // Name for message class.
+>>>>>>> Production
     // For enums only: If EnumDescriptors are compiled in, it will be that,
     // otherwise it will be the verifier.
     GPBEnumDescriptorFunc enumDescFunc;
@@ -131,6 +138,7 @@ typedef NS_OPTIONS(uint8_t, GPBExtensionOptions) {
 typedef struct GPBExtensionDescription {
   GPBGenericValue defaultValue;
   const char *singletonName;
+<<<<<<< HEAD
   union {
     const char *name;
     Class clazz;
@@ -139,6 +147,10 @@ typedef struct GPBExtensionDescription {
     const char *name;
     Class clazz;
   } messageOrGroupClass;
+=======
+  const char *extendedClass;
+  const char *messageOrGroupClassName;
+>>>>>>> Production
   GPBEnumDescriptorFunc enumDescriptorFunc;
   int32_t fieldNumber;
   GPBDataType dataType;
@@ -149,6 +161,7 @@ typedef NS_OPTIONS(uint32_t, GPBDescriptorInitializationFlags) {
   GPBDescriptorInitializationFlag_None              = 0,
   GPBDescriptorInitializationFlag_FieldsWithDefault = 1 << 0,
   GPBDescriptorInitializationFlag_WireFormat        = 1 << 1,
+<<<<<<< HEAD
 
   // This is used as a stopgap as we move from using class names to class
   // references. The runtime needs to support both until we allow a
@@ -160,6 +173,8 @@ typedef NS_OPTIONS(uint32_t, GPBDescriptorInitializationFlags) {
   // at startup. This allows older generated code to still work with the
   // current runtime library.
   GPBDescriptorInitializationFlag_Proto3OptionalKnown = 1 << 3,
+=======
+>>>>>>> Production
 };
 
 @interface GPBDescriptor () {
@@ -193,11 +208,16 @@ typedef NS_OPTIONS(uint32_t, GPBDescriptorInitializationFlags) {
       firstHasIndex:(int32_t)firstHasIndex;
 - (void)setupExtraTextInfo:(const char *)extraTextFormatInfo;
 - (void)setupExtensionRanges:(const GPBExtensionRange *)ranges count:(int32_t)count;
+<<<<<<< HEAD
 - (void)setupContainingMessageClass:(Class)msgClass;
 - (void)setupMessageClassNameSuffix:(NSString *)suffix;
 
 // Deprecated. Use setupContainingMessageClass instead.
 - (void)setupContainingMessageClassName:(const char *)msgClassName;
+=======
+- (void)setupContainingMessageClassName:(const char *)msgClassName;
+- (void)setupMessageClassNameSuffix:(NSString *)suffix;
+>>>>>>> Production
 
 @end
 
@@ -234,10 +254,14 @@ typedef NS_OPTIONS(uint32_t, GPBDescriptorInitializationFlags) {
 // description has to be long lived, it is held as a raw pointer.
 - (instancetype)initWithFieldDescription:(void *)description
                          includesDefault:(BOOL)includesDefault
+<<<<<<< HEAD
                            usesClassRefs:(BOOL)usesClassRefs
                      proto3OptionalKnown:(BOOL)proto3OptionalKnown
                                   syntax:(GPBFileSyntax)syntax;
 
+=======
+                                  syntax:(GPBFileSyntax)syntax;
+>>>>>>> Production
 @end
 
 @interface GPBEnumDescriptor ()
@@ -277,11 +301,16 @@ typedef NS_OPTIONS(uint32_t, GPBDescriptorInitializationFlags) {
 @property(nonatomic, readonly) GPBWireFormat alternateWireType;
 
 // description has to be long lived, it is held as a raw pointer.
+<<<<<<< HEAD
 - (instancetype)initWithExtensionDescription:(GPBExtensionDescription *)desc
                                usesClassRefs:(BOOL)usesClassRefs;
 // Deprecated. Calls above with `usesClassRefs = NO`
 - (instancetype)initWithExtensionDescription:(GPBExtensionDescription *)desc;
 
+=======
+- (instancetype)initWithExtensionDescription:
+    (GPBExtensionDescription *)description;
+>>>>>>> Production
 - (NSComparisonResult)compareByFieldNumber:(GPBExtensionDescriptor *)other;
 @end
 

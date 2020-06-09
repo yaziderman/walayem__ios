@@ -20,12 +20,15 @@ struct UserDefaultsKeys{
     static let IS_CHEF_VERIFIED: String = "isChefVerified"
     static let FIREBASE_VERIFICATION_ID = "firebaseVerificationID"
     static let FOOD_QUANTITY = "foodQuantity"
+<<<<<<< HEAD
     static let USER_AREA_FILTER = "user_area_filter"
     static let USER_AREA_TITLE = "user_area_title"
     static let REGULAR_RUN = "regularRun"
     static let AUTH_TOKEN = "authToken"
     static let CHEF_COVERAGE_AREA = "ChefCoverageArea"
     static let CHEF_LOCATION = "ChefLocation"
+=======
+>>>>>>> Production
 }
 
 class User{
@@ -76,11 +79,15 @@ class User{
         userDefaults.removeObject(forKey: UserDefaultsKeys.IMAGE)
         userDefaults.removeObject(forKey: UserDefaultsKeys.IS_CHEF)
         userDefaults.removeObject(forKey: UserDefaultsKeys.IS_CHEF_VERIFIED)
+<<<<<<< HEAD
         userDefaults.removeObject(forKey: UserDefaultsKeys.AUTH_TOKEN)
         userDefaults.removeObject(forKey: UserDefaultsKeys.USER_AREA_FILTER)
         userDefaults.removeObject(forKey: UserDefaultsKeys.USER_AREA_TITLE)
         userDefaults.removeObject(forKey: UserDefaultsKeys.CHEF_COVERAGE_AREA)
         userDefaults.removeObject(forKey: UserDefaultsKeys.CHEF_LOCATION)
+=======
+        userDefaults.removeObject(forKey: "authToken")
+>>>>>>> Production
         
         userDefaults.synchronize()
     }

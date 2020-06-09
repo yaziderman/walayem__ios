@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oHr-Gd-jPp">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oHr-Gd-jPp">
+    <device id="retina6_5" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+>>>>>>> Production
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +19,11 @@
         <!--Cart-->
         <scene sceneID="A5B-1v-adJ">
             <objects>
+<<<<<<< HEAD
                 <viewController storyboardIdentifier="CartViewController" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7J9-nn-brR" customClass="CartViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+=======
+                <viewController modalPresentationStyle="fullScreen" id="7J9-nn-brR" customClass="CartViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+>>>>>>> Production
                     <view key="view" contentMode="scaleToFill" id="djj-yc-GhN">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -341,6 +353,7 @@
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xRB-f3-w9E">
+<<<<<<< HEAD
                                                             <rect key="frame" x="20" y="11.000000000000004" width="335" height="42.333333333333343"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hgfjgvbjgvbj" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSo-Uu-KJg">
@@ -351,6 +364,18 @@
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="njbhjgvbj" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="icw-fv-A4k">
                                                                     <rect key="frame" x="0.0" y="25.333333333333371" width="335" height="17"/>
+=======
+                                                            <rect key="frame" x="20" y="11" width="335" height="55"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSo-Uu-KJg">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
+                                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                                    <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="icw-fv-A4k">
+                                                                    <rect key="frame" x="0.0" y="55" width="335" height="0.0"/>
+>>>>>>> Production
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
@@ -490,7 +515,11 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Jg4-In-rsE">
                                                     <rect key="frame" x="102" y="9.6666666666666643" width="121" height="78"/>
                                                     <subviews>
+<<<<<<< HEAD
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qV0-s6-FEy">
+=======
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="qV0-s6-FEy">
+>>>>>>> Production
                                                             <rect key="frame" x="0.0" y="0.0" width="121" height="23"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="23" id="0lB-yJ-dYA"/>
@@ -646,7 +675,10 @@
                         <outlet property="addressView" destination="86T-il-Okc" id="i9I-WA-9AI"/>
                         <outlet property="cAddressView" destination="yaC-PO-iUU" id="2hV-J8-1cP"/>
                         <outlet property="discountLabel" destination="YQE-XP-6ee" id="ESR-Kh-Zn1"/>
+<<<<<<< HEAD
                         <outlet property="discountTitleLabel" destination="bnt-Xv-pTS" id="l5f-TZ-Qny"/>
+=======
+>>>>>>> Production
                         <outlet property="emptyView" destination="yiJ-yM-3IU" id="MYb-zG-Dpb"/>
                         <outlet property="orderButton" destination="QJY-uK-Klm" id="Ymw-AO-ri1"/>
                         <outlet property="orderForLabel" destination="Tsg-Ua-EdL" id="6hu-yS-hy3"/>
@@ -654,7 +686,10 @@
                         <outlet property="orderView" destination="kt5-HI-U6x" id="6u2-hh-4qr"/>
                         <outlet property="paymentIcon" destination="8Gz-5r-vHM" id="9X3-gQ-WdL"/>
                         <outlet property="subtotalLabel" destination="krS-RQ-ZiG" id="zu3-RP-exk"/>
+<<<<<<< HEAD
                         <outlet property="summaryDeliveryChargeLabel" destination="puN-Fo-XEV" id="8LD-KT-cXd"/>
+=======
+>>>>>>> Production
                         <outlet property="summaryIcon" destination="MFb-Bo-U6A" id="6in-Ko-57f"/>
                         <outlet property="tableView" destination="Y8c-KN-5E1" id="UGd-Sb-ntZ"/>
                         <outlet property="totalLabel" destination="G1q-sj-XmS" id="LJF-WI-rY6"/>
@@ -700,7 +735,11 @@ adding an item in the food tab</string>
                 </view>
                 <tapGestureRecognizer id="xUs-5z-QfC">
                     <connections>
+<<<<<<< HEAD
                         <segue destination="wZf-js-QXO" kind="presentation" identifier="SelectAddressSegue" modalPresentationStyle="overFullScreen" id="ddY-Qt-lIu"/>
+=======
+                        <segue destination="wZf-js-QXO" kind="presentation" identifier="SelectAddressSegue" id="ddY-Qt-lIu"/>
+>>>>>>> Production
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -765,7 +804,11 @@ adding an item in the food tab</string>
                                 </connections>
                             </button>
                         </subviews>
+<<<<<<< HEAD
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+=======
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+>>>>>>> Production
                         <constraints>
                             <constraint firstItem="GZZ-dq-Mlc" firstAttribute="trailing" secondItem="prJ-Yv-bj5" secondAttribute="trailing" id="6hH-A2-YHq"/>
                             <constraint firstItem="1bC-jQ-KiM" firstAttribute="centerX" secondItem="leT-qL-0ip" secondAttribute="centerX" id="CfW-X2-ErV"/>
@@ -795,7 +838,11 @@ adding an item in the food tab</string>
             <objects>
                 <tableViewController modalPresentationStyle="fullScreen" id="GdW-yc-nUM" customClass="ChooseAddressTableViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0pN-ib-bD4">
+<<<<<<< HEAD
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+=======
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+>>>>>>> Production
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -866,7 +913,11 @@ adding an item in the food tab</string>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
+<<<<<<< HEAD
                         <segue destination="7J9-nn-brR" kind="relationship" relationship="rootViewController" id="U2L-nS-cOB"/>
+=======
+                        <segue destination="7J9-nn-brR" kind="relationship" relationship="rootViewController" id="c0W-IJ-I46"/>
+>>>>>>> Production
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8nE-Bj-9Kv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -879,7 +930,11 @@ adding an item in the food tab</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="formSheet" id="wZf-js-QXO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FJ5-Mc-jWZ">
+<<<<<<< HEAD
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+=======
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
+>>>>>>> Production
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -891,6 +946,7 @@ adding an item in the food tab</string>
             </objects>
             <point key="canvasLocation" x="1710" y="-493"/>
         </scene>
+<<<<<<< HEAD
         <!--Page View Controller-->
         <scene sceneID="BYG-it-vZc">
             <objects>
@@ -917,6 +973,8 @@ adding an item in the food tab</string>
             </objects>
             <point key="canvasLocation" x="933" y="890"/>
         </scene>
+=======
+>>>>>>> Production
     </scenes>
     <resources>
         <image name="add" width="34" height="34"/>

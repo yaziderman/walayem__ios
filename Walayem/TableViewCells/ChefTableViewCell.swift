@@ -25,6 +25,8 @@ class ChefTableViewCell: UITableViewCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     weak var delegate: ChefCellDelegate?
+    var chefTableVC: ChefTableViewController?
+    var favChefTableVC: FavChefTableViewController?
     
     var chef: Chef!{
         didSet{
@@ -94,6 +96,14 @@ extension ChefTableViewCell: UICollectionViewDataSource, UICollectionViewDelegat
         food.chefName = chef.name
         food.kitcherName = chef.kitchen
         self.delegate?.foodSelected(food)
+
+		if let chefTableVC = chefTableVC{
+            chefTableVC.showFoodDetailVC(food: food)
+        }
+        
+        if let favChefTableVC = favChefTableVC{
+            favChefTableVC.showFoodDetailVC(food: food)
+        }
     }
     
 }

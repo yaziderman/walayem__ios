@@ -23,6 +23,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
     @IBOutlet weak var recommendedHeight: NSLayoutConstraint!
     
     weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var datePickerButton: UIButton!
     let db = DatabaseHandler()
     var partnerId: Int?
     var selectedTags = [Tag]()
@@ -36,6 +37,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
     var addressList = [Address]()
     var isSearching = false
     var isFirtTime = true
+    @IBOutlet weak var recommendedHeight: NSLayoutConstraint!
     
     var mCells = [FoodTableViewCell]()
 //    var lastIndex
@@ -157,7 +159,8 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
 //        getFoods()
 //        updateBadge()
 //        getAddress()
-        
+		
+        Utils.setupNavigationBar(nav: self.navigationController!)
         StaticLinker.discoverViewController = self
 
         initialCustomDate()
@@ -190,7 +193,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         navVC.navigationBar.isTranslucent = true
         navVC.modalPresentationStyle = .fullScreen
         self.present(navVC, animated: true, completion: nil)
-    }
+        }
     
     func refreshItemsQuantity(){
         
@@ -446,6 +449,18 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
     
    
     private func setupSearch(){
+        
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
+                appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
+                navigationItem.standardAppearance = appearance
+                navigationItem.scrollEdgeAppearance = appearance
+            
+        } else {
+            // Fallback on earlier versions
+        }
+      
         guard let searchResultController = storyboard?.instantiateViewController(withIdentifier: "FoodSearchResultVC") as? FoodSearchResultController else {
             fatalError("Unexpected ViewController")
         }
@@ -453,6 +468,9 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         searchController.searchResultsUpdater = searchResultController
         searchController.searchBar.placeholder = "Search for foods"
         searchController.searchBar.tintColor = UIColor.colorPrimary
+        searchController.searchBar.setShowsCancelButton(false, animated: true)
+        searchController.searchBar.showsCancelButton = false
+        
         if #available(iOS 11.0, *){
             navigationItem.searchController = searchController
         }else{
@@ -460,6 +478,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         }
         searchController.searchBar.setShowsCancelButton(false, animated: true)
         searchController.searchBar.showsCancelButton = false
+         searchController.searchBar.showsCancelButton = false
         definesPresentationContext = true
     }
     
@@ -483,12 +502,14 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         filterBarButton.removeBadge()
         mCells.removeAll()
         getFoods()
+        getMoreFoods()
         isSearching = false
     }
     
     private func getRecommendations(){
         var params = AreaFilter.shared.coverageParams
         params["partner_id"] = partnerId ?? 0
+        let params : [String: Any] = ["partner_id": partnerId ?? 0]
         
         RestClient().request(WalayemApi.recommendation, params) { (result, error) in
             self.hideActivityIndicator()
@@ -561,12 +582,19 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         }
         var params = AreaFilter.shared.coverageParams
         params["page"] = page + 1
-        isLoading = true
+
+		if (isLoading || isSearching){
+            return
+        }
+        let params : [String: Int] = ["page": page + 1]
+
+		isLoading = true
         self.hideActivityIndicator()
         self.hideSpinner()
         self.tableView.refreshControl?.endRefreshing()
         RestClient().request(WalayemApi.discoverFood, params) { (result, error) in
-            self.tableView.tableFooterView = nil
+		self.tableView.tableFooterView = nil
+			
             self.isLoading = false
             
             if let error = error{
@@ -592,6 +620,10 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
     }
     
     private func searchFood() {
+		self.tableView.tableFooterView = nil
+    }
+    
+    private func searchFood(){
         isSearching = true
         self.hideActivityIndicator()
         self.hideSpinner()
@@ -607,6 +639,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         params["food_tags"] = tagIds
         params["cuisine"] = cuisineIds
         params["page"] = 1
+		
         RestClient().request(WalayemApi.searchFood, params) { (result, error) in
             self.hideActivityIndicator()
             
@@ -674,7 +707,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         selectedCuisines.removeAll()
         StaticLinker.selectedCuisine = nil
     }
-    
+	
     private func handleNetworkError(_ error: NSError){
         if error.userInfo[NSLocalizedDescriptionKey] != nil{
             let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
@@ -696,6 +729,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
+	
     private func showActivityIndicator(){
         let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.color = UIColor.colorPrimary
@@ -748,6 +782,10 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
     }
     
      func showCuisineFromHome() {
+    //        self.selectedCuisines = [cuisine]
+    //        let badge = 1
+    //        searchFood()
+    //        filterBarButton.addBadge(number: badge, withOffset: CGPoint(x: 0, y: 5), andColor: UIColor.colorPrimary, andFilled: true)
             let badgeNumber = 1
             do{
                 if badgeNumber > 0{
@@ -812,10 +850,21 @@ extension DiscoverTableViewController: UITableViewDelegate, UITableViewDataSourc
             activityIndicator.startAnimating()
             
             tableView.tableFooterView = activityIndicator
+        if !isSearching{
+            if indexPath.row == foods.count - 1 && page < totalPage!{
+                getMoreFoods()
+
+                let activityIndicator = UIActivityIndicatorView(style: .gray)
+                activityIndicator.color = UIColor.colorPrimary
+                activityIndicator.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44)
+                activityIndicator.startAnimating()
+
+                tableView.tableFooterView = activityIndicator
+            }
         }
     }
     
-    
+	}
 }
 
 extension DiscoverTableViewController: UICollectionViewDelegate, UICollectionViewDataSource{
@@ -852,7 +901,4 @@ extension DiscoverTableViewController: UICollectionViewDelegate, UICollectionVie
         destinationVC.food = food
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
-    
-   
-    
 }

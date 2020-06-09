@@ -29,6 +29,7 @@ typedef NSURLRequest * _Nullable (^SDWebImageDownloaderRequestModifierBlock)(NSU
  */
 @interface SDWebImageDownloaderRequestModifier : NSObject <SDWebImageDownloaderRequestModifier>
 
+<<<<<<< HEAD
 /// Create the request modifier with block
 /// @param block A block to control modifier logic
 - (nonnull instancetype)initWithBlock:(nonnull SDWebImageDownloaderRequestModifierBlock)block;
@@ -67,3 +68,9 @@ A convenient request modifier to provide the HTTP request including HTTP Method,
 - (nonnull instancetype)initWithMethod:(nullable NSString *)method headers:(nullable NSDictionary<NSString *, NSString *> *)headers body:(nullable NSData *)body;
 
 @end
+=======
+- (nonnull instancetype)initWithBlock:(nonnull SDWebImageDownloaderRequestModifierBlock)block;
++ (nonnull instancetype)requestModifierWithBlock:(nonnull SDWebImageDownloaderRequestModifierBlock)block;
+
+@end
+>>>>>>> Production

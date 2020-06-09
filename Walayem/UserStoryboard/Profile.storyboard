@@ -169,7 +169,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="348" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+<<<<<<< HEAD
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MJh-E9-su1">
+=======
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="My Orders" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MJh-E9-su1">
+>>>>>>> Production
                                                     <rect key="frame" x="69" y="0.0" width="271" height="70"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
@@ -408,6 +412,26 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+<<<<<<< HEAD
+=======
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="92" id="0jK-eI-Y6L">
+                                        <rect key="frame" x="0.0" y="949" width="375" height="92"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0jK-eI-Y6L" id="JTI-5a-WKT">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="92"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" text="Version Number - 4.0.3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ku9-vU-k8z">
+                                                    <rect key="frame" x="24" y="52" width="335" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+>>>>>>> Production
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -424,6 +448,10 @@
                     <connections>
                         <outlet property="nameLabel" destination="bj8-TX-SbY" id="xaT-iA-VoQ"/>
                         <outlet property="userImageView" destination="EBJ-hu-KEd" id="dFa-c9-gCg"/>
+<<<<<<< HEAD
+=======
+                        <outlet property="versionno" destination="ku9-vU-k8z" id="cb7-j8-fS0"/>
+>>>>>>> Production
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EXo-PX-yby" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -481,7 +509,11 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="Huh-1H-lLS"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="jO2-E5-Adx">
                             <connections>
+<<<<<<< HEAD
                                 <segue destination="tT4-5G-djb" kind="presentation" identifier="AddAddressSegue" modalPresentationStyle="fullScreen" id="vZX-uC-LFT"/>
+=======
+                                <segue destination="tT4-5G-djb" kind="presentation" identifier="AddAddressSegue" id="vZX-uC-LFT"/>
+>>>>>>> Production
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -534,7 +566,11 @@ start by adding one down below</string>
         <!--Address View Controller-->
         <scene sceneID="kb4-Nm-RQQ">
             <objects>
+<<<<<<< HEAD
                 <viewController storyboardIdentifier="AddressVCId" modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="ocr-aB-2bb" customClass="AddressViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+=======
+                <viewController modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="ocr-aB-2bb" customClass="AddressViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+>>>>>>> Production
                     <view key="view" contentMode="scaleToFill" id="i60-Mx-32Y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -643,12 +679,15 @@ start by adding one down below</string>
                                 <action selector="close:" destination="ocr-aB-2bb" id="g3x-Fb-gAF"/>
                             </connections>
                         </barButtonItem>
+<<<<<<< HEAD
                         <barButtonItem key="rightBarButtonItem" image="locationPin" id="jYC-CX-xnY">
                             <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="locationBtnClicked" destination="ocr-aB-2bb" id="Xhm-Mk-YbN"/>
                             </connections>
                         </barButtonItem>
+=======
+>>>>>>> Production
                     </navigationItem>
                     <connections>
                         <outlet property="cityTextField" destination="EMq-zf-jmk" id="1rr-Jy-mll"/>
@@ -745,7 +784,11 @@ Walayem</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="formSheet" id="tT4-5G-djb" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ybC-SY-yaD">
+<<<<<<< HEAD
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+=======
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+>>>>>>> Production
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -856,7 +899,10 @@ Walayem</string>
         <image name="info" width="37" height="37"/>
         <image name="instagram" width="76" height="76"/>
         <image name="invite" width="36" height="36"/>
+<<<<<<< HEAD
         <image name="locationPin" width="13" height="14"/>
+=======
+>>>>>>> Production
         <image name="logout" width="36" height="36"/>
         <image name="mail" width="76" height="76"/>
         <image name="phone-n" width="76" height="76"/>

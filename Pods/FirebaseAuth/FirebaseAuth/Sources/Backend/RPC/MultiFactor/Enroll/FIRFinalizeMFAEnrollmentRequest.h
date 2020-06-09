@@ -24,12 +24,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, copy, readonly, nullable) NSString *IDToken;
 
+<<<<<<< HEAD
+=======
+@property(nonatomic, copy, readonly, nullable) NSString *MFAProvider;
+
+>>>>>>> Production
 @property(nonatomic, copy, readonly, nullable) NSString *displayName;
 
 @property(nonatomic, copy, readonly, nullable)
     FIRAuthProtoFinalizeMFAPhoneRequestInfo *verificationInfo;
 
 - (nullable instancetype)initWithIDToken:(NSString *)IDToken
+<<<<<<< HEAD
+=======
+                             MFAProvider:(NSString *)MFAProvider
+>>>>>>> Production
                              displayName:(NSString *)displayName
                         verificationInfo:(FIRAuthProtoFinalizeMFAPhoneRequestInfo *)verificationInfo
                     requestConfiguration:(FIRAuthRequestConfiguration *)requestConfiguration;

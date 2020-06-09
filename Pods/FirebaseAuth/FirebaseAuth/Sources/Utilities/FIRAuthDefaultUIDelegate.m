@@ -92,11 +92,15 @@ NS_ASSUME_NONNULL_BEGIN
     }
   } else {
     UIApplication *application = [applicationClass sharedApplication];
+<<<<<<< HEAD
 // iOS 13 deprecation
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     topViewController = application.keyWindow.rootViewController;
 #pragma clang diagnostic pop
+=======
+    topViewController = application.keyWindow.rootViewController;
+>>>>>>> Production
   }
 #else
   UIApplication *application = [applicationClass sharedApplication];

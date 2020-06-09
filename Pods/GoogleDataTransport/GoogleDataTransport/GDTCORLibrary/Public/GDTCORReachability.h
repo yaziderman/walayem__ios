@@ -16,15 +16,28 @@
 
 #import <Foundation/Foundation.h>
 
+<<<<<<< HEAD
 #import <GoogleDataTransport/GDTCORPlatform.h>
+=======
+#if !TARGET_OS_WATCH
+#import <SystemConfiguration/SCNetworkReachability.h>
+#endif
+>>>>>>> Production
 
 NS_ASSUME_NONNULL_BEGIN
 
 /** This class helps determine upload conditions by determining connectivity. */
 @interface GDTCORReachability : NSObject
+<<<<<<< HEAD
 
 /** The current set flags indicating network conditions */
 + (GDTCORNetworkReachabilityFlags)currentFlags;
+=======
+#if !TARGET_OS_WATCH
+/** The current set flags indicating network conditions */
++ (SCNetworkReachabilityFlags)currentFlags;
+#endif
+>>>>>>> Production
 
 @end
 

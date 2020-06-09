@@ -13,8 +13,11 @@ import FBSDKCoreKit
 import FacebookCore
 import GoogleSignIn
 import Firebase
+<<<<<<< HEAD
 import GoogleMaps
 import GooglePlaces
+=======
+>>>>>>> Production
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -40,9 +43,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // CONFIGURE FIREBASE
         FirebaseApp.configure()
         registerRemoteNotification(application)
+<<<<<<< HEAD
         GMSServices.provideAPIKey("AIzaSyDFI5Cnh_jWzZzB9gcL7x5SBAeQG9v7x9I")
             //("AIzaSyDz2IN7uCHH4ehwiSITdGExTih5Hz07_0k")
         GMSPlacesClient.provideAPIKey("AIzaSyDFI5Cnh_jWzZzB9gcL7x5SBAeQG9v7x9I")
+=======
+        
+>>>>>>> Production
 
 //        GIDSignIn.sharedInstance()?.presentingViewController = self
         setRootViewController()
@@ -124,7 +131,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Private methods
     
     private func setRootViewController(){
+<<<<<<< HEAD
         let isRegular = UserDefaults.standard.bool(forKey: UserDefaultsKeys.REGULAR_RUN)
+=======
+        let isRegular = UserDefaults.standard.bool(forKey: "regularRun")
+>>>>>>> Production
         let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
         var storyboard: UIStoryboard?
         if !isRegular{
@@ -138,10 +149,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }else{
                 storyboard = UIStoryboard(name: "Main", bundle: nil)
             }
+<<<<<<< HEAD
         }
         window?.rootViewController = storyboard?.instantiateInitialViewController()        
         
         UserDefaults.standard.set(true, forKey: UserDefaultsKeys.REGULAR_RUN)
+=======
+            
+        }
+        window?.rootViewController = storyboard?.instantiateInitialViewController()        
+        
+        UserDefaults.standard.set(true, forKey: "regularRun")
+>>>>>>> Production
     }
     
     private func getContactDetails(){

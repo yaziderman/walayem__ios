@@ -38,6 +38,7 @@
 }
 
 @end
+<<<<<<< HEAD
 
 @implementation SDWebImageDownloaderResponseModifier (Conveniences)
 
@@ -71,3 +72,5 @@
 }
 
 @end
+=======
+>>>>>>> Production

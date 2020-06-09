@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2SF-dD-v4x">
+<<<<<<< HEAD
     <device id="retina6_1" orientation="portrait" appearance="light"/>
+=======
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
+>>>>>>> Production
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -22,6 +26,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="color" red="0.36951097849999998" green="0.90207427740000001" blue="0.79985219240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
+<<<<<<< HEAD
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="99j-gL-92h" customClass="DeliveryLocationView" customModule="Walayem" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="88" width="414" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -31,6 +36,10 @@
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="260" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dZI-7y-IzS">
                                 <rect key="frame" x="0.0" y="138" width="414" height="758"/>
+=======
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="260" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dZI-7y-IzS">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+>>>>>>> Production
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mainHomeTableViewCell" rowHeight="293" id="ihE-h2-jjN" customClass="HomeTableViewCell" customModule="Walayem" customModuleProvider="target">
@@ -44,7 +53,11 @@
                                                     <rect key="frame" x="15" y="16" width="374" height="23"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark" translatesAutoresizingMaskIntoConstraints="NO" id="V8V-c3-wOz">
+<<<<<<< HEAD
                                                             <rect key="frame" x="0.0" y="1.5" width="20" height="20"/>
+=======
+                                                            <rect key="frame" x="0.0" y="1.6666666666666679" width="20" height="20"/>
+>>>>>>> Production
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="IUH-52-2He"/>
                                                                 <constraint firstAttribute="width" constant="20" id="uFf-eX-tHW"/>
@@ -93,11 +106,19 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
+<<<<<<< HEAD
                                                                     <label opaque="NO" userInteractionEnabled="NO" tag="610" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="224" translatesAutoresizingMaskIntoConstraints="NO" id="fgg-bA-7XL">
                                                                         <rect key="frame" x="2" y="159" width="224" height="24"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                         <color key="backgroundColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+=======
+                                                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" tag="610" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" preferredMaxLayoutWidth="224" translatesAutoresizingMaskIntoConstraints="NO" id="fgg-bA-7XL">
+                                                                        <rect key="frame" x="2" y="155" width="224" height="28"/>
+                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+>>>>>>> Production
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -197,7 +218,11 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
+<<<<<<< HEAD
                                                                     <view tag="8802" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tQX-fE-6N3">
+=======
+                                                                    <view alpha="0.69999999999999996" tag="8802" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tQX-fE-6N3">
+>>>>>>> Production
                                                                         <rect key="frame" x="2" y="199" width="330" height="34"/>
                                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                                                         <subviews>
@@ -216,7 +241,11 @@
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
+<<<<<<< HEAD
                                                                         <color key="backgroundColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+=======
+                                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+>>>>>>> Production
                                                                     </view>
                                                                 </subviews>
                                                                 <constraints>
@@ -399,17 +428,27 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="Oai-X0-g6K" firstAttribute="top" secondItem="Io6-65-Rfy" secondAttribute="top" id="5E6-IW-qZI"/>
+<<<<<<< HEAD
                             <constraint firstItem="99j-gL-92h" firstAttribute="trailing" secondItem="aAK-pw-AgJ" secondAttribute="trailing" id="9JT-YJ-1US"/>
                             <constraint firstItem="0vI-pa-xod" firstAttribute="trailing" secondItem="aAK-pw-AgJ" secondAttribute="trailing" id="Aeb-cV-3Kl"/>
                             <constraint firstItem="99j-gL-92h" firstAttribute="leading" secondItem="aAK-pw-AgJ" secondAttribute="leading" id="Hno-ff-Gxu"/>
+=======
+                            <constraint firstItem="0vI-pa-xod" firstAttribute="trailing" secondItem="aAK-pw-AgJ" secondAttribute="trailing" id="Aeb-cV-3Kl"/>
+>>>>>>> Production
                             <constraint firstItem="0vI-pa-xod" firstAttribute="bottom" secondItem="aAK-pw-AgJ" secondAttribute="bottom" id="IuX-S0-ui1"/>
                             <constraint firstItem="Oai-X0-g6K" firstAttribute="height" secondItem="aAK-pw-AgJ" secondAttribute="height" multiplier="1.12138" id="ND4-Rl-LMl"/>
                             <constraint firstItem="dZI-7y-IzS" firstAttribute="trailing" secondItem="aAK-pw-AgJ" secondAttribute="trailing" id="Ock-Zb-NIc"/>
                             <constraint firstItem="0vI-pa-xod" firstAttribute="leading" secondItem="aAK-pw-AgJ" secondAttribute="leading" id="YBl-8P-qib"/>
+<<<<<<< HEAD
                             <constraint firstItem="dZI-7y-IzS" firstAttribute="top" secondItem="99j-gL-92h" secondAttribute="bottom" id="ce4-eg-q8H"/>
                             <constraint firstItem="Oai-X0-g6K" firstAttribute="width" secondItem="aAK-pw-AgJ" secondAttribute="width" id="ctR-mM-j6a"/>
                             <constraint firstItem="dZI-7y-IzS" firstAttribute="leading" secondItem="aAK-pw-AgJ" secondAttribute="leading" id="hcE-Pw-Saa"/>
                             <constraint firstItem="99j-gL-92h" firstAttribute="top" secondItem="aAK-pw-AgJ" secondAttribute="top" id="kAj-Zg-1xI"/>
+=======
+                            <constraint firstItem="Oai-X0-g6K" firstAttribute="width" secondItem="aAK-pw-AgJ" secondAttribute="width" id="ctR-mM-j6a"/>
+                            <constraint firstItem="dZI-7y-IzS" firstAttribute="top" secondItem="aAK-pw-AgJ" secondAttribute="top" id="e6l-iz-fBF"/>
+                            <constraint firstItem="dZI-7y-IzS" firstAttribute="leading" secondItem="aAK-pw-AgJ" secondAttribute="leading" id="hcE-Pw-Saa"/>
+>>>>>>> Production
                             <constraint firstAttribute="bottom" secondItem="dZI-7y-IzS" secondAttribute="bottom" id="oAb-LH-QfN"/>
                             <constraint firstItem="Oai-X0-g6K" firstAttribute="leading" secondItem="aAK-pw-AgJ" secondAttribute="leading" id="vlP-of-o4Q"/>
                         </constraints>
@@ -417,14 +456,21 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="WRN-ho-Taf"/>
                     <connections>
+<<<<<<< HEAD
                         <outlet property="locationView" destination="99j-gL-92h" id="RoB-Wd-AmT"/>
+=======
+>>>>>>> Production
                         <outlet property="mActivityIndicator" destination="Oai-X0-g6K" id="6rr-yq-Zyz"/>
                         <outlet property="tableView" destination="dZI-7y-IzS" id="CEv-D8-qhF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pg0-O3-oLh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+<<<<<<< HEAD
             <point key="canvasLocation" x="2689.8550724637685" y="-41.517857142857139"/>
+=======
+            <point key="canvasLocation" x="2605.7971014492755" y="-20.089285714285712"/>
+>>>>>>> Production
         </scene>
         <!--Home-->
         <scene sceneID="eM1-Zu-Ufj">
@@ -453,6 +499,10 @@
         <image name="bookmark" width="15" height="19"/>
         <image name="foodImageEmpty" width="512" height="512"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
+<<<<<<< HEAD
         <image name="launchScreen2" width="203" height="423"/>
+=======
+        <image name="launchScreen2" width="135.33332824707031" height="282"/>
+>>>>>>> Production
     </resources>
 </document>

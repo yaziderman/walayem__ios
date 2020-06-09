@@ -10,8 +10,11 @@ import UIKit
 
 class ChefTabController: UITabBarController {
 
+<<<<<<< HEAD
     private var profileVCIsShown = false
     
+=======
+>>>>>>> Production
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -69,6 +72,21 @@ class ChefTabController: UITabBarController {
     
     }
     
+<<<<<<< HEAD
+=======
+    override func viewDidAppear(_ animated: Bool) {
+        if self.selectedIndex == 2 {
+            if let currentViewController = self.selectedViewController as? UISplitViewController{
+               guard let orderVC = UIStoryboard.init(name: "ChefProfile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChefProfileTableViewController") as? ChefProfileTableViewController else {
+                   fatalError("Unexpected view controller")
+               }
+               let navigationVC = UINavigationController(rootViewController: orderVC)
+               currentViewController.showDetailViewController(navigationVC, sender: self)
+            }
+        }
+    }
+    
+>>>>>>> Production
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
 
             print("viewDidLoad  tabBar  \(self.selectedIndex)")

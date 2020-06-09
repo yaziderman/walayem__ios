@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<<<<<<< HEAD
     <device id="retina4_7" orientation="portrait" appearance="light"/>
+=======
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+>>>>>>> Production
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -171,7 +175,11 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+<<<<<<< HEAD
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+=======
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+>>>>>>> Production
                         <constraints>
                             <constraint firstItem="VfF-r3-1YB" firstAttribute="top" secondItem="Frj-AJ-Xj6" secondAttribute="top" id="5hA-8Z-7D6"/>
                             <constraint firstAttribute="trailing" secondItem="VfF-r3-1YB" secondAttribute="trailing" id="eR2-bd-GYe"/>
@@ -272,7 +280,11 @@
                                 </connections>
                             </button>
                         </subviews>
+<<<<<<< HEAD
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+=======
+                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+>>>>>>> Production
                         <constraints>
                             <constraint firstItem="3at-AU-zhl" firstAttribute="centerY" secondItem="swl-VQ-xlA" secondAttribute="centerY" id="D8O-fx-SQf"/>
                             <constraint firstItem="3at-AU-zhl" firstAttribute="top" secondItem="S8b-qO-fSD" secondAttribute="bottom" constant="-9.5" id="E9P-b1-LBw"/>

@@ -142,6 +142,7 @@ typedef struct GPBExtensionRange {
   /** Exclusive. */
   uint32_t end;
 } GPBExtensionRange;
+<<<<<<< HEAD
 
 /**
  A type to represent an Objective C class.
@@ -149,3 +150,5 @@ typedef struct GPBExtensionRange {
  reference `objc_class`, so we have defined our own.
 */
 typedef struct GPBObjcClass_t GPBObjcClass_t;
+=======
+>>>>>>> Production

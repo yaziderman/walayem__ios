@@ -26,6 +26,16 @@ class LoginPriorViewController: UIViewController {
     
     @IBAction func signup(_ sender: UIButton) {
         performSegue(withIdentifier: "SignupVCSegue", sender: sender)
+<<<<<<< HEAD
+=======
+
+//        if userSwitch.isOn{
+//            performSegue(withIdentifier: "ChefSignupVCSegue", sender: sender)
+//        }else{
+//            performSegue(withIdentifier: "SignupVCSegue", sender: sender)
+//        }
+        
+>>>>>>> Production
     }
     override func viewDidLoad() {
         super.viewDidLoad()

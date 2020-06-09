@@ -9,7 +9,7 @@
 import Foundation
 import SQLite
 
-class DatabaseHandler {
+class DatabaseHandler{
     
     let db: Connection?
     
@@ -122,7 +122,7 @@ class DatabaseHandler {
                 let insert = cartChef.insert(self.id <- chefId, name <- chefName, image <- chefImage, self.kitchen <- kitchen)
                 try db!.run(insert)
             }
-        } catch let error {
+        } catch let error {`
             print("Insert failed \(error)")
         }
     }
@@ -170,7 +170,6 @@ class DatabaseHandler {
         }
         return cartItems
     }
-    
     func getCartItems() -> [Chef]{
         var cartItems = [Chef]()
         do{

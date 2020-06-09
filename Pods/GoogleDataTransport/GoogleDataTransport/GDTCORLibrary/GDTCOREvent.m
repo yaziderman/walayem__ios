@@ -33,8 +33,13 @@
   static dispatch_once_t onceToken;
   dispatch_once(&onceToken, ^{
     eventIDQueue = dispatch_queue_create("com.google.GDTCOREventIDQueue", DISPATCH_QUEUE_SERIAL);
+<<<<<<< HEAD
     counterPath = GDTCORRootDirectory().path;
     counterPath = [NSString stringWithFormat:@"%@/count", counterPath];
+=======
+    counterPath = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0];
+    counterPath = [NSString stringWithFormat:@"%@/google-sdks-events/count", counterPath];
+>>>>>>> Production
     NSError *error;
     NSString *countText = [NSString stringWithContentsOfFile:counterPath
                                                     encoding:NSUTF8StringEncoding
@@ -56,8 +61,12 @@
                            atomically:YES
                              encoding:NSUTF8StringEncoding
                                 error:&error];
+<<<<<<< HEAD
     GDTCORAssert(error == nil, @"There was an error saving the new counter value to disk: %@",
                  error);
+=======
+    GDTCORAssert(error == nil, @"There was an error saving the new counter value to disk.");
+>>>>>>> Production
   });
   return result;
 }

@@ -76,7 +76,7 @@ class FavChefTableViewController: UIViewController, ChefCellDelegate {
         }
     }
     
-    func foodSelected(_ food: Food) {
+    func showFoodDetailVC(food: Food){
         let storyBoard = UIStoryboard(name: "Discover", bundle: nil)
         guard let foodDetailVC = storyBoard.instantiateViewController(withIdentifier: "FoodDetailVC") as? FoodDetailViewController else {
             fatalError("Unexpected viewController")
@@ -157,6 +157,7 @@ extension FavChefTableViewController: UITableViewDelegate, UITableViewDataSource
         let chef = chefs[indexPath.row]
         cell.chef = chef
         cell.delegate = self
+        cell.favChefTableVC = self
         
         return cell
     }

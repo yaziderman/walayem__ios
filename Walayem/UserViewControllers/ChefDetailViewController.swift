@@ -42,6 +42,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     
     let db = DatabaseHandler()
     var chef: Chef?
+    var chef_id: Int?
     var user: User?
     var filteredFoods = [Food]()
     var selectedCateg: Int = 0
@@ -64,8 +65,42 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
         }else{
             showAlert(title: "", msg: "You can rate a chef only if you've ordered from them before.")
         }
+	}
         
+	var session: String?
+    
+    var spinnerView = UIView()
+    
+    func showSpinner(){
+        spinnerView = getSpinnerView()
+        self.view.addSubview(spinnerView)
+    }
+    
+    func hideSpinner(){
+        spinnerView.removeFromSuperview()
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func addRating(_ sender: UITapGestureRecognizer) {
         
+        session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        if(session == nil)
+        {
+          // PresentLoginScreen(showSkip: true)
+            print("not logged IN")
+        }else{
+            guard let chefRatingVC = self.storyboard?.instantiateViewController(withIdentifier: "ChefRatingVC") as? ChefRatingViewController else {
+                fatalError("Unexpected View controller")
+            }
+            chefRatingVC.chef = chef
+            chefRatingVC.foods = self.orderedFoods
+            if(hadOrdered){
+                present(chefRatingVC, animated: true, completion: nil)
+            }else{
+                showAlert(title: "", msg: "You can rate a chef only if you've ordered from them before.")
+            }
+        }
     }
     
     private func showAlert(title: String, msg: String){
@@ -80,7 +115,17 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .never
-        } 
+        }
+        if (chef_id != nil){
+            // Call API to get chefById
+            getChef()
+        }
+        initVC()
+        
+    }
+    
+    func initVC(){
+        
         favouriteBarItem = UIBarButtonItem(image: UIImage(named: "emptyFavourite"), style: .plain, target: self, action: #selector(addRemoveFavourite(_:)))
         navigationItem.setRightBarButton(favouriteBarItem, animated: false)
         
@@ -135,6 +180,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(updateFav) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
         
         updateFav()
+                
     }
 
     @objc func updateFav()
@@ -355,8 +401,56 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
             updateBadge()
         }
     }
+		
+    private func getChef(){
+        
+        showSpinner()
+        let params : [String: Int] = ["chef_id": self.chef_id!]
+        RestClient().request(WalayemApi.getChefById, params) { (result, error) in
+            if let error = error{
+                self.handleNetworkError(error)
+                return
+            }
+                
+            let value = result!["result"] as! [String: Any]
+            if let status = value["status"] as? Bool, status == false{
+                return
+            }
+            
+            let records = value["data"] as! [String: Any]
+            
+            let mChef = Chef(record: records, name: "init")
+            self.chef = mChef
+                self.hideSpinner()
+            self.foodTableView.reloadData()
+            self.collectionView.reloadData()
+            self.initVC()
+            
+        }
+    }
     
-    
+    private func handleNetworkError(_ error: NSError){
+             if error.userInfo[NSLocalizedDescriptionKey] != nil{
+                 let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
+                 if error.domain == NSURLErrorDomain && error.code == URLError.notConnectedToInternet.rawValue{
+                     let alert = UIAlertController(title: "Cannot get Foods", message: errmsg, preferredStyle: .alert)
+                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                     present(alert, animated: true, completion: nil)
+                 }else if errmsg == OdooClient.SESSION_EXPIRED{
+                     self.onSessionExpired()
+                 }
+             }
+             else{
+                 showSorryAlertWithMessage("Please check your internet connection...!")
+             }
+         }
+      
+      private func showSorryAlertWithMessage(_ msg: String){
+          let alert = UIAlertController(title: "Sorry", message: msg, preferredStyle: .alert)
+          alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+          present(alert, animated: true, completion: nil)
+      }
+        
     /*
     // MARK: - Navigation
 

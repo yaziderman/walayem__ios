@@ -25,7 +25,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     var selectedAreaIds: [Int]?
     var selectedLat: Double?
     var selectedLng: Double?
-    
+	
     @IBOutlet weak var customerView: UIStackView!
     @IBOutlet weak var chefView: UIStackView!
     
@@ -289,7 +289,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                     self.showMessagePrompt("Please Mark Location")
                     return;
                 }
-                
                 let countryCode = "+971"
                 let name = chefNameTextField.text ?? ""
                 let email = chefEmailTextField.text ?? ""
@@ -522,18 +521,36 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         nameTextField.addImageAtLeft(UIImage(named: "user"))
         emailTextField.addImageAtLeft(UIImage(named: "email"))
         passwordTextField.addImageAtLeft(UIImage(named: "lock"))
+    
+    private func addImageInsideTextField(){
+        let userImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        userImageView.image = UIImage(named: "user")
+        userImageView.contentMode = .left
+        userImageView.tintColor = UIColor.colorPrimary
+        nameTextField.leftViewMode = .always
+        nameTextField.leftView = userImageView
+        
+        let emailImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        emailImageView.image = UIImage(named: "email")
+        emailImageView.contentMode = .left
+        emailTextField.leftViewMode = .always
+        emailTextField.leftView = emailImageView
         
         let phoneImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 0, height: 20))
         phoneImageView.image = UIImage(named: "phone")
         phoneImageView.contentMode = .left
+		
         let prefix = UILabel(frame: CGRect(x: 18, y:0, width: 40, height: 20))
         prefix.text = "+971 -"
         prefix.sizeToFit()
         prefix.textColor = UIColor.textColor
+        
         let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20 + 50, height: 20))
+        
         leftView.addSubview(phoneImageView)
         leftView.addSubview(prefix)
         leftView.contentMode = .left
+        
         phoneTextField.leftView = leftView
         phoneTextField.leftViewMode = .always
         phoneTextField.placeholder = "50XXXXXXX"
@@ -542,21 +559,62 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         chefNameTextField.addImageAtLeft(UIImage(named: "user"))
         chefEmailTextField.addImageAtLeft(UIImage(named: "email"))
         chefPasswordTextField.addImageAtLeft(UIImage(named: "lock"))
+//        phoneTextField.leftView = phoneImageView
+        
+        let lockImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        lockImageView.image = UIImage(named: "lock")
+        lockImageView.contentMode = .left
+        passwordTextField.leftViewMode = .always
+        passwordTextField.leftView = lockImageView
+        
+        
+        let chefUserImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        chefUserImageView.image = UIImage(named: "user")
+        chefUserImageView.contentMode = .left
+        chefUserImageView.tintColor = UIColor.colorPrimary
+        chefNameTextField.leftViewMode = .always
+        chefNameTextField.leftView = chefUserImageView
+        
+        let chefEmailImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        chefEmailImageView.image = UIImage(named: "email")
+        chefEmailImageView.contentMode = .left
+        chefEmailTextField.leftViewMode = .always
+        chefEmailTextField.leftView = chefEmailImageView
         
         let chefPhoneImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 0, height: 20))
         chefPhoneImageView.image = UIImage(named: "phone")
         chefPhoneImageView.contentMode = .left
+        //
+        
         let prefix2 = UILabel(frame: CGRect(x: 18, y:0, width: 40, height: 20))
         prefix2.text = "+971 -"
         prefix2.sizeToFit()
         prefix2.textColor = UIColor.textColor
-        let leftView2 = UIView(frame: CGRect(x: 0, y: 0, width: 20 + 50, height: 20))
+
+		let leftView2 = UIView(frame: CGRect(x: 0, y: 0, width: 20 + 50, height: 20))
         leftView2.addSubview(chefPhoneImageView)
         leftView2.addSubview(prefix2)
         leftView2.contentMode = .left
         chefPhoneTextField.leftViewMode = .always
         chefPhoneTextField.leftView = leftView2
         chefPhoneTextField.placeholder = "50XXXXXXX"
+
+        let leftView2 = UIView(frame: CGRect(x: 0, y: 0, width: 20 + 50, height: 20))
+
+        leftView2.addSubview(chefPhoneImageView)
+        leftView2.addSubview(prefix2)
+        leftView2.contentMode = .left
+        
+        
+        chefPhoneTextField.leftViewMode = .always
+        chefPhoneTextField.leftView = leftView2
+        chefPhoneTextField.placeholder = "50XXXXXXX"
+        
+        let chefLockImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        chefLockImageView.image = UIImage(named: "lock")
+        chefLockImageView.contentMode = .left
+        chefPasswordTextField.leftViewMode = .always
+        chefPasswordTextField.leftView = chefLockImageView
     }
     
     private func addBottomBorder(){
@@ -589,7 +647,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 if let sessionId = value["result"] as? String
                 {
                     UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
-                self.loadUserDetails()
+					self.loadUserDetails()
                 }
                 else
                 {
@@ -935,6 +993,26 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         self.chefView.isHidden = false
         self.customerView.isHidden = true
 
+        self.lbSocialSignUp.isHidden = true
+        self.socialPanel.isHidden = true
+        self.vDivider.isHidden = true
+    }
+    
+    func onChefButtonPressed(_ sender: Any){
+        
+        self.btnCustomer.titleLabel?.font = UIFont.systemFont(ofSize: 15)
+        self.btnChef.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+       
+        self.btnChef.setTitleColor(UIColor.white, for: .normal)
+        self.btnChef.backgroundColor = .colorPrimary
+
+        self.btnCustomer.setTitleColor(UIColor.colorPrimary, for: .normal)
+        self.btnCustomer.backgroundColor = .white
+
+        self.isChef = true
+        self.chefView.isHidden = false
+        self.customerView.isHidden = true
+           
         self.lbSocialSignUp.isHidden = true
         self.socialPanel.isHidden = true
         self.vDivider.isHidden = true

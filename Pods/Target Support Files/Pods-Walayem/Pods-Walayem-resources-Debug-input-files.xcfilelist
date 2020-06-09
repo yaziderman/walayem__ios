@@ -1,4 +1,7 @@
 ${PODS_ROOT}/Target Support Files/Pods-Walayem/Pods-Walayem-resources.sh
+<<<<<<< HEAD
 ${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle
 ${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle
+=======
+>>>>>>> Production
 ${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle

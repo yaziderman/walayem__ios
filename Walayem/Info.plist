@@ -43,8 +43,11 @@
 	<string></string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+<<<<<<< HEAD
 		<string>googlechromes</string>
 		<string>comgooglemaps</string>
+=======
+>>>>>>> Production
 		<string>fbapi</string>
 		<string>fb-messenger-share-api</string>
 		<string>fbauth2</string>
@@ -60,12 +63,15 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Allows you to take photos to add to your profile or foods</string>
+<<<<<<< HEAD
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Application requires user’s location for better user experience.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Application requires user’s location for better user experience.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Application requires user’s location for better user experience.</string>
+=======
+>>>>>>> Production
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allows you to add photos to your profile or foods</string>
 	<key>UIBackgroundModes</key>

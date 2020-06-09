@@ -82,7 +82,10 @@
 
 //%PDDM-EXPAND DICTIONARY_PRIV_INTERFACES_FOR_POD_KEY(UInt32)
 // This block of code is generated, do not edit it directly.
+<<<<<<< HEAD
 // clang-format off
+=======
+>>>>>>> Production
 
 @interface GPBUInt32UInt32Dictionary () <GPBDictionaryInternalsProtocol> {
  @package
@@ -144,10 +147,15 @@
     __attribute__((ns_returns_retained));
 @end
 
+<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND DICTIONARY_PRIV_INTERFACES_FOR_POD_KEY(Int32)
 // This block of code is generated, do not edit it directly.
 // clang-format off
+=======
+//%PDDM-EXPAND DICTIONARY_PRIV_INTERFACES_FOR_POD_KEY(Int32)
+// This block of code is generated, do not edit it directly.
+>>>>>>> Production
 
 @interface GPBInt32UInt32Dictionary () <GPBDictionaryInternalsProtocol> {
  @package
@@ -209,10 +217,15 @@
     __attribute__((ns_returns_retained));
 @end
 
+<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND DICTIONARY_PRIV_INTERFACES_FOR_POD_KEY(UInt64)
 // This block of code is generated, do not edit it directly.
 // clang-format off
+=======
+//%PDDM-EXPAND DICTIONARY_PRIV_INTERFACES_FOR_POD_KEY(UInt64)
+// This block of code is generated, do not edit it directly.
+>>>>>>> Production
 
 @interface GPBUInt64UInt32Dictionary () <GPBDictionaryInternalsProtocol> {
  @package
@@ -274,10 +287,15 @@
     __attribute__((ns_returns_retained));
 @end
 
+<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND DICTIONARY_PRIV_INTERFACES_FOR_POD_KEY(Int64)
 // This block of code is generated, do not edit it directly.
 // clang-format off
+=======
+//%PDDM-EXPAND DICTIONARY_PRIV_INTERFACES_FOR_POD_KEY(Int64)
+// This block of code is generated, do not edit it directly.
+>>>>>>> Production
 
 @interface GPBInt64UInt32Dictionary () <GPBDictionaryInternalsProtocol> {
  @package
@@ -339,10 +357,15 @@
     __attribute__((ns_returns_retained));
 @end
 
+<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND DICTIONARY_PRIV_INTERFACES_FOR_POD_KEY(Bool)
 // This block of code is generated, do not edit it directly.
 // clang-format off
+=======
+//%PDDM-EXPAND DICTIONARY_PRIV_INTERFACES_FOR_POD_KEY(Bool)
+// This block of code is generated, do not edit it directly.
+>>>>>>> Production
 
 @interface GPBBoolUInt32Dictionary () <GPBDictionaryInternalsProtocol> {
  @package
@@ -404,10 +427,15 @@
     __attribute__((ns_returns_retained));
 @end
 
+<<<<<<< HEAD
 // clang-format on
 //%PDDM-EXPAND DICTIONARY_POD_PRIV_INTERFACES_FOR_KEY(String)
 // This block of code is generated, do not edit it directly.
 // clang-format off
+=======
+//%PDDM-EXPAND DICTIONARY_POD_PRIV_INTERFACES_FOR_KEY(String)
+// This block of code is generated, do not edit it directly.
+>>>>>>> Production
 
 @interface GPBStringUInt32Dictionary () <GPBDictionaryInternalsProtocol> {
  @package
@@ -460,7 +488,10 @@
                               keyDataType:(GPBDataType)keyDataType;
 @end
 
+<<<<<<< HEAD
 // clang-format on
+=======
+>>>>>>> Production
 //%PDDM-EXPAND-END (6 expansions)
 
 #pragma mark - NSDictionary Subclass

@@ -18,7 +18,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
     @IBOutlet weak var scheduleButton: UIButton!
     @IBOutlet weak var filterBarButton: UIBarButtonItem!
     @IBOutlet weak var headerView: UIView!
-    
+	
     var activityIndicator: UIActivityIndicatorView!
     var dateC = Date()
     var dateN = Date()
@@ -30,6 +30,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
     var totalPage: Int = 0
     var isLoading = false
     var partnerId: Int?
+    var discover = DiscoverTableViewController()
     var addressList = [Address]()
     var isSearching = false
     
@@ -39,7 +40,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
     var spinnerView = UIView()
         
      func showSpinner(){
-        spinnerView = getSpinnerView()
+         spinnerView = getSpinnerView()
          self.view.addSubview(spinnerView)
      }
     
@@ -49,7 +50,6 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
         
     
     @IBAction func locationPickClicked(_ sender: Any) {
-        
 //        if ((StaticLinker.discoverViewController?.addressList) != nil){
 //
 //            let alert = UIAlertController(title: "", message: "Select an address", preferredStyle: .actionSheet)
@@ -132,6 +132,67 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 //        }))
 //
 //        self.present(alert, animated: true, completion: nil)
+        }
+    
+    func initialCustomDate() {
+        
+            let startTime = Utils.getChefStartTime()
+            let endTime = Utils.getChefEndTime()
+            let minHours = Utils.getMinHours()
+            
+            let cal = Calendar.current
+            var dt = cal.date(byAdding: .hour, value: minHours, to: Date())
+            
+
+            var components = cal.dateComponents([.year, .month, .day, .hour], from: dt!)
+
+            if components.hour! < startTime {
+                components.hour = startTime
+                components.minute = 0
+            }
+            else if components.hour! > endTime - 1 {
+                components.hour = endTime - 1
+                components.minute = 59
+            }
+            
+            dt = cal.date(from: components)! // 2018-10-10
+            
+            
+            let calendar = NSCalendar.current
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM dd yyyy"
+    //        dateFormatter.dateFormat = "dd MMM yyyy"
+            
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "hh:mm aa"
+            
+            let time_str = timeFormatter.string(from: dt!)
+            var date_str = dateFormatter.string(from: dt!)
+            
+            if calendar.isDateInToday(dt!) { date_str = "Today" }
+            else if calendar.isDateInTomorrow(dt!) { date_str = "Tomorrow" }
+            
+            let dateTimeFormatter = DateFormatter()
+            dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let date_time_str = dateTimeFormatter.string(from: dt!)
+            
+            let userDefaults = UserDefaults.standard
+            userDefaults.set("future", forKey: "OrderType")
+            userDefaults.set(date_time_str, forKey: "OrderDate")
+            userDefaults.synchronize()
+    //
+            if(StaticLinker.chefViewController != nil){
+                StaticLinker.chefViewController?.timePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
+            }
+//            self.datePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
+    //        self.datePickerButton.setTitle("ASAP", for: .normal)
+            
+        }
+        
+    
+    
+    @IBAction func onTimePickerClicked(_ sender: Any) {
+             self.datePickerTapped()
     }
     
     
@@ -260,6 +321,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
                 return
             }
             for record in records! {
+
                 let address = Address(record: record as! [String : Any])
                 self.addressList.append(address)
             }
@@ -284,10 +346,12 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         getAddress()
+        Utils.setupNavigationBar(nav: self.navigationController!)
         showActivityIndicator()
         showSpinner()
         getChefs()
         StaticLinker.chefViewController = self
+        initialCustomDate()
         
         if(StaticLinker.discoverViewController != nil){
             let str = StaticLinker.discoverViewController?.datePickerButton.titleLabel?.text
@@ -301,22 +365,29 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if let selectedIndexPath = tableView.indexPathForSelectedRow{
+        self.tableView.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
+
+		if let selectedIndexPath = tableView.indexPathForSelectedRow{
             tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
         let selectedAddressId = UserDefaults.standard.integer(forKey: "OrderAddress") as Int?
         
-        if(selectedAddressId != nil){
-            if((StaticLinker.discoverViewController) != nil)
-            {
-                for addr in (StaticLinker.discoverViewController?.addressList)!{
-                    if(addr.id == selectedAddressId){
-                        locationPickButton.setTitle(addr.name, for: .normal)
+//        do
+//        {
+            if(selectedAddressId != nil){
+                if((StaticLinker.discoverViewController) != nil)
+                {
+                    for addr in (StaticLinker.discoverViewController?.addressList)!{
+                        if(addr.id == selectedAddressId){
+                            locationPickButton.setTitle(addr.name, for: .normal)
+                        }
                     }
                 }
             }
-        }
+//        }
+//        catch {
+//
+//        }
         
         tableView.reloadData()
         
@@ -352,7 +423,23 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
         let searchController = UISearchController(searchResultsController: searchResultController)
         searchController.searchResultsUpdater = searchResultController
         searchController.searchBar.placeholder = "Search for chefs"
-        searchController.searchBar.tintColor = UIColor.colorPrimary
+
+		if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+                appearance.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
+                appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.black]
+                navigationItem.standardAppearance = appearance
+                navigationItem.scrollEdgeAppearance = appearance
+            
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+
+		searchController.searchBar.tintColor = UIColor.colorPrimary
         if #available(iOS 11.0, *){
             navigationItem.searchController = searchController
         }else{
@@ -360,6 +447,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
         }
         searchController.searchBar.setShowsCancelButton(false, animated: true)
         searchController.searchBar.showsCancelButton = false
+		tableView.tableHeaderView = searchController.searchBar
         definesPresentationContext = true
     }
     
@@ -389,7 +477,9 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
         }
         var params = AreaFilter.shared.coverageParams
         params["page"] = 1
+		
         isLoading = true
+		
         RestClient().request(WalayemApi.discoverChef, params) { (result, error) in
             self.hideSpinner()
             self.hideActivityIndicator()
@@ -428,6 +518,12 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
         isLoading = true
         RestClient().request(WalayemApi.discoverChef, params) { (result, error) in
             self.tableView.tableFooterView = nil
+        if (isLoading || isSearching){
+            return
+        }
+        let params : [String: Int] = ["page": page + 1]
+        isLoading = true
+        RestClient().request(WalayemApi.discoverChef, params) { (result, error) in
             self.isLoading = false
             
             if let error = error{
@@ -450,9 +546,18 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
             self.tableView.reloadData()
         }
     }
+}
     
     private func searchChef() {
         isSearching = true
+            self.tableView.tableFooterView = nil
+    }
+    
+    // search for cuisine and tags
+    private func searchChef(){
+        
+        isSearching = true
+        
         let tagIds: [Int] = selectedTags.map { (tag) -> Int in
             (tag.id ?? 0)
         }
@@ -464,7 +569,8 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
         params["food_tags"] = tagIds
         params["cuisine"] = cuisineIds
         params["page"] = 1
-        RestClient().request(WalayemApi.searchChef, params) { (result, error) in
+
+		RestClient().request(WalayemApi.searchChef, params) { (result, error) in
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 print (errmsg)
@@ -522,7 +628,8 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
         }
     }
     
-    func foodSelected(_ food: Food) {
+
+    func showFoodDetailVC(food: Food){
         let storyBoard = UIStoryboard(name: "Discover", bundle: nil)
         guard let foodDetailVC = storyBoard.instantiateViewController(withIdentifier: "FoodDetailVC") as? FoodDetailViewController else {
             fatalError("Unexpected viewController")
@@ -530,6 +637,17 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
         foodDetailVC.food = food
         navigationController?.pushViewController(foodDetailVC, animated: true)
     }
+
+//    private func handleNetworkError(_ error: NSError){
+//        let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
+//        if error.domain == NSURLErrorDomain && error.code == URLError.notConnectedToInternet.rawValue{
+//            let alert = UIAlertController(title: "Cannot get Chefs", message: errmsg, preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+//            present(alert, animated: true, completion: nil)
+//        }else if errmsg == OdooClient.SESSION_EXPIRED{
+//            self.onSessionExpired()
+//        }
+//    }
     
     private func handleNetworkError(_ error: NSError){
            if error.userInfo[NSLocalizedDescriptionKey] != nil{
@@ -606,20 +724,13 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 extension ChefTableViewController: UITableViewDataSource, UITableViewDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
+       // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chefs.count
     }
-    
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 40
-//    }
-
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        return headerView
-//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChefTableViewCell", for: indexPath) as? ChefTableViewCell else{
@@ -628,6 +739,7 @@ extension ChefTableViewController: UITableViewDataSource, UITableViewDelegate{
         let chef = chefs[indexPath.row]
         cell.chef = chef
         cell.delegate = self
+        cell.chefTableVC = self
         
         return cell
     }
@@ -649,4 +761,53 @@ extension ChefTableViewController: UITableViewDataSource, UITableViewDelegate{
             tableView.tableFooterView = activityIndicator
         }
     }
+}
+
+extension ChefTableViewController: UISearchResultsUpdating{
+    
+    
+    func updateSearchResults(for searchController: UISearchController) {
+
+        dateC = Date()
+        let calendar = Calendar.current
+        dateN = calendar.date(byAdding: .second, value: 5, to: dateC)!
+        
+        if searchController.isActive{
+            
+        let sb = searchController.searchBar
+        let searchQuery = sb.text!
+                  
+      
+      var doSearch = false
+      
+        if searchQuery.count >= 1 {
+                doSearch = true
+        }
+      
+        if doSearch{
+                let params: [String: Any] = ["search": true, "search_keyword": sb.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""]
+                RestClient().request(WalayemApi.searchChef, params) { (result, error) in
+                        if error != nil{
+                            let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+                            print (errmsg)
+                            return
+                        }
+                        let value = result!["result"] as! [String: Any]
+                        if let status = value["status"] as? Int, status == 0{
+                            return
+                        }
+                        self.chefs.removeAll()
+                        let records = value["data"] as! [Any]
+                        for record in records{
+                            let chef = Chef(record: record as! [String: Any])
+                            self.chefs.append(chef)
+                        }
+                        self.tableView.reloadData()
+                    }
+            }else{
+            
+            }
+        }
+    }
+    
 }

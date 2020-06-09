@@ -14,6 +14,9 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     // MARK: Properties
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    
+    @IBOutlet weak var versionno: UILabel!
+    
     var session: String?
     
     var user: User?
@@ -34,7 +37,8 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     
     
     @IBAction func openWhatsapp(){
-        let urlWhats = "whatsapp://send?phone=+971585668800&abid=12354&text=Hi, I am \(user?.name ?? "CUSTOMER_NAME")"
+        let urlWhats = "whatsapp://send?phone=971585668800&abid=12354&text=Hi, I am \(user?.name ?? "CUSTOMER_NAME")"
+		
         if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
             if let whatsappURL = URL(string: urlString) {
                 if UIApplication.shared.canOpenURL(whatsappURL){
@@ -166,6 +170,11 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(refresh) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
+        
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        
+        versionno.text = "Version Number - \(appVersion ?? "") "
+
     }
     
     func updateProfileTitle() {

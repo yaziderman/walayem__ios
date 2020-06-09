@@ -14,7 +14,11 @@
  * limitations under the License.
  */
 
+<<<<<<< HEAD
 #import "GDTCORLibrary/Public/GDTCORPlatform.h"
+=======
+#import <GoogleDataTransport/GDTCORPlatform.h>
+>>>>>>> Production
 
 #import <GoogleDataTransport/GDTCORAssert.h>
 #import <GoogleDataTransport/GDTCORConsoleLogger.h>
@@ -62,6 +66,7 @@ NSURL *GDTCORRootDirectory(void) {
   return GDTPath;
 }
 
+<<<<<<< HEAD
 BOOL GDTCORReachabilityFlagsReachable(GDTCORNetworkReachabilityFlags flags) {
 #if !TARGET_OS_WATCH
   BOOL reachable =
@@ -83,6 +88,17 @@ BOOL GDTCORReachabilityFlagsContainWWAN(GDTCORNetworkReachabilityFlags flags) {
   return NO;
 #endif  // TARGET_OS_IOS
 }
+=======
+#if !TARGET_OS_WATCH
+BOOL GDTCORReachabilityFlagsContainWWAN(SCNetworkReachabilityFlags flags) {
+#if TARGET_OS_IOS
+  return (flags & kSCNetworkReachabilityFlagsIsWWAN) == kSCNetworkReachabilityFlagsIsWWAN;
+#else
+  return NO;
+#endif  // TARGET_OS_IOS
+}
+#endif  // !TARGET_OS_WATCH
+>>>>>>> Production
 
 GDTCORNetworkType GDTCORNetworkTypeMessage() {
 #if !TARGET_OS_WATCH
@@ -257,6 +273,7 @@ id<NSSecureCoding> _Nullable GDTCORDecodeArchive(Class archiveClass,
 
 @implementation GDTCORApplication
 
+<<<<<<< HEAD
 #if TARGET_OS_WATCH
 /** A dispatch queue on which all task semaphores will populate and remove from
  * gBackgroundIdentifierToSemaphoreMap.
@@ -267,6 +284,8 @@ static dispatch_queue_t gSemaphoreQueue;
 static NSMutableDictionary<NSNumber *, dispatch_semaphore_t> *gBackgroundIdentifierToSemaphoreMap;
 #endif
 
+=======
+>>>>>>> Production
 + (void)load {
   GDTCORLogDebug(
       @"%@", @"GDT is initializing. Please note that if you quit the app via the "
@@ -281,6 +300,7 @@ static NSMutableDictionary<NSNumber *, dispatch_semaphore_t> *gBackgroundIdentif
   [self sharedApplication];
 }
 
+<<<<<<< HEAD
 + (void)initialize {
 #if TARGET_OS_WATCH
   static dispatch_once_t onceToken;
@@ -296,6 +316,8 @@ static NSMutableDictionary<NSNumber *, dispatch_semaphore_t> *gBackgroundIdentif
 #endif
 }
 
+=======
+>>>>>>> Production
 + (nullable GDTCORApplication *)sharedApplication {
   static GDTCORApplication *application;
   static dispatch_once_t onceToken;
@@ -347,6 +369,7 @@ static NSMutableDictionary<NSNumber *, dispatch_semaphore_t> *gBackgroundIdentif
                            selector:@selector(macOSApplicationWillTerminate:)
                                name:NSApplicationWillTerminateNotification
                              object:nil];
+<<<<<<< HEAD
 
 #elif TARGET_OS_WATCH
     // TODO: Notification on watchOS platform is currently posted by strings which are frangible.
@@ -371,10 +394,14 @@ static NSMutableDictionary<NSNumber *, dispatch_semaphore_t> *gBackgroundIdentif
                                name:NSExtensionHostWillEnterForegroundNotification
                              object:nil];
 #endif
+=======
+#endif  // TARGET_OS_IOS || TARGET_OS_TV
+>>>>>>> Production
   }
   return self;
 }
 
+<<<<<<< HEAD
 #if TARGET_OS_WATCH
 /** Generates and maps a unique background identifier to the given semaphore.
  *
@@ -426,11 +453,19 @@ static NSMutableDictionary<NSNumber *, dispatch_semaphore_t> *gBackgroundIdentif
 #if !TARGET_OS_WATCH
   bgID = [[self sharedApplicationForBackgroundTask] beginBackgroundTaskWithName:name
                                                               expirationHandler:handler];
+=======
+- (GDTCORBackgroundIdentifier)beginBackgroundTaskWithName:(NSString *)name
+                                        expirationHandler:(void (^)(void))handler {
+  GDTCORBackgroundIdentifier bgID =
+      [[self sharedApplicationForBackgroundTask] beginBackgroundTaskWithName:name
+                                                           expirationHandler:handler];
+>>>>>>> Production
 #if !NDEBUG
   if (bgID != GDTCORBackgroundIdentifierInvalid) {
     GDTCORLogDebug(@"Creating background task with name:%@ bgID:%ld", name, (long)bgID);
   }
 #endif  // !NDEBUG
+<<<<<<< HEAD
 #elif TARGET_OS_WATCH
   dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
   bgID = [GDTCORApplication createAndMapBackgroundIdentifierToSemaphore:semaphore];
@@ -455,16 +490,22 @@ static NSMutableDictionary<NSNumber *, dispatch_semaphore_t> *gBackgroundIdentif
                                }
                              }];
 #endif
+=======
+>>>>>>> Production
   return bgID;
 }
 
 - (void)endBackgroundTask:(GDTCORBackgroundIdentifier)bgID {
+<<<<<<< HEAD
 #if !TARGET_OS_WATCH
+=======
+>>>>>>> Production
   if (bgID != GDTCORBackgroundIdentifierInvalid) {
     GDTCORLogDebug(@"Ending background task with ID:%ld was successful", (long)bgID);
     [[self sharedApplicationForBackgroundTask] endBackgroundTask:bgID];
     return;
   }
+<<<<<<< HEAD
 #elif TARGET_OS_WATCH
   if (bgID != GDTCORBackgroundIdentifierInvalid) {
     dispatch_semaphore_t semaphore = [GDTCORApplication semaphoreForBackgroundIdentifier:bgID];
@@ -477,11 +518,14 @@ static NSMutableDictionary<NSNumber *, dispatch_semaphore_t> *gBackgroundIdentif
     }
   }
 #endif  // !TARGET_OS_WATCH
+=======
+>>>>>>> Production
 }
 
 #pragma mark - App environment helpers
 
 - (BOOL)isAppExtension {
+<<<<<<< HEAD
   BOOL appExtension = [[[NSBundle mainBundle] bundlePath] hasSuffix:@".appex"];
   return appExtension;
 }
@@ -515,6 +559,40 @@ static NSMutableDictionary<NSNumber *, dispatch_semaphore_t> *gBackgroundIdentif
 #pragma mark - UIApplicationDelegate and WKExtensionDelegate
 
 #if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_WATCH
+=======
+#if TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_WATCH
+  BOOL appExtension = [[[NSBundle mainBundle] bundlePath] hasSuffix:@".appex"];
+  return appExtension;
+#elif TARGET_OS_OSX
+  return NO;
+#endif
+}
+
+/** Returns a UIApplication instance if on the appropriate platform.
+ *
+ * @return The shared UIApplication if on the appropriate platform.
+ */
+#if TARGET_OS_IOS || TARGET_OS_TV
+- (nullable UIApplication *)sharedApplicationForBackgroundTask {
+#else
+- (nullable id)sharedApplicationForBackgroundTask {
+#endif
+  if ([self isAppExtension]) {
+    return nil;
+  }
+  id sharedApplication = nil;
+  Class uiApplicationClass = NSClassFromString(@"UIApplication");
+  if (uiApplicationClass &&
+      [uiApplicationClass respondsToSelector:(NSSelectorFromString(@"sharedApplication"))]) {
+    sharedApplication = [uiApplicationClass sharedApplication];
+  }
+  return sharedApplication;
+}
+
+#pragma mark - UIApplicationDelegate
+
+#if TARGET_OS_IOS || TARGET_OS_TV
+>>>>>>> Production
 - (void)iOSApplicationDidEnterBackground:(NSNotification *)notif {
   _isRunningInBackground = YES;
 
@@ -530,11 +608,15 @@ static NSMutableDictionary<NSNumber *, dispatch_semaphore_t> *gBackgroundIdentif
   GDTCORLogDebug(@"%@", @"GDTCORPlatform is sending a notif that the app is foregrounding.");
   [notifCenter postNotificationName:kGDTCORApplicationWillEnterForegroundNotification object:nil];
 }
+<<<<<<< HEAD
 #endif  // TARGET_OS_IOS || TARGET_OS_TV || TARGET_OS_WATCH
 
 #pragma mark - UIApplicationDelegate
 
 #if TARGET_OS_IOS || TARGET_OS_TV
+=======
+
+>>>>>>> Production
 - (void)iOSApplicationWillTerminate:(NSNotification *)notif {
   NSNotificationCenter *notifCenter = [NSNotificationCenter defaultCenter];
   GDTCORLogDebug(@"%@", @"GDTCORPlatform is sending a notif that the app is terminating.");

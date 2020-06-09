@@ -177,7 +177,10 @@ extern NSString *const GPBCodedOutputStreamException_WriteFailed;
 
 //%PDDM-EXPAND _WRITE_DECLS()
 // This block of code is generated, do not edit it directly.
+<<<<<<< HEAD
 // clang-format off
+=======
+>>>>>>> Production
 
 /**
  * Write a double for the given field number.
@@ -528,8 +531,12 @@ extern NSString *const GPBCodedOutputStreamException_WriteFailed;
  * @param fieldNumber The field number assigned to the values.
  * @param values      The values to write out.
  **/
+<<<<<<< HEAD
 - (void)writeStringArray:(int32_t)fieldNumber
                   values:(NSArray<NSString*> *)values;
+=======
+- (void)writeStringArray:(int32_t)fieldNumber values:(NSArray<NSString*> *)values;
+>>>>>>> Production
 /**
  * Write a NSString without any tag.
  *
@@ -550,8 +557,12 @@ extern NSString *const GPBCodedOutputStreamException_WriteFailed;
  * @param fieldNumber The field number assigned to the values.
  * @param values      The values to write out.
  **/
+<<<<<<< HEAD
 - (void)writeMessageArray:(int32_t)fieldNumber
                    values:(NSArray<GPBMessage*> *)values;
+=======
+- (void)writeMessageArray:(int32_t)fieldNumber values:(NSArray<GPBMessage*> *)values;
+>>>>>>> Production
 /**
  * Write a GPBMessage without any tag.
  *
@@ -572,8 +583,12 @@ extern NSString *const GPBCodedOutputStreamException_WriteFailed;
  * @param fieldNumber The field number assigned to the values.
  * @param values      The values to write out.
  **/
+<<<<<<< HEAD
 - (void)writeBytesArray:(int32_t)fieldNumber
                  values:(NSArray<NSData*> *)values;
+=======
+- (void)writeBytesArray:(int32_t)fieldNumber values:(NSArray<NSData*> *)values;
+>>>>>>> Production
 /**
  * Write a NSData without any tag.
  *
@@ -595,8 +610,12 @@ extern NSString *const GPBCodedOutputStreamException_WriteFailed;
  * @param fieldNumber The field number assigned to the values.
  * @param values      The values to write out.
  **/
+<<<<<<< HEAD
 - (void)writeGroupArray:(int32_t)fieldNumber
                  values:(NSArray<GPBMessage*> *)values;
+=======
+- (void)writeGroupArray:(int32_t)fieldNumber values:(NSArray<GPBMessage*> *)values;
+>>>>>>> Production
 /**
  * Write a GPBMessage without any tag (but does write the endGroup tag).
  *
@@ -620,8 +639,12 @@ extern NSString *const GPBCodedOutputStreamException_WriteFailed;
  * @param fieldNumber The field number assigned to the values.
  * @param values      The values to write out.
  **/
+<<<<<<< HEAD
 - (void)writeUnknownGroupArray:(int32_t)fieldNumber
                         values:(NSArray<GPBUnknownFieldSet*> *)values;
+=======
+- (void)writeUnknownGroupArray:(int32_t)fieldNumber values:(NSArray<GPBUnknownFieldSet*> *)values;
+>>>>>>> Production
 /**
  * Write a GPBUnknownFieldSet without any tag (but does write the endGroup tag).
  *
@@ -631,7 +654,10 @@ extern NSString *const GPBCodedOutputStreamException_WriteFailed;
 - (void)writeUnknownGroupNoTag:(int32_t)fieldNumber
                          value:(GPBUnknownFieldSet *)value;
 
+<<<<<<< HEAD
 // clang-format on
+=======
+>>>>>>> Production
 //%PDDM-EXPAND-END _WRITE_DECLS()
 
 /**
@@ -697,8 +723,12 @@ NS_ASSUME_NONNULL_END
 //% * @param fieldNumber The field number assigned to the values.
 //% * @param values      The values to write out.
 //% **/
+<<<<<<< HEAD
 //%- (void)write##NAME##Array:(int32_t)fieldNumber
 //%           NAME$S values:(NSArray<##TYPE##*> *)values;
+=======
+//%- (void)write##NAME##Array:(int32_t)fieldNumber values:(NSArray<##TYPE##*> *)values;
+>>>>>>> Production
 //%/**
 //% * Write a TYPE without any tag.
 //% *
@@ -722,8 +752,12 @@ NS_ASSUME_NONNULL_END
 //% * @param fieldNumber The field number assigned to the values.
 //% * @param values      The values to write out.
 //% **/
+<<<<<<< HEAD
 //%- (void)write##NAME##Array:(int32_t)fieldNumber
 //%           NAME$S values:(NSArray<##TYPE##*> *)values;
+=======
+//%- (void)write##NAME##Array:(int32_t)fieldNumber values:(NSArray<##TYPE##*> *)values;
+>>>>>>> Production
 //%/**
 //% * Write a TYPE without any tag (but does write the endGroup tag).
 //% *

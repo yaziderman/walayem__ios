@@ -44,6 +44,20 @@ class FoodDetailViewController: UIViewController {
             setSaveButtonTitle()
         }
     }
+	
+    @objc func openChefDetail() {
+        print("Open Chef Detail")
+        
+        let storyboard : UIStoryboard = UIStoryboard(name: "Chef", bundle: nil)
+        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "ChefDetailViewController") as? ChefDetailViewController else{
+            fatalError("Unexpected destination VC")
+        }
+        
+        destinationVC.chef_id = self.food?.chefId
+        
+        (UserTabBarController.currentInstance?.selectedViewController as? UINavigationController)?.pushViewController(destinationVC, animated: true)
+        
+    }
     
     @IBAction func saveToCart(_ sender: UIButton){
         let r = db.addFood(item: food!)
@@ -65,7 +79,14 @@ class FoodDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         Utils.setupNavigationBar(nav: self.navigationController!)
-        user = User().getUserDefaults()
+        user = User().getUserDefaults()\
+		
+// MARK:    To open chef connection from food detail uncomment following 3 lines
+        
+        let kitchenLabelTapGesture = UITapGestureRecognizer(target: self, action: #selector(openChefDetail))
+        kitchenLabel.isUserInteractionEnabled = true
+        kitchenLabel.addGestureRecognizer(kitchenLabelTapGesture)
+        
         
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .never
@@ -97,7 +118,17 @@ class FoodDetailViewController: UIViewController {
 //            }
             nameLabel.text = food.name
             kitchenLabel.text = food.kitcherName! + " \u{2022} " + food.chefName!
-                    
+//            foodImageView.kf.setImage(with: imageUrl)
+//            foodImageView.load.request(with: imageUrl!)
+//            foodImageView.sd_setImage(with: imageUrl, completed: nil)
+            
+            foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.white
+            foodImageView.sd_setImage(with: imageUrl, placeholderImage: nil)
+//            foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+            food.quantity = 1
+            nameLabel.text = food.name
+            kitchenLabel.text = food.kitcherName! + " \u{2022} " + food.chefName!
+                                
             let time = Int(max(1, round( Double(food.preparationTime) / 60.0)))
 
             estimatedTimeLabel.text = "Prep. Time \(time) hour(s)"
@@ -292,7 +323,7 @@ extension FoodDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         let id = food?.imageIds![indexPath.row] ?? 0
         let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/food.image/\(id)/image")
 //        cell.foodImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "foodImageEmpty"))
-        foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.medium
         cell.foodImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
         
         return cell

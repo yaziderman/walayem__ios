@@ -51,6 +51,7 @@
   return archivePath;
 }
 
+<<<<<<< HEAD
 + (NSString *)libraryDataPath {
   static NSString *libraryDataPath;
   static dispatch_once_t onceToken;
@@ -72,6 +73,8 @@
   return libraryDataPath;
 }
 
+=======
+>>>>>>> Production
 + (instancetype)sharedInstance {
   static GDTCORFlatFileStorage *sharedStorage;
   static dispatch_once_t onceToken;
@@ -208,6 +211,7 @@
   });
 }
 
+<<<<<<< HEAD
 #pragma mark - GDTCORStorageProtocol
 
 - (void)libraryDataForKey:(nonnull NSString *)key
@@ -256,6 +260,8 @@
   });
 }
 
+=======
+>>>>>>> Production
 #pragma mark - Private helper methods
 
 /** Saves the event's dataObject to a file using NSData mechanisms.

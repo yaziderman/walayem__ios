@@ -51,12 +51,12 @@ class AddressTableViewController: UITableViewController {
             navigationItem.largeTitleDisplayMode = .never
         }
         self.tableView.tableFooterView = UIView()
-        setupRefreshControl()
         
         showActivityIndicator()
         if let navController = self.navigationController {
             Utils.setupNavigationBar(nav: navController)
         }
+        setupRefreshControl()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -159,6 +159,7 @@ class AddressTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
@@ -188,6 +189,7 @@ class AddressTableViewController: UITableViewController {
         } else {
             self.performSegue(withIdentifier: "AddressVCSegue", sender: selectedCell)
         }
+        self.performSegue(withIdentifier: "AddressVCSegue", sender: selectedCell)
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

@@ -85,8 +85,10 @@ extension UIViewController {
         let h = v.height
         let w = v.width
         let imageView = UIImageView.init(frame: CGRect(x: w/2 - 30, y: h/2 - 60 - 50, width: 60, height: 120))
-        imageView.image = #imageLiteral(resourceName: "logo")
-        var frame = imageView.frame
+
+		imageView.image = #imageLiteral(resourceName: "logo no text")
+
+		var frame = imageView.frame
         UIView.animate(withDuration: 2, delay: 0.2, options: .repeat, animations: {
              frame.origin.y = h/2 - 130 - 50
             imageView.alpha = 0.1
@@ -113,23 +115,43 @@ extension UIViewController {
         view.endEditing(true)
     }
     
+      func showAlertBeforeLogin(message: String) {
+         
+          StaticLinker.skipToSameView = true
+          
+          let alert = UIAlertController(title: message, message: "", preferredStyle: .actionSheet)
+              alert.addAction(UIAlertAction(title: "Login / Signup", style: .default, handler: { (action) in
+                      let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
+                      self.present(viewController, animated: true, completion: nil)
+                
+                     }
+                 ))
+                 alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
+                  alert.dismiss(animated: true, completion: nil)
+                 }))
+          
+          
+          self.present(alert, animated: true, completion: nil)
+      }
     
     
-    func showAlertBeforeLogin(message: String) {
-       
-        StaticLinker.skipToSameView = true
+      func alertBeforeLogin(message: String) -> UIAlertController {
+         
+          StaticLinker.skipToSameView = true
+          
+          let alert = UIAlertController(title: message, message: "", preferredStyle: .actionSheet)
+              alert.addAction(UIAlertAction(title: "Login / Signup", style: .default, handler: { (action) in
+                      let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
+                      self.present(viewController, animated: true, completion: nil)
+                     }
+                 ))
+                 alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
+                  alert.dismiss(animated: true, completion: nil)
+                 }))
         
-        let alert = UIAlertController(title: message, message: "", preferredStyle: .actionSheet)
-            alert.addAction(UIAlertAction(title: "Login / Signup", style: .default, handler: { (action) in
-                    let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
-                    self.present(viewController, animated: true, completion: nil)
-                   }
-               ))
-               alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
-                alert.dismiss(animated: true, completion: nil)
-               }))
-        self.present(alert, animated: true, completion: nil)
-    }
+        return alert
+          
+      }
 }
 
 
@@ -202,6 +224,23 @@ extension UIViewController {
     }
   }
 }
+
+//public var tint: UIColor = {
+//    if #available(iOS 13, *) {
+//        return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+//            if UITraitCollection.userInterfaceStyle == .dark {
+//                /// Return the color for Dark Mode
+//                return .black
+//            } else {
+//                /// Return the color for Light Mode
+//                return .white
+//            }
+//        }
+//    } else {
+//        /// Return a fallback color for iOS 12 and lower.
+//        return .white
+//    }
+//}()
 
 extension UIColor {
     func getTint()-> UIColor {

@@ -20,10 +20,13 @@
     atomic_flag  _isAllFinished;
     
     unsigned long _totalCount;
+<<<<<<< HEAD
     
     // Used to ensure NSPointerArray thread safe
     dispatch_semaphore_t _prefetchOperationsLock;
     dispatch_semaphore_t _loadOperationsLock;
+=======
+>>>>>>> Production
 }
 
 @property (nonatomic, copy, readwrite) NSArray<NSURL *> *urls;
@@ -110,6 +113,10 @@
 }
 
 - (void)startPrefetchWithToken:(SDWebImagePrefetchToken * _Nonnull)token {
+<<<<<<< HEAD
+=======
+    NSPointerArray *operations = token.loadOperations;
+>>>>>>> Production
     for (NSURL *url in token.urls) {
         @autoreleasepool {
             @weakify(self);
@@ -145,6 +152,7 @@
                     [asyncOperation complete];
                 }];
                 NSAssert(operation != nil, @"Operation should not be nil, [SDWebImageManager loadImageWithURL:options:context:progress:completed:] break prefetch logic");
+<<<<<<< HEAD
                 SD_LOCK(token->_loadOperationsLock);
                 [token.loadOperations addPointer:(__bridge void *)operation];
                 SD_UNLOCK(token->_loadOperationsLock);
@@ -152,6 +160,15 @@
             SD_LOCK(token->_prefetchOperationsLock);
             [token.prefetchOperations addPointer:(__bridge void *)prefetchOperation];
             SD_UNLOCK(token->_prefetchOperationsLock);
+=======
+                @synchronized (token) {
+                    [operations addPointer:(__bridge void *)operation];
+                }
+            }];
+            @synchronized (token) {
+                [token.prefetchOperations addPointer:(__bridge void *)prefetchOperation];
+            }
+>>>>>>> Production
             [self.prefetchQueue addOperation:prefetchOperation];
         }
     }
@@ -265,6 +282,7 @@
 
 @implementation SDWebImagePrefetchToken
 
+<<<<<<< HEAD
 - (instancetype)init {
     self = [super init];
     if (self) {
@@ -297,6 +315,26 @@
     self.loadOperations.count = 0;
     SD_UNLOCK(_loadOperationsLock);
     
+=======
+- (void)cancel {
+    @synchronized (self) {
+        [self.prefetchOperations compact];
+        for (id operation in self.prefetchOperations) {
+            if ([operation conformsToProtocol:@protocol(SDWebImageOperation)]) {
+                [operation cancel];
+            }
+        }
+        self.prefetchOperations.count = 0;
+        
+        [self.loadOperations compact];
+        for (id operation in self.loadOperations) {
+            if ([operation conformsToProtocol:@protocol(SDWebImageOperation)]) {
+                [operation cancel];
+            }
+        }
+        self.loadOperations.count = 0;
+    }
+>>>>>>> Production
     self.completionBlock = nil;
     self.progressBlock = nil;
     [self.prefetcher removeRunningToken:self];

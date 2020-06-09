@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+=======
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+    <device id="retina6_5" orientation="portrait" appearance="dark"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+>>>>>>> Production
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -50,6 +58,7 @@
             </objects>
             <point key="canvasLocation" x="793" y="10"/>
         </scene>
+<<<<<<< HEAD
         <!--Delivery To-->
         <scene sceneID="w8L-lT-y8T">
             <objects>
@@ -224,6 +233,8 @@
             </objects>
             <point key="canvasLocation" x="2920.8000000000002" y="67.016491754122939"/>
         </scene>
+=======
+>>>>>>> Production
         <!--Cart-->
         <scene sceneID="5VX-yw-z0b">
             <objects>
@@ -266,7 +277,10 @@
             <point key="canvasLocation" x="799" y="-220"/>
         </scene>
     </scenes>
+<<<<<<< HEAD
     <resources>
         <image name="location" width="42.666667938232422" height="42.666667938232422"/>
     </resources>
+=======
+>>>>>>> Production
 </document>

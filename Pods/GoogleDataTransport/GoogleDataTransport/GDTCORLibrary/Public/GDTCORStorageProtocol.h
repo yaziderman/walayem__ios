@@ -17,7 +17,10 @@
 #import <Foundation/Foundation.h>
 
 #import <GoogleDataTransport/GDTCORLifecycle.h>
+<<<<<<< HEAD
 #import <GoogleDataTransport/GDTCORTargets.h>
+=======
+>>>>>>> Production
 
 @class GDTCOREvent;
 
@@ -26,8 +29,11 @@ NS_ASSUME_NONNULL_BEGIN
 /** Defines the interface a storage subsystem is expected to implement. */
 @protocol GDTCORStorageProtocol <NSObject, GDTCORLifecycleProtocol>
 
+<<<<<<< HEAD
 @required
 
+=======
+>>>>>>> Production
 /** Stores an event and calls onComplete with a non-nil error if anything went wrong.
  *
  * @param event The event to store
@@ -39,6 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
 /** Removes the events from storage. */
 - (void)removeEvents:(NSSet<NSNumber *> *)eventIDs;
 
+<<<<<<< HEAD
 /** Persists the given data with the given key.
  *
  * @param data The data to store.
@@ -75,4 +82,8 @@ NS_ASSUME_NONNULL_BEGIN
 FOUNDATION_EXPORT
 id<GDTCORStorageProtocol> _Nullable GDTCORStorageInstanceForTarget(GDTCORTarget target);
 
+=======
+@end
+
+>>>>>>> Production
 NS_ASSUME_NONNULL_END

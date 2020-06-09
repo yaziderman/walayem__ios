@@ -37,6 +37,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     @IBOutlet weak var orderView: UIView!
     @IBOutlet weak var summaryDeliveryChargeLabel: UILabel!
     @IBOutlet weak var discountTitleLabel: UILabel!
+//  @IBOutlet weak var abuDhabiOnlyText: UILabel!
+//   @IBOutlet weak var contactUsBtn: UIButton!
     
     var delegate: CartViewDelegate? = nil
     
@@ -52,6 +54,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         var deliveryCost: Double?
     }
     var cartItems = [CartItem]()
+	
     private var isUserLoggedIn: Bool {
         return UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID) != nil
     }
@@ -93,7 +96,13 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     @IBAction func addAddress(_ sender: UIButton) {
         
         if self.isUserLoggedIn {
-            let storyboard = UIStoryboard(name: "Profile", bundle: nil)
+        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        if(session == nil)
+        {
+        }
+        else{
+        
+				let storyboard = UIStoryboard(name: "Profile", bundle: nil)
             guard let addressVC = storyboard.instantiateViewController(withIdentifier: "AddressTableVC") as? AddressTableViewController else{
                 fatalError("Unexpected ViewController")
             }
@@ -101,12 +110,12 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
                 navigationController?.pushViewController(addressVC, animated: true)
                 
         }
+		}
     }
     
 //    func showAlertForLogin(){
 //
 //        StaticLinker.skipToSameView = true
-//
 //        let alert = UIAlertController(title: "", message: "Please login to continue...", preferredStyle: .actionSheet)
 //                alert.addAction(UIAlertAction(title: "Login / Signup", style: .default, handler: { (action) in
 //                        print("Login/Signup is pressed")
@@ -114,11 +123,12 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 //                        self.present(viewController, animated: true, completion: nil)
 //                       }
 //                   ))
-//
+
+//               
 //               alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
 //                alert.dismiss(animated: true, completion: nil)
 //               }))
-//
+//               
 //        self.present(alert, animated: true, completion: nil)
 //    }
     
@@ -169,71 +179,80 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
             self.present(alert, animated: true, completion: nil)
             return
         }
-        
-        let progressAlert = showProgressAlert()
-        var orderItems = [Any]()
-        for item in cartItems{
-            // add food details
-            var products = [Any]()
-            for food in item.chef.foods{
-                var dict = [String: Int]()
-                dict["product_id"] = food.id
-                dict["product_uom_qty"] = food.quantity
+
+        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
                 
-                products.append(dict)
+        if(session == nil)
+            
+        {
+            let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
+            self.present(viewController, animated: true, completion: nil)
+		} else {
+            
+            let progressAlert = showProgressAlert()
+            var orderItems = [Any]()
+            for item in cartItems{
+                // add food details
+                var products = [Any]()
+                for food in item.chef.foods{
+                    var dict = [String: Int]()
+                    dict["product_id"] = food.id
+                    dict["product_uom_qty"] = food.quantity
+                    
+                    products.append(dict)
+                }
+                // add chef details
+                var dict = [String: Any]()
+                dict["chef_id"] = item.chef.id
+                dict["note"] = item.note
+                dict["products"] = products
+                
+                orderItems.append(dict)
             }
-            // add chef details
-            var dict = [String: Any]()
-            dict["chef_id"] = item.chef.id
-            dict["note"] = item.note
-            dict["products"] = products
             
-            orderItems.append(dict)
-        }
-        
-        var params: [String: Any] = ["partner_id": user?.partner_id as Any,
-                                     "address_id": selectedAddress!.id,
-                                     "orders": orderItems]
-        let orderType = UserDefaults.standard.string(forKey: "OrderType") ?? "asap"
-        params.updateValue(orderType, forKey: "order_type")
-        
-        print("order type-->"+orderType)
-        
-        if(orderType == "future"){
-            let orderDate = UserDefaults.standard.string(forKey: "OrderDate") ?? ""
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            let date = dateFormatter.date(from: orderDate)
+            var params: [String: Any] = ["partner_id": user?.partner_id as Any,
+                                         "address_id": selectedAddress!.id,
+                                         "orders": orderItems]
+            let orderType = UserDefaults.standard.string(forKey: "OrderType") ?? "asap"
+            params.updateValue(orderType, forKey: "order_type")
             
-            let dateTimeFormatter = DateFormatter()
-            dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            dateTimeFormatter.timeZone = TimeZone(abbreviation: "UTC")
-            let date_time_str = dateTimeFormatter.string(from: date!)
-            params.updateValue(date_time_str, forKey: "order_for")
-        }
-        
-        RestClient().request(WalayemApi.placeOrder, params) { (result, error) in
-            progressAlert.dismiss(animated: true, completion: {
-                if error != nil{
-                    let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
-                    self.showAlert(title: "Error", msg: errmsg)
-                    return
-                }
-                let value = result!["result"] as! [String: Any]
-                let msg = value["message"] as! String
-                if let status = value["status"] as? Int, status == 0{
-                    self.showAlert(title: "Error", msg: msg)
-                    return
-                }
+            print("order type-->"+orderType)
+            
+            if(orderType == "future"){
+                let orderDate = UserDefaults.standard.string(forKey: "OrderDate") ?? ""
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                let date = dateFormatter.date(from: orderDate)
                 
-                self.clearCartItems()
-                let records = value["orders"] as! [Any]
-                guard let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "OrderSuccessVC") as? OrderSuccessViewController else {
-                    fatalError("Unexpected destiation view controller")
-                }
-                destinationVC.orders = records
-                self.present(destinationVC, animated: true, completion: nil)
-            })
+                let dateTimeFormatter = DateFormatter()
+                dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                dateTimeFormatter.timeZone = TimeZone(abbreviation: "UTC")
+                let date_time_str = dateTimeFormatter.string(from: date!)
+                params.updateValue(date_time_str, forKey: "order_for")
+            }
+            
+            RestClient().request(WalayemApi.placeOrder, params) { (result, error) in
+                progressAlert.dismiss(animated: true, completion: {
+                    if error != nil{
+                        let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+                        self.showAlert(title: "Error", msg: errmsg)
+                        return
+                    }
+                    let value = result!["result"] as! [String: Any]
+                    let msg = value["message"] as! String
+                    if let status = value["status"] as? Int, status == 0{
+                        self.showAlert(title: "Error", msg: msg)
+                        return
+                    }
+                    
+                    self.clearCartItems()
+                    let records = value["orders"] as! [Any]
+                    guard let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "OrderSuccessVC") as? OrderSuccessViewController else {
+                        fatalError("Unexpected destiation view controller")
+                    }
+                    destinationVC.orders = records
+                    self.present(destinationVC, animated: true, completion: nil)
+                })
             
         }
         
@@ -273,12 +292,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
             self.addressDetailLabel.isHidden = false
             self.addAddressButton.isHidden = false
         } else {
-            self.addressView.isHidden = true
-            self.addressNameLabel.isHidden = true
-            self.addressDetailLabel.isHidden = true
-            self.addAddressButton.isHidden = true
-        }
-        getAddress()
+			getAddress()
+		}
     }
     
     @objc func updateButtonTitle() {
@@ -288,11 +303,29 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         } else {
             self.orderButton.setTitle("Login to Order", for: .normal)
         }
+        
+        getAddress()
+    }
+    
+    
+    @objc func updateButtonTitle() {
+        
+        let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+        if(session == nil)
+        {
+            self.orderButton.setTitle("Login to Order", for: .normal)
+        }
+        else
+        {
+            self.orderButton.setTitle("Place Order", for: .normal)
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         user = User().getUserDefaults()
         getCartItems()
+        getAddress()
         updateButtonTitle()
         self.tableView.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
         
@@ -336,7 +369,6 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     }
 
     @objc func checkAction(sender : UITapGestureRecognizer) {
-        // Do what you want
         
         let startTime = Utils.getChefStartTime()
         let endTime = Utils.getChefEndTime()
@@ -555,6 +587,23 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
             self.discountTitleLabel.text = "Total Delivery"
             self.tableView.reloadData()
         }
+
+		let foods = db.getFoods()
+//        validateFoods(foods: foods) { (success) in
+            self.cartItems.removeAll()
+            let chefs = self.db.getCartItems()
+            if chefs.count == 0{
+                self.changeView(true)
+            }else{
+                self.changeView(false)
+                for chef in chefs{
+                    let cartItem = CartItem(opened: true, chef: chef, note: "")
+                    self.cartItems.append(cartItem)
+                }
+                self.calculateCost()
+            }
+            self.tableView.reloadData()
+//        }
     }
     
     private func validateFoods(foods: [Food], completion: @escaping(Bool) -> Void){
@@ -607,7 +656,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
             }
             let value = result!["result"] as! [String: Any]
             let status = value["status"] as! Int
-            if (status != 0) {
+
+			if (status != 0) {
                 self.addressList.removeAll()
                 let records = value["addresses"] as! [Any]
                 if records.count == 0{
@@ -673,7 +723,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         var totalCost: Double = 0.0
         for item in cartItems{
             for food in item.chef.foods{
-                totalCost += Double(food.quantity) * (food.price)
+                totalCost += Double(food.quantity) * (food.price ?? 0.0)
             }
         }
         
@@ -763,11 +813,11 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
             } else {
                 calculateCost()
             }
+            print("Quantity added---- on Cart screen")
+            calculateCost()
         }
         
     }
-    
-    
     
     func didTapRemoveItem(sender: CartFoodTableViewCell) {
         guard let indexPath = tableView.indexPath(for: sender) else{
@@ -823,6 +873,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 extension CartViewController: UITableViewDelegate, UITableViewDataSource{
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         return cartItems.count
     }
     

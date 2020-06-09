@@ -3499,6 +3499,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
+<<<<<<< HEAD
 			<string>Copyright 2020 Google</string>
 			<key>License</key>
 			<string>Copyright</string>
@@ -3519,6 +3520,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 		</dict>
 		<dict>
 			<key>FooterText</key>
+=======
+>>>>>>> Production
 			<string>Copyright 2019 Google</string>
 			<key>License</key>
 			<string>Copyright</string>

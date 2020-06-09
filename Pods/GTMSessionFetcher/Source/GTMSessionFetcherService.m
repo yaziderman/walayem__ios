@@ -121,7 +121,10 @@ NSString *const kGTMSessionFetcherServiceSessionKey
             retryBlock = _retryBlock,
             maxRetryInterval = _maxRetryInterval,
             minRetryInterval = _minRetryInterval,
+<<<<<<< HEAD
             metricsCollectionBlock = _metricsCollectionBlock,
+=======
+>>>>>>> Production
             properties = _properties,
             unusedSessionTimeout = _unusedSessionTimeout,
             testBlock = _testBlock;
@@ -187,9 +190,12 @@ NSString *const kGTMSessionFetcherServiceSessionKey
   fetcher.retryBlock = self.retryBlock;
   fetcher.maxRetryInterval = self.maxRetryInterval;
   fetcher.minRetryInterval = self.minRetryInterval;
+<<<<<<< HEAD
   if (@available(iOS 10.0, macOS 10.12, tvOS 10.0, watchOS 3.0, *)) {
     fetcher.metricsCollectionBlock = self.metricsCollectionBlock;
   }
+=======
+>>>>>>> Production
   fetcher.properties = self.properties;
   fetcher.service = self;
   if (self.cookieStorageMethod >= 0) {
@@ -1285,6 +1291,7 @@ didCompleteWithError:(NSError *)error {
  didCompleteWithError:error];
 }
 
+<<<<<<< HEAD
 - (void)URLSession:(NSURLSession *)session
                           task:(NSURLSessionTask *)task
     didFinishCollectingMetrics:(NSURLSessionTaskMetrics *)metrics
@@ -1293,6 +1300,8 @@ didCompleteWithError:(NSError *)error {
   [fetcher URLSession:session task:task didFinishCollectingMetrics:metrics];
 }
 
+=======
+>>>>>>> Production
 // NSURLSessionDataDelegate protocol methods.
 
 - (void)URLSession:(NSURLSession *)session

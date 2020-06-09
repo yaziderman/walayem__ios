@@ -67,7 +67,15 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         requestButton.layer.cornerRadius = 12
         requestButton.layer.masksToBounds = false
         
+<<<<<<< HEAD
         emailTextField.addImageAtLeft(UIImage(named: "email"))
+=======
+        let emailImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        emailImageView.image = UIImage(named: "email")
+        emailImageView.contentMode = UIView.ContentMode.left
+        emailTextField.leftViewMode = .always
+        emailTextField.leftView = emailImageView
+>>>>>>> Production
         
         emailTextField.delegate = self
         emailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)

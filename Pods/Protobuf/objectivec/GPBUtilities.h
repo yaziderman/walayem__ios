@@ -34,8 +34,11 @@
 #import "GPBMessage.h"
 #import "GPBRuntimeTypes.h"
 
+<<<<<<< HEAD
 @class GPBOneofDescriptor;
 
+=======
+>>>>>>> Production
 CF_EXTERN_C_BEGIN
 
 NS_ASSUME_NONNULL_BEGIN
@@ -94,6 +97,7 @@ BOOL GPBMessageHasFieldSet(GPBMessage *self, GPBFieldDescriptor *field);
  **/
 void GPBClearMessageField(GPBMessage *self, GPBFieldDescriptor *field);
 
+<<<<<<< HEAD
 /**
  * Clears the given oneof field for the given message.
  *
@@ -105,6 +109,10 @@ void GPBClearOneof(GPBMessage *self, GPBOneofDescriptor *oneof);
 //%PDDM-EXPAND GPB_ACCESSORS()
 // This block of code is generated, do not edit it directly.
 // clang-format off
+=======
+//%PDDM-EXPAND GPB_ACCESSORS()
+// This block of code is generated, do not edit it directly.
+>>>>>>> Production
 
 
 //
@@ -395,7 +403,10 @@ void GPBSetMessageMapField(GPBMessage *self,
                            GPBFieldDescriptor *field,
                            id dictionary);
 
+<<<<<<< HEAD
 // clang-format on
+=======
+>>>>>>> Production
 //%PDDM-EXPAND-END GPB_ACCESSORS()
 
 /**

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mit-d0-Gv5">
+<<<<<<< HEAD
     <device id="retina4_7" orientation="portrait" appearance="light"/>
+=======
+    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+>>>>>>> Production
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
@@ -302,7 +306,11 @@
                                                                 <constraint firstAttribute="height" constant="38" id="5VX-wb-17O"/>
                                                                 <constraint firstAttribute="width" constant="38" id="MFN-mm-YEA"/>
                                                             </constraints>
+<<<<<<< HEAD
                                                             <state key="normal" image="phoneIcon"/>
+=======
+                                                            <state key="normal" image="phone-n"/>
+>>>>>>> Production
                                                             <connections>
                                                                 <action selector="call:" destination="XAd-Ib-C3d" eventType="touchUpInside" id="EE5-hZ-OoQ"/>
                                                             </connections>
@@ -324,7 +332,11 @@
                                                                 <constraint firstAttribute="height" constant="38" id="CC9-81-4nR"/>
                                                                 <constraint firstAttribute="width" constant="38" id="crB-0M-Nck"/>
                                                             </constraints>
+<<<<<<< HEAD
                                                             <state key="normal" image="mailIcon-pdf"/>
+=======
+                                                            <state key="normal" image="mail"/>
+>>>>>>> Production
                                                             <connections>
                                                                 <action selector="email:" destination="XAd-Ib-C3d" eventType="touchUpInside" id="aZd-5s-XhC"/>
                                                             </connections>
@@ -402,7 +414,11 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="38" id="MnC-cA-Eej"/>
                                                             </constraints>
+<<<<<<< HEAD
                                                             <state key="normal" image="instagramIcon-pdf"/>
+=======
+                                                            <state key="normal" image="instagram"/>
+>>>>>>> Production
                                                             <connections>
                                                                 <action selector="connectInsta:" destination="XAd-Ib-C3d" eventType="touchUpInside" id="azW-rl-Hdy"/>
                                                             </connections>
@@ -573,13 +589,21 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="CuR-yM-prz">
                                             <rect key="frame" x="82" y="22.5" width="163" height="43.5"/>
                                             <subviews>
+<<<<<<< HEAD
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ed-pC-9Zy">
+=======
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ed-pC-9Zy">
+>>>>>>> Production
                                                     <rect key="frame" x="0.0" y="0.0" width="163" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" red="0.35294117650000001" green="0.37647058820000001" blue="0.41960784309999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+<<<<<<< HEAD
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4di-To-90d">
+=======
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4di-To-90d">
+>>>>>>> Production
                                                     <rect key="frame" x="0.0" y="25.5" width="163" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -630,7 +654,11 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
+<<<<<<< HEAD
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+=======
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+>>>>>>> Production
                     <constraints>
                         <constraint firstItem="sut-ZV-dxt" firstAttribute="centerX" secondItem="jBt-5Q-gZw" secondAttribute="centerX" id="628-aZ-12N"/>
                         <constraint firstItem="sut-ZV-dxt" firstAttribute="centerY" secondItem="jBt-5Q-gZw" secondAttribute="centerY" id="ump-Ap-JJR"/>
@@ -668,11 +696,19 @@
         <image name="facebook" width="192" height="192"/>
         <image name="graph" width="36" height="36"/>
         <image name="income" width="36" height="36"/>
+<<<<<<< HEAD
         <image name="instagramIcon-pdf" width="76" height="76"/>
         <image name="kitchen" width="36" height="36"/>
         <image name="logout" width="36" height="36"/>
         <image name="mailIcon-pdf" width="76" height="76"/>
         <image name="phoneIcon" width="38" height="38"/>
+=======
+        <image name="instagram" width="76" height="76"/>
+        <image name="kitchen" width="36" height="36"/>
+        <image name="logout" width="36" height="36"/>
+        <image name="mail" width="76" height="76"/>
+        <image name="phone-n" width="76" height="76"/>
+>>>>>>> Production
         <image name="privacy" width="36" height="36"/>
         <image name="profile" width="16" height="18"/>
         <image name="share_icon" width="64" height="64"/>

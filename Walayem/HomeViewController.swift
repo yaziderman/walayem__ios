@@ -116,6 +116,7 @@ class HomeViewController: UIViewController{
         }
     }
     
+<<<<<<< HEAD
 //    public func getFilterParams() -> [String: Any] {
 //        var dictionary: [String: Any] = [:]
 //        dictionary["filter_by"] = UserDefaults.standard.object(forKey: "filter_by") as? String
@@ -130,6 +131,8 @@ class HomeViewController: UIViewController{
 ////        "location" : {}
 //    }
     
+=======
+>>>>>>> Production
     private func getRecommendations(){
         let params : [String: Any] = ["partner_id": partnerId ?? 0]
 

@@ -68,7 +68,16 @@ class ChangeNameViewController: UIViewController, UITextFieldDelegate {
     // MARK: Private methods
     
     private func setupViews(){
+<<<<<<< HEAD
         nameTextField.addImageAtLeft(UIImage(named: "user"))
+=======
+        let userImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        userImageView.image = UIImage(named: "user")
+        userImageView.contentMode = .left
+        userImageView.tintColor = UIColor.colorPrimary
+        nameTextField.leftViewMode = .always
+        nameTextField.leftView = userImageView
+>>>>>>> Production
         nameVerifyIcon.tintColor = UIColor.silver
     }
     

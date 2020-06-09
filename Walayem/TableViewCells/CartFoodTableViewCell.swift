@@ -32,6 +32,10 @@ class CartFoodTableViewCell: UITableViewCell {
     func set(food: Food, deliveryCharge: Double?) {
         self.food = food
         updateUI(deliveryCharge: deliveryCharge)
+
+        didSet{
+            updateUI()
+        }
     }
     
     // MARK: Actions
@@ -66,6 +70,10 @@ class CartFoodTableViewCell: UITableViewCell {
             subjectToDeliveryLabel.textColor = UIColor.rosa
             subjectToDeliveryLabel.text = stringValue
         }
+        let red = "*"
+        let stringValue = "\(red)Subject to delivery fees"
+        subjectToDeliveryLabel.textColor = UIColor.rosa
+        subjectToDeliveryLabel.text = stringValue
         
         let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image")!
         
@@ -73,4 +81,5 @@ class CartFoodTableViewCell: UITableViewCell {
         foodImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
         
     }
+	
 }

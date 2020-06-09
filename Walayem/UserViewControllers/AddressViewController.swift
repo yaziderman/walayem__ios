@@ -26,7 +26,6 @@ class AddressViewController: UIViewController, UITextFieldDelegate {
     
     private var location: Location?
     private var firstTimeAppeared = true
-    
     // MARK: Actions
     
     @IBAction func close(_ sender: UIBarButtonItem){
@@ -39,7 +38,7 @@ class AddressViewController: UIViewController, UITextFieldDelegate {
         controller.modalPresentationStyle = .fullScreen
         self.present(controller, animated: true, completion: nil)
     }
-    
+	
     @IBAction func saveAddress(_ sender: UIButton) {
         let name = nameTextField.text ?? ""
         let street = streetTextField.text ?? ""
@@ -55,7 +54,7 @@ class AddressViewController: UIViewController, UITextFieldDelegate {
         } else if self.location == nil {
             showAlert("Error", "Please select your location on map")
         } else {
-            if address == nil {
+            if address == nil{
                 createAddress(name: name, city: city, street: street, extra: extra)
             }else{
                 editAddress(name: name, city: city, street: street, extra: extra)
@@ -94,6 +93,7 @@ class AddressViewController: UIViewController, UITextFieldDelegate {
         if let navController = self.navigationController {
             Utils.setupNavigationBar(nav: navController)
         }
+         Utils.setupNavigationBar(nav: self.navigationController!)
         
         nameTextField.textColor = UIColor.textColor
         nameTextField.placeHolderColor = UIColor.placeholderColor
@@ -115,7 +115,7 @@ class AddressViewController: UIViewController, UITextFieldDelegate {
         }
         self.firstTimeAppeared = false
     }
-    
+	
     override func viewWillLayoutSubviews() {
         nameTextField.addBottomBorderWithColor(color: UIColor.silver, width: 1)
         streetTextField.addBottomBorderWithColor(color: UIColor.silver, width: 1)
@@ -132,6 +132,33 @@ class AddressViewController: UIViewController, UITextFieldDelegate {
         streetTextField.addImageAtLeft(UIImage(named: "locationPin"))
         cityTextField.addImageAtLeft(UIImage(named: "city"))
         extraTextField.addImageAtLeft(UIImage(named: "notes"))
+
+		let nameImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        nameImageView.image = UIImage(named: "information")
+        nameImageView.tintColor = UIColor.colorPrimary
+        nameImageView.contentMode = .left
+        nameTextField.leftViewMode = .always
+        nameTextField.leftView = nameImageView
+        
+        let streetImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        streetImageView.image = UIImage(named: "locationPin")
+        streetImageView.contentMode = .left
+        streetImageView.tintColor = UIColor.colorPrimary
+        streetTextField.leftViewMode = .always
+        streetTextField.leftView = streetImageView
+        
+        let cityImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        cityImageView.image = UIImage(named: "city")
+        cityImageView.contentMode = .left
+        cityTextField.leftViewMode = .always
+        cityTextField.leftView = cityImageView
+        
+        let descriptionImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
+        descriptionImageView.image = UIImage(named: "notes")
+        descriptionImageView.contentMode = .left
+        descriptionImageView.tintColor = UIColor.colorPrimary
+        extraTextField.leftViewMode = .always
+        extraTextField.leftView = descriptionImageView
     }
     
     private func getCities(){
@@ -215,6 +242,7 @@ class AddressViewController: UIViewController, UITextFieldDelegate {
                                       "address_id": address!.id,
                                       "location": ["lat": self.location!.latitude,
                                                    "long": self.location!.longitude]]
+		
         RestClient().request(WalayemApi.editAddress, params) { (result, error) in
             activityIndicator.stopAnimating()
             if error != nil{
@@ -268,6 +296,16 @@ class AddressViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
+    
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }
 

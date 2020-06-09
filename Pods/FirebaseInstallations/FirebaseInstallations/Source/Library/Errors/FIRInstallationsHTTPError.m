@@ -41,10 +41,16 @@
 + (NSDictionary *)userInfoWithHTTPResponse:(NSHTTPURLResponse *)HTTPResponse
                                       data:(nullable NSData *)data {
   NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+<<<<<<< HEAD
   NSString *failureReason =
       [NSString stringWithFormat:@"The server responded with an error: \n - URL: %@ \n - HTTP "
                                  @"status code: %ld \n - Response body: %@",
                                  HTTPResponse.URL, (long)HTTPResponse.statusCode, responseString];
+=======
+  NSString *failureReason = [NSString
+      stringWithFormat:@"The server responded with an error. HTTP response: %@\nResponse body: %@",
+                       HTTPResponse, responseString];
+>>>>>>> Production
   return @{NSLocalizedFailureReasonErrorKey : failureReason};
 }
 

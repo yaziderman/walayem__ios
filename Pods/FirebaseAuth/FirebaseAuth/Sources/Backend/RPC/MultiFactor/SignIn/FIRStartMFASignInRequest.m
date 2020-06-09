@@ -20,16 +20,28 @@ static NSString *const kStartMFASignInEndPoint = @"accounts/mfaSignIn:start";
 
 @implementation FIRStartMFASignInRequest
 
+<<<<<<< HEAD
 - (nullable instancetype)
     initWithMFAPendingCredential:(NSString *)MFAPendingCredential
                  MFAEnrollmentID:(NSString *)MFAEnrollmentID
                       signInInfo:(FIRAuthProtoStartMFAPhoneRequestInfo *)signInInfo
             requestConfiguration:(FIRAuthRequestConfiguration *)requestConfiguration {
+=======
+- (nullable instancetype)initWithMFAProvider:(NSString *)MFAProvider
+                        MFAPendingCredential:(NSString *)MFAPendingCredential
+                             MFAEnrollmentID:(NSString *)MFAEnrollmentID
+                                  signInInfo:(FIRAuthProtoStartMFAPhoneRequestInfo *)signInInfo
+                        requestConfiguration:(FIRAuthRequestConfiguration *)requestConfiguration {
+>>>>>>> Production
   self = [super initWithEndpoint:kStartMFASignInEndPoint
             requestConfiguration:requestConfiguration
              useIdentityPlatform:YES
                       useStaging:NO];
   if (self) {
+<<<<<<< HEAD
+=======
+    _MFAProvider = MFAProvider;
+>>>>>>> Production
     _MFAPendingCredential = MFAPendingCredential;
     _MFAEnrollmentID = MFAEnrollmentID;
     _signInInfo = signInInfo;
@@ -39,6 +51,12 @@ static NSString *const kStartMFASignInEndPoint = @"accounts/mfaSignIn:start";
 
 - (nullable id)unencodedHTTPRequestBodyWithError:(NSError *__autoreleasing _Nullable *)error {
   NSMutableDictionary *postBody = [NSMutableDictionary dictionary];
+<<<<<<< HEAD
+=======
+  if (_MFAProvider) {
+    postBody[@"mfaProvider"] = _MFAProvider;
+  }
+>>>>>>> Production
   if (_MFAPendingCredential) {
     postBody[@"mfaPendingCredential"] = _MFAPendingCredential;
   }

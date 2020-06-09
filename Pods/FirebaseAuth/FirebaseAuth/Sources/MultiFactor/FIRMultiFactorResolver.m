@@ -59,10 +59,18 @@ NS_ASSUME_NONNULL_BEGIN
       [[FIRAuthProtoFinalizeMFAPhoneRequestInfo alloc]
           initWithSessionInfo:phoneAssertion.authCredential.verificationID
              verificationCode:phoneAssertion.authCredential.verificationCode];
+<<<<<<< HEAD
   FIRFinalizeMFASignInRequest *request = [[FIRFinalizeMFASignInRequest alloc]
       initWithMFAPendingCredential:self.MFAPendingCredential
                   verificationInfo:finalizeMFAPhoneRequestInfo
               requestConfiguration:self.auth.requestConfiguration];
+=======
+  FIRFinalizeMFASignInRequest *request =
+      [[FIRFinalizeMFASignInRequest alloc] initWithMFAProvider:phoneAssertion.factorID
+                                          MFAPendingCredential:self.MFAPendingCredential
+                                              verificationInfo:finalizeMFAPhoneRequestInfo
+                                          requestConfiguration:self.auth.requestConfiguration];
+>>>>>>> Production
   [FIRAuthBackend
       finalizeMultiFactorSignIn:request
                        callback:^(FIRFinalizeMFASignInResponse *_Nullable response,

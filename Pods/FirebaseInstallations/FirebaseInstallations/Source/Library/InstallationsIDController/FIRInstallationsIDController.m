@@ -44,8 +44,11 @@ NSString *const kFIRInstallationIDDidChangeNotificationAppNameKey =
 
 NSTimeInterval const kFIRInstallationsTokenExpirationThreshold = 60 * 60;  // 1 hour.
 
+<<<<<<< HEAD
 static NSString *const kKeychainService = @"com.firebase.FIRInstallations.installations";
 
+=======
+>>>>>>> Production
 @interface FIRInstallationsIDController ()
 @property(nonatomic, readonly) NSString *appID;
 @property(nonatomic, readonly) NSString *appName;
@@ -73,9 +76,15 @@ static NSString *const kKeychainService = @"com.firebase.FIRInstallations.instal
                              APIKey:(NSString *)APIKey
                           projectID:(NSString *)projectID
                         GCMSenderID:(NSString *)GCMSenderID
+<<<<<<< HEAD
                         accessGroup:(nullable NSString *)accessGroup {
   NSString *serviceName = [FIRInstallationsIDController keychainServiceWithAppID:appID];
   GULKeychainStorage *secureStorage = [[GULKeychainStorage alloc] initWithService:serviceName];
+=======
+                        accessGroup:(NSString *)accessGroup {
+  GULKeychainStorage *secureStorage =
+      [[GULKeychainStorage alloc] initWithService:@"com.firebase.FIRInstallations.installations"];
+>>>>>>> Production
   FIRInstallationsStore *installationsStore =
       [[FIRInstallationsStore alloc] initWithSecureStorage:secureStorage accessGroup:accessGroup];
 
@@ -258,9 +267,15 @@ static NSString *const kKeychainService = @"com.firebase.FIRInstallations.instal
         if ([self doesRegistrationErrorRequireConfigChange:error]) {
           FIRLogError(kFIRLoggerInstallations,
                       kFIRInstallationsMessageCodeInvalidFirebaseConfiguration,
+<<<<<<< HEAD
                       @"Firebase Installation registration failed for app with name: %@, error:\n"
                       @"%@\nPlease make sure you use valid GoogleService-Info.plist",
                       self.appName, error.userInfo[NSLocalizedFailureReasonErrorKey]);
+=======
+                      @"Firebase Installation registration failed for app with name: %@, error: "
+                      @"%@\nPlease make sure you use valid GoogleService-Info.plist",
+                      self.appName, error);
+>>>>>>> Production
         }
       })
       .then(^id(FIRInstallationsItem *registeredInstallation) {
@@ -458,6 +473,7 @@ static NSString *const kKeychainService = @"com.firebase.FIRInstallations.instal
   return [self.appName isEqualToString:kFIRDefaultAppName];
 }
 
+<<<<<<< HEAD
 #pragma mark - Keychain
 
 + (NSString *)keychainServiceWithAppID:(NSString *)appID {
@@ -477,4 +493,6 @@ static NSString *const kKeychainService = @"com.firebase.FIRInstallations.instal
 #endif
 }
 
+=======
+>>>>>>> Production
 @end
