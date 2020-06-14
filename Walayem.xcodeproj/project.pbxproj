@@ -155,6 +155,7 @@
 		D0A0164E245BC2F50025AA58 /* ChefCityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A0164C245BC2F50025AA58 /* ChefCityTableViewCell.xib */; };
 		D0A223582458EFAC009C90B2 /* ChefCoverageArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A223572458EFAC009C90B2 /* ChefCoverageArea.swift */; };
 		D0BB1EFA24715EAF0029B3D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0BB1EF924715EAF0029B3D1 /* GoogleService-Info.plist */; };
+		F59E40FE2490C0750067F763 /* LocationWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E40FD2490C0750067F763 /* LocationWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -311,6 +312,8 @@
 		D0A223572458EFAC009C90B2 /* ChefCoverageArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefCoverageArea.swift; sourceTree = "<group>"; };
 		D0BB1EF924715EAF0029B3D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D8AE526667D0D9C189AB98C6 /* Pods-Walayem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Walayem.release.xcconfig"; path = "Target Support Files/Pods-Walayem/Pods-Walayem.release.xcconfig"; sourceTree = "<group>"; };
+		F571300924912E31009EF29F /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
+		F59E40FD2490C0750067F763 /* LocationWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -484,6 +487,7 @@
 		04CF06BB2084634F0064B18A = {
 			isa = PBXGroup;
 			children = (
+				F571300924912E31009EF29F /* Location.gpx */,
 				04CF06C62084634F0064B18A /* Walayem */,
 				04CF06C52084634F0064B18A /* Products */,
 				13647588DE32F5E7B4978CF1 /* Frameworks */,
@@ -505,7 +509,6 @@
 				1D30E0CB2461E10200C6797C /* Pager Controllers */,
 				1D3ADF53245C5D83000FE04C /* Custom Views */,
 				044416B2230C1AA5007413F6 /* GoogleService-Info.plist */,
-				0ADC140F20B6AE7D0003FC8B /* Walayem.entitlements */,
 				D0BB1EF924715EAF0029B3D1 /* GoogleService-Info.plist */,
 				0ADC140F20B6AE7D0003FC8B /* Walayem.entitlements */,
 				04D9E8A32085B97E002E1B51 /* Odoo */,
@@ -544,6 +547,7 @@
 				04B8250020A3112000458DA6 /* Assets.xcassets */,
 				04CF06D2208463520064B18A /* LaunchScreen.storyboard */,
 				04CF06D5208463520064B18A /* Info.plist */,
+				F59E40FD2490C0750067F763 /* LocationWrapper.swift */,
 			);
 			path = Walayem;
 			sourceTree = "<group>";
@@ -561,7 +565,6 @@
 		0A3B841A20B57EAF00E1E24C /* HeaderFooterCells */ = {
 			isa = PBXGroup;
 			children = (
-				04D9E8A32085B97E002E1B51 /* Odoo */,
 				0A3B841B20B57F0400E1E24C /* CartFoodHeaderCell.swift */,
 				0A3B841D20B57F2100E1E24C /* CartFoodHeaderCell.xib */,
 				0A20D5C620B82AC300F4E15D /* CartFoodFooterCell.swift */,
@@ -610,7 +613,6 @@
 				85EEF2A8C2D95FEA34A94A4E /* Pods-Walayem.debug.xcconfig */,
 				D8AE526667D0D9C189AB98C6 /* Pods-Walayem.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -821,6 +823,7 @@
 				47FF3DEE20A1F62800A6289F /* OrderTableViewController.swift in Sources */,
 				7F3FD1DD2483DA6A00F53684 /* DeliverySelectionViewController.swift in Sources */,
 				5B467DF623B882CE008620FF /* Account.swift in Sources */,
+				F59E40FE2490C0750067F763 /* LocationWrapper.swift in Sources */,
 				52EA619C20B3E53E001DB6CC /* TermsViewController.swift in Sources */,
 				47FF3DEE20A1F62800A6289F /* OrderTableViewController.swift in Sources */,
 				0409E71420A426FB00C95E10 /* OrderFoodHeaderCell.swift in Sources */,

@@ -259,18 +259,12 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
     }
     
     
-    override func viewWillDisappear(_ animated: Bool){
-        
-        
-        filterBarButton.removeBadge()
-//        tableView.reloadData()
+    override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		filterBarButton.removeBadge()
     }
     
-    
-
-    
     // MARK: Private methods
-    
     
     private func getAddress(){
         let params = ["partner_id": partnerId!]
@@ -279,7 +273,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 if errmsg == OdooClient.SESSION_EXPIRED{
-//              self.onSessionExpired()
+//					self.onSessionExpired()
                 }
                 print (errmsg)
                 return
@@ -331,11 +325,9 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         
         dt = cal.date(from: components)! // 2018-10-10
         
-        
         let calendar = NSCalendar.current
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM dd yyyy"
-//        dateFormatter.dateFormat = "dd MMM yyyy"
         
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "hh:mm aa"
@@ -354,8 +346,8 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         userDefaults.set("future", forKey: "OrderType")
         userDefaults.set(date_time_str, forKey: "OrderDate")
         userDefaults.synchronize()
-//
-        if(StaticLinker.chefViewController != nil){
+
+		if(StaticLinker.chefViewController != nil){
             StaticLinker.chefViewController?.timePickerButton?.setTitle("\(date_str) at \(time_str)", for: .normal)
         }
         self.datePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
@@ -539,6 +531,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         }
         var params = AreaFilter.shared.coverageParams
         params["page"] = 1
+		params["filter_by"] = "location"
         isLoading = true
         RestClient().request(WalayemApi.discoverFood, params) { (result, error) in
             self.hideSpinner()
@@ -582,6 +575,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         }
         var params = AreaFilter.shared.coverageParams
         params["page"] = page + 1
+		params["getChefs"] = "location"
 
 		if (isLoading || isSearching){
             return
@@ -716,7 +710,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
                 alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                 present(alert, animated: true, completion: nil)
             }else if errmsg == OdooClient.SESSION_EXPIRED{
-                self.onSessionExpired()
+//                self.onSessionExpired()
             }
         }
         else{

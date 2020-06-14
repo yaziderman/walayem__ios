@@ -8,6 +8,13 @@
 
 import UIKit
 
+
+func DLog(message: Any, function: String = #function) {
+	#if DEBUG
+	print("\(function): \(message)")
+	#endif
+}
+
 class Utils{
     public static var SHOW_NEWDISH = false
     public static var ADDED_FOODTYPE = ""

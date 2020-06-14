@@ -7,11 +7,14 @@
 //
 
 import UIKit
+import CoreLocation
 
 class LocationPermissionViewController: UIViewController {
 
     // MARK: Properties
     
+	let locationManager = CLLocationManager()
+	
     @IBOutlet weak var acceptButton: UIButton!
     
     // MARK: Actions
@@ -21,7 +24,11 @@ class LocationPermissionViewController: UIViewController {
     }
     
     @IBAction func acceptAndSignup(_ sender: UIButton) {
-        
+		locationManager.delegate = self
+		locationManager.desiredAccuracy = kCLLocationAccuracyBest
+		locationManager.requestAlwaysAuthorization()
+//		locationManager.requestLocation()
+//		view.backgroundColor = .gray
     }
     
     override func viewDidLoad() {
@@ -47,4 +54,24 @@ class LocationPermissionViewController: UIViewController {
     }
     */
 
+}
+
+extension LocationPermissionViewController: CLLocationManagerDelegate {
+	
+	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+		if status == .authorizedWhenInUse || status == .authorizedAlways {
+//			if #available(iOS 13.0, *) {
+////				let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+//				sceneDelegate.setUpDashboard()
+//			} else {
+				let appDelegate = UIApplication.shared.delegate as! AppDelegate
+				appDelegate.shouldMoveToMainPage()
+//			}
+		}
+	}
+	
+	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+		DLog(message: error)
+	}
+	
 }

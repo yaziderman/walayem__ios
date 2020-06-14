@@ -71,6 +71,7 @@ class UpdateProfileViewController: UITableViewController, ChefCoverageAreaDelega
         }
         self.coverageAreaBtn.titleLabel?.textColor = color
         self.coverageAreaBtn.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+		updateProfile()
     }
     
     func locationSelected(_ location: Location, title: String, address: UserAddress) {

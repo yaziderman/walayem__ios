@@ -25,7 +25,7 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate {
         let alert = UIAlertController(title: "", message: "You can update your phone number later from profile page.", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Skip", style: .destructive, handler: { (action) in
             if self.user!.isChef{
-                self.performSegue(withIdentifier: "VerifyEmiratesVCSegue", sender: self)
+                self.performSegue(withIdentifier: "ChefMainSegue", sender: self)
             }else{
                 Utils.notifyRefresh()
                 self.dismiss(animated: false) {
@@ -131,7 +131,8 @@ class VerifyPhoneViewController: UIViewController, UITextFieldDelegate {
             }
             UserDefaults.standard.set(phone, forKey: UserDefaultsKeys.PHONE)
             if self.user!.isChef{
-                self.performSegue(withIdentifier: "VerifyEmiratesVCSegue", sender: self)
+				//VerifyEmiratesVCSegue
+                self.performSegue(withIdentifier: "ChefMainSegue", sender: self)
             }else{
 //                self.performSegue(withIdentifier: "MainSegue", sender: self)
                 

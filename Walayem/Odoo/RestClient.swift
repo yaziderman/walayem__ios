@@ -31,7 +31,6 @@ class RestClient{
         let jsonParam : [String: Any] = ["jsonrpc": "2.0",
                                          "id": Int(Date().timeIntervalSince1970),
                                          "params": params]
-        print(Int(Date().timeIntervalSince1970))
         
         Alamofire.request(url, method: .post, parameters: jsonParam, encoding: JSONEncoding.default, headers: headers)
         .validate()
@@ -56,10 +55,13 @@ class RestClient{
         headers = [
             "Content-Type":"application/json"
         ]
-            
-        let parameter = [String:AnyObject]()
-        
-            Alamofire.request(url, method: .post, parameters: parameter , encoding: JSONEncoding.default, headers: headers).validate()
+		
+		var parameters = [String: Any]()
+		parameters["params"] = params
+		parameters["jsonrpc"] = "2.0"
+		parameters["id"] = "0"
+                    
+            Alamofire.request(url, method: .post, parameters: parameters , encoding: JSONEncoding.default, headers: headers).validate()
             .responseJSON { (response) in
                 
                 if response.result.isSuccess{

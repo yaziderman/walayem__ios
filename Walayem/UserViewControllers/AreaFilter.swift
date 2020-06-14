@@ -22,6 +22,7 @@ final class AreaFilter {
     static let shared = AreaFilter()
     private (set) var selectedLocation: Location?
     private (set) var selectedCoverageTitle: String?
+	var userAddress: UserAddress?
     
     private init() {
         self.getSavedFilter()
@@ -49,9 +50,19 @@ final class AreaFilter {
         UserDefaults.standard.set(title, forKey: UserDefaultsKeys.USER_AREA_TITLE)
     }
     
+	func setselectedLocation(_ location: Location, title: String, userAddress: UserAddress) {
+		self.selectedLocation = location
+		self.selectedCoverageTitle = title
+		self.userAddress = userAddress
+		UserDefaults.standard.set(location.dict, forKey: UserDefaultsKeys.USER_AREA_FILTER)
+		UserDefaults.standard.set(title, forKey: UserDefaultsKeys.USER_AREA_TITLE)
+	}
+	
+	
     func resetAreaFilter() {
         self.selectedLocation = nil
         self.selectedCoverageTitle = nil
+		self.userAddress = nil
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.USER_AREA_FILTER)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.USER_AREA_TITLE)
     }
@@ -144,7 +155,7 @@ extension Location {
         return String(format: "%.2f", latitude) + ", " + String(format: "%.2f", longitude)
     }
     var dict: [String: Any] {
-        return ["lat": latitude, "long": longitude]
+        return ["lat": "\(latitude)", "long": "\(longitude)"]
     }
     init?(dict: [String: Any]) {
         guard let lat = dict["lat"] as? Double else { return nil }

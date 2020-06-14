@@ -150,7 +150,7 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
         var params = ["chef_id": user?.partner_id as Any,
                       "name": name,
                       "list_price": price,
-                      "preparation_time": "\(Int(time)! * 60)",
+                      "preparation_time": "\(Int(Double(time)! * Double(60)))",
                       "serves": serve,
                       "description_sale": description,
                       "food_type": selectedFoodType.rawValue,
@@ -168,9 +168,9 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
         RestClient().request(WalayemApi.createFood, params) { (result, error) in
             self.showHideProgress(isLoading: false)
             
-            if let error = error{
-                let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
-                self.showAlert(title: "Error", msg: errmsg)
+			if error != nil{
+//				let errmsg = error.localizedDescription
+                self.showAlert(title: "Error", msg: "Check your input data...")
                 return
             }
             let value = result!["result"] as! [String: Any]

@@ -93,7 +93,6 @@ class AddressViewController: UIViewController, UITextFieldDelegate {
         if let navController = self.navigationController {
             Utils.setupNavigationBar(nav: navController)
         }
-         Utils.setupNavigationBar(nav: self.navigationController!)
         
         nameTextField.textColor = UIColor.textColor
         nameTextField.placeHolderColor = UIColor.placeholderColor

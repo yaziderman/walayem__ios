@@ -34,6 +34,11 @@ class LocationSelectionViewController: UIViewController, GMSMapViewDelegate {
         setupUI()
     }
     
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		setUpNavigationBar(setGreen: true)
+	}
+	
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if self.firstTimeAppeared {
@@ -74,7 +79,7 @@ class LocationSelectionViewController: UIViewController, GMSMapViewDelegate {
     
     @IBAction func closeBtnClicked(_ sender: Any) {
         if self.isPush {
-            self.navigationController?.popViewController(animated: true)
+            self.navigationController?.popViewController(animated: false)
         } else {
             self.dismiss(animated: true, completion: nil)
         }
@@ -87,6 +92,18 @@ class LocationSelectionViewController: UIViewController, GMSMapViewDelegate {
         self.selectedAddress = nil
     }
     
+	func setUpNavigationBar(setGreen: Bool) {
+		if setGreen {
+			self.navigationController?.navigationBar.barTintColor = .colorPrimary
+			self.navigationController?.navigationBar.isTranslucent = false
+			self.navigationController?.navigationBar.tintColor = .white
+		} else {
+			self.navigationController?.navigationBar.barTintColor = .white
+			self.navigationController?.navigationBar.isTranslucent = true
+			self.navigationController?.navigationBar.tintColor = .colorPrimary
+		}
+	}
+	
     func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         GMSGeocoder().reverseGeocodeCoordinate(position.target) { response, error in
             guard error == nil, let address = response?.firstResult() else {
@@ -193,6 +210,11 @@ class LocationSelectionViewController: UIViewController, GMSMapViewDelegate {
         self.delegate?.locationSelected(location, title: title, address: address)
     }
 
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		setUpNavigationBar(setGreen: false)
+	}
+	
 }
 
 extension LocationSelectionViewController: GMSAutocompleteViewControllerDelegate {

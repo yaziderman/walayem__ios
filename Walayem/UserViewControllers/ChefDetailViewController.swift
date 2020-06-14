@@ -252,8 +252,8 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
             }
             
             let value = result!["result"] as! [String: Any]
-            self.hadOrdered = value["has_ordered"] as! Bool
-            self.orderedFoods = value["foods"] as! [String]
+            self.hadOrdered = value["has_ordered"] as? Bool ?? false
+            self.orderedFoods = value["foods"] as? [String] ?? [String]()
             
             for food in self.orderedFoods{
                 print("ordereed food-->\(food)")

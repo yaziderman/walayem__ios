@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ChefFoodTableViewController: UIViewController {
 
@@ -213,6 +214,7 @@ class ChefFoodTableViewController: UIViewController {
             }
             self.foods.removeAll()
             let records = value["data"] as! [Any]
+			SDWebImageManager.shared.imageCache.clear(with: .all, completion: nil)
             if records.count == 0{
                 self.changeView(isEmpty: true)
                 self.tableView.reloadData()

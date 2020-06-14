@@ -16,6 +16,8 @@ class DeliverySelectionViewController: UIViewController {
 
     var user: User!
     weak var delegate: DeliverySelectionDelegate?
+	var locationWrapper: LocationWrapper?
+	var shouldShowTabbar = true
     
     @IBOutlet weak var addressesContainerView: UIView!
     
@@ -27,20 +29,41 @@ class DeliverySelectionViewController: UIViewController {
         }
     }
     
+	override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		shouldShowTabbar = true
+		self.tabBarController?.tabBar.isHidden = true
+	}
+	
     @IBAction func newAddressButtonClicked() {
-        let addressVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "AddressVCId") as! AddressViewController
+		let controller = UIStoryboard(name: "User", bundle: nil).instantiateViewController(withIdentifier: "LocationSelectionVCId") as! LocationSelectionViewController
+		controller.delegate = self
+		controller.modalPresentationStyle = .fullScreen
+		controller.isPush = true
+		shouldShowTabbar = false
+		self.navigationController?.pushViewController(controller, animated: true)
+//		self.present(controller, animated: true, completion: nil)
+		
+       /* let addressVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "AddressVCId") as! AddressViewController
         let navVC = UINavigationController(rootViewController: addressVC)
         navVC.modalPresentationStyle = .fullScreen
-        self.present(navVC, animated: true, completion: nil)
+        self.present(navVC, animated: true, completion: nil) */
     }
     @IBAction func currentLocationButtonClicked() {
-        let controller = UIStoryboard(name: "User", bundle: nil).instantiateViewController(withIdentifier: "LocationSelectionVCId") as! LocationSelectionViewController
+       /* let controller = UIStoryboard(name: "User", bundle: nil).instantiateViewController(withIdentifier: "LocationSelectionVCId") as! LocationSelectionViewController
         controller.delegate = self
         controller.modalPresentationStyle = .fullScreen
-        self.present(controller, animated: true, completion: nil)
+        self.present(controller, animated: true, completion: nil) */
+		locationWrapper = LocationWrapper(locationDelegate: self)
     }
+	
+	func selectCurrentLocation() {
+		
+	}
+	
     @IBAction func closeButtonClicked() {
-        self.dismiss(animated: true, completion: nil)
+		self.navigationController?.popViewController(animated: true)
+//        self.dismiss(animated: true, completion: nil)
     }
     
     //MARK: - Privates -
@@ -48,6 +71,7 @@ class DeliverySelectionViewController: UIViewController {
         let addressVC = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "AddressTableVC") as! AddressTableViewController
         addressVC.partnerId = user.partner_id
         addressVC.selectionDelegate = self
+		addressVC.isFromChooseAddress = true
         addChild(addressVC)
         addressVC.view.translatesAutoresizingMaskIntoConstraints = false
         self.addressesContainerView.addSubview(addressVC.view)
@@ -60,6 +84,18 @@ class DeliverySelectionViewController: UIViewController {
         ])
         addressVC.didMove(toParent: self)
     }
+	
+	@IBAction func cancelBtnAction(_ sender: Any) {
+		self.navigationController?.popViewController(animated: true)
+	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		if shouldShowTabbar {
+			self.tabBarController?.tabBar.isHidden = false
+		}
+	}
+	
 }
 
 extension DeliverySelectionViewController: AddressSelectionDelegate, LocationSelectionDelegate {
@@ -89,4 +125,19 @@ extension DeliverySelectionViewController: AddressSelectionDelegate, LocationSel
         }
     }
     
+}
+
+extension DeliverySelectionViewController: LocationDelegate {
+	
+	func getLocation(location: Location, address: UserAddress, title: String) {
+		AreaFilter.shared.setselectedLocation(location, title: title)
+		self.delegate?.deliveryLocationSelected(location, title: title)
+		closeButtonClicked()
+	}
+	
+	func locationPermissionDenied() {
+		DLog(message: "Permission not available")
+		locationWrapper?.checkLocationAvailability()
+	}
+	
 }

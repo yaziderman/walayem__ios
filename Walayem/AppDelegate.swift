@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var firebaseToken: String = ""
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        window = UIWindow(frame: UIScreen.main.bounds)
         let navigationBarAppearance = UINavigationBar.appearance()
         // Change navigationbar items color
         navigationBarAppearance.tintColor = UIColor.colorPrimary
@@ -51,6 +51,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+	func shouldMoveToMainPage() {
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		guard let vc = storyboard.instantiateViewController(withIdentifier: "UserTabBarController") as? UserTabBarController else {
+			return
+		}
+		let navigationController = UINavigationController(rootViewController: vc)
+		window?.rootViewController = navigationController
+		window?.makeKeyAndVisible()
+	}
    
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {

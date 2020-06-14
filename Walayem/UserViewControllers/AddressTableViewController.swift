@@ -23,6 +23,8 @@ class AddressTableViewController: UITableViewController {
     var partnerId: Int?
     var addressList = [Address]()
     weak var selectionDelegate: AddressSelectionDelegate?
+	var isFromChooseAddress = false
+	var isFromCart = false
     
     // MARK: Actions
     
@@ -92,7 +94,7 @@ class AddressTableViewController: UITableViewController {
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 if errmsg == OdooClient.SESSION_EXPIRED{
-                    self.onSessionExpired()
+//                    self.onSessionExpired()
                 }
                 print (errmsg)
                 return
@@ -132,7 +134,7 @@ class AddressTableViewController: UITableViewController {
     }
     
     private func changeView(_ isEmpty: Bool){
-        if isEmpty{
+        if isEmpty && !isFromChooseAddress{
             tableView.backgroundView = emptyView
             tableView.tableFooterView = UIView()
         }else{
@@ -180,16 +182,18 @@ class AddressTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let selectedCell = tableView.cellForRow(at: indexPath) as? AddressTableViewCell else {
-            fatalError("Cell does not exist")
-        }
-        if let delegate = self.selectionDelegate {
-            let address = addressList[indexPath.row]
-            delegate.addressSelected(address)
-        } else {
-            self.performSegue(withIdentifier: "AddressVCSegue", sender: selectedCell)
-        }
-        self.performSegue(withIdentifier: "AddressVCSegue", sender: selectedCell)
+		guard let selectedCell = tableView.cellForRow(at: indexPath) as? AddressTableViewCell else {
+			fatalError("Cell does not exist")
+		}
+		if let delegate = self.selectionDelegate {
+			let address = addressList[indexPath.row]
+			delegate.addressSelected(address)
+			if isFromCart {
+				self.navigationController?.popViewController(animated: true)
+			}
+		} else {
+			self.performSegue(withIdentifier: "AddressVCSegue", sender: selectedCell)
+		}
     }
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

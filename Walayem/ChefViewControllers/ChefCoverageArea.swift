@@ -72,23 +72,48 @@ class ChefCoverageArea: UIViewController, UITableViewDelegate, UITableViewDataSo
                     guard let emirateId = item["id"] as? Int else { continue }
                     
                     //emirate
-                    let section: [String : Any] = ["id": emirateId,
+					var section: [String : Any] = ["id": emirateId,
                                                    "emirates_name": (item["emirates_name"] as? String) ?? "",
-                                                   "isSelected": false]
-                    self.sections.append(section)
-                    
+												   "isSelected": false]
+					                    
                     //areas
+					
                     if let areas = item["areas"] as? [[String: Any]] {
+						let areasId = areas.map { ($0["id"] as? Int ?? 0) }
+						
+						var count = 0
+						
+						for id in areasId {
+							if ChefAreaCoverage.loadFromUserDefaults()?.areaIds.contains(id) ?? false {
+								count += 1
+							}
+						}
+						
+						if count == areasId.count {
+							self.selectedEmirateArray.append(emirateId)
+							section["isSelected"] = true
+						}
+						
                         var areaArr: [[String: Any]] = []
                         for area in areas {
                             let dict: [String: Any] = ["title":area["name"] as! String,
-                                                       "isSelected": false,
+													   "isSelected": ChefAreaCoverage.loadFromUserDefaults()?.areaIds.contains(area["id"] as! Int) ?? false,
                                                        "id":area["id"] as! Int,
                                                        "emirateId": emirateId]
                             areaArr.append(dict)
                         }
                         self.sectionItems.append(areaArr)
                     }
+					
+					if !(ChefAreaCoverage.loadFromUserDefaults()?.areaIds.isEmpty ?? true) {
+						self.selectedAreaArray = ChefAreaCoverage.loadFromUserDefaults()?.areaIds ?? []
+					}
+					
+					if !(ChefAreaCoverage.loadFromUserDefaults()?.areaTitles.isEmpty ?? true) {
+						self.selectedAreaTitleArray = (ChefAreaCoverage.loadFromUserDefaults()?.areaTitles)!
+					}
+					
+					self.sections.append(section)
                 }
                 self.filteredSectionItems = self.sectionItems
                 self.filteredSections = self.sections
@@ -142,22 +167,23 @@ class ChefCoverageArea: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBAction func doneBtnClicked(_ sender: Any) {
         if self.selectedAreaArray.count == 0,
             self.selectedEmirateArray.count == 0 {
-            self.closeBtnClicked(UIButton())
+			showAlertBeforeLogin(message: "Please select atleast one area.")
+//            self.closeBtnClicked(UIButton())
             return
         }
         let title = self.selectedAreaTitleArray.joined(separator: ", ")
-        if self.selectedEmirateArray.count > 0 {
-            self.selectedAreaArray = []
-            self.selectedEmirateArray.forEach { (emirateId) in
-                self.sectionItems.forEach { (areas) in
-                    areas.forEach { (area) in
-                        if (area["emirateId"] as! Int) == emirateId {
-                            self.selectedAreaArray.append(area["id"] as! Int)
-                        }
-                    }
-                }
-            }
-        }
+//        if self.selectedEmirateArray.count > 0 {
+//            self.selectedAreaArray = []
+//            self.selectedEmirateArray.forEach { (emirateId) in
+//                self.sectionItems.forEach { (areas) in
+//                    areas.forEach { (area) in
+//                        if (area["emirateId"] as! Int) == emirateId {
+//                            self.selectedAreaArray.append(area["id"] as! Int)
+//                        }
+//                    }
+//                }
+//            }
+//        }
         self.delegate?.didSelectMultipleAreas(selectedAreas: self.selectedAreaArray,
                                               selectedEmirates: self.selectedEmirateArray,
                                               title: title)
@@ -209,8 +235,10 @@ class ChefCoverageArea: UIViewController, UITableViewDelegate, UITableViewDataSo
        
     
     @objc private func headerBtnClicked(_ sender: UIButton) {
-        let section = self.filteredSections[sender.tag]
+        var section = self.filteredSections[sender.tag]
         let isSelected = !(section["isSelected"] as! Bool)
+		section["isSelected"] = !(section["isSelected"] as! Bool)
+		filteredSections[sender.tag] = section
         let id = section["id"] as! Int
         let item = section["emirates_name"] as! String
         
@@ -218,10 +246,29 @@ class ChefCoverageArea: UIViewController, UITableViewDelegate, UITableViewDataSo
             self.selectedEmirateArray.append(id)
             self.selectedAreaTitleArray.append(item)
             self.filteredSections[sender.tag]["isSelected"] = true
+			var section = self.filteredSectionItems[sender.tag]
+			selectedAreaArray.removeAll()
+			for i in 0..<section.count {
+				var item = section[i]
+				item["isSelected"] = true
+				selectedAreaTitleArray.append(item["title"] as! String)
+				self.selectedAreaArray.append(item["id"] as! Int)
+				section[i] = item
+			}
+			self.filteredSectionItems[sender.tag] = section
         } else if !isSelected && self.selectedEmirateArray.contains(id) {
             self.selectedEmirateArray.remove(element: id)
             self.selectedAreaTitleArray.remove(element: item)
             self.filteredSections[sender.tag]["isSelected"] = false
+			var section = self.filteredSectionItems[sender.tag]
+			for i in 0..<section.count {
+				var item = section[i]
+				item["isSelected"] = false
+				selectedAreaTitleArray.remove(element: item["title"] as! String)
+				self.selectedAreaArray.remove(element: item["id"] as! Int)
+				section[i] = item
+			}
+			self.filteredSectionItems[sender.tag] = section
         }
         expandableTableView.reloadData()
     }
@@ -250,11 +297,31 @@ class ChefCoverageArea: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = self.filteredSectionItems[indexPath.section]
+		
         self.itemSelected(item: section[indexPath.row]["title"] as! String,
                           id: section[indexPath.row]["id"] as! Int,
                           isSelected: !(section[indexPath.row]["isSelected"] as! Bool),
                           section: indexPath.section,
                           row: indexPath.row)
+		
+		var count = 0
+		
+		for item in self.filteredSectionItems[indexPath.section] {
+			if (item["isSelected"] as! Bool) {
+				count += 1
+			}
+		}
+		
+		var currentSection = self.filteredSections[indexPath.section]
+
+		if count == self.filteredSectionItems[indexPath.section].count {
+			currentSection["isSelected"] = true
+		} else {
+			currentSection["isSelected"] = false
+		}
+		
+		self.filteredSections[indexPath.section] = currentSection
+		
     }
 //
        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -265,7 +332,7 @@ class ChefCoverageArea: UIViewController, UITableViewDelegate, UITableViewDataSo
             
             let section = self.filteredSectionItems[indexPath.section]
             cell.setData(itemName: section[indexPath.row]["title"] as! String,
-                         isSelected: self.selectedAreaArray.contains(section[indexPath.row]["id"] as! Int),
+						 isSelected: section[indexPath.row]["isSelected"] as! Bool,
                          section: indexPath.section,
                          row: indexPath.row)
                        

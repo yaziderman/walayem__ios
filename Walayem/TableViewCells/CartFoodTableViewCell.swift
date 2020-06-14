@@ -60,11 +60,11 @@ class CartFoodTableViewCell: UITableViewCell {
         nameLabel.text = food.name
         priceLabel.text = "AED \(food.price)"
         quantityLabel.text = String(food.quantity)
-        
+		subjectToDeliveryLabel.isHidden = true
+
         if deliveryCharge != nil {
-            subjectToDeliveryLabel.isHidden = true
         } else {
-            subjectToDeliveryLabel.isHidden = false
+//            subjectToDeliveryLabel.isHidden = false
             let red = "*"
             let stringValue = "\(red)Subject to delivery fees"
             subjectToDeliveryLabel.textColor = UIColor.rosa

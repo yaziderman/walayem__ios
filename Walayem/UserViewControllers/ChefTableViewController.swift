@@ -465,6 +465,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
         selectedCuisines.removeAll()
         filterBarButton.removeBadge()
         isSearching = false
+		isLoading = false
         getChefs()
     }
     
@@ -474,6 +475,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
         }
         var params = AreaFilter.shared.coverageParams
         params["page"] = 1
+		params["filter_by"] = "location"
 		
         isLoading = true
 		
@@ -496,7 +498,8 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
             self.totalPage = value["total_pages"] as? Int ?? 0
             let records = value["data"] as! [Any]
             for record in records{
-                let chef = Chef(record: record as! [String : Any], name: "")
+				let rec = record as! [String : Any]
+                let chef = Chef(record: rec, name: rec["chef_name"] as? String ?? "")
 //                self.chefs.append(chef)
                 if !self.chefs.contains(chef){
                    self.chefs.append(chef)
@@ -512,6 +515,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
         }
         var params = AreaFilter.shared.coverageParams
         params["page"] = page + 1
+		params["getChefs"] = "location"
         isLoading = true
         RestClient().request(WalayemApi.discoverChef, params) { [weak self] (result, error) in
 			
@@ -538,7 +542,8 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
             self.totalPage = value["total_pages"] as? Int ?? 0
             let records = value["data"] as! [Any]
             for record in records{
-				let chef = Chef(record: record as! [String : Any], name: "")
+				let rec = record as! [String : Any]
+				let chef = Chef(record: rec, name: rec["chef_name"] as? String ?? "")
                 if !self.chefs.contains(chef){
                     self.chefs.append(chef)
                 }
@@ -585,7 +590,8 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
             self.totalPage = value["total_pages"] as? Int ?? 0
             let records = value["data"] as! [Any]
             for record in records{
-                let chef = Chef(record: record as! [String: Any], name: "")
+				let rec = record as! [String : Any]
+				let chef = Chef(record: rec, name: rec["chef_name"] as? String ?? "")
                 self.chefs.append(chef)
             }
             self.tableView.reloadData()
@@ -619,8 +625,9 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
             self.totalPage = value["total_pages"] as? Int ?? 0
             let records = value["data"] as! [Any]
             for record in records{
-				let chef = Chef(record: record as! [String: Any], name:  "")
-                if !self.chefs.contains(chef){
+				let rec = record as! [String : Any]
+				let chef = Chef(record: rec, name: rec["chef_name"] as? String ?? "")
+				if !self.chefs.contains(chef){
                     self.chefs.append(chef)
                 }
             }
@@ -799,7 +806,8 @@ extension ChefTableViewController: UISearchResultsUpdating{
                         self.chefs.removeAll()
                         let records = value["data"] as! [Any]
                         for record in records{
-							let chef = Chef(record: record as! [String: Any], name: "")
+							let rec = record as! [String : Any]
+							let chef = Chef(record: rec, name: rec["chef_name"] as? String ?? "")
                             self.chefs.append(chef)
                         }
                         self.tableView.reloadData()

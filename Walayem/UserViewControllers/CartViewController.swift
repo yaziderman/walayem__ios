@@ -20,7 +20,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var subtotalLabel: UILabel!
-	@IBOutlet weak var discountLabel: UILabel!
+	@IBOutlet weak var deliveryAmountLabel: UILabel!
 	@IBOutlet weak var totalLabel: UILabel!
 	@IBOutlet weak var addressView: UIView!
 	@IBOutlet weak var addressNameLabel: UILabel!
@@ -36,7 +36,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	@IBOutlet weak var orderForLabel: UILabel!
 	@IBOutlet weak var orderView: UIView!
 	@IBOutlet weak var summaryDeliveryChargeLabel: UILabel!
-	@IBOutlet weak var discountTitleLabel: UILabel!
+	@IBOutlet weak var deliverySummaryLabel: UILabel!
 	//  @IBOutlet weak var abuDhabiOnlyText: UILabel!
 	//   @IBOutlet weak var contactUsBtn: UIButton!
 	
@@ -107,6 +107,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 					fatalError("Unexpected ViewController")
 				}
 				addressVC.partnerId = user?.partner_id
+				addressVC.isFromCart = true
+				addressVC.selectionDelegate = self
 				navigationController?.pushViewController(addressVC, animated: true)
 				
 			}
@@ -262,6 +264,9 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setViews()
+		
+		user = User().getUserDefaults()
+		
 		tableView.backgroundColor = tint
 		tableView.delegate = self
 		tableView.dataSource = self
@@ -285,15 +290,13 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	
 	@objc func updateFav()
 	{
-		user = User().getUserDefaults()
-		
 		if isUserLoggedIn {
 			self.addressView.isHidden = false
 			self.addressNameLabel.isHidden = false
 			self.addressDetailLabel.isHidden = false
 			self.addAddressButton.isHidden = false
 		} else {
-			getAddress()
+//			getAddress()
 		}
 	}
 	
@@ -326,7 +329,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	override func viewWillAppear(_ animated: Bool) {
 		user = User().getUserDefaults()
 		getCartItems()
-		getAddress()
+//		getAddress()
 		updateButtonTitle()
 		self.tableView.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
 		
@@ -525,8 +528,22 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 			orderItems.append(dict)
 		}
 		
-		let params: [String: Any] = ["customer_address": ["address_id": address.id],
-									 "cart_items": orderItems]
+		var params: [String: Any] = ["cart_items": orderItems]
+		if address.id == 0 {
+			let user = User().getUserDefaults()
+			params["customer_address"] = ["new_address": [
+				"address_name": address.name,
+				"street": address.street,
+				"city": address.city,
+				"street2": "",
+				"partner_id": user.partner_id ?? 0,
+				"lat": "\(address.location?.latitude ?? 0)",
+				"long": "\(address.location?.longitude ?? 0)"]]
+		} else {
+			params["customer_address"] =  ["address_id": address.id]
+		}
+		if orderItems.count > 0 {
+		
 		UIApplication.shared.isNetworkActivityIndicatorVisible = true
 		RestClient().request(WalayemApi.cartDetails, params) { (result, error) in
 			UIApplication.shared.isNetworkActivityIndicatorVisible = false
@@ -548,8 +565,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 					return CartItem(opened: true, chef: cartItem.chef, note: "", deliveryCost: nil)
 				})
 				self.tableView.reloadData()
-				let error = NSError(domain: "com.walayem.status", code: 200, userInfo: nil)
-				self.handleNetworkError(error)
+//				let error = NSError(domain: value["message"] as? String ?? "", code: 200, userInfo: nil)
+				self.showSorryAlertWithMessage(value["message"] as? String ?? "")
 				return
 			}
 			guard let data = value["data"] as? [String: Any] else {
@@ -582,11 +599,12 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 			let subTotal: Double = (data["total_price"] as? Double) ?? 0.0
 			self.subtotalLabel.text = "AED \(subTotal)"
 			let totalDeliveryCharge: Double = (data["total_delivery_cost"] as? Double) ?? 0.0
-			self.discountLabel.text = "AED \(totalDeliveryCharge)"
+			self.deliveryAmountLabel.text = "AED \(totalDeliveryCharge)"
 			let totalCost: Double = (data["big_total"] as? Double) ?? 0.0
 			self.totalLabel.text = "AED \(totalCost)"
-			self.discountTitleLabel.text = "Total Delivery"
+			self.deliverySummaryLabel.text = "Total Delivery"
 			self.tableView.reloadData()
+		}
 		}
 		
 		let foods = db.getFoods()
@@ -671,7 +689,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 					self.addressList.append(address)
 				}
 				if self.selectedAddress == nil{
-					self.selectedAddress = self.addressList[0]
+//					self.selectedAddress = self.addressList[0]
+					self.selectedAddress = Address(id: 0, name: AreaFilter.shared.selectedCoverageTitle ?? "", city: AreaFilter.shared.userAddress?.city ?? "", street: AreaFilter.shared.userAddress?.street ?? "", extra: "", location: AreaFilter.shared.selectedLocation)
 					self.setAddress()
 				}
 				
@@ -684,6 +703,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 						}
 					}
 				}
+				
 				if self.selectedAddress != nil,
 					self.isUserLoggedIn {
 					self.getCartDetails()
@@ -729,9 +749,9 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		}
 		
 		subtotalLabel.text = "AED \(totalCost)"
-		discountLabel.text = "AED 0.0"
-		totalLabel.text = "AED \(totalCost)"
-		discountTitleLabel.text = "Discount"
+		deliveryAmountLabel.text = "?"
+		totalLabel.text = "AED \(totalCost) + ?"
+		deliverySummaryLabel.text = "Total Delivery"
 		summaryDeliveryChargeLabel.isHidden = false
 	}
 	
@@ -945,6 +965,26 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
 			return 80
 		}
 		
+		if cartItems.isEmpty {
+			return 0.001
+		}
+		
+		if cartItems[section].chef.foods.isEmpty {
+			return 0.001
+		}
+		
 		return 60
 	}
+}
+
+extension CartViewController: AddressSelectionDelegate {
+	
+	func addressSelected(_ address: Address) {
+		self.selectedAddress = address
+		if self.isUserLoggedIn {
+			self.getCartDetails()
+		}
+		self.setAddress()
+	}
+	
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +11,7 @@
         <!--User Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController modalPresentationStyle="fullScreen" id="49e-Tb-3d3" customClass="UserTabBarController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="UserTabBarController" modalPresentationStyle="fullScreen" id="49e-Tb-3d3" customClass="UserTabBarController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -59,19 +59,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aeR-D6-hFC">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="142"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                                 <connections>
                                     <action selector="closeButtonClicked" destination="lH6-YQ-xZY" eventType="touchUpInside" id="lWs-Mx-H1l"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kyf-J2-IQr" userLabel="ContainerView">
-                                <rect key="frame" x="0.0" y="150" width="375" height="517"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eyj-Be-Ke8" userLabel="NewAddressView">
                                         <rect key="frame" x="0.0" y="8" width="375" height="60"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="wU1-kT-3bd">
-                                                <rect key="frame" x="16" y="12.5" width="117.5" height="35"/>
+                                                <rect key="frame" x="16" y="12.5" width="128.5" height="35"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gAL-MH-eT7">
                                                         <rect key="frame" x="0.0" y="0.0" width="18.5" height="35"/>
@@ -80,8 +80,8 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tja-hB-sh2">
-                                                        <rect key="frame" x="26.5" y="0.0" width="91" height="35"/>
-                                                        <state key="normal" title="New Address">
+                                                        <rect key="frame" x="26.5" y="0.0" width="102" height="35"/>
+                                                        <state key="normal" title="Other Location">
                                                             <color key="titleColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                         </state>
                                                     </button>
@@ -148,7 +148,7 @@
                                         </constraints>
                                     </view>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iia-VM-Irt">
-                                        <rect key="frame" x="0.0" y="154" width="375" height="363"/>
+                                        <rect key="frame" x="0.0" y="154" width="375" height="513"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </containerView>
                                 </subviews>
@@ -171,9 +171,8 @@
                         <color key="backgroundColor" red="0.25095507500000003" green="0.25099658969999999" blue="0.25094601509999998" alpha="0.50866866438356162" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="kyf-J2-IQr" firstAttribute="trailing" secondItem="qBP-SP-Nfy" secondAttribute="trailing" id="2ei-Ub-uOs"/>
-                            <constraint firstItem="kyf-J2-IQr" firstAttribute="height" secondItem="7MD-de-lRk" secondAttribute="height" multiplier="0.775" id="R38-N6-eqX"/>
+                            <constraint firstItem="kyf-J2-IQr" firstAttribute="top" secondItem="qBP-SP-Nfy" secondAttribute="top" id="6s9-hW-AVD"/>
                             <constraint firstItem="kyf-J2-IQr" firstAttribute="bottom" secondItem="qBP-SP-Nfy" secondAttribute="bottom" id="Wvf-J5-zdQ"/>
-                            <constraint firstItem="kyf-J2-IQr" firstAttribute="top" secondItem="aeR-D6-hFC" secondAttribute="bottom" constant="8" id="ZUH-c5-NlU"/>
                             <constraint firstItem="aeR-D6-hFC" firstAttribute="leading" secondItem="qBP-SP-Nfy" secondAttribute="leading" id="ZWk-lr-4iZ"/>
                             <constraint firstItem="aeR-D6-hFC" firstAttribute="trailing" secondItem="qBP-SP-Nfy" secondAttribute="trailing" id="ZhZ-uM-6Ou"/>
                             <constraint firstItem="aeR-D6-hFC" firstAttribute="top" secondItem="qBP-SP-Nfy" secondAttribute="top" id="hH6-De-tRV"/>
@@ -182,10 +181,10 @@
                         <viewLayoutGuide key="safeArea" id="qBP-SP-Nfy"/>
                     </view>
                     <navigationItem key="navigationItem" title="Delivery To" id="AEo-qp-tVq">
-                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="Zd7-X3-jPl">
+                        <barButtonItem key="leftBarButtonItem" title="Back" image="chevron.left" catalog="system" id="Zd7-X3-jPl">
                             <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <action selector="closeButtonClicked" destination="lH6-YQ-xZY" id="xap-y2-Rhr"/>
+                                <action selector="cancelBtnAction:" destination="lH6-YQ-xZY" id="Bg5-Na-I5F"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="jYb-6e-Dql">
@@ -267,6 +266,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="48" height="64"/>
         <image name="location" width="42.666667938232422" height="42.666667938232422"/>
     </resources>
 </document>

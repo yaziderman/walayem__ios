@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 class MainHomeViewController: BaseTabViewController {
     
@@ -23,6 +24,8 @@ class MainHomeViewController: BaseTabViewController {
     var cuisines = [Cuisine]()
     var selectedCuisine: Cuisine?
     var foods = [Food]()
+	var locationWrapper: LocationWrapper?
+	var locationManager: CLLocationManager?
 
 //    let bookmarks = ["Recommended", "Meals of the day", "Cuisines", "Categories"]
     let bookmarks = ["Recommended", "Ramadan meals", "Cuisines", "Categories"]
@@ -58,12 +61,12 @@ class MainHomeViewController: BaseTabViewController {
         mActivityIndicator.stopAnimating()
         setupRefreshControl()
         getCuisines()
-        getPromoted()
-        getCuisines()
         initialCustomDate()
-            
+		locationManager = CLLocationManager()
+
+		locationWrapper = LocationWrapper(locationDelegate: self)
+		
         tableView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(handleTapAnimation)))
-       
     }
     
     func initialCustomDate() {
@@ -133,7 +136,8 @@ class MainHomeViewController: BaseTabViewController {
     
     private func getPromoted(){
         var params = AreaFilter.shared.coverageParams
-        params["partner_id"] = partnerId ?? 0
+		params["partner_id"] = User().getUserDefaults().partner_id ?? 0//partnerId ?? 0
+		params["filter_by"] = "location"
         
         RestClient().requestPromotedApi(WalayemApi.homeRecommendation, params) { (result, error) in
             self.tableView.refreshControl?.endRefreshing()
@@ -233,7 +237,7 @@ class MainHomeViewController: BaseTabViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getPromoted()
+//        getPromoted()
         StaticLinker.selectedCuisine = nil
     }
     
@@ -352,9 +356,7 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
             imageButton.addTarget(self, action:#selector(handleImageButton(_:)), for: .touchUpInside)
             return cell
             
-        }
-                
-        else {
+        } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "mainHomeTableViewCellLast") else { fatalError("mainHomeTableViewCellLast")  }
             cell.selectionStyle = .none
             return cell
@@ -447,4 +449,25 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
         
         
     }
+}
+
+extension MainHomeViewController: LocationDelegate {
+	
+	func getLocation(location: Location, address: UserAddress, title: String) {
+		AreaFilter.shared.setselectedLocation(location, title: title, userAddress: address)
+		locationView.locationUpdated()
+		
+		getPromoted()
+	}
+	
+	func locationPermissionDenied() {
+		DLog(message: "Permission not available")
+//		locationManager?.requestAlwaysAuthorization()
+//		DispatchQueue.main.async {
+//			self.locationManager?.requestWhenInUseAuthorization()
+//		}
+		
+		locationWrapper?.checkLocationAvailability()
+	}
+	
 }
