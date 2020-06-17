@@ -8,6 +8,7 @@
 
 import UIKit
 import DatePickerDialog
+import HandyUIKit
 
 protocol CartViewDelegate {
 	func refreshTableViewCell()
@@ -112,6 +113,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 				navigationController?.pushViewController(addressVC, animated: true)
 				
 			}
+		} else {
+			showAlert(title: "Error", msg: "Please login to add address.")
 		}
 	}
 	
@@ -182,82 +185,87 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 				return
 		}
 		
-		let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
-		
-		if(session == nil)
+		if deliveryAmountLabel.text != "*" {
 			
-		{
-			let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
-			self.present(viewController, animated: true, completion: nil)
-		} else {
+			let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
 			
-			let progressAlert = showProgressAlert()
-			var orderItems = [Any]()
-			for item in cartItems{
-				// add food details
-				var products = [Any]()
-				for food in item.chef.foods{
-					var dict = [String: Int]()
-					dict["product_id"] = food.id
-					dict["product_uom_qty"] = food.quantity
+			if(session == nil)
+				
+			{
+				let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
+				self.present(viewController, animated: true, completion: nil)
+			} else {
+				
+				let progressAlert = showProgressAlert()
+				var orderItems = [Any]()
+				for item in cartItems{
+					// add food details
+					var products = [Any]()
+					for food in item.chef.foods{
+						var dict = [String: Int]()
+						dict["product_id"] = food.id
+						dict["product_uom_qty"] = food.quantity
+						
+						products.append(dict)
+					}
+					// add chef details
+					var dict = [String: Any]()
+					dict["chef_id"] = item.chef.id
+					dict["note"] = item.note
+					dict["products"] = products
 					
-					products.append(dict)
+					orderItems.append(dict)
 				}
-				// add chef details
-				var dict = [String: Any]()
-				dict["chef_id"] = item.chef.id
-				dict["note"] = item.note
-				dict["products"] = products
 				
-				orderItems.append(dict)
-			}
-			
-			var params: [String: Any] = ["partner_id": user?.partner_id as Any,
-										 "address_id": selectedAddress!.id,
-										 "orders": orderItems]
-			let orderType = UserDefaults.standard.string(forKey: "OrderType") ?? "asap"
-			params.updateValue(orderType, forKey: "order_type")
-			
-			print("order type-->"+orderType)
-			
-			if(orderType == "future"){
-				let orderDate = UserDefaults.standard.string(forKey: "OrderDate") ?? ""
-				let dateFormatter = DateFormatter()
-				dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-				let date = dateFormatter.date(from: orderDate)
+				var params: [String: Any] = ["partner_id": user?.partner_id as Any,
+											 "address_id": selectedAddress!.id,
+											 "orders": orderItems]
+				let orderType = UserDefaults.standard.string(forKey: "OrderType") ?? "asap"
+				params.updateValue(orderType, forKey: "order_type")
 				
-				let dateTimeFormatter = DateFormatter()
-				dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-				dateTimeFormatter.timeZone = TimeZone(abbreviation: "UTC")
-				let date_time_str = dateTimeFormatter.string(from: date!)
-				params.updateValue(date_time_str, forKey: "order_for")
-			}
-			
-			RestClient().request(WalayemApi.placeOrder, params) { (result, error) in
-				progressAlert.dismiss(animated: true, completion: {
-					if error != nil{
-						let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
-						self.showAlert(title: "Error", msg: errmsg)
-						return
-					}
-					let value = result!["result"] as! [String: Any]
-					let msg = value["message"] as! String
-					if let status = value["status"] as? Int, status == 0{
-						self.showAlert(title: "Error", msg: msg)
-						return
-					}
+				print("order type-->"+orderType)
+				
+				if(orderType == "future"){
+					let orderDate = UserDefaults.standard.string(forKey: "OrderDate") ?? ""
+					let dateFormatter = DateFormatter()
+					dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+					let date = dateFormatter.date(from: orderDate)
 					
-					self.clearCartItems()
-					let records = value["orders"] as! [Any]
-					guard let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "OrderSuccessVC") as? OrderSuccessViewController else {
-						fatalError("Unexpected destiation view controller")
-					}
-					destinationVC.orders = records
-					self.present(destinationVC, animated: true, completion: nil)
-				})
+					let dateTimeFormatter = DateFormatter()
+					dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+					dateTimeFormatter.timeZone = TimeZone(abbreviation: "UTC")
+					let date_time_str = dateTimeFormatter.string(from: date!)
+					params.updateValue(date_time_str, forKey: "order_for")
+				}
+				
+				RestClient().request(WalayemApi.placeOrder, params, self) { (result, error) in
+					progressAlert.dismiss(animated: true, completion: {
+						if error != nil{
+							let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+							self.showAlert(title: "Error", msg: errmsg)
+							return
+						}
+						let value = result!["result"] as! [String: Any]
+						let msg = value["message"] as! String
+						if let status = value["status"] as? Int, status == 0{
+							self.showAlert(title: "Error", msg: msg)
+							return
+						}
+						
+						self.clearCartItems()
+						let records = value["orders"] as! [Any]
+						guard let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "OrderSuccessVC") as? OrderSuccessViewController else {
+							fatalError("Unexpected destiation view controller")
+						}
+						destinationVC.orders = records
+						self.present(destinationVC, animated: true, completion: nil)
+					})
+					
+				}
 				
 			}
-			
+		} else {
+			showAlert(title: "Error", msg: "Delivery is not available for your area, please refine your search.")
 		}
 	}
 	
@@ -290,13 +298,13 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	
 	@objc func updateFav()
 	{
-		if isUserLoggedIn {
+		if !isUserLoggedIn {
 			self.addressView.isHidden = false
 			self.addressNameLabel.isHidden = false
 			self.addressDetailLabel.isHidden = false
 			self.addAddressButton.isHidden = false
 		} else {
-//			getAddress()
+			//			getAddress()
 		}
 	}
 	
@@ -312,24 +320,24 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	}
 	
 	
-//	@objc func updateButtonTitle() {
-//
-//		let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
-//		if(session == nil)
-//		{
-//			self.orderButton.setTitle("Login to Order", for: .normal)
-//		}
-//		else
-//		{
-//			self.orderButton.setTitle("Place Order", for: .normal)
-//		}
-//
-//	}
+	//	@objc func updateButtonTitle() {
+	//
+	//		let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
+	//		if(session == nil)
+	//		{
+	//			self.orderButton.setTitle("Login to Order", for: .normal)
+	//		}
+	//		else
+	//		{
+	//			self.orderButton.setTitle("Place Order", for: .normal)
+	//		}
+	//
+	//	}
 	
 	override func viewWillAppear(_ animated: Bool) {
 		user = User().getUserDefaults()
 		getCartItems()
-//		getAddress()
+		//		getAddress()
 		updateButtonTitle()
 		self.tableView.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
 		
@@ -543,68 +551,69 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 			params["customer_address"] =  ["address_id": address.id]
 		}
 		if orderItems.count > 0 {
-		
-		UIApplication.shared.isNetworkActivityIndicatorVisible = true
-		RestClient().request(WalayemApi.cartDetails, params) { (result, error) in
-			UIApplication.shared.isNetworkActivityIndicatorVisible = false
-			if let error = error {
-				self.calculateCost()
-				self.cartItems = self.cartItems.map({ (cartItem) -> CartItem in
-					return CartItem(opened: true, chef: cartItem.chef, note: "", deliveryCost: nil)
-				})
-				self.tableView.reloadData()
-				self.handleNetworkError(error)
-				return
-			}
 			
-			let value = result!["result"] as! [String: Any]
-			let status = value["status"] as! Int
-			if status == 0 {
-				self.calculateCost()
-				self.cartItems = self.cartItems.map({ (cartItem) -> CartItem in
-					return CartItem(opened: true, chef: cartItem.chef, note: "", deliveryCost: nil)
-				})
-				self.tableView.reloadData()
-//				let error = NSError(domain: value["message"] as? String ?? "", code: 200, userInfo: nil)
-				self.showSorryAlertWithMessage(value["message"] as? String ?? "")
-				return
-			}
-			guard let data = value["data"] as? [String: Any] else {
-				self.calculateCost()
-				self.cartItems = self.cartItems.map({ (cartItem) -> CartItem in
-					return CartItem(opened: true, chef: cartItem.chef, note: "", deliveryCost: nil)
-				})
-				self.tableView.reloadData()
-				let error = NSError(domain: "com.walayem.status", code: 200, userInfo: nil)
-				self.handleNetworkError(error)
-				return
-			}
-			self.summaryDeliveryChargeLabel.isHidden = true
-			if let fetchedCartItems = data["cart_items"] as? [[String: Any]] {
-				for fetchedCartItem in fetchedCartItems {
-					guard let fetchedChef = fetchedCartItem["chef"] as? [String: Any],
-						let fetchedChefId = fetchedChef["chef_id"] as? Int else {
-							continue
-					}
+			UIApplication.shared.isNetworkActivityIndicatorVisible = true
+			RestClient().request(WalayemApi.cartDetails, params, self) { (result, error) in
+				UIApplication.shared.isNetworkActivityIndicatorVisible = false
+				if let error = error {
+					self.calculateCost()
 					self.cartItems = self.cartItems.map({ (cartItem) -> CartItem in
-						if cartItem.chef.id == fetchedChefId {
-							let fetchedDeliveryCost = fetchedCartItem["delivery_cost"] as? Double
-							return CartItem(opened: true, chef: cartItem.chef, note: "", deliveryCost: fetchedDeliveryCost)
-						}
-						return cartItem
+						return CartItem(opened: true, chef: cartItem.chef, note: "", deliveryCost: nil)
 					})
+					self.tableView.reloadData()
+					self.handleNetworkError(error)
+					return
 				}
+				
+				let value = result!["result"] as! [String: Any]
+				let status = value["status"] as! Int
+				if status == 0 {
+					self.calculateCost()
+					self.cartItems = self.cartItems.map({ (cartItem) -> CartItem in
+						return CartItem(opened: true, chef: cartItem.chef, note: "", deliveryCost: nil)
+					})
+					self.tableView.reloadData()
+					//				let error = NSError(domain: value["message"] as? String ?? "", code: 200, userInfo: nil)
+					//				self.showSorryAlertWithMessage(value["message"] as? String ?? "")
+					return
+				}
+				guard let data = value["data"] as? [String: Any] else {
+					self.calculateCost()
+					self.cartItems = self.cartItems.map({ (cartItem) -> CartItem in
+						return CartItem(opened: true, chef: cartItem.chef, note: "", deliveryCost: nil)
+					})
+					self.tableView.reloadData()
+					let error = NSError(domain: "com.walayem.status", code: 200, userInfo: nil)
+					self.handleNetworkError(error)
+					return
+				}
+				self.summaryDeliveryChargeLabel.isHidden = true
+				if let fetchedCartItems = data["cart_items"] as? [[String: Any]] {
+					for fetchedCartItem in fetchedCartItems {
+						guard let fetchedChef = fetchedCartItem["chef"] as? [String: Any],
+							let fetchedChefId = fetchedChef["chef_id"] as? Int else {
+								continue
+						}
+						self.cartItems = self.cartItems.map({ (cartItem) -> CartItem in
+							if cartItem.chef.id == fetchedChefId {
+								let fetchedDeliveryCost = fetchedCartItem["delivery_cost"] as? Double
+								return CartItem(opened: true, chef: cartItem.chef, note: "", deliveryCost: fetchedDeliveryCost)
+							}
+							return cartItem
+						})
+					}
+				}
+				
+				let subTotal: Double = (data["total_price"] as? Double) ?? 0.0
+				self.subtotalLabel.text = "AED \(subTotal)"
+				let totalDeliveryCharge: Double = (data["total_delivery_cost"] as? Double) ?? 0.0
+				self.deliveryAmountLabel.text = "AED \(totalDeliveryCharge)"
+				self.deliveryAmountLabel.textColor = .lightGray
+				let totalCost: Double = (data["big_total"] as? Double) ?? 0.0
+				self.totalLabel.text = "AED \(totalCost)"
+				self.deliverySummaryLabel.text = "Total Delivery"
+				self.tableView.reloadData()
 			}
-			
-			let subTotal: Double = (data["total_price"] as? Double) ?? 0.0
-			self.subtotalLabel.text = "AED \(subTotal)"
-			let totalDeliveryCharge: Double = (data["total_delivery_cost"] as? Double) ?? 0.0
-			self.deliveryAmountLabel.text = "AED \(totalDeliveryCharge)"
-			let totalCost: Double = (data["big_total"] as? Double) ?? 0.0
-			self.totalLabel.text = "AED \(totalCost)"
-			self.deliverySummaryLabel.text = "Total Delivery"
-			self.tableView.reloadData()
-		}
 		}
 		
 		let foods = db.getFoods()
@@ -628,7 +637,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	private func validateFoods(foods: [Food], completion: @escaping(Bool) -> Void){
 		
 		let params: [String: Any] = [:]
-		RestClient().request(WalayemApi.getActiveFoodIds, params) { (result, error) in
+		RestClient().request(WalayemApi.getActiveFoodIds, params, self) { (result, error) in
 			if error != nil {
 				_ = error?.userInfo[NSLocalizedDescriptionKey] as! String
 				//error here
@@ -660,7 +669,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		let params: [String: Int] = ["partner_id": user?.partner_id ?? 0]
 		
 		UIApplication.shared.isNetworkActivityIndicatorVisible = true
-		RestClient().request(WalayemApi.address, params) { (result, error) in
+		RestClient().request(WalayemApi.address, params, self) { (result, error) in
 			UIApplication.shared.isNetworkActivityIndicatorVisible = false
 			
 			//            if let error = error{
@@ -688,21 +697,24 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 					let address = Address(record: record as! [String : Any])
 					self.addressList.append(address)
 				}
-				if self.selectedAddress == nil{
-//					self.selectedAddress = self.addressList[0]
-					self.selectedAddress = Address(id: 0, name: AreaFilter.shared.selectedCoverageTitle ?? "", city: AreaFilter.shared.userAddress?.city ?? "", street: AreaFilter.shared.userAddress?.street ?? "", extra: "", location: AreaFilter.shared.selectedLocation)
-					self.setAddress()
-				}
 				
-				let selectedAddressId = UserDefaults.standard.integer(forKey: "OrderAddress") as Int?
-				if(selectedAddressId != nil){
-					for addr in self.addressList{
-						if(addr.id == selectedAddressId){
-							self.selectedAddress = addr
-							self.setAddress()
+				let selAddressId = AreaFilter.shared.addressId
+				if selAddressId != 0{
+					
+					for address in self.addressList {
+						if address.id == selAddressId {
+							self.selectedAddress = address
+							break
 						}
 					}
+				} else {
+					self.selectedAddress = nil
 				}
+				
+				if self.selectedAddress == nil {
+					self.selectedAddress = self.addressList.first
+				}
+				self.setAddress()
 				
 				if self.selectedAddress != nil,
 					self.isUserLoggedIn {
@@ -725,7 +737,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 			}
 		}
 		else{
-			showSorryAlertWithMessage("Some thing wrong in backend ...!")
+			//			showSorryAlertWithMessage("Some thing wrong in backend ...!")
 		}
 	}
 	
@@ -744,13 +756,14 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		var totalCost: Double = 0.0
 		for item in cartItems{
 			for food in item.chef.foods{
-				totalCost += Double(food.quantity) * (food.price ?? 0.0)
+				totalCost += Double(food.quantity) * (food.price)
 			}
 		}
 		
 		subtotalLabel.text = "AED \(totalCost)"
-		deliveryAmountLabel.text = "?"
-		totalLabel.text = "AED \(totalCost) + ?"
+		deliveryAmountLabel.text = "*"
+		deliveryAmountLabel.textColor = .red
+		totalLabel.attributedText = "AED \(totalCost)^{*}".superscripted(font: totalLabel.font)
 		deliverySummaryLabel.text = "Total Delivery"
 		summaryDeliveryChargeLabel.isHidden = false
 	}
@@ -949,7 +962,7 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
 		footerView.section = section
 		let cartItem = cartItems[section]
 		let foods = cartItem.chef.foods
-		footerView.update(foods: foods, deliveryCharge: cartItem.deliveryCost)
+		footerView.update(deliveryCharge: cartItem.deliveryCost ?? 0.0)//update(foods: foods, deliveryCharge: cartItem.deliveryCost)
 		footerView.backgroundColor = UIColor.init(light: .white, dark: .black)
 		return footerView
 	}

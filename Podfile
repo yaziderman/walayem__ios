@@ -22,5 +22,6 @@ target 'Walayem' do
   pod 'BetterSegmentedControl', '1.0'
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+	pod 'HandyUIKit', '~> 1.9'
 
 end

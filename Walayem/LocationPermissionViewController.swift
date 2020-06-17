@@ -27,6 +27,10 @@ class LocationPermissionViewController: UIViewController {
 		locationManager.delegate = self
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest
 		locationManager.requestAlwaysAuthorization()
+		if #available(iOS 13, *) {
+			let appDelegate = UIApplication.shared.delegate as! AppDelegate
+			appDelegate.shouldMoveToMainPage()
+		}
 //		locationManager.requestLocation()
 //		view.backgroundColor = .gray
     }

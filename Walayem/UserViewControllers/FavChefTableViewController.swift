@@ -52,7 +52,7 @@ class FavChefTableViewController: UIViewController, ChefCellDelegate {
         showActivityIndicator()
         let params = ["partner_id": partnerId]
         
-        RestClient().request(WalayemApi.favChefs, params) { (result, error) in
+        RestClient().request(WalayemApi.favChefs, params, self) { (result, error) in
             self.hideActivityIndicator()
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String

@@ -139,6 +139,7 @@ PODS:
   - GTMSessionFetcher/Core (1.4.0)
   - GTMSessionFetcher/Full (1.4.0):
     - GTMSessionFetcher/Core (= 1.4.0)
+  - HandyUIKit (1.9.0)
   - ImageLoader (0.15.0)
   - Kingfisher (4.10.1)
   - nanopb (1.30905.0):
@@ -170,6 +171,7 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlaces
   - GoogleSignIn
+  - HandyUIKit (~> 1.9)
   - ImageLoader
   - Kingfisher (~> 4.0)
   - SDWebImage (~> 5.0)
@@ -208,6 +210,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
+    - HandyUIKit
     - ImageLoader
     - Kingfisher
     - nanopb
@@ -248,6 +251,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
   GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+  HandyUIKit: 10c4f5997d49e41f702d5c0f11dc390b23a82d5f
   ImageLoader: e0635d52020d64dc7687e3a3b14dc53212ac0442
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
@@ -256,6 +260,6 @@ SPEC CHECKSUMS:
   SDWebImage: 84000f962cbfa70c07f19d2234cbfcf5d779b5dc
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
 
-PODFILE CHECKSUM: fbd7f4a5520a13011ae2e63f70b644c96de432f9
+PODFILE CHECKSUM: 64568f9b6c9289bbb62e1dbd9a83c6190ea1835d
 
 COCOAPODS: 1.9.3

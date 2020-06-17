@@ -88,7 +88,7 @@ class ChefSignupViewController: UIViewController, UITextFieldDelegate{
         
         progressAlert = showProgressAlert()
         
-        RestClient().request(WalayemApi.signup, params) { (result, error) in
+        RestClient().request(WalayemApi.signup, params, self) { (result, error) in
             if error != nil{
                 self.progressAlert?.dismiss(animated: false, completion: {
                     let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String

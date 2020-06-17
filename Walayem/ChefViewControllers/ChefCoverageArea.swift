@@ -55,7 +55,7 @@ class ChefCoverageArea: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     func getAreas() {
-        RestClient().request(WalayemApi.getAreas, [:]) { (result, error) in
+        RestClient().request(WalayemApi.getAreas, [:], self) { (result, error) in
             if error != nil {
                 let controller = UIAlertController(title: "Oops", message: "Failed to get data", preferredStyle: .alert)
                 controller.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
@@ -316,8 +316,12 @@ class ChefCoverageArea: UIViewController, UITableViewDelegate, UITableViewDataSo
 
 		if count == self.filteredSectionItems[indexPath.section].count {
 			currentSection["isSelected"] = true
+			if !self.selectedEmirateArray.contains(currentSection["id"] as! Int) {
+				self.selectedEmirateArray.append(currentSection["id"] as! Int)
+			}
 		} else {
 			currentSection["isSelected"] = false
+			self.selectedEmirateArray.remove(element: currentSection["id"] as! Int)
 		}
 		
 		self.filteredSections[indexPath.section] = currentSection

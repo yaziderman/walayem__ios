@@ -43,7 +43,7 @@ class FavFoodTableViewController: UIViewController, FoodCellDelegate {
         showActivityIndicator()
         let params = ["partner_id": partnerId]
         
-        RestClient().request(WalayemApi.favFoods, params) { (result, error) in
+        RestClient().request(WalayemApi.favFoods, params, self) { (result, error) in
             self.hideActivityIndicator()
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String

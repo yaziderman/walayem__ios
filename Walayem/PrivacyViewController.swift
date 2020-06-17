@@ -34,7 +34,7 @@ class PrivacyViewController: UIViewController {
     private func getPrivacy() {
 
         let params: [String: Any] = [:]
-        RestClient().request(WalayemApi.viewPrivacy, params) { (result, error) in
+        RestClient().request(WalayemApi.viewPrivacy, params, self) { (result, error) in
 
             print(result!)
             if error != nil {

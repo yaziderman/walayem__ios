@@ -70,15 +70,15 @@ class ChefTabController: UITabBarController {
     }
 	
     override func viewDidAppear(_ animated: Bool) {
-        if self.selectedIndex == 2 {
-            if let currentViewController = self.selectedViewController as? UISplitViewController{
-               guard let orderVC = UIStoryboard.init(name: "ChefProfile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChefProfileTableViewController") as? ChefProfileTableViewController else {
-                   fatalError("Unexpected view controller")
-               }
-               let navigationVC = UINavigationController(rootViewController: orderVC)
-               currentViewController.showDetailViewController(navigationVC, sender: self)
-            }
-        }
+//        if self.selectedIndex == 2 {
+//            if let currentViewController = self.selectedViewController as? UISplitViewController{
+//               guard let orderVC = UIStoryboard.init(name: "ChefProfile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChefProfileTableViewController") as? ChefProfileTableViewController else {
+//                   fatalError("Unexpected view controller")
+//               }
+//               let navigationVC = UINavigationController(rootViewController: orderVC)
+//               currentViewController.showDetailViewController(navigationVC, sender: self)
+//            }
+//        }
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -94,16 +94,16 @@ class ChefTabController: UITabBarController {
                    // It's an iPad
                
                
-               if self.selectedIndex == 2 {
-
-                      if let currentViewController = self.selectedViewController as? UISplitViewController{
-                         guard let orderVC = UIStoryboard.init(name: "ChefProfile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChefProfileTableViewController") as? ChefProfileTableViewController else {
-                             fatalError("Unexpected view controller")
-                         }
-                         let navigationVC = UINavigationController(rootViewController: orderVC)
-                         currentViewController.showDetailViewController(navigationVC, sender: self)
-                      }
-              }
+//               if self.selectedIndex == 2 {
+//
+//                      if let currentViewController = self.selectedViewController as? UISplitViewController{
+//                         guard let orderVC = UIStoryboard.init(name: "ChefProfile", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChefProfileTableViewController") as? ChefProfileTableViewController else {
+//                             fatalError("Unexpected view controller")
+//                         }
+//                         let navigationVC = UINavigationController(rootViewController: orderVC)
+//                         currentViewController.showDetailViewController(navigationVC, sender: self)
+//                      }
+//              }
 
                case .unspecified:
                print("unspecified")

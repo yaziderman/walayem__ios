@@ -26,7 +26,9 @@ class ChefSearchResultsViewController: UIViewController, UITableViewDataSource, 
         params["search"] = true
         params["search_keyword"] = self.searchKeyword
         params["page"] = 1
-        RestClient().request(WalayemApi.searchChef, params) { (result, error) in
+		params["filter_by"] = "location"
+		
+        RestClient().request(WalayemApi.searchChef, params, self) { (result, error) in
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 print (errmsg)
@@ -53,7 +55,9 @@ class ChefSearchResultsViewController: UIViewController, UITableViewDataSource, 
         params["search"] = true
         params["search_keyword"] = self.searchKeyword
         params["page"] = self.page + 1
-        RestClient().request(WalayemApi.searchChef, params) { (result, error) in
+		params["filter_by"] = "location"
+		
+        RestClient().request(WalayemApi.searchChef, params, self) { (result, error) in
             self.tableView.tableFooterView = nil
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String

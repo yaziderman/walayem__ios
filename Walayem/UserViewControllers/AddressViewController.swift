@@ -213,7 +213,7 @@ class AddressViewController: UIViewController, UITextFieldDelegate {
                                       "partner_id": user!.partner_id!,
                                       "location": ["lat": self.location!.latitude,
                                                    "long": self.location!.longitude]]
-        RestClient().request(WalayemApi.createAddress, params) { (result, error) in
+        RestClient().request(WalayemApi.createAddress, params, self) { (result, error) in
             activityIndicator.stopAnimating()
             if error != nil{
                 return
@@ -242,7 +242,7 @@ class AddressViewController: UIViewController, UITextFieldDelegate {
                                       "location": ["lat": self.location!.latitude,
                                                    "long": self.location!.longitude]]
 		
-        RestClient().request(WalayemApi.editAddress, params) { (result, error) in
+        RestClient().request(WalayemApi.editAddress, params, self) { (result, error) in
             activityIndicator.stopAnimating()
             if error != nil{
                 return

@@ -116,7 +116,7 @@ class MainHomeViewController: BaseTabViewController {
                 userDefaults.set(date_time_str, forKey: "OrderDate")
                 userDefaults.synchronize()
         //
-                if(StaticLinker.chefViewController != nil){
+                if(StaticLinker.chefViewController != nil && StaticLinker.chefViewController?.timePickerButton != nil){
                     StaticLinker.chefViewController?.timePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
                 }
     //            self.datePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
@@ -129,7 +129,7 @@ class MainHomeViewController: BaseTabViewController {
         print("handleTapAnimation")
     }
     
-    override func deliveryLocationSelected(_ location: Location, title: String) {
+    override func deliveryLocationSelected(_ location: Location?, title: String) {
         super.deliveryLocationSelected(location, title: title)
         refreshData(sender: UIRefreshControl())
     }
@@ -139,7 +139,7 @@ class MainHomeViewController: BaseTabViewController {
 		params["partner_id"] = User().getUserDefaults().partner_id ?? 0//partnerId ?? 0
 		params["filter_by"] = "location"
         
-        RestClient().requestPromotedApi(WalayemApi.homeRecommendation, params) { (result, error) in
+		RestClient().requestPromotedApi(WalayemApi.homeRecommendation, params, self) { (result, error) in
             self.tableView.refreshControl?.endRefreshing()
             self.mActivityIndicator.stopAnimating()
             self.hideSpinner()
@@ -207,9 +207,9 @@ class MainHomeViewController: BaseTabViewController {
                 }
             }
             }
-            else{
-                self.showSorryAlertWithMessage("No Internet Connection!")
-            }
+//            else{
+//                self.showSorryAlertWithMessage("No Internet Connection!")
+//            }
         }
     }
     

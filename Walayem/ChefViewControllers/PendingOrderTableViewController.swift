@@ -67,7 +67,7 @@ class PendingOrderTableViewController: UITableViewController, OrderHeaderCellDel
         let params: [String: Any] = ["partner_id": user?.partner_id as Any, "states": states]
         
         showActivityIndicator()
-        RestClient().request(WalayemApi.chefOrders, params) { (result, error) in
+        RestClient().request(WalayemApi.chefOrders, params, self) { (result, error) in
             self.hideActivityIndicator()
             
             if let error = error{

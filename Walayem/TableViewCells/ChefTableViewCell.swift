@@ -82,7 +82,7 @@ extension ChefTableViewCell: UICollectionViewDataSource, UICollectionViewDelegat
         let id = chef.foods[indexPath.row].id
         cell.foodImageView.layer.cornerRadius = 15
         cell.foodImageView.layer.masksToBounds = true
-        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(id ?? 0)/image")
+        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(id ?? 0)/image_medium")
 //        cell.foodImageView.kf.setImage(with: imageUrl)
         
         cell.foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
@@ -95,15 +95,12 @@ extension ChefTableViewCell: UICollectionViewDataSource, UICollectionViewDelegat
         food.chefId = chef.id
         food.chefName = chef.name
         food.kitcherName = chef.kitchen
-        self.delegate?.foodSelected(food)
 
 		if let chefTableVC = chefTableVC{
             chefTableVC.foodSelected(food)
-        }
-        
-        if let favChefTableVC = favChefTableVC{
-            favChefTableVC.foodSelected(food)
-        }
+		} else {
+			self.delegate?.foodSelected(food)
+		}
     }
     
 }

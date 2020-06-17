@@ -90,10 +90,10 @@ class ChefFoodTableViewController: UIViewController {
         self.checkForWarning()
         getFoods()
         updateChefLabel()
-        if(Utils.SHOW_NEWDISH) {
-            Utils.SHOW_NEWDISH = false
-            self.performSegue(withIdentifier: "showNewDish", sender: self)
-        }
+//        if(Utils.SHOW_NEWDISH) {
+//            Utils.SHOW_NEWDISH = false
+//            self.performSegue(withIdentifier: "showNewDish", sender: self)
+//        }
         initialCustomDate()
     }
     
@@ -111,19 +111,18 @@ class ChefFoodTableViewController: UIViewController {
     private func checkForWarning() {
         let isChefVerified = User().getUserDefaults().isChefVerified
         var warning: String?
-        if ChefAreaCoverage.loadFromUserDefaults() == nil {
-            warning = "Your information will not be shown to customers unless you select Coverage Areas"
-            self.warningType = .coverage
-            self.warningButtonWidthConstraint.constant = 51
-        } else if ChefLocation.loadFromUserDefaults() == nil {
+		if(!isChefVerified) {
+			warning = "Your profile is pending approval, Contact us to make it faster."
+			self.warningType = .account
+			self.warningButtonWidthConstraint.constant = 0
+		} else if ChefLocation.loadFromUserDefaults() == nil {
             warning = "Your information will not be shown to customers unless you select your location"
             self.warningType = .location
             self.warningButtonWidthConstraint.constant = 51
-        } else if(!isChefVerified) {
-            warning = "Your profile is pending approval, Contact us to make it faster."
-            self.warningType = .account
-            self.warningButtonWidthConstraint.constant = 0
-        }
+        } else {
+			warning = nil
+			self.warningViewHeightConstraint.constant = 0
+		}
         
         if let warning = warning {
             self.warningLabel.text = warning
@@ -135,17 +134,18 @@ class ChefFoodTableViewController: UIViewController {
         
         isChefVerified = User().getUserDefaults().isChefVerified
         if(!(isChefVerified )) {
-            let y = Int((self.navigationController?.navigationBar.frame.origin.y)! - 35)
-            let chefInfoLabel = UILabel(frame: CGRect(x: 0, y:y+40, width: Int(UIScreen.main.bounds.width), height: 35))
-            chefInfoLabel.translatesAutoresizingMaskIntoConstraints = true
-            chefInfoLabel.numberOfLines = 0
-            chefInfoLabel.textAlignment = .center
-            chefInfoLabel.adjustsFontSizeToFitWidth = true
-            chefInfoLabel.text = "Your profile is pending approval, Contact us to make it faster."
-            chefInfoLabel.textColor = .white
-            chefInfoLabel.backgroundColor = UIColor.amber
-            self.view.frame.origin.y = self.view.frame.origin.y + 35
-            self.view.addSubview(chefInfoLabel)
+			checkForWarning()
+//            let y = Int((self.navigationController?.navigationBar.frame.origin.y)! - 35)
+//            let chefInfoLabel = UILabel(frame: CGRect(x: 0, y:y+40, width: Int(UIScreen.main.bounds.width), height: 35))
+//            chefInfoLabel.translatesAutoresizingMaskIntoConstraints = true
+//            chefInfoLabel.numberOfLines = 0
+//            chefInfoLabel.textAlignment = .center
+//            chefInfoLabel.adjustsFontSizeToFitWidth = true
+//            chefInfoLabel.text = "Your profile is pending approval, Contact us to make it faster."
+//            chefInfoLabel.textColor = .white
+//            chefInfoLabel.backgroundColor = UIColor.amber
+//            self.view.frame.origin.y = self.view.frame.origin.y + 35
+//            self.view.addSubview(chefInfoLabel)
         }
         else{
             chefInfoLabel?.isHidden = true
@@ -195,7 +195,7 @@ class ChefFoodTableViewController: UIViewController {
         
         
         let params: [String: Any] = ["partner_id": user?.partner_id as Any, "food_type": filterString]
-        RestClient().request(WalayemApi.chefFood, params) { (result, error) in
+        RestClient().request(WalayemApi.chefFood, params, self) { (result, error) in
             self.hideActivityIndicator()
             self.tableView.refreshControl?.endRefreshing()
             
@@ -278,7 +278,7 @@ class ChefFoodTableViewController: UIViewController {
             userDefaults.set(date_time_str, forKey: "OrderDate")
             userDefaults.synchronize()
     //
-            if(StaticLinker.chefViewController != nil){
+            if(StaticLinker.chefViewController != nil && StaticLinker.chefViewController?.timePickerButton != nil){
                 StaticLinker.chefViewController?.timePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
             }
         }
@@ -322,7 +322,7 @@ class ChefFoodTableViewController: UIViewController {
     private func pauseRemoveFood(foodId: Int, action: Int){
         let params: [String: Int] = ["partner_id": user!.partner_id!, "product_id": foodId, "action": action]
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        RestClient().request(WalayemApi.pauseRemoveFood, params) { (result, error) in
+        RestClient().request(WalayemApi.pauseRemoveFood, params, self) { (result, error) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if let error = error{
                 let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String

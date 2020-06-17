@@ -43,7 +43,7 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
             if let error = value["error"] as? String{
                 self.showAlert(title: "Error", msg: error)
             }else{
-                self.logout()
+				self.showAlert(title: "Success", msg: result["message"] as? String ?? "Password Updated Successfully.")
             }
         }
     }
@@ -117,7 +117,13 @@ class ChangePasswordViewController: UIViewController, UITextFieldDelegate {
     
     private func showAlert(title: String, msg: String){
         let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
+			if title == "Success" {
+				self.logout()
+			} else {
+				alert.dismiss(animated: true, completion: nil)
+			}
+		}))
         self.present(alert, animated: true, completion: nil)
     }
     

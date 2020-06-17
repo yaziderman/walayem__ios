@@ -37,6 +37,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
     var addressList = [Address]()
     var isSearching = false
     var isFirtTime = true
+	var metaLocation = ""
 //    @IBOutlet weak var recommendedHeight: NSLayoutConstraint!
     
     var mCells = [FoodTableViewCell]()
@@ -181,7 +182,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(updateFav) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
     }
     
-    override func deliveryLocationSelected(_ location: Location, title: String) {
+    override func deliveryLocationSelected(_ location: Location?, title: String) {
         super.deliveryLocationSelected(location, title: title)
         refreshData(sender: UIRefreshControl())
     }
@@ -269,7 +270,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
     private func getAddress(){
         let params = ["partner_id": partnerId!]
         
-        RestClient().request(WalayemApi.address, params) { (result, error) in
+        RestClient().request(WalayemApi.address, params, self) { (result, error) in
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 if errmsg == OdooClient.SESSION_EXPIRED{
@@ -503,7 +504,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         params["partner_id"] = partnerId ?? 0
 //        let params : [String: Any] = ["partner_id": partnerId ?? 0]
         
-        RestClient().request(WalayemApi.recommendation, params) { (result, error) in
+        RestClient().request(WalayemApi.recommendation, params, self) { (result, error) in
             self.hideActivityIndicator()
             self.tableView.refreshControl?.endRefreshing()
             
@@ -533,7 +534,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         params["page"] = 1
 		params["filter_by"] = "location"
         isLoading = true
-        RestClient().request(WalayemApi.discoverFood, params) { (result, error) in
+        RestClient().request(WalayemApi.discoverFood, params, self) { (result, error) in
             self.hideSpinner()
             self.hideActivityIndicator()
             self.tableView.refreshControl?.endRefreshing()
@@ -546,11 +547,15 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
             
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+				self.foods.removeAll()
+				self.tableView.reloadData()
                 print (errmsg)
                 return
             }
             let value = result!["result"] as! [String: Any]
             if let status = value["status"] as? Int, status == 0{
+				self.foods.removeAll()
+				self.tableView.reloadData()
                 return
             }
             
@@ -559,6 +564,8 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
             self.page = value["current_page"] as? Int ?? 0
             self.totalPage = value["total_pages"] as? Int ?? 0
             let records = value["data"] as! [Any]
+			let meta = value["meta"] as! [String: Any]
+			self.metaLocation = meta["name"] as! String
             for record in records{
                 let food = Food(record: record as! [String: Any])
                 if !self.foods.contains(food){
@@ -573,10 +580,9 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         if (isLoading){
             return
         }
-        var params = AreaFilter.shared.coverageParams
-        params["page"] = page + 1
-		params["getChefs"] = "location"
-
+		var params = AreaFilter.shared.coverageParams
+		params["page"] = page + 1
+		params["filter_by"] = "location"
 		if (isLoading || isSearching){
             return
         }
@@ -586,7 +592,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         self.hideActivityIndicator()
         self.hideSpinner()
         self.tableView.refreshControl?.endRefreshing()
-        RestClient().request(WalayemApi.discoverFood, params) { (result, error) in
+        RestClient().request(WalayemApi.discoverFood, params, self) { (result, error) in
 		self.tableView.tableFooterView = nil
 			
             self.isLoading = false
@@ -633,8 +639,9 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         params["food_tags"] = tagIds
         params["cuisine"] = cuisineIds
         params["page"] = 1
+		params["filter_by"] = "location"
 		
-        RestClient().request(WalayemApi.searchFood, params) { (result, error) in
+        RestClient().request(WalayemApi.searchFood, params, self) { (result, error) in
             self.hideActivityIndicator()
             
             if error != nil{
@@ -673,7 +680,9 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         params["food_tags"] = tagIds
         params["cuisine"] = cuisineIds
         params["page"] = self.page + 1
-        RestClient().request(WalayemApi.searchFood, params) { (result, error) in
+		params["filter_by"] = "location"
+		
+        RestClient().request(WalayemApi.searchFood, params, self) { (result, error) in
             self.tableView.tableFooterView = nil
             self.hideActivityIndicator()
             
@@ -713,9 +722,9 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
 //                self.onSessionExpired()
             }
         }
-        else{
-            showSorryAlertWithMessage("No internet connection...!")
-        }
+//        else{
+//            showSorryAlertWithMessage("No internet connection...!")
+//        }
     }
     
     private func showSorryAlertWithMessage(_ msg: String){
@@ -760,8 +769,9 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         if db.addFoodDirectly(item: food) != -1 {
             print ("Quantity added")
             updateBadge()
-            
+			tableView.reloadRows(at: [indexPath], with: .none)
         }
+		
     }
     
     func didTapRemoveItem(sender: FoodTableViewCell) {
@@ -772,6 +782,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         if db.subtractFoodDirectly(foodId: food.id ?? 0){
             print ("Quantity subtracted")
             updateBadge()
+			tableView.reloadRows(at: [indexPath], with: .none)
         }
     }
     
@@ -827,6 +838,7 @@ extension DiscoverTableViewController: UITableViewDelegate, UITableViewDataSourc
         }
         let food = foods[indexPath.row]
         destinationVC.food = food
+		destinationVC.metaLocation = metaLocation
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
     

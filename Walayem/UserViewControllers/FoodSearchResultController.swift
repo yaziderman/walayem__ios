@@ -43,17 +43,22 @@ class FoodSearchResultController: UIViewController, FoodCellDelegate {
 		params["search"] = true
 		params["search_keyword"] = self.searchKeyword
 		params["page"] = 1
-		RestClient().request(WalayemApi.searchFood, params) { (result, error) in
+		params["filter_by"] = "location"
+		
+		RestClient().request(WalayemApi.searchFood, params, self) { (result, error) in
+			self.foods.removeAll()
 			if error != nil{
 				let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
 				print (errmsg)
+				self.tableView.reloadData()
 				return
 			}
 			let value = result!["result"] as! [String: Any]
 			if let status = value["status"] as? Int, status == 0{
+				self.tableView.reloadData()
 				return
 			}
-			self.foods.removeAll()
+			
 			self.page = value["current_page"] as? Int ?? 0
 			self.totalPages = value["total_pages"] as? Int ?? 0
 			let records = value["data"] as! [Any]
@@ -70,15 +75,19 @@ class FoodSearchResultController: UIViewController, FoodCellDelegate {
 		params["search"] = true
 		params["search_keyword"] = self.searchKeyword
 		params["page"] = self.page + 1
-		RestClient().request(WalayemApi.searchFood, params) { (result, error) in
+		params["filter_by"] = "location"
+		
+		RestClient().request(WalayemApi.searchFood, params, self) { (result, error) in
 			self.tableView.tableFooterView = nil
 			if error != nil{
 				let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
 				print (errmsg)
+				self.tableView.reloadData()
 				return
 			}
 			let value = result!["result"] as! [String: Any]
 			if let status = value["status"] as? Int, status == 0{
+				self.tableView.reloadData()
 				return
 			}
 			self.page = value["current_page"] as? Int ?? 0
@@ -104,6 +113,7 @@ class FoodSearchResultController: UIViewController, FoodCellDelegate {
 		if db.addFoodDirectly(item: food) != -1 {
 			print ("Qunatity added")
 			updateBadge()
+			tableView.reloadRows(at: [indexPath], with: .none)
 		}
 	}
 	
@@ -115,6 +125,7 @@ class FoodSearchResultController: UIViewController, FoodCellDelegate {
 		if db.subtractFoodDirectly(foodId: food.id ?? 0){
 			print ("Qunatity subtracted")
 			updateBadge()
+			tableView.reloadRows(at: [indexPath], with: .none)
 		}
 	}
 	
@@ -210,18 +221,26 @@ extension FoodSearchResultController: UISearchResultsUpdating{
 			}
 			
 			if doSearch{
-				let params: [String: Any] = ["search": true, "search_keyword": trimmedString]
-				RestClient().request(WalayemApi.searchFood, params) { (result, error) in
+				var params: [String: Any] = AreaFilter.shared.coverageParams
+				
+				params["search"] =  true
+				params["search_keyword"] = trimmedString
+				params["filter_by"] = "location"
+				
+				RestClient().request(WalayemApi.searchFood, params, self) { (result, error) in
+					self.foods.removeAll()
 					if error != nil{
 						let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
 						print (errmsg)
+						self.tableView.reloadData()
 						return
 					}
 					let value = result!["result"] as! [String: Any]
 					if let status = value["status"] as? Int, status == 0{
+						self.tableView.reloadData()
 						return
 					}
-					self.foods.removeAll()
+					
 					let records = value["data"] as! [Any]
 					for record in records{
 						let food = Food(record: record as! [String: Any])

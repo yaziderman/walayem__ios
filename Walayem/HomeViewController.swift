@@ -97,7 +97,7 @@ class HomeViewController: UIViewController{
     private func getMealsOfDay(){
         let params : [String: Any] = ["partner_id": partnerId ?? 0]
 
-        RestClient().request(WalayemApi.mealsOfDay, params) { (result, error) in
+        RestClient().request(WalayemApi.mealsOfDay, params, self) { (result, error) in
             if let error = error{
                 self.handleNetworkError(error)
                 return
@@ -132,7 +132,7 @@ class HomeViewController: UIViewController{
     private func getRecommendations(){
         let params : [String: Any] = ["partner_id": partnerId ?? 0]
 
-        RestClient().request(WalayemApi.recommendation, params) { (result, error) in
+        RestClient().request(WalayemApi.recommendation, params, self) { (result, error) in
 
             if let error = error{
                 self.handleNetworkError(error)

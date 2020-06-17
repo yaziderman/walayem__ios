@@ -54,7 +54,7 @@ class OrderTableViewController: UITableViewController, UISplitViewControllerDele
     func getOrderHistory(){
         showActivityIndicator()
         let params = ["partner_id": user?.partner_id as Any]
-        RestClient().request(WalayemApi.orderHistory, params) { (result, error) in
+        RestClient().request(WalayemApi.orderHistory, params, self) { (result, error) in
             self.hideActivityIndicator()
             
             if let error = error{

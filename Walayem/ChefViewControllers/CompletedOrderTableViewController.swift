@@ -88,7 +88,7 @@ class CompletedOrderTableViewController: UITableViewController, OrderHeaderCellD
     
     private func callServer(params: [String: Any]){
         showActivityIndicator()
-        RestClient().request(WalayemApi.chefOrders, params) { (result, error) in
+        RestClient().request(WalayemApi.chefOrders, params, self) { (result, error) in
             self.hideActivityIndicator()
            
             if let error = error{

@@ -9,6 +9,10 @@
 import UIKit
 import SDWebImage
 
+protocol ChefRatingDelegate: class {
+	func chefRated()
+}
+
 class ChefRatingViewController: UIViewController {
 
     // MARK: Properties
@@ -27,6 +31,8 @@ class ChefRatingViewController: UIViewController {
     var chef: Chef?
     var orderId: Int?
     var foods : [String]?
+	
+	weak var chefRatingDelegate: ChefRatingDelegate?
     
     // MARK: Actions
     
@@ -34,17 +40,37 @@ class ChefRatingViewController: UIViewController {
         activityIndicator.startAnimating()
         let params: [String: Any] = ["partner_id": user?.partner_id as Any, "chef_id": chef?.id as Any, "star": ratingControl.rating]
         
-        RestClient().request(WalayemApi.rateChef, params) { (result, error) in
+        RestClient().request(WalayemApi.rateChef, params, self) { (result, error) in
             self.activityIndicator.stopAnimating()
+			self.chefRatingDelegate?.chefRated()
             if let error = error{
                 let errmsg = error.userInfo[NSLocalizedDescriptionKey] as? String
                 print (errmsg)
+				self.showAlert(title: "Error", message: "Something went wrong...")
                 return
             }
-            self.dismiss(animated: true, completion: nil)
+			
+			let value = result!["result"] as! [String: Any]
+			if let status = value["status"] as? Bool, !status{
+				self.showAlert(title: "Error", message: "Something went wrong...")
+				return
+			}
+			
+			self.showAlert(title: "Success", message: value["message"] as? String ?? "")
+			
         }
     }
     
+	
+	func showAlert(title: String, message: String){
+		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+			alert.dismiss(animated: true, completion: {
+				self.dismiss(animated: true, completion: nil)
+			})
+		}))
+		present(alert, animated: true, completion: nil)
+	}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +92,7 @@ class ChefRatingViewController: UIViewController {
         }else if let orderId = orderId{
             let params: [String: Int] = ["partner_id": user!.partner_id!, "order_id": orderId]
             
-            RestClient().request(WalayemApi.orderDetail, params) { (result, error) in
+            RestClient().request(WalayemApi.orderDetail, params, self) { (result, error) in
                 if error != nil{
                     let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
                     let alert  = UIAlertController(title: "Error", message: errmsg, preferredStyle: .alert)

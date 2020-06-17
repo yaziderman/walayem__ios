@@ -78,7 +78,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
 
         if(email == nil)
         {
-            email = "walayem@gmail.com"
+            email = "contact@walayem.com"//"walayem@gmail.com"
         }
 
         let url = URL(string: "mailto:\(email!)")
@@ -216,7 +216,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
     private func getAddress(){
         let params = ["partner_id": 0]
         
-        RestClient().request(WalayemApi.address, params) { (result, error) in
+        RestClient().request(WalayemApi.address, params, self) { (result, error) in
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 if errmsg == OdooClient.SESSION_EXPIRED{

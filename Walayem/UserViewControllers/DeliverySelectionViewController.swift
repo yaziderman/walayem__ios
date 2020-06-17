@@ -9,7 +9,7 @@
 import UIKit
 
 protocol DeliverySelectionDelegate: class {
-    func deliveryLocationSelected(_: Location, title: String)
+    func deliveryLocationSelected(_: Location?, title: String)
 }
 
 class DeliverySelectionViewController: UIViewController {
@@ -35,7 +35,13 @@ class DeliverySelectionViewController: UIViewController {
 		self.tabBarController?.tabBar.isHidden = true
 	}
 	
-    @IBAction func newAddressButtonClicked() {
+	@IBAction func unsetBtnAction(_ sender: Any) {
+		AreaFilter.shared.setselectedLocation(nil, title: "")
+		self.delegate?.deliveryLocationSelected(nil, title: "")
+		closeButtonClicked()
+	}
+	
+	@IBAction func newAddressButtonClicked() {
 		let controller = UIStoryboard(name: "User", bundle: nil).instantiateViewController(withIdentifier: "LocationSelectionVCId") as! LocationSelectionViewController
 		controller.delegate = self
 		controller.modalPresentationStyle = .fullScreen
@@ -110,7 +116,7 @@ extension DeliverySelectionViewController: AddressSelectionDelegate, LocationSel
             self.present(alert, animated: true, completion: nil)
             return
         }
-        AreaFilter.shared.setselectedLocation(location, title: address.name)
+		AreaFilter.shared.setselectedLocation(location, title: address.name, addressId: address.id)
         self.delegate?.deliveryLocationSelected(location, title: address.name)
         closeButtonClicked()
     }

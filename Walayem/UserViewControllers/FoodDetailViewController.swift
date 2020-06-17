@@ -29,6 +29,7 @@ class FoodDetailViewController: UIViewController {
     
     var food: Food?
     var user: User?
+	var metaLocation = ""
     let db = DatabaseHandler()
     
     // MARK: Actions
@@ -134,7 +135,7 @@ class FoodDetailViewController: UIViewController {
             estimatedTimeLabel.text = "Prep. Time \(time) hour(s)"
             priceLabel.text = "AED \(food.price)"
             descriptionLabel.text = food.description
-            deliveryLabel.text = "Home delivery"
+			deliveryLabel.text = "Location: \(metaLocation)"
             timeLabel.text = "Preparation \(time) hour(s)"
             serveLabel.text = "Serves \(food.servingQunatity) people"
             
@@ -208,7 +209,7 @@ class FoodDetailViewController: UIViewController {
     private func checkIfFavourite(_ foodId: Int){
         let params = ["partner_id": user!.partner_id!, "product_id": foodId]
         
-        RestClient().request(WalayemApi.checkFav, params) { (result, error) in
+        RestClient().request(WalayemApi.checkFav, params, self) { (result, error) in
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 print (errmsg)
@@ -235,7 +236,7 @@ class FoodDetailViewController: UIViewController {
         let params = ["partner_id": user!.partner_id!, "product_id": food!.id]
         if food!.isFav{
             changeFavouriteBarItemIcon(isFav: false)
-            RestClient().request(WalayemApi.removeFav, params) { (result, error) in
+            RestClient().request(WalayemApi.removeFav, params, self) { (result, error) in
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 if error != nil{
                     self.changeFavouriteBarItemIcon(isFav: self.food!.isFav)
@@ -245,7 +246,7 @@ class FoodDetailViewController: UIViewController {
             }
         }else{
             changeFavouriteBarItemIcon(isFav: true)
-            RestClient().request(WalayemApi.addFav, params) { (result, error) in
+            RestClient().request(WalayemApi.addFav, params, self) { (result, error) in
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 if error != nil{
                     self.changeFavouriteBarItemIcon(isFav: self.food!.isFav)

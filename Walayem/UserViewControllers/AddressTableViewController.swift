@@ -87,7 +87,7 @@ class AddressTableViewController: UITableViewController {
     private func getAddress(){
         let params = ["partner_id": partnerId!]
         
-        RestClient().request(WalayemApi.address, params) { (result, error) in
+        RestClient().request(WalayemApi.address, params, self) { (result, error) in
             self.hideActivityIndicator()
             self.refreshControl?.endRefreshing()
             
@@ -128,7 +128,7 @@ class AddressTableViewController: UITableViewController {
     private func deleteAddress(addressId: Int){
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let params = ["partner_id": partnerId as Any, "address_id": addressId as Any]
-        RestClient().request(WalayemApi.deleteAddress, params) { (result, error) in
+        RestClient().request(WalayemApi.deleteAddress, params, self) { (result, error) in
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
         }
     }

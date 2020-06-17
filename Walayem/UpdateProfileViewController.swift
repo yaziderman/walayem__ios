@@ -86,6 +86,7 @@ class UpdateProfileViewController: UITableViewController, ChefCoverageAreaDelega
         }
         self.locationBtn.titleLabel?.textColor = color
         self.locationBtn.titleLabel?.font = UIFont.systemFont(ofSize: 17)
+		updateProfile()
     }
 	
     override func viewDidLoad() {
@@ -120,10 +121,16 @@ class UpdateProfileViewController: UITableViewController, ChefCoverageAreaDelega
     func updateProfile() {
         let partnerId = UserDefaults.standard.integer(forKey: UserDefaultsKeys.PARTNER_ID)
         var params: [String: Any] = ["partner_id": partnerId]
-        params["location"] = ["lat": self.selectedLat!, "lon": self.selectedLng!]
+		
+		guard let lat = self.selectedLat, let long = self.selectedLng else {
+			showMessagePrompt(title: "Error", message: "Please select the location")
+			return
+		}
+		
+        params["location"] = ["lat": lat, "lon": long]
         params["areas"] = self.selectedAreas!
         params["emirates"] = self.selectedEmirates ?? []
-        RestClient().request(WalayemApi.editProfile, params) { (result, error) in
+        RestClient().request(WalayemApi.editProfile, params, self) { (result, error) in
             if let error = error {
                 let errmsg = error.userInfo[NSLocalizedDescriptionKey] as? String
                 self.showMessagePrompt(title: "Error", message: errmsg ?? error.localizedDescription)
@@ -213,9 +220,9 @@ class UpdateProfileViewController: UITableViewController, ChefCoverageAreaDelega
         
         let isChef = UserDefaults.standard.bool(forKey: UserDefaultsKeys.IS_CHEF)
         if !isChef && (indexPath.row == 5 || indexPath.row == 6) {
-			if let _ = UserDefaults.standard.string(forKey: "authToken"), indexPath.row == 4{
-				return 0
-			}
+//			if let _ = UserDefaults.standard.string(forKey: "authToken"), indexPath.row == 4{
+			return 0
+//			}
 		}
         //remove update emirates id row if not chef
 //        if !UserDefaults.standard.bool(forKey: UserDefaultsKeys.IS_CHEF) && indexPath.row == 3{

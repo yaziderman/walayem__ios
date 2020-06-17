@@ -31,7 +31,7 @@ class ResetPasswordViewController: UIViewController, UITextFieldDelegate {
         let email = emailTextField.text ?? ""
         let params = ["login": email]
         
-        RestClient().request(WalayemApi.changePassword, params) { (result, error) in
+        RestClient().request(WalayemApi.changePassword, params, self) { (result, error) in
             activityIndicator.stopAnimating()
             self.requestButton.isEnabled = true
             var message = "Something went wrong!"

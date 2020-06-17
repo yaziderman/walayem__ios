@@ -48,7 +48,7 @@ class OrderViewController: UITableViewController {
                           "order_id": self.orderId as Any,
                           "next_state": OrderState.cancel.rawValue] as [String : Any]
             
-            RestClient().request(WalayemApi.changeOrderState, params) { (result, error) in
+            RestClient().request(WalayemApi.changeOrderState, params, self) { (result, error) in
                 if let error = error{
                     let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
                     self.showMessagePrompt(title: "Cannot cancel order", msg: errmsg)
@@ -97,7 +97,7 @@ class OrderViewController: UITableViewController {
         
         let params: [String: Int] = ["partner_id": user!.partner_id!, "order_id": orderId]
         
-        RestClient().request(WalayemApi.orderDetail, params) { (result, error) in
+        RestClient().request(WalayemApi.orderDetail, params, self) { (result, error) in
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 let alert  = UIAlertController(title: "Error", message: errmsg, preferredStyle: .alert)

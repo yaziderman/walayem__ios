@@ -154,7 +154,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func getContactDetails(){
-        RestClient().request(WalayemApi.contact, [:]) { (result, error) in
+        RestClient().request(WalayemApi.contact, [:], nil) { (result, error) in
             if let _ = error{
                 return
             }
@@ -177,7 +177,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func getChefSettings(){
-        RestClient().request(WalayemApi.getChefSettings, [:]) { (result, error) in
+        RestClient().request(WalayemApi.getChefSettings, [:], nil) { (result, error) in
             if let _ = error{
                 return
             }

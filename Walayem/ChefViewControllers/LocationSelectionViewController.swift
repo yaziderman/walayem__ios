@@ -49,8 +49,7 @@ class LocationSelectionViewController: UIViewController, GMSMapViewDelegate {
     }
     
     @IBAction func doneBtnClicked(_ sender: Any) {
-        callDelegateForLocationSelection()
-        self.closeBtnClicked(UIButton())
+		validateLocation()
     }
     
     @IBAction func searchButtonClicked() {
@@ -209,7 +208,68 @@ class LocationSelectionViewController: UIViewController, GMSMapViewDelegate {
         let address = self.selectedAddress ?? UserAddress(street: "", city: "")
         self.delegate?.locationSelected(location, title: title, address: address)
     }
-
+	
+	func validateLocation(){
+		guard let location = self.selectedLocation else {
+			return
+		}
+		
+		let params = ["lat": location.latitude, "long": location.longitude]
+		
+		RestClient().request(WalayemApi.areaCovered, params, self) { (result, error) in
+			
+			if let error = error{
+				self.handleNetworkError(error)
+				return
+			}
+			
+			if error != nil{
+				let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+				print (errmsg)
+				return
+			}
+			let value = result!["result"] as! [String: Any]
+			guard let status = value["status"] as? Bool else{
+				return
+			}
+			
+			if status {
+				self.callDelegateForLocationSelection()
+				self.closeBtnClicked(UIButton())
+			} else {
+				if let message = value["message"] as? String {
+					self.showSorryAlertWithMessage(message)
+				} else {
+					self.showSorryAlertWithMessage("Something went wrong...")
+				}
+			}
+		}
+	}
+	
+	private func handleNetworkError(_ error: NSError){
+		if error.userInfo[NSLocalizedDescriptionKey] != nil{
+			let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
+			if error.domain == NSURLErrorDomain && error.code == URLError.notConnectedToInternet.rawValue{
+				let alert = UIAlertController(title: "Cannot get Foods", message: errmsg, preferredStyle: .alert)
+				alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+				present(alert, animated: true, completion: nil)
+			}else if errmsg == OdooClient.SESSION_EXPIRED{
+				self.onSessionExpired()
+			} else {
+				showSorryAlertWithMessage("Some thing wrong in backend ...!")
+			}
+		}
+		else{
+			showSorryAlertWithMessage("Some thing wrong in backend ...!")
+		}
+	}
+	
+	private func showSorryAlertWithMessage(_ msg: String){
+		let alert = UIAlertController(title: "Sorry", message: msg, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+		present(alert, animated: true, completion: nil)
+	}
+	
 	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		setUpNavigationBar(setGreen: false)

@@ -51,6 +51,7 @@ class WalayemApi{
     static let orderedFoods: String = "\(BASE_URL)/api/orderedFoods"
     static let getActiveFoodIds: String = "\(BASE_URL)/api/getActiveProductIds"
 	static let cartDetails: String = "\(BASE_URL)/api/order/cost"
+	static let areaCovered = "\(BASE_URL)/api/covered"
 
     // Chef Api
     static let chefOrders: String = "\(BASE_URL)/api/chef/vieworder"

@@ -25,7 +25,7 @@ class BaseTabViewController: UIViewController, DeliverySelectionDelegate, Delive
         locationView.locationUpdated()
     }
     
-    func deliveryLocationSelected(_: Location, title: String) {
+    func deliveryLocationSelected(_: Location?, title: String) {
         locationView.locationUpdated()
     }
     

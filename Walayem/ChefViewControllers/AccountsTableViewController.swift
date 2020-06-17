@@ -43,7 +43,7 @@ class AccountsTableViewController: UITableViewController, OrderHeaderCellDelegat
     private func getOrderHistory(){
         showActivityIndicator()
         let params: [String: Int] = ["partner_id": user!.partner_id!]
-        RestClient().request(WalayemApi.chefAccountsHistory, params) { (result, error) in
+		RestClient().request(WalayemApi.chefAccountsHistory, params, self) { (result, error) in
             self.hideActivityIndicator()
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String

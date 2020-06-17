@@ -187,33 +187,6 @@
                                 <action selector="cancelBtnAction:" destination="lH6-YQ-xZY" id="Bg5-Na-I5F"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="jYb-6e-Dql">
-                            <view key="customView" contentMode="scaleToFill" id="ig7-F7-6D6">
-                                <rect key="frame" x="276" y="5.5" width="83" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Yk-Na-OHz">
-                                        <rect key="frame" x="21" y="1.5" width="41" height="30"/>
-                                        <state key="normal" title="Unset">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="unsetButtonClicked" destination="lH6-YQ-xZY" eventType="touchUpInside" id="Ny7-W1-KQc"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="7Yk-Na-OHz" firstAttribute="centerX" secondItem="ig7-F7-6D6" secondAttribute="centerX" id="1Tn-kq-kIm"/>
-                                    <constraint firstItem="7Yk-Na-OHz" firstAttribute="centerY" secondItem="ig7-F7-6D6" secondAttribute="centerY" id="OnA-wI-ueX"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="addressesContainerView" destination="iia-VM-Irt" id="RUv-ID-FAg"/>

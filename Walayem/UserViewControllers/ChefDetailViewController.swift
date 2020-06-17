@@ -34,7 +34,8 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     @IBOutlet weak var foodTableView: UITableView!
     @IBOutlet weak var foodTableViewHeightCnstrnt: NSLayoutConstraint!
     @IBOutlet weak var emptyView: UIView!
-    
+	@IBOutlet weak var locatonLabel: UILabel!
+	
     var isChefDescAvailable = true
     
     
@@ -94,6 +95,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
                 fatalError("Unexpected View controller")
             }
             chefRatingVC.chef = chef
+			chefRatingVC.chefRatingDelegate = self
             chefRatingVC.foods = self.orderedFoods
             if(hadOrdered){
                 present(chefRatingVC, animated: true, completion: nil)
@@ -151,16 +153,29 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
             nameLabel.text = chef.name
             kitchenLabel.text = chef.kitchen
             descriptionLabel.text = chef.description
+			
+			if chef.area?.emirate?.name == "" {
+				locatonLabel.isHidden = true
+			} else {
+				locatonLabel.isHidden = false
+				locatonLabel.text = chef.area?.emirate?.name
+			}
+			
+//			locatonLabel.text = chef.
             
             print(" \(chef.description) -< this is chef.description")
             
             if chef.description == ""{
                 isChefDescAvailable = false
-//                self.descriptionLabel.isHidden = true
-//                self.desc.isHidden = true
-//                self.img.isHidden = true
-//
-            }
+                self.descriptionLabel.isHidden = true
+                self.desc.isHidden = true
+                self.img.isHidden = true
+			} else {
+				isChefDescAvailable = true
+				self.descriptionLabel.isHidden = false
+				self.desc.isHidden = false
+				self.img.isHidden = false
+			}
             
             var tagString: String = ""
             for tag in chef.foods[0].tags{
@@ -246,7 +261,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     
     private func loadPrevFoods(){
           let params = ["partner_id": user!.partner_id!, "chef_id": chef!.id]
-        RestClient().request(WalayemApi.orderedFoods, params) { (result, error) in
+        RestClient().request(WalayemApi.orderedFoods, params, self) { (result, error) in
             if error != nil{
                 return
             }
@@ -270,7 +285,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
         let params = ["partner_id": user!.partner_id!, "chef_id": chef!.id]
         if chef!.isFav{
             changeFavouriteBarItemIcon(isFav: false)
-            RestClient().request(WalayemApi.removeFav, params) { (result, error) in
+            RestClient().request(WalayemApi.removeFav, params, self) { (result, error) in
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 if error != nil{
                     self.changeFavouriteBarItemIcon(isFav: self.chef!.isFav)
@@ -280,7 +295,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
             }
         }else{
             changeFavouriteBarItemIcon(isFav: true)
-            RestClient().request(WalayemApi.addFav, params) { (result, error) in
+            RestClient().request(WalayemApi.addFav, params, self) { (result, error) in
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 if error != nil{
                     self.changeFavouriteBarItemIcon(isFav: self.chef!.isFav)
@@ -294,7 +309,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     private func checkIsFavourite(_ chefId: Int){
         let params = ["partner_id": user!.partner_id!, "chef_id": chefId]
         
-        RestClient().request(WalayemApi.checkFav, params) { (result, error) in
+        RestClient().request(WalayemApi.checkFav, params, self) { (result, error) in
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 print (errmsg)
@@ -388,6 +403,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
         if db.addFoodDirectly(item: food) != -1 {
             print ("Quantity added")
             updateBadge()
+			foodTableView.reloadRows(at: [indexPath], with: .none)
         }
     }
     
@@ -399,6 +415,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
         if db.subtractFoodDirectly(foodId: food.id ?? 0){
             print ("Quantity subtracted")
             updateBadge()
+			foodTableView.reloadRows(at: [indexPath], with: .none)
         }
     }
 		
@@ -406,7 +423,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
         
         showSpinner()
         let params : [String: Int] = ["chef_id": self.chef_id!]
-        RestClient().request(WalayemApi.getChefById, params) { (result, error) in
+        RestClient().request(WalayemApi.getChefById, params, self) { (result, error) in
             if let error = error{
                 self.handleNetworkError(error)
                 return
@@ -561,4 +578,12 @@ extension ChefDetailViewController: UICollectionViewDelegate, UICollectionViewDa
         collectionView.scrollToItem(at: indexPath, at: .left, animated: true)
         filterFoods(chef!.foods)
     }
+}
+
+extension ChefDetailViewController: ChefRatingDelegate {
+	
+	func chefRated() {
+		getChefRating(chef?.id ?? 0)
+	}
+	
 }

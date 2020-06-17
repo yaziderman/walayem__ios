@@ -50,17 +50,23 @@ class FoodTableViewCell: UITableViewCell{
     // MARK: Actions
     
     @IBAction func addItem(_ sender: UIButton) {
-        food.quantity += 1
-        quantityLabel.text = String(food.quantity)
-        delegate?.didTapAddItem(sender: self)
+		delegate?.didTapAddItem(sender: self)
+//		let foodList = db.getFoods()
+//		for f in foodList {
+//			if f.id == food.id {
+//				quantityLabel.text = String(f.quantity + 1)
+//				break
+//			}
+//		}
     }
     
     @IBAction func subtractItem(_ sender: UIButton) {
-        if food.quantity > 0{
-            food.quantity -= 1
-            quantityLabel.text = String(food.quantity)
-            delegate?.didTapRemoveItem(sender: self)
-        }
+		delegate?.didTapRemoveItem(sender: self)
+//        if food.quantity > 0{
+//            food.quantity -= 1
+//            quantityLabel.text = String(food.quantity)
+//            delegate?.didTapRemoveItem(sender: self)
+//        }
     }
     
     
@@ -78,18 +84,25 @@ class FoodTableViewCell: UITableViewCell{
         
         timeLabel.text = numberOfServesLabel
         
-        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image/150x150")
+        let imageUrl = URL(string: "\(WalayemApi.BASE_URL)/walayem/image/product.template/\(food.id ?? 0)/image_medium")
 //        foodImageView.kf.setImage(with: imageUrl)
 //        foodImageView.load
 //        foodImageView.load.request(with: imageUrl) // using ImageLoader
 //        foodImageView.pin_setImage(from: URL(string:imageUrl)!)
         foodImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
         foodImageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
+		refreshCell()
 //        ImageLoader
     }
     
     func refreshCell(){
-        quantityLabel.text = String(food.quantity)
+		let foodList = db.getFoods()
+		for f in foodList {
+			if f.id == food.id {
+				quantityLabel.text = String(f.quantity)
+				break
+			}
+		}
     }
     
 }

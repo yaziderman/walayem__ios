@@ -198,7 +198,7 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
     
     private func getKitchenStatus(){
         let params: [String: Any] = ["partner_id": user!.partner_id!]
-        RestClient().request(WalayemApi.viewKitchenStatus, params) { (result, error) in
+        RestClient().request(WalayemApi.viewKitchenStatus, params, self) { (result, error) in
             if error != nil {
                 _ = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 //error here
@@ -219,7 +219,7 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
     }
     private func setKitchenStatus(){
         let params: [String: Any] = ["partner_id": user!.partner_id!, "status":kitchenSwitch.isOn]
-        RestClient().request(WalayemApi.changeKitchenStatus, params) { (result, error) in
+        RestClient().request(WalayemApi.changeKitchenStatus, params, self) { (result, error) in
             self.getKitchenStatus()
         }
     }
@@ -227,7 +227,7 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
     private func getCurrentMonthEarnings() {
 
         let params: [String: Any] = ["partner_id": user!.partner_id!, "date": Utils.getCurrentMonthAndYear()]
-        RestClient().request(WalayemApi.viewAmountForMonth, params) { (result, error) in
+        RestClient().request(WalayemApi.viewAmountForMonth, params, self) { (result, error) in
             if error != nil {
                 _ = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 //error here
@@ -248,7 +248,7 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
 
     private func getTotalEarnings() {
         let params: [String: Any] = ["partner_id": user?.partner_id as Any]
-        RestClient().request(WalayemApi.viewWalletAmount, params) { (result, error) in
+        RestClient().request(WalayemApi.viewWalletAmount, params, self) { (result, error) in
             if error != nil {
                 _ = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 //error here
@@ -306,8 +306,12 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
             OdooClient.destroy()
             User().clearUserDefaults();
             
-            let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
-            self.present(viewController, animated: true, completion: nil)
+			
+			
+//            let viewController: UIViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
+//            self.present(viewController, animated: true, completion: nil)
+			let appDelegate = UIApplication.shared.delegate as! AppDelegate
+			appDelegate.shouldMoveToMainPage()
         })
         
         

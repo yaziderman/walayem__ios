@@ -22,6 +22,7 @@ class Chef: Equatable{
     var rating: Int = 0
     var isFav: Bool = false
     var foods = [Food]()
+	var area: Area?
   
 //    init(record: [String: Any]){
 //        self.id = record["chef_id"] as! Int
@@ -51,6 +52,7 @@ class Chef: Equatable{
 			let food = Food(record: (product as? [String : Any] ?? [String: Any]()))
             self.foods.append(food)
         }
+		area = Area(record: record["area"] as? [String: Any] ?? [String: Any]())
         print(self.foods)
     }
     
@@ -62,4 +64,46 @@ class Chef: Equatable{
         self.foods = foods
     }
     
+}
+
+
+class Area: Equatable{
+	
+	static func == (lhs: Area, rhs: Area) -> Bool {
+		return (lhs.id == rhs.id)
+	}
+	
+	var id: Int = 0
+	var name: String = ""
+	var emirate: Emirate?
+	
+	init(record: [String: Any]){
+		self.id = record["id"] as? Int ?? 0
+		self.name = record["name"] as? String ?? ""
+		//        self.kitchen = record["kitchen_name"] as! String
+		self.emirate = Emirate(record: record["emirate"] as? [String: Any] ?? [String: Any]())
+		
+	}
+	
+}
+
+
+class Emirate: Equatable{
+	
+	static func == (lhs: Emirate, rhs: Emirate) -> Bool {
+		return (lhs.id == rhs.id)
+	}
+	
+	var id: Int = 0
+	var name: String = ""
+	var code: String = ""
+	
+	init(record: [String: Any]){
+		self.id = record["id"] as? Int ?? 0
+		self.name = record["name"] as? String ?? ""
+		//        self.kitchen = record["kitchen_name"] as! String
+		self.code = record["code"] as? String ?? ""
+		
+	}
+	
 }

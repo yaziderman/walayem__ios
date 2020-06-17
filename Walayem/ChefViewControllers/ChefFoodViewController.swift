@@ -165,7 +165,7 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
         }
         
         self.showHideProgress(isLoading: true)
-        RestClient().request(WalayemApi.createFood, params) { (result, error) in
+        RestClient().request(WalayemApi.createFood, params, self) { (result, error) in
             self.showHideProgress(isLoading: false)
             
 			if error != nil{

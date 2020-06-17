@@ -64,7 +64,7 @@ class ChefOrderDetailViewController: UIViewController {
                       "order_id": orderId as Any,
                       "next_state": nextState.rawValue] as [String : Any]
         
-        RestClient().request(WalayemApi.changeOrderState, params) { (result, error) in
+        RestClient().request(WalayemApi.changeOrderState, params, self) { (result, error) in
             progressAlert.stopAnimating()
             if let error = error{
                 let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
@@ -90,7 +90,7 @@ class ChefOrderDetailViewController: UIViewController {
                           "next_state": OrderState.rejected.rawValue,
                           "reject_reason": reason] as [String : Any]
 
-            RestClient().request(WalayemApi.changeOrderState, params) { (result, error) in
+            RestClient().request(WalayemApi.changeOrderState, params, self) { (result, error) in
                 progressAlert.stopAnimating()
                 if let error = error{
                     let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
@@ -182,7 +182,7 @@ class ChefOrderDetailViewController: UIViewController {
         showActivityIndicator()
         let params: [String: Int] = ["partner_id": user!.partner_id!, "order_id": orderId!]
         
-        RestClient().request(WalayemApi.orderDetail, params) { (result, error) in
+        RestClient().request(WalayemApi.orderDetail, params, self) { (result, error) in
             if error != nil{
                 let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 let alert  = UIAlertController(title: "Error", message: errmsg, preferredStyle: .alert)

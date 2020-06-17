@@ -53,7 +53,7 @@ class InviteViewController: UIViewController {
         let activityIndicator = showActivityIndicator()
         let params: [String: Any] = ["partner_id": user?.partner_id as Any, "friend_email": email]
         
-        RestClient().request(WalayemApi.invite, params, { (result, error) in
+        RestClient().request(WalayemApi.invite, params, self, { (result, error) in
             activityIndicator.stopAnimating()
             var message = "Something went wrong!"
             var title = "Error"
