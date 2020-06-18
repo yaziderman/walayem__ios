@@ -86,4 +86,12 @@ class LocationWrapper: NSObject, CLLocationManagerDelegate {
 		DLog(message: error)
 		locationDelegate?.locationPermissionDenied()
 	}
+	
+	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+		if status == .authorizedWhenInUse || status == .authorizedAlways {
+			locationManager?.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+			locationManager?.startUpdatingLocation()
+		}
+	}
+	
 }

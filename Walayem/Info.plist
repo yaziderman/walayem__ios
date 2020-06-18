@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Application requires user’s location for better user experience.</string>
-	<key>NSLocationUsageDescription</key>
-	<string>Application requires user’s location for better user experience.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -65,9 +61,13 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Allows you to take photos to add to your profile or foods</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Application requires user’s location for better user experience.</string>
+	<string>Turn on location to find food and chefs around you. </string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Turn on location to find food and chefs around you. </string>
+	<key>NSLocationUsageDescription</key>
+	<string>Turn on location to find food and chefs around you. </string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Application requires user’s location for better user experience.</string>
+	<string>Turn on location to find food and chefs around you. </string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Allows you to add photos to your profile or foods</string>
 	<key>UIBackgroundModes</key>

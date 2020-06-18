@@ -302,7 +302,7 @@
                                                                 <constraint firstAttribute="height" constant="38" id="5VX-wb-17O"/>
                                                                 <constraint firstAttribute="width" constant="38" id="MFN-mm-YEA"/>
                                                             </constraints>
-                                                            <state key="normal" image="phoneIcon"/>
+                                                            <state key="normal" image="phone-n"/>
                                                             <connections>
                                                                 <action selector="call:" destination="XAd-Ib-C3d" eventType="touchUpInside" id="EE5-hZ-OoQ"/>
                                                             </connections>
@@ -324,7 +324,7 @@
                                                                 <constraint firstAttribute="height" constant="38" id="CC9-81-4nR"/>
                                                                 <constraint firstAttribute="width" constant="38" id="crB-0M-Nck"/>
                                                             </constraints>
-                                                            <state key="normal" image="mailIcon-pdf"/>
+                                                            <state key="normal" image="mail"/>
                                                             <connections>
                                                                 <action selector="email:" destination="XAd-Ib-C3d" eventType="touchUpInside" id="aZd-5s-XhC"/>
                                                             </connections>
@@ -402,7 +402,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="38" id="MnC-cA-Eej"/>
                                                             </constraints>
-                                                            <state key="normal" image="instagramIcon-pdf"/>
+                                                            <state key="normal" image="instagram"/>
                                                             <connections>
                                                                 <action selector="connectInsta:" destination="XAd-Ib-C3d" eventType="touchUpInside" id="azW-rl-Hdy"/>
                                                             </connections>
@@ -668,11 +668,11 @@
         <image name="facebook" width="192" height="192"/>
         <image name="graph" width="36" height="36"/>
         <image name="income" width="36" height="36"/>
-        <image name="instagramIcon-pdf" width="76" height="76"/>
+        <image name="instagram" width="76" height="76"/>
         <image name="kitchen" width="36" height="36"/>
         <image name="logout" width="36" height="36"/>
-        <image name="mailIcon-pdf" width="76" height="76"/>
-        <image name="phoneIcon" width="38" height="38"/>
+        <image name="mail" width="76" height="76"/>
+        <image name="phone-n" width="76" height="76"/>
         <image name="privacy" width="36" height="36"/>
         <image name="profile" width="16" height="18"/>
         <image name="share_icon" width="64" height="64"/>

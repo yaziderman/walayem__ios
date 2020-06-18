@@ -41,9 +41,7 @@ class Chef: Equatable{
     init(record: [String: Any], name: String){
         self.id = record["chef_id"] as? Int ?? 0
         self.name = record["chef_name"] as? String ?? ""
-//        self.kitchen = record["kitchen_name"] as! String
-		let kitchenDetail = record["kitchen"] as? [String: Any] ?? [String: Any]()
-        self.kitchen = kitchenDetail["kitchen_name"] as? String ?? ""
+        self.kitchen = record["kitchen_name"] as? String ?? ""
 		self.image = record["chef_image_hash"] as? String ?? ""
         self.description = record["chef_description"] as? String ?? ""
         

@@ -56,8 +56,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		guard let vc = storyboard.instantiateViewController(withIdentifier: "UserTabBarController") as? UserTabBarController else {
 			return
 		}
-		let navigationController = UINavigationController(rootViewController: vc)
-		window?.rootViewController = navigationController
+//		let navigationController = UINavigationController(rootViewController: vc)
+		window?.rootViewController = vc
 		window?.makeKeyAndVisible()
 	}
    

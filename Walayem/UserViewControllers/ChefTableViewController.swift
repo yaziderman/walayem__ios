@@ -417,12 +417,6 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 	// MARK: Private methods
 	
 	private func setupSearch(){
-		guard let searchResultController = storyboard?.instantiateViewController(withIdentifier: "ChefSearchResultsVCId") as? ChefSearchResultsViewController else {
-			fatalError("Unexpected ViewController")
-		}
-		let searchController = UISearchController(searchResultsController: searchResultController)
-		searchController.searchResultsUpdater = searchResultController
-		searchController.searchBar.placeholder = "Search for chefs"
 		
 		if #available(iOS 13.0, *) {
 			let appearance = UINavigationBarAppearance()
@@ -434,8 +428,13 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 		} else {
 			// Fallback on earlier versions
 		}
-		searchController.obscuresBackgroundDuringPresentation = false
 		
+		guard let searchResultController = storyboard?.instantiateViewController(withIdentifier: "ChefSearchResultsVCId") as? ChefSearchResultsViewController else {
+			fatalError("Unexpected ViewController")
+		}
+		let searchController = UISearchController(searchResultsController: searchResultController)
+		searchController.searchResultsUpdater = searchResultController
+		searchController.searchBar.placeholder = "Search for chefs"
 		searchController.searchBar.tintColor = UIColor.colorPrimary
 		if #available(iOS 11.0, *){
 			navigationItem.searchController = searchController
@@ -444,7 +443,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 		}
 		searchController.searchBar.setShowsCancelButton(false, animated: true)
 		searchController.searchBar.showsCancelButton = false
-		tableView.tableHeaderView = searchController.searchBar
+//		tableView.tableHeaderView = searchController.searchBar
 		definesPresentationContext = true
 	}
 	

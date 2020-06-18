@@ -469,9 +469,6 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         }else{
             navigationItem.titleView = searchController.searchBar
         }
-        searchController.searchBar.setShowsCancelButton(false, animated: true)
-        searchController.searchBar.showsCancelButton = false
-         searchController.searchBar.showsCancelButton = false
         definesPresentationContext = true
     }
     
