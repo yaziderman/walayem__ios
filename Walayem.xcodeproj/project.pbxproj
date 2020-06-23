@@ -156,6 +156,7 @@
 		D0A223582458EFAC009C90B2 /* ChefCoverageArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A223572458EFAC009C90B2 /* ChefCoverageArea.swift */; };
 		D0BB1EFA24715EAF0029B3D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0BB1EF924715EAF0029B3D1 /* GoogleService-Info.plist */; };
 		F59E40FE2490C0750067F763 /* LocationWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E40FD2490C0750067F763 /* LocationWrapper.swift */; };
+		F5AAF1C424A1E631003945F8 /* ChangeDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AAF1C324A1E630003945F8 /* ChangeDescriptionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -314,6 +315,7 @@
 		D8AE526667D0D9C189AB98C6 /* Pods-Walayem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Walayem.release.xcconfig"; path = "Target Support Files/Pods-Walayem/Pods-Walayem.release.xcconfig"; sourceTree = "<group>"; };
 		F571300924912E31009EF29F /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 		F59E40FD2490C0750067F763 /* LocationWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWrapper.swift; sourceTree = "<group>"; };
+		F5AAF1C324A1E630003945F8 /* ChangeDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDescriptionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -349,6 +351,7 @@
 				0A10A5EB211C2E4800112D6D /* UpdateEmiratesIDViewController.swift */,
 				D0A223572458EFAC009C90B2 /* ChefCoverageArea.swift */,
 				7F3FD1DA2483DA4800F53684 /* LocationSelectionViewController.swift */,
+				F5AAF1C324A1E630003945F8 /* ChangeDescriptionViewController.swift */,
 			);
 			path = ChefViewControllers;
 			sourceTree = "<group>";
@@ -825,6 +828,7 @@
 				5B467DF623B882CE008620FF /* Account.swift in Sources */,
 				F59E40FE2490C0750067F763 /* LocationWrapper.swift in Sources */,
 				52EA619C20B3E53E001DB6CC /* TermsViewController.swift in Sources */,
+				F5AAF1C424A1E631003945F8 /* ChangeDescriptionViewController.swift in Sources */,
 				47FF3DEE20A1F62800A6289F /* OrderTableViewController.swift in Sources */,
 				0409E71420A426FB00C95E10 /* OrderFoodHeaderCell.swift in Sources */,
 				040902D620B2A01500059F1D /* ChooseCuisineViewController.swift in Sources */,
@@ -1070,7 +1074,7 @@
 				CODE_SIGN_ENTITLEMENTS = Walayem/Walayem.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Walayem/Info.plist;
@@ -1097,7 +1101,7 @@
 				CODE_SIGN_ENTITLEMENTS = Walayem/Walayem.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Walayem/Info.plist;

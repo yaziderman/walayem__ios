@@ -47,7 +47,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        GIDSignIn.sharedInstance()?.presentingViewController = self
         setRootViewController()
 //        getContactDetails()
-//        getChefSettings()
+//        getChefSettings()'
+		#if DEBUG
+		Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
+		#endif
         return true
     }
     

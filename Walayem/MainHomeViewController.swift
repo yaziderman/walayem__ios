@@ -27,8 +27,8 @@ class MainHomeViewController: BaseTabViewController {
 	var locationWrapper: LocationWrapper?
 	var locationManager: CLLocationManager?
 
-//    let bookmarks = ["Recommended", "Meals of the day", "Cuisines", "Categories"]
-    let bookmarks = ["Recommended", "Ramadan meals", "Cuisines", "Categories"]
+    let bookmarks = ["Recommended", "Meals of the day", "Cuisines", "Categories"]
+//    let bookmarks = ["Recommended", "Ramadan meals", "Cuisines", "Categories"]
 //    let bookmarks = ["مختارات السحور","رمضانيات", "Cuisines", "Categories"]
 
     

@@ -247,12 +247,17 @@ class ChefCoverageArea: UIViewController, UITableViewDelegate, UITableViewDataSo
             self.selectedAreaTitleArray.append(item)
             self.filteredSections[sender.tag]["isSelected"] = true
 			var section = self.filteredSectionItems[sender.tag]
-			selectedAreaArray.removeAll()
 			for i in 0..<section.count {
 				var item = section[i]
 				item["isSelected"] = true
-				selectedAreaTitleArray.append(item["title"] as! String)
-				self.selectedAreaArray.append(item["id"] as! Int)
+				if !selectedAreaArray.contains(item["id"] as! Int) {
+					self.selectedAreaArray.append(item["id"] as! Int)
+				}
+				
+				if !selectedAreaTitleArray.contains(item["title"] as! String) {
+					selectedAreaTitleArray.append(item["title"] as! String)
+				}
+				
 				section[i] = item
 			}
 			self.filteredSectionItems[sender.tag] = section

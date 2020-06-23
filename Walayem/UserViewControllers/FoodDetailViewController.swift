@@ -26,7 +26,8 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var timeImageView: UIImageView!
     @IBOutlet weak var quantityImageView: UIImageView!
     var favouriteBarItem: UIBarButtonItem?
-    
+	@IBOutlet weak var locationStackView: UIStackView!
+	
     var food: Food?
     var user: User?
 	var metaLocation = ""
@@ -50,7 +51,7 @@ class FoodDetailViewController: UIViewController {
         print("Open Chef Detail")
         
         let storyboard : UIStoryboard = UIStoryboard(name: "Chef", bundle: nil)
-        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "ChefDetailViewController") as? ChefDetailViewController else{
+        guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "ChefDetailVCId") as? ChefDetailViewController else{
             fatalError("Unexpected destination VC")
         }
         
@@ -135,7 +136,12 @@ class FoodDetailViewController: UIViewController {
             estimatedTimeLabel.text = "Prep. Time \(time) hour(s)"
             priceLabel.text = "AED \(food.price)"
             descriptionLabel.text = food.description
-			deliveryLabel.text = "Location: \(metaLocation)"
+			if metaLocation.isEmpty {
+				locationStackView.isHidden = true
+			} else {
+				locationStackView.isHidden = false
+				deliveryLabel.text = "Location: \(metaLocation)"
+			}
             timeLabel.text = "Preparation \(time) hour(s)"
             serveLabel.text = "Serves \(food.servingQunatity) people"
             

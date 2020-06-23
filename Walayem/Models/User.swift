@@ -26,6 +26,7 @@ struct UserDefaultsKeys{
     static let AUTH_TOKEN = "authToken"
     static let CHEF_COVERAGE_AREA = "ChefCoverageArea"
     static let CHEF_LOCATION = "ChefLocation"
+	static let CHEF_DESCRIPTION: String = "chefDescription"
 }
 
 class User{
@@ -35,6 +36,7 @@ class User{
     var session_id: String?
     var partner_id: Int?
     var image: String?
+	var chefDescription: String?
     var isChef: Bool = false
     var isChefVerified: Bool = false
     var firebaseToken: String?
@@ -48,6 +50,7 @@ class User{
         self.isChef = record["is_chef"] as! Bool
         self.isChefVerified = record["is_chef_verified"] as! Bool
         self.image = record["image"] as? String ?? ""
+		self.chefDescription = record["chef_description"] as? String ?? ""
     }
     
     func getUserDefaults() -> User{
@@ -61,6 +64,7 @@ class User{
         self.image = userDefaults.string(forKey: UserDefaultsKeys.IMAGE)
         self.isChef = userDefaults.bool(forKey: UserDefaultsKeys.IS_CHEF)
         self.isChefVerified = userDefaults.bool(forKey: UserDefaultsKeys.IS_CHEF_VERIFIED)
+		self.chefDescription = userDefaults.string(forKey: UserDefaultsKeys.CHEF_DESCRIPTION)
 
         return self
     }
@@ -81,6 +85,7 @@ class User{
         userDefaults.removeObject(forKey: UserDefaultsKeys.USER_AREA_TITLE)
         userDefaults.removeObject(forKey: UserDefaultsKeys.CHEF_COVERAGE_AREA)
         userDefaults.removeObject(forKey: UserDefaultsKeys.CHEF_LOCATION)
+		userDefaults.removeObject(forKey: UserDefaultsKeys.CHEF_DESCRIPTION)
         userDefaults.removeObject(forKey: "authToken")
         userDefaults.synchronize()
     }

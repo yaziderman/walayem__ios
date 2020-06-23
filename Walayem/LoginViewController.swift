@@ -285,7 +285,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     }
     
     private func loadUserDetails(_ authResult: [String: Any]?){
-        let fields = ["id", "name", "email", "phone", "is_chef", "is_chef_verified", "is_image_set"]
+        let fields = ["id", "name", "email", "phone", "is_chef", "is_chef_verified", "is_image_set", "chef_description"]
         
         OdooClient.sharedInstance().searchRead(model: "res.partner", domain: [], fields: fields, offset: 0, limit: 1, order: "name ASC") { (result, error) in
             if let error = error {
@@ -357,6 +357,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         userDefaults.set(user.phone, forKey: UserDefaultsKeys.PHONE)
         userDefaults.set(user.isChef, forKey: UserDefaultsKeys.IS_CHEF)
         userDefaults.set(partnerId, forKey: UserDefaultsKeys.PARTNER_ID)
+		userDefaults.set(user.chefDescription, forKey: UserDefaultsKeys.CHEF_DESCRIPTION)
         //userDefaults.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
     }
     
