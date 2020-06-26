@@ -238,6 +238,10 @@ class MainHomeViewController: BaseTabViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        getPromoted()
+		if StaticLinker.shouldGetLocation {
+			StaticLinker.shouldGetLocation = false
+			locationWrapper = LocationWrapper(locationDelegate: self)
+		}
         StaticLinker.selectedCuisine = nil
     }
     

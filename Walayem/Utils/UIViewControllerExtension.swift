@@ -72,6 +72,7 @@ extension UIViewController{
             Messaging.messaging().unsubscribe(fromTopic: "alluseri")
             User().clearUserDefaults()
             OdooClient.destroy()
+			StaticLinker.shouldGetLocation = true
             StaticLinker.mainVC?.selectedIndex = 0
             Utils.notifyRefresh()
 

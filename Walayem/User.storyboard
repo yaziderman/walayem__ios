@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7sD-th-m69">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7sD-th-m69">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -845,9 +845,9 @@ we’ll send you instructions</string>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ekL-Cx-tlR">
                                                                 <rect key="frame" x="28" y="0.0" width="237" height="60.5"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select areas your food can be delivered to." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPq-te-oqD">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select areas your food can be delivered to." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JPq-te-oqD">
                                                                         <rect key="frame" x="0.0" y="6" width="237" height="48.5"/>
-                                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
@@ -1040,6 +1040,7 @@ we’ll send you instructions</string>
                         <outlet property="chefPhoneView" destination="kch-gJ-YIg" id="iR7-zI-RTE"/>
                         <outlet property="chefView" destination="xjj-Pa-h6p" id="Y1d-kr-Wfp"/>
                         <outlet property="coverageAreaBtn" destination="4MY-Rh-PKL" id="m2W-cn-yS6"/>
+                        <outlet property="coverageAreaLabel" destination="JPq-te-oqD" id="Uux-WK-RuE"/>
                         <outlet property="coverageVerifyImageView" destination="obV-G5-xfn" id="BYx-8b-OqG"/>
                         <outlet property="customerView" destination="9th-51-dCg" id="BRg-G4-5B2"/>
                         <outlet property="emailTextField" destination="Z60-9b-nQS" id="UXN-ch-ahK"/>
@@ -1629,6 +1630,10 @@ scan of your Emirates ID</string>
             <point key="canvasLocation" x="407" y="1679"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="wql-Ny-FAE"/>
+        <segue reference="gbp-bA-3SQ"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="areaUnchecked" width="21.333333969116211" height="21.333333969116211"/>
         <image name="back" width="10" height="16"/>
@@ -1645,8 +1650,4 @@ scan of your Emirates ID</string>
         <image name="pins" width="91.666664123535156" height="71.333335876464844"/>
         <image name="verify" width="14" height="14"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="wql-Ny-FAE"/>
-        <segue reference="gbp-bA-3SQ"/>
-    </inferredMetricsTieBreakers>
 </document>

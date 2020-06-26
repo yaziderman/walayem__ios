@@ -24,5 +24,6 @@ class StaticLinker
     public static var showSkip : Bool = true
     public static var skipToSameView : Bool = false
     public static var previosSeletedTab : Int = 0
+	public static var shouldGetLocation = false
     
 }

@@ -830,7 +830,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	// MARK: CartFoodFooter delegate
 	
 	func updateNote(sender: UITextField, section: Int) {
-		//        cartItems[section].note = sender.text
+		cartItems[section].note = sender.text
 	}
 	
 	

@@ -54,7 +54,7 @@ class FoodDetailViewController: UIViewController {
         guard let destinationVC = storyboard.instantiateViewController(withIdentifier: "ChefDetailVCId") as? ChefDetailViewController else{
             fatalError("Unexpected destination VC")
         }
-        
+		destinationVC.chef = Chef(id: self.food?.chefId ?? 0, name: self.food?.chefName ?? "", image: self.food?.chefImage ?? "", kitchen: self.food?.kitcherName ?? "", foods: [])
         destinationVC.chef_id = self.food?.chefId
         
         (UserTabBarController.currentInstance?.selectedViewController as? UINavigationController)?.pushViewController(destinationVC, animated: true)

@@ -178,9 +178,9 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
 			}
             
             var tagString: String = ""
-            for tag in chef.foods[0].tags{
+			for tag in (chef.foods.first?.tags ?? [Tag]()) {
                 tagString.append(tag.name ?? "")
-                if let lastTag = chef.foods[0].tags.last, lastTag !== tag{
+				if let lastTag = chef.foods.first?.tags.last, lastTag !== tag{
                     tagString.append(" \u{2022} ")
                 }
             }

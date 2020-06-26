@@ -142,9 +142,12 @@ class ChefReviewViewController: UIViewController {
             User().clearUserDefaults()
             DatabaseHandler().clearDatabase()
             OdooClient.destroy()
+			StaticLinker.shouldGetLocation = true
             
-            let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
-            self.present(viewController, animated: true, completion: nil)
+//            let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
+//            self.present(viewController, animated: true, completion: nil)
+			let appDelegate = UIApplication.shared.delegate as! AppDelegate
+			appDelegate.shouldMoveToMainPage()
             
         })
     }

@@ -61,7 +61,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     @IBOutlet weak var chefEmailView: UIStackView!
     @IBOutlet weak var chefPhoneView: UIStackView!
     @IBOutlet weak var chefPasswordView: UIStackView!
-    
+	@IBOutlet weak var coverageAreaLabel: UILabel!
     
     var emailVerified: Bool = false
     var nameVerified: Bool = false
@@ -126,15 +126,17 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     func didSelectMultipleAreas(selectedAreas: [Int], selectedEmirates: [Int], title: String) {
         self.selectedEmerates = selectedEmirates
         self.selectedAreaIds = selectedAreas
-        self.coverageAreaBtn.setTitle(title, for: .normal)
-        self.coverageAreaBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+		coverageAreaLabel.text = title
+//        self.coverageAreaBtn.setTitle(title, for: .normal)
+//        self.coverageAreaBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         var color: UIColor!
         if #available(iOS 13.0, *) {
              color = .label
         } else {
             color = .black
         }
-        self.coverageAreaBtn.titleLabel?.textColor = color
+		self.coverageAreaLabel.textColor = color
+//        self.coverageAreaBtn.titleLabel?.textColor = color
         self.coverageVerifyImageView.tintColor = .colorPrimary
     }
     
@@ -342,7 +344,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                     let sessionId: String = data["session_id"] as! String
                     UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
                     let coverage = ChefAreaCoverage(areaIds: self.selectedAreaIds!,
-                                                    areaTitles: [self.coverageAreaBtn.title(for: .normal)!])
+													areaTitles: [self.coverageAreaLabel.text!])//self.coverageAreaBtn.title(for: .normal)!
                     coverage.saveToUserDefaults()
                     let location = ChefLocation(lat: self.selectedLat!,
                                                 long: self.selectedLng!,
@@ -377,7 +379,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 Messaging.messaging().unsubscribe(fromTopic: "alluseri")
                 User().clearUserDefaults()
                 OdooClient.destroy()
-                
+				
+				StaticLinker.shouldGetLocation = true
                 StaticLinker.mainVC?.selectedIndex = 0
 //                Utils.notifyRefresh()
                 self.signup(self)

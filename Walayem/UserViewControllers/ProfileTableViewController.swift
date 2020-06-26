@@ -323,6 +323,8 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
             User().clearUserDefaults()
             DatabaseHandler().clearDatabase()
             OdooClient.destroy()
+			
+			StaticLinker.shouldGetLocation = true
             StaticLinker.mainVC?.selectedIndex = 0
             Utils.notifyRefresh()
 //            StaticLinker.mainVC?.dismiss(animated: true, completion: nil)
