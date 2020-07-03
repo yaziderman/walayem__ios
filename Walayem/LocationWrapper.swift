@@ -19,11 +19,13 @@ class LocationWrapper: NSObject, CLLocationManagerDelegate {
 	
 	var locationManager: CLLocationManager?
 	weak var locationDelegate: LocationDelegate?
+	weak var viewController: UIViewController?
 	
 	@discardableResult
-	required convenience init(locationDelegate: LocationDelegate) {
+	required convenience init(locationDelegate: LocationDelegate, vc: UIViewController) {
 		self.init()
 		self.locationDelegate = locationDelegate
+		self.viewController = vc
 		locationManager = CLLocationManager()
 		locationManager?.delegate = self
 		checkLocationAvailability()
@@ -32,8 +34,11 @@ class LocationWrapper: NSObject, CLLocationManagerDelegate {
 	func checkLocationAvailability () {
 		if CLLocationManager.locationServicesEnabled() {
 			switch CLLocationManager.authorizationStatus() {
-				case .notDetermined, .restricted, .denied:
-					locationManager?.requestAlwaysAuthorization()
+				case .restricted, .denied:
+					showSettingsPopup()
+					locationDelegate?.locationPermissionDenied()
+				case .notDetermined :
+					locationManager?.requestWhenInUseAuthorization()
 					locationDelegate?.locationPermissionDenied()
 				case .authorizedAlways, .authorizedWhenInUse:
 					locationManager?.desiredAccuracy = kCLLocationAccuracyBestForNavigation
@@ -88,10 +93,23 @@ class LocationWrapper: NSObject, CLLocationManagerDelegate {
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-		if status == .authorizedWhenInUse || status == .authorizedAlways {
+		if status == .authorizedWhenInUse || status == .authorizedAlways || status == .notDetermined{
 			locationManager?.desiredAccuracy = kCLLocationAccuracyBestForNavigation
 			locationManager?.startUpdatingLocation()
+		} else {
+			showSettingsPopup()
 		}
+	}
+	
+	func showSettingsPopup() {
+		StaticLinker.shouldGetLocation = true
+		let alert = UIAlertController.init(title: "Permission Required", message: "Please turn on location to proceed.", preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+			if UIApplication.shared.canOpenURL(URL(string: UIApplication.openSettingsURLString)!) {
+				UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!, options: [:], completionHandler: nil)
+			}
+		}))
+		viewController?.present(alert, animated: true, completion: nil)
 	}
 	
 }

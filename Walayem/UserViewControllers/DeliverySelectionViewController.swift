@@ -60,7 +60,7 @@ class DeliverySelectionViewController: UIViewController {
         controller.delegate = self
         controller.modalPresentationStyle = .fullScreen
         self.present(controller, animated: true, completion: nil) */
-		locationWrapper = LocationWrapper(locationDelegate: self)
+		locationWrapper = LocationWrapper(locationDelegate: self, vc: self)
     }
 	
 	func selectCurrentLocation() {

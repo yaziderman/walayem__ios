@@ -63,8 +63,8 @@ class MainHomeViewController: BaseTabViewController {
         getCuisines()
         initialCustomDate()
 		locationManager = CLLocationManager()
-
-		locationWrapper = LocationWrapper(locationDelegate: self)
+		NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+		locationWrapper = LocationWrapper(locationDelegate: self, vc: self)
 		
         tableView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(handleTapAnimation)))
     }
@@ -240,9 +240,9 @@ class MainHomeViewController: BaseTabViewController {
 //        getPromoted()
 		if StaticLinker.shouldGetLocation {
 			StaticLinker.shouldGetLocation = false
-			locationWrapper = LocationWrapper(locationDelegate: self)
+			locationWrapper = LocationWrapper(locationDelegate: self, vc: self)
 		}
-        StaticLinker.selectedCuisine = nil
+		StaticLinker.selectedCuisine = nil
     }
     
     private func getCuisines(){
@@ -272,6 +272,18 @@ class MainHomeViewController: BaseTabViewController {
             }
         }
     }
+	
+	@objc func didEnterForeground() {
+		if StaticLinker.shouldGetLocation {
+			StaticLinker.shouldGetLocation = false
+			locationWrapper = LocationWrapper(locationDelegate: self, vc: self)
+		}
+		StaticLinker.selectedCuisine = nil
+	}
+	
+	deinit {
+		NotificationCenter.default.removeObserver(self)
+	}
 }
 
 extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
@@ -471,7 +483,7 @@ extension MainHomeViewController: LocationDelegate {
 //			self.locationManager?.requestWhenInUseAuthorization()
 //		}
 		
-		locationWrapper?.checkLocationAvailability()
+//		locationWrapper?.checkLocationAvailability()
 	}
 	
 }
