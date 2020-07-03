@@ -38,12 +38,20 @@ class FoodSearchResultController: UIViewController, FoodCellDelegate {
 		}
 	}
 	
-	private func searchFood() {
-		var params = AreaFilter.shared.coverageParams
+    private func searchFood(isAddress: Bool) {
+//		var params = AreaFilter.shared.coverageParams
+        var params = [String: Any]()
+        if isAddress {
+            params = AreaFilter.shared.addressParams
+            params["filter_by"] = "address"
+        } else {
+            params = AreaFilter.shared.areaParams
+            params["filter_by"] = "area"
+        }
 		params["search"] = true
 		params["search_keyword"] = self.searchKeyword
 		params["page"] = 1
-		params["filter_by"] = "location"
+//		params["filter_by"] = "area"//"location"
 		
 		RestClient().request(WalayemApi.searchFood, params, self) { (result, error) in
 			self.foods.removeAll()
@@ -70,12 +78,20 @@ class FoodSearchResultController: UIViewController, FoodCellDelegate {
 		}
 	}
 	
-	private func searchMoreFood() {
-		var params = AreaFilter.shared.coverageParams
+    private func searchMoreFood(isAddress: Bool) {
+//		var params = AreaFilter.shared.coverageParams
+        var params = [String: Any]()
+        if isAddress {
+            params = AreaFilter.shared.addressParams
+            params["filter_by"] = "address"
+        } else {
+            params = AreaFilter.shared.areaParams
+            params["filter_by"] = "area"
+        }
 		params["search"] = true
 		params["search_keyword"] = self.searchKeyword
 		params["page"] = self.page + 1
-		params["filter_by"] = "location"
+//		params["filter_by"] = "area"//"location"
 		
 		RestClient().request(WalayemApi.searchFood, params, self) { (result, error) in
 			self.tableView.tableFooterView = nil
@@ -191,7 +207,7 @@ extension FoodSearchResultController : UITableViewDataSource, UITableViewDelegat
 	
 	func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 		if indexPath.row == self.foods.count - 1 && page < totalPages {
-			searchMoreFood()
+			searchMoreFood(isAddress: AreaFilter.shared.isAddress)
 			let activityIndicator = UIActivityIndicatorView(style: .gray)
 			activityIndicator.color = UIColor.colorPrimary
 			activityIndicator.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44)
@@ -209,7 +225,7 @@ extension FoodSearchResultController: UISearchResultsUpdating{
 		self.searchKeyword = trimmedString
 		if trimmedString.count >= 1 {
 			self.tableView.scroll(to: .top, animated: false)
-			self.searchFood()
+			self.searchFood(isAddress: AreaFilter.shared.isAddress)
 			let searchQuery = sb.text!
 			let trimmedString = searchQuery.trimmingCharacters(in: .whitespacesAndNewlines)
 			

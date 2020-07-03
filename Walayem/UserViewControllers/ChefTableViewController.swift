@@ -283,10 +283,10 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 			let badgeNumber = selectedTags.count + selectedCuisines.count
 			
 			if badgeNumber > 0{
-				searchChef()
+				searchChef(isAddress: AreaFilter.shared.isAddress)
 				filterBarButton.addBadge(number: badgeNumber, withOffset: CGPoint(x: 0, y: 5), andColor: UIColor.colorPrimary, andFilled: true)
 			}else {
-				getChefs()
+				getChefs(isAddress: AreaFilter.shared.isAddress)
 				filterBarButton.removeBadge()
 			}
 		}
@@ -349,7 +349,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 		Utils.setupNavigationBar(nav: self.navigationController!)
 		showActivityIndicator()
 		showSpinner()
-		getChefs()
+        getChefs(isAddress: AreaFilter.shared.isAddress)
 		StaticLinker.chefViewController = self
 		initialCustomDate()
 		
@@ -465,16 +465,28 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 		filterBarButton.removeBadge()
 		isSearching = false
 		isLoading = false
-		getChefs()
+		getChefs(isAddress: AreaFilter.shared.isAddress)
 	}
 	
-	private func getChefs(){
+    private func getChefs(isAddress: Bool){
 		if isLoading{
 			return
 		}
-		var params = AreaFilter.shared.coverageParams
-		params["page"] = 1
-		params["filter_by"] = "location"
+        
+        var params = [String: Any]()
+        if isAddress {
+            params = AreaFilter.shared.addressParams
+            params["filter_by"] = "address"
+        } else {
+            params = AreaFilter.shared.areaParams
+            params["filter_by"] = "area"
+        }
+        params["page"] = 1
+//        params["filter_by"] = "area"//"location"
+        
+//		var params = AreaFilter.shared.coverageParams
+//		params["page"] = 1
+//		params["filter_by"] = "location"
 		
 		isLoading = true
 		
@@ -508,13 +520,23 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 		}
 	}
 	
-	private func getMoreChefs(){
+    private func getMoreChefs(isAddress: Bool){
 		if (isLoading) {
 			return
 		}
-		var params = AreaFilter.shared.coverageParams
-		params["page"] = page + 1
-		params["filter_by"] = "location"
+        var params = [String: Any]()
+        if isAddress {
+            params = AreaFilter.shared.addressParams
+            params["filter_by"] = "address"
+        } else {
+            params = AreaFilter.shared.areaParams
+            params["filter_by"] = "area"
+        }
+        params["page"] = page + 1
+//        params["filter_by"] = "area"//"location"
+//		var params = AreaFilter.shared.coverageParams
+//		params["page"] = page + 1
+//		params["filter_by"] = "location"
 		isLoading = true
 		
 		self.isLoading = true
@@ -549,7 +571,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 	//    }
 	
 	// search for cuisine and tags
-	private func searchChef(){
+    private func searchChef(isAddress: Bool){
 		
 		isSearching = true
 		
@@ -559,12 +581,19 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 		let cuisineIds: [Int] = selectedCuisines.map { (cuisine) -> Int in
 			(cuisine.id ?? 0)
 		}
-		var params = AreaFilter.shared.coverageParams
+		var params = [String: Any]()
+        if isAddress {
+            params = AreaFilter.shared.addressParams
+            params["filter_by"] = "address"
+        } else {
+            params = AreaFilter.shared.areaParams
+            params["filter_by"] = "area"
+        }
 		params["search"] = false
 		params["food_tags"] = tagIds
 		params["cuisine"] = cuisineIds
 		params["page"] = 1
-		params["filter_by"] = "location"
+//		params["filter_by"] = "location"
 		
 		RestClient().request(WalayemApi.searchChef, params, self) { (result, error) in
 			if error != nil{
@@ -589,19 +618,26 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 		}
 	}
 	
-	private func searchMoreChefs() {
+    private func searchMoreChefs(isAddress: Bool) {
 		let tagIds: [Int] = selectedTags.map { (tag) -> Int in
 			(tag.id ?? 0)
 		}
 		let cuisineIds: [Int] = selectedCuisines.map { (cuisine) -> Int in
 			(cuisine.id ?? 0)
 		}
-		var params = AreaFilter.shared.coverageParams
+		var params = [String: Any]()
+        if isAddress {
+            params = AreaFilter.shared.addressParams
+            params["filter_by"] = "address"
+        } else {
+            params = AreaFilter.shared.areaParams
+            params["filter_by"] = "area"
+        }
 		params["search"] = false
 		params["food_tags"] = tagIds
 		params["cuisine"] = cuisineIds
 		params["page"] = self.page + 1
-		params["filter_by"] = "location"
+//		params["filter_by"] = "location"
 		
 		RestClient().request(WalayemApi.searchChef, params, self) { (result, error) in
 			self.tableView.tableFooterView = nil
@@ -719,6 +755,11 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 		}
 	}
 	
+    override func areaSelected(selectedAreaArray: [Int], areaName: String) {
+        super.areaSelected(selectedAreaArray: selectedAreaArray, areaName: areaName)
+        getChefs(isAddress: AreaFilter.shared.isAddress)
+    }
+    
 }
 
 extension ChefTableViewController: UITableViewDataSource, UITableViewDelegate{
@@ -747,9 +788,9 @@ extension ChefTableViewController: UITableViewDataSource, UITableViewDelegate{
 	func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 		if indexPath.row == chefs.count - 1 && page < totalPage {
 			if isSearching {
-				searchMoreChefs()
+				searchMoreChefs(isAddress: AreaFilter.shared.isAddress)
 			} else {
-				getMoreChefs()
+				getMoreChefs(isAddress: AreaFilter.shared.isAddress)
 			}
 			
 			let activityIndicator = UIActivityIndicatorView(style: .gray)
@@ -786,9 +827,18 @@ extension ChefTableViewController: UISearchResultsUpdating{
 			
 			if doSearch{
 				
-				var params = AreaFilter.shared.coverageParams
+				//var params = AreaFilter.shared.coverageParams
+                let isAddress = false
+                var params = [String: Any]()
+                if isAddress {
+                    params = AreaFilter.shared.addressParams
+                    params["filter_by"] = "address"
+                } else {
+                    params = AreaFilter.shared.areaParams
+                    params["filter_by"] = "area"
+                }
 				params["page"] = 1
-				params["filter_by"] = "location"
+//				params["filter_by"] = "area"//"location"
 				params["search"] = true
 				params["search_keyword"] = sb.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
 				

@@ -24,6 +24,8 @@ final class AreaFilter {
     private (set) var selectedCoverageTitle: String?
 	var userAddress: UserAddress?
 	var addressId: Int = 0
+    var selectedArea = 0
+    var isAddress = false
     
     private init() {
         self.getSavedFilter()
@@ -44,6 +46,14 @@ final class AreaFilter {
         return ["location": location.dict]
     }
     
+    var areaParams: [String: Any] {
+        return ["area_id": self.selectedArea]
+    }
+    
+    var addressParams: [String: Any] {
+        return ["address_id": self.addressId]
+    }
+    
 	func setselectedLocation(_ location: Location?, title: String, addressId: Int = 0) {
         self.selectedLocation = location
         self.selectedCoverageTitle = title
@@ -60,6 +70,22 @@ final class AreaFilter {
 		UserDefaults.standard.set(location.dict, forKey: UserDefaultsKeys.USER_AREA_FILTER)
 		UserDefaults.standard.set(title, forKey: UserDefaultsKeys.USER_AREA_TITLE)
 	}
+    
+    func setSelectedArea(selectedArea: Int, title: String) {
+        isAddress = false
+        self.addressId = 0
+        self.selectedArea = selectedArea
+        self.selectedCoverageTitle = title
+        UserDefaults.standard.set(title, forKey: UserDefaultsKeys.USER_AREA_TITLE)
+    }
+    
+    func setSelectedAddress(addressId: Int, title: String) {
+        isAddress = true
+        self.selectedArea = 0
+        self.addressId = addressId
+        self.selectedCoverageTitle = title
+        UserDefaults.standard.set(title, forKey: UserDefaultsKeys.USER_AREA_TITLE)
+    }
 	
 	
     func resetAreaFilter() {

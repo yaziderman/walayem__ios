@@ -301,7 +301,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             if records.count > 0,
                 let record = records[0] as? [String : Any]{
                 let partnerId = record["id"] as! Int
-                let isImageSet = record["is_image_set"] as! Bool
+                let isImageSet = record["is_image_set"] as? Bool ?? false
                 
                 let isChef = record["is_chef"] as! Bool
                 if isChef, let authResult = authResult {

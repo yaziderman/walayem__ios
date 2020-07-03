@@ -135,6 +135,9 @@
 		7F3FD1DB2483DA4800F53684 /* LocationSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FD1DA2483DA4800F53684 /* LocationSelectionViewController.swift */; };
 		7F3FD1DD2483DA6A00F53684 /* DeliverySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FD1DC2483DA6A00F53684 /* DeliverySelectionViewController.swift */; };
 		7FBDF2AF2468139F0079B56E /* BaseTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBDF2AE2468139F0079B56E /* BaseTabViewController.swift */; };
+		83253D7B24AF244B008D1179 /* AreaSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83253D7A24AF244B008D1179 /* AreaSelectionViewController.swift */; };
+		835CB02924AF635300BD212E /* LocationSelectionCommentedFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835CB02824AF635300BD212E /* LocationSelectionCommentedFile.swift */; };
+		835CB02B24AF751900BD212E /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835CB02A24AF751800BD212E /* ColorExtension.swift */; };
 		BE4501EC23EEE5F600E3AB68 /* Promoted.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4501EB23EEE5F600E3AB68 /* Promoted.swift */; };
 		BE51C4552416CCE1003C6524 /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51C4542416CCE1003C6524 /* LanguageSelectionViewController.swift */; };
 		BE6B334923C5EF6400CB01D6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6B334823C5EF6400CB01D6 /* Extensions.swift */; };
@@ -291,6 +294,9 @@
 		7F3FD1DA2483DA4800F53684 /* LocationSelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSelectionViewController.swift; sourceTree = "<group>"; };
 		7F3FD1DC2483DA6A00F53684 /* DeliverySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliverySelectionViewController.swift; sourceTree = "<group>"; };
 		7FBDF2AE2468139F0079B56E /* BaseTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabViewController.swift; sourceTree = "<group>"; };
+		83253D7A24AF244B008D1179 /* AreaSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSelectionViewController.swift; sourceTree = "<group>"; };
+		835CB02824AF635300BD212E /* LocationSelectionCommentedFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectionCommentedFile.swift; sourceTree = "<group>"; };
+		835CB02A24AF751800BD212E /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		85EEF2A8C2D95FEA34A94A4E /* Pods-Walayem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Walayem.debug.xcconfig"; path = "Target Support Files/Pods-Walayem/Pods-Walayem.debug.xcconfig"; sourceTree = "<group>"; };
 		A7FAA7B2B17066C4795420C5 /* Pods_Walayem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Walayem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE4501EB23EEE5F600E3AB68 /* Promoted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promoted.swift; sourceTree = "<group>"; };
@@ -383,6 +389,8 @@
 				7F3FD1DC2483DA6A00F53684 /* DeliverySelectionViewController.swift */,
 				7F2CCF732483FF2300756B69 /* DeliveryLocationView.swift */,
 				7F2CCF752483FF3300756B69 /* DeliveryLocationView.xib */,
+				83253D7A24AF244B008D1179 /* AreaSelectionViewController.swift */,
+				835CB02824AF635300BD212E /* LocationSelectionCommentedFile.swift */,
 			);
 			path = UserViewControllers;
 			sourceTree = "<group>";
@@ -540,6 +548,7 @@
 				52EA619B20B3E53E001DB6CC /* TermsViewController.swift */,
 				52EA619D20B3E586001DB6CC /* PrivacyViewController.swift */,
 				0AD0350020C550B10030E1E8 /* ImageViewController.swift */,
+				835CB02A24AF751800BD212E /* ColorExtension.swift */,
 				04CCB83D20AD5B370011BD95 /* UserStoryboard */,
 				04CCB83E20AD5BF00011BD95 /* ChefStoryboard */,
 				04CF06DD208465D50064B18A /* WalkThrough.storyboard */,
@@ -834,6 +843,7 @@
 				040902D620B2A01500059F1D /* ChooseCuisineViewController.swift in Sources */,
 				0AF9861920BEB69700E712BA /* UIBarButtonItemExtension.swift in Sources */,
 				04CCB84420AD9CC10011BD95 /* PendingOrderTableViewController.swift in Sources */,
+				835CB02B24AF751900BD212E /* ColorExtension.swift in Sources */,
 				04D9E8B12085FD00002E1B51 /* FoodTableViewCell.swift in Sources */,
 				1D30E0CF2461E2FA00C6797C /* CartItem.swift in Sources */,
 				0ADC141120B6D7350003FC8B /* UserTabBarController.swift in Sources */,
@@ -845,6 +855,7 @@
 				040CA40220AEDB8100E64BFE /* ChefOrderFoodCell.swift in Sources */,
 				04FB0C232089A7FF00C30660 /* Utils.swift in Sources */,
 				04D9E8B320860B23002E1B51 /* Verification.swift in Sources */,
+				83253D7B24AF244B008D1179 /* AreaSelectionViewController.swift in Sources */,
 				4703A1F320C27D6E000722CD /* ChangePhoneViewController.swift in Sources */,
 				04F2158B2088B391003D47AD /* ChefTableViewController.swift in Sources */,
 				BEC27A0723E93A8200DE7874 /* HomeCollectionViewCell.swift in Sources */,
@@ -912,6 +923,7 @@
 				BE4501EC23EEE5F600E3AB68 /* Promoted.swift in Sources */,
 				04A6594F20A0378100DBCF86 /* DatabaseHandler.swift in Sources */,
 				7F3FD1D92483D80100F53684 /* AreaFilter.swift in Sources */,
+				835CB02924AF635300BD212E /* LocationSelectionCommentedFile.swift in Sources */,
 				1D3ADF52245C5C88000FE04C /* AreaCollectionViewCell.swift in Sources */,
 				BE9B441B23E95C5D000F6225 /* CuisineCollectionViewCell.swift in Sources */,
 				BE51C4552416CCE1003C6524 /* LanguageSelectionViewController.swift in Sources */,
@@ -1074,7 +1086,7 @@
 				CODE_SIGN_ENTITLEMENTS = Walayem/Walayem.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Walayem/Info.plist;
@@ -1083,7 +1095,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.2.1;
+				MARKETING_VERSION = 4.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inceptionworld.Walayem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1101,7 +1113,7 @@
 				CODE_SIGN_ENTITLEMENTS = Walayem/Walayem.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Walayem/Info.plist;
@@ -1110,7 +1122,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.2.1;
+				MARKETING_VERSION = 4.2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inceptionworld.Walayem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

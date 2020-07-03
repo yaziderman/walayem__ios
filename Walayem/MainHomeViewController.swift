@@ -63,9 +63,12 @@ class MainHomeViewController: BaseTabViewController {
         getCuisines()
         initialCustomDate()
 		locationManager = CLLocationManager()
-
-		locationWrapper = LocationWrapper(locationDelegate: self)
-		
+        
+//		locationWrapper = LocationWrapper(locationDelegate: self)
+        if let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "AreaSelectionViewController") as? AreaSelectionViewController {
+            vc.areaSelectionProtocol = self
+            self.navigationController?.present(vc, animated: true, completion: nil)
+        }
         tableView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(handleTapAnimation)))
     }
     
@@ -134,10 +137,17 @@ class MainHomeViewController: BaseTabViewController {
         refreshData(sender: UIRefreshControl())
     }
     
-    private func getPromoted(){
-        var params = AreaFilter.shared.coverageParams
+    private func getPromoted(isAddress: Bool){
+        var params = [String: Any]()
+        if isAddress {
+            params = AreaFilter.shared.addressParams
+            params["filter_by"] = "address"
+        } else {
+            params = AreaFilter.shared.areaParams
+            params["filter_by"] = "area"
+        }
 		params["partner_id"] = User().getUserDefaults().partner_id ?? 0//partnerId ?? 0
-		params["filter_by"] = "location"
+//		params["filter_by"] = "area"//"location"
         
 		RestClient().requestPromotedApi(WalayemApi.homeRecommendation, params, self) { (result, error) in
             self.tableView.refreshControl?.endRefreshing()
@@ -238,10 +248,10 @@ class MainHomeViewController: BaseTabViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        getPromoted()
-		if StaticLinker.shouldGetLocation {
-			StaticLinker.shouldGetLocation = false
-			locationWrapper = LocationWrapper(locationDelegate: self)
-		}
+//		if StaticLinker.shouldGetLocation {
+//			StaticLinker.shouldGetLocation = false
+//			locationWrapper = LocationWrapper(locationDelegate: self)
+//		}
         StaticLinker.selectedCuisine = nil
     }
     
@@ -272,6 +282,12 @@ class MainHomeViewController: BaseTabViewController {
             }
         }
     }
+    
+    override func areaSelected(selectedAreaArray: [Int], areaName: String) {
+        super.areaSelected(selectedAreaArray: selectedAreaArray, areaName: areaName)
+        getPromoted(isAddress: AreaFilter.shared.isAddress)
+    }
+    
 }
 
 extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
@@ -293,7 +309,7 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
        
    @objc private func refreshData(sender: UIRefreshControl){
        // reset filter
-        getPromoted()
+        getPromoted(isAddress: AreaFilter.shared.isAddress)
    }
        
     
@@ -461,7 +477,7 @@ extension MainHomeViewController: LocationDelegate {
 		AreaFilter.shared.setselectedLocation(location, title: title, userAddress: address)
 		locationView.locationUpdated()
 		
-		getPromoted()
+		getPromoted(isAddress: AreaFilter.shared.isAddress)
 	}
 	
 	func locationPermissionDenied() {
@@ -473,5 +489,16 @@ extension MainHomeViewController: LocationDelegate {
 		
 		locationWrapper?.checkLocationAvailability()
 	}
-	
+    
 }
+
+//extension MainHomeViewController: AreaSelectionProtocol {
+//
+//    func areaSelected(selectedAreaArray: [Int], areaName: String) {
+//        AreaFilter.shared.setSelectedArea(selectedArea: selectedAreaArray.first ?? 0, title: areaName)
+//        locationView.areaUpdated()
+//
+//        getPromoted()
+//    }
+//
+//}
