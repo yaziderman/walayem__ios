@@ -61,8 +61,8 @@ extension OrderSuccessViewController: UITableViewDelegate, UITableViewDataSource
         
         if let order = orders![indexPath.row] as? [String: Any]{
             let chefName = order["chef_name"] as! String
-            let orderId = order["order_id"] as! Int
-            cell.textLabel?.text = chefName + " #WA\(orderId)"
+            let orderId = order["order_id"] as! String
+            cell.textLabel?.text = chefName + " #\(orderId)"
         }
         
         return cell

@@ -92,7 +92,7 @@ class AddressTableViewController: UITableViewController {
             self.refreshControl?.endRefreshing()
             
             if error != nil{
-                let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+                let errmsg = error?.localizedDescription
                 if errmsg == OdooClient.SESSION_EXPIRED{
 //                    self.onSessionExpired()
                 }

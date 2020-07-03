@@ -120,10 +120,10 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
             
             do{
                 if badgeNumber > 0{
-                    searchFood()
+                    searchFood(isAddress: AreaFilter.shared.isAddress)
                     filterBarButton.addBadge(number: badgeNumber, withOffset: CGPoint(x: 0, y: 5), andColor: UIColor.colorPrimary, andFilled: true)
                 }else {
-                    getFoods()
+                    getFoods(isAddress: AreaFilter.shared.isAddress)
                     filterBarButton.removeBadge()
                 }
             }
@@ -173,7 +173,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
                 self.selectedCuisines.append(StaticLinker.selectedCuisine!)
                 self.showCuisineFromHome()
             }else{
-                getFoods()
+                getFoods(isAddress: AreaFilter.shared.isAddress)
                 updateBadge()
             }
             tableView.reloadData()
@@ -491,8 +491,8 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         selectedCuisines.removeAll()
         filterBarButton.removeBadge()
         mCells.removeAll()
-        getFoods()
-        getMoreFoods()
+        getFoods(isAddress: AreaFilter.shared.isAddress)
+        getMoreFoods(isAddress: AreaFilter.shared.isAddress)
         isSearching = false
     }
     
@@ -523,13 +523,22 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         }
     }
     
-    private func getFoods(){
+    private func getFoods(isAddress: Bool){
         if isLoading{
             return
         }
-        var params = AreaFilter.shared.coverageParams
+//        var params = AreaFilter.shared.coverageParams
+        var params = [String: Any]()
+        if isAddress {
+            params = AreaFilter.shared.addressParams
+            params["filter_by"] = "address"
+        } else {
+            params = AreaFilter.shared.areaParams
+            params["filter_by"] = "area"
+        }
         params["page"] = 1
-		params["filter_by"] = "location"
+//		params["filter_by"] = "area"//"location"
+        
         isLoading = true
         RestClient().request(WalayemApi.discoverFood, params, self) { (result, error) in
             self.hideSpinner()
@@ -573,13 +582,21 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         }
     }
     
-    private func getMoreFoods(){
+    private func getMoreFoods(isAddress: Bool){
         if (isLoading){
             return
         }
-		var params = AreaFilter.shared.coverageParams
+//		var params = AreaFilter.shared.coverageParams
+        var params = [String: Any]()
+        if isAddress {
+            params = AreaFilter.shared.addressParams
+            params["filter_by"] = "address"
+        } else {
+            params = AreaFilter.shared.areaParams
+            params["filter_by"] = "area"
+        }
 		params["page"] = page + 1
-		params["filter_by"] = "location"
+//		params["filter_by"] = "area"//"location"
 		if (isLoading || isSearching){
             return
         }
@@ -620,7 +637,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
 //		self.tableView.tableFooterView = nil
 //    }
     
-    private func searchFood(){
+    private func searchFood(isAddress: Bool){
         isSearching = true
         self.hideActivityIndicator()
         self.hideSpinner()
@@ -631,12 +648,19 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         let cuisineIds: [Int] = selectedCuisines.map { (cuisine) -> Int in
             (cuisine.id ?? 0)
         }
-        var params = AreaFilter.shared.coverageParams
+        var params = [String: Any]()
+        if isAddress {
+            params = AreaFilter.shared.addressParams
+            params["filter_by"] = "address"
+        } else {
+            params = AreaFilter.shared.areaParams
+            params["filter_by"] = "area"
+        }
         params["search"] = false
         params["food_tags"] = tagIds
         params["cuisine"] = cuisineIds
         params["page"] = 1
-		params["filter_by"] = "location"
+		//"location"
 		
         RestClient().request(WalayemApi.searchFood, params, self) { (result, error) in
             self.hideActivityIndicator()
@@ -665,19 +689,27 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         StaticLinker.selectedCuisine = nil
     }
     
-    private func searchMoreFood() {
+    private func searchMoreFood(isAddress: Bool) {
         let tagIds: [Int] = selectedTags.map { (tag) -> Int in
             (tag.id ?? 0)
         }
         let cuisineIds: [Int] = selectedCuisines.map { (cuisine) -> Int in
             (cuisine.id ?? 0)
         }
-        var params = AreaFilter.shared.coverageParams
+        
+        var params = [String: Any]()
+        if isAddress {
+            params = AreaFilter.shared.addressParams
+            params["filter_by"] = "address"
+        } else {
+            params = AreaFilter.shared.areaParams
+            params["filter_by"] = "area"
+        }
         params["search"] = false
         params["food_tags"] = tagIds
         params["cuisine"] = cuisineIds
         params["page"] = self.page + 1
-		params["filter_by"] = "location"
+//		params["filter_by"] = "location"
 		
         RestClient().request(WalayemApi.searchFood, params, self) { (result, error) in
             self.tableView.tableFooterView = nil
@@ -791,10 +823,10 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
             let badgeNumber = 1
             do{
                 if badgeNumber > 0{
-                    searchFood()
+                    searchFood(isAddress: AreaFilter.shared.isAddress)
                     filterBarButton.addBadge(number: badgeNumber, withOffset: CGPoint(x: 0, y: 5), andColor: UIColor.colorPrimary, andFilled: true)
                 }else {
-                    getFoods()
+                    getFoods(isAddress: AreaFilter.shared.isAddress)
                     filterBarButton.removeBadge()
                 }
             }
@@ -803,7 +835,10 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
             }
         }
     
-   
+   override func areaSelected(selectedAreaArray: [Int], areaName: String) {
+       super.areaSelected(selectedAreaArray: selectedAreaArray, areaName: areaName)
+       getFoods(isAddress: AreaFilter.shared.isAddress)
+   }
 }
 
 extension DiscoverTableViewController: UITableViewDelegate, UITableViewDataSource{
@@ -842,9 +877,9 @@ extension DiscoverTableViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == foods.count - 1 && page < totalPage {
             if isSearching {
-                searchMoreFood()
+                searchMoreFood(isAddress: AreaFilter.shared.isAddress)
             } else {
-                getMoreFoods()
+                getMoreFoods(isAddress: AreaFilter.shared.isAddress)
             }
             
             let activityIndicator = UIActivityIndicatorView(style: .gray)
@@ -855,7 +890,7 @@ extension DiscoverTableViewController: UITableViewDelegate, UITableViewDataSourc
             tableView.tableFooterView = activityIndicator
         if !isSearching{
 			if indexPath.row == foods.count - 1 && page < totalPage{
-                getMoreFoods()
+                getMoreFoods(isAddress: AreaFilter.shared.isAddress)
 
                 let activityIndicator = UIActivityIndicatorView(style: .gray)
                 activityIndicator.color = UIColor.colorPrimary

@@ -40,9 +40,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // CONFIGURE FIREBASE
         FirebaseApp.configure()
         registerRemoteNotification(application)
-        GMSServices.provideAPIKey("AIzaSyDFI5Cnh_jWzZzB9gcL7x5SBAeQG9v7x9I")
+        GMSServices.provideAPIKey("AIzaSyCC9vvrCbOXkzgIlyJOWd-D2e-0eJivRHQ")
             //("AIzaSyDz2IN7uCHH4ehwiSITdGExTih5Hz07_0k")
-        GMSPlacesClient.provideAPIKey("AIzaSyDFI5Cnh_jWzZzB9gcL7x5SBAeQG9v7x9I")
+        GMSPlacesClient.provideAPIKey("AIzaSyCC9vvrCbOXkzgIlyJOWd-D2e-0eJivRHQ")
 
 //        GIDSignIn.sharedInstance()?.presentingViewController = self
         setRootViewController()

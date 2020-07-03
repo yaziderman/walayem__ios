@@ -211,6 +211,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 					// add chef details
 					var dict = [String: Any]()
 					dict["chef_id"] = item.chef.id
+                    dict["delivery_cost"] = item.deliveryCost
 					dict["note"] = item.note
 					dict["products"] = products
 					
@@ -299,13 +300,17 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	@objc func updateFav()
 	{
 		if !isUserLoggedIn {
-			self.addressView.isHidden = false
-			self.addressNameLabel.isHidden = false
-			self.addressDetailLabel.isHidden = false
-			self.addAddressButton.isHidden = false
+			self.addressView.isHidden = true
+			self.addressNameLabel.isHidden = true
+			self.addressDetailLabel.isHidden = true
 		} else {
+            self.addressView.isHidden = false
+            self.addressNameLabel.isHidden = false
+            self.addressDetailLabel.isHidden = false
 			//			getAddress()
 		}
+        self.addAddressButton.isHidden = false
+
 	}
 	
 	@objc func updateButtonTitle() {
@@ -335,6 +340,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	//	}
 	
 	override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 		user = User().getUserDefaults()
 		getCartItems()
 		//		getAddress()
@@ -378,6 +384,11 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		}
 		
 		updateFav()
+        self.addressList.removeAll()
+        if user?.partner_id != nil && user?.partner_id != 0 {
+            getAddress()
+        }
+        
 	}
 	
 	@objc func checkAction(sender : UITapGestureRecognizer) {

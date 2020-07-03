@@ -21,12 +21,20 @@ class ChefSearchResultsViewController: UIViewController, UITableViewDataSource, 
         super.viewDidLoad()
     }
     
-    fileprivate func searchChefs() {
-        var params = AreaFilter.shared.coverageParams
+    fileprivate func searchChefs(isAddress: Bool) {
+//        var params = AreaFilter.shared.coverageParams
+        var params = [String: Any]()
+        if isAddress {
+            params = AreaFilter.shared.addressParams
+            params["filter_by"] = "address"
+        } else {
+            params = AreaFilter.shared.areaParams
+            params["filter_by"] = "area"
+        }
         params["search"] = true
         params["search_keyword"] = self.searchKeyword
         params["page"] = 1
-		params["filter_by"] = "location"
+//		params["filter_by"] = "area"//"location"
 		
         RestClient().request(WalayemApi.searchChef, params, self) { (result, error) in
             if error != nil{
@@ -50,12 +58,25 @@ class ChefSearchResultsViewController: UIViewController, UITableViewDataSource, 
         }
     }
     
-    private func searchMoreChefs() {
-        var params = AreaFilter.shared.coverageParams
+    private func searchMoreChefs(isAddress: Bool) {
+//        var params = AreaFilter.shared.coverageParams
+//        params["search"] = true
+//        params["search_keyword"] = self.searchKeyword
+//        params["page"] = self.page + 1
+//		params["filter_by"] = "location"
+        
+        var params = [String: Any]()
+        if isAddress {
+            params = AreaFilter.shared.addressParams
+            params["filter_by"] = "address"
+        } else {
+            params = AreaFilter.shared.areaParams
+            params["filter_by"] = "area"
+        }
         params["search"] = true
         params["search_keyword"] = self.searchKeyword
         params["page"] = self.page + 1
-		params["filter_by"] = "location"
+//        params["filter_by"] = "area"//"location"
 		
         RestClient().request(WalayemApi.searchChef, params, self) { (result, error) in
             self.tableView.tableFooterView = nil
@@ -107,7 +128,7 @@ class ChefSearchResultsViewController: UIViewController, UITableViewDataSource, 
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row == chefs.count - 1 && page < totalPages {
-            searchMoreChefs()
+            searchMoreChefs(isAddress: AreaFilter.shared.isAddress)
             let activityIndicator = UIActivityIndicatorView(style: .gray)
             activityIndicator.color = UIColor.colorPrimary
             activityIndicator.frame = CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 44)
@@ -135,7 +156,7 @@ extension ChefSearchResultsViewController: UISearchResultsUpdating {
         self.searchKeyword = trimmedString
         if trimmedString.count >= 1 {
             self.tableView.scroll(to: .top, animated: false)
-            self.searchChefs()
+            self.searchChefs(isAddress: AreaFilter.shared.isAddress)
         }
     }
 }

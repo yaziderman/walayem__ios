@@ -56,4 +56,13 @@ class DeliveryLocationView: UIView {
         }
     }
     
+    func areaUpdated() {
+        warningView.isHidden = AreaFilter.shared.selectedArea != 0 && AreaFilter.shared.addressId != 0
+        locationView.isHidden = AreaFilter.shared.selectedArea == 0 && AreaFilter.shared.addressId == 0
+        if let title = AreaFilter.shared.selectedCoverageTitle {
+            locationLable.text = "Delivery to: \(title)"
+        }
+    }
+    
+    
 }
