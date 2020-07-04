@@ -289,12 +289,13 @@ class AreaSelectionViewController: UIViewController, UITableViewDelegate, UITabl
 //        let isSelected = sectionDict["isSelected"] as! Bool == true
         
         let view = UIView()
-        view.backgroundColor = .white
+//        view.backgroundColor = .white
 //        let imgName = isSelected ? "areaChecked" : "areaUnchecked"
 //        let image = UIImage(named: imgName)
         let button = UIButton(type: .custom)
         button.tag = section
         button.addTarget(self, action: #selector(headerBtnClicked(_:)), for: .touchUpInside)
+        button.setTitleColor(.darkGray, for: .normal)
 //        button.setImage(image, for: .normal)
         button.frame = CGRect(x: 8, y: 3, width: 35, height: 35)
         view.addSubview(button)

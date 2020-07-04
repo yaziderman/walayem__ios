@@ -107,8 +107,11 @@ class AddressTableViewController: UITableViewController {
                 return
             }
             for record in records{
+//                if record["location"] != nil
                 let address = Address(record: record as! [String : Any])
-                self.addressList.append(address)
+                if (address.location?.latitude != nil || address.location?.latitude != 0) && (address.location?.longitude != nil || address.location?.longitude != 0) {
+                    self.addressList.append(address)
+                }
             }
             self.tableView.reloadData()
         }
