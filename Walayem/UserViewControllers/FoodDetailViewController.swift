@@ -56,6 +56,7 @@ class FoodDetailViewController: UIViewController {
         }
 		destinationVC.chef = Chef(id: self.food?.chefId ?? 0, name: self.food?.chefName ?? "", image: self.food?.chefImage ?? "", kitchen: self.food?.kitcherName ?? "", foods: [])
         destinationVC.chef_id = self.food?.chefId
+        destinationVC.metaLocation = metaLocation
         
         (UserTabBarController.currentInstance?.selectedViewController as? UINavigationController)?.pushViewController(destinationVC, animated: true)
         

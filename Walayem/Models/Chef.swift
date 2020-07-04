@@ -42,7 +42,7 @@ class Chef: Equatable{
 		
 		if name == "init" {
 			let kitchen = record["kitchen"] as? [String: Any] ?? [String: Any]()
-			self.id = kitchen["id"] as? Int ?? 0
+			self.id = record["id"] as? Int ?? 0
 			self.name = record["name"] as? String ?? ""
 			self.kitchen = kitchen["name"] as? String ?? ""
 			self.image = record["chef_image_hash"] as? String ?? ""

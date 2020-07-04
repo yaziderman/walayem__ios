@@ -65,10 +65,15 @@ class MainHomeViewController: BaseTabViewController {
 		locationManager = CLLocationManager()
 //		NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
 //		locationWrapper = LocationWrapper(locationDelegate: self, vc: self)
-		        
-        if let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "AreaSelectionViewController") as? AreaSelectionViewController {
-            vc.areaSelectionProtocol = self
-            self.navigationController?.present(vc, animated: true, completion: nil)
+        
+        if AreaFilter.shared.selectedArea == 0 && AreaFilter.shared.addressId == 0 {
+            if let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "AreaSelectionViewController") as? AreaSelectionViewController {
+                vc.areaSelectionProtocol = self
+                self.navigationController?.present(vc, animated: true, completion: nil)
+            }
+        } else {
+            getPromoted(isAddress: AreaFilter.shared.isAddress)
+            locationView.areaUpdated()
         }
         tableView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(handleTapAnimation)))
     }

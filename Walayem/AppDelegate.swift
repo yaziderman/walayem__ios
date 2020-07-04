@@ -48,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         setRootViewController()
 //        getContactDetails()
 //        getChefSettings()'
+        AreaFilter.setSharedFilter()
 		#if DEBUG
 		Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
 		#endif

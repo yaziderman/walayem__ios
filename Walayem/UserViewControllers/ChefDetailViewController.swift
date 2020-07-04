@@ -44,6 +44,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     let db = DatabaseHandler()
     var chef: Chef?
     var chef_id: Int?
+    var metaLocation = ""
     var user: User?
     var filteredFoods = [Food]()
     var selectedCateg: Int = 0
@@ -530,6 +531,7 @@ extension ChefDetailViewController: UITableViewDelegate, UITableViewDataSource{
         guard let foodDetailVC = storyBoard.instantiateViewController(withIdentifier: "FoodDetailVC") as? FoodDetailViewController else {
             fatalError("Unexpected viewController")
         }
+//        foodDetailVC.metaLocation = metaLocation
         foodDetailVC.food = food
         navigationController?.pushViewController(foodDetailVC, animated: true)
     }

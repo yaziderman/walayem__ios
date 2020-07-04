@@ -22,6 +22,8 @@ struct UserDefaultsKeys{
     static let FOOD_QUANTITY = "foodQuantity"
     static let USER_AREA_FILTER = "user_area_filter"
     static let USER_AREA_TITLE = "user_area_title"
+    static let USER_ADDRESS_ID = "user_address_id"
+    static let USER_AREA_ID = "user_area_id"
     static let REGULAR_RUN = "regularRun"
     static let AUTH_TOKEN = "authToken"
     static let CHEF_COVERAGE_AREA = "ChefCoverageArea"

@@ -19,7 +19,13 @@ protocol ChefCoverageAreaDelegate: class {
 
 final class AreaFilter {
     
-    static let shared = AreaFilter()
+    static var shared: AreaFilter!
+    
+    static func setSharedFilter() {
+        if AreaFilter.shared == nil {
+            shared = AreaFilter()
+        }
+    }
     private (set) var selectedLocation: Location?
     private (set) var selectedCoverageTitle: String?
 	var userAddress: UserAddress?
@@ -31,12 +37,18 @@ final class AreaFilter {
         self.getSavedFilter()
     }
     private func getSavedFilter() {
+        addressId = UserDefaults.standard.value(forKey: UserDefaultsKeys.USER_ADDRESS_ID) as? Int ?? 0
+        selectedArea = UserDefaults.standard.value(forKey: UserDefaultsKeys.USER_AREA_ID) as? Int ?? 0
+        self.selectedCoverageTitle = UserDefaults.standard.string(forKey: UserDefaultsKeys.USER_AREA_TITLE)
+        
+        isAddress = (addressId != 0 && selectedArea == 0)
+        
         guard let dict = UserDefaults.standard.dictionary(forKey: UserDefaultsKeys.USER_AREA_FILTER),
             let location = Location(dict: dict) else {
             return
         }
         self.selectedLocation = location
-        self.selectedCoverageTitle = UserDefaults.standard.string(forKey: UserDefaultsKeys.USER_AREA_TITLE)
+        
     }
     
     var coverageParams: [String: Any] {
@@ -77,6 +89,8 @@ final class AreaFilter {
         self.selectedArea = selectedArea
         self.selectedCoverageTitle = title
         UserDefaults.standard.set(title, forKey: UserDefaultsKeys.USER_AREA_TITLE)
+        UserDefaults.standard.set(addressId, forKey: UserDefaultsKeys.USER_ADDRESS_ID)
+        UserDefaults.standard.set(selectedArea, forKey: UserDefaultsKeys.USER_AREA_ID)
     }
     
     func setSelectedAddress(addressId: Int, title: String) {
@@ -85,6 +99,8 @@ final class AreaFilter {
         self.addressId = addressId
         self.selectedCoverageTitle = title
         UserDefaults.standard.set(title, forKey: UserDefaultsKeys.USER_AREA_TITLE)
+        UserDefaults.standard.set(addressId, forKey: UserDefaultsKeys.USER_ADDRESS_ID)
+        UserDefaults.standard.set(selectedArea, forKey: UserDefaultsKeys.USER_AREA_ID)
     }
 	
 	

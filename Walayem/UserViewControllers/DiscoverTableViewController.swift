@@ -571,7 +571,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
             self.totalPage = value["total_pages"] as? Int ?? 0
             let records = value["data"] as! [Any]
 			let meta = value["meta"] as! [String: Any]
-			self.metaLocation = meta["name"] as! String
+			self.metaLocation = meta["name"] as? String ?? ""
             for record in records{
                 let food = Food(record: record as! [String: Any])
                 if !self.foods.contains(food){
