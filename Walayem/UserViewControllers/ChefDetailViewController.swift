@@ -154,13 +154,21 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
             nameLabel.text = chef.name
             kitchenLabel.text = chef.kitchen
             descriptionLabel.text = chef.description
-			
-			if chef.area?.emirate?.name == "" {
-				locatonLabel.isHidden = true
-			} else {
-				locatonLabel.isHidden = false
-				locatonLabel.text = chef.area?.emirate?.name
-			}
+            
+            let ar_name = chef.area?.name
+            let em_name = chef.area?.emirate?.name
+            
+            if ar_name != nil {
+                if em_name != nil {
+                    locatonLabel.isHidden = false
+                    locatonLabel.text = em_name
+                } else {
+                    locatonLabel.isHidden = false
+                    locatonLabel.text = ar_name
+                }
+            } else {
+                locatonLabel.isHidden = true
+            }
 			
 //			locatonLabel.text = chef.
             

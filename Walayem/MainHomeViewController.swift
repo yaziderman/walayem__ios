@@ -24,8 +24,8 @@ class MainHomeViewController: BaseTabViewController {
     var cuisines = [Cuisine]()
     var selectedCuisine: Cuisine?
     var foods = [Food]()
-	var locationWrapper: LocationWrapper?
-	var locationManager: CLLocationManager?
+//	var locationWrapper: LocationWrapper?
+//	var locationManager: CLLocationManager?
 
     let bookmarks = ["Recommended", "Meals of the day", "Cuisines", "Categories"]
 //    let bookmarks = ["Recommended", "Ramadan meals", "Cuisines", "Categories"]
@@ -62,7 +62,7 @@ class MainHomeViewController: BaseTabViewController {
         setupRefreshControl()
         getCuisines()
         initialCustomDate()
-		locationManager = CLLocationManager()
+//		locationManager = CLLocationManager()
 //		NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
 //		locationWrapper = LocationWrapper(locationDelegate: self, vc: self)
         

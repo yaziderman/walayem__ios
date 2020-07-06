@@ -17,7 +17,6 @@ class DeliverySelectionViewController: UIViewController {
     var user: User!
     weak var delegate: DeliverySelectionDelegate?
     weak var areaSelectionDelegate: AreaSelectionProtocol?
-    var locationWrapper: LocationWrapper?
     var shouldShowTabbar = true
     @IBOutlet weak var btnOtherAddress: UIButton!
     @IBOutlet weak var btnSavedAddress: UIButton!
@@ -52,14 +51,6 @@ class DeliverySelectionViewController: UIViewController {
         super.viewWillAppear(animated)
         shouldShowTabbar = true
         self.tabBarController?.tabBar.isHidden = true
-    }
-
-	@IBAction func currentLocationButtonClicked() {
-       /* let controller = UIStoryboard(name: "User", bundle: nil).instantiateViewController(withIdentifier: "LocationSelectionVCId") as! LocationSelectionViewController
-        controller.delegate = self
-        controller.modalPresentationStyle = .fullScreen
-        self.present(controller, animated: true, completion: nil) */
-		locationWrapper = LocationWrapper(locationDelegate: self, vc: self)
     }
 	
 	func selectCurrentLocation() {
@@ -160,21 +151,6 @@ extension DeliverySelectionViewController: AddressSelectionDelegate, LocationSel
         } else {
             closeButtonClicked()
         }
-    }
-    
-}
-
-extension DeliverySelectionViewController: LocationDelegate {
-    
-    func getLocation(location: Location, address: UserAddress, title: String) {
-        AreaFilter.shared.setselectedLocation(location, title: title)
-        self.delegate?.deliveryLocationSelected(location, title: title)
-        closeButtonClicked()
-    }
-    
-    func locationPermissionDenied() {
-        DLog(message: "Permission not available")
-        locationWrapper?.checkLocationAvailability()
     }
     
 }
