@@ -51,7 +51,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         progressAlert = showProgressAlert()
         OdooClient.sharedInstance().authenticate(email: email, password: password, database: WalayemApi.DB_NAME) { (result, error) in
             if let error = error {
-                let errmsg = (error.userInfo[NSLocalizedDescriptionKey] as? String) ?? "Something went wrong"
+                let errmsg = error.localizedDescription
                 self.progressAlert?.dismiss(animated: true, completion: {
                     self.showMessagePrompt(errmsg)
                 })
@@ -59,13 +59,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             }
             guard let result = result else {
                 self.progressAlert?.dismiss(animated: true, completion: {
-                    self.showMessagePrompt("Result not found, please try again")
+                    self.showMessagePrompt("Something went wrong")
                 })
                 return
             }
             guard let sessionId = result["session_id"] as? String else {
+                
                 self.progressAlert?.dismiss(animated: true, completion: {
-                    self.showMessagePrompt("Session not found, please try again")
+                    self.showMessagePrompt("Please check your credentials and try again")
                 })
                 return
             }

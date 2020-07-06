@@ -74,7 +74,6 @@ class UserTabBarController: UITabBarController{
 
         updateProfileTitle()
         StaticLinker.mainVC = self
-        
     }
     
     

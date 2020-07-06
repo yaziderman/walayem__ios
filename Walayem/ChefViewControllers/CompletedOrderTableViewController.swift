@@ -92,7 +92,7 @@ class CompletedOrderTableViewController: UITableViewController, OrderHeaderCellD
             self.hideActivityIndicator()
            
             if let error = error{
-                let errmsg: String = error.userInfo[NSLocalizedDescriptionKey] as! String
+                let errmsg: String = error.localizedDescription
                 if errmsg == OdooClient.SESSION_EXPIRED{
                     self.onSessionExpired()
                 }else{

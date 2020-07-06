@@ -136,6 +136,7 @@
 		7F3FD1DD2483DA6A00F53684 /* DeliverySelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3FD1DC2483DA6A00F53684 /* DeliverySelectionViewController.swift */; };
 		7FBDF2AF2468139F0079B56E /* BaseTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FBDF2AE2468139F0079B56E /* BaseTabViewController.swift */; };
 		83253D7B24AF244B008D1179 /* AreaSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83253D7A24AF244B008D1179 /* AreaSelectionViewController.swift */; };
+		834A655A24B3320100A75124 /* ProfileSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834A655924B3320100A75124 /* ProfileSplitViewController.swift */; };
 		835CB02924AF635300BD212E /* LocationSelectionCommentedFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835CB02824AF635300BD212E /* LocationSelectionCommentedFile.swift */; };
 		835CB02B24AF751900BD212E /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835CB02A24AF751800BD212E /* ColorExtension.swift */; };
 		BE4501EC23EEE5F600E3AB68 /* Promoted.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4501EB23EEE5F600E3AB68 /* Promoted.swift */; };
@@ -295,6 +296,7 @@
 		7F3FD1DC2483DA6A00F53684 /* DeliverySelectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliverySelectionViewController.swift; sourceTree = "<group>"; };
 		7FBDF2AE2468139F0079B56E /* BaseTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabViewController.swift; sourceTree = "<group>"; };
 		83253D7A24AF244B008D1179 /* AreaSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AreaSelectionViewController.swift; sourceTree = "<group>"; };
+		834A655924B3320100A75124 /* ProfileSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSplitViewController.swift; sourceTree = "<group>"; };
 		835CB02824AF635300BD212E /* LocationSelectionCommentedFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelectionCommentedFile.swift; sourceTree = "<group>"; };
 		835CB02A24AF751800BD212E /* ColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		85EEF2A8C2D95FEA34A94A4E /* Pods-Walayem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Walayem.debug.xcconfig"; path = "Target Support Files/Pods-Walayem/Pods-Walayem.debug.xcconfig"; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 				7F2CCF752483FF3300756B69 /* DeliveryLocationView.xib */,
 				83253D7A24AF244B008D1179 /* AreaSelectionViewController.swift */,
 				835CB02824AF635300BD212E /* LocationSelectionCommentedFile.swift */,
+				834A655924B3320100A75124 /* ProfileSplitViewController.swift */,
 			);
 			path = UserViewControllers;
 			sourceTree = "<group>";
@@ -874,6 +877,7 @@
 				04DE41E7208C797100A14C30 /* ProfileTableViewController.swift in Sources */,
 				04CAD477208F464C00DD48C6 /* RatingControl.swift in Sources */,
 				04DE41EB208CA30F00A14C30 /* AddressTableViewController.swift in Sources */,
+				834A655A24B3320100A75124 /* ProfileSplitViewController.swift in Sources */,
 				04F38A20208F1F8E00223B82 /* InviteViewController.swift in Sources */,
 				04D9E8AF2085FCD1002E1B51 /* RecommendationCollectionViewCell.swift in Sources */,
 				0437932C20874D880050C7D8 /* RestClient.swift in Sources */,
@@ -1086,7 +1090,7 @@
 				CODE_SIGN_ENTITLEMENTS = Walayem/Walayem.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Walayem/Info.plist;
@@ -1113,7 +1117,7 @@
 				CODE_SIGN_ENTITLEMENTS = Walayem/Walayem.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Walayem/Info.plist;
