@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hdw-ES-F0F">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hdw-ES-F0F">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -438,7 +438,7 @@
                                                 </cells>
                                             </collectionView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fER-XF-4gR">
-                                                <rect key="frame" x="20" y="265" width="335" height="106"/>
+                                                <rect key="frame" x="20" y="265" width="335" height="107"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EIp-6A-gOk">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="23"/>
@@ -465,13 +465,15 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95s-nW-ntj">
-                                                        <rect key="frame" x="0.0" y="57" width="335" height="18"/>
+                                                        <rect key="frame" x="0.0" y="57" width="335" height="19"/>
+                                                        <color key="tintColor" red="0.36951097849999998" green="0.90207427740000001" blue="0.79985219240000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
+                                                        <color key="shadowColor" red="0.93947190049999996" green="0.81227260830000003" blue="0.3819998503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lbo-cM-ubK">
-                                                        <rect key="frame" x="0.0" y="83" width="335" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="84" width="335" height="0.0"/>
                                                         <subviews>
                                                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timer" translatesAutoresizingMaskIntoConstraints="NO" id="ePP-wf-GxS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -490,7 +492,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lxi-Jt-WUh">
-                                                        <rect key="frame" x="0.0" y="91" width="335" height="15"/>
+                                                        <rect key="frame" x="0.0" y="92" width="335" height="15"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="information" translatesAutoresizingMaskIntoConstraints="NO" id="RoL-Sw-WBY">
                                                                 <rect key="frame" x="0.0" y="0.0" width="15" height="15"/>
@@ -529,7 +531,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="48N-gJ-NjM">
-                                                <rect key="frame" x="20" y="391" width="335" height="20"/>
+                                                <rect key="frame" x="20" y="392" width="335" height="20"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="information" translatesAutoresizingMaskIntoConstraints="NO" id="VnQ-QY-mZd">
                                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -548,7 +550,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="YEy-rU-0Zk">
-                                                <rect key="frame" x="20" y="432" width="335" height="78"/>
+                                                <rect key="frame" x="20" y="433" width="335" height="78"/>
                                                 <subviews>
                                                     <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LbJ-4e-vyP">
                                                         <rect key="frame" x="0.0" y="-16" width="335" height="16"/>
