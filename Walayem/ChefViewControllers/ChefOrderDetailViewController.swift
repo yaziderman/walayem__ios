@@ -158,7 +158,7 @@ class ChefOrderDetailViewController: UIViewController {
     
     @IBAction func whatsAppCustomer(_ sender: UIButton) {
                 if let orderDetail = orderDetail, let address = orderDetail.address{
-            let textMsg = "*Greetings from Walayem*, This is *\(user?.name ?? "CHEF_NAME")*.\nI got your order and would like to confirm."
+            let textMsg = "*Greetings from Walayem*, This is *\(user?.name ?? "CHEF_NAME")*.\nI got your order and would like to confirm..\n" + getGreetingsInArabic()
                     
             let urlWhats = "whatsapp://send?phone=\(address.phone!)&abid=12354&text=\(textMsg)"
                 if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed){
@@ -178,6 +178,12 @@ class ChefOrderDetailViewController: UIViewController {
         }
     }
     
+    private func getGreetingsInArabic() -> String{
+        var greetingsInArabic = ""
+        greetingsInArabic = greetingsInArabic + "مرحبا،" + "\n"
+        greetingsInArabic = greetingsInArabic + "انا " + " \(user?.name ?? "your Chef")،" + "استلمت طلبك و أود التأكد من التفاصيل."
+        return greetingsInArabic
+    }
     private func getOrderDetail(){
         showActivityIndicator()
         let params: [String: Int] = ["partner_id": user!.partner_id!, "order_id": orderId!]
