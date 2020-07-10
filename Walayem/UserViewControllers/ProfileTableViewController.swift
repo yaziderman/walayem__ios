@@ -244,6 +244,10 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
         if let selectedIndexPath = self.tableView.indexPathForSelectedRow{
             self.tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
+        
+        if StaticLinker.moveToHomePage {
+            self.tabBarController?.selectedIndex = 0
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

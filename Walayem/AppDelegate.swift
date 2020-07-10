@@ -49,9 +49,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        getContactDetails()
 //        getChefSettings()'
         AreaFilter.setSharedFilter()
+        KeyChainWrapper.setKeychainWrapper()
+        if #available(iOS 13, *) {
+            AppleLoginWrapper.setLoginWrapper()
+        }
 		#if DEBUG
 		Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
 		#endif
+        
         return true
     }
     

@@ -342,7 +342,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
                     Utils.notifyRefresh()
                     self.dismiss(animated: true) {
                         StaticLinker.loginVC?.dismiss(animated: false, completion: {
-                            StaticLinker.loginNav?.dismiss(animated: false, completion: nil)
+                            StaticLinker.loginNav?.dismiss(animated: false, completion: {
+                                if StaticLinker.moveToHomePage {
+                                    StaticLinker.moveToHomePage = false
+                                    self.tabBarController?.selectedIndex = 0
+                                }
+                            })
                         })
                     }
                 }

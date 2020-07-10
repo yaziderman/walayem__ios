@@ -52,6 +52,7 @@ extension UIViewController{
         }
         StaticLinker.loginNav = navigationController
         StaticLinker.showSkip = showSkip
+        StaticLinker.moveToHomePage = true
         
         self.present(navigationController, animated: true, completion: nil)
     }

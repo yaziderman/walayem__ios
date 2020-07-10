@@ -43,6 +43,7 @@ class MainHomeViewController: BaseTabViewController {
     
     var activityIndicator: UIActivityIndicatorView!
     var spinnerView = UIView()
+    var remoteConfigFetcher: RemoteConfigFetcher?
     
     func showSpinner(){
         spinnerView = getSpinnerView()
@@ -57,25 +58,9 @@ class MainHomeViewController: BaseTabViewController {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        showSpinner()
-        mActivityIndicator.stopAnimating()
-        setupRefreshControl()
-        getCuisines()
-        initialCustomDate()
 //		locationManager = CLLocationManager()
-//		NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
 //		locationWrapper = LocationWrapper(locationDelegate: self, vc: self)
-        
-        if AreaFilter.shared.selectedArea == 0 && AreaFilter.shared.addressId == 0 {
-            if let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "AreaSelectionViewController") as? AreaSelectionViewController {
-                vc.areaSelectionProtocol = self
-                self.navigationController?.present(vc, animated: true, completion: nil)
-            }
-        } else {
-            getPromoted(isAddress: AreaFilter.shared.isAddress)
-            locationView.areaUpdated()
-        }
-        tableView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(handleTapAnimation)))
     }
     
     func initialCustomDate() {
@@ -260,6 +245,7 @@ class MainHomeViewController: BaseTabViewController {
 //			locationWrapper = LocationWrapper(locationDelegate: self)
 //		}
         StaticLinker.selectedCuisine = nil
+        remoteConfigFetcher = RemoteConfigFetcher(self)
     }
     
     private func getCuisines(){
@@ -290,17 +276,19 @@ class MainHomeViewController: BaseTabViewController {
         }
     }
 	
-//	@objc func didEnterForeground() {
+	@objc func didEnterForeground() {
 //		if StaticLinker.shouldGetLocation {
 //			StaticLinker.shouldGetLocation = false
 //			locationWrapper = LocationWrapper(locationDelegate: self, vc: self)
 //		}
-//		StaticLinker.selectedCuisine = nil
-//	}
-//
-//	deinit {
-//		NotificationCenter.default.removeObserver(self)
-//	}
+		StaticLinker.selectedCuisine = nil
+        remoteConfigFetcher = RemoteConfigFetcher(self)
+        
+	}
+
+	deinit {
+		NotificationCenter.default.removeObserver(self)
+	}
     
     override func areaSelected(selectedAreaArray: [Int], areaName: String) {
         super.areaSelected(selectedAreaArray: selectedAreaArray, areaName: areaName)
@@ -511,13 +499,41 @@ extension MainHomeViewController: LocationDelegate {
     
 }
 
-//extension MainHomeViewController: AreaSelectionProtocol {
-//
-//    func areaSelected(selectedAreaArray: [Int], areaName: String) {
-//        AreaFilter.shared.setSelectedArea(selectedArea: selectedAreaArray.first ?? 0, title: areaName)
-//        locationView.areaUpdated()
-//
-//        getPromoted()
-//    }
-//
-//}
+extension MainHomeViewController: RemoteConfigProtocol {
+    
+    func fetched(data: RemoteConfigModel) {
+        DispatchQueue.main.async { [weak self] in
+            
+            guard let self = self else { return }
+            
+            self.showSpinner()
+            let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+            if data.ios_min_prod_version > appVersion {
+                let alert = UIAlertController(title: "App Update Available", message: "Please update the app to continue.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { action in
+                    if UIApplication.shared.canOpenURL(URL(string: data.ios_store_url)!) {
+                        UIApplication.shared.open(URL(string: data.ios_store_url)!, options: [:], completionHandler: nil)
+                    }
+                }))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.mActivityIndicator.stopAnimating()
+                self.setupRefreshControl()
+                self.getCuisines()
+                self.initialCustomDate()
+                if AreaFilter.shared.selectedArea == 0 && AreaFilter.shared.addressId == 0 {
+                           if let vc = UIStoryboard(name: "Home", bundle: nil).instantiateViewController(withIdentifier: "AreaSelectionViewController") as? AreaSelectionViewController {
+                               vc.areaSelectionProtocol = self
+                               self.navigationController?.present(vc, animated: true, completion: nil)
+                           }
+                       } else {
+                    self.getPromoted(isAddress: AreaFilter.shared.isAddress)
+                    self.locationView.areaUpdated()
+                       }
+                self.tableView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(self.handleTapAnimation)))
+            }
+        }
+        
+    }
+    
+}

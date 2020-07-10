@@ -23,5 +23,7 @@ target 'Walayem' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
 	pod 'HandyUIKit', '~> 1.9'
+  pod 'KeychainSwift'
+  pod 'Firebase/RemoteConfig'
 
 end

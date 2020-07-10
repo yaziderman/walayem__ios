@@ -93,3 +93,11 @@ class User{
     }
     
 }
+
+struct UserKeychainObject: Codable {
+    
+    var email = ""
+    var firstName = ""
+    var lastName = ""
+    
+}

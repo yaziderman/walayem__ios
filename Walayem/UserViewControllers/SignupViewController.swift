@@ -16,16 +16,17 @@ import GoogleSignIn
 import FirebaseMessaging
 import FirebaseAuth
 import BetterSegmentedControl
+import AuthenticationServices
 
 class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDelegate, ChefCoverageAreaDelegate, LocationSelectionDelegate {
-
+    
     // MARK: Properties
     
     private var selectedEmerates: [Int]?
     var selectedAreaIds: [Int]?
     var selectedLat: Double?
     var selectedLng: Double?
-	
+    
     @IBOutlet weak var customerView: UIStackView!
     @IBOutlet weak var chefView: UIStackView!
     
@@ -44,7 +45,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     @IBOutlet weak var emailVerifyImageView: UIImageView!
     @IBOutlet weak var phoneVerifyImageView: UIImageView!
     @IBOutlet weak var passwordVerifyImageView: UIImageView!
-
+    
     @IBOutlet weak var chefNameTextField: UITextField!
     @IBOutlet weak var chefEmailTextField: UITextField!
     @IBOutlet weak var chefPhoneTextField: UITextField!
@@ -61,7 +62,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     @IBOutlet weak var chefEmailView: UIStackView!
     @IBOutlet weak var chefPhoneView: UIStackView!
     @IBOutlet weak var chefPasswordView: UIStackView!
-	@IBOutlet weak var coverageAreaLabel: UILabel!
+    @IBOutlet weak var coverageAreaLabel: UILabel!
     
     var emailVerified: Bool = false
     var nameVerified: Bool = false
@@ -89,7 +90,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     
     @IBOutlet weak var coverageAreaBtn: UIButton!
     @IBOutlet weak var locationBtn: UIButton!
-    
+        
     @IBAction func back(_ sender: UIButton){
         dismiss(animated: true, completion: nil)
     }
@@ -97,7 +98,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     private func showAlert(title: String, msg: String){
         let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-        present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)        
     }
     
     private func showCoverageSelectionScreen() {
@@ -126,17 +127,14 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     func didSelectMultipleAreas(selectedAreas: [Int], selectedEmirates: [Int], title: String) {
         self.selectedEmerates = selectedEmirates
         self.selectedAreaIds = selectedAreas
-		coverageAreaLabel.text = title
-//        self.coverageAreaBtn.setTitle(title, for: .normal)
-//        self.coverageAreaBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        coverageAreaLabel.text = title
         var color: UIColor!
         if #available(iOS 13.0, *) {
-             color = .label
+            color = .label
         } else {
             color = .black
         }
-		self.coverageAreaLabel.textColor = color
-//        self.coverageAreaBtn.titleLabel?.textColor = color
+        self.coverageAreaLabel.textColor = color
         self.coverageVerifyImageView.tintColor = .colorPrimary
     }
     
@@ -147,7 +145,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         self.locationBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         var color: UIColor!
         if #available(iOS 13.0, *) {
-             color = .label
+            color = .label
         } else {
             color = .black
         }
@@ -166,7 +164,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 self.showMessagePrompt("All the fields are mandatory.")
                 return;
             }
-                
+            
             if(!nameVerified)
             {
                 self.showMessagePrompt("Invalid name.")
@@ -187,7 +185,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 self.showMessagePrompt("Password must be at least 6  characters.")
                 return;
             }
-
+            
             let countryCode = "+971"
             let name = nameTextField.text ?? ""
             let email = emailTextField.text ?? ""
@@ -220,17 +218,17 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 }
                 else {
                     PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
-
+                        
                         Utils.setUserDefaults(value: verificationID ?? "", key: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
                         
-                            if let error = error {
-                                self.progressAlert?.dismiss(animated: false, completion: {
-                                    self.showMessagePrompt(error.localizedDescription)
-                                })
-                                return
-                            }
-                            print("VERRRRR---- :\(verificationID)")
-                        })
+                        if let error = error {
+                            self.progressAlert?.dismiss(animated: false, completion: {
+                                self.showMessagePrompt(error.localizedDescription)
+                            })
+                            return
+                        }
+                        print("VERRRRR---- :\(verificationID)")
+                    })
                 }
                 
                 
@@ -239,10 +237,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
                 self.loadUserDetails()
             }
-
+            
         }
         else{
-    // MARK: Chef SIGN UP
+            // MARK: Chef SIGN UP
             let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
             if (session == nil){
                 
@@ -253,7 +251,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                     self.showMessagePrompt("All the fields are mandatory.")
                     return;
                 }
-                    
+                
                 if(!chefNameVerified)
                 {
                     self.showMessagePrompt("Invalid name.")
@@ -282,7 +280,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 }
                 
                 if self.selectedAreaIds?.count == 0,
-                self.selectedEmerates?.count == 0 {
+                    self.selectedEmerates?.count == 0 {
                     self.showMessagePrompt("Please Select Areas")
                     return;
                 }
@@ -328,14 +326,14 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                         
                         PhoneAuthProvider.provider().verifyPhoneNumber(phone, uiDelegate: nil, completion: { (verificationID, error) in
                             if let error = error {
-//                                self.progressAlert?.dismiss(animated: false, completion: {
-////                                    self.showMessagePrompt(error.localizedDescription)
-//                                })
+                                //                                self.progressAlert?.dismiss(animated: false, completion: {
+                                ////                                    self.showMessagePrompt(error.localizedDescription)
+                                //                                })
                                 print(error.localizedDescription)
                                 return
                             }
                             UserDefaults.standard.set(verificationID, forKey: UserDefaultsKeys.FIREBASE_VERIFICATION_ID)
-
+                            
                         })
                         
                     }
@@ -344,7 +342,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                     let sessionId: String = data["session_id"] as! String
                     UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
                     let coverage = ChefAreaCoverage(areaIds: self.selectedAreaIds!,
-													areaTitles: [self.coverageAreaLabel.text!])//self.coverageAreaBtn.title(for: .normal)!
+                                                    areaTitles: [self.coverageAreaLabel.text!])//self.coverageAreaBtn.title(for: .normal)!
                     coverage.saveToUserDefaults()
                     let location = ChefLocation(lat: self.selectedLat!,
                                                 long: self.selectedLng!,
@@ -362,32 +360,32 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     }
     
     
-       private func logout(){
-            let client = OdooClient.sharedInstance()
-            client.logout(completionHandler: { (result, error) in
-//                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                if let error = error{
-                    let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
-//                    self.showAlert(title: "cannot logout", msg: errmsg)
-                    User().clearUserDefaults()
-                    OdooClient.destroy()
-                    return
-                }
-                let userId = UserDefaults.standard.integer(forKey: UserDefaultsKeys.PARTNER_ID)
-                Messaging.messaging().unsubscribe(fromTopic: "alli")
-                Messaging.messaging().unsubscribe(fromTopic: "\(userId)i")
-                Messaging.messaging().unsubscribe(fromTopic: "alluseri")
+    private func logout(){
+        let client = OdooClient.sharedInstance()
+        client.logout(completionHandler: { (result, error) in
+            //                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            if let error = error{
+                let errmsg = error.userInfo[NSLocalizedDescriptionKey] as! String
+                //                    self.showAlert(title: "cannot logout", msg: errmsg)
                 User().clearUserDefaults()
                 OdooClient.destroy()
-				
-				StaticLinker.shouldGetLocation = true
-                StaticLinker.mainVC?.selectedIndex = 0
-//                Utils.notifyRefresh()
-                self.signup(self)
-            })
-        
+                return
+            }
+            let userId = UserDefaults.standard.integer(forKey: UserDefaultsKeys.PARTNER_ID)
+            Messaging.messaging().unsubscribe(fromTopic: "alli")
+            Messaging.messaging().unsubscribe(fromTopic: "\(userId)i")
+            Messaging.messaging().unsubscribe(fromTopic: "alluseri")
+            User().clearUserDefaults()
+            OdooClient.destroy()
             
-        }
+            StaticLinker.shouldGetLocation = true
+            StaticLinker.mainVC?.selectedIndex = 0
+            //                Utils.notifyRefresh()
+            self.signup(self)
+        })
+        
+        
+    }
     
     @IBAction func signupViaFb(_ sender: UIButton) {
         let loginManager = LoginManager()
@@ -406,7 +404,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                     if let res = result {
                         var responseDict = res as! [String:Any]
                         _ = responseDict["name"] as! String
-//                        _ = responseDict["email"] as! String
+                        //                        _ = responseDict["email"] as! String
                         _ = responseDict["id"] as! String
                         let pictureDict = responseDict["picture"] as! [String:Any]
                         let imageDict = pictureDict["data"] as! [String:Any]
@@ -436,8 +434,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         
         // Add try-catch here
         
-//        GIDSignIn.sharedInstance()?.uidelegate = self
-//        try this GIDSignIn.sharedInstance()?.presentingViewController = self
+        //        GIDSignIn.sharedInstance()?.uidelegate = self
+        //        try this GIDSignIn.sharedInstance()?.presentingViewController = self
     }
     
     
@@ -476,7 +474,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         chefPasswordVerifyImageView.tintColor = UIColor.silver
         coverageVerifyImageView.tintColor = .silver
         locationVerifyImageView.tintColor = .silver
-
+        
         updateSignupButtonState()
         
         self.btnCustomer.layer.borderWidth = 1
@@ -513,18 +511,18 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         StaticLinker.signupVC = self
         
     }
-
+    
     override func viewWillLayoutSubviews() {
         addBottomBorder()
     }
-
+    
     // MARK: Private methods
-//    private func addImageInsideTextField(){
-//        //Customer
-//        nameTextField.addImageAtLeft(UIImage(named: "user"))
-//        emailTextField.addImageAtLeft(UIImage(named: "email"))
-//        passwordTextField.addImageAtLeft(UIImage(named: "lock"))
-//	}
+    //    private func addImageInsideTextField(){
+    //        //Customer
+    //        nameTextField.addImageAtLeft(UIImage(named: "user"))
+    //        emailTextField.addImageAtLeft(UIImage(named: "email"))
+    //        passwordTextField.addImageAtLeft(UIImage(named: "lock"))
+    //	}
     
     private func addImageInsideTextField(){
         let userImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
@@ -543,7 +541,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         let phoneImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 0, height: 20))
         phoneImageView.image = UIImage(named: "phone")
         phoneImageView.contentMode = .left
-		
+        
         let prefix = UILabel(frame: CGRect(x: 18, y:0, width: 40, height: 20))
         prefix.text = "+971 -"
         prefix.sizeToFit()
@@ -563,7 +561,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         chefNameTextField.addImageAtLeft(UIImage(named: "user"))
         chefEmailTextField.addImageAtLeft(UIImage(named: "email"))
         chefPasswordTextField.addImageAtLeft(UIImage(named: "lock"))
-//        phoneTextField.leftView = phoneImageView
+        //        phoneTextField.leftView = phoneImageView
         
         let lockImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20 + 10, height: 20))
         lockImageView.image = UIImage(named: "lock")
@@ -594,17 +592,17 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         prefix2.text = "+971 -"
         prefix2.sizeToFit()
         prefix2.textColor = UIColor.textColor
-
-		let leftView2 = UIView(frame: CGRect(x: 0, y: 0, width: 20 + 50, height: 20))
+        
+        let leftView2 = UIView(frame: CGRect(x: 0, y: 0, width: 20 + 50, height: 20))
         leftView2.addSubview(chefPhoneImageView)
         leftView2.addSubview(prefix2)
         leftView2.contentMode = .left
         chefPhoneTextField.leftViewMode = .always
         chefPhoneTextField.leftView = leftView2
         chefPhoneTextField.placeholder = "50XXXXXXX"
-
-//        let leftView2 = UIView(frame: CGRect(x: 0, y: 0, width: 20 + 50, height: 20))
-
+        
+        //        let leftView2 = UIView(frame: CGRect(x: 0, y: 0, width: 20 + 50, height: 20))
+        
         leftView2.addSubview(chefPhoneImageView)
         leftView2.addSubview(prefix2)
         leftView2.contentMode = .left
@@ -633,13 +631,13 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     }
     
     private func updateSignupButtonState(){
-//        if nameVerified && emailVerified && passwordVerified{
-//            signupButton.isEnabled = true
-//            signupButton.alpha = 1
-//        }else{
-//            signupButton.isEnabled = false
-//            signupButton.alpha = 0.3
-//        }
+        //        if nameVerified && emailVerified && passwordVerified{
+        //            signupButton.isEnabled = true
+        //            signupButton.alpha = 1
+        //        }else{
+        //            signupButton.isEnabled = false
+        //            signupButton.alpha = 0.3
+        //        }
     }
     
     private func sendFbData(token: String){
@@ -651,7 +649,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 if let sessionId = value["result"] as? String
                 {
                     UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
-					self.loadUserDetails()
+                    self.loadUserDetails()
                 }
                 else
                 {
@@ -676,7 +674,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 if let sessionId = value["result"] as? String
                 {
                     UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
-                self.loadUserDetails()
+                    self.loadUserDetails()
                 }
                 else
                 {
@@ -735,7 +733,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                         self.subscribeToFirebaseTopics(partnerId)
                         self.saveUserInDevice(user: user, partnerId: partnerId)
                     }
-                    }
+                }
                 catch{
                     
                     }
@@ -749,7 +747,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
             let values : [String : Any] = ["image": image, "is_image_set": true]
             OdooClient.sharedInstance().write(model: "res.partner", ids: [partnerId], values: values) { (result, error) in
                 self.progressAlert?.dismiss(animated: false, completion: {
-                     self.performSegue(withIdentifier: "VerifyPhoneSegue", sender: self)
+                    self.performSegue(withIdentifier: "VerifyPhoneSegue", sender: self)
                 })
             }
         }else{
@@ -766,7 +764,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         userDefaults.set(user.email, forKey: UserDefaultsKeys.EMAIL)
         userDefaults.set(user.isChef, forKey: UserDefaultsKeys.IS_CHEF)
         userDefaults.set(partnerId, forKey: UserDefaultsKeys.PARTNER_ID)
-  
+        
         userDefaults.synchronize()
         
         if(self.isChef)
@@ -774,8 +772,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
             self.progressAlert?.dismiss(animated: false, completion: {
                 self.performSegue(withIdentifier: "VerifyPhoneSegue", sender: self)
             })
-
-//            self.performSegue(withIdentifier: "VerifyPhoneSegue", sender: self)
+            
+            //            self.performSegue(withIdentifier: "VerifyPhoneSegue", sender: self)
         }
     }
     
@@ -855,7 +853,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 passwordVerified = false
             }
             
-
+            
         case chefNameTextField:
             let name = chefNameTextField.text ?? ""
             if Verification.isValidName(name){
@@ -901,7 +899,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         updateSignupButtonState()
     }
     
-   
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -951,17 +949,6 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         // ...
     }
     
-    // MARK: - Action handlers    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     
     @IBAction func onCustomer(_ sender: Any) {
         self.btnCustomer.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
@@ -983,20 +970,20 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     
     @IBAction func onChef(_ sender: Any) {
         
-//        onChef(sender)
+        //        onChef(sender)
         self.btnCustomer.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         self.btnChef.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
-
+        
         self.btnChef.setTitleColor(UIColor.white, for: .normal)
         self.btnChef.backgroundColor = .colorPrimary
-
+        
         self.btnCustomer.setTitleColor(UIColor.colorPrimary, for: .normal)
         self.btnCustomer.backgroundColor = .white
-
+        
         self.isChef = true
         self.chefView.isHidden = false
         self.customerView.isHidden = true
-
+        
         self.lbSocialSignUp.isHidden = true
         self.socialPanel.isHidden = true
         self.vDivider.isHidden = true
@@ -1006,20 +993,37 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         
         self.btnCustomer.titleLabel?.font = UIFont.systemFont(ofSize: 15)
         self.btnChef.titleLabel?.font = UIFont.boldSystemFont(ofSize: 15)
-       
+        
         self.btnChef.setTitleColor(UIColor.white, for: .normal)
         self.btnChef.backgroundColor = .colorPrimary
-
+        
         self.btnCustomer.setTitleColor(UIColor.colorPrimary, for: .normal)
         self.btnCustomer.backgroundColor = .white
-
+        
         self.isChef = true
         self.chefView.isHidden = false
         self.customerView.isHidden = true
-           
+        
         self.lbSocialSignUp.isHidden = true
         self.socialPanel.isHidden = true
         self.vDivider.isHidden = true
+    }
+    
+    
+    @IBAction func appleLoginAction(_ sender: Any) {
+        
+        if #available(iOS 13.0, *) {
+            AppleLoginWrapper.shared?.setUpWrapper(viewController: self)
+        } else {
+            
+        }
+        
+    }
+    
+    func signUpWithApple() {
+        
+        
+        
     }
     
 }

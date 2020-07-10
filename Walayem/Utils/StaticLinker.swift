@@ -26,4 +26,6 @@ class StaticLinker
     public static var previosSeletedTab : Int = 0
 	public static var shouldGetLocation = false
     
+    public static var moveToHomePage = false
+    
 }
