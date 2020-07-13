@@ -441,6 +441,11 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if #available(iOS 13, *) {
+            AppleLoginWrapper.setLoginWrapper(appleLoginDelegate: self)
+        }
+        
         GIDSignIn.sharedInstance().delegate = self
         signupButton.layer.cornerRadius = 12
         signupButton.layer.masksToBounds = false
@@ -1020,10 +1025,12 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         
     }
     
-    func signUpWithApple() {
-        
-        
-        
+}
+
+extension SignupViewController: AppleLoginProtocol {
+    
+    func appleLoginComplete(token: String) {
+        sendGoogleData(token: token)
     }
     
 }

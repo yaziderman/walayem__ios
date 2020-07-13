@@ -8,15 +8,25 @@
 
 import Foundation
 import AuthenticationServices
+import CryptoKit
+import FirebaseAuth
+
+protocol AppleLoginProtocol: class {
+    func appleLoginComplete(token: String)
+}
 
 @available(iOS 13, *)
 class AppleLoginWrapper: NSObject {
     
     static var shared: AppleLoginWrapper?
+    fileprivate var currentNonce: String?
     
-    static func setLoginWrapper() {
+    fileprivate static weak var appleLoginDelegate: AppleLoginProtocol?
+    
+    static func setLoginWrapper(appleLoginDelegate: AppleLoginProtocol) {
         if AppleLoginWrapper.shared == nil {
             shared = AppleLoginWrapper()
+            self.appleLoginDelegate = appleLoginDelegate
         }
     }
     
@@ -37,6 +47,7 @@ class AppleLoginWrapper: NSObject {
                 self?.authorizationRequest()
                 break
             case .revoked, .notFound:
+                //                try? self?.signOut()
                 self?.authorizationRequest()
                 break
             default:
@@ -46,31 +57,18 @@ class AppleLoginWrapper: NSObject {
     }
     
     func authorizationRequest() {
+        //        let nonce = randomNonceString()
+        //        currentNonce = nonce
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
         request.requestedScopes = [.fullName, .email]
+        //        request.nonce = sha256(nonce)
         
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
         authorizationController.presentationContextProvider = self
         authorizationController.performRequests()
     }
-    
-//    func authorizationCheckRequest() {
-//        isCheckRequest = true
-//        let appleIDProvider = ASAuthorizationAppleIDProvider()
-//        let request = appleIDProvider.createRequest()
-//        var requestArray = [ASAuthorizationRequest]()
-//        request.requestedScopes = [.fullName, .email]
-//        requestArray.append(request)
-//        let passwordRequest = ASAuthorizationPasswordProvider().createRequest()
-//        requestArray.append(passwordRequest)
-//
-//        let authorizationController = ASAuthorizationController(authorizationRequests: requestArray)
-//        authorizationController.delegate = self
-//        authorizationController.presentationContextProvider = self
-//        authorizationController.performRequests()
-//    }
     
 }
 
@@ -86,10 +84,17 @@ extension AppleLoginWrapper: ASAuthorizationControllerDelegate {
             let userLastName = appleIDCredential.fullName?.familyName
             let userEmail = appleIDCredential.email
             
-            print("User ID: \(userId)")
-            print("User First Name: \(userFirstName ?? "")")
-            print("User Last Name: \(userLastName ?? "")")
-            print("User Email: \(userEmail ?? "")")
+//            guard let nonce = currentNonce else {
+//                fatalError("Invalid state: A login callback was received, but no login request was sent.")
+//            }
+            guard let appleIDToken = appleIDCredential.identityToken else {
+                print("Unable to fetch identity token")
+                return
+            }
+            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+                return
+            }
             
             if isCheckRequest {
                 //            let applePassword = passwordCredential.password
@@ -108,7 +113,7 @@ extension AppleLoginWrapper: ASAuthorizationControllerDelegate {
                 }
                 
             } else {
-                let userKeychainObject: [String: String] = UserKeychainObject(email: userEmail ?? "", firstName: userFirstName ?? "", lastName: userLastName ?? "").asDictionary()
+                let userKeychainObject: [String: String] = UserKeychainObject(email: userEmail ?? "", firstName: userFirstName ?? "", lastName: userLastName ?? "", identityToken: idTokenString).asDictionary()
                 do {
                     let jsonData = try JSONSerialization.data(withJSONObject: userKeychainObject, options: .prettyPrinted)
                     let theJSONText = String(data: jsonData, encoding: .utf8) ?? ""
@@ -123,8 +128,54 @@ extension AppleLoginWrapper: ASAuthorizationControllerDelegate {
                     print(error.localizedDescription)
                 }
             }
-            // Write your code here
+            
+            AppleLoginWrapper.appleLoginDelegate?.appleLoginComplete(token: idTokenString)
+            
+            
+            //            // Initialize a Firebase credential.
+            //            let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: idTokenString, rawNonce: nonce)
+            //
+            //            // Sign in with Firebase.
+            //
+            //            Auth.auth().signIn(with: credential) { (authResult, error) in
+            //
+            //                if let error = error {
+            //                    print(error.localizedDescription)
+            //                    return
+            //                }
+            //
+            //                let value = response.result.value as! [String : Any]
+            //                if let sessionId = value["result"] as? String
+            //                {
+            //                    UserDefaults.standard.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
+            //                    self.loadUserDetails()
+            //                }
+            //                else
+            //                {
+            //                    self.progressAlert?.dismiss(animated: false, completion: {
+            //                        self.showMessagePrompt("An account with the provided email address already exists.")
+            //                    })
+            //                }
+            //
+            //                if userFirstName != nil && userFirstName != "" {
+            //                    let changeRequest = authResult?.user.createProfileChangeRequest()
+            //                    changeRequest?.displayName = userFirstName
+            //                    changeRequest?.commitChanges(completion: { (error) in
+            //
+            //                        if let error = error {
+            //                            print(error.localizedDescription)
+            //                        } else {
+            //                            print("Updated display name: \(Auth.auth().currentUser!.displayName!)")
+            //                        }
+            //                    })
+            //                }
+            //
+            //                AppleLoginWrapper.appleLoginDelegate?.appleLoginComplete()
+            
+            // User is signed in to Firebase with Apple.
+            // ...
         }
+        // Write your code here
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
@@ -136,6 +187,9 @@ extension AppleLoginWrapper: ASAuthorizationControllerDelegate {
         DLog(message: error.localizedDescription)
     }
     
+    func signOut() throws {
+        try Auth.auth().signOut()
+    }
 }
 
 @available(iOS 13.0, *)

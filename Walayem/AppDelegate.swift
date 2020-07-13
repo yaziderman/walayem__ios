@@ -15,6 +15,7 @@ import GoogleSignIn
 import Firebase
 import GoogleMaps
 import GooglePlaces
+import AuthenticationServices
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -50,8 +51,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        getChefSettings()'
         AreaFilter.setSharedFilter()
         KeyChainWrapper.setKeychainWrapper()
+
         if #available(iOS 13, *) {
-            AppleLoginWrapper.setLoginWrapper()
+//            AppleLoginWrapper.setLoginWrapper()
+            NotificationCenter.default.addObserver(self, selector: #selector(appleIDStateDidRevoked(_:)), name: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil)
         }
 		#if DEBUG
 		Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
@@ -192,6 +195,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             
             let a = 0;
+        }
+    }
+    
+    @objc func appleIDStateDidRevoked(_ notification: Notification) {
+        if #available(iOS 13.0, *) {
+            try? AppleLoginWrapper.shared?.signOut()
         }
     }
 

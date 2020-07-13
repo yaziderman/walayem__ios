@@ -99,5 +99,6 @@ struct UserKeychainObject: Codable {
     var email = ""
     var firstName = ""
     var lastName = ""
+    var identityToken = ""
     
 }
