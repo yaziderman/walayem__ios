@@ -562,21 +562,14 @@ extension ChefDetailViewController: UICollectionViewDelegate, UICollectionViewDa
             fatalError("Unexpected cell")
         }
         
-        
-        
         cell.titleLabel.text = foodCategs[indexPath.row]
         cell.iconImageView.tintColor = UIColor.perrywinkle
-//        cell.frame.size.width.x
-        print(cell.frame.size.width)
-        print(cell.frame.size.height)
-        
-        print(cell.frame)
 
         if indexPath.row == selectedCateg{
-            cell.titleLabel.textColor = UIColor.steel
             cell.iconImageView.isHidden = false
-        }else{
-            cell.titleLabel.textColor = UIColor.silverTen
+            cell.titleLabel.textColor = UIColor.init(light: UIColor.steel, dark: UIColor.silver)
+         }else{
+            cell.titleLabel.textColor = UIColor.init(light: UIColor.silverTen, dark: UIColor.steel)
             cell.iconImageView.isHidden = true
         }
         return cell
