@@ -68,6 +68,9 @@ class ChefCoverageArea: UIViewController, UITableViewDelegate, UITableViewDataSo
                 let emirates = data["emirates"] as? [[String: Any]] {
                 self.sections = []
                 self.sectionItems = []
+                
+                self.currentExpandedSectionHeaderNumbers.removeAll()
+                
                 for item in emirates {
                     guard let emirateId = item["id"] as? Int else { continue }
                     
@@ -114,7 +117,9 @@ class ChefCoverageArea: UIViewController, UITableViewDelegate, UITableViewDataSo
 					}
 					
 					self.sections.append(section)
+                    self.currentExpandedSectionHeaderNumbers.append(-1)
                 }
+                                
                 self.filteredSectionItems = self.sectionItems
                 self.filteredSections = self.sections
                 self.expandableTableView.reloadData()

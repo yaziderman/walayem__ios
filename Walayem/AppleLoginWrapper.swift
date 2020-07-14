@@ -83,7 +83,7 @@ extension AppleLoginWrapper: ASAuthorizationControllerDelegate {
             let userFirstName = appleIDCredential.fullName?.givenName
             let userLastName = appleIDCredential.fullName?.familyName
             let userEmail = appleIDCredential.email
-            
+                        
 //            guard let nonce = currentNonce else {
 //                fatalError("Invalid state: A login callback was received, but no login request was sent.")
 //            }
@@ -91,8 +91,19 @@ extension AppleLoginWrapper: ASAuthorizationControllerDelegate {
                 print("Unable to fetch identity token")
                 return
             }
+            
+            guard let authToken = appleIDCredential.authorizationCode else {
+                print("Unable to fetch auth token")
+                return
+            }
+            
             guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
                 print("Unable to serialize token string from data: \(appleIDToken.debugDescription)")
+                return
+            }
+            
+            guard let authTokenString = String(data: authToken, encoding: .utf8) else {
+                print("Unable to serialize token string from data: \(authToken.debugDescription)")
                 return
             }
             
@@ -103,10 +114,10 @@ extension AppleLoginWrapper: ASAuthorizationControllerDelegate {
                     let data = jsonText.data(using: .utf8)!
                     let userObject = try JSONDecoder().decode(UserKeychainObject.self, from: data)
                     
-                    let alert = UIAlertController.init(title: "Login Data Retrieved", message: jsonText, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    
-                    viewController?.present(alert, animated: true, completion: nil)
+//                    let alert = UIAlertController.init(title: "Login Data Retrieved", message: jsonText, preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//
+//                    viewController?.present(alert, animated: true, completion: nil)
                     
                 } catch {
                     print(error.localizedDescription)
@@ -119,17 +130,17 @@ extension AppleLoginWrapper: ASAuthorizationControllerDelegate {
                     let theJSONText = String(data: jsonData, encoding: .utf8) ?? ""
                     KeyChainWrapper.shared?.setKeychainValue(key: userId, value: theJSONText)
                     
-                    let alert = UIAlertController.init(title: "Login Data Initial", message: theJSONText, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    
-                    viewController?.present(alert, animated: true, completion: nil)
+//                    let alert = UIAlertController.init(title: "Login Data Initial", message: theJSONText, preferredStyle: .alert)
+//                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+//
+//                    viewController?.present(alert, animated: true, completion: nil)
                     
                 } catch {
                     print(error.localizedDescription)
                 }
             }
             
-            AppleLoginWrapper.appleLoginDelegate?.appleLoginComplete(token: idTokenString)
+            AppleLoginWrapper.appleLoginDelegate?.appleLoginComplete(token: authTokenString)
             
             
             //            // Initialize a Firebase credential.

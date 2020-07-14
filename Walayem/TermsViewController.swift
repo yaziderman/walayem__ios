@@ -34,7 +34,7 @@ class TermsViewController: UIViewController {
 
         let params: [String: Any] = [:]
         RestClient().request(WalayemApi.viewTerms, params, self) { (result, error) in
-            print(result!)
+            print(result)
             if error != nil {
                 _ = error?.userInfo[NSLocalizedDescriptionKey] as! String
                 //error here

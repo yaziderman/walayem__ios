@@ -77,6 +77,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     var image64: String?
     
     var isChef: Bool = false
+    var fromAppleSignin = false
     
     var progressAlert: UIAlertController?
     
@@ -762,7 +763,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         }
     }
     
-    private func saveUserInDevice(user: User, partnerId: Int){
+    private func saveUserInDevice(user: User, partnerId: Int) {
         let userDefaults = UserDefaults.standard
         
         userDefaults.set(user.name, forKey: UserDefaultsKeys.NAME)
@@ -942,7 +943,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
             // download image forom google
             let imageUrl = user.profile.imageURL(withDimension: 400)
             ImageDownloader.default.downloadImage(with: imageUrl!, options: [], progressBlock: nil, completionHandler: { (image, error, url, data) in
-                self.image64 = Utils.encodeImage(image!)
+                if image != nil {
+                   self.image64 = Utils.encodeImage(image!)
+                }
             })
             sendGoogleData(token: accessToken!)
         }
@@ -1030,6 +1033,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
 extension SignupViewController: AppleLoginProtocol {
     
     func appleLoginComplete(token: String) {
+        fromAppleSignin = true
         sendGoogleData(token: token)
     }
     
