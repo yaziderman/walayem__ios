@@ -8,7 +8,7 @@
 
 import Foundation
 import AuthenticationServices
-import CryptoKit
+//import CryptoKit
 import FirebaseAuth
 
 protocol AppleLoginProtocol: class {

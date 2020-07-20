@@ -194,6 +194,7 @@ class ChefCoverageArea: UIViewController, UITableViewDelegate, UITableViewDataSo
                                               title: title)
         self.closeBtnClicked(UIButton())
     }
+    
     @IBAction func closeBtnClicked(_ sender: Any) {
         if self.isPush {
             self.navigationController?.popViewController(animated: true)

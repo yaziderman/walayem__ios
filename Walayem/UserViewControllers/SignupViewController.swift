@@ -376,6 +376,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
             Messaging.messaging().unsubscribe(fromTopic: "alli")
             Messaging.messaging().unsubscribe(fromTopic: "\(userId)i")
             Messaging.messaging().unsubscribe(fromTopic: "alluseri")
+            AreaFilter.shared.resetAreaFilter()
             User().clearUserDefaults()
             OdooClient.destroy()
             
@@ -971,9 +972,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         self.chefView.isHidden = true
         self.customerView.isHidden = false
         
-        self.lbSocialSignUp.isHidden = false
-        self.socialPanel.isHidden = false
-        self.vDivider.isHidden = false
+        self.lbSocialSignUp.isHidden = true
+        self.socialPanel.isHidden = true
+        self.vDivider.isHidden = true
     }
     
     @IBAction func onChef(_ sender: Any) {

@@ -302,6 +302,7 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
             Messaging.messaging().unsubscribe(fromTopic: "alli")
             Messaging.messaging().unsubscribe(fromTopic: "\(self.user!.partner_id!)i")
             Messaging.messaging().unsubscribe(fromTopic: "allchefi")
+            AreaFilter.shared.resetAreaFilter()
             User().clearUserDefaults()
 			StaticLinker.shouldGetLocation = true
             OdooClient.destroy()

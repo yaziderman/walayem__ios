@@ -68,6 +68,7 @@ class AreaSelectionViewController: UIViewController, UITableViewDelegate, UITabl
                 }))
                 self.present(controller, animated: true, completion: nil)
             }
+            
             if let mResult = result!["result"] as? [String: Any],
                 let data = mResult["data"] as? [String: Any],
                 let emirates = data["emirates"] as? [[String: Any]] {
@@ -194,6 +195,18 @@ class AreaSelectionViewController: UIViewController, UITableViewDelegate, UITabl
         //        self.delegate?.didSelectMultipleAreas(selectedAreas: self.selectedAreaArray,
         //                                              selectedEmirates: self.selectedEmirateArray,
         //                                              title: title)
+        if selectedAreaArray.count == 0 {
+            let section = self.filteredSectionItems.first
+            let item = section?.first
+            if let id = item?["id"] as? Int {
+                self.selectedAreaArray.append(id)
+            }
+            selectedAreaTitleArray.removeAll()
+            if let title = item?["title"] as? String {
+                selectedAreaTitleArray.append(title)
+            }
+            
+        }
         areaSelectionProtocol?.areaSelected(selectedAreaArray: selectedAreaArray, areaName: selectedAreaTitleArray.first ?? "")
         self.closeBtnClicked(UIButton())
     }

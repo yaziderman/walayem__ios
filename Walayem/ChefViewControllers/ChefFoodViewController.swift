@@ -164,15 +164,17 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
             params["product_id"] = food.id
         }
         
-        self.showHideProgress(isLoading: true)
+//        self.showHideProgress(isLoading: true)
+        let progressAlert = showProgressAlert()
         RestClient().request(WalayemApi.createFood, params, self) { (result, error) in
-            self.showHideProgress(isLoading: false)
+//            self.showHideProgress(isLoading: false)
+            progressAlert.dismiss(animated: true, completion: nil)
             
 			if error != nil{
-//				let errmsg = error.localizedDescription
                 self.showAlert(title: "Error", msg: "Check your input data...")
                 return
             }
+            
             let value = result!["result"] as! [String: Any]
             let msg = value["message"] as! String
             if let status = value["status"] as? Int, status == 0{
@@ -330,7 +332,7 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
     }
 
     private func showHideProgress(isLoading: Bool) {
-        if isLoading{
+        if isLoading {
             if activityIndicator == nil{
                 activityIndicator = UIActivityIndicatorView(style: .gray)
                 activityIndicator?.hidesWhenStopped = true
@@ -339,10 +341,17 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
             }
             activityIndicator?.startAnimating()
             saveButton.isEnabled = false
-        }else{
+        } else {
             activityIndicator?.stopAnimating()
             saveButton.isEnabled = true
         }
+    }
+    
+    private func showProgressAlert() -> UIAlertController{
+        let alert = UIAlertController(title: "Adding Dish", message: "Please wait...", preferredStyle: .alert)
+        self.present(alert, animated: true, completion: nil)
+        
+        return alert
     }
     
     // MARK: UIImagePickerControllerDelegate

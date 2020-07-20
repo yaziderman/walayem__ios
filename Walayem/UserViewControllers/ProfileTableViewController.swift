@@ -324,6 +324,7 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
             Messaging.messaging().unsubscribe(fromTopic: "alli")
             Messaging.messaging().unsubscribe(fromTopic: "\(self.user!.partner_id!)i")
             Messaging.messaging().unsubscribe(fromTopic: "alluseri")
+            AreaFilter.shared.resetAreaFilter()
             User().clearUserDefaults()
             DatabaseHandler().clearDatabase()
             OdooClient.destroy()

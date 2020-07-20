@@ -125,7 +125,7 @@ class ChefReviewViewController: UIViewController {
         }
     }
     
-    private func logout(){
+    private func logout() {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         let client = OdooClient.sharedInstance()
         client.logout(completionHandler: { (result, error) in
@@ -139,7 +139,10 @@ class ChefReviewViewController: UIViewController {
             Messaging.messaging().unsubscribe(fromTopic: "alli")
             Messaging.messaging().unsubscribe(fromTopic: "\(self.user!.partner_id!)i")
             Messaging.messaging().unsubscribe(fromTopic: "alluseri")
+            
             User().clearUserDefaults()
+            AreaFilter.shared.resetAreaFilter()
+            
             DatabaseHandler().clearDatabase()
             OdooClient.destroy()
 			StaticLinker.shouldGetLocation = true

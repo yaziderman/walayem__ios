@@ -27,7 +27,7 @@ final class AreaFilter {
         }
     }
     private (set) var selectedLocation: Location?
-    private (set) var selectedCoverageTitle: String?
+    var selectedCoverageTitle: String?
 	var userAddress: UserAddress?
 	var addressId: Int = 0
     var selectedArea = 0
@@ -39,7 +39,7 @@ final class AreaFilter {
     private func getSavedFilter() {
         addressId = UserDefaults.standard.value(forKey: UserDefaultsKeys.USER_ADDRESS_ID) as? Int ?? 0
         selectedArea = UserDefaults.standard.value(forKey: UserDefaultsKeys.USER_AREA_ID) as? Int ?? 0
-        self.selectedCoverageTitle = UserDefaults.standard.string(forKey: UserDefaultsKeys.USER_AREA_TITLE)
+        self.selectedCoverageTitle = UserDefaults.standard.string(forKey: UserDefaultsKeys.USER_AREA_TITLE) ?? ""
         
         isAddress = (addressId != 0 && selectedArea == 0)
         
@@ -106,8 +106,12 @@ final class AreaFilter {
 	
     func resetAreaFilter() {
         self.selectedLocation = nil
-        self.selectedCoverageTitle = nil
 		self.userAddress = nil
+        if self.selectedArea == 0 {
+            self.addressId = 0
+            self.selectedArea = 0
+            self.selectedCoverageTitle = nil
+        }
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.USER_AREA_FILTER)
         UserDefaults.standard.removeObject(forKey: UserDefaultsKeys.USER_AREA_TITLE)
     }

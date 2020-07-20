@@ -84,7 +84,13 @@ class User{
         userDefaults.removeObject(forKey: UserDefaultsKeys.IS_CHEF_VERIFIED)
         userDefaults.removeObject(forKey: UserDefaultsKeys.AUTH_TOKEN)
         userDefaults.removeObject(forKey: UserDefaultsKeys.USER_AREA_FILTER)
-        userDefaults.removeObject(forKey: UserDefaultsKeys.USER_AREA_TITLE)
+        
+        if AreaFilter.shared.selectedArea == 0 {
+            userDefaults.removeObject(forKey: UserDefaultsKeys.USER_AREA_TITLE)
+            userDefaults.removeObject(forKey: UserDefaultsKeys.USER_AREA_ID)
+            userDefaults.removeObject(forKey: UserDefaultsKeys.USER_ADDRESS_ID)
+        }
+        
         userDefaults.removeObject(forKey: UserDefaultsKeys.CHEF_COVERAGE_AREA)
         userDefaults.removeObject(forKey: UserDefaultsKeys.CHEF_LOCATION)
 		userDefaults.removeObject(forKey: UserDefaultsKeys.CHEF_DESCRIPTION)
