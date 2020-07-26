@@ -25,11 +25,17 @@ class ChefOrderDetailViewController: UIViewController {
     @IBOutlet weak var informationIcon: UIImageView!
     @IBOutlet weak var summaryIcon: UIImageView!
     var activityIndicator: UIActivityIndicatorView!
-    
     var orderId: Int?
     var orderState = OrderState.sale
     var user: User?
     var orderDetail: OrderDetail?
+    
+    var shOrderNum: String!
+    var shDeliveryDate: String!
+    var shChefLocationTitle: String!
+    var shChefLocationLon: String!
+    var shChefLocationLat: String!
+    
     
     // MARK: Actions
     
@@ -42,6 +48,50 @@ class ChefOrderDetailViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func shareOrderDTapped(_ sender: UIButton) {
+        
+        if let location = ChefLocation.loadFromUserDefaults() {
+            self.shChefLocationTitle = location.title
+            self.shChefLocationLat =  "\(String(location.lat))"
+            self.shChefLocationLon = String(location.long)
+        }
+        var mapLinkChef = ""
+        if self.shChefLocationLon != "0.0" || self.shChefLocationLat != "0.0" && self.shChefLocationLon != "0.0" || self.shChefLocationLat != "0.0"{
+                   let mapSyntax = "https://www.google.com/maps/place/\(shChefLocationLat ?? ""),\(shChefLocationLon ?? "")/@\(shChefLocationLat ?? ""),\(shChefLocationLon ?? ""),16z"
+                   mapLinkChef =  mapSyntax
+               }
+        
+        let shareDetails = "Order details: " + String(shOrderNum ?? "")
+            + "\n\nOrder Information"
+            + "\nProducts:" + "\n" + String(self.orderDetail?.shProductNames ?? "")
+            + "\nSubtotal:            AED \(String(self.orderDetail?.shTotalPrice ?? 0))"
+            + "\nDelivery charges:  AED \(String(self.orderDetail?.deliveryCost ?? 0))\n"
+            + "------------------------------"
+            + "\nTotal:             AED \(Int(self.orderDetail?.shTotalPrice ?? 0) + Int(self.orderDetail?.deliveryCost ?? 0))\n"
+            + "------------------------------"
+            + "\nAddress:-\n"
+            + "\(String(orderDetail!.address!.name + ", " + orderDetail!.address!.street + ", " + orderDetail!.address!.city))"
+            + "\nPhone: \(String(orderDetail!.address?.phone! ?? ""))"
+            + "\nDelivery time: \(self.shDeliveryDate ?? "No Time Defined")"
+            + "\n\nChef details:"
+            + "\nName: \(user?.name! ?? "No Name Defined")"
+            + "\nAddress: \n\(mapLinkChef)"
+        
+        let string = shareDetails
+        let objectsToShare = [string] as [Any]
+        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+
+        if UI_USER_INTERFACE_IDIOM() == .pad {
+            if let popup = activityVC.popoverPresentationController {
+                popup.sourceView = self.view
+                popup.sourceRect = CGRect(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 4, width: 0, height: 0)
+            }
+        }
+
+        self.present(activityVC, animated: true, completion: nil)
+    }
+    
     
     @IBAction func changeState(_ sender: UIButton) {
         let progressAlert = showProgressAlert()
@@ -103,7 +153,6 @@ class ChefOrderDetailViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -184,6 +233,7 @@ class ChefOrderDetailViewController: UIViewController {
         greetingsInArabic = greetingsInArabic + "انا " + " \(user?.name ?? "your Chef")،" + "استلمت طلبك و أود التأكد من التفاصيل."
         return greetingsInArabic
     }
+    
     private func getOrderDetail(){
         showActivityIndicator()
         let params: [String: Int] = ["partner_id": user!.partner_id!, "order_id": orderId!]
@@ -204,6 +254,8 @@ class ChefOrderDetailViewController: UIViewController {
             let record = value["order_detail"] as! [String: Any]
             self.orderDetail = OrderDetail(record: record)
             self.updateViews()
+            
+            self.shOrderNum = "Order #WA\(self.orderId ?? 0)"
             
             var deliveryForTitle = "Delivery as soon as possible"
             
@@ -228,6 +280,7 @@ class ChefOrderDetailViewController: UIViewController {
                     dateFormatter.timeZone = TimeZone.current
                     let date_str = dateFormatter.string(from: date!)
                     deliveryForTitle = "Delivery for \(date_str)"
+                    self.shDeliveryDate = date_str
                     
                     let calendar = NSCalendar.current
                     
@@ -239,9 +292,12 @@ class ChefOrderDetailViewController: UIViewController {
                     
                     if calendar.isDateInToday(date!) {
                         deliveryForTitle = "Delivery for today at \(time_str)"
+
+                        self.shDeliveryDate = "Today, \(date_str)"
                     }
                     else if calendar.isDateInTomorrow(date!) {
                         deliveryForTitle = "Delivery for tomorrow at \(time_str)"
+                        self.shDeliveryDate = "Tomorrow, \(date_str)"
                     }
                 }
                 
@@ -343,6 +399,9 @@ extension ChefOrderDetailViewController: UITableViewDataSource, UITableViewDeleg
             headerCell.titleLabel.text = "Order #WA\(orderId ?? 0)"
             headerCell.timeLabel.text = "\(Utils.getDay(orderDetail.createDate))\n\(Utils.getTime(orderDetail.createDate))"
         }
+        
+        
+        
         return headerCell.contentView
     }
     
@@ -397,4 +456,12 @@ extension ChefOrderDetailViewController: UITableViewDataSource, UITableViewDeleg
 // Helper function inserted by Swift 4.2 migrator.
 fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
 	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
+    
+    struct orderInfo{
+        var orderId = ""
+        
+    }
 }
+
+
+

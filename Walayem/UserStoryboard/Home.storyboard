@@ -475,21 +475,21 @@
                                             <action selector="closeBtnClicked:" destination="FX1-aW-Aro" eventType="touchUpInside" id="6SK-b0-Pih"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="9fQ-F5-KZ7">
-                                        <rect key="frame" x="172" y="47" width="70" height="70"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo no text" translatesAutoresizingMaskIntoConstraints="NO" id="9fQ-F5-KZ7">
+                                        <rect key="frame" x="172" y="46.5" width="70" height="70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="9fQ-F5-KZ7" secondAttribute="height" multiplier="1:1" id="bL2-T4-5lA"/>
                                             <constraint firstAttribute="height" constant="70" id="lP6-dR-gd6"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walayem Covered Areas" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73a-Iv-RvW">
-                                        <rect key="frame" x="12" y="133" width="390" height="33.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Walayem Areas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="73a-Iv-RvW">
+                                        <rect key="frame" x="12" y="132.5" width="390" height="34"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
                                         <color key="textColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your location" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mg2-w2-sNn">
-                                        <rect key="frame" x="12" y="170.5" width="394" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select your location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mg2-w2-sNn">
+                                        <rect key="frame" x="22" y="170.5" width="370" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -497,8 +497,8 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstItem="mg2-w2-sNn" firstAttribute="leading" secondItem="yHD-ND-gti" secondAttribute="leading" constant="12" id="0dD-cA-23S"/>
-                                    <constraint firstAttribute="trailing" secondItem="mg2-w2-sNn" secondAttribute="trailing" constant="8" id="44v-nK-d3P"/>
+                                    <constraint firstItem="mg2-w2-sNn" firstAttribute="leading" secondItem="yHD-ND-gti" secondAttribute="leading" constant="22" id="0dD-cA-23S"/>
+                                    <constraint firstAttribute="trailing" secondItem="mg2-w2-sNn" secondAttribute="trailing" constant="22" id="44v-nK-d3P"/>
                                     <constraint firstItem="73a-Iv-RvW" firstAttribute="leading" secondItem="yHD-ND-gti" secondAttribute="leading" constant="12" id="4cI-5n-MfB"/>
                                     <constraint firstItem="9fQ-F5-KZ7" firstAttribute="centerX" secondItem="yHD-ND-gti" secondAttribute="centerX" id="8dM-71-eBd"/>
                                     <constraint firstItem="mg2-w2-sNn" firstAttribute="top" secondItem="73a-Iv-RvW" secondAttribute="bottom" constant="4" id="PDx-lJ-dXs"/>
@@ -512,7 +512,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4S0-IX-591" userLabel="ContainerView">
                                 <rect key="frame" x="0.0" y="235" width="414" height="627"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search for your area" translatesAutoresizingMaskIntoConstraints="NO" id="CJV-Hr-ORG">
+                                    <searchBar hidden="YES" contentMode="redraw" searchBarStyle="minimal" placeholder="Search for your area" translatesAutoresizingMaskIntoConstraints="NO" id="CJV-Hr-ORG">
                                         <rect key="frame" x="12" y="4" width="390" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="R3I-sX-Od0"/>
@@ -631,6 +631,6 @@
         <image name="foodImageEmpty" width="512" height="512"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="launchScreen2" width="203" height="423"/>
-        <image name="logo" width="100" height="222"/>
+        <image name="logo no text" width="23" height="45"/>
     </resources>
 </document>

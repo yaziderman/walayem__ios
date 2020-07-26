@@ -40,12 +40,14 @@ class Order{
 
 class OrderDetail: Order{
     
+    
     var customer: String
     var chefImage: String
     var createDate: String
     var cancelDate: String
     var cookingDate: String
     var saleDate: String
+    var deliveryCost: Int
     var readyDate: String
     var deliveredDate: String
     var doneDate: String
@@ -55,8 +57,14 @@ class OrderDetail: Order{
     var products = [Food]()
     var address: Address?
     
+    var shProductNames: String
+    var shTotalPrice: Int
+    var subTotal: Int
+//    var shPhone: String
+    
     override init(record: [String: Any]){
         self.customer = record["user_name"] as? String ?? ""
+        self.deliveryCost = record["delivery_cost"] as? Int ?? 0
         self.createDate = record["create_date"] as? String ?? ""
         self.chefImage = record["chef_image"] as? String ?? ""
         self.cancelDate = record["datetime_cancel"] as? String ?? ""
@@ -71,11 +79,19 @@ class OrderDetail: Order{
         
         self.address = Address(record: record["address"] as! [String: Any])
         let products = record["products"] as! [Any]
+        self.shProductNames = ""
+        self.shTotalPrice = 0
+        
         for product in products{
             let food = Food(dict: product as! [String: Any])
             self.products.append(food)
+            
+            self.shProductNames = shProductNames + "" + (food.name ?? "") + " x "
+            self.shProductNames = shProductNames + "" + String(food.quantity) + "\n"
+//            self.shProductNames = shProductNames + String(food.price)  + ") \n"
+            self.shTotalPrice = shTotalPrice + Int(food.price)
         }
-        
+        self.subTotal = self.shTotalPrice + self.deliveryCost
         super.init(record: record)
     }
 }

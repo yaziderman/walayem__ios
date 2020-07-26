@@ -110,9 +110,9 @@ class MainHomeViewController: BaseTabViewController {
         userDefaults.set(date_time_str, forKey: "OrderDate")
         userDefaults.synchronize()
         //
-        if(StaticLinker.chefViewController != nil && StaticLinker.chefViewController?.timePickerButton != nil){
-            StaticLinker.chefViewController?.timePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
-        }
+//        if(StaticLinker.chefViewController != nil && StaticLinker.chefViewController?.timePickerButton != nil){
+//            StaticLinker.chefViewController?.timePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
+//        }
         //            self.datePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
         //        self.datePickerButton.setTitle("ASAP", for: .normal)
         

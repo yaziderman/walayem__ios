@@ -155,9 +155,12 @@ class LocationSelectionViewController: UIViewController, GMSMapViewDelegate {
         self.locationBottomView.layer.shadowOffset = .zero
         self.locationBottomView.layer.shadowRadius = 5
         
+        
         if let textfield = searchBar.value(forKey: "searchField") as? UITextField {
             textfield.backgroundColor = .white
         }
+        
+        searchBar.isHidden = true
     }
     
     private func setupMap() {

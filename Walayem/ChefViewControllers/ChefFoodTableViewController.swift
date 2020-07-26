@@ -278,9 +278,9 @@ class ChefFoodTableViewController: UIViewController {
             userDefaults.set(date_time_str, forKey: "OrderDate")
             userDefaults.synchronize()
     //
-            if(StaticLinker.chefViewController != nil && StaticLinker.chefViewController?.timePickerButton != nil){
-                StaticLinker.chefViewController?.timePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
-            }
+//            if(StaticLinker.chefViewController != nil && StaticLinker.chefViewController?.timePickerButton != nil){
+//                StaticLinker.chefViewController?.timePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
+//            }
         }
         
 
@@ -306,14 +306,10 @@ class ChefFoodTableViewController: UIViewController {
                 self.chefInfoLabel?.removeFromSuperview()
                 self.chefInfoLabel?.alpha = 0.0
                 self.chefInfoLabel?.frame.size.height = 0
-//                self.setNeedsFocusUpdate()
-//                self.loadView()
                 self.view.layoutIfNeeded()
                 self.chefInfoLabel?.text = "Your account is approved, please login again."
-                print("self.chefInfoLabel?.isHidden = true...........\(isChefVerified)")
             }else{
                 self.chefInfoLabel?.isHidden = false
-                print("self.chefInfoLabel?.isHidden = true...........\(isChefVerified)")
             }
         }
     }

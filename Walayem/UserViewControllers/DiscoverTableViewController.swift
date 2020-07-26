@@ -23,7 +23,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
     @IBOutlet weak var recommendedHeight: NSLayoutConstraint!
     
     weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var datePickerButton: UIButton!
+//    @IBOutlet weak var datePickerButton: UIButton!
     let db = DatabaseHandler()
     var partnerId: Int?
     var selectedTags = [Tag]()
@@ -62,9 +62,9 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         {
             alert.addAction(UIAlertAction(title: address.name, style: .default, handler: { (action) in
                 self.locationPickButton.setTitle(address.name, for: .normal)
-                if(StaticLinker.chefViewController != nil){
-                    StaticLinker.chefViewController?.locationPickButton.setTitle(address.name, for: .normal)
-                }
+//                if(StaticLinker.chefViewController != nil){
+//                    StaticLinker.chefViewController?.locationPickButton.setTitle(address.name, for: .normal)
+//                }
                 let userDefaults = UserDefaults.standard
                 userDefaults.set(address.id, forKey: "OrderAddress")
                 userDefaults.synchronize()
@@ -145,7 +145,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         partnerId = UserDefaults.standard.integer(forKey: UserDefaultsKeys.PARTNER_ID)
-        datePickerButton.setTitle("ASAP", for: .normal)
+//        datePickerButton.setTitle("ASAP", for: .normal)
         setupSearch()
         setupRefreshControl()
         showSpinner()
@@ -348,10 +348,10 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         userDefaults.set(date_time_str, forKey: "OrderDate")
         userDefaults.synchronize()
 
-		if(StaticLinker.chefViewController != nil){
-            StaticLinker.chefViewController?.timePickerButton?.setTitle("\(date_str) at \(time_str)", for: .normal)
-        }
-        self.datePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
+//		if(StaticLinker.chefViewController != nil){
+//            StaticLinker.chefViewController?.timePickerButton?.setTitle("\(date_str) at \(time_str)", for: .normal)
+//        }
+//        self.datePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
 //        self.datePickerButton.setTitle("ASAP", for: .normal)
         
     }
@@ -395,48 +395,48 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
         
         
         
-        DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", startTime: startTime, endTime: endTime, minimumDate: date , datePickerMode: .dateAndTime) {
-            (date) -> Void in
-            if let dt = date {
-                let thisDate = Date()
-                if thisDate > dt{
-                    self.datePickerButton.setTitle("ASAP", for: .normal)
-                    let userDefaults = UserDefaults.standard
-                    userDefaults.set("asap", forKey: "OrderType")
-                    userDefaults.synchronize()
-                    return
-                }
-                let calendar = NSCalendar.current
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MMM dd yyyy"
-                //dateFormatter.dateFormat = "dd MMM yyyy"
-                
-                let timeFormatter = DateFormatter()
-                timeFormatter.dateFormat = "hh:mm aa"
-                
-                let time_str = timeFormatter.string(from: dt)
-                var date_str = dateFormatter.string(from: dt)
-                
-                if calendar.isDateInToday(dt) { date_str = "Today" }
-                else if calendar.isDateInTomorrow(dt) { date_str = "Tomorrow" }
-                
-                let dateTimeFormatter = DateFormatter()
-                dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                let date_time_str = dateTimeFormatter.string(from: dt)
-                
-                let userDefaults = UserDefaults.standard
-                userDefaults.set("future", forKey: "OrderType")
-                userDefaults.set(date_time_str, forKey: "OrderDate")
-                userDefaults.synchronize()
-                
-                if(StaticLinker.chefViewController != nil){
-                    StaticLinker.chefViewController?.timePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
-                }
-                self.datePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
-                
-                
-            }
-        }
+//        DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", startTime: startTime, endTime: endTime, minimumDate: date , datePickerMode: .dateAndTime) {
+//            (date) -> Void in
+//            if let dt = date {
+//                let thisDate = Date()
+//                if thisDate > dt{
+//                    self.datePickerButton.setTitle("ASAP", for: .normal)
+//                    let userDefaults = UserDefaults.standard
+//                    userDefaults.set("asap", forKey: "OrderType")
+//                    userDefaults.synchronize()
+//                    return
+//                }
+//                let calendar = NSCalendar.current
+//                let dateFormatter = DateFormatter()
+//                dateFormatter.dateFormat = "MMM dd yyyy"
+//                //dateFormatter.dateFormat = "dd MMM yyyy"
+//
+//                let timeFormatter = DateFormatter()
+//                timeFormatter.dateFormat = "hh:mm aa"
+//
+//                let time_str = timeFormatter.string(from: dt)
+//                var date_str = dateFormatter.string(from: dt)
+//
+//                if calendar.isDateInToday(dt) { date_str = "Today" }
+//                else if calendar.isDateInTomorrow(dt) { date_str = "Tomorrow" }
+//
+//                let dateTimeFormatter = DateFormatter()
+//                dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//                let date_time_str = dateTimeFormatter.string(from: dt)
+//
+//                let userDefaults = UserDefaults.standard
+//                userDefaults.set("future", forKey: "OrderType")
+//                userDefaults.set(date_time_str, forKey: "OrderDate")
+//                userDefaults.synchronize()
+//
+//                if(StaticLinker.chefViewController != nil){
+//                    StaticLinker.chefViewController?.timePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
+//                }
+//                self.datePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
+//
+//
+//            }
+//        }
     }
     
     
@@ -777,7 +777,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
     
     private func hideActivityIndicator(){
         self.activityIndicator?.stopAnimating()
-        tableView.tableHeaderView?.frame.size.height = 110
+        tableView.tableHeaderView?.frame.size.height = 54
         self.tableView.separatorStyle = .singleLine
     }
     

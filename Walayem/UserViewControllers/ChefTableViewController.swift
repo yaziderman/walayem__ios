@@ -17,7 +17,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var scheduleButton: UIButton!
 	@IBOutlet weak var filterBarButton: UIBarButtonItem!
-	@IBOutlet weak var headerView: UIView!
+//	@IBOutlet weak var headerView: UIView!
 	
 	var activityIndicator: UIActivityIndicatorView!
 	var dateC = Date()
@@ -34,8 +34,8 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 	var addressList = [Address]()
 	var isSearching = false
 	
-	@IBOutlet weak var timePickerButton: UIButton!
-	@IBOutlet weak var locationPickButton: UIButton!
+//	@IBOutlet weak var timePickerButton: UIButton!
+//	@IBOutlet weak var locationPickButton: UIButton!
 	
 	var spinnerView = UIView()
 	
@@ -80,18 +80,18 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 		
 		let alert = UIAlertController(title: "", message: "Select an address", preferredStyle: .actionSheet)
 		
-		for address in self.addressList
-		{
-			alert.addAction(UIAlertAction(title: address.name, style: .default, handler: { (action) in
-				self.locationPickButton.setTitle(address.name, for: .normal)
-				if(StaticLinker.chefViewController != nil){
-					StaticLinker.chefViewController?.locationPickButton.setTitle(address.name, for: .normal)
-				}
-				let userDefaults = UserDefaults.standard
-				userDefaults.set(address.id, forKey: "OrderAddress")
-				userDefaults.synchronize()
-			}))
-		}
+//		for address in self.addressList
+//		{
+//			alert.addAction(UIAlertAction(title: address.name, style: .default, handler: { (action) in
+//				self.locationPickButton.setTitle(address.name, for: .normal)
+//				if(StaticLinker.chefViewController != nil){
+//					StaticLinker.chefViewController?.locationPickButton.setTitle(address.name, for: .normal)
+//				}
+//				let userDefaults = UserDefaults.standard
+//				userDefaults.set(address.id, forKey: "OrderAddress")
+//				userDefaults.synchronize()
+//			}))
+//		}
 		alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
 			self.navigationController?.popViewController(animated: true)
 		}))
@@ -181,9 +181,9 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 		userDefaults.set(date_time_str, forKey: "OrderDate")
 		userDefaults.synchronize()
 		//
-		if(StaticLinker.chefViewController != nil){
-			StaticLinker.chefViewController?.timePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
-		}
+//		if(StaticLinker.chefViewController != nil){
+//			StaticLinker.chefViewController?.timePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
+//		}
 		//            self.datePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
 		//        self.datePickerButton.setTitle("ASAP", for: .normal)
 		
@@ -232,47 +232,47 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 		
 		
 		
-		DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", startTime: startTime, endTime: endTime, minimumDate: date, datePickerMode: .dateAndTime) {
-			(date) -> Void in
-			if let dt = date {
-				let thisDate = Date()
-				if thisDate > dt{
-					self.timePickerButton.setTitle("ASAP", for: .normal)
-					let userDefaults = UserDefaults.standard
-					userDefaults.set("asap", forKey: "OrderType")
-					userDefaults.synchronize()
-					return
-				}
-				let calendar = NSCalendar.current
-				
-				
-				let dateFormatter = DateFormatter()
-				dateFormatter.dateFormat = "MMM dd yyyy"
-				
-				let timeFormatter = DateFormatter()
-				timeFormatter.dateFormat = "hh:mm aa"
-				
-				let time_str = timeFormatter.string(from: dt)
-				var date_str = dateFormatter.string(from: dt)
-				
-				if calendar.isDateInToday(dt) { date_str = "Today" }
-				else if calendar.isDateInTomorrow(dt) { date_str = "Tomorrow" }
-				
-				let dateTimeFormatter = DateFormatter()
-				dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-				let date_time_str = dateTimeFormatter.string(from: dt)
-				
-				let userDefaults = UserDefaults.standard
-				userDefaults.set("future", forKey: "OrderType")
-				userDefaults.set(date_time_str, forKey: "OrderDate")
-				userDefaults.synchronize()
-				
-				if(StaticLinker.discoverViewController != nil){
-					StaticLinker.discoverViewController?.datePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
-				}
-				self.timePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
-			}
-		}
+//		DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", startTime: startTime, endTime: endTime, minimumDate: date, datePickerMode: .dateAndTime) {
+//			(date) -> Void in
+//			if let dt = date {
+//				let thisDate = Date()
+//				if thisDate > dt{
+//					self.timePickerButton.setTitle("ASAP", for: .normal)
+//					let userDefaults = UserDefaults.standard
+//					userDefaults.set("asap", forKey: "OrderType")
+//					userDefaults.synchronize()
+//					return
+//				}
+//				let calendar = NSCalendar.current
+//
+//
+//				let dateFormatter = DateFormatter()
+//				dateFormatter.dateFormat = "MMM dd yyyy"
+//
+//				let timeFormatter = DateFormatter()
+//				timeFormatter.dateFormat = "hh:mm aa"
+//
+//				let time_str = timeFormatter.string(from: dt)
+//				var date_str = dateFormatter.string(from: dt)
+//
+//				if calendar.isDateInToday(dt) { date_str = "Today" }
+//				else if calendar.isDateInTomorrow(dt) { date_str = "Tomorrow" }
+//
+//				let dateTimeFormatter = DateFormatter()
+//				dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//				let date_time_str = dateTimeFormatter.string(from: dt)
+//
+//				let userDefaults = UserDefaults.standard
+//				userDefaults.set("future", forKey: "OrderType")
+//				userDefaults.set(date_time_str, forKey: "OrderDate")
+//				userDefaults.synchronize()
+//
+////				if(StaticLinker.discoverViewController != nil){
+////					StaticLinker.discoverViewController?.datePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
+////				}
+//				self.timePickerButton.setTitle("\(date_str) at \(time_str)", for: .normal)
+//			}
+//		}
 	}
 	// MARK: Actions
 	
@@ -327,13 +327,13 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 			}
 			
 			let selectedAddressId = UserDefaults.standard.integer(forKey: "OrderAddress") as Int?
-			if(selectedAddressId != nil){
-				for addr in self.addressList{
-					if(addr.id == selectedAddressId){
-						self.locationPickButton.setTitle(addr.name, for: .normal)
-					}
-				}
-			}
+//			if(selectedAddressId != nil){
+//				for addr in self.addressList{
+//					if(addr.id == selectedAddressId){
+//						self.locationPickButton.setTitle(addr.name, for: .normal)
+//					}
+//				}
+//			}
 		}
 	}
 	
@@ -353,12 +353,12 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 		StaticLinker.chefViewController = self
 		initialCustomDate()
 		
-		if(StaticLinker.discoverViewController != nil){
-			let str = StaticLinker.discoverViewController?.datePickerButton.titleLabel?.text
-			self.timePickerButton.setTitle(str, for: .normal)
-			let str_loc = StaticLinker.discoverViewController?.locationPickButton.titleLabel?.text
-			self.locationPickButton.setTitle(str_loc, for: .normal)
-		}
+//		if(StaticLinker.discoverViewController != nil){
+////			let str = StaticLinker.discoverViewController?.datePickerButton.titleLabel?.text
+////			self.timePickerButton.setTitle(str, for: .normal)
+//			let str_loc = StaticLinker.discoverViewController?.locationPickButton.titleLabel?.text
+//			self.locationPickButton.setTitle(str_loc, for: .normal)
+//		}
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(updateFav) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
 	}
@@ -374,16 +374,16 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 		
 		//        do
 		//        {
-		if(selectedAddressId != nil){
-			if((StaticLinker.discoverViewController) != nil)
-			{
-				for addr in (StaticLinker.discoverViewController?.addressList)!{
-					if(addr.id == selectedAddressId){
-						locationPickButton.setTitle(addr.name, for: .normal)
-					}
-				}
-			}
-		}
+//		if(selectedAddressId != nil){
+//			if((StaticLinker.discoverViewController) != nil)
+//			{
+//				for addr in (StaticLinker.discoverViewController?.addressList)!{
+//					if(addr.id == selectedAddressId){
+//						locationPickButton.setTitle(addr.name, for: .normal)
+//					}
+//				}
+//			}
+//		}
 		//        }
 		//        catch {
 		//

@@ -7,102 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "51D1896E-9971-4F5C-993C-3C006B5DE270"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Walayem/Odoo/OdooClient.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "authenticate(email:password:database:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EFE2171C-8E1A-4E83-8BD8-4B0BC7AA040B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Walayem/Odoo/OdooClient.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
-            landmarkName = "authenticate(email:password:database:completionHandler:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "362AADED-70B4-4259-BD3D-E15FD1A01AD2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Walayem/LoginViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "login(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "362AADED-70B4-4259-BD3D-E15FD1A01AD2 - 6b70dd5296806a5c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, Swift.Optional&lt;__C.NSError&gt;) -&gt; () in Walayem.LoginViewController.login(__C.UIButton) -&gt; ()"
-                  moduleName = "Walayem"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nasbeerahammed/Documents/Walayem_updated/walayem-ios/Walayem/LoginViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "68"
-                  endingLineNumber = "68"
-                  offsetFromSymbolStart = "1380">
-               </Location>
-               <Location
-                  uuid = "362AADED-70B4-4259-BD3D-E15FD1A01AD2 - 6217af33178c59ed"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #3 () -&gt; () in closure #1 (Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, Swift.Optional&lt;__C.NSError&gt;) -&gt; () in Walayem.LoginViewController.login(__C.UIButton) -&gt; ()"
-                  moduleName = "Walayem"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nasbeerahammed/Documents/Walayem_updated/walayem-ios/Walayem/LoginViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "69"
-                  endingLineNumber = "69"
-                  offsetFromSymbolStart = "22">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A2DF63AC-B32E-4400-A5C9-9633F64B5F48"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Walayem/LoginViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "login(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "4F10F8D3-5076-41F1-8FD0-207867BCDC7F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -194,38 +98,6 @@
             endingLineNumber = "111"
             landmarkName = "authorizationController(controller:didCompleteWithAuthorization:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "33955989-F5C6-476A-9113-EABAD15C79A4 - e500a28daf9e3896"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Walayem.AppleLoginWrapper.authorizationController(controller: __C.ASAuthorizationController, didCompleteWithAuthorization: __C.ASAuthorization) -&gt; ()"
-                  moduleName = "Walayem"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nasbeerahammed/Documents/Walayem_updated/walayem-ios/Walayem/AppleLoginWrapper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "111"
-                  endingLineNumber = "111"
-                  offsetFromSymbolStart = "4025">
-               </Location>
-               <Location
-                  uuid = "33955989-F5C6-476A-9113-EABAD15C79A4 - e500a28daf9e3896"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Walayem.AppleLoginWrapper.authorizationController(controller: __C.ASAuthorizationController, didCompleteWithAuthorization: __C.ASAuthorization) -&gt; ()"
-                  moduleName = "Walayem"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/nasbeerahammed/Documents/Walayem_updated/walayem-ios/Walayem/AppleLoginWrapper.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "111"
-                  endingLineNumber = "111"
-                  offsetFromSymbolStart = "7910">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -446,6 +318,38 @@
             endingLineNumber = "678"
             landmarkName = "sendGoogleData(token:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "623A161A-848C-439F-A38B-1F5F277DF133 - 85fcbbb2fc2d4bbb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Walayem.SignupViewController.(sendGoogleData in _1BD157497D0AD526704E91220CB3E6A5)(token: Swift.String) -&gt; ()"
+                  moduleName = "Walayem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nasbeerahammed/Documents/Walayem_updated/walayem-ios/Walayem/UserViewControllers/SignupViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "678"
+                  endingLineNumber = "678"
+                  offsetFromSymbolStart = "1472">
+               </Location>
+               <Location
+                  uuid = "623A161A-848C-439F-A38B-1F5F277DF133 - a4b0b11f007dafb0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in Walayem.SignupViewController.(sendGoogleData in _1BD157497D0AD526704E91220CB3E6A5)(token: Swift.String) -&gt; ()"
+                  moduleName = "Walayem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nasbeerahammed/Documents/Walayem_updated/walayem-ios/Walayem/UserViewControllers/SignupViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "679"
+                  endingLineNumber = "679"
+                  offsetFromSymbolStart = "137">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -462,6 +366,38 @@
             endingLineNumber = "688"
             landmarkName = "sendGoogleData(token:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2FCEF2B6-DE3C-450C-9346-D8C2C4B23390 - a4b0b11f007dafb0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in Walayem.SignupViewController.(sendGoogleData in _1BD157497D0AD526704E91220CB3E6A5)(token: Swift.String) -&gt; ()"
+                  moduleName = "Walayem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nasbeerahammed/Documents/Walayem_updated/walayem-ios/Walayem/UserViewControllers/SignupViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "688"
+                  endingLineNumber = "688"
+                  offsetFromSymbolStart = "1130">
+               </Location>
+               <Location
+                  uuid = "2FCEF2B6-DE3C-450C-9346-D8C2C4B23390 - 6fc6e6923ca03a8b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in Walayem.SignupViewController.(sendGoogleData in _1BD157497D0AD526704E91220CB3E6A5)(token: Swift.String) -&gt; ()"
+                  moduleName = "Walayem"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nasbeerahammed/Documents/Walayem_updated/walayem-ios/Walayem/UserViewControllers/SignupViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "689"
+                  endingLineNumber = "689"
+                  offsetFromSymbolStart = "22">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -509,6 +445,54 @@
             startingLineNumber = "670"
             endingLineNumber = "670"
             landmarkName = "sendGoogleData(token:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8E79BE79-5D06-41B1-B08E-B7D3C504598B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Walayem/ChefViewControllers/ChefFoodTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
+            landmarkName = "initialCustomDate()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "683A8A9E-5F8C-4544-AE1F-4464A080BC82"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Walayem/Models/Order.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "init(record:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7853BD12-0C05-456D-AE2B-235519371834"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Walayem/Models/Food.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "init(record:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
