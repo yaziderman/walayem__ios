@@ -59,6 +59,8 @@ class MainHomeViewController: BaseTabViewController {
         tableView.dataSource = self
         tableView.delegate = self
         //		locationManager = CLLocationManager()
+        self.showSpinner()
+
         NotificationCenter.default.addObserver(self, selector: #selector(didEnterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
         //		locationWrapper = LocationWrapper(locationDelegate: self, vc: self)
     }
@@ -506,7 +508,6 @@ extension MainHomeViewController: RemoteConfigProtocol {
             
             guard let self = self else { return }
             
-            self.showSpinner()
             let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
             if (data.ios_prod_force_update_required && data.ios_min_prod_version > appVersion) || (data.ios_beta_force_update_required && data.ios_min_beta_version > appVersion) {
                 let alert = UIAlertController(title: "App Update Available", message: "Please update the app to continue.", preferredStyle: .alert)
