@@ -13,7 +13,6 @@ class LoginPriorViewController: UIViewController {
 
     // MARK: Properties
     @IBOutlet weak var signupButton: UIButton!
-    @IBOutlet weak var userSwitch: UISwitch!
     // MARK: Actions
     
     @IBOutlet weak var btnSkip: UIButton!
@@ -26,13 +25,6 @@ class LoginPriorViewController: UIViewController {
     
     @IBAction func signup(_ sender: UIButton) {
         performSegue(withIdentifier: "SignupVCSegue", sender: sender)
-
-//        if userSwitch.isOn{
-//            performSegue(withIdentifier: "ChefSignupVCSegue", sender: sender)
-//        }else{
-//            performSegue(withIdentifier: "SignupVCSegue", sender: sender)
-//        }
-        
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +32,6 @@ class LoginPriorViewController: UIViewController {
         
         signupButton.layer.cornerRadius = 12
         signupButton.layer.masksToBounds = false
-        userSwitch.setOn(false, animated: false)
         // Do not show onboarding screen
         
         StaticLinker.loginVC = self
@@ -69,12 +60,24 @@ class LoginPriorViewController: UIViewController {
             guard let destinationVC = segue.destination as? LoginViewController else {
                 fatalError("Unexpected ViewController")
             }
-            destinationVC.isChef = userSwitch.isOn
         default:
             os_log("Sign up segue", log: .default, type: .debug)
         }
     }
-    @IBAction func onSkep(_ sender: Any) {        
+    
+    @IBAction func onSignupLaterPressed(_ sender: Any) {
+        self.dismiss(animated: true) {
+            
+            if(!StaticLinker.skipToSameView){
+                StaticLinker.mainVC?.selectedIndex = StaticLinker.previosSeletedTab
+            }
+            else{
+                StaticLinker.skipToSameView = false
+            }
+        }
+    }
+    
+    @IBAction func onSkep(_ sender: Any) {
         self.dismiss(animated: true) {
             
             if(!StaticLinker.skipToSameView){

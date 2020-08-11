@@ -61,22 +61,30 @@ class ChefOrderDetailViewController: UIViewController {
                    let mapSyntax = "https://www.google.com/maps/place/\(shChefLocationLat ?? ""),\(shChefLocationLon ?? "")/@\(shChefLocationLat ?? ""),\(shChefLocationLon ?? ""),16z"
                    mapLinkChef =  mapSyntax
                }
+        var cust_name = ""
+        if let name = orderDetail?.customer {
+           cust_name = "\(name)"
+        } else {
+           cust_name = "No customer name avilable!e"
+        }
         
         let shareDetails = "Order details: " + String(shOrderNum ?? "")
             + "\n\nOrder Information"
             + "\nProducts:" + "\n" + String(self.orderDetail?.shProductNames ?? "")
-            + "\nSubtotal:            AED \(String(self.orderDetail?.shTotalPrice ?? 0))"
-            + "\nDelivery charges:  AED \(String(self.orderDetail?.deliveryCost ?? 0))\n"
-            + "------------------------------"
-            + "\nTotal:             AED \(Int(self.orderDetail?.shTotalPrice ?? 0) + Int(self.orderDetail?.deliveryCost ?? 0))\n"
-            + "------------------------------"
-            + "\nAddress:-\n"
-            + "\(String(orderDetail!.address!.name + ", " + orderDetail!.address!.street + ", " + orderDetail!.address!.city))"
+            + "\nSubtotal:               AED \(String(self.orderDetail?.shTotalPrice ?? 0))"
+            + "\nDelivery charges:       AED \(String(self.orderDetail?.deliveryCost ?? 0))\n"
+            + "--------------------------------"
+            + "\nTotal:                  AED \(Int(self.orderDetail?.shTotalPrice ?? 0) + Int(self.orderDetail?.deliveryCost ?? 0))\n"
+            + "--------------------------------"
+            + "\n\nDelivery time: \(self.shDeliveryDate ?? "No Time Defined")"
+            + "\n\nCustomer Details"
+            + "\nName: \(cust_name)"
+            + "\nAddress:-"
+            + getMapLink(lat: orderDetail?.address!.address_lat ?? "", lon: orderDetail?.address?.address_lon ?? "")
             + "\nPhone: \(String(orderDetail!.address?.phone! ?? ""))"
-            + "\nDelivery time: \(self.shDeliveryDate ?? "No Time Defined")"
             + "\n\nChef details:"
             + "\nName: \(user?.name! ?? "No Name Defined")"
-            + "\nAddress: \n\(mapLinkChef)"
+            + "\nAddress: \(mapLinkChef)"
         
         let string = shareDetails
         let objectsToShare = [string] as [Any]
@@ -92,7 +100,16 @@ class ChefOrderDetailViewController: UIViewController {
         self.present(activityVC, animated: true, completion: nil)
     }
     
+    func getMapLink(lat: String, lon: String) -> String {
+        if(!(lat.elementsEqual("")) && !(lon.elementsEqual(""))){
+            let link = "https://www.google.com/maps/place/\(lat),\(lon)/@\(lat),\(lon),16z"
+            return link
+        }else{
+           return "\(String(orderDetail!.address!.name + ", " + orderDetail!.address!.street + ", " + orderDetail!.address!.city))"
+        }
+    }
     
+     
     @IBAction func changeState(_ sender: UIButton) {
         let progressAlert = showProgressAlert()
         
@@ -126,7 +143,7 @@ class ChefOrderDetailViewController: UIViewController {
     }
     
     @IBAction func cancelOrder(_ sender: UIButton) {
-        let alert = UIAlertController(title: "", message: "Why do want to reject the order?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "", message: "Why do you want to reject the order?", preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Enter resaon for rejection"
             textField.autocapitalizationType = .sentences

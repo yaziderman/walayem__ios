@@ -404,7 +404,7 @@
                                                 <constraint firstItem="zNy-3j-KUe" firstAttribute="top" secondItem="yaC-PO-iUU" secondAttribute="top" id="zDh-Zf-vxL"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FfA-u7-H9w">
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FfA-u7-H9w">
                                             <rect key="frame" x="0.0" y="668" width="375" height="29"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WB0-D6-Loh">

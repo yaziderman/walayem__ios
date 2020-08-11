@@ -37,6 +37,9 @@ class ChefRatingViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func submit(_ sender: UIButton) {
+        
+//        TestLogout()
+        
         activityIndicator.startAnimating()
         let params: [String: Any] = ["partner_id": user?.partner_id as Any, "chef_id": chef?.id as Any, "star": ratingControl.rating]
         
@@ -46,12 +49,14 @@ class ChefRatingViewController: UIViewController {
             if let error = error{
                 let errmsg = error.userInfo[NSLocalizedDescriptionKey] as? String
                 print (errmsg)
-				self.showAlert(title: "Error", message: "Something went wrong...")
+                self.onSessionExpired()
+//				self.showAlert(title: "Error", message: "Session expired, relogin to rate the chef...")
                 return
             }
 			
 			let value = result!["result"] as! [String: Any]
 			if let status = value["status"] as? Bool, !status{
+                
 				self.showAlert(title: "Error", message: "Something went wrong...")
 				return
 			}

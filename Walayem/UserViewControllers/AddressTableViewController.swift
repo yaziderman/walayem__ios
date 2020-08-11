@@ -39,7 +39,6 @@ class AddressTableViewController: UITableViewController {
             else {
                 // Add a new address.
                 let newIndexPath = IndexPath(row: addressList.count, section: 0)
-                
                 addressList.append(address)
                 tableView.insertRows(at: [newIndexPath], with: .automatic)
                 changeView(false)
@@ -190,6 +189,7 @@ class AddressTableViewController: UITableViewController {
 		}
 		if let delegate = self.selectionDelegate {
 			let address = addressList[indexPath.row]
+            
 			delegate.addressSelected(address)
 			if isFromCart {
 				self.navigationController?.popViewController(animated: true)

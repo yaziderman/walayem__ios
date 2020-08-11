@@ -317,7 +317,8 @@ class ProfileTableViewController: UITableViewController, UIImagePickerController
             UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if let error = error{
                 let errmsg = error.userInfo[NSLocalizedDescriptionKey] as? String
-                self.showAlert(title: "cannot logout", msg: errmsg ?? "No message available!")
+//                self.showAlert(title: "cannot logout", msg: errmsg ?? "No message available!")
+                self.onSessionExpired()
                 return
             }
             

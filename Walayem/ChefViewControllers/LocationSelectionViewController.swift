@@ -160,7 +160,7 @@ class LocationSelectionViewController: UIViewController, GMSMapViewDelegate {
             textfield.backgroundColor = .white
         }
         
-        searchBar.isHidden = true
+//        searchBar.isHidden = true
     }
     
     private func setupMap() {

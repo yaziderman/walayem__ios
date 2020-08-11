@@ -453,6 +453,9 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         signupButton.layer.masksToBounds = false
         addImageInsideTextField()
         
+    
+        
+        
         nameTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         emailTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         phoneTextField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -460,6 +463,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         
         passwordTextField.delegate = self
         emailTextField.delegate = self
+        
         
         nameVerifyImageView.tintColor = UIColor.silver
         emailVerifyImageView.tintColor = UIColor.silver
@@ -518,6 +522,28 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         StaticLinker.signupVC = self
         
     }
+//
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//
+//        switch textField {
+//        case emailTextField:
+//            if let _ = string.rangeOfCharacter(from: .uppercaseLetters) {
+//                       // Do not allow upper case letters
+//                       return false
+//                   }
+//        case chefEmailTextField:
+//            if let _ = string.rangeOfCharacter(from: .uppercaseLetters) {
+//                                  // Do not allow upper case letters
+//                                  return false
+//                              }
+//
+//        default:
+//            return true
+//        }
+//
+//        return true
+//
+//    }
     
     override func viewWillLayoutSubviews() {
         addBottomBorder()
@@ -831,6 +857,7 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 nameVerified = false
             }
         case emailTextField:
+            emailTextField.text = emailTextField.text?.lowercased()
             emailTextField.text = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
             let email = emailTextField.text ?? ""
@@ -871,12 +898,17 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
                 chefNameVerified = false
             }
         case chefEmailTextField:
+            
+            chefEmailTextField.text = chefEmailTextField.text?.lowercased()
+                   
             chefEmailTextField.text = chefEmailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
             
             let email = chefEmailTextField.text ?? ""
+            
             if Verification.isValidEmail(email){
                 chefEmailVerifyImageView.tintColor = UIColor.colorPrimary
                 chefEmailVerified = true
+                
             }else{
                 chefEmailVerifyImageView.tintColor = UIColor.silver
                 chefEmailVerified = false
@@ -909,6 +941,10 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        
+        emailTextField.text = emailTextField.text?.lowercased()
+        chefEmailTextField.text = chefEmailTextField.text?.lowercased()
+        
         return true
     }
     
@@ -1028,6 +1064,8 @@ class SignupViewController: UIViewController, UITextFieldDelegate, GIDSignInDele
         }
         
     }
+    
+    
     
 }
 

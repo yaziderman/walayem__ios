@@ -81,4 +81,17 @@ extension UIViewController{
         })
     }
     
+    public func TestLogout(){
+       UIApplication.shared.isNetworkActivityIndicatorVisible = true
+       let client = OdooClient.sharedInstance()
+       client.logout(completionHandler: { (result, error) in
+           UIApplication.shared.isNetworkActivityIndicatorVisible = false
+           if let error = error{
+               let errmsg = error.userInfo[NSLocalizedDescriptionKey] as? String
+               print(errmsg!)
+               return
+           }
+       })
+    }
+    
 }

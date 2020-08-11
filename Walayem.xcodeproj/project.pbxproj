@@ -530,10 +530,10 @@
 		04CF06C62084634F0064B18A /* Walayem */ = {
 			isa = PBXGroup;
 			children = (
-				1D30E0CB2461E10200C6797C /* Pager Controllers */,
-				1D3ADF53245C5D83000FE04C /* Custom Views */,
 				8395D10F24B6F2ED0087A9AA /* GoogleService-Info.plist */,
 				0ADC140F20B6AE7D0003FC8B /* Walayem.entitlements */,
+				1D30E0CB2461E10200C6797C /* Pager Controllers */,
+				1D3ADF53245C5D83000FE04C /* Custom Views */,
 				04D9E8A32085B97E002E1B51 /* Odoo */,
 				04C596BC2084766900B284D3 /* Utils */,
 				0A3B841A20B57EAF00E1E24C /* HeaderFooterCells */,
@@ -1115,7 +1115,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.3.0;
+				MARKETING_VERSION = 4.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inceptionworld.Walayem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1142,7 +1142,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.3.0;
+				MARKETING_VERSION = 4.3.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inceptionworld.Walayem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

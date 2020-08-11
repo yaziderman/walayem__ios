@@ -57,12 +57,11 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 	let noteTextField: UITextField = {
 		let textField = UITextField()
 		textField.placeholder = "Tap to enter a note for the chef"
-		textField.borderStyle = .none
+        textField.borderStyle = .none
 		textField.returnKeyType = .done
 		textField.tintColor = UIColor.colorPrimary
-		textField.textColor = UIColor.lightGray
+		textField.textColor = UIColor.init(light: UIColor.darkGray, dark: UIColor.lightGray)
 		textField.translatesAutoresizingMaskIntoConstraints = false
-		//        textField.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
 		return textField
 	}()
 	
@@ -226,7 +225,9 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 
 		}
 		
-		
+
+        noteTextField.delegate = self
+        
 		self.contentView.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
 		
 		var preparationTime = 0
@@ -242,15 +243,23 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 		
 		deliveryLabel.text = "Delivery in approximately \(hour) hour(s) 30 mins"
 	}
+    
 	// MARK: UITextFieldDelegate
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        delegate?.updateNote(sender: textField, section: section!)
 		textField.resignFirstResponder()
 		return true
 	}
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        delegate?.updateNote(sender: textField, section: section!)
+    }
 	
 	func textFieldDidEndEditing(_ textField: UITextField) {
 		delegate?.updateNote(sender: textField, section: section!)
 	}
+    
+    
 	
 }

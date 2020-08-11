@@ -17,6 +17,8 @@ class Address {
     var extra: String
     var phone: String?
     var location: Location?
+    var address_lat = ""
+    var address_lon = ""
     
     init(id: Int, name: String, city: String, street: String, extra: String, location: Location?){
         self.id = id
@@ -34,6 +36,8 @@ class Address {
         self.street = record["street"] as! String
         self.extra = record["street2"] as! String
         self.phone = record["phone"] as? String
+        self.address_lat = record["customer_lat"] as? String ?? ""
+        self.address_lon = record["customer_long"] as? String ?? ""
         
         if let locationDict = record["location"] as? [String: Any] {
             guard let latStr = locationDict["lat"] as? String, let lat = Double(latStr) else { return }

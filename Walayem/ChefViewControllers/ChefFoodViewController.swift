@@ -348,7 +348,7 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
     }
     
     private func showProgressAlert() -> UIAlertController{
-        let alert = UIAlertController(title: "Adding Dish", message: "Please wait...", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Loading...", message: "Please wait...", preferredStyle: .alert)
         self.present(alert, animated: true, completion: nil)
         
         return alert

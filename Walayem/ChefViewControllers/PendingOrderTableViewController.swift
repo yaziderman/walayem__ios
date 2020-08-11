@@ -40,6 +40,10 @@ class PendingOrderTableViewController: UITableViewController, OrderHeaderCellDel
         setupRefreshControl()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        getPendingOrders()
+    }
+    
     private func setupRefreshControl(){
         let refreshControl = UIRefreshControl()
         if #available(iOS 10.0, *){
@@ -154,6 +158,8 @@ class PendingOrderTableViewController: UITableViewController, OrderHeaderCellDel
         tableView.backgroundView = activityIndicator
         activityIndicator.startAnimating()
     }
+    
+    
     
     private func hideActivityIndicator(){
         activityIndicator.stopAnimating()

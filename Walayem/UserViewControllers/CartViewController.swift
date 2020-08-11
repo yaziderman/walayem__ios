@@ -51,7 +51,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	struct CartItem{
 		var opened: Bool!
 		var chef: Chef!
-		var note: String!
+		var note = ""
 		var deliveryCost: Double?
 	}
 	var cartItems = [CartItem]()
@@ -60,22 +60,6 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		return UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID) != nil
 	}
 	
-	//    public var tint: UIColor = {
-	//        if #available(iOS 13, *) {
-	//            return UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-	//                if UITraitCollection.userInterfaceStyle == .dark {
-	//                    /// Return the color for Dark Mode
-	//                    return .black
-	//                } else {
-	//                    /// Return the color for Light Mode
-	//                    return .white
-	//                }
-	//            }
-	//        } else {
-	//            /// Return a fallback color for iOS 12 and lower.
-	//            return .white
-	//        }
-	//    }()
 	
 	// MARK: Actions
 	
@@ -118,34 +102,25 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		}
 	}
 	
-	//    func showAlertForLogin(){
-	//
-	//        StaticLinker.skipToSameView = true
-	//        let alert = UIAlertController(title: "", message: "Please login to continue...", preferredStyle: .actionSheet)
-	//                alert.addAction(UIAlertAction(title: "Login / Signup", style: .default, handler: { (action) in
-	//                        print("Login/Signup is pressed")
-	//                        let viewController : UIViewController = UIStoryboard(name: "User", bundle: nil).instantiateInitialViewController()!
-	//                        self.present(viewController, animated: true, completion: nil)
-	//                       }
-	//                   ))
-	
-	//
-	//               alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: { (action) in
-	//                alert.dismiss(animated: true, completion: nil)
-	//               }))
-	//
-	//        self.present(alert, animated: true, completion: nil)
-	//    }
-	
 	@IBAction func contactWhatsApp(_ sender: UIButton) {
 		Utils.openWhatsapp(name: user?.name ?? "Anonymous")
 	}
+    
+
+    
+    
+    
+    
+    
+    
 	@IBAction func placeOrder(_ sender: UIButton) {
 		guard self.isUserLoggedIn else {
 			self.showAlertBeforeLogin(message: "Please login to place order!")
 			return
 		}
+        
 		
+        
 		guard selectedAddress != nil else {
 			let alert = UIAlertController(title: "", message: "Add address before placing an order", preferredStyle: .actionSheet)
 			alert.addAction(UIAlertAction(title: "Select Address", style: .default, handler: { (action) in
@@ -212,7 +187,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 					var dict = [String: Any]()
 					dict["chef_id"] = item.chef.id
                     dict["delivery_cost"] = item.deliveryCost
-					dict["note"] = item.note
+                    dict["note"] = item.note
 					dict["products"] = products
 					
 					orderItems.append(dict)
@@ -238,6 +213,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 					let date_time_str = dateTimeFormatter.string(from: date!)
 					params.updateValue(date_time_str, forKey: "order_for")
 				}
+                
+                print(params.description)
 				
 				RestClient().request(WalayemApi.placeOrder, params, self) { (result, error) in
 					progressAlert.dismiss(animated: true, completion: {
@@ -320,24 +297,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		} else {
 			self.orderButton.setTitle("Login to Order", for: .normal)
 		}
-		
 		getAddress()
 	}
-	
-	
-	//	@objc func updateButtonTitle() {
-	//
-	//		let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
-	//		if(session == nil)
-	//		{
-	//			self.orderButton.setTitle("Login to Order", for: .normal)
-	//		}
-	//		else
-	//		{
-	//			self.orderButton.setTitle("Place Order", for: .normal)
-	//		}
-	//
-	//	}
 	
 	override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -478,7 +439,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		let headerNib = UINib(nibName: "CartFoodHeaderCell", bundle: .main)
 		tableView.register(headerNib, forHeaderFooterViewReuseIdentifier: "CartFoodHeaderCell")
 		tableView.register(CartFoodFooterCell.self, forHeaderFooterViewReuseIdentifier: "CartFoodFooterCell")
-	}
+    }
 	
 	@objc private func keyboardWillShow(notification: Notification){
 		if let userInfo = notification.userInfo{
@@ -486,19 +447,17 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 				fatalError("Cannot convert to CGRect")
 			}
 			print(keyboardFrame.height)
+            
+            var contentInsets = UIEdgeInsets.init(top: 0.0, left: 0.0, bottom: 218.0, right: 0.0)
+            
+            if (keyboardFrame.height > 0 && self.tabBarController!.tabBar.frame.height > 0) {
+                contentInsets = UIEdgeInsets.init(top: 0.0, left: 0.0, bottom: keyboardFrame.height - self.tabBarController!.tabBar.frame.height, right: 0.0)
+            }
 			
-			do
-			{
-				let contentInsets = UIEdgeInsets.init(top: 0.0, left: 0.0, bottom: keyboardFrame.height - self.tabBarController!.tabBar.frame.height, right: 0.0);
-				UIView.animate(withDuration: 0.5) {
-					self.tableView.contentInset = contentInsets;
-					self.tableView.scrollIndicatorInsets = contentInsets;
-				}
-			}
-			catch
-			{
-				
-			}
+            UIView.animate(withDuration: 0.5) {
+                self.tableView.contentInset = contentInsets;
+                self.tableView.scrollIndicatorInsets = contentInsets;
+                }
 			
 		}
 	}
@@ -517,7 +476,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		}else{
 			self.changeView(false)
 			for chef in chefs{
-				let cartItem = CartItem(opened: true, chef: chef, note: "", deliveryCost: nil)
+				let cartItem = CartItem(opened: true, chef: chef, deliveryCost: nil)
 				self.cartItems.append(cartItem)
 			}
 			if self.isUserLoggedIn {
@@ -569,7 +528,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 				if let error = error {
 					self.calculateCost()
 					self.cartItems = self.cartItems.map({ (cartItem) -> CartItem in
-						return CartItem(opened: true, chef: cartItem.chef, note: "", deliveryCost: nil)
+                        return CartItem(opened: true, chef: cartItem.chef, note: cartItem.note, deliveryCost: nil)
 					})
 					self.tableView.reloadData()
 					self.handleNetworkError(error)
@@ -581,7 +540,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 				if status == 0 {
 					self.calculateCost()
 					self.cartItems = self.cartItems.map({ (cartItem) -> CartItem in
-						return CartItem(opened: true, chef: cartItem.chef, note: "", deliveryCost: nil)
+						return CartItem(opened: true, chef: cartItem.chef, note: cartItem.note, deliveryCost: nil)
 					})
 					self.tableView.reloadData()
 					//				let error = NSError(domain: value["message"] as? String ?? "", code: 200, userInfo: nil)
@@ -591,7 +550,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 				guard let data = value["data"] as? [String: Any] else {
 					self.calculateCost()
 					self.cartItems = self.cartItems.map({ (cartItem) -> CartItem in
-						return CartItem(opened: true, chef: cartItem.chef, note: "", deliveryCost: nil)
+						return CartItem(opened: true, chef: cartItem.chef, note: cartItem.note, deliveryCost: nil)
 					})
 					self.tableView.reloadData()
 					let error = NSError(domain: "com.walayem.status", code: 200, userInfo: nil)
@@ -608,7 +567,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 						self.cartItems = self.cartItems.map({ (cartItem) -> CartItem in
 							if cartItem.chef.id == fetchedChefId {
 								let fetchedDeliveryCost = fetchedCartItem["delivery_cost"] as? Double
-								return CartItem(opened: true, chef: cartItem.chef, note: "", deliveryCost: fetchedDeliveryCost)
+								return CartItem(opened: true, chef: cartItem.chef, note: cartItem.note, deliveryCost: fetchedDeliveryCost)
 							}
 							return cartItem
 						})
@@ -636,7 +595,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		}else{
 			self.changeView(false)
 			for chef in chefs{
-				let cartItem = CartItem(opened: true, chef: chef, note: "")
+				let cartItem = CartItem(opened: true, chef: chef)
 				self.cartItems.append(cartItem)
 			}
 			self.calculateCost()
@@ -841,9 +800,17 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	// MARK: CartFoodFooter delegate
 	
 	func updateNote(sender: UITextField, section: Int) {
-		cartItems[section].note = sender.text
+        if(cartItems.count > 0){
+            if (sender.text?.count ?? -1 > 0 ){
+                cartItems[section].note = sender.text ?? ""
+            }else{
+                cartItems[section].note = ""
+            }
+        }else{
+            return
+        }
+        
 	}
-	
 	
 	// MARK: CartFoodCell delegate
 	
@@ -999,6 +966,10 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
 		
 		return 60
 	}
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        
+        return true
+    }
 }
 
 extension CartViewController: AddressSelectionDelegate {
