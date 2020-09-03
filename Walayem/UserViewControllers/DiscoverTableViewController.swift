@@ -202,7 +202,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getAddress()
+//        getAddress()f
         
         self.view.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
         

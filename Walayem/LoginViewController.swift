@@ -286,7 +286,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     }
     
     private func loadUserDetails(_ authResult: [String: Any]?){
-        let fields = ["id", "name", "email", "phone", "is_chef", "is_chef_verified", "is_image_set", "chef_description"]
+        let fields = ["id", "name", "email", "phone", "is_chef", "is_chef_verified", "is_image_set", "chef_description", "fixed_delay", "website"]
         
         OdooClient.sharedInstance().searchRead(model: "res.partner", domain: [], fields: fields, offset: 0, limit: 1, order: "name ASC") { (result, error) in
             if let error = error {
@@ -363,8 +363,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         userDefaults.set(user.phone, forKey: UserDefaultsKeys.PHONE)
         userDefaults.set(user.isChef, forKey: UserDefaultsKeys.IS_CHEF)
         userDefaults.set(partnerId, forKey: UserDefaultsKeys.PARTNER_ID)
-		userDefaults.set(user.chefDescription, forKey: UserDefaultsKeys.CHEF_DESCRIPTION)
-        //userDefaults.set(sessionId, forKey: UserDefaultsKeys.SESSION_ID)
+        userDefaults.set(user.chefDescription, forKey: UserDefaultsKeys.CHEF_DESCRIPTION)
+        userDefaults.set(user.website, forKey: UserDefaultsKeys.WEBSITE)
+        userDefaults.set(user.fixedDelay, forKey: UserDefaultsKeys.FIXED_DELAY)       
     }
     
     private func subscribeToFirebaseTopics(_ partnerId: Int){
@@ -481,28 +482,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
             })
             sendGoogleData(token: accessToken!)
             }
-            
-//        }
-//        catch e{
-//            print("\(error.localizedDescription)")
-//        }
         
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
               withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-        // ...
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

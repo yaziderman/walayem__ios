@@ -14,6 +14,7 @@ enum FoodCategEnum: String{
     case appetizer
     case maincourse
     case dessert
+    case drink
 }
 
 class ChefDetailViewController: UIViewController, FoodCellDelegate {
@@ -35,7 +36,8 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     @IBOutlet weak var foodTableViewHeightCnstrnt: NSLayoutConstraint!
     @IBOutlet weak var emptyView: UIView!
 	@IBOutlet weak var locatonLabel: UILabel!
-	
+    @IBOutlet weak var shareChefIV: UIImageView!
+    
     var isChefDescAvailable = true
     
     
@@ -45,13 +47,20 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     var chef: Chef?
     var chef_id: Int?
     var metaLocation = ""
+    var chef_website = ""
     var user: User?
     var filteredFoods = [Food]()
     var selectedCateg: Int = 0
     var foodCategs = [String]()
+    var hasfoodCategs = [String]()
     var hasAppetizers: Bool = false
     var hasMainCourse: Bool = false
     var hasDesserts: Bool = false
+    var hasDrinks: Bool = false
+    var hasAppetizersAlreadyChecked: Bool = false
+    var hasMainCourseAlreadyChecked: Bool = false
+    var hasDessertsAlreadyChecked: Bool = false
+    var hasDrinksAlreadyChecked: Bool = false
     var hadOrdered: Bool = true
     var orderedFoods = [String]()
     // MARK: Actions
@@ -122,8 +131,10 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
         if (chef_id != nil){
             // Call API to get chefById
             getChef()
+        }else{
+            initVC()
         }
-        initVC()
+
         
     }
     
@@ -194,17 +205,26 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
                 }
             }
             tagsLabel.text = tagString
-            initTabs(chef.foods)
-            filterFoods(chef.foods)
             getChefRating(chef.id)
             Utils.setupNavigationBar(nav: self.navigationController!)
             loadPrevFoods()
+            initTabs(chef.foods)
+            filterFoods(chef.foods)
         }
                 
         NotificationCenter.default.addObserver(self, selector: #selector(updateFav) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
         
         updateFav()
-                
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapShareChef))
+        
+        shareChefIV.addGestureRecognizer(tap)
+        shareChefIV.isUserInteractionEnabled = true
+        
+//        if(self.chef?.website == ""  || ((self.chef?.website.elementsEqual("")) != nil)){
+//            shareChefIV.isHidden = true
+//        }
+
     }
 
     @objc func updateFav()
@@ -222,6 +242,20 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if(self.chef?.website == ""){
+            shareChefIV.isHidden = true
+        }else{
+            shareChefIV.isHidden = false
+        }
+//        if (self.chef?.foods.count)! > 0 {
+//            initTabs(self.chef!.foods)
+//        }
+        
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -230,6 +264,12 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
             self.desc.isHidden = true
             self.img.isHidden = true
             self.view.layoutIfNeeded()
+        }
+        
+        if(self.chef?.website == ""){
+            shareChefIV.isHidden = true
+        }else{
+            shareChefIV.isHidden = false
         }
         
         guard let indexPath = foodTableView.indexPathForSelectedRow else {
@@ -243,6 +283,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
         updateFav()
         
         print("")
+        
     }
     
     // MARK: Private methods
@@ -346,35 +387,127 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
                 hasMainCourse = true
             }else if(food.foodType == FoodCategEnum.dessert.rawValue){
                 hasDesserts = true
+            }else if(food.foodType == FoodCategEnum.drink.rawValue){
+                hasDrinks = true
             }
         }
         
         if(hasAppetizers){
-             foodCategs.append("Appetizers")
+            foodCategs.append("Appetizers")
+            hasfoodCategs.append(FoodCategEnum.appetizer.rawValue)
         }
         if(hasMainCourse){
-             foodCategs.append("Main course")
+            foodCategs.append("Main course")
+            hasfoodCategs.append(FoodCategEnum.maincourse.rawValue)
         }
         if(hasDesserts){
             foodCategs.append("Desserts")
+            hasfoodCategs.append(FoodCategEnum.dessert.rawValue)
+        }
+        if(hasDrinks){
+            foodCategs.append("Drinks")
+            hasfoodCategs.append(FoodCategEnum.drink.rawValue)
         }
     }
     
+    @objc private func tapShareChef(sender: UITapGestureRecognizer){
+        UIView.animate(withDuration: 0.5) {
+            
+            print(self.chef?.website)
+            self.chef_website = "\(self.chef?.website ?? "")"
+            print("Chef detail tapped...!")
+            self.shareChef()
+        }
+    }
+    
+    func shareChef(){
+        if(self.chef_website != ""){
+            let web_p = "http://order.walayem.com/" + "\(self.chef_website)"
+            if let urlStr = NSURL(string: web_p) {
+                let string = web_p
+                let objectsToShare = [string, urlStr] as [Any]
+                let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+
+                if UI_USER_INTERFACE_IDIOM() == .pad {
+                     if let popup = activityVC.popoverPresentationController {
+                         popup.sourceView = self.view
+                         popup.sourceRect = CGRect(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 4, width: 0, height: 0)
+                     }
+                 }
+
+                self.present(activityVC, animated: true, completion: nil)
+             }
+        }
+    }
+
+    
     private func filterFoods(_ foods: [Food]){
+        
         var filterString: String!
         switch selectedCateg{
         case 0:
-            if (hasAppetizers){filterString = FoodCategEnum.appetizer.rawValue}
-            else if(hasMainCourse) {filterString = FoodCategEnum.maincourse.rawValue}
-            else { filterString = FoodCategEnum.dessert.rawValue}
+            
+            if(hasfoodCategs.count > 0){
+                if(hasfoodCategs[selectedCateg] != ""){
+                    filterString = hasfoodCategs[selectedCateg]
+                }
+            }else if (hasAppetizers  ){
+                filterString = FoodCategEnum.appetizer.rawValue
+                hasfoodCategs.append(FoodCategEnum.appetizer.rawValue)
+            }
+            else if(hasMainCourse ) {
+                filterString = FoodCategEnum.maincourse.rawValue
+                hasfoodCategs.append(FoodCategEnum.maincourse.rawValue)
+            }
+            else if(hasDesserts) {
+                filterString = FoodCategEnum.dessert.rawValue
+                hasfoodCategs.append(FoodCategEnum.dessert.rawValue)
+            }
+            else if(hasDrinks ){
+                filterString = FoodCategEnum.drink.rawValue
+                hasfoodCategs.append(FoodCategEnum.drink.rawValue)
+            }
         case 1:
-            if(hasMainCourse){
+            
+            if(hasfoodCategs.count > 1){
+                if(hasfoodCategs[selectedCateg] != ""){
+                    filterString = hasfoodCategs[selectedCateg]
+                }
+            }else if(hasMainCourse ){
                  filterString = FoodCategEnum.maincourse.rawValue
-            }else{
+                 hasfoodCategs.append(FoodCategEnum.maincourse.rawValue)
+            }
+            else if(hasDesserts ){
               filterString = FoodCategEnum.dessert.rawValue
+              hasfoodCategs.append(FoodCategEnum.dessert.rawValue)
+            }
+            else if(hasDrinks){
+                filterString = FoodCategEnum.drink.rawValue
+                hasfoodCategs.append(FoodCategEnum.drink.rawValue)
             }
         case 2:
-            filterString = FoodCategEnum.dessert.rawValue
+            
+            if(hasfoodCategs.count > 2){
+                if(hasfoodCategs[selectedCateg] != ""){
+                    filterString = hasfoodCategs[selectedCateg]
+                }
+            }else if(hasDesserts ){
+                filterString = FoodCategEnum.dessert.rawValue
+                hasfoodCategs.append(FoodCategEnum.dessert.rawValue)
+            }else if(hasDrinks){
+                filterString = FoodCategEnum.drink.rawValue
+                hasfoodCategs.append(FoodCategEnum.drink.rawValue)
+            }
+        case 3:
+            
+            if(hasfoodCategs.count > 3){
+                if(hasfoodCategs[selectedCateg] != ""){
+                    filterString = hasfoodCategs[selectedCateg]
+                }
+            }else  if(hasDrinks){
+                filterString = FoodCategEnum.drink.rawValue
+                hasfoodCategs.append(FoodCategEnum.drink.rawValue)
+            }
         default:
             filterString = ""
         }
@@ -447,6 +580,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
             
             let mChef = Chef(record: records, name: "init")
             self.chef = mChef
+            self.chef_website = mChef.website
                 self.hideSpinner()
             self.foodTableView.reloadData()
             self.collectionView.reloadData()

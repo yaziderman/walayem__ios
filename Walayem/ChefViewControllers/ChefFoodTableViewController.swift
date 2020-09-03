@@ -28,7 +28,7 @@ class ChefFoodTableViewController: UIViewController {
     
     var activityIndicator: UIActivityIndicatorView!
     
-    let foodCategs = ["Appetizers", "Main course", "Desserts"]
+    let foodCategs = ["Appetizers", "Main course", "Desserts", "Drinks"]
     var selectedCateg: Int = 0
     var user: User?
     var foods = [Food]()
@@ -69,6 +69,10 @@ class ChefFoodTableViewController: UIViewController {
         else if(category == "maincourse")
         {
             nIndex = 1;
+        }
+        else if(category == "drink")
+        {
+            nIndex = 3;
         }
         else
         {
@@ -189,6 +193,8 @@ class ChefFoodTableViewController: UIViewController {
             filterString = FoodCategEnum.maincourse.rawValue
         case 2:
             filterString = FoodCategEnum.dessert.rawValue
+        case 3:
+            filterString = FoodCategEnum.drink.rawValue
         default:
             filterString = ""
         }

@@ -33,6 +33,7 @@ class FoodTableViewCell: UITableViewCell{
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var discountedPriceLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
     
     
@@ -72,13 +73,36 @@ class FoodTableViewCell: UITableViewCell{
     
     func updateUI(){
 //        food.quantity = 0
+        
         foodImageView.layer.cornerRadius = 12
         foodImageView.layer.masksToBounds = true
-        nameLabel.text = food.name
+        
+        if food.name != nil {
+            nameLabel.text = food.name
+        }
 //        let time = Int(max(1, round( Double(food.preparationTime) / 60.0)))
 //        timeLabel.text = "\(time) hour(s)"
+        
+        
+//        if(food.original_price != 0.0){
+//            if food.original_price > food.price {
+//                let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "AED \(food.original_price)")
+//                    attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+//
+//                priceLabel.attributedText = attributeString
+//                discountedPriceLabel.text = "AED \(food.price ?? 0)"
+//            }else{
+//                priceLabel.text = "AED \(food.price ?? 0)"
+//                discountedPriceLabel.isHidden = true
+//            }
+//        }else{
+//            priceLabel.text = "AED \(food.price ?? 0)"
+//            discountedPriceLabel.isHidden = true
+//        }
+        
         numberOfServesLabel = "Serves \(food.servingQunatity) people"
         priceLabel.text = "AED \(food.price ?? 0)"
+//        discountedPriceLabel.text = "AED \(food.price ?? 0)"
         quantityLabel.text =  String(food.quantity)
         descriptionLabel.text = food.kitcherName! + " \u{2022} " + food.chefName!
         

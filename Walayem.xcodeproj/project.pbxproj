@@ -145,6 +145,7 @@
 		83FE26F524B5B8A20024C500 /* KeyChainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FE26F424B5B8A20024C500 /* KeyChainWrapper.swift */; };
 		83FE26F724B5D9C80024C500 /* Encodable+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FE26F624B5D9C80024C500 /* Encodable+Dictionary.swift */; };
 		BE4501EC23EEE5F600E3AB68 /* Promoted.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4501EB23EEE5F600E3AB68 /* Promoted.swift */; };
+		BE4939AF24EEF08F007E8C81 /* OrderDelayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4939AE24EEF08F007E8C81 /* OrderDelayViewController.swift */; };
 		BE51C4552416CCE1003C6524 /* LanguageSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51C4542416CCE1003C6524 /* LanguageSelectionViewController.swift */; };
 		BE6B334923C5EF6400CB01D6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6B334823C5EF6400CB01D6 /* Extensions.swift */; };
 		BE81C7FB23E8215200EBE520 /* HomeRecommendedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE81C7FA23E8215200EBE520 /* HomeRecommendedCell.swift */; };
@@ -311,6 +312,7 @@
 		85EEF2A8C2D95FEA34A94A4E /* Pods-Walayem.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Walayem.debug.xcconfig"; path = "Target Support Files/Pods-Walayem/Pods-Walayem.debug.xcconfig"; sourceTree = "<group>"; };
 		A7FAA7B2B17066C4795420C5 /* Pods_Walayem.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Walayem.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE4501EB23EEE5F600E3AB68 /* Promoted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promoted.swift; sourceTree = "<group>"; };
+		BE4939AE24EEF08F007E8C81 /* OrderDelayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDelayViewController.swift; sourceTree = "<group>"; };
 		BE51C4542416CCE1003C6524 /* LanguageSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionViewController.swift; sourceTree = "<group>"; };
 		BE6B334823C5EF6400CB01D6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		BE81C7FA23E8215200EBE520 /* HomeRecommendedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecommendedCell.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 				D0A223572458EFAC009C90B2 /* ChefCoverageArea.swift */,
 				7F3FD1DA2483DA4800F53684 /* LocationSelectionViewController.swift */,
 				F5AAF1C324A1E630003945F8 /* ChangeDescriptionViewController.swift */,
+				BE4939AE24EEF08F007E8C81 /* OrderDelayViewController.swift */,
 			);
 			path = ChefViewControllers;
 			sourceTree = "<group>";
@@ -827,6 +830,7 @@
 				D0A223582458EFAC009C90B2 /* ChefCoverageArea.swift in Sources */,
 				04B7FE872091D4D000018304 /* FoodCategCollectionViewCell.swift in Sources */,
 				0AD7E9FF212592DE00C0B546 /* StaticLinker.swift in Sources */,
+				BE4939AF24EEF08F007E8C81 /* OrderDelayViewController.swift in Sources */,
 				04D9E8A22085B38D002E1B51 /* LoginViewController.swift in Sources */,
 				526C962523AA97DF008D5FE4 /* UITextFieldExtension.swift in Sources */,
 				BE81C7FB23E8215200EBE520 /* HomeRecommendedCell.swift in Sources */,
@@ -1115,7 +1119,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.3.1;
+				MARKETING_VERSION = 4.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inceptionworld.Walayem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1142,7 +1146,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.3.1;
+				MARKETING_VERSION = 4.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.inceptionworld.Walayem;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

@@ -11,8 +11,11 @@ import Foundation
 class Verification{
     
     static func isValidName(_ name: String) -> Bool{
-        return name.count > 2
-    }
+           return name.count > 2
+       }
+    static func isValidDelayTime(_ name: String) -> Bool{
+          return name.count > 0
+      }
     
     static func isValidEmail(_ email: String) -> Bool{
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"

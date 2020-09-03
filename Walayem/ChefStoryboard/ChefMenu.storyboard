@@ -475,6 +475,7 @@ button and add some items</string>
                                                             <segment title="Appetizer"/>
                                                             <segment title="Main Course"/>
                                                             <segment title="Dessert"/>
+                                                            <segment title="Drinks"/>
                                                         </segments>
                                                         <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <connections>
@@ -875,7 +876,7 @@ button and add some items</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="FKH-XN-cDH"/>
+        <segue reference="bH3-UQ-jol"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="caretRight" width="9" height="15"/>

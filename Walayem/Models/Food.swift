@@ -20,6 +20,7 @@ static func == (lhs: Food, rhs: Food) -> Bool {
     var description: String?
     var foodType: String?
     var price : Double = 0
+//    var original_price : Double = 0
     var preparationTime: Int = 0
     var quantity: Int = 0
     var servingQunatity: Int = 0
@@ -39,6 +40,7 @@ static func == (lhs: Food, rhs: Food) -> Bool {
         self.description = record["description_sale"] as? String
         self.foodType = record["food_type"] as? String
         self.price = (record["list_price"] as! Double)
+//        self.original_price = (record["original_price"] as! Double)
         self.preparationTime = record["preparation_time"] as! Int
         self.servingQunatity = record["serves"] as! Int
         self.imageIds = record["food_image_ids"] as? [Int] ?? [0]

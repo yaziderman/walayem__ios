@@ -16,22 +16,19 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var currentMonthEarningsLabel: UILabel!
     @IBOutlet weak var totalEarningsLabel: UILabel!
-    var user: User?
     @IBOutlet weak var updateIcon: UIImageView!
+    @IBOutlet weak var weblinkLabel: UILabel!
+    @IBOutlet weak var shareWebBtn: UIButton!
     @IBOutlet weak var kitchenSwitch: UISwitch!
+    var weblink = ""
+    var chef_weblink = ""
+    
+    var user: User?
     
     // MARK: Actions
     @IBAction func `switch`(_ sender: UISwitch) {
         self.setKitchenStatus()
-//        if(sender.isOn){
-//            let alert = UIAlertController(title: "ON", message: "switch ON", preferredStyle: UIAlertControllerStyle.alert)
-//            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-//            self.present(alert, animated: true, completion: nil)
-//        }else{
-//            let alert = UIAlertController(title: "off", message: "switch off", preferredStyle: UIAlertControllerStyle.alert)
-//            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-//            self.present(alert, animated: true, completion: nil)
-//        }
+        
     }
 	
     @IBAction func call(_ sender: UIButton) {
@@ -62,6 +59,10 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
             UIApplication.shared.openURL(url!)
         }
     }
+    
+    @IBAction func unwindToChefProfile( _ seg: UIStoryboardSegue) {
+        
+    }
 
     @IBAction func connectFacebook(_ sender: UIButton) {
       if let url = URL(string: UserDefaults.standard.string(forKey: "ContactFacebook") ?? "https://www.facebook.com/WalayemApp"){
@@ -87,6 +88,24 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
         } else {
             // Fallback on earlier versions
             UIApplication.shared.openURL(url!)
+        }
+    }
+    
+    @IBAction func shareWeblink(){
+        
+        if let urlStr = NSURL(string: chef_weblink) {
+//            let string = chef_weblink
+            let objectsToShare = [urlStr] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+
+            if UI_USER_INTERFACE_IDIOM() == .pad {
+                if let popup = activityVC.popoverPresentationController {
+                    popup.sourceView = self.view
+                    popup.sourceRect = CGRect(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 4, width: 0, height: 0)
+                }
+            }
+
+            self.present(activityVC, animated: true, completion: nil)
         }
     }
     
@@ -155,6 +174,7 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        user = User().getUserDefaults()
         self.splitViewController?.preferredDisplayMode = .allVisible
         self.splitViewController?.delegate = self
         self.tableView.separatorColor = UIColor.silverEleven
@@ -162,7 +182,6 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
         userImageView.layer.cornerRadius = 20
         userImageView.layer.masksToBounds = true
         
-        user = User().getUserDefaults()
         if let image = user?.image {
             userImageView.image = Utils.decodeImage(image)
         } else {
@@ -171,6 +190,21 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
         Utils.setupNavigationBar(nav: self.navigationController!)
         updateIcon.tintColor  = UIColor.amber
         getKitchenStatus()
+        weblink = user?.website ?? ""
+        
+        if(weblink != ""){
+            let subString = weblink.components(separatedBy: "/")
+            let value = subString.last
+            let link = "https://order.walayem.com/" + "\(value!)"
+            chef_weblink = link
+            weblinkLabel.text = link
+            shareWebBtn.isHidden = false
+        }else{
+            weblinkLabel.text = "Contact us to get your weblink!"
+            shareWebBtn.isHidden = true
+            
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -178,6 +212,7 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
             self.tableView.deselectRow(at: selectedIndexPath, animated: true)
         }
     }
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(0.01)
     }
@@ -217,6 +252,7 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
             self.kitchenSwitch.isOn = is_on
         }
     }
+    
     private func setKitchenStatus(){
         let params: [String: Any] = ["partner_id": user!.partner_id!, "status":kitchenSwitch.isOn]
         RestClient().request(WalayemApi.changeKitchenStatus, params, self) { (result, error) in
@@ -365,8 +401,8 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
             return 193
         }else if (indexPath.section, indexPath.row) == (1, 1){
             return 0
-        }else if  (indexPath.section, indexPath.row) == (2, 1){
-            return 0
+//        }else if  (indexPath.section, indexPath.row) == (2, 1){
+//            return 0
         }else{
             return 70
         }

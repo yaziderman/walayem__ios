@@ -110,10 +110,18 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
     }
     
     @IBAction func saveMenu(_ sender: UIButton) {
+        
+        let numberFormatter: NumberFormatter = NumberFormatter()
+        numberFormatter.locale = NSLocale(localeIdentifier: "EN") as Locale?
+        if let englishString = numberFormatter.number(from: "٤") {
+            print(englishString)
+        }
+        
+        
         let name = nameTextField.text ?? ""
-        let price = priceTextField.text ?? ""
-        let time = timeTextField.text ?? ""
-        let serve = serveTextField.text ?? ""
+        var price = priceTextField.text ?? ""
+        var time = timeTextField.text ?? ""
+        var serve = serveTextField.text ?? ""
         let description = descriptionTextField.text ?? ""
         
         if name.isEmpty{
@@ -145,7 +153,12 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
         else if foodImages.count == 0{
             showAlert(title: "Error", msg: "Please add at least one image for your food")
             return
+        }else{
+            price = "\(numberFormatter.number(from: price) ?? 0)"
+            time = "\(numberFormatter.number(from: time) ?? 0)"
+            serve = "\(numberFormatter.number(from: serve) ?? 0)"
         }
+        
         
         var params = ["chef_id": user?.partner_id as Any,
                       "name": name,
@@ -203,7 +216,9 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
         case 1:
             selectedFoodType = FoodCategEnum.maincourse
         case 2:
-            selectedFoodType = FoodCategEnum.dessert
+                selectedFoodType = FoodCategEnum.dessert
+        case 3:
+            selectedFoodType = FoodCategEnum.drink
         default:
             fatalError("Invalid segment")
         }
@@ -227,6 +242,8 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
         self.hideKeyboardWhenTappedAround() 
         
 //        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+//        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapShareChef))
+
 //        view.addGestureRecognizer(tap)
         
         if let food = food{

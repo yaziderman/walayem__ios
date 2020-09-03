@@ -16,6 +16,7 @@ struct UserDefaultsKeys{
     static let SESSION_ID: String = "sessionId"
     static let PARTNER_ID: String = "partnerId"
     static let IS_CHEF: String = "isChef"
+    static let FIXED_DELAY: String = "fixedDelay"
     static let ORDER_FIRST_TIME: String = "orderFirstTime"
     static let IS_CHEF_VERIFIED: String = "isChefVerified"
     static let FIREBASE_VERIFICATION_ID = "firebaseVerificationID"
@@ -28,7 +29,9 @@ struct UserDefaultsKeys{
     static let AUTH_TOKEN = "authToken"
     static let CHEF_COVERAGE_AREA = "ChefCoverageArea"
     static let CHEF_LOCATION = "ChefLocation"
-	static let CHEF_DESCRIPTION: String = "chefDescription"
+    static let CHEF_DESCRIPTION: String = "chefDescription"
+    static let WEBSITE: String = "website"
+    
 }
 
 class User{
@@ -42,6 +45,8 @@ class User{
     var isChef: Bool = false
     var isChefVerified: Bool = false
     var firebaseToken: String?
+    var website: String?
+    var fixedDelay:Int = 0
     
     init(){}
     
@@ -52,7 +57,10 @@ class User{
         self.isChef = record["is_chef"] as! Bool
         self.isChefVerified = record["is_chef_verified"] as! Bool
         self.image = record["image"] as? String ?? ""
-		self.chefDescription = record["chef_description"] as? String ?? ""
+        self.fixedDelay = record["fixed_delay"] as? Int ?? 0
+        self.chefDescription = record["chef_description"] as? String ?? ""
+        self.website = record["website"] as? String ?? ""
+        
     }
     
     func getUserDefaults() -> User{
@@ -66,7 +74,10 @@ class User{
         self.image = userDefaults.string(forKey: UserDefaultsKeys.IMAGE)
         self.isChef = userDefaults.bool(forKey: UserDefaultsKeys.IS_CHEF)
         self.isChefVerified = userDefaults.bool(forKey: UserDefaultsKeys.IS_CHEF_VERIFIED)
-		self.chefDescription = userDefaults.string(forKey: UserDefaultsKeys.CHEF_DESCRIPTION)
+        self.chefDescription = userDefaults.string(forKey: UserDefaultsKeys.CHEF_DESCRIPTION)
+        self.website = userDefaults.string(forKey: UserDefaultsKeys.WEBSITE)
+        self.fixedDelay = userDefaults.integer(forKey: UserDefaultsKeys.FIXED_DELAY)
+        
 
         return self
     }
@@ -82,6 +93,7 @@ class User{
         userDefaults.removeObject(forKey: UserDefaultsKeys.IMAGE)
         userDefaults.removeObject(forKey: UserDefaultsKeys.IS_CHEF)
         userDefaults.removeObject(forKey: UserDefaultsKeys.IS_CHEF_VERIFIED)
+        userDefaults.removeObject(forKey: UserDefaultsKeys.FIXED_DELAY)
         userDefaults.removeObject(forKey: UserDefaultsKeys.AUTH_TOKEN)
         userDefaults.removeObject(forKey: UserDefaultsKeys.USER_AREA_FILTER)
         

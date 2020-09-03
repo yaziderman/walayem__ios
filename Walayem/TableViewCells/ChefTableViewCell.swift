@@ -41,12 +41,15 @@ class ChefTableViewCell: UITableViewCell {
         countLabel.layer.masksToBounds = true
         
         var description: String = ""
-        for tag in chef.foods[0].tags{
-            description.append(tag.name ?? "")
-            if let lastTag = chef.foods[0].tags.last, lastTag !== tag{
-                description.append(" \u{2022} ")
+        if chef.foods[0].tags != nil {
+            for tag in chef.foods[0].tags{
+               description.append(tag.name ?? "")
+               if let lastTag = chef.foods[0].tags.last, lastTag !== tag{
+                   description.append(" \u{2022} ")
+               }
             }
         }
+       
         
         nameLabel.text = "\(chef.name) \u{2022} \(chef.kitchen)"
         countLabel.text = String (chef.foods.count)
