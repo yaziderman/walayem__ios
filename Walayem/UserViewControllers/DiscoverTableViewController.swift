@@ -516,7 +516,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
             self.recommendedFoods.removeAll()
             let records = data["data"] as! [Any]
             for record in records{
-                let food = Food(record: record as! [String : Any])
+				let food = Food(record: record as! [String : Any], isWebsiteActive: false)
                 self.recommendedFoods.append(food)
             }
             self.collectionView.reloadData()
@@ -573,7 +573,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
 			let meta = value["meta"] as! [String: Any]
 			self.metaLocation = meta["name"] as? String ?? ""
             for record in records{
-                let food = Food(record: record as! [String: Any])
+				let food = Food(record: record as! [String: Any], isWebsiteActive: false)
                 if !self.foods.contains(food){
                     self.foods.append(food)
                 }
@@ -623,7 +623,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
             self.totalPage = value["total_pages"] as? Int ?? 0
             let records = value["data"] as! [Any]
             for record in records{
-                let food = Food(record: record as! [String: Any])
+				let food = Food(record: record as! [String: Any], isWebsiteActive: false)
                 if !self.foods.contains(food){
                     self.foods.append(food)
                 }
@@ -679,7 +679,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
             self.totalPage = value["total_pages"] as? Int ?? 0
             let records = value["data"] as! [Any]
             for record in records{
-                let food = Food(record: record as! [String: Any])
+				let food = Food(record: record as! [String: Any], isWebsiteActive: false)
                 self.foods.append(food)
             }
             
@@ -728,7 +728,7 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
             self.totalPage = value["total_pages"] as? Int ?? 0
             let records = value["data"] as! [Any]
             for record in records{
-                let food = Food(record: record as! [String: Any])
+				let food = Food(record: record as! [String: Any], isWebsiteActive: false)
                 if !self.foods.contains(food) {
                     self.foods.append(food)
                 }
@@ -871,6 +871,7 @@ extension DiscoverTableViewController: UITableViewDelegate, UITableViewDataSourc
         let food = foods[indexPath.row]
         destinationVC.food = food
 		destinationVC.metaLocation = metaLocation
+		destinationVC.is_website_link_active = food.is_website_link_active
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
     
@@ -937,6 +938,7 @@ extension DiscoverTableViewController: UICollectionViewDelegate, UICollectionVie
         }
         let food = recommendedFoods[indexPath.row]
         destinationVC.food = food
+		destinationVC.is_website_link_active = food.is_website_link_active
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
 }

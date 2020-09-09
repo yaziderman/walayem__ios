@@ -338,7 +338,6 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
             collectionViewCellIdentifier = "tagCell"
         }
         
-        
         if indexPath.row == 0 || indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3{
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "mainHomeTableViewCell") as? HomeTableViewCell  else { fatalError("mainHomeTableViewCell") }
@@ -359,9 +358,7 @@ extension MainHomeViewController: UITableViewDataSource, UITableViewDelegate{
             
             return cell
         }
-            
-            
-            
+                        
         else if indexPath.row == 4 {
             guard let cell : HomeButtonTableViewCell = tableView.dequeueReusableCell(withIdentifier: "mainHomeTableViewCell1") as? HomeButtonTableViewCell else { fatalError("mainHomeTableViewCell1") }
             

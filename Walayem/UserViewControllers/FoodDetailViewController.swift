@@ -27,10 +27,12 @@ class FoodDetailViewController: UIViewController {
     @IBOutlet weak var quantityImageView: UIImageView!
     var favouriteBarItem: UIBarButtonItem?
 	@IBOutlet weak var locationStackView: UIStackView!
+	@IBOutlet weak var shareBtn: UIButton!
 	
     var food: Food?
     var user: User?
 	var metaLocation = ""
+	var is_website_link_active = false
     let db = DatabaseHandler()
     
     // MARK: Actions
@@ -83,6 +85,12 @@ class FoodDetailViewController: UIViewController {
         super.viewDidLoad()
         Utils.setupNavigationBar(nav: self.navigationController!)
         user = User().getUserDefaults()
+		
+		if is_website_link_active {
+			shareBtn.isHidden = false
+		} else {
+			shareBtn.isHidden = true
+		}
 		
 // MARK:    To open chef connection from food detail uncomment following 3 lines
         
@@ -270,6 +278,27 @@ class FoodDetailViewController: UIViewController {
             tabItem.badgeValue = db.getFoodsCount()
         }
     }
+	
+	@IBAction func shareBtnAction(_ sender: Any) {
+		if(self.food?.id != 0){
+			let web_p = "http://order.walayem.com/" + "\(self.food?.id ?? 0)"
+			if let urlStr = NSURL(string: web_p) {
+				let string = web_p
+				let objectsToShare = [string, urlStr] as [Any]
+				let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+				
+				if UI_USER_INTERFACE_IDIOM() == .pad {
+					if let popup = activityVC.popoverPresentationController {
+						popup.sourceView = self.view
+						popup.sourceRect = CGRect(x: self.view.frame.size.width / 2, y: self.view.frame.size.height / 4, width: 0, height: 0)
+					}
+				}
+				
+				self.present(activityVC, animated: true, completion: nil)
+			}
+		}
+	}
+	
 
     /*
     // MARK: - Navigation
@@ -373,5 +402,7 @@ extension FoodDetailViewController: UIViewControllerPreviewingDelegate{
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
         navigationController?.pushViewController(viewControllerToCommit, animated: true)
     }
+	
+	
 
 }

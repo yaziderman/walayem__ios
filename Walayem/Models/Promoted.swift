@@ -33,6 +33,7 @@ class PromotedItem{
     var chef_name: String?
     var chef_image_hash: String?
     var item_details: ItemDetail?
+	var is_weblink_active = false
     
     init(records: [String: Any]) {
         self.kitchen_name = records["kitchen_name"] as? String
@@ -46,6 +47,7 @@ class PromotedItem{
             self.chefInfo = ChefInfo(id: item_Ids[0] as! Int, name: item_Ids[1]as! String)
         }
         
+		self.is_weblink_active = (records["is_weblink_active"] as? Int ?? 0) == 0 ? false : true
         
         self.cuisine = records["cuisine"] as? String
         self.start_date = records["start_date"] as? String

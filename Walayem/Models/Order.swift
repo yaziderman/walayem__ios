@@ -83,7 +83,7 @@ class OrderDetail: Order{
         self.shTotalPrice = 0
         
         for product in products{
-            let food = Food(dict: product as! [String: Any])
+			let food = Food(dict: product as! [String: Any], is_website_link_active: false)
             self.products.append(food)
             
             self.shProductNames = shProductNames + "" + (food.name ?? "") + " x "

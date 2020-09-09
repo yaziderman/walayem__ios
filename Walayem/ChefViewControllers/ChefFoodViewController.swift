@@ -219,6 +219,8 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
                 selectedFoodType = FoodCategEnum.dessert
         case 3:
             selectedFoodType = FoodCategEnum.drink
+		case 4:
+			selectedFoodType = FoodCategEnum.other
         default:
             fatalError("Invalid segment")
         }

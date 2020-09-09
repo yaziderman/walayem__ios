@@ -71,7 +71,7 @@ class FoodSearchResultController: UIViewController, FoodCellDelegate {
 			self.totalPages = value["total_pages"] as? Int ?? 0
 			let records = value["data"] as! [Any]
 			for record in records{
-				let food = Food(record: record as! [String: Any])
+				let food = Food(record: record as! [String: Any], isWebsiteActive: false)
 				self.foods.append(food)
 			}
 			self.tableView.reloadData()
@@ -110,7 +110,7 @@ class FoodSearchResultController: UIViewController, FoodCellDelegate {
 			self.totalPages = value["total_pages"] as? Int ?? 0
 			let records = value["data"] as! [Any]
 			for record in records{
-				let food = Food(record: record as! [String: Any])
+				let food = Food(record: record as! [String: Any], isWebsiteActive: false)
 				if !self.foods.contains(food) {
 					self.foods.append(food)
 				}
@@ -202,6 +202,7 @@ extension FoodSearchResultController : UITableViewDataSource, UITableViewDelegat
 		}
 		let food = self.foods[indexPath.row]
 		destinationVC.food = food
+		destinationVC.is_website_link_active = food.is_website_link_active
 		self.presentingViewController?.navigationController?.pushViewController(destinationVC, animated: true)
 	}
 	
@@ -259,7 +260,7 @@ extension FoodSearchResultController: UISearchResultsUpdating{
 					
 					let records = value["data"] as! [Any]
 					for record in records{
-						let food = Food(record: record as! [String: Any])
+						let food = Food(record: record as! [String: Any], isWebsiteActive: false)
 						self.foods.append(food)
 					}
 					self.tableView.reloadData()

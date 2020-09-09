@@ -19,6 +19,7 @@ class Chef: Equatable{
 	var kitchen: String = ""
     var description: String = ""
     var website: String = ""
+	var is_weblink_active: Bool = false
 	var image: String = ""
 	var rating: Int = 0
 	var isFav: Bool = false
@@ -49,9 +50,10 @@ class Chef: Equatable{
 			self.image = record["chef_image_hash"] as? String ?? ""
 			self.description = record["chef_description"] as? String ?? ""
             self.website = record["website"] as? String ?? ""
+			self.is_weblink_active = (record["is_weblink_active"] as? Int ?? 0) == 0 ? false : true
 			let products = record["products"] as? [Any] ?? [Any]()
 			for product in products{
-				let food = Food(record: (product as? [String : Any] ?? [String: Any]()))
+				let food = Food(record: (product as? [String : Any] ?? [String: Any]()), isWebsiteActive: is_weblink_active)
 				self.foods.append(food)
 			}
 			area = Area(record: record["area"] as? [String: Any] ?? [String: Any]())
@@ -62,9 +64,10 @@ class Chef: Equatable{
 			self.image = record["chef_image_hash"] as? String ?? ""
 			self.description = record["chef_description"] as? String ?? ""
             self.website = record["website"] as? String ?? ""
+			self.is_weblink_active = (record["is_weblink_active"] as? Int ?? 0) == 0 ? false : true
 			let products = record["products"] as? [Any] ?? [Any]()
 			for product in products{
-				let food = Food(record: (product as? [String : Any] ?? [String: Any]()))
+				let food = Food(record: (product as? [String : Any] ?? [String: Any]()), isWebsiteActive: is_weblink_active)
 				self.foods.append(food)
 			}
 			area = Area(record: record["area"] as? [String: Any] ?? [String: Any]())

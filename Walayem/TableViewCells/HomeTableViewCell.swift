@@ -87,9 +87,11 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
                             chefImage: recommendedMeals[indexPath.row].chef_image_hash ?? "no-Image",
                             cuisine: recommendedMeals[indexPath.row].item_details?.cuisine_id ?? Cuisine(id: 0, name: ""),
                             tags: recommendedMeals[indexPath.row].item_details?.food_tags ?? [Tag(id: 0, name: "")],
-                            serves: recommendedMeals[indexPath.row].item_details?.serves ?? 0)
+                            serves: recommendedMeals[indexPath.row].item_details?.serves ?? 0,
+							isWebsiteActive: recommendedMeals[indexPath.row].is_weblink_active)
             
             destinationVC.food = food
+			destinationVC.is_website_link_active = food.is_website_link_active
             navigationController?.pushViewController(destinationVC, animated: true)
         }
         
@@ -113,10 +115,12 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
                 chefImage: todays_meals[indexPath.row].chef_image_hash ?? "no-Image",
                 cuisine: todays_meals[indexPath.row].item_details?.cuisine_id ?? Cuisine(id: 0, name: ""),
                 tags: todays_meals[indexPath.row].item_details?.food_tags ?? [Tag(id: 0, name: "")],
-                serves: todays_meals[indexPath.row].item_details?.serves ?? 0
+                serves: todays_meals[indexPath.row].item_details?.serves ?? 0,
+				isWebsiteActive: recommendedMeals[indexPath.row].is_weblink_active
             )
             
             destinationVC.food = food
+			destinationVC.is_website_link_active = food.is_website_link_active
             navigationController?.pushViewController(destinationVC, animated: true)
         }
         

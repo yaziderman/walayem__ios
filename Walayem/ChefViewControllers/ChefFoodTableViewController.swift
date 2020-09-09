@@ -28,7 +28,7 @@ class ChefFoodTableViewController: UIViewController {
     
     var activityIndicator: UIActivityIndicatorView!
     
-    let foodCategs = ["Appetizers", "Main course", "Desserts", "Drinks"]
+    let foodCategs = ["Appetizers", "Main course", "Desserts", "Drinks", "Others"]
     var selectedCateg: Int = 0
     var user: User?
     var foods = [Food]()
@@ -74,6 +74,10 @@ class ChefFoodTableViewController: UIViewController {
         {
             nIndex = 3;
         }
+		else if(category == "other")
+		{
+			nIndex = 4;
+		}
         else
         {
             nIndex = 0;
@@ -195,6 +199,8 @@ class ChefFoodTableViewController: UIViewController {
             filterString = FoodCategEnum.dessert.rawValue
         case 3:
             filterString = FoodCategEnum.drink.rawValue
+		case 4:
+			filterString = FoodCategEnum.other.rawValue
         default:
             filterString = ""
         }
@@ -228,7 +234,7 @@ class ChefFoodTableViewController: UIViewController {
             }
             self.changeView(isEmpty: false)
             for record in records{
-                let food = Food(record: record as! [String: Any])
+				let food = Food(record: record as! [String: Any], isWebsiteActive: false)
                 self.foods.append(food)
             }
             self.updateChefLabel()

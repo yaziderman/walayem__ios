@@ -33,8 +33,9 @@ static func == (lhs: Food, rhs: Food) -> Bool {
     var kitcherName: String?
     var paused: Bool = false
     var isFav: Bool = false
+	var is_website_link_active = false
     
-    init(record: [String: Any]){
+	init(record: [String: Any], isWebsiteActive: Bool){
         self.id = (record["id"] as! Int)
         self.name = (record["name"] as! String)
         self.description = record["description_sale"] as? String
@@ -58,33 +59,36 @@ static func == (lhs: Food, rhs: Food) -> Bool {
             self.tags.append(tag)
         }
         self.cuisine = Cuisine(record: record["food_cuisine"] as! [String: Any])
+		self.is_website_link_active = (record["is_weblink_active"] as? Int ?? 0) == 0 ? false : true
     }
     
-    init(dict: [String: Any]){
+	init(dict: [String: Any], is_website_link_active: Bool){
         self.id = (dict["id"] as! Int)
         self.name = (dict["name"] as! String)
         self.price = (dict["price"] as! Double)
         self.quantity = dict["quantity"] as! Int
         self.preparationTime = dict["preparation_time"] as! Int
+		self.is_website_link_active = is_website_link_active
     }
     
-    init(id: Int, name: String, price: Double, quantity: Int){
+    init(id: Int, name: String, price: Double, quantity: Int, isWebsiteActive: Bool){
         self.id = id
         self.name = name
         self.price = price
         self.quantity = quantity
+		self.is_website_link_active = isWebsiteActive
     }
     
-    init(id: Int, name: String, price: Double, quantity: Int, preparationTime: Int){
+    init(id: Int, name: String, price: Double, quantity: Int, preparationTime: Int, isWebsiteActive: Bool){
         self.id = id
         self.name = name
         self.price = price
         self.quantity = quantity
         self.preparationTime = preparationTime
+		self.is_website_link_active = isWebsiteActive
     }
     
-    init(id: Int, name: String, price: Double, quantity: Int, preparationTime: Int, kitcherName: String, description: String, chefName: String, foodType: String, imageIds: [Int], chefId: Int,  chefImage: String, cuisine: Cuisine, tags: [Tag], serves: Int
-    ) {
+	init(id: Int, name: String, price: Double, quantity: Int, preparationTime: Int, kitcherName: String, description: String, chefName: String, foodType: String, imageIds: [Int], chefId: Int,  chefImage: String, cuisine: Cuisine, tags: [Tag], serves: Int, isWebsiteActive: Bool) {
         
         self.id = id
         self.name = name
@@ -101,5 +105,6 @@ static func == (lhs: Food, rhs: Food) -> Bool {
         self.cuisine = cuisine
         self.tags = tags
         self.servingQunatity = serves
+		self.is_website_link_active = isWebsiteActive
     }
 }

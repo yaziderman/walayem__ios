@@ -671,6 +671,7 @@ class ChefTableViewController: BaseTabViewController, ChefCellDelegate {
 			fatalError("Unexpected viewController")
 		}
 		foodDetailVC.food = food
+		foodDetailVC.is_website_link_active = food.is_website_link_active
 		navigationController?.pushViewController(foodDetailVC, animated: true)
 	}
 	

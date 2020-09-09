@@ -143,6 +143,7 @@ class ChefSearchResultsViewController: UIViewController, UITableViewDataSource, 
             fatalError("Unexpected viewController")
         }
         foodDetailVC.food = food
+		foodDetailVC.is_website_link_active = food.is_website_link_active
         self.presentingViewController?.navigationController?.pushViewController(foodDetailVC, animated: true)
     }
 }

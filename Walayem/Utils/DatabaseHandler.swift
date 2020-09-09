@@ -153,7 +153,7 @@ class DatabaseHandler{
                                         name: foodItem[name],
                                         price: foodItem[price],
                                         quantity: foodItem[quantity],
-                                        preparationTime: foodItem[preparationTime])
+										preparationTime: foodItem[preparationTime], isWebsiteActive: false)
                         foods.append(food)
                     }
                     let chef = Chef(id: id,
@@ -183,7 +183,7 @@ class DatabaseHandler{
                                     name: foodItem[name],
                                     price: foodItem[price],
                                     quantity: foodItem[quantity],
-                                    preparationTime: foodItem[preparationTime])
+									preparationTime: foodItem[preparationTime], isWebsiteActive: false)
                     foods.append(food)
                 }
                 
@@ -208,7 +208,7 @@ class DatabaseHandler{
                                 name: foodItem[name],
                                 price: foodItem[price],
                                 quantity: foodItem[quantity],
-                                preparationTime: foodItem[preparationTime])
+								preparationTime: foodItem[preparationTime], isWebsiteActive: false)
                 foods.append(food)
             }
         }catch let error{

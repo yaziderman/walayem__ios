@@ -61,7 +61,7 @@ class FavFoodTableViewController: UIViewController, FoodCellDelegate {
             }
             let records = data["data"] as! [Any]
             for record in records{
-                let food = Food(record: record as! [String : Any])
+				let food = Food(record: record as! [String : Any], isWebsiteActive: false)
                 self.foods.append(food)
             }
             self.tableView.reloadData()
@@ -166,6 +166,7 @@ extension FavFoodTableViewController: UITableViewDelegate, UITableViewDataSource
         }
         let food = foods[indexPath.row]
         destinationVC.food = food
+		destinationVC.is_website_link_active = food.is_website_link_active
         self.navigationController?.pushViewController(destinationVC, animated: true)
     }
     

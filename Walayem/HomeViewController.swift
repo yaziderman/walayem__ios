@@ -109,7 +109,7 @@ class HomeViewController: UIViewController{
             self.mealsofDayFoods.removeAll()
             let records = data["data"] as! [Any]
             for record in records{
-                let food = Food(record: record as! [String : Any])
+				let food = Food(record: record as! [String : Any], isWebsiteActive: false)
                 self.mealsofDayFoods.append(food)
             }
 //            self.mealsDayCollectionView.reloadData()
@@ -145,7 +145,7 @@ class HomeViewController: UIViewController{
             self.recommendedFoods.removeAll()
             let records = data["data"] as! [Any]
             for record in records{
-                let food = Food(record: record as! [String : Any])
+				let food = Food(record: record as! [String : Any], isWebsiteActive: false)
                 self.recommendedFoods.append(food)
             }
             

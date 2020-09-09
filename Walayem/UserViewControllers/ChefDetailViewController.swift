@@ -15,6 +15,7 @@ enum FoodCategEnum: String{
     case maincourse
     case dessert
     case drink
+	case other
 }
 
 class ChefDetailViewController: UIViewController, FoodCellDelegate {
@@ -57,6 +58,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     var hasMainCourse: Bool = false
     var hasDesserts: Bool = false
     var hasDrinks: Bool = false
+	var hasOthers: Bool = false
     var hasAppetizersAlreadyChecked: Bool = false
     var hasMainCourseAlreadyChecked: Bool = false
     var hasDessertsAlreadyChecked: Bool = false
@@ -245,7 +247,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        if(self.chef?.website == ""){
+		if((self.chef?.is_weblink_active ?? false) && self.chef?.website == ""){
             shareChefIV.isHidden = true
         }else{
             shareChefIV.isHidden = false
@@ -381,6 +383,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     
     private func initTabs(_ foods: [Food]){
         for food in foods {
+			DLog(message: (food.foodType ?? ""))
             if(food.foodType == FoodCategEnum.appetizer.rawValue){
                 hasAppetizers = true
             }else if(food.foodType == FoodCategEnum.maincourse.rawValue){
@@ -389,7 +392,9 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
                 hasDesserts = true
             }else if(food.foodType == FoodCategEnum.drink.rawValue){
                 hasDrinks = true
-            }
+			} else if(food.foodType == FoodCategEnum.other.rawValue){
+				hasOthers = true
+			}
         }
         
         if(hasAppetizers){
@@ -408,6 +413,10 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
             foodCategs.append("Drinks")
             hasfoodCategs.append(FoodCategEnum.drink.rawValue)
         }
+		if(hasOthers){
+			foodCategs.append("Others")
+			hasfoodCategs.append(FoodCategEnum.other.rawValue)
+		}
     }
     
     @objc private func tapShareChef(sender: UITapGestureRecognizer){
@@ -421,7 +430,7 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     }
     
     func shareChef(){
-        if(self.chef_website != ""){
+		if(self.chef_website != ""){
             let web_p = "http://order.walayem.com/" + "\(self.chef_website)"
             if let urlStr = NSURL(string: web_p) {
                 let string = web_p
@@ -463,10 +472,14 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
                 filterString = FoodCategEnum.dessert.rawValue
                 hasfoodCategs.append(FoodCategEnum.dessert.rawValue)
             }
-            else if(hasDrinks ){
+            else if(hasDrinks) {
                 filterString = FoodCategEnum.drink.rawValue
                 hasfoodCategs.append(FoodCategEnum.drink.rawValue)
             }
+			else if(hasOthers){
+				filterString = FoodCategEnum.other.rawValue
+				hasfoodCategs.append(FoodCategEnum.other.rawValue)
+			}
         case 1:
             
             if(hasfoodCategs.count > 1){
@@ -485,6 +498,10 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
                 filterString = FoodCategEnum.drink.rawValue
                 hasfoodCategs.append(FoodCategEnum.drink.rawValue)
             }
+			else if(hasOthers){
+				filterString = FoodCategEnum.other.rawValue
+				hasfoodCategs.append(FoodCategEnum.other.rawValue)
+			}
         case 2:
             
             if(hasfoodCategs.count > 2){
@@ -498,6 +515,10 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
                 filterString = FoodCategEnum.drink.rawValue
                 hasfoodCategs.append(FoodCategEnum.drink.rawValue)
             }
+			else if(hasOthers){
+				filterString = FoodCategEnum.other.rawValue
+				hasfoodCategs.append(FoodCategEnum.other.rawValue)
+			}
         case 3:
             
             if(hasfoodCategs.count > 3){
@@ -508,6 +529,21 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
                 filterString = FoodCategEnum.drink.rawValue
                 hasfoodCategs.append(FoodCategEnum.drink.rawValue)
             }
+			else if(hasOthers){
+				filterString = FoodCategEnum.other.rawValue
+				hasfoodCategs.append(FoodCategEnum.other.rawValue)
+			}
+		case 4:
+				
+				if(hasfoodCategs.count > 4){
+					if(hasfoodCategs[selectedCateg] != ""){
+						filterString = hasfoodCategs[selectedCateg]
+					}
+				}
+				else if(hasOthers){
+					filterString = FoodCategEnum.other.rawValue
+					hasfoodCategs.append(FoodCategEnum.other.rawValue)
+			}
         default:
             filterString = ""
         }
@@ -675,6 +711,7 @@ extension ChefDetailViewController: UITableViewDelegate, UITableViewDataSource{
         }
 //        foodDetailVC.metaLocation = metaLocation
         foodDetailVC.food = food
+		foodDetailVC.is_website_link_active = food.is_website_link_active
         navigationController?.pushViewController(foodDetailVC, animated: true)
     }
     
