@@ -25,8 +25,8 @@ class FoodSearchResultController: UIViewController, FoodCellDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		tableView.delegate = self as! UITableViewDelegate
-		tableView.dataSource = self as! UITableViewDataSource
+		tableView.delegate = self
+		tableView.dataSource = self
 	}
 	
 	// MARK: Private methods
@@ -238,11 +238,17 @@ extension FoodSearchResultController: UISearchResultsUpdating{
 			}
 			
 			if doSearch{
-				var params: [String: Any] = AreaFilter.shared.coverageParams
-				
-				params["search"] =  true
+				var params = [String: Any]()
+				if AreaFilter.shared.isAddress {
+					params = AreaFilter.shared.addressParams
+					params["filter_by"] = "address"
+				} else {
+					params = AreaFilter.shared.areaParams
+					params["filter_by"] = "area"
+				}
+				params["search"] = true
 				params["search_keyword"] = trimmedString
-				params["filter_by"] = "location"
+				params["page"] = 1
 				
 				RestClient().request(WalayemApi.searchFood, params, self) { (result, error) in
 					self.foods.removeAll()

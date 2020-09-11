@@ -164,6 +164,7 @@
 		D0A0164D245BC2F50025AA58 /* ChefCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A0164B245BC2F50025AA58 /* ChefCityTableViewCell.swift */; };
 		D0A0164E245BC2F50025AA58 /* ChefCityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A0164C245BC2F50025AA58 /* ChefCityTableViewCell.xib */; };
 		D0A223582458EFAC009C90B2 /* ChefCoverageArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A223572458EFAC009C90B2 /* ChefCoverageArea.swift */; };
+		F59D99FC250B759B004A8DA5 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59D99FB250B759B004A8DA5 /* AgreementViewController.swift */; };
 		F59E40FE2490C0750067F763 /* LocationWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E40FD2490C0750067F763 /* LocationWrapper.swift */; };
 		F5AAF1C424A1E631003945F8 /* ChangeDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AAF1C324A1E630003945F8 /* ChangeDescriptionViewController.swift */; };
 /* End PBXBuildFile section */
@@ -332,6 +333,7 @@
 		D0A223572458EFAC009C90B2 /* ChefCoverageArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefCoverageArea.swift; sourceTree = "<group>"; };
 		D8AE526667D0D9C189AB98C6 /* Pods-Walayem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Walayem.release.xcconfig"; path = "Target Support Files/Pods-Walayem/Pods-Walayem.release.xcconfig"; sourceTree = "<group>"; };
 		F571300924912E31009EF29F /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
+		F59D99FB250B759B004A8DA5 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		F59E40FD2490C0750067F763 /* LocationWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWrapper.swift; sourceTree = "<group>"; };
 		F5AAF1C324A1E630003945F8 /* ChangeDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeDescriptionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -578,6 +580,7 @@
 				83FE26F224B5A3C00024C500 /* AppleLoginWrapper.swift */,
 				83FE26F424B5B8A20024C500 /* KeyChainWrapper.swift */,
 				8395D11324B6F4990087A9AA /* RemoteConfigFetcher.swift */,
+				F59D99FB250B759B004A8DA5 /* AgreementViewController.swift */,
 			);
 			path = Walayem;
 			sourceTree = "<group>";
@@ -838,6 +841,7 @@
 				04CCB84620AD9CFA0011BD95 /* CompletedOrderTableViewController.swift in Sources */,
 				040902D220B2922800059F1D /* ChefFoodViewController.swift in Sources */,
 				BEBB0FEE23E7E65F00D43789 /* MealOfDayCollectionViewCell.swift in Sources */,
+				F59D99FC250B759B004A8DA5 /* AgreementViewController.swift in Sources */,
 				04831C4920AC39FE00195B1A /* BadgeButton.swift in Sources */,
 				5B467DF223B882CE008620FF /* Cuisine.swift in Sources */,
 				BEC27A0323E89F2100DE7874 /* MainHomeViewController.swift in Sources */,

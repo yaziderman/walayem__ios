@@ -34,6 +34,7 @@ static func == (lhs: Food, rhs: Food) -> Bool {
     var paused: Bool = false
     var isFav: Bool = false
 	var is_website_link_active = false
+	var original_price: Double?
     
 	init(record: [String: Any], isWebsiteActive: Bool){
         self.id = (record["id"] as! Int)
@@ -59,7 +60,8 @@ static func == (lhs: Food, rhs: Food) -> Bool {
             self.tags.append(tag)
         }
         self.cuisine = Cuisine(record: record["food_cuisine"] as! [String: Any])
-		self.is_website_link_active = (record["is_weblink_active"] as? Int ?? 0) == 0 ? false : true
+		self.is_website_link_active = isWebsiteActive//(record["is_weblink_active"] as? Int ?? 0) == 0 ? false : true
+		self.original_price = Double(record["original_price"] as? Int ?? 0)
     }
     
 	init(dict: [String: Any], is_website_link_active: Bool){

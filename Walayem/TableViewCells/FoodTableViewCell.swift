@@ -35,7 +35,9 @@ class FoodTableViewCell: UITableViewCell{
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var discountedPriceLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
-    
+	@IBOutlet weak var indicatorLabel: UILabel!
+	@IBOutlet weak var strikethroughLabelWidth: NSLayoutConstraint!
+	
     
     var numberOfServesLabel: String?
     let db = DatabaseHandler()
@@ -101,8 +103,26 @@ class FoodTableViewCell: UITableViewCell{
 //        }
         
         numberOfServesLabel = "Serves \(food.servingQunatity) people"
-        priceLabel.text = "AED \(food.price ?? 0)"
-//        discountedPriceLabel.text = "AED \(food.price ?? 0)"
+		
+		if Int(food.original_price ?? 0) > 0 {
+			strikethroughLabelWidth.constant = 43
+			priceLabel.isHidden = false
+			
+			let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "AED \(food.original_price ?? 0)")
+			attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+			
+			priceLabel.attributedText = attributeString
+			
+			discountedPriceLabel.text = "AED \(food.price)"
+			indicatorLabel.isHidden = false
+		} else {
+			discountedPriceLabel.text = "AED \(food.price)"
+			priceLabel.isHidden = true
+			strikethroughLabelWidth.constant = 0
+			indicatorLabel.isHidden = true
+		}
+		
+        
         quantityLabel.text =  String(food.quantity)
         descriptionLabel.text = food.kitcherName! + " \u{2022} " + food.chefName!
         

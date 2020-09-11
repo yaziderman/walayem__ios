@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nXt-3r-1mh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="nXt-3r-1mh">
     <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -125,6 +125,88 @@
             </objects>
             <point key="canvasLocation" x="-90.400000000000006" y="150.67466266866569"/>
         </scene>
+        <!--Agreement View Controller-->
+        <scene sceneID="SMR-u4-e5H">
+            <objects>
+                <viewController storyboardIdentifier="AgreementViewController" id="Wbn-hf-xx9" customClass="AgreementViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ykw-Td-KhF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End User License/Agreement" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RDa-Zh-CGk">
+                                <rect key="frame" x="20" y="60" width="335" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="jJP-my-dZq">
+                                <rect key="frame" x="20" y="104" width="335" height="463"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9Og-2q-wIH">
+                                <rect key="frame" x="20" y="587" width="335" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S6a-j9-nvI">
+                                        <rect key="frame" x="92.5" y="0.0" width="150" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="O7h-qa-jV3"/>
+                                            <constraint firstAttribute="height" constant="40" id="vTh-Gy-c90"/>
+                                        </constraints>
+                                        <color key="tintColor" red="0.40000000000000002" green="0.42352941179999998" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="20" maxY="0.0"/>
+                                        <state key="normal" title="Accept" image="areaUncheckedTemplate">
+                                            <color key="titleColor" red="0.51764705879999995" green="0.51764705879999995" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="agreeBtnAction:" destination="Wbn-hf-xx9" eventType="touchUpInside" id="EQb-X7-QlG"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SFH-Kr-Udm">
+                                        <rect key="frame" x="92.5" y="0.0" width="150" height="40"/>
+                                        <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ez5-kW-hsC"/>
+                                            <constraint firstAttribute="width" constant="150" id="jRp-GB-bYN"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Continue">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="continueBtnAction:" destination="Wbn-hf-xx9" eventType="touchUpInside" id="rkV-ih-PGe"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="job-4e-W3U" firstAttribute="trailing" secondItem="9Og-2q-wIH" secondAttribute="trailing" constant="20" id="0P7-MD-79E"/>
+                            <constraint firstItem="9Og-2q-wIH" firstAttribute="top" secondItem="jJP-my-dZq" secondAttribute="bottom" constant="20" id="Khb-vZ-NJV"/>
+                            <constraint firstItem="job-4e-W3U" firstAttribute="trailing" secondItem="jJP-my-dZq" secondAttribute="trailing" constant="20" id="OXh-14-bpr"/>
+                            <constraint firstItem="job-4e-W3U" firstAttribute="trailing" secondItem="RDa-Zh-CGk" secondAttribute="trailing" constant="20" id="Q5r-0Y-cxh"/>
+                            <constraint firstItem="jJP-my-dZq" firstAttribute="leading" secondItem="job-4e-W3U" secondAttribute="leading" constant="20" id="QIn-yi-IMg"/>
+                            <constraint firstItem="9Og-2q-wIH" firstAttribute="leading" secondItem="job-4e-W3U" secondAttribute="leading" constant="20" id="Vby-gd-cQI"/>
+                            <constraint firstItem="job-4e-W3U" firstAttribute="bottom" secondItem="9Og-2q-wIH" secondAttribute="bottom" constant="40" id="cbe-gY-rMM"/>
+                            <constraint firstItem="jJP-my-dZq" firstAttribute="top" secondItem="RDa-Zh-CGk" secondAttribute="bottom" constant="20" id="iwX-Py-KHc"/>
+                            <constraint firstItem="RDa-Zh-CGk" firstAttribute="top" secondItem="job-4e-W3U" secondAttribute="top" constant="60" id="jeM-wW-FEI"/>
+                            <constraint firstItem="RDa-Zh-CGk" firstAttribute="leading" secondItem="job-4e-W3U" secondAttribute="leading" constant="20" id="xXt-wJ-R2J"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="job-4e-W3U"/>
+                    </view>
+                    <connections>
+                        <outlet property="agreementTextView" destination="jJP-my-dZq" id="Hrv-sJ-7jq"/>
+                        <outlet property="btnAgree" destination="S6a-j9-nvI" id="sp6-uS-i75"/>
+                        <outlet property="btnContinue" destination="SFH-Kr-Udm" id="4CJ-Jl-cxo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PuI-PL-MgD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-90" y="828"/>
+        </scene>
         <!--Location Permission View Controller-->
         <scene sceneID="8kG-wm-glQ">
             <objects>
@@ -230,10 +312,11 @@ food, we need your location</string>
             <point key="canvasLocation" x="1214" y="150"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="location_walayem" width="156" height="181"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="w70-TU-CMi"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="areaUncheckedTemplate" width="21.333333969116211" height="21.333333969116211"/>
+        <image name="location_walayem" width="156" height="181"/>
+    </resources>
 </document>

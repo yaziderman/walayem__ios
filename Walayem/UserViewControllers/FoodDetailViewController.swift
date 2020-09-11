@@ -281,7 +281,7 @@ class FoodDetailViewController: UIViewController {
 	
 	@IBAction func shareBtnAction(_ sender: Any) {
 		if(self.food?.id != 0){
-			let web_p = "http://order.walayem.com/" + "\(self.food?.id ?? 0)"
+			let web_p = "http://order.walayem.com/food/" + "\(self.food?.id ?? 0)"
 			if let urlStr = NSURL(string: web_p) {
 				let string = web_p
 				let objectsToShare = [string, urlStr] as [Any]

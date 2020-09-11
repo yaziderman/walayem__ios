@@ -68,8 +68,11 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
     @IBOutlet weak var descriptionView: UIStackView!
     @IBOutlet weak var cuisineView: UIStackView!
     @IBOutlet weak var filtersView: UIStackView!
-    var activityIndicator: UIActivityIndicatorView!
-    
+	@IBOutlet weak var btnEnableDiscount: UIButton!
+	@IBOutlet weak var enableDiscountView: UIStackView!
+	@IBOutlet weak var textViewOriginalPrice: UITextField!
+	
+	var activityIndicator: UIActivityIndicatorView!
     var user: User?
     var food: Food?
     var foodImages = [String]()
@@ -153,16 +156,26 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
         else if foodImages.count == 0{
             showAlert(title: "Error", msg: "Please add at least one image for your food")
             return
-        }else{
+		} else if btnEnableDiscount.isSelected && (textViewOriginalPrice.text?.isEmpty ?? true) {
+			showAlert(title: "Error", msg: "Please enter discounted price")
+			return
+		} else if Int(textViewOriginalPrice.text ?? "0") == 0 {
+			showAlert(title: "Error", msg: "Value should be greater than zero.")
+			return
+		} else {
             price = "\(numberFormatter.number(from: price) ?? 0)"
             time = "\(numberFormatter.number(from: time) ?? 0)"
             serve = "\(numberFormatter.number(from: serve) ?? 0)"
         }
-        
+//        var discountedPrice = textViewOriginalPrice.text ?? "0"
+//		if btnEnableDiscount.isSelected {
+//			price = textViewOriginalPrice.text ?? "0"
+//		} else {
         
         var params = ["chef_id": user?.partner_id as Any,
                       "name": name,
-                      "list_price": price,
+                      "list_price": btnEnableDiscount.isSelected ? textViewOriginalPrice.text ?? "0" : price,
+					  "original_price": btnEnableDiscount.isSelected ? price : "0",
                       "preparation_time": "\(Int(Double(time)! * Double(60)))",
                       "serves": serve,
                       "description_sale": description,
@@ -171,7 +184,7 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
                       "food_tags": selectedTags!.map({ (tag) -> Int in
                         return (tag.id ?? 0)
                       }),
-                      "cuisine_id": selectedCuisine!.id ] as [String : Any]
+					  "cuisine_id": selectedCuisine?.id ?? "0" ] as [String : Any]
         
         if let food = food{
             params["product_id"] = food.id
@@ -248,13 +261,23 @@ class ChefFoodViewController: UIViewController, UITextFieldDelegate, UIImagePick
 
 //        view.addGestureRecognizer(tap)
         
-        if let food = food{
+        if let food = food {
             navigationItem.title = food.name
             navigationItem.leftBarButtonItem = nil
             
             nameTextField.text = food.name
-            priceTextField.text = String("\(food.price ?? 0)")
-            let hour = Int(max(1, round( Double(food.preparationTime) / 60.0)))
+			
+			let originalPrice = food.original_price ?? 0
+			if originalPrice > 0 {
+				textViewOriginalPrice.text = String(food.price)
+				priceTextField.text = String(food.original_price ?? 0)
+				enableDiscountAction(btnEnableDiscount!)
+			} else {
+				priceTextField.text = String(food.price)
+				enableDiscountView.isHidden = true
+			}
+			
+            let hour = Int(max(1, round(Double(food.preparationTime) / 60.0)))
             timeTextField.text = String(hour)
             serveTextField.text = String(food.servingQunatity)
             descriptionTextField.text = food.description
@@ -465,7 +488,19 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
             fatalError("Invalid segue")
         }
     }
-
+	@IBAction func enableDiscountAction(_ sender: Any) {
+		btnEnableDiscount.isSelected = !btnEnableDiscount.isSelected
+		
+		if btnEnableDiscount.isSelected {
+			enableDiscountView.isHidden = false
+			btnEnableDiscount.setImage(#imageLiteral(resourceName: "areaChecked"), for: .normal)
+		} else {
+			enableDiscountView.isHidden = true
+			btnEnableDiscount.setImage(#imageLiteral(resourceName: "areaUnchecked"), for: .normal)
+		}
+		
+	}
+	
 }
 
 extension ChefFoodViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{

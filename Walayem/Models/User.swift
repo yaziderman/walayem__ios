@@ -31,7 +31,7 @@ struct UserDefaultsKeys{
     static let CHEF_LOCATION = "ChefLocation"
     static let CHEF_DESCRIPTION: String = "chefDescription"
     static let WEBSITE: String = "website"
-    
+	static let IS_AGGREEMENT_ACCEPTED = "is_agreement_accepted"
 }
 
 class User{

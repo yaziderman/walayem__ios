@@ -279,10 +279,10 @@ button and add some items</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="dF4-64-6T9">
-                                <rect key="frame" x="0.0" y="88" width="375" height="978"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="929"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jpg-E5-CXl" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1021"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1135"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ktl-Lf-i7f">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="165"/>
@@ -299,7 +299,7 @@ button and add some items</string>
                                                 <cells/>
                                             </collectionView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Xfo-CV-gYu">
-                                                <rect key="frame" x="20" y="165" width="335" height="688"/>
+                                                <rect key="frame" x="20" y="165" width="335" height="802"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="cjc-Zj-mzR">
                                                         <rect key="frame" x="0.0" y="0.0" width="335" height="64"/>
@@ -342,7 +342,7 @@ button and add some items</string>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MMl-Bm-8tE">
                                                                 <rect key="frame" x="28.999999999999996" y="22.333333333333314" width="38.666666666666657" height="19.333333333333329"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
-                                                                <color key="textColor" red="0.39912536739999999" green="0.42339813710000002" blue="0.439733386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <color key="textColor" red="0.40000000000000002" green="0.42352941176470588" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kmd-fp-dFy">
@@ -371,24 +371,101 @@ button and add some items</string>
                                                             <constraint firstAttribute="height" constant="64" id="GMd-Aa-Giz"/>
                                                         </constraints>
                                                     </stackView>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fA-4q-hTL">
+                                                        <rect key="frame" x="0.0" y="128" width="335" height="50"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8M-5s-JDo">
+                                                                <rect key="frame" x="0.0" y="13" width="24" height="24"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="24" id="TdP-o6-YqY"/>
+                                                                    <constraint firstAttribute="height" constant="24" id="nwz-Xj-sed"/>
+                                                                </constraints>
+                                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                                                <state key="normal" image="areaUnchecked"/>
+                                                                <connections>
+                                                                    <action selector="discountEnableAction:" destination="5EW-qe-66Z" eventType="touchUpInside" id="2Y7-kW-zL3"/>
+                                                                    <action selector="enableDiscountAction:" destination="pd2-oH-RiV" eventType="touchUpInside" id="Sbr-PW-lvS"/>
+                                                                </connections>
+                                                            </button>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set a Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4a-eL-mWV">
+                                                                <rect key="frame" x="32" y="8" width="295" height="34"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <color key="textColor" red="0.40000000000000002" green="0.42352941176470588" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="h4a-eL-mWV" firstAttribute="top" secondItem="6fA-4q-hTL" secondAttribute="top" constant="8" id="1RK-LU-NvX"/>
+                                                            <constraint firstAttribute="bottom" secondItem="h4a-eL-mWV" secondAttribute="bottom" constant="8" id="MiQ-SP-6iT"/>
+                                                            <constraint firstItem="h4a-eL-mWV" firstAttribute="leading" secondItem="f8M-5s-JDo" secondAttribute="trailing" constant="8" id="O6Q-2O-fRq"/>
+                                                            <constraint firstItem="f8M-5s-JDo" firstAttribute="centerY" secondItem="6fA-4q-hTL" secondAttribute="centerY" id="OEh-qd-2ti"/>
+                                                            <constraint firstAttribute="trailing" secondItem="h4a-eL-mWV" secondAttribute="trailing" constant="8" id="Uqx-Lo-FBs"/>
+                                                            <constraint firstItem="f8M-5s-JDo" firstAttribute="leading" secondItem="6fA-4q-hTL" secondAttribute="leading" id="ope-Ab-jiI"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="POi-UK-4AS">
+                                                        <rect key="frame" x="0.0" y="178" width="335" height="64"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="information" translatesAutoresizingMaskIntoConstraints="NO" id="EWQ-ce-00J">
+                                                                <rect key="frame" x="0.0" y="23.666666666666686" width="17" height="17"/>
+                                                                <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="17" id="aWO-XH-TLc"/>
+                                                                    <constraint firstAttribute="height" constant="17" id="odg-g6-CVo"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discounted Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zwf-pb-7DG">
+                                                                <rect key="frame" x="29" y="22.333333333333314" width="129" height="19.333333333333329"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                                                                <color key="textColor" red="0.40000000000000002" green="0.42352941179999998" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4th-8N-vi7">
+                                                                <rect key="frame" x="170" y="17" width="143.66666666666663" height="30"/>
+                                                                <state key="normal" title="AED">
+                                                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                                <connections>
+                                                                    <action selector="priceFocus:" destination="pd2-oH-RiV" eventType="touchUpInside" id="EMH-G5-WXx"/>
+                                                                </connections>
+                                                            </button>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oeY-1r-dtM">
+                                                                <rect key="frame" x="325.66666666666669" y="22.333333333333314" width="9.3333333333333144" height="19.666666666666671"/>
+                                                                <subviews>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uqx-10-9YQ">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="9.3333333333333339" height="19.666666666666668"/>
+                                                                        <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                                    </textField>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="64" id="g8c-iF-vEC"/>
+                                                        </constraints>
+                                                    </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="JfO-0o-Jfu">
-                                                        <rect key="frame" x="0.0" y="128" width="335" height="64"/>
+                                                        <rect key="frame" x="0.0" y="242" width="335" height="64"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timer" translatesAutoresizingMaskIntoConstraints="NO" id="aaW-m8-znZ">
-                                                                <rect key="frame" x="0.0" y="23.666666666666686" width="17" height="17"/>
+                                                                <rect key="frame" x="0.0" y="23.666666666666629" width="17" height="17"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="17" id="XyC-Uz-M2f"/>
                                                                     <constraint firstAttribute="height" constant="17" id="oBb-Ef-6E2"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prep. Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVq-0w-fEb">
-                                                                <rect key="frame" x="29.000000000000007" y="22.333333333333314" width="81.666666666666686" height="19.333333333333329"/>
+                                                                <rect key="frame" x="29.000000000000007" y="22.333333333333371" width="81.666666666666686" height="19.333333333333329"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                                 <color key="textColor" red="0.39912536739999999" green="0.42339813710000002" blue="0.439733386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uvr-Pf-bgv">
-                                                                <rect key="frame" x="122.66666666666664" y="22.333333333333314" width="150.33333333333337" height="19.666666666666671"/>
+                                                                <rect key="frame" x="122.66666666666664" y="22.333333333333371" width="150.33333333333337" height="19.666666666666671"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -409,23 +486,23 @@ button and add some items</string>
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="1Iw-EV-6pg">
-                                                        <rect key="frame" x="0.0" y="192" width="335" height="64"/>
+                                                        <rect key="frame" x="0.0" y="306" width="335" height="64"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discover" translatesAutoresizingMaskIntoConstraints="NO" id="Czv-5V-dOJ">
-                                                                <rect key="frame" x="0.0" y="23.666666666666686" width="17" height="17"/>
+                                                                <rect key="frame" x="0.0" y="23.666666666666629" width="17" height="17"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="17" id="2wy-RU-r9C"/>
                                                                     <constraint firstAttribute="width" constant="17" id="C4C-NQ-yN3"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serves" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iI6-Lf-yT7">
-                                                                <rect key="frame" x="29" y="22.333333333333314" width="52" height="19.333333333333329"/>
+                                                                <rect key="frame" x="29" y="22.333333333333371" width="52" height="19.333333333333329"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                                 <color key="textColor" red="0.39912536739999999" green="0.42339813710000002" blue="0.439733386" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gYY-H5-sgN">
-                                                                <rect key="frame" x="93" y="22.333333333333314" width="183" height="19.666666666666671"/>
+                                                                <rect key="frame" x="93" y="22.333333333333371" width="183" height="19.666666666666671"/>
                                                                 <color key="tintColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -446,7 +523,7 @@ button and add some items</string>
                                                         </constraints>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="ZT1-T2-sRY">
-                                                        <rect key="frame" x="0.0" y="256" width="335" height="64"/>
+                                                        <rect key="frame" x="0.0" y="370" width="335" height="64"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category" translatesAutoresizingMaskIntoConstraints="NO" id="obL-uz-uf9">
                                                                 <rect key="frame" x="0.0" y="23.666666666666629" width="17" height="17"/>
@@ -467,7 +544,7 @@ button and add some items</string>
                                                         </constraints>
                                                     </stackView>
                                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mE1-tK-Z5f">
-                                                        <rect key="frame" x="0.0" y="320" width="335" height="45"/>
+                                                        <rect key="frame" x="0.0" y="434" width="335" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="ig0-cg-H9z"/>
                                                         </constraints>
@@ -484,7 +561,7 @@ button and add some items</string>
                                                         </connections>
                                                     </segmentedControl>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Bux-7t-MfU">
-                                                        <rect key="frame" x="0.0" y="364" width="335" height="64"/>
+                                                        <rect key="frame" x="0.0" y="478" width="335" height="64"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="category" translatesAutoresizingMaskIntoConstraints="NO" id="Sok-wx-V4P">
                                                                 <rect key="frame" x="0.0" y="23.666666666666629" width="17" height="17"/>
@@ -505,7 +582,7 @@ button and add some items</string>
                                                         </constraints>
                                                     </stackView>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add your description here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Mtt-eO-4TN">
-                                                        <rect key="frame" x="0.0" y="428" width="335" height="44"/>
+                                                        <rect key="frame" x="0.0" y="542" width="335" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="RZO-ai-cGV"/>
                                                         </constraints>
@@ -513,7 +590,7 @@ button and add some items</string>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                                     </textField>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="YsH-8Q-pCX">
-                                                        <rect key="frame" x="0.0" y="472" width="335" height="64"/>
+                                                        <rect key="frame" x="0.0" y="586" width="335" height="64"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter" translatesAutoresizingMaskIntoConstraints="NO" id="Rtv-Hl-b2L">
                                                                 <rect key="frame" x="0.0" y="23.666666666666629" width="17" height="17"/>
@@ -545,7 +622,7 @@ button and add some items</string>
                                                         </connections>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filters..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VAv-de-DwJ">
-                                                        <rect key="frame" x="0.0" y="536" width="335" height="44"/>
+                                                        <rect key="frame" x="0.0" y="650" width="335" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="BGj-pW-5v0"/>
                                                         </constraints>
@@ -554,7 +631,7 @@ button and add some items</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="3cS-w9-n4M">
-                                                        <rect key="frame" x="0.0" y="580" width="335" height="64"/>
+                                                        <rect key="frame" x="0.0" y="694" width="335" height="64"/>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filter" translatesAutoresizingMaskIntoConstraints="NO" id="9Ti-hL-8bF">
                                                                 <rect key="frame" x="0.0" y="23.666666666666629" width="17" height="17"/>
@@ -586,7 +663,7 @@ button and add some items</string>
                                                         </connections>
                                                     </stackView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cuisine" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h80-5f-NcF">
-                                                        <rect key="frame" x="0.0" y="644" width="335" height="44"/>
+                                                        <rect key="frame" x="0.0" y="758" width="335" height="44"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="44" id="6pO-Xn-kb3"/>
                                                         </constraints>
@@ -597,7 +674,7 @@ button and add some items</string>
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lBP-0w-Tgl">
-                                                <rect key="frame" x="20" y="901" width="335" height="56"/>
+                                                <rect key="frame" x="20" y="1015" width="335" height="56"/>
                                                 <color key="backgroundColor" red="0.31372549020000001" green="0.89019607840000003" blue="0.76078431369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="56" id="NTi-fk-zHU"/>
@@ -682,10 +759,12 @@ button and add some items</string>
                     </navigationItem>
                     <size key="freeformSize" width="375" height="1100"/>
                     <connections>
+                        <outlet property="btnEnableDiscount" destination="f8M-5s-JDo" id="gip-2R-95r"/>
                         <outlet property="cuisineLabel" destination="h80-5f-NcF" id="O7e-49-Ca4"/>
                         <outlet property="cuisineView" destination="3cS-w9-n4M" id="nde-JN-Cp4"/>
                         <outlet property="descriptionTextField" destination="Mtt-eO-4TN" id="juA-mJ-ifH"/>
                         <outlet property="descriptionView" destination="Bux-7t-MfU" id="c9t-3I-yFa"/>
+                        <outlet property="enableDiscountView" destination="POi-UK-4AS" id="UXF-sE-Yug"/>
                         <outlet property="filtersView" destination="YsH-8Q-pCX" id="Dhg-bE-cEe"/>
                         <outlet property="foodTypeSegment" destination="mE1-tK-Z5f" id="Ch5-V1-rp2"/>
                         <outlet property="imageCollectionView" destination="Ktl-Lf-i7f" id="9Fp-XF-Rss"/>
@@ -699,12 +778,14 @@ button and add some items</string>
                         <outlet property="serveTextField" destination="gYY-H5-sgN" id="yKt-yv-CTN"/>
                         <outlet property="servesView" destination="1Iw-EV-6pg" id="RLc-Zi-wTH"/>
                         <outlet property="tagsLabel" destination="VAv-de-DwJ" id="P4T-Lc-jGi"/>
+                        <outlet property="textViewOriginalPrice" destination="Uqx-10-9YQ" id="VU3-B0-ynv"/>
                         <outlet property="timeIcon" destination="aaW-m8-znZ" id="XTd-Wa-Y9l"/>
                         <outlet property="timeTextField" destination="uvr-Pf-bgv" id="NJO-TM-Nn9"/>
                         <outlet property="timeView" destination="JfO-0o-Jfu" id="QR8-VS-DhE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eZS-ND-yVg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="5EW-qe-66Z" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="Ljg-CM-Ioa">
                     <connections>
                         <segue destination="xrP-1l-KzJ" kind="show" identifier="ChooseFilterVCSegue" id="viP-Q3-vgW"/>
@@ -877,9 +958,10 @@ button and add some items</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1Nb-y6-ZqY"/>
+        <segue reference="bH3-UQ-jol"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="areaUnchecked" width="21.333333969116211" height="21.333333969116211"/>
         <image name="caretRight" width="9" height="15"/>
         <image name="category" width="11" height="13"/>
         <image name="discover" width="12" height="18"/>

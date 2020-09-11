@@ -211,6 +211,11 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
             Utils.setupNavigationBar(nav: self.navigationController!)
             loadPrevFoods()
             initTabs(chef.foods)
+			if((self.chef?.is_weblink_active ?? false) && self.chef?.website != ""){
+				shareChefIV.isHidden = false
+			}else{
+				shareChefIV.isHidden = true
+			}
             filterFoods(chef.foods)
         }
                 
@@ -247,11 +252,11 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-		if((self.chef?.is_weblink_active ?? false) && self.chef?.website == ""){
-            shareChefIV.isHidden = true
-        }else{
-            shareChefIV.isHidden = false
-        }
+//		if((self.chef?.is_weblink_active ?? false) && self.chef?.website == ""){
+//            shareChefIV.isHidden = true
+//        }else{
+//            shareChefIV.isHidden = false
+//        }
 //        if (self.chef?.foods.count)! > 0 {
 //            initTabs(self.chef!.foods)
 //        }
@@ -268,11 +273,11 @@ class ChefDetailViewController: UIViewController, FoodCellDelegate {
             self.view.layoutIfNeeded()
         }
         
-        if(self.chef?.website == ""){
-            shareChefIV.isHidden = true
-        }else{
-            shareChefIV.isHidden = false
-        }
+//        if(self.chef?.website == ""){
+//            shareChefIV.isHidden = true
+//        }else{
+//            shareChefIV.isHidden = false
+//        }
         
         guard let indexPath = foodTableView.indexPathForSelectedRow else {
             os_log("No cell has been selected", log: .default, type: .debug)

@@ -22,6 +22,7 @@ class ChefFoodTableViewController: UIViewController {
     @IBOutlet weak var warningViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var warningButtonWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var warningLabel: UILabel!
+	
     let CHEF_INFO_MSG = "Your profile is pending approval, Contact us to make it faster."
 //    @IBOutlet weak var chefInfoLabel: UILabel!
     var chefInfoLabel: UILabel?
@@ -395,6 +396,14 @@ class ChefFoodTableViewController: UIViewController {
             print ("Add meal segue")
         }
     }
+	
+	@IBAction func discountEnableAction(_ sender: UIButton) {
+		sender.isSelected = !sender.isSelected
+		if sender.isSelected {
+			
+		}
+	}
+	
 
 }
 
@@ -513,6 +522,10 @@ extension ChefFoodTableViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
+	
+	
+	
+	
 }
 extension UIImage {
     func imageWithInsets(insets: UIEdgeInsets) -> UIImage? {

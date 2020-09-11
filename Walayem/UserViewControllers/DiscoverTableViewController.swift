@@ -516,7 +516,8 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
             self.recommendedFoods.removeAll()
             let records = data["data"] as! [Any]
             for record in records{
-				let food = Food(record: record as! [String : Any], isWebsiteActive: false)
+				let rec = record as! [String: Any]
+				let food = Food(record: rec, isWebsiteActive: (rec["is_weblink_active"] as? Int ?? 0) == 0 ? false : true)
                 self.recommendedFoods.append(food)
             }
             self.collectionView.reloadData()
@@ -573,7 +574,8 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
 			let meta = value["meta"] as! [String: Any]
 			self.metaLocation = meta["name"] as? String ?? ""
             for record in records{
-				let food = Food(record: record as! [String: Any], isWebsiteActive: false)
+				let rec = record as! [String: Any]
+				let food = Food(record: rec, isWebsiteActive: (rec["is_weblink_active"] as? Int ?? 0) == 0 ? false : true)
                 if !self.foods.contains(food){
                     self.foods.append(food)
                 }
@@ -623,7 +625,8 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
             self.totalPage = value["total_pages"] as? Int ?? 0
             let records = value["data"] as! [Any]
             for record in records{
-				let food = Food(record: record as! [String: Any], isWebsiteActive: false)
+				let rec = record as! [String: Any]
+				let food = Food(record: rec, isWebsiteActive: (rec["is_weblink_active"] as? Int ?? 0) == 0 ? false : true)
                 if !self.foods.contains(food){
                     self.foods.append(food)
                 }
@@ -679,7 +682,8 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
             self.totalPage = value["total_pages"] as? Int ?? 0
             let records = value["data"] as! [Any]
             for record in records{
-				let food = Food(record: record as! [String: Any], isWebsiteActive: false)
+				let rec = record as! [String: Any]
+				let food = Food(record: rec, isWebsiteActive: (rec["is_weblink_active"] as? Int ?? 0) == 0 ? false : true)
                 self.foods.append(food)
             }
             

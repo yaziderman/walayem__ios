@@ -34,7 +34,7 @@ class ChefSearchResultsViewController: UIViewController, UITableViewDataSource, 
         params["search"] = true
         params["search_keyword"] = self.searchKeyword
         params["page"] = 1
-//		params["filter_by"] = "area"//"location"
+//		params["filter_by"] = "aa"//"location"
 		
         RestClient().request(WalayemApi.searchChef, params, self) { (result, error) in
             if error != nil{

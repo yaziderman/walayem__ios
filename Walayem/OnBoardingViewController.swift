@@ -42,7 +42,11 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        
+		let isUserAgreementAccpted = (UserDefaults.standard.value(forKey: UserDefaultsKeys.IS_AGGREEMENT_ACCEPTED) as? Bool) ?? false
+		
+		if !isUserAgreementAccpted {
+			getPrivacy()
+		}
         
         guard let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout else{
             fatalError("Could not get the flow layout")
@@ -76,15 +80,42 @@ class OnBoardingViewController: UIViewController, UICollectionViewDelegate, UICo
         pageControl.currentPage = indexPath.row
     }
 
+	private func getPrivacy() {
+		
+		let params: [String: Any] = [:]
+		RestClient().request(WalayemApi.viewPrivacy, params, self) { (result, error) in
+			
+			print(result!)
+			if error != nil {
+				_ = error?.localizedDescription
+				//error here
+			}
+			
+			let value = result!["result"] as! [String: Any]
+			if let status = value["status"] as? Int, status == 0 {
+				//status false
+//				self.contentLabel.text = "No privacy policy set yet."
+				return
+			}
+			
+			guard let data = value["data"] as? String else {
+				print("error")
+//				self.contentLabel.text = "No privacy policy set yet."
+				return
+			}
+			
+			guard let content = data.data(using: String.Encoding.unicode) else { return }
+			let storyboard = UIStoryboard(name: "WalkThrough", bundle: nil)
+			
+			
+			if let string = try? NSAttributedString(data: content, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil), let vc = storyboard.instantiateViewController(withIdentifier: "AgreementViewController") as? AgreementViewController {
+				vc.agreementText = string
+				vc.modalPresentationStyle = .fullScreen
+				self.present(vc, animated: true, completion: nil)
+			}
+						
+		}
+	}
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
