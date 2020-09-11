@@ -38,8 +38,8 @@ class ChefSearchResultsViewController: UIViewController, UITableViewDataSource, 
 		
         RestClient().request(WalayemApi.searchChef, params, self) { (result, error) in
             if error != nil{
-                let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
-                print (errmsg)
+                let errmsg = error?.localizedDescription
+                print (errmsg ?? "")
                 return
             }
             let value = result!["result"] as! [String: Any]

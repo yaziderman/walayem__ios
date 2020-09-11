@@ -67,4 +67,5 @@ class WalayemApi{
     static let chefImage: String = "\(BASE_URL)/api/viewChefImage"
     static let contact: String = "\(BASE_URL)/api/viewContactDetails"
     static let getChefSettings: String = "\(BASE_URL)/api/getChefSettings"
+	static let fixedDelay = "\(BASE_URL)/api/chef/fixeddelay"
 }

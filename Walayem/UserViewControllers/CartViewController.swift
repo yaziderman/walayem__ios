@@ -47,6 +47,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	var user: User?
 	var addressList = [Address]()
 	var selectedAddress: Address?
+	var fixedDelay = 0
 	
 	struct CartItem{
 		var opened: Bool!
@@ -68,6 +69,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 			self.selectedAddress = selectedAddress
 			if self.isUserLoggedIn {
 				self.getCartDetails()
+				self.getFixedDelay()
 			}
 			self.setAddress()
 		}
@@ -106,20 +108,11 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		Utils.openWhatsapp(name: user?.name ?? "Anonymous")
 	}
     
-
-    
-    
-    
-    
-    
-    
 	@IBAction func placeOrder(_ sender: UIButton) {
 		guard self.isUserLoggedIn else {
 			self.showAlertBeforeLogin(message: "Please login to place order!")
 			return
 		}
-        
-		
         
 		guard selectedAddress != nil else {
 			let alert = UIAlertController(title: "", message: "Add address before placing an order", preferredStyle: .actionSheet)
@@ -356,10 +349,11 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		
 		let startTime = Utils.getChefStartTime()
 		let endTime = Utils.getChefEndTime()
-		let minHours = Utils.getMinHours()
+//		let minHours = Utils.getMinHours()
+		let delayHours = fixedDelay/60
 		
 		let calendar = Calendar.current
-		var date = calendar.date(byAdding: .hour, value: minHours, to: Date())
+		var date = calendar.date(byAdding: .hour, value: delayHours, to: Date())
 		
 		var components = calendar.dateComponents([.year, .month, .day, .hour], from: date!)
 		
@@ -481,6 +475,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 			}
 			if self.isUserLoggedIn {
 				self.getCartDetails()
+				self.getFixedDelay()
 			} else {
 				self.calculateCost()
 			}
@@ -648,8 +643,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 			//            }
 			
 			if error != nil{
-				let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
-				print (errmsg)
+				let errmsg = error?.localizedDescription
+				print (errmsg ?? "")
 				return
 			}
 			let value = result!["result"] as! [String: Any]
@@ -880,6 +875,40 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		}
 	}
 	
+	private func getFixedDelay() {
+		
+		var chefIds = [Int]()
+		for item in cartItems {
+			chefIds.append(item.chef.id)
+		}
+		
+		let params: [String: Any] = ["chef_id": chefIds]
+		RestClient().request(WalayemApi.fixedDelay, params, self) { [weak self] (result, error) in
+			
+			guard let self = self else { return }
+			
+			print(result!)	
+			if error != nil {
+				print(error?.localizedDescription ?? "")
+				//error here
+			}
+			
+			let value = result!["result"] as! [String: Any]
+			if let status = value["status"] as? Int, status == 0 {
+				//status false
+				return
+			}
+			
+			guard let data = value["fixed_delay"] as? Int else {
+				print("error")
+				return
+			}
+			
+			self.fixedDelay = data
+						
+		}
+	}
+	
 }
 
 extension CartViewController: UITableViewDelegate, UITableViewDataSource{
@@ -978,6 +1007,7 @@ extension CartViewController: AddressSelectionDelegate {
 		self.selectedAddress = address
 		if self.isUserLoggedIn {
 			self.getCartDetails()
+			self.getFixedDelay()
 		}
 		self.setAddress()
 	}
