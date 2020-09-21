@@ -24,7 +24,9 @@ class CartFoodTableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var subjectToDeliveryLabel: UILabel!
     @IBOutlet weak var quantityLabel: UILabel!
-    
+	@IBOutlet weak var discountedLabel: UILabel!
+	@IBOutlet weak var strikethroughLabelWidth: NSLayoutConstraint!
+	
     var delegate: CartFoodCellDelegate?
     
     private var food: Food!
@@ -62,6 +64,24 @@ class CartFoodTableViewCell: UITableViewCell {
         quantityLabel.text = String(food.quantity)
 		subjectToDeliveryLabel.isHidden = true
 
+		if Int(food.original_price ?? 0) > 0 {
+			strikethroughLabelWidth.constant = 43
+			priceLabel.isHidden = false
+			
+			let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "AED \(food.original_price ?? 0)")
+			attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+			
+			priceLabel.attributedText = attributeString
+			
+			discountedLabel.text = "AED \(food.price)"
+			discountedLabel.textColor = UIColor(hexString: "#f07a7a")
+		} else {
+			discountedLabel.text = "AED \(food.price)"
+			priceLabel.isHidden = true
+			strikethroughLabelWidth.constant = 0
+			discountedLabel.textColor = UIColor(hexString: "#d3d3d3")
+		}
+		
         if deliveryCharge != nil {
         } else {
 //            subjectToDeliveryLabel.isHidden = false

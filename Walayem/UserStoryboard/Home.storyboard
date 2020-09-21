@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2SF-dD-v4x">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2SF-dD-v4x">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -197,38 +197,57 @@
                                                                             </userDefinedRuntimeAttribute>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </imageView>
-                                                                    <view tag="8802" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tQX-fE-6N3">
-                                                                        <rect key="frame" x="2" y="199" width="330" height="34"/>
-                                                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                                    <view tag="8802" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tQX-fE-6N3">
+                                                                        <rect key="frame" x="2" y="193" width="330" height="40"/>
                                                                         <subviews>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="8803" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fish Biryani" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgi-N2-qVE">
-                                                                                <rect key="frame" x="15" y="-1" width="190" height="35"/>
-                                                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
-                                                                            <label opaque="NO" userInteractionEnabled="NO" tag="8801" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="80 AED" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9P-pv-5TV">
-                                                                                <rect key="frame" x="223" y="-1" width="95" height="35"/>
-                                                                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMinY="YES"/>
-                                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
-                                                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                                <nil key="highlightedColor"/>
-                                                                            </label>
+                                                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="bvy-t6-lcA">
+                                                                                <rect key="frame" x="8" y="0.0" width="314" height="40"/>
+                                                                                <subviews>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="8803" contentMode="left" verticalHuggingPriority="251" text="Fish Biryani" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fgi-N2-qVE">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="221" height="40"/>
+                                                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="8004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 AED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UTU-8I-nH5">
+                                                                                        <rect key="frame" x="224.5" y="0.0" width="50" height="40"/>
+                                                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                                                        <color key="textColor" red="0.94117647059999998" green="0.47843137250000001" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" tag="8801" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="80 AED" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e9P-pv-5TV">
+                                                                                        <rect key="frame" x="278" y="0.0" width="36" height="40"/>
+                                                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
+                                                                                </subviews>
+                                                                            </stackView>
                                                                         </subviews>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="bvy-t6-lcA" firstAttribute="leading" secondItem="tQX-fE-6N3" secondAttribute="leading" constant="8" id="4cT-Bh-X67"/>
+                                                                            <constraint firstAttribute="height" constant="40" id="PTM-ft-pCG"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="bvy-t6-lcA" secondAttribute="trailing" constant="8" id="j0J-1Y-XQR"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="bvy-t6-lcA" secondAttribute="bottom" id="n0P-Q6-1SZ"/>
+                                                                            <constraint firstItem="bvy-t6-lcA" firstAttribute="top" secondItem="tQX-fE-6N3" secondAttribute="top" id="zsV-fh-gSA"/>
+                                                                        </constraints>
                                                                     </view>
                                                                 </subviews>
                                                                 <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="tQX-fE-6N3" secondAttribute="trailing" constant="2" id="3ES-tY-V4z"/>
                                                                     <constraint firstAttribute="trailing" secondItem="8Ld-u6-Kbw" secondAttribute="trailing" constant="2" id="4iM-He-zP5"/>
                                                                     <constraint firstAttribute="bottom" secondItem="8Ld-u6-Kbw" secondAttribute="bottom" constant="2" id="BFi-VK-FNn"/>
+                                                                    <constraint firstItem="tQX-fE-6N3" firstAttribute="leading" secondItem="6Nl-CZ-k3U" secondAttribute="leading" constant="2" id="BsN-bB-o0a"/>
                                                                     <constraint firstItem="8Ld-u6-Kbw" firstAttribute="leading" secondItem="6Nl-CZ-k3U" secondAttribute="leading" constant="2" id="TZ2-B0-bG5"/>
                                                                     <constraint firstItem="8Ld-u6-Kbw" firstAttribute="top" secondItem="6Nl-CZ-k3U" secondAttribute="top" constant="2" id="UTf-oH-7LU"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="tQX-fE-6N3" secondAttribute="bottom" constant="1" id="b91-9Z-xg3"/>
                                                                     <constraint firstAttribute="trailing" secondItem="8Ld-u6-Kbw" secondAttribute="trailing" constant="2" id="sJ9-U0-xrk"/>
                                                                 </constraints>
                                                             </collectionViewCellContentView>
                                                             <size key="customSize" width="334" height="234"/>
                                                             <connections>
+                                                                <outlet property="discountedLabel" destination="UTU-8I-nH5" id="QqG-o6-h1E"/>
                                                                 <outlet property="image" destination="8Ld-u6-Kbw" id="9ZP-0s-dgs"/>
                                                                 <outlet property="mView" destination="tQX-fE-6N3" id="dUE-uA-vBv"/>
                                                                 <outlet property="name" destination="Fgi-N2-qVE" id="3Eu-Ul-NMg"/>
@@ -238,7 +257,7 @@
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cuisinesCell4" id="bmN-BE-KZj">
                                                             <rect key="frame" x="868" y="0.0" width="100" height="130"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="DQa-SD-Lol">
+                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="DQa-SD-Lol">
                                                                 <rect key="frame" x="0.0" y="0.0" width="100" height="130"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
@@ -280,7 +299,7 @@
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="tagCell" id="JQs-lk-QNQ">
                                                             <rect key="frame" x="878" y="140" width="80" height="80"/>
                                                             <autoresizingMask key="autoresizingMask"/>
-                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" id="Dqc-S8-not">
+                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Dqc-S8-not">
                                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>

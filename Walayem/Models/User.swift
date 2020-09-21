@@ -32,9 +32,10 @@ struct UserDefaultsKeys{
     static let CHEF_DESCRIPTION: String = "chefDescription"
     static let WEBSITE: String = "website"
 	static let IS_AGGREEMENT_ACCEPTED = "is_agreement_accepted"
+	static let IS_WEBLINK_ACTIVE = "is_weblink_active"
 }
 
-class User{
+class `User`{
     var name: String?
     var email: String?
     var phone: String?
@@ -47,6 +48,7 @@ class User{
     var firebaseToken: String?
     var website: String?
     var fixedDelay:Int = 0
+	var isWebLinkActive = false
     
     init(){}
     
@@ -60,7 +62,7 @@ class User{
         self.fixedDelay = record["fixed_delay"] as? Int ?? 0
         self.chefDescription = record["chef_description"] as? String ?? ""
         self.website = record["website"] as? String ?? ""
-        
+		self.isWebLinkActive = record["is_weblink_active"] as? Int == 0 ? false : true
     }
     
     func getUserDefaults() -> User{
@@ -77,7 +79,7 @@ class User{
         self.chefDescription = userDefaults.string(forKey: UserDefaultsKeys.CHEF_DESCRIPTION)
         self.website = userDefaults.string(forKey: UserDefaultsKeys.WEBSITE)
         self.fixedDelay = userDefaults.integer(forKey: UserDefaultsKeys.FIXED_DELAY)
-        
+        self.isWebLinkActive = userDefaults.bool(forKey: UserDefaultsKeys.IS_WEBLINK_ACTIVE)
 
         return self
     }
@@ -96,6 +98,7 @@ class User{
         userDefaults.removeObject(forKey: UserDefaultsKeys.FIXED_DELAY)
         userDefaults.removeObject(forKey: UserDefaultsKeys.AUTH_TOKEN)
         userDefaults.removeObject(forKey: UserDefaultsKeys.USER_AREA_FILTER)
+		userDefaults.removeObject(forKey: UserDefaultsKeys.IS_WEBLINK_ACTIVE)
         
         if AreaFilter.shared.selectedArea == 0 {
             userDefaults.removeObject(forKey: UserDefaultsKeys.USER_AREA_TITLE)

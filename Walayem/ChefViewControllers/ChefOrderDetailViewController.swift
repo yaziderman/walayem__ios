@@ -277,7 +277,7 @@ class ChefOrderDetailViewController: UIViewController {
             var deliveryForTitle = "Delivery as soon as possible"
             
             guard let order_type = record["order_type"] as? String else{
-				let deliveryForCell = Food(id: -1, name: deliveryForTitle, price: -1, quantity: -1, preparationTime: -1, isWebsiteActive: false)
+				let deliveryForCell = Food(id: -1, name: deliveryForTitle, price: -1, quantity: -1, preparationTime: -1, isWebsiteActive: false, original_price: 0)
                 self.orderDetail?.products.append(deliveryForCell)
                 self.updateViews()
                print("oder_type not found!!")
@@ -321,7 +321,7 @@ class ChefOrderDetailViewController: UIViewController {
             }
             
             //delivery for row at the end
-			let deliveryForCell = Food(id: -1, name: deliveryForTitle, price: -1, quantity: -1, preparationTime: -1, isWebsiteActive: false)
+			let deliveryForCell = Food(id: -1, name: deliveryForTitle, price: -1, quantity: -1, preparationTime: -1, isWebsiteActive: false, original_price: 0)
             self.orderDetail?.products.append(deliveryForCell)
             self.updateViews()
         }

@@ -34,7 +34,7 @@ static func == (lhs: Food, rhs: Food) -> Bool {
     var paused: Bool = false
     var isFav: Bool = false
 	var is_website_link_active = false
-	var original_price: Double?
+	var original_price: Double? = 0
     
 	init(record: [String: Any], isWebsiteActive: Bool){
         self.id = (record["id"] as! Int)
@@ -70,6 +70,7 @@ static func == (lhs: Food, rhs: Food) -> Bool {
         self.price = (dict["price"] as! Double)
         self.quantity = dict["quantity"] as! Int
         self.preparationTime = dict["preparation_time"] as! Int
+		self.original_price = dict["original_price"] as? Double ?? 0
 		self.is_website_link_active = is_website_link_active
     }
     
@@ -81,13 +82,14 @@ static func == (lhs: Food, rhs: Food) -> Bool {
 		self.is_website_link_active = isWebsiteActive
     }
     
-    init(id: Int, name: String, price: Double, quantity: Int, preparationTime: Int, isWebsiteActive: Bool){
+	init(id: Int, name: String, price: Double, quantity: Int, preparationTime: Int, isWebsiteActive: Bool, original_price: Double){
         self.id = id
         self.name = name
         self.price = price
         self.quantity = quantity
         self.preparationTime = preparationTime
 		self.is_website_link_active = isWebsiteActive
+		self.original_price = original_price
     }
     
 	init(id: Int, name: String, price: Double, quantity: Int, preparationTime: Int, kitcherName: String, description: String, chefName: String, foodType: String, imageIds: [Int], chefId: Int,  chefImage: String, cuisine: Cuisine, tags: [Tag], serves: Int, isWebsiteActive: Bool) {

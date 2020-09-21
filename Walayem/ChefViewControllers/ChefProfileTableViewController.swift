@@ -190,8 +190,21 @@ class ChefProfileTableViewController: UITableViewController, UIImagePickerContro
         Utils.setupNavigationBar(nav: self.navigationController!)
         updateIcon.tintColor  = UIColor.amber
         getKitchenStatus()
-        weblink = user?.website ?? ""
         
+        
+		if let isActive = user?.isWebLinkActive, let link = user?.website, isActive {
+			weblink = link
+			let subString = weblink.components(separatedBy: "/")
+			let value = subString.last
+			let link = "https://order.walayem.com/" + "\(value!)"
+			chef_weblink = link
+			weblinkLabel.text = link
+			shareWebBtn.isHidden = false
+		} else {
+			weblinkLabel.text = "Contact us to get your weblink!"
+			shareWebBtn.isHidden = true
+		}
+		
         if(weblink != ""){
             let subString = weblink.components(separatedBy: "/")
             let value = subString.last

@@ -114,7 +114,7 @@ class OdooClient{
             "domain" : domain,
             "offset" : offset,
             "limit" : limit,
-            "sort" : order
+			"sort" : order
         ]
         
         call(url: url, params: params) { (result, error) in

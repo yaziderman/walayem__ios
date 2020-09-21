@@ -28,6 +28,7 @@ class FoodDetailViewController: UIViewController {
     var favouriteBarItem: UIBarButtonItem?
 	@IBOutlet weak var locationStackView: UIStackView!
 	@IBOutlet weak var shareBtn: UIButton!
+	@IBOutlet weak var discountedLabel: UILabel!
 	
     var food: Food?
     var user: User?
@@ -166,6 +167,22 @@ class FoodDetailViewController: UIViewController {
             
             setSaveButtonTitle()
             collectionView.reloadData()
+			
+			if Int(food.original_price ?? 0) > 0 {
+				priceLabel.isHidden = false
+				let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "AED \(food.original_price ?? 0)")
+				attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+				
+				priceLabel.attributedText = attributeString
+				
+				discountedLabel.text = "AED \(food.price)"
+				discountedLabel.textColor = UIColor(hexString: "#f07a7a")
+			} else {
+				discountedLabel.text = "AED \(food.price)"
+				priceLabel.isHidden = true
+				discountedLabel.textColor = UIColor(hexString: "#d3d3d3")
+			}
+			
         }
          Utils.setupNavigationBar(nav: self.navigationController!)
         

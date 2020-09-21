@@ -286,7 +286,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
     }
     
     private func loadUserDetails(_ authResult: [String: Any]?){
-        let fields = ["id", "name", "email", "phone", "is_chef", "is_chef_verified", "is_image_set", "chef_description", "fixed_delay", "website"]
+        let fields = ["id", "name", "email", "phone", "is_chef", "is_chef_verified", "is_image_set", "chef_description", "fixed_delay", "website", "is_weblink_active"]
         
         OdooClient.sharedInstance().searchRead(model: "res.partner", domain: [], fields: fields, offset: 0, limit: 1, order: "name ASC") { (result, error) in
             if let error = error {
@@ -365,7 +365,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, GIDSignInDeleg
         userDefaults.set(partnerId, forKey: UserDefaultsKeys.PARTNER_ID)
         userDefaults.set(user.chefDescription, forKey: UserDefaultsKeys.CHEF_DESCRIPTION)
         userDefaults.set(user.website, forKey: UserDefaultsKeys.WEBSITE)
-        userDefaults.set(user.fixedDelay, forKey: UserDefaultsKeys.FIXED_DELAY)       
+        userDefaults.set(user.fixedDelay, forKey: UserDefaultsKeys.FIXED_DELAY)
+		userDefaults.set(user.isWebLinkActive, forKey: UserDefaultsKeys.IS_WEBLINK_ACTIVE)
     }
     
     private func subscribeToFirebaseTopics(_ partnerId: Int){

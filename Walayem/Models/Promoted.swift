@@ -67,6 +67,7 @@ class ItemDetail{
     var preparation_time: Int?
     var serves: Int?
     var list_price: Double?
+	var original_price: Double?
     var chef_id: Int?
     var food_type: String?
     var description_sale: String?
@@ -118,11 +119,17 @@ class ItemDetail{
                 self.id = record["id"] as? Int
                 self.preparation_time = record["preparation_time"] as? Int
                 self.serves = record["serves"] as? Int
-                if let price = record["list_price"]{
-                    self.list_price = price as? Double
+                if let price = record["original_price"]{
+                    self.original_price = price as? Double
                 }else{
-                    self.list_price = 0
+                    self.original_price = 0
                 }
+				
+				if let price = record["list_price"]{
+					self.list_price = price as? Double
+				}else{
+					self.list_price = 0
+				}
                 self.description_sale = record["description_sale"] as? String
                 self.food_type = record["food_type"] as? String
                 

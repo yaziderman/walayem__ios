@@ -166,7 +166,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 				
 				let progressAlert = showProgressAlert()
 				var orderItems = [Any]()
-				for item in cartItems{
+				for item in cartItems {
 					// add food details
 					var products = [Any]()
 					for food in item.chef.foods{
@@ -313,19 +313,19 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 			let formatter = DateFormatter()
 			formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 			let date = formatter.date(from: orderDate)
-			
+
 			let dateFormatter = DateFormatter()
 			dateFormatter.dateFormat = "MMM dd yyyy hh:mm aa"
 			let date_str = dateFormatter.string(from: date!)
 			orderForLabel.text = "\(date_str)"
-			
+
 			let calendar = NSCalendar.current
-			
+
 			let timeFormatter = DateFormatter()
 			timeFormatter.dateFormat = "hh:mm aa"
-			
+
 			let time_str = timeFormatter.string(from: date!)
-			
+
 			if calendar.isDateInToday(date!) {
 				orderForLabel.text = "Today at \(time_str)"
 			}
@@ -352,10 +352,18 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 //		let minHours = Utils.getMinHours()
 		let delayHours = fixedDelay/60
 		
-		let calendar = Calendar.current
-		var date = calendar.date(byAdding: .hour, value: delayHours, to: Date())
+		var date = Date()
 		
-		var components = calendar.dateComponents([.year, .month, .day, .hour], from: date!)
+		var calendar = Calendar(identifier: .gregorian)
+		
+		print(TimeZone.current)
+		
+		print(calendar.timeZone)
+		
+		calendar.timeZone = TimeZone.current
+		date = calendar.date(byAdding: .hour, value: delayHours, to: date)!
+		
+		var components = calendar.dateComponents([.year, .month, .day, .hour], from: date)
 		
 		if components.hour! < startTime {
 			components.hour = startTime
@@ -378,8 +386,12 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 			userDefaults.set(true, forKey: UserDefaultsKeys.ORDER_FIRST_TIME)
 			userDefaults.synchronize()
 		}
+				
+		let dialog = DatePickerDialog()
 		
-		DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", startTime: startTime, endTime: endTime, minimumDate: date , datePickerMode: .dateAndTime) {
+		dialog.setUpGap(timeGap: delayHours)
+		
+		dialog.show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", startTime: startTime, endTime: endTime, minimumDate: date , datePickerMode: .dateAndTime) {
 			(date) -> Void in
 			if let dt = date {
 				//                let thisDate = Date()
@@ -905,6 +917,44 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 			}
 			
 			self.fixedDelay = data
+						
+			let hr = data/60
+			
+			Utils.DELAY_TIME = hr
+			
+			var dt = Date()
+			
+			let dateFormatter = DateFormatter()
+//			dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//			dateFormatter.timeZone = TimeZone(abbreviation: "IST")
+//			let dt = dateFormatter.date(from: orderDate)
+			
+			let calendar = NSCalendar.current
+			dt = calendar.date(byAdding: .hour, value: hr, to: dt)!
+			dateFormatter.dateFormat = "MMM dd yyyy"
+			
+			let timeFormatter = DateFormatter()
+			timeFormatter.timeZone = TimeZone.current
+			timeFormatter.dateFormat = "hh:mm aa"
+			
+			let time_str = timeFormatter.string(from: dt)
+			var date_str = dateFormatter.string(from: dt)
+			
+			if calendar.isDateInToday(dt) { date_str = "Today" }
+			else if calendar.isDateInTomorrow(dt) { date_str = "Tomorrow" }
+			
+			let dateTimeFormatter = DateFormatter()
+			dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+			dateTimeFormatter.timeZone = TimeZone.current
+			let date_time_str = dateTimeFormatter.string(from: dt)
+			
+			let userDefaults = UserDefaults.standard
+			userDefaults.set("future", forKey: "OrderType")
+			userDefaults.set(date_time_str, forKey: "OrderDate")
+			userDefaults.synchronize()
+			
+			self.orderForLabel.text = "\(date_str) at \(time_str)"
+			
 						
 		}
 	}

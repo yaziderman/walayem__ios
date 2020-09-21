@@ -114,11 +114,13 @@ class FoodTableViewCell: UITableViewCell{
 			priceLabel.attributedText = attributeString
 			
 			discountedPriceLabel.text = "AED \(food.price)"
-			indicatorLabel.isHidden = false
+			discountedPriceLabel.textColor = UIColor(hexString: "#f07a7a")
+			indicatorLabel.isHidden = true
 		} else {
 			discountedPriceLabel.text = "AED \(food.price)"
 			priceLabel.isHidden = true
 			strikethroughLabelWidth.constant = 0
+			discountedPriceLabel.textColor = UIColor(hexString: "#d3d3d3")
 			indicatorLabel.isHidden = true
 		}
 		

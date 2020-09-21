@@ -6,7 +6,7 @@ private extension Selector {
     static let deviceOrientationDidChange = #selector(DatePickerDialog.deviceOrientationDidChange)
 }
 
-let ORDER_TIME_GAP = 15
+var ORDER_TIME_GAP = 0
 let START_HOUR = 7
 let END_HOUR = 22
 
@@ -419,6 +419,10 @@ open class DatePickerDialog: UIView {
 				self.dialogView?.layer.transform = CATransform3DMakeScale(1, 1, 1)
 		}
 		)
+	}
+	
+	public func setUpGap(timeGap: Int) {
+		ORDER_TIME_GAP = timeGap
 	}
 	
     deinit {

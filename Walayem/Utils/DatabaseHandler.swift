@@ -26,6 +26,8 @@ class DatabaseHandler{
     let price = Expression<Double>("price")
     let quantity = Expression<Int>("quantity")
     let preparationTime = Expression<Int>("preparationTime")
+	let original_price = Expression<Double?>("original_price")
+	let is_website_link_active = Expression<Bool?>("is_website_link_active")
     
     // MARK: Initialization
     
@@ -57,7 +59,14 @@ class DatabaseHandler{
                 table.column(quantity)
                 table.column(preparationTime)
                 table.foreignKey(chefId, references: cartChef, id)
+//				table.column(original_price)
+//				table.column(is_website_link_active)
             })
+			
+			try db!.run(cartFood.addColumn(is_website_link_active))
+				
+			try db!.run(cartFood.addColumn(original_price))
+			
         } catch {
             print("Unable to create table")
         }
@@ -81,7 +90,7 @@ class DatabaseHandler{
         
         addChef(chefId: item.chefId!, chefName: item.chefName!, chefImage: item.chefImage!, kitchen: item.kitcherName!)
         do{
-            let insert = cartFood.insert(self.id <- item.id ?? 0, chefId <- item.chefId!, name <- item.name ?? "", price <- Double(item.price ?? 0.0), quantity <- 1, preparationTime <- item.preparationTime)
+			let insert = cartFood.insert(self.id <- item.id ?? 0, chefId <- item.chefId!, name <- item.name ?? "", price <- Double(item.price), quantity <- 1, preparationTime <- item.preparationTime, self.original_price <- Double(item.original_price ?? 0.0), self.is_website_link_active <- item.is_website_link_active)
             let id = try db!.run(insert)
             return Int(id)
         }catch let error{
@@ -106,7 +115,7 @@ class DatabaseHandler{
         
         addChef(chefId: item.chefId!, chefName: item.chefName!, chefImage: item.chefImage!, kitchen: item.kitcherName!)
         do{
-            let insert = cartFood.insert(self.id <- item.id ?? 0, chefId <- item.chefId!, name <- item.name ?? "", price <- Double(item.price ?? 0.0), quantity <- item.quantity, preparationTime <- item.preparationTime)
+			let insert = cartFood.insert(self.id <- item.id ?? 0, chefId <- item.chefId!, name <- item.name ?? "", price <- Double(item.price), quantity <- 1, preparationTime <- item.preparationTime, self.original_price <- Double(item.original_price ?? 0.0), self.is_website_link_active <- item.is_website_link_active)
             let id = try db!.run(insert)
             return Int(id)
         }catch let error{
@@ -153,7 +162,9 @@ class DatabaseHandler{
                                         name: foodItem[name],
                                         price: foodItem[price],
                                         quantity: foodItem[quantity],
-										preparationTime: foodItem[preparationTime], isWebsiteActive: false)
+										preparationTime: foodItem[preparationTime],
+										isWebsiteActive: foodItem[self.is_website_link_active] ?? false,
+										original_price: foodItem[original_price] ?? 0)
                         foods.append(food)
                     }
                     let chef = Chef(id: id,
@@ -183,7 +194,9 @@ class DatabaseHandler{
                                     name: foodItem[name],
                                     price: foodItem[price],
                                     quantity: foodItem[quantity],
-									preparationTime: foodItem[preparationTime], isWebsiteActive: false)
+									preparationTime: foodItem[preparationTime],
+									isWebsiteActive: foodItem[is_website_link_active] ?? false,
+									original_price: foodItem[original_price] ?? 0)
                     foods.append(food)
                 }
                 
@@ -208,7 +221,9 @@ class DatabaseHandler{
                                 name: foodItem[name],
                                 price: foodItem[price],
                                 quantity: foodItem[quantity],
-								preparationTime: foodItem[preparationTime], isWebsiteActive: false)
+								preparationTime: foodItem[preparationTime],
+								isWebsiteActive: foodItem[is_website_link_active] ?? false,
+								original_price: foodItem[original_price] ?? 0)
                 foods.append(food)
             }
         }catch let error{

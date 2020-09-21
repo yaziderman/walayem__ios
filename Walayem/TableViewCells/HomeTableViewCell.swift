@@ -142,24 +142,35 @@ class HomeTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollecti
         
         if identifier == "recommendedCell0"{
 
+			let meal = recommendedMeals[indexPath.row]
+			
 //            var price: String!
-            let recommendedCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
-            let cellPriceLabel = recommendedCell.viewWithTag(8801) as? UILabel
-            let cellImage = recommendedCell.viewWithTag(8800) as? UIImageView
+			guard let recommendedCell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? HomeCollectionViewCell else { return UICollectionViewCell() }
+			
+			recommendedCell.image.sd_imageIndicator = SDWebImageActivityIndicator.gray
+			recommendedCell.image.sd_setImage(with: recommendedImagesURLS[indexPath.row], placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
+			
+			recommendedCell.discountedLabel.text = "\(meal.item_details?.list_price ?? 0) AED"
+			recommendedCell.name.text = String(meal.item_details?.name ?? "")
+			
+			if Int(meal.item_details?.original_price ?? 0) > 0 {
+				recommendedCell.price.isHidden = false
+				
+				let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "AED \(meal.item_details?.original_price ?? 0)")
+				attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
+				
+				recommendedCell.price.attributedText = attributeString
+				
+				recommendedCell.discountedLabel.text = "AED \(meal.item_details?.list_price ?? 0)"
+				recommendedCell.discountedLabel.textColor = UIColor(hexString: "#f07a7a")
+			} else {
+				recommendedCell.discountedLabel.text = "AED \(meal.item_details?.list_price ?? 0)"
+				recommendedCell.price.isHidden = true
+				recommendedCell.discountedLabel.textColor = UIColor(hexString: "#ffffff")
+			}
+			
             let cellView = recommendedCell.viewWithTag(8802)
-            let cellNameLabel = recommendedCell.viewWithTag(8803) as? UILabel
-    
-            cellPriceLabel?.text = "\(recommendedMeals[indexPath.row].item_details?.list_price ?? 0) AED"
-            cellNameLabel?.text = String(recommendedMeals[indexPath.row].item_details?.name ?? "")
-
-//            cellView?.layer.masksToBounds = true
             cellView?.roundCorners([.bottomRight,.bottomLeft], radius: 15)
-//            cellImage?.kf.setImage(with: recommendedImagesURLS[indexPath.row])
-            
-            
-            cellImage?.sd_imageIndicator = SDWebImageActivityIndicator.gray
-            cellImage?.sd_setImage(with: recommendedImagesURLS[indexPath.row], placeholderImage: #imageLiteral(resourceName: "foodImageEmpty"))
-            
             
             return recommendedCell
         }

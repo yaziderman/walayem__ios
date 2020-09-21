@@ -14,5 +14,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var mView: UIView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var price: UILabel!
-    
+	@IBOutlet weak var discountedLabel: UILabel!
+	
 }
