@@ -248,6 +248,11 @@ class MainHomeViewController: BaseTabViewController {
         //		}
         StaticLinker.selectedCuisine = nil
         remoteConfigFetcher = RemoteConfigFetcher(self)
+		let isUserAgreementAccpted = (UserDefaults.standard.value(forKey: UserDefaultsKeys.IS_AGGREEMENT_ACCEPTED) as? Bool) ?? false
+		
+		if !isUserAgreementAccpted {
+			getPrivacy()
+		}
     }
     
     private func getCuisines(){
@@ -296,6 +301,43 @@ class MainHomeViewController: BaseTabViewController {
         super.areaSelected(selectedAreaArray: selectedAreaArray, areaName: areaName)
         getPromoted(isAddress: AreaFilter.shared.isAddress)
     }
+	
+	private func getPrivacy() {
+		
+		let params: [String: Any] = [:]
+		RestClient().request(WalayemApi.viewPrivacy, params, self) { (result, error) in
+			
+			print(result!)
+			if error != nil {
+				_ = error?.localizedDescription
+				//error here
+			}
+			
+			let value = result!["result"] as! [String: Any]
+			if let status = value["status"] as? Int, status == 0 {
+				//status false
+				//				self.contentLabel.text = "No privacy policy set yet."
+				return
+			}
+			
+			guard let data = value["data"] as? String else {
+				print("error")
+				//				self.contentLabel.text = "No privacy policy set yet."
+				return
+			}
+			
+			guard let content = data.data(using: String.Encoding.unicode) else { return }
+			let storyboard = UIStoryboard(name: "WalkThrough", bundle: nil)
+			
+			
+			if let string = try? NSAttributedString(data: content, options: [.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil), let vc = storyboard.instantiateViewController(withIdentifier: "AgreementViewController") as? AgreementViewController {
+				vc.agreementText = string
+				vc.modalPresentationStyle = .fullScreen
+				self.present(vc, animated: true, completion: nil)
+			}
+			
+		}
+	}
     
 }
 

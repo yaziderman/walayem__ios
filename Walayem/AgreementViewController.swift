@@ -18,6 +18,17 @@ class AgreementViewController: UIViewController {
 	
 	override func viewDidLoad() {
         super.viewDidLoad()
+		
+		if #available(iOS 12.0, *) {
+			if self.traitCollection.userInterfaceStyle == .dark {
+				let mutableString = NSMutableAttributedString(attributedString: agreementText)
+				let attrs = [NSAttributedString.Key.foregroundColor : UIColor.white]
+				
+				mutableString.addAttributes(attrs, range: NSRange(location: 0, length: mutableString.length))
+				agreementText = mutableString
+			}
+		}
+		
 		agreementTextView.attributedText = agreementText
         // Do any additional setup after loading the view.
     }
