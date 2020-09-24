@@ -56,6 +56,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		var deliveryCost: Double?
 	}
 	var cartItems = [CartItem]()
+	var shouldAllowAppear = true
 	
 	private var isUserLoggedIn: Bool {
 		return UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID) != nil
@@ -96,6 +97,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 				addressVC.partnerId = user?.partner_id
 				addressVC.isFromCart = true
 				addressVC.selectionDelegate = self
+				shouldAllowAppear = false
 				navigationController?.pushViewController(addressVC, animated: true)
 				
 			}
@@ -338,10 +340,14 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		}
 		
 		updateFav()
-        self.addressList.removeAll()
-        if user?.partner_id != nil && user?.partner_id != 0 {
-            getAddress()
-        }
+		if shouldAllowAppear {
+			self.addressList.removeAll()
+			if user?.partner_id != nil && user?.partner_id != 0 {
+				getAddress()
+			}
+		} else {
+			shouldAllowAppear = true
+		}
         
 	}
 	
@@ -925,12 +931,19 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 			var dt = Date()
 			
 			let dateFormatter = DateFormatter()
-//			dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//			dateFormatter.timeZone = TimeZone(abbreviation: "IST")
-//			let dt = dateFormatter.date(from: orderDate)
 			
 			let calendar = NSCalendar.current
 			dt = calendar.date(byAdding: .hour, value: hr, to: dt)!
+			
+			let calHr = calendar.component(.hour, from: dt)
+			
+			if(calHr > 23 || calHr < 7) {
+				if calHr > 23 {
+					dt = calendar.date(byAdding: .day, value: 1, to: dt)!
+				}
+				dt = calendar.date(bySetting: .hour, value: 7, of: dt)!
+			}
+			
 			dateFormatter.dateFormat = "MMM dd yyyy"
 			
 			let timeFormatter = DateFormatter()
@@ -1055,6 +1068,7 @@ extension CartViewController: AddressSelectionDelegate {
 	
 	func addressSelected(_ address: Address) {
 		self.selectedAddress = address
+		AreaFilter.shared.setselectedLocation(address.location, title: address.name, addressId: address.id)
 		if self.isUserLoggedIn {
 			self.getCartDetails()
 			self.getFixedDelay()

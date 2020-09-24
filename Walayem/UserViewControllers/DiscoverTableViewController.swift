@@ -19,11 +19,9 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
     @IBOutlet weak var filterBarButton: UIBarButtonItem!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var popularView: UIStackView!
-//    @IBOutlet weak var datePickerButton: UIButton!
     @IBOutlet weak var recommendedHeight: NSLayoutConstraint!
     
     weak var activityIndicator: UIActivityIndicatorView!
-//    @IBOutlet weak var datePickerButton: UIButton!
     let db = DatabaseHandler()
     var partnerId: Int?
     var selectedTags = [Tag]()
@@ -38,12 +36,8 @@ class DiscoverTableViewController: BaseTabViewController, FoodCellDelegate {
     var isSearching = false
     var isFirtTime = true
 	var metaLocation = ""
-//    @IBOutlet weak var recommendedHeight: NSLayoutConstraint!
     
     var mCells = [FoodTableViewCell]()
-//    var lastIndex
-//    var indexPath = []
-//    var cartItems = [CartItem]()
     var spinnerView = UIView()
        
     func showSpinner(){
