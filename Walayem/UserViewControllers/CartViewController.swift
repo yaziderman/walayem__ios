@@ -246,6 +246,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		super.viewDidLoad()
 		setViews()
 		
+        self.tableView.backgroundColor = UIColor(hexString: "F4F4F4")
+        self.tableView.separatorStyle = .none
 		user = User().getUserDefaults()
 		
 		tableView.backgroundColor = tint
@@ -435,7 +437,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		orderButton.layer.cornerRadius = 15
 		orderButton.layer.masksToBounds = true
 		
-		orderSummaryIcon.tintColor = UIColor.peach
+		//orderSummaryIcon.tintColor = UIColor.peach
 		summaryIcon.tintColor = UIColor.seafoamBlue
 		paymentIcon.tintColor = UIColor.babyBlue
 		addressIcon.tintColor = UIColor.rosa
@@ -570,7 +572,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 					self.handleNetworkError(error)
 					return
 				}
-				self.summaryDeliveryChargeLabel.isHidden = true
+				//self.summaryDeliveryChargeLabel.isHidden = true
 				if let fetchedCartItems = data["cart_items"] as? [[String: Any]] {
 					for fetchedCartItem in fetchedCartItems {
 						guard let fetchedChef = fetchedCartItem["chef"] as? [String: Any],
@@ -748,7 +750,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		deliveryAmountLabel.textColor = .red
 		totalLabel.attributedText = "AED \(totalCost)^{*}".superscripted(font: totalLabel.font)
 		deliverySummaryLabel.text = "Total Delivery"
-		summaryDeliveryChargeLabel.isHidden = false
+		//summaryDeliveryChargeLabel.isHidden = false
 	}
 	
 	private func changeView(_ isEmpty: Bool){
@@ -911,13 +913,13 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 				//error here
 			}
 			
-			let value = result!["result"] as! [String: Any]
-			if let status = value["status"] as? Int, status == 0 {
+			let value = result!["result"] as? [String: Any]
+			if let status = value?["status"] as? Int, status == 0 {
 				//status false
 				return
 			}
 			
-			guard let data = value["fixed_delay"] as? Int else {
+			guard let data = value?["fixed_delay"] as? Int else {
 				print("error")
 				return
 			}
@@ -1033,12 +1035,15 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
 		let cartItem = cartItems[section]
 		let foods = cartItem.chef.foods
 		footerView.update(deliveryCharge: cartItem.deliveryCost ?? 0.0)//update(foods: foods, deliveryCharge: cartItem.deliveryCost)
-		footerView.backgroundColor = UIColor.init(light: .white, dark: .black)
+        footerView.backgroundColor = UIColor(hexString: "F4F4F4") //UIColor.init(light: .white, dark: .black)
+        footerView.clipsToBounds = true
+        footerView.contentView.backgroundColor = UIColor(hexString: "F4F4F4")
+        //UIColor(hexString: "FEFEFE")
 		return footerView
 	}
 	
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-		return 97
+		return 66
 	}
 	
 	func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {

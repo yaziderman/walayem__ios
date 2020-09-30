@@ -71,7 +71,7 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		textField.text = "+ Delivery Cost:"
 		textField.font = textField.font.withSize(16)
-		textField.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
+		textField.backgroundColor = UIColor.init(light: UIColor.clear, dark: UIColor.black)
 		return textField
 	}()
 	
@@ -81,7 +81,7 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 		textField.translatesAutoresizingMaskIntoConstraints = false
 		textField.text = "Delivery in approximately"
 		textField.font = textField.font.withSize(16)
-		textField.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
+		textField.backgroundColor = UIColor.init(light: UIColor.clear, dark: UIColor.black)
 		
 		return textField
 	}()
@@ -93,7 +93,9 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 	
 	override init(reuseIdentifier: String?) {
 		super.init(reuseIdentifier: reuseIdentifier)
-		self.contentView.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
+		self.contentView.backgroundColor = UIColor(hexString: "F4F4F4")
+        self.backgroundColor = UIColor(hexString: "F4F4F4")
+        //UIColor.init(light: UIColor.white, dark: UIColor.black)
 		setViews()
 	}
 	
@@ -119,13 +121,21 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 		deliveryLabel.removeFromSuperview()
 		noteTextField.removeFromSuperview()
 		
-		self.contentView.backgroundColor = UIColor.white
+		self.contentView.backgroundColor = UIColor(hexString: "F4F4F4")
 		let guide = self.readableContentGuide
 		let orderType = UserDefaults.standard.string(forKey: "OrderType") ?? "asap"
 		
 		if(orderType == "asap")
 		{
-			
+            let bgview = UIView()
+            bgview.frame = CGRect(x: 0, y: 0, width: self.contentView.frame.width-24, height: self.contentView.frame.height-16)
+            bgview.center = self.contentView.center
+            bgview.backgroundColor = UIColor.white
+            bgview.layer.cornerRadius = 4
+            self.addSubview(bgview)
+
+            self.addSubview(iconView)
+
 			self.addSubview(iconView)
 			self.addSubview(iconView2)
 			self.addSubview(iconView1)
@@ -175,7 +185,13 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 		}
 		else
 		{
-			
+            let bgview = UIView()
+            bgview.frame = CGRect(x: 0, y: 0, width: self.contentView.frame.width-24, height: self.contentView.frame.height-16)
+            bgview.center = self.contentView.center
+            bgview.backgroundColor = UIColor.white
+            bgview.layer.cornerRadius = 4
+            self.addSubview(bgview)
+            
 			self.addSubview(iconView)
 			self.addSubview(iconView2)
 			self.addSubview(homeLabel)
@@ -228,7 +244,7 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 
         noteTextField.delegate = self
         
-		self.contentView.backgroundColor = UIColor.init(light: UIColor.white, dark: UIColor.black)
+		self.contentView.backgroundColor = UIColor(hexString: "F4F4F4") //UIColor.init(light: UIColor.white, dark: UIColor.black)
 		
 		var preparationTime = 0
 		for i in 0..<foods.count

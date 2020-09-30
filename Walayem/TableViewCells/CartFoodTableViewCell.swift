@@ -65,7 +65,7 @@ class CartFoodTableViewCell: UITableViewCell {
 		subjectToDeliveryLabel.isHidden = true
 
 		if Int(food.original_price ?? 0) > 0 {
-			strikethroughLabelWidth.constant = 43
+			//strikethroughLabelWidth.constant = 43
 			priceLabel.isHidden = false
 			
 			let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "AED \(food.original_price ?? 0)")
@@ -78,7 +78,7 @@ class CartFoodTableViewCell: UITableViewCell {
 		} else {
 			discountedLabel.text = "AED \(food.price)"
 			priceLabel.isHidden = true
-			strikethroughLabelWidth.constant = 0
+			//strikethroughLabelWidth.constant = 0
 			discountedLabel.textColor = UIColor(hexString: "#d3d3d3")
 		}
 		
