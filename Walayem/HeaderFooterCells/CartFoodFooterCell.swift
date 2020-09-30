@@ -208,7 +208,7 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 			iconView2.heightAnchor.constraint(equalToConstant: 17).isActive = true
 			iconView2.widthAnchor.constraint(equalToConstant: 17).isActive = true
 			
-			iconView.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
+			iconView.topAnchor.constraint(equalTo: guide.topAnchor, constant: 8).isActive = true
 			iconView.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 8).isActive = true
 			
 			iconView2.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: 8).isActive = true
