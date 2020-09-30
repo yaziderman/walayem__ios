@@ -112,41 +112,46 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 		//self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-20-[v0]-12-[v1]-20-|", options: .alignAllCenterY, metrics: nil, views: ["v0": iconView, "v1": noteTextField]))
 	}
 	
+    let bgview = UIView()
+
+    
 	public func update(deliveryCharge: Double )
 	{
-		iconView.removeFromSuperview()
+		//iconView.removeFromSuperview()
 		iconView2.removeFromSuperview()
 		iconView1.removeFromSuperview()
 		homeLabel.removeFromSuperview()
 		deliveryLabel.removeFromSuperview()
 		noteTextField.removeFromSuperview()
-		
+        bgview.removeFromSuperview()
+        
 		self.contentView.backgroundColor = UIColor(hexString: "F4F4F4")
 		let guide = self.readableContentGuide
 		let orderType = UserDefaults.standard.string(forKey: "OrderType") ?? "asap"
 		
+        print("orderType_______",orderType)
+        
 		if(orderType == "asap")
 		{
-            let bgview = UIView()
             bgview.frame = CGRect(x: 0, y: 0, width: self.contentView.frame.width-24, height: self.contentView.frame.height-16)
             bgview.center = self.contentView.center
             bgview.backgroundColor = UIColor.white
             bgview.layer.cornerRadius = 4
             self.addSubview(bgview)
 
-            self.addSubview(iconView)
+            //self.addSubview(iconView)
 
 			self.addSubview(iconView)
 			self.addSubview(iconView2)
 			self.addSubview(iconView1)
-			self.addSubview(homeLabel)
+			//self.addSubview(homeLabel)
 			self.addSubview(deliveryLabel)
 			self.addSubview(noteTextField)
 			
 			noteTextField.delegate = self
 			
-			iconView.heightAnchor.constraint(equalToConstant: 17).isActive = true
-			iconView.widthAnchor.constraint(equalToConstant: 17).isActive = true
+			//iconView.heightAnchor.constraint(equalToConstant: 17).isActive = true
+			//iconView.widthAnchor.constraint(equalToConstant: 17).isActive = true
 			
 			iconView1.heightAnchor.constraint(equalToConstant: 17).isActive = true
 			iconView1.widthAnchor.constraint(equalToConstant: 17).isActive = true
@@ -154,14 +159,14 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 			iconView2.heightAnchor.constraint(equalToConstant: 17).isActive = true
 			iconView2.widthAnchor.constraint(equalToConstant: 17).isActive = true
 			
-			iconView.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
-			iconView.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 20).isActive = true
+			//iconView.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
+			//iconView.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 20).isActive = true
 			
-			iconView1.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: 8).isActive = true
+			//iconView1.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: 8).isActive = true
 			iconView1.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 20).isActive = true
 			
-			iconView2.topAnchor.constraint(equalTo: iconView1.bottomAnchor, constant: 8).isActive = true
-			iconView2.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 20).isActive = true
+			//iconView2.topAnchor.constraint(equalTo: iconView1.bottomAnchor, constant: 8).isActive = true
+			//iconView2.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 20).isActive = true
 			
 			
 			noteTextField.centerYAnchor.constraint(equalTo: iconView2.centerYAnchor).isActive = true
@@ -171,12 +176,12 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 			
 			
 			
-			homeLabel.centerYAnchor.constraint(equalTo: iconView.centerYAnchor).isActive = true
-			homeLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 12).isActive = true
-			homeLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-			homeLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: 20).isActive = true
+			//homeLabel.centerYAnchor.constraint(equalTo: iconView.centerYAnchor).isActive = true
+			//homeLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 12).isActive = true
+			//homeLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+			//homeLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: 20).isActive = true
 			
-			homeLabel.text = "+ Delivery Cost: AED \(deliveryCharge)"
+			//homeLabel.text = "+ Delivery Cost: AED \(deliveryCharge)"
 			
 			deliveryLabel.centerYAnchor.constraint(equalTo: iconView1.centerYAnchor).isActive = true
 			deliveryLabel.leadingAnchor.constraint(equalTo: iconView1.trailingAnchor, constant: 12).isActive = true
@@ -185,7 +190,6 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 		}
 		else
 		{
-            let bgview = UIView()
             bgview.frame = CGRect(x: 0, y: 0, width: self.contentView.frame.width-24, height: self.contentView.frame.height-16)
             bgview.center = self.contentView.center
             bgview.backgroundColor = UIColor.white
@@ -205,10 +209,10 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 			iconView2.widthAnchor.constraint(equalToConstant: 17).isActive = true
 			
 			iconView.topAnchor.constraint(equalTo: guide.topAnchor).isActive = true
-			iconView.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 20).isActive = true
+			iconView.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 8).isActive = true
 			
 			iconView2.topAnchor.constraint(equalTo: iconView.bottomAnchor, constant: 8).isActive = true
-			iconView2.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 20).isActive = true
+			iconView2.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 8).isActive = true
 			//        iconView2.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
 			
 			
@@ -218,7 +222,8 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 			noteTextField.heightAnchor.constraint(equalToConstant: 20).isActive = true
 			noteTextField.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: 20).isActive = true
 			
-			
+            //iconView1.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 20).isActive = true
+
 			homeLabel.centerYAnchor.constraint(equalTo: iconView.centerYAnchor).isActive = true
 			homeLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 12).isActive = true
 			homeLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -233,10 +238,10 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 				let attributedString = NSMutableAttributedString(string:"+ Delivery Cost: ", attributes:attrs1)
 				attributedString.append(NSMutableAttributedString(string:"*", attributes:attrs2))
 				// set label Attribute
-				homeLabel.attributedText = attributedString
+				//homeLabel.attributedText = attributedString
 			} else {
-				homeLabel.textColor = .lightGray
-				homeLabel.text = "+ Delivery Cost: AED \(deliveryCharge)"
+				//homeLabel.textColor = .lightGray
+				//homeLabel.text = "+ Delivery Cost: AED \(deliveryCharge)"
 			}
 
 		}

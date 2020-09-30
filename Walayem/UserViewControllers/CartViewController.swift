@@ -439,8 +439,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		
 		//orderSummaryIcon.tintColor = UIColor.peach
 		summaryIcon.tintColor = UIColor.seafoamBlue
-		paymentIcon.tintColor = UIColor.babyBlue
-		addressIcon.tintColor = UIColor.rosa
+		//paymentIcon.tintColor = UIColor.babyBlue
+		//addressIcon.tintColor = UIColor.rosa
 		
 		
 		//        let prefix = UILabel(frame: CGRect(x: 0, y:0, width: 10, height: 20))
@@ -1061,6 +1061,12 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
 			return 0.001
 		}
 		
+        if(orderType == "future"){
+            return 80
+        }else{
+            return 0
+        }
+        
 		return 60
 	}
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
