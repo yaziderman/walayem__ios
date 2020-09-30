@@ -41,6 +41,19 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	//  @IBOutlet weak var abuDhabiOnlyText: UILabel!
 	//   @IBOutlet weak var contactUsBtn: UIButton!
 	
+    @IBOutlet weak var optionPickup: UIButton!
+    @IBOutlet weak var optionDelivery: UIButton!
+
+    @IBAction func didSelectPickup() {
+        optionPickup.isSelected = !optionPickup.isSelected
+        optionDelivery.isSelected = false
+    }
+    
+    @IBAction func didSelectDelivery() {
+        optionDelivery.isSelected = !optionDelivery.isSelected
+        optionPickup.isSelected = false
+    }
+    
 	var delegate: CartViewDelegate? = nil
 	
 	let db = DatabaseHandler()
