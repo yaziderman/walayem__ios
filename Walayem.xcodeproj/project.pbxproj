@@ -433,6 +433,11 @@
 		04C596BC2084766900B284D3 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				F59E40FD2490C0750067F763 /* LocationWrapper.swift */,
+				83FE26F224B5A3C00024C500 /* AppleLoginWrapper.swift */,
+				83FE26F424B5B8A20024C500 /* KeyChainWrapper.swift */,
+				8395D11324B6F4990087A9AA /* RemoteConfigFetcher.swift */,
+				835CB02A24AF751800BD212E /* ColorExtension.swift */,
 				04C596BD2084769100B284D3 /* CustomColor.swift */,
 				04D9E8B220860B23002E1B51 /* Verification.swift */,
 				04F215842088ABBD003D47AD /* UIView + border.swift */,
@@ -535,8 +540,12 @@
 		04CF06C62084634F0064B18A /* Walayem */ = {
 			isa = PBXGroup;
 			children = (
-				8395D10F24B6F2ED0087A9AA /* GoogleService-Info.plist */,
-				0ADC140F20B6AE7D0003FC8B /* Walayem.entitlements */,
+				04831C4720AC38D400195B1A /* ChefViewControllers */,
+				04C596BA2084763C00B284D3 /* UserViewControllers */,
+				E3390D102526907800853C92 /* ViewControllers */,
+				04CCB83D20AD5B370011BD95 /* UserStoryboard */,
+				04CCB83E20AD5BF00011BD95 /* ChefStoryboard */,
+				E3390D0F2526905400853C92 /* Storyboards */,
 				1D30E0CB2461E10200C6797C /* Pager Controllers */,
 				1D3ADF53245C5D83000FE04C /* Custom Views */,
 				04D9E8A32085B97E002E1B51 /* Odoo */,
@@ -545,42 +554,12 @@
 				BE9B441823E95C34000F6225 /* CollectionViewCells */,
 				04C596C120848F4E00B284D3 /* TableViewCells */,
 				04C596BB2084765400B284D3 /* Models */,
-				04831C4720AC38D400195B1A /* ChefViewControllers */,
-				04C596BA2084763C00B284D3 /* UserViewControllers */,
-				04C596BF20848ED900B284D3 /* OnBoardingViewController.swift */,
-				BEBB0FEA23E7E4B500D43789 /* HomeViewController.swift */,
-				04C596C42084BB5D00B284D3 /* LocationPermissionViewController.swift */,
-				BEC27A0223E89F2100DE7874 /* MainHomeViewController.swift */,
-				7FBDF2AE2468139F0079B56E /* BaseTabViewController.swift */,
-				BE51C4542416CCE1003C6524 /* LanguageSelectionViewController.swift */,
-				04C596C62084C15F00B284D3 /* LoginPriorViewController.swift */,
-				04D9E8A12085B38D002E1B51 /* LoginViewController.swift */,
-				0A08C49A20C12CB500E006AB /* UpdateProfileViewController.swift */,
-				0A08C4A020C1314800E006AB /* ChangeNameViewController.swift */,
-				0A08C4A220C13B2D00E006AB /* ChangePasswordViewController.swift */,
-				4703A1F220C27D6E000722CD /* ChangePhoneViewController.swift */,
-				0A24D16520D656BE00692A23 /* VerifyPhoneViewController.swift */,
-				04F38A1F208F1F8E00223B82 /* InviteViewController.swift */,
-				04379329208725E90050C7D8 /* ResetPasswordViewController.swift */,
-				52EA619B20B3E53E001DB6CC /* TermsViewController.swift */,
-				52EA619D20B3E586001DB6CC /* PrivacyViewController.swift */,
-				0AD0350020C550B10030E1E8 /* ImageViewController.swift */,
-				835CB02A24AF751800BD212E /* ColorExtension.swift */,
-				04CCB83D20AD5B370011BD95 /* UserStoryboard */,
-				04CCB83E20AD5BF00011BD95 /* ChefStoryboard */,
-				04CF06DD208465D50064B18A /* WalkThrough.storyboard */,
-				04CF06DB208465B00064B18A /* User.storyboard */,
-				0A08C49E20C1309500E006AB /* EditProfile.storyboard */,
-				0ADC141420B6DD350003FC8B /* More.storyboard */,
+				8395D10F24B6F2ED0087A9AA /* GoogleService-Info.plist */,
+				0ADC140F20B6AE7D0003FC8B /* Walayem.entitlements */,
 				04CF06C72084634F0064B18A /* AppDelegate.swift */,
 				04B8250020A3112000458DA6 /* Assets.xcassets */,
 				04CF06D2208463520064B18A /* LaunchScreen.storyboard */,
 				04CF06D5208463520064B18A /* Info.plist */,
-				F59E40FD2490C0750067F763 /* LocationWrapper.swift */,
-				83FE26F224B5A3C00024C500 /* AppleLoginWrapper.swift */,
-				83FE26F424B5B8A20024C500 /* KeyChainWrapper.swift */,
-				8395D11324B6F4990087A9AA /* RemoteConfigFetcher.swift */,
-				F59D99FB250B759B004A8DA5 /* AgreementViewController.swift */,
 			);
 			path = Walayem;
 			sourceTree = "<group>";
@@ -657,6 +636,43 @@
 				1D3ADF51245C5C88000FE04C /* AreaCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		E3390D0F2526905400853C92 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				04CF06DD208465D50064B18A /* WalkThrough.storyboard */,
+				04CF06DB208465B00064B18A /* User.storyboard */,
+				0A08C49E20C1309500E006AB /* EditProfile.storyboard */,
+				0ADC141420B6DD350003FC8B /* More.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		E3390D102526907800853C92 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F59D99FB250B759B004A8DA5 /* AgreementViewController.swift */,
+				04C596BF20848ED900B284D3 /* OnBoardingViewController.swift */,
+				BEBB0FEA23E7E4B500D43789 /* HomeViewController.swift */,
+				04C596C42084BB5D00B284D3 /* LocationPermissionViewController.swift */,
+				BEC27A0223E89F2100DE7874 /* MainHomeViewController.swift */,
+				7FBDF2AE2468139F0079B56E /* BaseTabViewController.swift */,
+				BE51C4542416CCE1003C6524 /* LanguageSelectionViewController.swift */,
+				04C596C62084C15F00B284D3 /* LoginPriorViewController.swift */,
+				04D9E8A12085B38D002E1B51 /* LoginViewController.swift */,
+				0A08C49A20C12CB500E006AB /* UpdateProfileViewController.swift */,
+				0A08C4A020C1314800E006AB /* ChangeNameViewController.swift */,
+				0A08C4A220C13B2D00E006AB /* ChangePasswordViewController.swift */,
+				4703A1F220C27D6E000722CD /* ChangePhoneViewController.swift */,
+				0A24D16520D656BE00692A23 /* VerifyPhoneViewController.swift */,
+				04F38A1F208F1F8E00223B82 /* InviteViewController.swift */,
+				04379329208725E90050C7D8 /* ResetPasswordViewController.swift */,
+				52EA619B20B3E53E001DB6CC /* TermsViewController.swift */,
+				52EA619D20B3E586001DB6CC /* PrivacyViewController.swift */,
+				0AD0350020C550B10030E1E8 /* ImageViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

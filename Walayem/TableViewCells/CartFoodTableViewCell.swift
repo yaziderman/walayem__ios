@@ -68,7 +68,7 @@ class CartFoodTableViewCell: UITableViewCell {
 			//strikethroughLabelWidth.constant = 43
 			priceLabel.isHidden = false
 			
-			let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "AED \(food.original_price ?? 0)")
+			let attributeString: NSMutableAttributedString =  NSMutableAttributedString(string: "AED% \(food.original_price ?? 0)")
 			attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributeString.length))
 			
 			priceLabel.attributedText = attributeString
