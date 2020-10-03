@@ -22,7 +22,15 @@ enum OrderType {
 class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeaderDelegate, CartFoodFooterDelegate {
 	
 	// MARK: Properties
-	
+    
+    var spinnerView = UIView()
+
+    var chefLat = ""
+    var chefLon = ""
+    
+    var chefName = ""
+    var chefAddress = ""
+
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var subtotalLabel: UILabel!
 	@IBOutlet weak var deliveryAmountLabel: UILabel!
@@ -52,6 +60,45 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 
     var orderType = OrderType.delivery
     
+    @IBAction func didTapAddress() {
+        print("didTapAddress")
+        
+        let sb_cart = UIStoryboard(name: "Cart", bundle: nil)
+        
+        let vc_choose = sb_cart.instantiateViewController(withIdentifier: "ChooseAddressTableViewController") as! ChooseAddressTableViewController
+        let vc_view = sb_cart.instantiateViewController(withIdentifier: "ChefLocationViewController") as! ChefLocationViewController
+
+        vc_choose.addressList = addressList
+        
+        if(self.orderType == .delivery){
+            self.navigationController?.pushViewController(vc_choose, animated: true)
+        }else{
+            self.navigationController?.pushViewController(vc_view, animated: true)
+        }
+        
+        
+    }
+    
+    func updateAddressDetails(){
+
+        self.labelAddressButton.text = (self.orderType == .delivery) ? ("Change") : ("View")
+        self.getChef(chef_id: self.cartItems.first?.chef.id ?? 0)
+        
+//        self.chefLat = location["Latitude"] as! String
+//        self.chefLon = location["Longitude"] as! String
+        if(orderType == .delivery){
+            setAddress()
+        }else{
+            self.deliveryAmountLabel.text = "*"
+            self.addressNameLabel.text = "-"
+            self.addressDetailLabel.text = "-"
+        }
+        
+//        self.chefName = mChef.name ?? ""
+//        self.chefAddress = mChef.area?.name ?? ""
+        
+    }
+    
     @IBAction func didSelectPickup() {
         if(cartItems.count > 1){
             showAlert(title: "not possible for multiple chefs.", msg: "")
@@ -60,6 +107,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         optionPickup.isSelected = !optionPickup.isSelected
         optionDelivery.isSelected = false
         self.orderType = .pickup
+        updateAddressDetails()
         self.tableView.reloadData()
     }
     
@@ -67,6 +115,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         optionDelivery.isSelected = !optionDelivery.isSelected
         optionPickup.isSelected = false
         self.orderType = .delivery
+        updateAddressDetails()
         self.tableView.reloadData()
     }
     
@@ -767,7 +816,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		present(alert, animated: true, completion: nil)
 	}
 	
-	private func setAddress(){
+    func setAddress(){
 		addressNameLabel.text = selectedAddress?.name
 		addressDetailLabel.text = selectedAddress!.city + ", " + selectedAddress!.street + ", " + selectedAddress!.extra
 	}
@@ -1129,4 +1178,62 @@ extension CartViewController: AddressSelectionDelegate {
 		self.setAddress()
 	}
 	
+}
+
+extension CartViewController {
+    
+    
+    func showSpinner(){
+        spinnerView = getSpinnerView()
+        self.view.addSubview(spinnerView)
+    }
+    
+    func hideSpinner(){
+        spinnerView.removeFromSuperview()
+    }
+    
+    func getChef(chef_id:Int){
+        
+        //showSpinner()
+        let params : [String: Int] = ["chef_id": chef_id]
+        RestClient().request(WalayemApi.getChefById, params, self) { (result, error) in
+
+            if let error = error{
+                self.handleNetworkError(error)
+                return
+            }
+                
+            let value = result!["result"] as! [String: Any]
+            if let status = value["status"] as? Bool, status == false{
+                return
+            }
+            
+            let records = value["data"] as! [String: Any]
+            
+            let mChef = Chef(record: records, name: "init")
+            let location = records["location"] as! [String:String]
+            
+            self.chefLat = location["Latitude"] as! String
+            self.chefLon = location["Longitude"] as! String
+            
+            self.chefName = mChef.name ?? ""
+            self.chefAddress = mChef.area?.name ?? ""
+            
+            self.addressNameLabel.text = self.chefName
+            self.addressDetailLabel.text = self.chefAddress
+            
+            //print("chef_id_result_records_location__lat",lat,"lon",lon)
+
+            print("value___chef",value)
+//            let records = value["data"] as! [String: Any]
+//            
+//            self.chef = mChef
+//            self.chef_website = mChef.website
+//                self.hideSpinner()
+//            self.foodTableView.reloadData()
+//            self.collectionView.reloadData()
+//            self.initVC()
+            
+        }
+    }
 }

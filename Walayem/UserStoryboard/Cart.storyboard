@@ -260,13 +260,13 @@
                                                         <stackView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xRB-f3-w9E">
                                                             <rect key="frame" x="20" y="11.000000000000004" width="319" height="42.333333333333343"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSo-Uu-KJg">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XSo-Uu-KJg">
                                                                     <rect key="frame" x="0.0" y="0.0" width="319" height="20.333333333333332"/>
                                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="-" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="icw-fv-A4k">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="icw-fv-A4k">
                                                                     <rect key="frame" x="0.0" y="25.333333333333314" width="319" height="17"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -315,15 +315,29 @@
                                                         <action selector="addAddress:" destination="7J9-nn-brR" eventType="touchUpInside" id="rlJ-5g-trv"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vml-Ad-oIn" userLabel="AddressViewOrChange">
+                                                    <rect key="frame" x="8" y="1.6666666666666856" width="359" height="99"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                                    <state key="normal">
+                                                        <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="didTapAddress" destination="7J9-nn-brR" eventType="touchUpInside" id="pgu-Bp-M8x"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="86T-il-Okc" firstAttribute="leading" secondItem="yaC-PO-iUU" secondAttribute="leading" constant="8" id="DOO-a4-VoP"/>
+                                                <constraint firstItem="vml-Ad-oIn" firstAttribute="width" secondItem="86T-il-Okc" secondAttribute="width" id="FGw-oo-JKG"/>
                                                 <constraint firstItem="pnl-sr-re7" firstAttribute="top" secondItem="86T-il-Okc" secondAttribute="bottom" id="HMJ-40-bxB"/>
                                                 <constraint firstItem="86T-il-Okc" firstAttribute="centerX" secondItem="pnl-sr-re7" secondAttribute="centerX" id="I6d-fX-vSj"/>
                                                 <constraint firstItem="pnl-sr-re7" firstAttribute="width" secondItem="86T-il-Okc" secondAttribute="width" id="QNW-Yn-Sl2"/>
+                                                <constraint firstItem="vml-Ad-oIn" firstAttribute="height" secondItem="86T-il-Okc" secondAttribute="height" multiplier="0.970588" id="URl-TK-gl0"/>
                                                 <constraint firstItem="86T-il-Okc" firstAttribute="top" secondItem="yaC-PO-iUU" secondAttribute="top" id="UZH-l9-sFL"/>
                                                 <constraint firstAttribute="bottom" secondItem="86T-il-Okc" secondAttribute="bottom" constant="99" id="gxo-H7-8ea"/>
+                                                <constraint firstItem="vml-Ad-oIn" firstAttribute="centerY" secondItem="86T-il-Okc" secondAttribute="centerY" id="vEk-ee-q1I"/>
+                                                <constraint firstItem="vml-Ad-oIn" firstAttribute="centerX" secondItem="86T-il-Okc" secondAttribute="centerX" id="wxS-1e-fcq"/>
                                                 <constraint firstAttribute="trailing" secondItem="86T-il-Okc" secondAttribute="trailing" constant="8" id="xdz-bG-ba2"/>
                                                 <constraint firstAttribute="bottom" secondItem="pnl-sr-re7" secondAttribute="bottom" id="yzs-kV-rws"/>
                                             </constraints>
@@ -622,7 +636,6 @@
                         <outlet property="summaryIcon" destination="MFb-Bo-U6A" id="6in-Ko-57f"/>
                         <outlet property="tableView" destination="Y8c-KN-5E1" id="UGd-Sb-ntZ"/>
                         <outlet property="totalLabel" destination="G1q-sj-XmS" id="LJF-WI-rY6"/>
-                        <segue destination="8SL-jh-Hw6" kind="show" identifier="ShowAddressSegue" id="ww8-kh-stb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pjp-A9-AlV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -663,11 +676,7 @@ adding an item in the food tab</string>
                     </constraints>
                     <viewLayoutGuide key="safeArea" id="qah-Ds-H58"/>
                 </view>
-                <tapGestureRecognizer id="xUs-5z-QfC">
-                    <connections>
-                        <segue destination="wZf-js-QXO" kind="presentation" identifier="SelectAddressSegue" modalPresentationStyle="overFullScreen" id="ddY-Qt-lIu"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="xUs-5z-QfC"/>
             </objects>
             <point key="canvasLocation" x="903.62318840579712" y="131.91964285714286"/>
         </scene>
@@ -758,7 +767,7 @@ adding an item in the food tab</string>
         <!--Select Address-->
         <scene sceneID="XdM-cv-p4e">
             <objects>
-                <tableViewController modalPresentationStyle="fullScreen" id="GdW-yc-nUM" customClass="ChooseAddressTableViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ChooseAddressTableViewController" modalPresentationStyle="fullScreen" id="GdW-yc-nUM" customClass="ChooseAddressTableViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0pN-ib-bD4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -841,13 +850,13 @@ adding an item in the food tab</string>
         <!--Chef Location View Controller-->
         <scene sceneID="uqj-p3-ulB">
             <objects>
-                <viewController id="rug-6g-qCu" customClass="ChefLocationViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChefLocationViewController" id="rug-6g-qCu" customClass="ChefLocationViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9ym-hZ-lYQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8j-CI-jhW">
-                                <rect key="frame" x="0.0" y="2.6666666666666856" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -857,10 +866,10 @@ adding an item in the food tab</string>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="e8j-CI-jhW" firstAttribute="height" secondItem="9ym-hZ-lYQ" secondAttribute="height" id="7Tl-vS-Yey"/>
-                            <constraint firstItem="e8j-CI-jhW" firstAttribute="width" secondItem="9ym-hZ-lYQ" secondAttribute="width" id="Kv2-rl-CMn"/>
-                            <constraint firstItem="e8j-CI-jhW" firstAttribute="centerX" secondItem="pQ9-dT-t0H" secondAttribute="centerX" id="fvD-0g-mU1"/>
-                            <constraint firstItem="e8j-CI-jhW" firstAttribute="centerY" secondItem="pQ9-dT-t0H" secondAttribute="centerY" id="inh-1k-2f2"/>
+                            <constraint firstItem="pQ9-dT-t0H" firstAttribute="trailing" secondItem="e8j-CI-jhW" secondAttribute="trailing" id="BVy-QQ-dbf"/>
+                            <constraint firstItem="e8j-CI-jhW" firstAttribute="bottom" secondItem="pQ9-dT-t0H" secondAttribute="bottom" id="FI6-6z-OrK"/>
+                            <constraint firstItem="e8j-CI-jhW" firstAttribute="leading" secondItem="pQ9-dT-t0H" secondAttribute="leading" id="M6X-1e-AQp"/>
+                            <constraint firstItem="pQ9-dT-t0H" firstAttribute="top" secondItem="e8j-CI-jhW" secondAttribute="top" id="ZlV-uM-tmH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="pQ9-dT-t0H"/>
                     </view>
@@ -869,24 +878,6 @@ adding an item in the food tab</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CYa-dA-2J4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1724" y="-785.46798029556658"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Ssl-Dh-ZCy">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="formSheet" id="wZf-js-QXO" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="FJ5-Mc-jWZ">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="GdW-yc-nUM" kind="relationship" relationship="rootViewController" id="xNd-1L-0Rf"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zZY-SZ-wUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2652" y="-493.5960591133005"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="BYG-it-vZc">
@@ -913,25 +904,6 @@ adding an item in the food tab</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="glm-0b-ENY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="933" y="890"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="2eK-0M-YXC">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="8SL-jh-Hw6" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="82m-IJ-x5z"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Q8a-Ld-zXb">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="rug-6g-qCu" kind="relationship" relationship="rootViewController" id="L1e-ZS-NZH"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ouY-z8-5RY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="781.60000000000002" y="-785.46798029556658"/>
         </scene>
     </scenes>
     <resources>
