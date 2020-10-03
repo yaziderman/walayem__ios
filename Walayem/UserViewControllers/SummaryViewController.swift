@@ -10,16 +10,12 @@ import UIKit
 import DatePickerDialog
 import HandyUIKit
 
-protocol CartViewDelegate {
+protocol SummaryViewDelegate {
 	func refreshTableViewCell()
 }
 
-enum OrderType {
-    case delivery
-    case pickup
-}
 
-class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeaderDelegate, CartFoodFooterDelegate {
+class SummaryViewController: UIViewController, CartFoodCellDelegate, CartFoodHeaderDelegate, CartFoodFooterDelegate {
 	
 	// MARK: Properties
 	
@@ -47,30 +43,18 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	
     @IBOutlet weak var optionPickup: UIButton!
     @IBOutlet weak var optionDelivery: UIButton!
-    
-    @IBOutlet weak var labelAddressButton: UILabel!
 
-    var orderType = OrderType.delivery
-    
     @IBAction func didSelectPickup() {
-        if(cartItems.count > 1){
-            showAlert(title: "not possible for multiple chefs.", msg: "")
-            return
-        }
         optionPickup.isSelected = !optionPickup.isSelected
         optionDelivery.isSelected = false
-        self.orderType = .pickup
-        self.tableView.reloadData()
     }
     
     @IBAction func didSelectDelivery() {
         optionDelivery.isSelected = !optionDelivery.isSelected
         optionPickup.isSelected = false
-        self.orderType = .delivery
-        self.tableView.reloadData()
     }
     
-	var delegate: CartViewDelegate? = nil
+	var delegate: SummaryViewDelegate? = nil
 	
 	let db = DatabaseHandler()
 	var user: User?
@@ -105,15 +89,9 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		}
 	}
 	
-//	@IBAction func selectAddress(_ sender: UITapGestureRecognizer) {
-//        print("self.orderType_00__",self.orderType)
-//        if(self.orderType == .delivery){
-//            performSegue(withIdentifier: "SelectAddressSegue", sender: self)
-//        }else{
-//            print("no_segue_for_pickup_for_now")
-//        }
-//		
-//	}
+	@IBAction func selectAddress(_ sender: UITapGestureRecognizer) {
+		performSegue(withIdentifier: "SelectAddressSegue", sender: self)
+	}
 	
 	
 	@IBAction func addAddress(_ sender: UIButton) {
@@ -925,13 +903,6 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 					fatalError("Unexpected view controller")
 				}
 				destinationVC.addressList = addressList
-            case "ShowAddressSegue":
-                let navigationVC = segue.destination as! UINavigationController
-                guard let destinationVC = navigationVC.topViewController as? ChefLocationViewController else {
-                    fatalError("Unexpected view controller")
-                }
-                //destinationVC.addressList = addressList
-            
 			default:
 				fatalError("Invalid segue")
 		}
@@ -1018,7 +989,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	
 }
 
-extension CartViewController: UITableViewDelegate, UITableViewDataSource{
+extension SummaryViewController: UITableViewDelegate, UITableViewDataSource{
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		// #warning Incomplete implementation, return the number of sections
@@ -1117,7 +1088,7 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
-extension CartViewController: AddressSelectionDelegate {
+extension SummaryViewController: AddressSelectionDelegate {
 	
 	func addressSelected(_ address: Address) {
 		self.selectedAddress = address

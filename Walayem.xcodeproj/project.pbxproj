@@ -164,6 +164,9 @@
 		D0A0164D245BC2F50025AA58 /* ChefCityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A0164B245BC2F50025AA58 /* ChefCityTableViewCell.swift */; };
 		D0A0164E245BC2F50025AA58 /* ChefCityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A0164C245BC2F50025AA58 /* ChefCityTableViewCell.xib */; };
 		D0A223582458EFAC009C90B2 /* ChefCoverageArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A223572458EFAC009C90B2 /* ChefCoverageArea.swift */; };
+		E3390D122526982F00853C92 /* PaymentSummary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3390D112526982F00853C92 /* PaymentSummary.storyboard */; };
+		E3390D1425269DEC00853C92 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3390D1325269DEC00853C92 /* SummaryViewController.swift */; };
+		E3390D1A2527F9E100853C92 /* ChefLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3390D192527F9E100853C92 /* ChefLocation.swift */; };
 		F59D99FC250B759B004A8DA5 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59D99FB250B759B004A8DA5 /* AgreementViewController.swift */; };
 		F59E40FE2490C0750067F763 /* LocationWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E40FD2490C0750067F763 /* LocationWrapper.swift */; };
 		F5AAF1C424A1E631003945F8 /* ChangeDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AAF1C324A1E630003945F8 /* ChangeDescriptionViewController.swift */; };
@@ -332,6 +335,9 @@
 		D0A0164C245BC2F50025AA58 /* ChefCityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChefCityTableViewCell.xib; sourceTree = "<group>"; };
 		D0A223572458EFAC009C90B2 /* ChefCoverageArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefCoverageArea.swift; sourceTree = "<group>"; };
 		D8AE526667D0D9C189AB98C6 /* Pods-Walayem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Walayem.release.xcconfig"; path = "Target Support Files/Pods-Walayem/Pods-Walayem.release.xcconfig"; sourceTree = "<group>"; };
+		E3390D112526982F00853C92 /* PaymentSummary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentSummary.storyboard; sourceTree = "<group>"; };
+		E3390D1325269DEC00853C92 /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SummaryViewController.swift; path = Walayem/UserViewControllers/SummaryViewController.swift; sourceTree = SOURCE_ROOT; };
+		E3390D192527F9E100853C92 /* ChefLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefLocation.swift; sourceTree = "<group>"; };
 		F571300924912E31009EF29F /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 		F59D99FB250B759B004A8DA5 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		F59E40FD2490C0750067F763 /* LocationWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWrapper.swift; sourceTree = "<group>"; };
@@ -645,6 +651,7 @@
 				04CF06DB208465B00064B18A /* User.storyboard */,
 				0A08C49E20C1309500E006AB /* EditProfile.storyboard */,
 				0ADC141420B6DD350003FC8B /* More.storyboard */,
+				E3390D112526982F00853C92 /* PaymentSummary.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -652,6 +659,7 @@
 		E3390D102526907800853C92 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E3390D1325269DEC00853C92 /* SummaryViewController.swift */,
 				F59D99FB250B759B004A8DA5 /* AgreementViewController.swift */,
 				04C596BF20848ED900B284D3 /* OnBoardingViewController.swift */,
 				BEBB0FEA23E7E4B500D43789 /* HomeViewController.swift */,
@@ -671,6 +679,7 @@
 				52EA619B20B3E53E001DB6CC /* TermsViewController.swift */,
 				52EA619D20B3E586001DB6CC /* PrivacyViewController.swift */,
 				0AD0350020C550B10030E1E8 /* ImageViewController.swift */,
+				E3390D192527F9E100853C92 /* ChefLocation.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -768,6 +777,7 @@
 				52F2D1CF209ECE1B00FAE72C /* ChefMain.storyboard in Resources */,
 				523CDF8620A0708E0090C3E6 /* ChefOrders.storyboard in Resources */,
 				BEBB0FF123E7EC6700D43789 /* Home.storyboard in Resources */,
+				E3390D122526982F00853C92 /* PaymentSummary.storyboard in Resources */,
 				04CF06E0208468AD0064B18A /* Discover.storyboard in Resources */,
 				523CDF8A20A070B60090C3E6 /* ChefProfile.storyboard in Resources */,
 				04CF06E2208468BE0064B18A /* Chef.storyboard in Resources */,
@@ -868,6 +878,7 @@
 				04D9E8AB2085D31A002E1B51 /* SignupViewController.swift in Sources */,
 				5B467DF323B882CE008620FF /* Chef.swift in Sources */,
 				7F3EE9D7247571DF00D429BC /* ChefSearchResultsViewController.swift in Sources */,
+				E3390D1425269DEC00853C92 /* SummaryViewController.swift in Sources */,
 				5B467DF623B882CE008620FF /* Account.swift in Sources */,
 				83FE26F724B5D9C80024C500 /* Encodable+Dictionary.swift in Sources */,
 				52EA619C20B3E53E001DB6CC /* TermsViewController.swift in Sources */,
@@ -875,6 +886,7 @@
 				7F3FD1DD2483DA6A00F53684 /* DeliverySelectionViewController.swift in Sources */,
 				5B467DF623B882CE008620FF /* Account.swift in Sources */,
 				F59E40FE2490C0750067F763 /* LocationWrapper.swift in Sources */,
+				E3390D1A2527F9E100853C92 /* ChefLocation.swift in Sources */,
 				52EA619C20B3E53E001DB6CC /* TermsViewController.swift in Sources */,
 				F5AAF1C424A1E631003945F8 /* ChangeDescriptionViewController.swift in Sources */,
 				47FF3DEE20A1F62800A6289F /* OrderTableViewController.swift in Sources */,
