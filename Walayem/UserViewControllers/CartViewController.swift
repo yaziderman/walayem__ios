@@ -269,6 +269,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
                 
                 vc_summary.chefName = self.chefName
                 vc_summary.chefAddress = self.chefAddress
+                vc_summary.orderType = self.orderType
                 
                 self.navigationController?.pushViewController(vc_summary, animated: true)
                 

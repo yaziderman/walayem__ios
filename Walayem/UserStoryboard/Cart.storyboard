@@ -847,30 +847,14 @@ adding an item in the food tab</string>
             </objects>
             <point key="canvasLocation" x="148" y="133.5832083958021"/>
         </scene>
-        <!--Chef Location View Controller-->
+        <!--Chef Location-->
         <scene sceneID="uqj-p3-ulB">
             <objects>
-                <viewController storyboardIdentifier="ChefLocationViewController" id="rug-6g-qCu" customClass="ChefLocationViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChefLocationViewController" title="Chef Location" id="rug-6g-qCu" customClass="ChefLocationViewController" customModule="Walayem" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9ym-hZ-lYQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e8j-CI-jhW">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <wkWebViewConfiguration key="configuration">
-                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                    <wkPreferences key="preferences"/>
-                                </wkWebViewConfiguration>
-                            </wkWebView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="pQ9-dT-t0H" firstAttribute="trailing" secondItem="e8j-CI-jhW" secondAttribute="trailing" id="BVy-QQ-dbf"/>
-                            <constraint firstItem="e8j-CI-jhW" firstAttribute="bottom" secondItem="pQ9-dT-t0H" secondAttribute="bottom" id="FI6-6z-OrK"/>
-                            <constraint firstItem="e8j-CI-jhW" firstAttribute="leading" secondItem="pQ9-dT-t0H" secondAttribute="leading" id="M6X-1e-AQp"/>
-                            <constraint firstItem="pQ9-dT-t0H" firstAttribute="top" secondItem="e8j-CI-jhW" secondAttribute="top" id="ZlV-uM-tmH"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="pQ9-dT-t0H"/>
                     </view>
                     <navigationItem key="navigationItem" id="9Zx-8U-XBO"/>
