@@ -388,7 +388,7 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 	@objc func updateButtonTitle() {
 		
 		if self.isUserLoggedIn {
-			self.orderButton.setTitle("Place Order", for: .normal)
+			self.orderButton.setTitle("Proceed To Pay", for: .normal)
 		} else {
 			self.orderButton.setTitle("Login to Order", for: .normal)
 		}
