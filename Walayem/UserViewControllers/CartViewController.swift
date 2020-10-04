@@ -260,8 +260,13 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 			} else {
 				
                 let sb_ps = UIStoryboard(name: "PaymentSummary", bundle: nil) 
-                let vc_choose = sb_ps.instantiateViewController(withIdentifier: "PaymentSummaryViewController") as! PaymentSummaryViewController
-                self.navigationController?.pushViewController(vc_choose, animated: true)
+                let vc_summary = sb_ps.instantiateViewController(withIdentifier: "PaymentSummaryViewController") as! PaymentSummaryViewController
+                
+                vc_summary.amount_subtotal = self.subtotalLabel.text ?? ""
+                vc_summary.amount_delivery = self.deliveryAmountLabel.text ?? ""
+                vc_summary.amount_total = self.totalLabel.text ?? ""
+                
+                self.navigationController?.pushViewController(vc_summary, animated: true)
                 
                 return
                 

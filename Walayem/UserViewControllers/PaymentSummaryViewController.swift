@@ -55,7 +55,37 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 
     var image_tick_on = UIImage(named: "tick_on")
     var image_tick_off = UIImage(named: "tick_off")
+    
+    var amount_subtotal = ""
+    var amount_delivery = ""
+    var amount_total = ""
+    
+    @IBOutlet weak var viewCOD: UIView!
+    @IBOutlet weak var viewOnline: UIView!
 
+    @IBOutlet weak var buttonChange: UIButton!
+
+    func renderPaymentButtonsAlpha(){
+        let alphaOff : CGFloat = 1.0
+        let alphaOn : CGFloat = 1.0
+        
+        if(self.orderType == OrderType.pickup){
+            viewCOD.alpha = alphaOff
+            viewOnline.alpha = alphaOff
+        }else{
+            viewCOD.alpha = alphaOn
+            viewOnline.alpha = alphaOn
+        }
+    }
+    
+    func renderTotals(){
+        self.subtotalLabel.text = self.amount_subtotal
+        deliveryAmountLabel.text = (self.orderType == OrderType.pickup) ? ("*") : (amount_delivery) 
+        self.deliveryAmountLabel.textColor = .lightGray
+        totalLabel.text = amount_total
+        self.deliverySummaryLabel.text = "Total Delivery"
+    }
+    
     func renderChecks(){
         ivCheckCOD.image = (self.paymentMethod == .cod) ? ( image_tick_on )  : ( image_tick_off )
         ivCheckONLINE.image = (self.paymentMethod == .cod) ? ( image_tick_off )  : ( image_tick_on )
@@ -71,10 +101,23 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
         renderChecks()
     }
     
+    @IBOutlet weak var lblButtonCallToAction: UILabel!
+
     @IBAction func didChangeMethod() {
-        
+        self.orderType = (self.orderType == OrderType.pickup) ? (OrderType.delivery) : (OrderType.pickup)
+        renderAddress()
+        renderTotals()
+        renderPaymentButtonsAlpha()
     }
     
+    var orderType = OrderType.delivery
+
+    func renderAddress(){
+        self.addressNameLabel.text = (self.orderType == .delivery) ? ("delivery_address") : ("pickup_address")
+        self.addressDetailLabel.text = (self.orderType == .delivery) ? ("delivery_address_details") : ("pickup_address_details")
+        self.lblButtonCallToAction.text = (self.orderType == .delivery) ? ("Save On Delivery Changes?") : ("Save On Travel Time?")
+        self.buttonChange.setTitle((self.orderType == .delivery) ? ("Change to pickup") : ("Change to delivery"), for: .normal)
+    }
             
 	var delegate: PaymentSummaryViewDelegate? = nil
 	
@@ -281,7 +324,9 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 		super.viewDidLoad()
         renderChecks()
 		setViews()
-		
+		renderTotals()
+        renderPaymentButtonsAlpha()
+        
         self.tableView.backgroundColor = UIColor(hexString: "F4F4F4")
         self.tableView.separatorStyle = .none
 		user = User().getUserDefaults()
@@ -303,6 +348,16 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(updateFav) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
 		
+        
+        
+        self.subtotalLabel.text = "AED \(self.amount_subtotal)"
+        self.deliveryAmountLabel.text = "AED \(self.amount_delivery)"
+        self.deliveryAmountLabel.textColor = .lightGray
+        self.totalLabel.text = "AED \(self.amount_total)"
+        self.deliverySummaryLabel.text = "Total Delivery"
+        self.tableView.reloadData()
+        
+        
 	}
 	
 	@IBOutlet weak var cAddressView: UIView!
@@ -381,7 +436,7 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 		if shouldAllowAppear {
 			self.addressList.removeAll()
 			if user?.partner_id != nil && user?.partner_id != 0 {
-				getAddress()
+				//getAddress()
 			}
 		} else {
 			shouldAllowAppear = true
@@ -625,14 +680,14 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 					}
 				}
 				
-				let subTotal: Double = (data["total_price"] as? Double) ?? 0.0
-				self.subtotalLabel.text = "AED \(subTotal)"
-				let totalDeliveryCharge: Double = (data["total_delivery_cost"] as? Double) ?? 0.0
-				self.deliveryAmountLabel.text = "AED \(totalDeliveryCharge)"
-				self.deliveryAmountLabel.textColor = .lightGray
-				let totalCost: Double = (data["big_total"] as? Double) ?? 0.0
-				self.totalLabel.text = "AED \(totalCost)"
-				self.deliverySummaryLabel.text = "Total Delivery"
+//				let subTotal: Double = (data["total_price"] as? Double) ?? 0.0
+//				self.subtotalLabel.text = "AED \(subTotal)"
+//				let totalDeliveryCharge: Double = (data["total_delivery_cost"] as? Double) ?? 0.0
+//				self.deliveryAmountLabel.text = "AED \(totalDeliveryCharge)"
+//				self.deliveryAmountLabel.textColor = .lightGray
+//				let totalCost: Double = (data["big_total"] as? Double) ?? 0.0
+//				self.totalLabel.text = "AED \(totalCost)"
+//				self.deliverySummaryLabel.text = "Total Delivery"
 				self.tableView.reloadData()
 			}
 		}
@@ -739,7 +794,7 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 				
 				if self.selectedAddress != nil,
 					self.isUserLoggedIn {
-					self.getCartDetails()
+					//self.getCartDetails()
 				}
 			}
 			
@@ -872,9 +927,9 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 		let food = cartItems[indexPath.section].chef.foods[indexPath.row]
 		if db.addQuantity(foodId: food.id ?? 0){
 			if self.isUserLoggedIn {
-				getCartDetails()
+				//getCartDetails()
 			} else {
-				calculateCost()
+				//calculateCost()
 			}
 			print("Quantity added---- on Cart screen")
 			calculateCost()
@@ -907,7 +962,7 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 			}
 		}
 		if self.isUserLoggedIn {
-			getCartDetails()
+			//getCartDetails()
 		} else {
 			calculateCost()
 		}

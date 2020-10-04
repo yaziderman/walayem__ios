@@ -58,7 +58,7 @@
                                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFw-DZ-SUc">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Delivery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZFw-DZ-SUc">
                                                             <rect key="frame" x="12" y="38" width="100" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="017-6m-fSW"/>
@@ -217,7 +217,7 @@
                                                         <outletCollection property="gestureRecognizers" destination="0Vz-Sx-1KK" appends="YES" id="cQ5-x5-3sj"/>
                                                     </connections>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dXm-Ig-Lww">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dXm-Ig-Lww" userLabel="Online">
                                                     <rect key="frame" x="8" y="120" width="359" height="120"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit" translatesAutoresizingMaskIntoConstraints="NO" id="TZA-66-87y">
@@ -319,7 +319,7 @@
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9tp-cN-9K6">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9tp-cN-9K6" userLabel="COD">
                                                     <rect key="frame" x="8" y="270" width="359" height="120"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cod" translatesAutoresizingMaskIntoConstraints="NO" id="V8K-1W-LlC">
@@ -680,17 +680,21 @@
                         <outlet property="addressDetailLabel" destination="dna-nL-2Ii" id="6cf-vD-oaw"/>
                         <outlet property="addressNameLabel" destination="YJg-0J-hOb" id="Ihm-ac-yfd"/>
                         <outlet property="addressView" destination="6h1-of-fcV" id="k0T-dM-4Kc"/>
+                        <outlet property="buttonChange" destination="284-3W-J1B" id="7th-UM-Qh5"/>
                         <outlet property="cAddressView" destination="pMm-6V-Vdb" id="vFR-Yz-y8B"/>
                         <outlet property="deliveryAmountLabel" destination="kYe-8a-BX6" id="DxG-7l-VCy"/>
                         <outlet property="deliverySummaryLabel" destination="ZFw-DZ-SUc" id="kKB-tZ-mkY"/>
                         <outlet property="emptyView" destination="2C6-bb-Pcl" id="2oy-0u-HL1"/>
                         <outlet property="ivCheckCOD" destination="ihs-DI-g9T" id="Mcr-9Y-a52"/>
                         <outlet property="ivCheckONLINE" destination="Hr5-60-LMe" id="cKh-ye-Jj7"/>
+                        <outlet property="lblButtonCallToAction" destination="tBf-jS-5c0" id="S6G-2h-zlt"/>
                         <outlet property="orderButton" destination="wBe-Y9-D9g" id="4VV-TA-T3J"/>
                         <outlet property="subtotalLabel" destination="sMt-N5-ZCI" id="roo-Ir-01C"/>
                         <outlet property="summaryIcon" destination="VVZ-6u-TCs" id="DcZ-ya-ggA"/>
                         <outlet property="tableView" destination="aCd-wA-0sd" id="5RL-U1-v5Q"/>
                         <outlet property="totalLabel" destination="5z2-YW-cDC" id="Ke7-pX-dFq"/>
+                        <outlet property="viewCOD" destination="9tp-cN-9K6" id="chh-Tk-q1D"/>
+                        <outlet property="viewOnline" destination="dXm-Ig-Lww" id="Dxr-JS-1qB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y4s-m5-soA" userLabel="First Responder" sceneMemberID="firstResponder"/>
