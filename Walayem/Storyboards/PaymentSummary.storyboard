@@ -310,8 +310,8 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="PREPAID ORDER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGp-oA-UJj">
-                                                    <rect key="frame" x="8" y="96" width="200" height="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PREPAID ORDER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dGp-oA-UJj">
+                                                    <rect key="frame" x="8" y="96" width="200" height="14.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="200" id="tnf-zO-qIK"/>
                                                     </constraints>
@@ -397,19 +397,32 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAY ON DELIVERY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWY-ie-muk">
+                                                    <rect key="frame" x="8" y="248" width="200" height="14.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="200" id="gcI-AK-XSS"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="6h1-of-fcV" firstAttribute="leading" secondItem="pMm-6V-Vdb" secondAttribute="leading" constant="8" id="0b8-zJ-DKw"/>
+                                                <constraint firstItem="UWY-ie-muk" firstAttribute="leading" secondItem="qhH-VU-NN7" secondAttribute="leading" id="7x6-1N-4sN"/>
                                                 <constraint firstItem="9tp-cN-9K6" firstAttribute="trailing" secondItem="dXm-Ig-Lww" secondAttribute="trailing" id="Alz-Mf-3h6"/>
                                                 <constraint firstItem="dXm-Ig-Lww" firstAttribute="trailing" secondItem="6h1-of-fcV" secondAttribute="trailing" id="CNr-hT-CdP"/>
                                                 <constraint firstItem="9tp-cN-9K6" firstAttribute="top" secondItem="dXm-Ig-Lww" secondAttribute="bottom" constant="30" id="Hcx-70-imT"/>
                                                 <constraint firstItem="9tp-cN-9K6" firstAttribute="leading" secondItem="dXm-Ig-Lww" secondAttribute="leading" id="Mww-TL-VAw"/>
                                                 <constraint firstItem="dXm-Ig-Lww" firstAttribute="leading" secondItem="6h1-of-fcV" secondAttribute="leading" id="XKb-H2-ySI"/>
                                                 <constraint firstItem="6h1-of-fcV" firstAttribute="top" secondItem="pMm-6V-Vdb" secondAttribute="top" id="Y8v-qH-EC3"/>
+                                                <constraint firstItem="dGp-oA-UJj" firstAttribute="top" secondItem="6h1-of-fcV" secondAttribute="bottom" constant="6" id="Yuz-vs-iz1"/>
                                                 <constraint firstItem="dXm-Ig-Lww" firstAttribute="top" secondItem="6h1-of-fcV" secondAttribute="bottom" constant="30" id="hqN-nE-YFq"/>
+                                                <constraint firstItem="UWY-ie-muk" firstAttribute="top" secondItem="qhH-VU-NN7" secondAttribute="bottom" constant="8" id="lDg-Mj-Pyc"/>
                                                 <constraint firstAttribute="height" constant="400" id="uuQ-1P-eLA"/>
                                                 <constraint firstAttribute="trailing" secondItem="6h1-of-fcV" secondAttribute="trailing" constant="8" id="vcu-Fm-UCm"/>
+                                                <constraint firstItem="dGp-oA-UJj" firstAttribute="leading" secondItem="6h1-of-fcV" secondAttribute="leading" id="wQh-2w-CbJ"/>
                                             </constraints>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBe-Y9-D9g">
@@ -422,9 +435,6 @@
                                             <state key="normal" title="Proceed To Payment">
                                                 <color key="titleColor" red="0.94893974069999998" green="0.94907253979999995" blue="0.94889777900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
-                                            <connections>
-                                                <action selector="placeOrder:" destination="gYb-sx-TYN" eventType="touchUpInside" id="rIQ-q8-qOb"/>
-                                            </connections>
                                         </button>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61h-r5-F7c">
                                             <rect key="frame" x="0.0" y="646" width="375" height="51"/>
