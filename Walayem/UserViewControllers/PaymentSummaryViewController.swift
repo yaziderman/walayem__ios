@@ -14,6 +14,10 @@ protocol PaymentSummaryViewDelegate {
 	func refreshTableViewCell()
 }
 
+enum PaymentMethod {
+    case cod
+    case online
+}
 
 class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, CartFoodHeaderDelegate, CartFoodFooterDelegate {
 	
@@ -44,16 +48,34 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
     @IBOutlet weak var optionPickup: UIButton!
     @IBOutlet weak var optionDelivery: UIButton!
 
-    @IBAction func didSelectPickup() {
-        optionPickup.isSelected = !optionPickup.isSelected
-        optionDelivery.isSelected = false
+    var paymentMethod = PaymentMethod.online
+    
+    @IBOutlet weak var ivCheckCOD: UIImageView!
+    @IBOutlet weak var ivCheckONLINE: UIImageView!
+
+    var image_tick_on = UIImage(named: "tick_on")
+    var image_tick_off = UIImage(named: "tick_off")
+
+    func renderChecks(){
+        ivCheckCOD.image = (self.paymentMethod == .cod) ? ( image_tick_on )  : ( image_tick_off )
+        ivCheckONLINE.image = (self.paymentMethod == .cod) ? ( image_tick_off )  : ( image_tick_on )
     }
     
-    @IBAction func didSelectDelivery() {
-        optionDelivery.isSelected = !optionDelivery.isSelected
-        optionPickup.isSelected = false
+    @IBAction func didSelectCOD() {
+        self.paymentMethod = .cod
+        renderChecks()
     }
     
+    @IBAction func didSelectOnline() {
+        self.paymentMethod = .online
+        renderChecks()
+    }
+    
+    @IBAction func didChangeMethod() {
+        
+    }
+    
+            
 	var delegate: PaymentSummaryViewDelegate? = nil
 	
 	let db = DatabaseHandler()
@@ -257,6 +279,7 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+        renderChecks()
 		setViews()
 		
         self.tableView.backgroundColor = UIColor(hexString: "F4F4F4")

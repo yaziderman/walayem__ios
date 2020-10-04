@@ -113,7 +113,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
             showAlert(title: "not possible for multiple chefs.", msg: "")
             return
         }
-        optionPickup.isSelected = !optionPickup.isSelected
+        optionPickup.isSelected = true
         optionDelivery.isSelected = false
         self.orderType = .pickup
         updateAddressDetails()
@@ -121,7 +121,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     }
     
     @IBAction func didSelectDelivery() {
-        optionDelivery.isSelected = !optionDelivery.isSelected
+        optionDelivery.isSelected = true
         optionPickup.isSelected = false
         self.orderType = .delivery
         updateAddressDetails()
