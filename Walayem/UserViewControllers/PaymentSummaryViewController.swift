@@ -60,6 +60,9 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
     var amount_delivery = ""
     var amount_total = ""
     
+    var chefName = ""
+    var chefAddress = ""
+    
     @IBOutlet weak var viewCOD: UIView!
     @IBOutlet weak var viewOnline: UIView!
 
@@ -84,6 +87,14 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
         self.deliveryAmountLabel.textColor = .lightGray
         totalLabel.text = amount_total
         self.deliverySummaryLabel.text = "Total Delivery"
+        
+        if(self.orderType == .pickup){
+            self.addressNameLabel.text = self.chefName
+            self.addressDetailLabel.text = self.chefAddress
+        }else{
+            self.setAddress()
+        }
+        
     }
     
     func renderChecks(){
@@ -349,12 +360,8 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 		NotificationCenter.default.addObserver(self, selector: #selector(updateFav) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
 		
         
-        
-        self.subtotalLabel.text = "AED \(self.amount_subtotal)"
-        self.deliveryAmountLabel.text = "AED \(self.amount_delivery)"
-        self.deliveryAmountLabel.textColor = .lightGray
-        self.totalLabel.text = "AED \(self.amount_total)"
-        self.deliverySummaryLabel.text = "Total Delivery"
+        self.renderTotals()
+
         self.tableView.reloadData()
         
         
@@ -790,7 +797,7 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 				if self.selectedAddress == nil {
 					self.selectedAddress = self.addressList.first
 				}
-				self.setAddress()
+				//self.setAddress()
 				
 				if self.selectedAddress != nil,
 					self.isUserLoggedIn {

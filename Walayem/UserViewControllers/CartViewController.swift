@@ -265,6 +265,10 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
                 vc_summary.amount_subtotal = self.subtotalLabel.text ?? ""
                 vc_summary.amount_delivery = self.deliveryAmountLabel.text ?? ""
                 vc_summary.amount_total = self.totalLabel.text ?? ""
+                vc_summary.selectedAddress = self.selectedAddress
+                
+                vc_summary.chefName = self.chefName
+                vc_summary.chefAddress = self.chefAddress
                 
                 self.navigationController?.pushViewController(vc_summary, animated: true)
                 
@@ -354,6 +358,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		super.viewDidLoad()
 		setViews()
 		
+        
         self.tableView.backgroundColor = UIColor(hexString: "F4F4F4")
         self.tableView.separatorStyle = .none
 		user = User().getUserDefaults()
@@ -608,6 +613,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 				self.calculateCost()
 			}
 		}
+        self.getChef(chef_id: self.cartItems.first?.chef.id ?? 0)
 		self.tableView.reloadData()
 	}
 	
@@ -1223,7 +1229,7 @@ extension CartViewController {
     }
     
     func getChef(chef_id:Int){
-        
+        print("getChef___________",chef_id)
         //showSpinner()
         let params : [String: Int] = ["chef_id": chef_id]
         SwiftLoading().showLoading()
@@ -1250,8 +1256,12 @@ extension CartViewController {
             self.chefName = mChef.name ?? ""
             self.chefAddress = mChef.area?.name ?? ""
             
-            self.addressNameLabel.text = self.chefName
-            self.addressDetailLabel.text = self.chefAddress
+            if(self.orderType == .pickup){
+                self.addressNameLabel.text = self.chefName
+                self.addressDetailLabel.text = self.chefAddress
+            }else{
+                self.setAddress()
+            }
             
             //print("chef_id_result_records_location__lat",lat,"lon",lon)
 
