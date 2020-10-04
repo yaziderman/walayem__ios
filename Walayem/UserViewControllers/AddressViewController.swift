@@ -225,7 +225,11 @@ class AddressViewController: UIViewController, UITextFieldDelegate {
             self.address = Address(id: id, name: name, city: city, street: street, extra: extra, location: nil)
             let alert = UIAlertController(title: "", message: "Address successfully created", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
-                self.performSegue(withIdentifier: "unwindToAddressList", sender: self)
+                self.dismiss(animated: true, completion: {
+                    self.presentingViewController?.navigationController?.popViewController(animated: false)
+                })
+                                
+                //self.performSegue(withIdentifier: "unwindToAddressList", sender: self)
             }))
             self.present(alert, animated: true, completion: nil)
         }

@@ -10,12 +10,12 @@ import UIKit
 import DatePickerDialog
 import HandyUIKit
 
-protocol SummaryViewDelegate {
+protocol PaymentSummaryViewDelegate {
 	func refreshTableViewCell()
 }
 
 
-class SummaryViewController: UIViewController, CartFoodCellDelegate, CartFoodHeaderDelegate, CartFoodFooterDelegate {
+class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, CartFoodHeaderDelegate, CartFoodFooterDelegate {
 	
 	// MARK: Properties
 	
@@ -54,7 +54,7 @@ class SummaryViewController: UIViewController, CartFoodCellDelegate, CartFoodHea
         optionPickup.isSelected = false
     }
     
-	var delegate: SummaryViewDelegate? = nil
+	var delegate: PaymentSummaryViewDelegate? = nil
 	
 	let db = DatabaseHandler()
 	var user: User?
@@ -272,7 +272,7 @@ class SummaryViewController: UIViewController, CartFoodCellDelegate, CartFoodHea
 		Utils.setupNavigationBar(nav: self.navigationController!)
 		
 		let gesture = UITapGestureRecognizer(target: self, action:  #selector(self.checkAction))
-		self.orderView.addGestureRecognizer(gesture)
+		//self.orderView.addGestureRecognizer(gesture)
 		
 		NotificationCenter.default.addObserver(self, selector: #selector(updateButtonTitle) , name: NSNotification.Name(rawValue: Utils.NOTIFIER_KEY), object: nil);
 		
@@ -296,7 +296,7 @@ class SummaryViewController: UIViewController, CartFoodCellDelegate, CartFoodHea
             self.addressDetailLabel.isHidden = false
 			//			getAddress()
 		}
-        self.addAddressButton.isHidden = false
+        //self.addAddressButton.isHidden = false
 
 	}
 	
@@ -334,7 +334,7 @@ class SummaryViewController: UIViewController, CartFoodCellDelegate, CartFoodHea
 			let dateFormatter = DateFormatter()
 			dateFormatter.dateFormat = "MMM dd yyyy hh:mm aa"
 			let date_str = dateFormatter.string(from: date!)
-			orderForLabel.text = "\(date_str)"
+			//orderForLabel.text = "\(date_str)"
 
 			let calendar = NSCalendar.current
 
@@ -344,14 +344,14 @@ class SummaryViewController: UIViewController, CartFoodCellDelegate, CartFoodHea
 			let time_str = timeFormatter.string(from: date!)
 
 			if calendar.isDateInToday(date!) {
-				orderForLabel.text = "Today at \(time_str)"
+				//orderForLabel.text = "Today at \(time_str)"
 			}
 			else if calendar.isDateInTomorrow(date!) {
-				orderForLabel.text = "Tomorrow at \(time_str)"
+				//orderForLabel.text = "Tomorrow at \(time_str)"
 			}
 			
 		}else{
-			orderForLabel.text = "Delivery as soon as possible"
+			//orderForLabel.text = "Delivery as soon as possible"
 		}
 		
 		updateFav()
@@ -439,7 +439,7 @@ class SummaryViewController: UIViewController, CartFoodCellDelegate, CartFoodHea
 				userDefaults.set(date_time_str, forKey: "OrderDate")
 				userDefaults.synchronize()
 				
-				self.orderForLabel.text = "\(date_str) at \(time_str)"
+				//self.orderForLabel.text = "\(date_str) at \(time_str)"
 			}
 		}
 		
@@ -981,7 +981,7 @@ class SummaryViewController: UIViewController, CartFoodCellDelegate, CartFoodHea
 			userDefaults.set(date_time_str, forKey: "OrderDate")
 			userDefaults.synchronize()
 			
-			self.orderForLabel.text = "\(date_str) at \(time_str)"
+			//self.orderForLabel.text = "\(date_str) at \(time_str)"
 			
 						
 		}
@@ -989,7 +989,7 @@ class SummaryViewController: UIViewController, CartFoodCellDelegate, CartFoodHea
 	
 }
 
-extension SummaryViewController: UITableViewDelegate, UITableViewDataSource{
+extension PaymentSummaryViewController: UITableViewDelegate, UITableViewDataSource{
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		// #warning Incomplete implementation, return the number of sections
@@ -1035,7 +1035,10 @@ extension SummaryViewController: UITableViewDelegate, UITableViewDataSource{
 		let cartItem = cartItems[indexPath.section]
 		let food = cartItem.chef.foods[indexPath.row]
 		cell.set(food: food, deliveryCharge: cartItem.deliveryCost)
-		
+        cell.nameLabel?.text? += " X\(food.quantity)"
+        cell.discountedLabel.textColor = .gray
+        cell.discountedLabel.text = "AED \(food.price*Double(food.quantity))"
+        cell.priceLabel.isHidden = true
 		return cell
 	}
 	
@@ -1055,11 +1058,16 @@ extension SummaryViewController: UITableViewDelegate, UITableViewDataSource{
 		return footerView
 	}
 	
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
 	func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 		return 66
 	}
 	
 	func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
 		let orderType = UserDefaults.standard.string(forKey: "OrderType") ?? "asap"
 		
 		if(orderType == "asap"){
@@ -1088,7 +1096,7 @@ extension SummaryViewController: UITableViewDelegate, UITableViewDataSource{
     }
 }
 
-extension SummaryViewController: AddressSelectionDelegate {
+extension PaymentSummaryViewController: AddressSelectionDelegate {
 	
 	func addressSelected(_ address: Address) {
 		self.selectedAddress = address

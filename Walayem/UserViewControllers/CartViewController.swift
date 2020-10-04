@@ -25,6 +25,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     
     var spinnerView = UIView()
 
+    var totalDeliveryCharge: Double?
+    
     var chefLat = ""
     var chefLon = ""
     
@@ -88,11 +90,18 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 //        self.chefLon = location["Longitude"] as! String
         if(orderType == .delivery){
             setAddress()
+            
         }else{
-            self.deliveryAmountLabel.text = "*"
             self.addressNameLabel.text = "-"
             self.addressDetailLabel.text = "-"
         }
+        
+        self.deliveryAmountLabel.text = (self.orderType == .pickup) ? ("*") : ("AED \(self.totalDeliveryCharge!)") 
+
+        //self.getCartDetails()
+        
+        //self.deliveryAmountLabel.text = (self.orderType == .pickup) ? ("*") : ("AED \(totalDeliveryCharge)") 
+
         
 //        self.chefName = mChef.name ?? ""
 //        self.chefAddress = mChef.area?.name ?? ""
@@ -250,6 +259,12 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 				self.present(viewController, animated: true, completion: nil)
 			} else {
 				
+                let sb_ps = UIStoryboard(name: "PaymentSummary", bundle: nil) 
+                let vc_choose = sb_ps.instantiateViewController(withIdentifier: "PaymentSummaryViewController") as! PaymentSummaryViewController
+                self.navigationController?.pushViewController(vc_choose, animated: true)
+                
+                return
+                
 				let progressAlert = showProgressAlert()
 				var orderItems = [Any]()
 				for item in cartItems {
@@ -294,8 +309,9 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 				}
                 
                 print(params.description)
-				
+				SwiftLoading().showLoading()
 				RestClient().request(WalayemApi.placeOrder, params, self) { (result, error) in
+                    SwiftLoading().hideLoading()
 					progressAlert.dismiss(animated: true, completion: {
 						if error != nil{
 							let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
@@ -322,7 +338,10 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 				
 			}
 		} else {
-			showAlert(title: "Error", msg: "Delivery is not available for your area, please refine your search.")
+//            let sb_ps = UIStoryboard(name: "PaymentSummary", bundle: nil) 
+//            let vc_choose = sb_ps.instantiateViewController(withIdentifier: "PaymentSummaryViewController") as! PaymentSummaryViewController
+//            self.navigationController?.pushViewController(vc_choose, animated: true)
+			showAlert(title: "Error", msg: "Delivery is not available for your area, and multiple chefs for delivery is not possible, please refine your search.")
 		}
 	}
 	
@@ -587,7 +606,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		self.tableView.reloadData()
 	}
 	
-	private func getCartDetails() {
+    func getCartDetails() {
 		guard let address = self.selectedAddress else { return }
 		
 		var orderItems = [[String: Any]]()
@@ -622,7 +641,9 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		if orderItems.count > 0 {
 			
 			UIApplication.shared.isNetworkActivityIndicatorVisible = true
+            SwiftLoading().showLoading()
 			RestClient().request(WalayemApi.cartDetails, params, self) { (result, error) in
+                SwiftLoading().hideLoading()
 				UIApplication.shared.isNetworkActivityIndicatorVisible = false
 				if let error = error {
 					self.calculateCost()
@@ -675,8 +696,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 				
 				let subTotal: Double = (data["total_price"] as? Double) ?? 0.0
 				self.subtotalLabel.text = "AED \(subTotal)"
-				let totalDeliveryCharge: Double = (data["total_delivery_cost"] as? Double) ?? 0.0
-				self.deliveryAmountLabel.text = "AED \(totalDeliveryCharge)"
+                self.totalDeliveryCharge = (data["total_delivery_cost"] as? Double) ?? 0.0
+                self.deliveryAmountLabel.text = (self.orderType == .pickup) ? ("*") : ("AED \(self.totalDeliveryCharge!)") 
 				self.deliveryAmountLabel.textColor = .lightGray
 				let totalCost: Double = (data["big_total"] as? Double) ?? 0.0
 				self.totalLabel.text = "AED \(totalCost)"
@@ -704,9 +725,10 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	}
 	
 	private func validateFoods(foods: [Food], completion: @escaping(Bool) -> Void){
-		
+        SwiftLoading().showLoading()
 		let params: [String: Any] = [:]
 		RestClient().request(WalayemApi.getActiveFoodIds, params, self) { (result, error) in
+            SwiftLoading().hideLoading()
 			if error != nil {
 				_ = error?.userInfo[NSLocalizedDescriptionKey] as! String
 				//error here
@@ -738,7 +760,9 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		let params: [String: Int] = ["partner_id": user?.partner_id ?? 0]
 		
 		UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        SwiftLoading().showLoading()
 		RestClient().request(WalayemApi.address, params, self) { (result, error) in
+            SwiftLoading().hideLoading()
 			UIApplication.shared.isNetworkActivityIndicatorVisible = false
 			
 			//            if let error = error{
@@ -994,8 +1018,9 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 		}
 		
 		let params: [String: Any] = ["chef_id": chefIds]
+        SwiftLoading().showLoading()
 		RestClient().request(WalayemApi.fixedDelay, params, self) { [weak self] (result, error) in
-			
+			SwiftLoading().hideLoading()
 			guard let self = self else { return }
 			
 			print(result!)	
@@ -1196,8 +1221,9 @@ extension CartViewController {
         
         //showSpinner()
         let params : [String: Int] = ["chef_id": chef_id]
+        SwiftLoading().showLoading()
         RestClient().request(WalayemApi.getChefById, params, self) { (result, error) in
-
+            SwiftLoading().hideLoading()
             if let error = error{
                 self.handleNetworkError(error)
                 return
