@@ -857,7 +857,7 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
             deliverySummaryLabel.text = "Total Delivery"
             let totalCost2: Double = (self.orderType == OrderType.pickup) ? (self.subTotal) : (self.bigTotal)
             self.totalLabel.text = "AED \(totalCost2)"
-            self.deliveryAmountLabel.text = (self.orderType == .pickup) ? ("0 AED") : ("AED \(self.totalDeliveryCharge ?? 0)") 
+            self.deliveryAmountLabel.text = (self.orderType == .pickup) ? ("AED 0") : ("AED \(self.totalDeliveryCharge ?? 0)") 
 
             //summaryDeliveryChargeLabel.isHidden = false
         }

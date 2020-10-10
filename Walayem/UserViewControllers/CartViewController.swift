@@ -35,7 +35,9 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
     
     var chefName = ""
     var chefAddress = ""
-
+    
+    static var didComeBackFromAddresses = false
+    
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var subtotalLabel: UILabel!
 	@IBOutlet weak var deliveryAmountLabel: UILabel!
@@ -256,7 +258,12 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 				return
 		}
 		
-        if (deliveryAmountLabel.text != "AED 0" && self.orderType == OrderType.pickup) {
+        if(deliveryAmountLabel.text == "AED 0" && self.orderType == OrderType.delivery){
+            showAlert(title: "Error", msg: "Delivery is not available for your area, and multiple chefs for delivery is not possible.")
+            return
+        }
+        
+        if (true) {
 			
 			let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
 			
@@ -425,6 +432,12 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	
 	override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if(CartViewController.didComeBackFromAddresses == true){
+            CartViewController.didComeBackFromAddresses = false
+            return
+        }
+        
 		user = User().getUserDefaults()
 		getCartItems()
 		//		getAddress()
@@ -833,7 +846,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 						}
 					}
 				} else {
-					self.selectedAddress = nil
+					//self.selectedAddress = nil
 				}
 				
 				if self.selectedAddress == nil {
