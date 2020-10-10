@@ -23,6 +23,10 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 	
 	// MARK: Properties
 	
+    var subTotal : Double = 0
+    var bigTotal : Double = 0
+    var totalDeliveryCharge: Double?
+
 	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet weak var subtotalLabel: UILabel!
 	@IBOutlet weak var deliveryAmountLabel: UILabel!
@@ -82,8 +86,9 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
     }
     
     func renderTotals(){
+        print("renderTotals_____")
         self.subtotalLabel.text = self.amount_subtotal
-        deliveryAmountLabel.text = (self.orderType == OrderType.pickup) ? ("0 AED") : (amount_delivery) 
+        deliveryAmountLabel.text = (self.orderType == OrderType.pickup) ? ("AED 0") : (amount_delivery) 
         self.deliveryAmountLabel.textColor = .lightGray
         totalLabel.text = amount_total
         self.deliverySummaryLabel.text = "Total Delivery"
@@ -835,21 +840,27 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 		addressDetailLabel.text = selectedAddress!.city + ", " + selectedAddress!.street + ", " + selectedAddress!.extra
 	}
 	
-	private func calculateCost(){
-		var totalCost: Double = 0.0
-		for item in cartItems{
-			for food in item.chef.foods{
-				totalCost += Double(food.quantity) * (food.price)
-			}
-		}
-		
-		subtotalLabel.text = "AED \(totalCost)"
-		deliveryAmountLabel.text = "*"
-		deliveryAmountLabel.textColor = .red
-		totalLabel.attributedText = "AED \(totalCost)^{*}".superscripted(font: totalLabel.font)
-		deliverySummaryLabel.text = "Total Delivery"
-		//summaryDeliveryChargeLabel.isHidden = false
-	}
+        private func calculateCost(){
+            var totalCost: Double = 0.0
+            for item in cartItems{
+                for food in item.chef.foods{
+                    totalCost += Double(food.quantity) * (food.price)
+                }
+            }
+            
+
+            
+            //subtotalLabel.text = "AED \(totalCost)"
+    //        deliveryAmountLabel.text = "*"
+    //        deliveryAmountLabel.textColor = .red
+    //        totalLabel.attributedText = "AED \(totalCost)^{*}".superscripted(font: totalLabel.font)
+            deliverySummaryLabel.text = "Total Delivery"
+            let totalCost2: Double = (self.orderType == OrderType.pickup) ? (self.subTotal) : (self.bigTotal)
+            self.totalLabel.text = "AED \(totalCost2)"
+            self.deliveryAmountLabel.text = (self.orderType == .pickup) ? ("0 AED") : ("AED \(self.totalDeliveryCharge ?? 0)") 
+
+            //summaryDeliveryChargeLabel.isHidden = false
+        }
 	
 	private func changeView(_ isEmpty: Bool){
 		if isEmpty{

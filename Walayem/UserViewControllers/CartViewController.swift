@@ -23,6 +23,9 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	
 	// MARK: Properties
     
+    var subTotal : Double = 0
+    var bigTotal : Double = 0
+    
     var spinnerView = UIView()
 
     var totalDeliveryCharge: Double?
@@ -120,6 +123,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         optionDelivery.isSelected = false
         self.orderType = .pickup
         updateAddressDetails()
+        self.calculateCost()
         self.tableView.reloadData()
     }
     
@@ -128,6 +132,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
         optionPickup.isSelected = false
         self.orderType = .delivery
         updateAddressDetails()
+        self.calculateCost()
         self.tableView.reloadData()
     }
     
@@ -251,7 +256,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 				return
 		}
 		
-		if deliveryAmountLabel.text != "*" {
+        if (deliveryAmountLabel.text != "AED 0" && self.orderType == OrderType.pickup) {
 			
 			let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
 			
@@ -273,6 +278,10 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
                 vc_summary.chefName = self.chefName
                 vc_summary.chefAddress = self.chefAddress
                 vc_summary.orderType = self.orderType
+                
+                vc_summary.bigTotal = self.bigTotal
+                vc_summary.subTotal = self.subTotal
+                vc_summary.totalDeliveryCharge = self.totalDeliveryCharge
                 
                 self.navigationController?.pushViewController(vc_summary, animated: true)
                 
@@ -354,7 +363,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 //            let sb_ps = UIStoryboard(name: "PaymentSummary", bundle: nil) 
 //            let vc_choose = sb_ps.instantiateViewController(withIdentifier: "PaymentSummaryViewController") as! PaymentSummaryViewController
 //            self.navigationController?.pushViewController(vc_choose, animated: true)
-			showAlert(title: "Error", msg: "Delivery is not available for your area, and multiple chefs for delivery is not possible, please refine your search.")
+			showAlert(title: "Error", msg: "Delivery is not available for your area, and multiple chefs for delivery is not possible.")
 		}
 	}
 	
@@ -709,13 +718,21 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 					}
 				}
 				
-				let subTotal: Double = (data["total_price"] as? Double) ?? 0.0
-				self.subtotalLabel.text = "AED \(subTotal)"
+                self.subTotal = (data["total_price"] as? Double) ?? 0.0
+                self.bigTotal = (data["big_total"] as? Double) ?? 0.0
+
+                self.subtotalLabel.text = "AED \(self.subTotal)"
                 self.totalDeliveryCharge = (data["total_delivery_cost"] as? Double) ?? 0.0
-                self.deliveryAmountLabel.text = (self.orderType == .pickup) ? ("AED 0") : ("AED \(self.totalDeliveryCharge!)") 
+                self.deliveryAmountLabel.text = (self.orderType == .pickup) ? ("AED 0") : ("AED \(self.totalDeliveryCharge ?? 0)") 
 				self.deliveryAmountLabel.textColor = .lightGray
-				let totalCost: Double = (data["big_total"] as? Double) ?? 0.0
+                
+                
+                print("bigTotal,",self.bigTotal)
+                print("subTotal,",self.subTotal)
+
+                let totalCost: Double = (self.orderType == OrderType.pickup) ? (self.subTotal) : (self.bigTotal)
 				self.totalLabel.text = "AED \(totalCost)"
+                
 				self.deliverySummaryLabel.text = "Total Delivery"
 				self.tableView.reloadData()
 			}
@@ -871,11 +888,17 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 			}
 		}
 		
-		subtotalLabel.text = "AED \(totalCost)"
-		deliveryAmountLabel.text = "*"
-		deliveryAmountLabel.textColor = .red
-		totalLabel.attributedText = "AED \(totalCost)^{*}".superscripted(font: totalLabel.font)
+
+        
+		//subtotalLabel.text = "AED \(totalCost)"
+//		deliveryAmountLabel.text = "*"
+//		deliveryAmountLabel.textColor = .red
+//		totalLabel.attributedText = "AED \(totalCost)^{*}".superscripted(font: totalLabel.font)
 		deliverySummaryLabel.text = "Total Delivery"
+        let totalCost2: Double = (self.orderType == OrderType.pickup) ? (self.subTotal) : (self.bigTotal)
+        self.totalLabel.text = "AED \(totalCost2)"
+        self.deliveryAmountLabel.text = (self.orderType == .pickup) ? ("AED 0") : ("AED \(self.totalDeliveryCharge ?? 0)") 
+
 		//summaryDeliveryChargeLabel.isHidden = false
 	}
 	
