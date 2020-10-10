@@ -96,7 +96,10 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
             self.addressDetailLabel.text = "-"
         }
         
-        self.deliveryAmountLabel.text = (self.orderType == .pickup) ? ("*") : ("AED \(self.totalDeliveryCharge!)") 
+        if(self.isUserLoggedIn == false){
+            return 
+        }
+        self.deliveryAmountLabel.text = (self.orderType == .pickup) ? ("AED 0") : ("AED \(self.totalDeliveryCharge!)") 
 
         //self.getCartDetails()
         
@@ -709,7 +712,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 				let subTotal: Double = (data["total_price"] as? Double) ?? 0.0
 				self.subtotalLabel.text = "AED \(subTotal)"
                 self.totalDeliveryCharge = (data["total_delivery_cost"] as? Double) ?? 0.0
-                self.deliveryAmountLabel.text = (self.orderType == .pickup) ? ("*") : ("AED \(self.totalDeliveryCharge!)") 
+                self.deliveryAmountLabel.text = (self.orderType == .pickup) ? ("AED 0") : ("AED \(self.totalDeliveryCharge!)") 
 				self.deliveryAmountLabel.textColor = .lightGray
 				let totalCost: Double = (data["big_total"] as? Double) ?? 0.0
 				self.totalLabel.text = "AED \(totalCost)"
@@ -853,6 +856,9 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
 	}
 	
     func setAddress(){
+        if(self.isUserLoggedIn == false){
+            return 
+        }
 		addressNameLabel.text = selectedAddress?.name
 		addressDetailLabel.text = selectedAddress!.city + ", " + selectedAddress!.street + ", " + selectedAddress!.extra
 	}

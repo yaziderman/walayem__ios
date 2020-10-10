@@ -18,7 +18,9 @@ class ChooseAddressTableViewController: UITableViewController {
     // MARK: Actions
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        print("did_tap_cancel")
+        //dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     

@@ -198,12 +198,12 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
             
 			self.addSubview(iconView)
 			self.addSubview(iconView2)
-			self.addSubview(homeLabel)
+//			self.addSubview(homeLabel)
 			self.addSubview(noteTextField)
 			noteTextField.delegate = self
 			
-			iconView.heightAnchor.constraint(equalToConstant: 17).isActive = true
-			iconView.widthAnchor.constraint(equalToConstant: 17).isActive = true
+			iconView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+			iconView.widthAnchor.constraint(equalToConstant: 0).isActive = true
 			
 			iconView2.heightAnchor.constraint(equalToConstant: 17).isActive = true
 			iconView2.widthAnchor.constraint(equalToConstant: 17).isActive = true
@@ -224,25 +224,25 @@ class CartFoodFooterCell: UITableViewHeaderFooterView, UITextFieldDelegate{
 			
             //iconView1.leadingAnchor.constraint(equalTo: guide.leadingAnchor, constant: 20).isActive = true
 
-			homeLabel.centerYAnchor.constraint(equalTo: iconView.centerYAnchor).isActive = true
-			homeLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 12).isActive = true
-			homeLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
-			homeLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: 20).isActive = true
-			if deliveryCharge == 0.0 {
-				homeLabel.textColor = .red
-//				homeLabel.text = "Cash on delivery: *"
-				let attrs1 = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15), NSAttributedString.Key.foregroundColor : UIColor.lightGray]
-				
-				let attrs2 = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15), NSAttributedString.Key.foregroundColor : UIColor.red]
-				
-				let attributedString = NSMutableAttributedString(string:"+ Delivery Cost: ", attributes:attrs1)
-				attributedString.append(NSMutableAttributedString(string:"*", attributes:attrs2))
-				// set label Attribute
-				//homeLabel.attributedText = attributedString
-			} else {
-				//homeLabel.textColor = .lightGray
-				//homeLabel.text = "+ Delivery Cost: AED \(deliveryCharge)"
-			}
+//			homeLabel.centerYAnchor.constraint(equalTo: iconView.centerYAnchor).isActive = true
+//			homeLabel.leadingAnchor.constraint(equalTo: iconView.trailingAnchor, constant: 12).isActive = true
+//			homeLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+//			homeLabel.trailingAnchor.constraint(equalTo: guide.trailingAnchor, constant: 20).isActive = true
+//			if deliveryCharge == 0.0 {
+//				homeLabel.textColor = .red
+////				homeLabel.text = "Cash on delivery: *"
+//				let attrs1 = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15), NSAttributedString.Key.foregroundColor : UIColor.lightGray]
+//				
+//				let attrs2 = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 15), NSAttributedString.Key.foregroundColor : UIColor.red]
+//				
+//				let attributedString = NSMutableAttributedString(string:"+ Delivery Cost: ", attributes:attrs1)
+//				attributedString.append(NSMutableAttributedString(string:"*", attributes:attrs2))
+//				// set label Attribute
+//				//homeLabel.attributedText = attributedString
+//			} else {
+//				//homeLabel.textColor = .lightGray
+//				//homeLabel.text = "+ Delivery Cost: AED \(deliveryCharge)"
+//			}
 
 		}
 		

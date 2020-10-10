@@ -83,7 +83,7 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
     
     func renderTotals(){
         self.subtotalLabel.text = self.amount_subtotal
-        deliveryAmountLabel.text = (self.orderType == OrderType.pickup) ? ("*") : (amount_delivery) 
+        deliveryAmountLabel.text = (self.orderType == OrderType.pickup) ? ("0 AED") : (amount_delivery) 
         self.deliveryAmountLabel.textColor = .lightGray
         totalLabel.text = amount_total
         self.deliverySummaryLabel.text = "Total Delivery"
