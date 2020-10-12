@@ -165,6 +165,29 @@
 		D0A0164E245BC2F50025AA58 /* ChefCityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0A0164C245BC2F50025AA58 /* ChefCityTableViewCell.xib */; };
 		D0A223582458EFAC009C90B2 /* ChefCoverageArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0A223572458EFAC009C90B2 /* ChefCoverageArea.swift */; };
 		E305006A252938A40011CA81 /* SwiftLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3050069252938A40011CA81 /* SwiftLoading.swift */; };
+		E32F2B522534B7EE007C2FE4 /* CCMaster.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B3E2534B7EE007C2FE4 /* CCMaster.png */; };
+		E32F2B532534B7EE007C2FE4 /* CCUpArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B3F2534B7EE007C2FE4 /* CCUpArrow.png */; };
+		E32F2B542534B7EE007C2FE4 /* CCAmericanExpress.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B402534B7EE007C2FE4 /* CCAmericanExpress.png */; };
+		E32F2B552534B7EE007C2FE4 /* CCDefaultCard.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B412534B7EE007C2FE4 /* CCDefaultCard.png */; };
+		E32F2B562534B7EE007C2FE4 /* CCArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B422534B7EE007C2FE4 /* CCArrow.png */; };
+		E32F2B572534B7EE007C2FE4 /* CCLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B432534B7EE007C2FE4 /* CCLeft.png */; };
+		E32F2B582534B7EE007C2FE4 /* CCCVV.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B442534B7EE007C2FE4 /* CCCVV.png */; };
+		E32F2B592534B7EE007C2FE4 /* CCAvenueLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B452534B7EE007C2FE4 /* CCAvenueLogo.png */; };
+		E32F2B5A2534B7EE007C2FE4 /* CCDownArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B462534B7EE007C2FE4 /* CCDownArrow.png */; };
+		E32F2B5B2534B7EE007C2FE4 /* CCuicheckbox_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B472534B7EE007C2FE4 /* CCuicheckbox_unchecked.png */; };
+		E32F2B5C2534B7EE007C2FE4 /* CCuicheckbox_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B482534B7EE007C2FE4 /* CCuicheckbox_checked.png */; };
+		E32F2B5D2534B7EE007C2FE4 /* CCRupay.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B492534B7EE007C2FE4 /* CCRupay.png */; };
+		E32F2B5E2534B7EE007C2FE4 /* CCAmex.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B4A2534B7EE007C2FE4 /* CCAmex.png */; };
+		E32F2B5F2534B7EE007C2FE4 /* CCDiners.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B4B2534B7EE007C2FE4 /* CCDiners.png */; };
+		E32F2B602534B7EE007C2FE4 /* CCJCB.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B4C2534B7EE007C2FE4 /* CCJCB.png */; };
+		E32F2B612534B7EE007C2FE4 /* CCRight.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B4D2534B7EE007C2FE4 /* CCRight.png */; };
+		E32F2B622534B7EE007C2FE4 /* CCDiscover.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B4E2534B7EE007C2FE4 /* CCDiscover.png */; };
+		E32F2B632534B7EE007C2FE4 /* CCCard.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B4F2534B7EE007C2FE4 /* CCCard.png */; };
+		E32F2B642534B7EE007C2FE4 /* CCVisa.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B502534B7EE007C2FE4 /* CCVisa.png */; };
+		E32F2B652534B7EE007C2FE4 /* CCMaestro.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B512534B7EE007C2FE4 /* CCMaestro.png */; };
+		E32F2B662534B808007C2FE4 /* CCAvenueSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32F2B3B2534B7DF007C2FE4 /* CCAvenueSDK.framework */; };
+		E32F2B672534B808007C2FE4 /* CCAvenueSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E32F2B3B2534B7DF007C2FE4 /* CCAvenueSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E32F2B6B2534B89F007C2FE4 /* CCAvenueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32F2B6A2534B89F007C2FE4 /* CCAvenueVC.swift */; };
 		E3390D122526982F00853C92 /* PaymentSummary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3390D112526982F00853C92 /* PaymentSummary.storyboard */; };
 		E3390D1425269DEC00853C92 /* PaymentSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3390D1325269DEC00853C92 /* PaymentSummaryViewController.swift */; };
 		E3390D1A2527F9E100853C92 /* ChefLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3390D192527F9E100853C92 /* ChefLocation.swift */; };
@@ -172,6 +195,20 @@
 		F59E40FE2490C0750067F763 /* LocationWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E40FD2490C0750067F763 /* LocationWrapper.swift */; };
 		F5AAF1C424A1E631003945F8 /* ChangeDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AAF1C324A1E630003945F8 /* ChangeDescriptionViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E32F2B682534B808007C2FE4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				E32F2B672534B808007C2FE4 /* CCAvenueSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		040902D120B2922800059F1D /* ChefFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefFoodViewController.swift; sourceTree = "<group>"; };
@@ -337,6 +374,29 @@
 		D0A223572458EFAC009C90B2 /* ChefCoverageArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefCoverageArea.swift; sourceTree = "<group>"; };
 		D8AE526667D0D9C189AB98C6 /* Pods-Walayem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Walayem.release.xcconfig"; path = "Target Support Files/Pods-Walayem/Pods-Walayem.release.xcconfig"; sourceTree = "<group>"; };
 		E3050069252938A40011CA81 /* SwiftLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftLoading.swift; sourceTree = "<group>"; };
+		E32F2B3B2534B7DF007C2FE4 /* CCAvenueSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CCAvenueSDK.framework; sourceTree = "<group>"; };
+		E32F2B3E2534B7EE007C2FE4 /* CCMaster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCMaster.png; sourceTree = "<group>"; };
+		E32F2B3F2534B7EE007C2FE4 /* CCUpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCUpArrow.png; sourceTree = "<group>"; };
+		E32F2B402534B7EE007C2FE4 /* CCAmericanExpress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCAmericanExpress.png; sourceTree = "<group>"; };
+		E32F2B412534B7EE007C2FE4 /* CCDefaultCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCDefaultCard.png; sourceTree = "<group>"; };
+		E32F2B422534B7EE007C2FE4 /* CCArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCArrow.png; sourceTree = "<group>"; };
+		E32F2B432534B7EE007C2FE4 /* CCLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCLeft.png; sourceTree = "<group>"; };
+		E32F2B442534B7EE007C2FE4 /* CCCVV.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCCVV.png; sourceTree = "<group>"; };
+		E32F2B452534B7EE007C2FE4 /* CCAvenueLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCAvenueLogo.png; sourceTree = "<group>"; };
+		E32F2B462534B7EE007C2FE4 /* CCDownArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCDownArrow.png; sourceTree = "<group>"; };
+		E32F2B472534B7EE007C2FE4 /* CCuicheckbox_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCuicheckbox_unchecked.png; sourceTree = "<group>"; };
+		E32F2B482534B7EE007C2FE4 /* CCuicheckbox_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCuicheckbox_checked.png; sourceTree = "<group>"; };
+		E32F2B492534B7EE007C2FE4 /* CCRupay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCRupay.png; sourceTree = "<group>"; };
+		E32F2B4A2534B7EE007C2FE4 /* CCAmex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCAmex.png; sourceTree = "<group>"; };
+		E32F2B4B2534B7EE007C2FE4 /* CCDiners.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCDiners.png; sourceTree = "<group>"; };
+		E32F2B4C2534B7EE007C2FE4 /* CCJCB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCJCB.png; sourceTree = "<group>"; };
+		E32F2B4D2534B7EE007C2FE4 /* CCRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCRight.png; sourceTree = "<group>"; };
+		E32F2B4E2534B7EE007C2FE4 /* CCDiscover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCDiscover.png; sourceTree = "<group>"; };
+		E32F2B4F2534B7EE007C2FE4 /* CCCard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCCard.png; sourceTree = "<group>"; };
+		E32F2B502534B7EE007C2FE4 /* CCVisa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCVisa.png; sourceTree = "<group>"; };
+		E32F2B512534B7EE007C2FE4 /* CCMaestro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCMaestro.png; sourceTree = "<group>"; };
+		E32F2B692534B829007C2FE4 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		E32F2B6A2534B89F007C2FE4 /* CCAvenueVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAvenueVC.swift; sourceTree = "<group>"; };
 		E3390D112526982F00853C92 /* PaymentSummary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentSummary.storyboard; sourceTree = "<group>"; };
 		E3390D1325269DEC00853C92 /* PaymentSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentSummaryViewController.swift; path = Walayem/UserViewControllers/PaymentSummaryViewController.swift; sourceTree = SOURCE_ROOT; };
 		E3390D192527F9E100853C92 /* ChefLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefLocation.swift; sourceTree = "<group>"; };
@@ -353,6 +413,7 @@
 			files = (
 				0AE735B420BD464000944CF4 /* UserNotifications.framework in Frameworks */,
 				C2C495789439026A055054AF /* Pods_Walayem.framework in Frameworks */,
+				E32F2B662534B808007C2FE4 /* CCAvenueSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,8 +591,11 @@
 		04CF06BB2084634F0064B18A = {
 			isa = PBXGroup;
 			children = (
+				E32F2B692534B829007C2FE4 /* Bridging-Header.h */,
 				F571300924912E31009EF29F /* Location.gpx */,
+				E32F2B3B2534B7DF007C2FE4 /* CCAvenueSDK.framework */,
 				04CF06C62084634F0064B18A /* Walayem */,
+				E32F2B3D2534B7EE007C2FE4 /* CCAvenueSDKImages */,
 				04CF06C52084634F0064B18A /* Products */,
 				13647588DE32F5E7B4978CF1 /* Frameworks */,
 				81ED93BEA22557AA88A8604B /* Pods */,
@@ -569,6 +633,7 @@
 				04B8250020A3112000458DA6 /* Assets.xcassets */,
 				04CF06D2208463520064B18A /* LaunchScreen.storyboard */,
 				04CF06D5208463520064B18A /* Info.plist */,
+				E32F2B6A2534B89F007C2FE4 /* CCAvenueVC.swift */,
 			);
 			path = Walayem;
 			sourceTree = "<group>";
@@ -647,6 +712,33 @@
 			path = CollectionViewCells;
 			sourceTree = "<group>";
 		};
+		E32F2B3D2534B7EE007C2FE4 /* CCAvenueSDKImages */ = {
+			isa = PBXGroup;
+			children = (
+				E32F2B3E2534B7EE007C2FE4 /* CCMaster.png */,
+				E32F2B3F2534B7EE007C2FE4 /* CCUpArrow.png */,
+				E32F2B402534B7EE007C2FE4 /* CCAmericanExpress.png */,
+				E32F2B412534B7EE007C2FE4 /* CCDefaultCard.png */,
+				E32F2B422534B7EE007C2FE4 /* CCArrow.png */,
+				E32F2B432534B7EE007C2FE4 /* CCLeft.png */,
+				E32F2B442534B7EE007C2FE4 /* CCCVV.png */,
+				E32F2B452534B7EE007C2FE4 /* CCAvenueLogo.png */,
+				E32F2B462534B7EE007C2FE4 /* CCDownArrow.png */,
+				E32F2B472534B7EE007C2FE4 /* CCuicheckbox_unchecked.png */,
+				E32F2B482534B7EE007C2FE4 /* CCuicheckbox_checked.png */,
+				E32F2B492534B7EE007C2FE4 /* CCRupay.png */,
+				E32F2B4A2534B7EE007C2FE4 /* CCAmex.png */,
+				E32F2B4B2534B7EE007C2FE4 /* CCDiners.png */,
+				E32F2B4C2534B7EE007C2FE4 /* CCJCB.png */,
+				E32F2B4D2534B7EE007C2FE4 /* CCRight.png */,
+				E32F2B4E2534B7EE007C2FE4 /* CCDiscover.png */,
+				E32F2B4F2534B7EE007C2FE4 /* CCCard.png */,
+				E32F2B502534B7EE007C2FE4 /* CCVisa.png */,
+				E32F2B512534B7EE007C2FE4 /* CCMaestro.png */,
+			);
+			path = CCAvenueSDKImages;
+			sourceTree = "<group>";
+		};
 		E3390D0F2526905400853C92 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,6 +792,7 @@
 				04CF06C22084634F0064B18A /* Resources */,
 				EA3B83D9059F61CBFA11215F /* [CP] Embed Pods Frameworks */,
 				228437D9D60AAE364EAE0157 /* [CP] Copy Pods Resources */,
+				E32F2B682534B808007C2FE4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -755,18 +848,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				523CDF8820A070A30090C3E6 /* ChefMenu.storyboard in Resources */,
+				E32F2B582534B7EE007C2FE4 /* CCCVV.png in Resources */,
+				E32F2B622534B7EE007C2FE4 /* CCDiscover.png in Resources */,
 				04CF06E4208468D40064B18A /* Cart.storyboard in Resources */,
 				0A3B841E20B57F2100E1E24C /* CartFoodHeaderCell.xib in Resources */,
 				04CF06D4208463520064B18A /* LaunchScreen.storyboard in Resources */,
 				8395D11024B6F2EE0087A9AA /* GoogleService-Info.plist in Resources */,
 				04CF06E8208468FF0064B18A /* Profile.storyboard in Resources */,
 				BE9B441C23E95C5D000F6225 /* CuisineCollectionViewCell.xib in Resources */,
+				E32F2B612534B7EE007C2FE4 /* CCRight.png in Resources */,
 				0A08C49F20C1309500E006AB /* EditProfile.storyboard in Resources */,
+				E32F2B5B2534B7EE007C2FE4 /* CCuicheckbox_unchecked.png in Resources */,
 				0ADC141520B6DD350003FC8B /* More.storyboard in Resources */,
 				04B8250120A3112200458DA6 /* Assets.xcassets in Resources */,
+				E32F2B602534B7EE007C2FE4 /* CCJCB.png in Resources */,
+				E32F2B572534B7EE007C2FE4 /* CCLeft.png in Resources */,
+				E32F2B592534B7EE007C2FE4 /* CCAvenueLogo.png in Resources */,
 				04CF06DC208465B00064B18A /* User.storyboard in Resources */,
 				04CF06CF2084634F0064B18A /* Main.storyboard in Resources */,
 				04CF06E6208468EE0064B18A /* Order.storyboard in Resources */,
+				E32F2B5A2534B7EE007C2FE4 /* CCDownArrow.png in Resources */,
+				E32F2B652534B7EE007C2FE4 /* CCMaestro.png in Resources */,
+				E32F2B5F2534B7EE007C2FE4 /* CCDiners.png in Resources */,
 				04CF06DE208465D50064B18A /* WalkThrough.storyboard in Resources */,
 				7F2CCF762483FF3300756B69 /* DeliveryLocationView.xib in Resources */,
 				52F2D1CF209ECE1B00FAE72C /* ChefMain.storyboard in Resources */,
@@ -775,13 +878,23 @@
 				BEBB0FF123E7EC6700D43789 /* Home.storyboard in Resources */,
 				04CF06E0208468AD0064B18A /* Discover.storyboard in Resources */,
 				523CDF8A20A070B60090C3E6 /* ChefProfile.storyboard in Resources */,
+				E32F2B642534B7EE007C2FE4 /* CCVisa.png in Resources */,
+				E32F2B5E2534B7EE007C2FE4 /* CCAmex.png in Resources */,
+				E32F2B562534B7EE007C2FE4 /* CCArrow.png in Resources */,
 				04CF06E2208468BE0064B18A /* Chef.storyboard in Resources */,
+				E32F2B532534B7EE007C2FE4 /* CCUpArrow.png in Resources */,
 				D0A0164E245BC2F50025AA58 /* ChefCityTableViewCell.xib in Resources */,
 				52F2D1CF209ECE1B00FAE72C /* ChefMain.storyboard in Resources */,
 				523CDF8620A0708E0090C3E6 /* ChefOrders.storyboard in Resources */,
+				E32F2B522534B7EE007C2FE4 /* CCMaster.png in Resources */,
 				BEBB0FF123E7EC6700D43789 /* Home.storyboard in Resources */,
 				E3390D122526982F00853C92 /* PaymentSummary.storyboard in Resources */,
+				E32F2B542534B7EE007C2FE4 /* CCAmericanExpress.png in Resources */,
 				04CF06E0208468AD0064B18A /* Discover.storyboard in Resources */,
+				E32F2B5D2534B7EE007C2FE4 /* CCRupay.png in Resources */,
+				E32F2B552534B7EE007C2FE4 /* CCDefaultCard.png in Resources */,
+				E32F2B5C2534B7EE007C2FE4 /* CCuicheckbox_checked.png in Resources */,
+				E32F2B632534B7EE007C2FE4 /* CCCard.png in Resources */,
 				523CDF8A20A070B60090C3E6 /* ChefProfile.storyboard in Resources */,
 				04CF06E2208468BE0064B18A /* Chef.storyboard in Resources */,
 			);
@@ -881,6 +994,7 @@
 				04D9E8AB2085D31A002E1B51 /* SignupViewController.swift in Sources */,
 				5B467DF323B882CE008620FF /* Chef.swift in Sources */,
 				7F3EE9D7247571DF00D429BC /* ChefSearchResultsViewController.swift in Sources */,
+				E32F2B6B2534B89F007C2FE4 /* CCAvenueVC.swift in Sources */,
 				E3390D1425269DEC00853C92 /* PaymentSummaryViewController.swift in Sources */,
 				5B467DF623B882CE008620FF /* Account.swift in Sources */,
 				83FE26F724B5D9C80024C500 /* Encodable+Dictionary.swift in Sources */,
@@ -1149,6 +1263,10 @@
 				CURRENT_PROJECT_VERSION = 445;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Walayem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1160,6 +1278,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1176,6 +1295,10 @@
 				CURRENT_PROJECT_VERSION = 445;
 				DEVELOPMENT_TEAM = 5UFHLLPH4B;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = Walayem/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1187,6 +1310,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
