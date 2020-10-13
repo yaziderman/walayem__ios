@@ -9,49 +9,65 @@
 import UIKit
 import CCAvenueSDK
 
+
+
 class CCAvenueVC : UIViewController {
     
-    let paymentController = CCAvenuePaymentController.init(
-        orderId:"1234",
-        merchantId:"79562" ,
-        accessCode:"ABHGH784GFDE",
-        custId:"TestUser",
-        amount:"10.00",
-        currency:"AED",
-        rsaKeyUrl:"www.abc.ae/RSA.jsp",
-        redirectUrl:"www.abc.ae/Redirect.jsp",
-        cancelUrl:"www.abc.ae/Cancel.jsp",
-        showAddress:"Y",
-        billingName:"ABC",
-        billingAddress:"Star City",
-        billingCity:"Dubai",
-        billingState:"Dubai",
-        billingCountry:"United Arab Emirates",
-        billingTel:"+971 1234567890",
-        billingEmail:"test@gmail.com",
-        deliveryName:"XYZ",
-        deliveryAddress:"Internet City",
-        deliveryCity:"Dubai",
-        deliveryState:"Dubai",
-        deliveryCountry:"United Arab Emirates",
-        deliveryTel:"+971 9876543210",
-        promoCode:"PROMO1270" ,
-        merchant_param1:"Param 1",
-        merchant_param2:"Param 2",
-        merchant_param3:"Param 3",
-        merchant_param4:"Param 4" ,
-        merchant_param5:"Param 5",
-        useCCPromo:"Y"
-    )
+    // Constants
+    let merchant_id = "45990"
+    let access_code = "AVZG03HH52BB21GZBB"
+    let working_key = "1EBF259248E077521944E00A169F91CE"
     
+    // Variables
+    var orderId = "" // WA1430
     
-    func initScreen(){
-        self.present(paymentController!, animated: true, completion: nil);
-    }
+    var billing = CCAvenueBilling?
+    var delivery = CCAvenueDelivery?
+
+    var custId : "TestUser"
+    var amount : "10.00"
     
     override func viewDidLoad(){
+        let paymentController = CCAvenuePaymentController.init(
+            orderId:self.orderId,
+            merchantId:self.merchant_id,
+            accessCode:self.access_code,
+            custId:self.custId,
+            amount:self.amount,
+            currency:"AED",
+            rsaKeyUrl:"www.abc.ae/RSA.jsp", // /payment/ccavenue/cancel
+            redirectUrl:"www.abc.ae/Redirect.jsp", // /payment/ccavenue/return
+            cancelUrl:"www.abc.ae/Cancel.jsp", // /payment/ccavenue/cancel
+            showAddress:"Y",
+            
+            billingName:self.bill.billingName
+            billingAddress:self.bill.billingAddress
+            billingCity:self.bill.billingCity
+            billingState:self.bill.billingState
+            billingCountry:self.bill.billingCountry
+            billingTel:self.bill.billingTel
+            billingEmail:self.bill.billingEmail
+            
+            deliveryName:self.delivery.deliveryName
+            deliveryAddress:self.delivery.deliveryAddress
+            deliveryCity:self.delivery.deliveryCity
+            deliveryState:self.delivery.deliveryState
+            deliveryCountry:self.delivery.deliveryCountry
+            deliveryTel:self.delivery.deliveryTel
+            
+            promoCode:"",
+            merchant_param1:"test",
+            merchant_param2:"",
+            merchant_param3:"",
+            merchant_param4:"" ,
+            merchant_param5:"",
+            useCCPromo:"" //Y
+        )
+        
         paymentController?.delegate = self;
 
+        self.present(paymentController!, animated: true, completion: nil);
+        
     }
 
 }
@@ -64,4 +80,23 @@ extension CCAvenueVC : CCAvenuePaymentControllerDelegate {
         print("Response in merchant app :- \(responseDict_)");
     }
     
+}
+
+struct CCAvenueBilling {
+    var billingName = "ABC"
+    var billingAddress = "Star City"
+    var billingCity = "Dubai"
+    var billingState = "Dubai"
+    var billingCountry = "United Arab Emirates"
+    var billingTel = "+971 1234567890"
+    var billingEmail = "test@gmail.com"
+}
+
+struct CCAvenueDelivery {
+    var deliveryName = "XYZ"
+    var deliveryAddress = "Internet City"
+    var deliveryCity = "Dubai"
+    var deliveryState = "Dubai"
+    var deliveryCountry = "United Arab Emirates"
+    var deliveryTel = "+971 9876543210"
 }
