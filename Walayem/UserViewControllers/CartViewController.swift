@@ -263,6 +263,7 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
             return
         }
         
+        
         if (true) {
 			
 			let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
@@ -292,79 +293,9 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
                 
                 self.navigationController?.pushViewController(vc_summary, animated: true)
                 
-                return
+                // tamam
+                // return
                 
-				let progressAlert = showProgressAlert()
-				var orderItems = [Any]()
-				for item in cartItems {
-					// add food details
-					var products = [Any]()
-					for food in item.chef.foods{
-						var dict = [String: Int]()
-						dict["product_id"] = food.id
-						dict["product_uom_qty"] = food.quantity
-						
-						products.append(dict)
-					}
-					// add chef details
-					var dict = [String: Any]()
-					dict["chef_id"] = item.chef.id
-                    dict["delivery_cost"] = item.deliveryCost
-                    dict["note"] = item.note
-					dict["products"] = products
-					
-					orderItems.append(dict)
-				}
-				
-				var params: [String: Any] = ["partner_id": user?.partner_id as Any,
-											 "address_id": selectedAddress!.id,
-											 "orders": orderItems]
-				let orderType = UserDefaults.standard.string(forKey: "OrderType") ?? "asap"
-				params.updateValue(orderType, forKey: "order_type")
-				
-				print("order type-->"+orderType)
-				
-				if(orderType == "future"){
-					let orderDate = UserDefaults.standard.string(forKey: "OrderDate") ?? ""
-					let dateFormatter = DateFormatter()
-					dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-					let date = dateFormatter.date(from: orderDate)
-					
-					let dateTimeFormatter = DateFormatter()
-					dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-					dateTimeFormatter.timeZone = TimeZone(abbreviation: "UTC")
-					let date_time_str = dateTimeFormatter.string(from: date!)
-					params.updateValue(date_time_str, forKey: "order_for")
-				}
-                
-                print(params.description)
-				SwiftLoading().showLoading()
-				RestClient().request(WalayemApi.placeOrder, params, self) { (result, error) in
-                    SwiftLoading().hideLoading()
-					progressAlert.dismiss(animated: true, completion: {
-						if error != nil{
-							let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
-							self.showAlert(title: "Error", msg: errmsg)
-							return
-						}
-						let value = result!["result"] as! [String: Any]
-						let msg = value["message"] as! String
-						if let status = value["status"] as? Int, status == 0{
-							self.showAlert(title: "Error", msg: msg)
-							return
-						}
-						
-						self.clearCartItems()
-						let records = value["orders"] as! [Any]
-						guard let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "OrderSuccessVC") as? OrderSuccessViewController else {
-							fatalError("Unexpected destiation view controller")
-						}
-						destinationVC.orders = records
-						self.present(destinationVC, animated: true, completion: nil)
-					})
-					
-				}
-				
 			}
 		} else {
 //            let sb_ps = UIStoryboard(name: "PaymentSummary", bundle: nil) 

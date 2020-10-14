@@ -185,9 +185,6 @@
 		E32F2B632534B7EE007C2FE4 /* CCCard.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B4F2534B7EE007C2FE4 /* CCCard.png */; };
 		E32F2B642534B7EE007C2FE4 /* CCVisa.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B502534B7EE007C2FE4 /* CCVisa.png */; };
 		E32F2B652534B7EE007C2FE4 /* CCMaestro.png in Resources */ = {isa = PBXBuildFile; fileRef = E32F2B512534B7EE007C2FE4 /* CCMaestro.png */; };
-		E32F2B662534B808007C2FE4 /* CCAvenueSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E32F2B3B2534B7DF007C2FE4 /* CCAvenueSDK.framework */; };
-		E32F2B672534B808007C2FE4 /* CCAvenueSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E32F2B3B2534B7DF007C2FE4 /* CCAvenueSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E32F2B6B2534B89F007C2FE4 /* CCAvenueVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32F2B6A2534B89F007C2FE4 /* CCAvenueVC.swift */; };
 		E3390D122526982F00853C92 /* PaymentSummary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3390D112526982F00853C92 /* PaymentSummary.storyboard */; };
 		E3390D1425269DEC00853C92 /* PaymentSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3390D1325269DEC00853C92 /* PaymentSummaryViewController.swift */; };
 		E3390D1A2527F9E100853C92 /* ChefLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3390D192527F9E100853C92 /* ChefLocation.swift */; };
@@ -197,13 +194,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E32F2B682534B808007C2FE4 /* Embed Frameworks */ = {
+		E34316F32537986B00EE3781 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E32F2B672534B808007C2FE4 /* CCAvenueSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,7 +370,6 @@
 		D0A223572458EFAC009C90B2 /* ChefCoverageArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefCoverageArea.swift; sourceTree = "<group>"; };
 		D8AE526667D0D9C189AB98C6 /* Pods-Walayem.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Walayem.release.xcconfig"; path = "Target Support Files/Pods-Walayem/Pods-Walayem.release.xcconfig"; sourceTree = "<group>"; };
 		E3050069252938A40011CA81 /* SwiftLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftLoading.swift; sourceTree = "<group>"; };
-		E32F2B3B2534B7DF007C2FE4 /* CCAvenueSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CCAvenueSDK.framework; sourceTree = "<group>"; };
 		E32F2B3E2534B7EE007C2FE4 /* CCMaster.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCMaster.png; sourceTree = "<group>"; };
 		E32F2B3F2534B7EE007C2FE4 /* CCUpArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCUpArrow.png; sourceTree = "<group>"; };
 		E32F2B402534B7EE007C2FE4 /* CCAmericanExpress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCAmericanExpress.png; sourceTree = "<group>"; };
@@ -396,7 +391,6 @@
 		E32F2B502534B7EE007C2FE4 /* CCVisa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCVisa.png; sourceTree = "<group>"; };
 		E32F2B512534B7EE007C2FE4 /* CCMaestro.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CCMaestro.png; sourceTree = "<group>"; };
 		E32F2B692534B829007C2FE4 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
-		E32F2B6A2534B89F007C2FE4 /* CCAvenueVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCAvenueVC.swift; sourceTree = "<group>"; };
 		E3390D112526982F00853C92 /* PaymentSummary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentSummary.storyboard; sourceTree = "<group>"; };
 		E3390D1325269DEC00853C92 /* PaymentSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentSummaryViewController.swift; path = Walayem/UserViewControllers/PaymentSummaryViewController.swift; sourceTree = SOURCE_ROOT; };
 		E3390D192527F9E100853C92 /* ChefLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefLocation.swift; sourceTree = "<group>"; };
@@ -413,7 +407,6 @@
 			files = (
 				0AE735B420BD464000944CF4 /* UserNotifications.framework in Frameworks */,
 				C2C495789439026A055054AF /* Pods_Walayem.framework in Frameworks */,
-				E32F2B662534B808007C2FE4 /* CCAvenueSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,7 +586,6 @@
 			children = (
 				E32F2B692534B829007C2FE4 /* Bridging-Header.h */,
 				F571300924912E31009EF29F /* Location.gpx */,
-				E32F2B3B2534B7DF007C2FE4 /* CCAvenueSDK.framework */,
 				04CF06C62084634F0064B18A /* Walayem */,
 				E32F2B3D2534B7EE007C2FE4 /* CCAvenueSDKImages */,
 				04CF06C52084634F0064B18A /* Products */,
@@ -633,7 +625,6 @@
 				04B8250020A3112000458DA6 /* Assets.xcassets */,
 				04CF06D2208463520064B18A /* LaunchScreen.storyboard */,
 				04CF06D5208463520064B18A /* Info.plist */,
-				E32F2B6A2534B89F007C2FE4 /* CCAvenueVC.swift */,
 			);
 			path = Walayem;
 			sourceTree = "<group>";
@@ -792,7 +783,7 @@
 				04CF06C22084634F0064B18A /* Resources */,
 				EA3B83D9059F61CBFA11215F /* [CP] Embed Pods Frameworks */,
 				228437D9D60AAE364EAE0157 /* [CP] Copy Pods Resources */,
-				E32F2B682534B808007C2FE4 /* Embed Frameworks */,
+				E34316F32537986B00EE3781 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -994,7 +985,6 @@
 				04D9E8AB2085D31A002E1B51 /* SignupViewController.swift in Sources */,
 				5B467DF323B882CE008620FF /* Chef.swift in Sources */,
 				7F3EE9D7247571DF00D429BC /* ChefSearchResultsViewController.swift in Sources */,
-				E32F2B6B2534B89F007C2FE4 /* CCAvenueVC.swift in Sources */,
 				E3390D1425269DEC00853C92 /* PaymentSummaryViewController.swift in Sources */,
 				5B467DF623B882CE008620FF /* Account.swift in Sources */,
 				83FE26F724B5D9C80024C500 /* Encodable+Dictionary.swift in Sources */,

@@ -72,6 +72,97 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 
     @IBOutlet weak var buttonChange: UIButton!
 
+    @IBAction func proceedToPayment(){
+
+        let progressAlert = showProgressAlert()
+        var orderItems = [Any]()
+        for item in cartItems {
+            // add food details
+            var products = [Any]()
+            for food in item.chef.foods{
+                var dict = [String: Int]()
+                dict["product_id"] = food.id
+                dict["product_uom_qty"] = food.quantity
+                
+                products.append(dict)
+            }
+            // add chef details
+            var dict = [String: Any]()
+            dict["chef_id"] = item.chef.id
+            dict["delivery_cost"] = item.deliveryCost
+            dict["note"] = item.note
+            dict["products"] = products
+            
+            orderItems.append(dict)
+        }
+        
+        var params: [String: Any] = [
+            "partner_id": user!.partner_id as Any,
+            "address_id": selectedAddress!.id,
+            "orders": orderItems,
+            "delivery_type": (self.orderType == .delivery) ? ("delivery") : ("pickup")
+        ]
+        
+        if(self.paymentMethod == PaymentMethod.online){
+            params["payment_type"] = "card"
+        } 
+        
+        let orderType = UserDefaults.standard.string(forKey: "OrderType") ?? "asap"
+        params.updateValue(orderType, forKey: "order_type")
+        
+        print("order type-->"+orderType)
+        
+        if(orderType == "future"){
+            let orderDate = UserDefaults.standard.string(forKey: "OrderDate") ?? ""
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            let date = dateFormatter.date(from: orderDate)
+            
+            let dateTimeFormatter = DateFormatter()
+            dateTimeFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            dateTimeFormatter.timeZone = TimeZone(abbreviation: "UTC")
+            let date_time_str = dateTimeFormatter.string(from: date!)
+            params.updateValue(date_time_str, forKey: "order_for")
+        }
+        
+        print(params.description)
+        SwiftLoading().showLoading()
+        print("WalayemApi.placeOrder",WalayemApi.placeOrder)
+        RestClient().request(WalayemApi.placeOrder, params, self) { (result, error) in
+            print("error____________________________",error)
+            SwiftLoading().hideLoading()
+            
+            print("result______________________________________________",result)
+            progressAlert.dismiss(animated: true, completion: {
+                if error != nil{
+                    let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
+                    self.showAlert(title: "Error", msg: errmsg)
+                    return
+                }
+                let value = result!["result"] as! [String: Any]
+                let msg = value["message"] as! String
+                if let status = value["status"] as? Int, status == 0{
+                    self.showAlert(title: "Error", msg: msg)
+                    return
+                }
+                
+                //self.clearCartItems()
+                let records = value["orders"] as! [Any]
+                
+    //                                self.navigationController?.pushViewController(vc_summary, animated: true)
+    //                                return
+                
+    //                                guard let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "OrderSuccessVC") as? OrderSuccessViewController else {
+    //                                    fatalError("Unexpected destiation view controller")
+    //                                }
+    //                                destinationVC.orders = records
+    //                                self.present(destinationVC, animated: true, completion: nil)
+            })
+            
+        }
+    }
+    
+    
     func renderPaymentButtonsAlpha(){
         let alphaOff : CGFloat = 1.0
         let alphaOn : CGFloat = 1.0

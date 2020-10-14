@@ -435,6 +435,9 @@
                                             <state key="normal" title="Proceed To Payment">
                                                 <color key="titleColor" red="0.94893974069999998" green="0.94907253979999995" blue="0.94889777900000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
+                                            <connections>
+                                                <action selector="proceedToPayment" destination="gYb-sx-TYN" eventType="touchUpInside" id="ekl-2g-5cc"/>
+                                            </connections>
                                         </button>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="61h-r5-F7c">
                                             <rect key="frame" x="0.0" y="646" width="375" height="51"/>
