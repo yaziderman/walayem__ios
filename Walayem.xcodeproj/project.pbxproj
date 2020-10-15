@@ -188,6 +188,8 @@
 		E3390D122526982F00853C92 /* PaymentSummary.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3390D112526982F00853C92 /* PaymentSummary.storyboard */; };
 		E3390D1425269DEC00853C92 /* PaymentSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3390D1325269DEC00853C92 /* PaymentSummaryViewController.swift */; };
 		E3390D1A2527F9E100853C92 /* ChefLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3390D192527F9E100853C92 /* ChefLocation.swift */; };
+		E34316F52537A6E200EE3781 /* Payment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E34316F42537A6E200EE3781 /* Payment.storyboard */; };
+		E34316F72537A74000EE3781 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34316F62537A74000EE3781 /* PaymentViewController.swift */; };
 		F59D99FC250B759B004A8DA5 /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59D99FB250B759B004A8DA5 /* AgreementViewController.swift */; };
 		F59E40FE2490C0750067F763 /* LocationWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59E40FD2490C0750067F763 /* LocationWrapper.swift */; };
 		F5AAF1C424A1E631003945F8 /* ChangeDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AAF1C324A1E630003945F8 /* ChangeDescriptionViewController.swift */; };
@@ -394,6 +396,8 @@
 		E3390D112526982F00853C92 /* PaymentSummary.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentSummary.storyboard; sourceTree = "<group>"; };
 		E3390D1325269DEC00853C92 /* PaymentSummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentSummaryViewController.swift; path = Walayem/UserViewControllers/PaymentSummaryViewController.swift; sourceTree = SOURCE_ROOT; };
 		E3390D192527F9E100853C92 /* ChefLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChefLocation.swift; sourceTree = "<group>"; };
+		E34316F42537A6E200EE3781 /* Payment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Payment.storyboard; sourceTree = "<group>"; };
+		E34316F62537A74000EE3781 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		F571300924912E31009EF29F /* Location.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Location.gpx; sourceTree = "<group>"; };
 		F59D99FB250B759B004A8DA5 /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		F59E40FD2490C0750067F763 /* LocationWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationWrapper.swift; sourceTree = "<group>"; };
@@ -738,6 +742,7 @@
 				0A08C49E20C1309500E006AB /* EditProfile.storyboard */,
 				0ADC141420B6DD350003FC8B /* More.storyboard */,
 				E3390D112526982F00853C92 /* PaymentSummary.storyboard */,
+				E34316F42537A6E200EE3781 /* Payment.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -766,6 +771,7 @@
 				52EA619D20B3E586001DB6CC /* PrivacyViewController.swift */,
 				0AD0350020C550B10030E1E8 /* ImageViewController.swift */,
 				E3390D192527F9E100853C92 /* ChefLocation.swift */,
+				E34316F62537A74000EE3781 /* PaymentViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -856,6 +862,7 @@
 				E32F2B572534B7EE007C2FE4 /* CCLeft.png in Resources */,
 				E32F2B592534B7EE007C2FE4 /* CCAvenueLogo.png in Resources */,
 				04CF06DC208465B00064B18A /* User.storyboard in Resources */,
+				E34316F52537A6E200EE3781 /* Payment.storyboard in Resources */,
 				04CF06CF2084634F0064B18A /* Main.storyboard in Resources */,
 				04CF06E6208468EE0064B18A /* Order.storyboard in Resources */,
 				E32F2B5A2534B7EE007C2FE4 /* CCDownArrow.png in Resources */,
@@ -1027,6 +1034,7 @@
 				8395D11424B6F4990087A9AA /* RemoteConfigFetcher.swift in Sources */,
 				0A08C4A120C1314800E006AB /* ChangeNameViewController.swift in Sources */,
 				04E854B620B159CB00A26562 /* ChefProfileTableViewController.swift in Sources */,
+				E34316F72537A74000EE3781 /* PaymentViewController.swift in Sources */,
 				E305006A252938A40011CA81 /* SwiftLoading.swift in Sources */,
 				0A24D16620D656BE00692A23 /* VerifyPhoneViewController.swift in Sources */,
 				04F2158320887622003D47AD /* RecommendedCollectionTableViewCell.swift in Sources */,

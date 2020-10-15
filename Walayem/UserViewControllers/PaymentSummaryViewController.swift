@@ -125,14 +125,20 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
             params.updateValue(date_time_str, forKey: "order_for")
         }
         
-        print(params.description)
+        print("params1",params.values)
+        print("params2",params.description)
+        print("params3",params.debugDescription)
+        print("params4",params)
+
         SwiftLoading().showLoading()
         print("WalayemApi.placeOrder",WalayemApi.placeOrder)
         RestClient().request(WalayemApi.placeOrder, params, self) { (result, error) in
             print("error____________________________",error)
             SwiftLoading().hideLoading()
             
-            print("result______________________________________________",result)
+            print("result1______________________________________________",result)
+            print("result2______________________________________________",result?.values)
+
             progressAlert.dismiss(animated: true, completion: {
                 if error != nil{
                     let errmsg = error?.userInfo[NSLocalizedDescriptionKey] as! String
@@ -141,6 +147,26 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
                 }
                 let value = result!["result"] as! [String: Any]
                 let msg = value["message"] as! String
+
+                let orders = value["orders"] as! [[String:Any]]
+                
+                let encryptedstring = orders.first!["encryptedstring"] as! String
+                let order_id = orders.first!["order_id"] as! String
+
+                print("encryptedstring",encryptedstring)
+                print("order_id",order_id)
+
+                let sb_payment = UIStoryboard(name: "Payment", bundle: nil)
+
+                guard let destinationVC = sb_payment.instantiateViewController(withIdentifier: "PaymentViewController") as? PaymentViewController else {
+                    fatalError("Unexpected destiation view controller")
+                }
+                
+                destinationVC.enc = encryptedstring
+                destinationVC.order_id = order_id
+
+                self.navigationController?.pushViewController(destinationVC, animated: true)
+                
                 if let status = value["status"] as? Int, status == 0{
                     self.showAlert(title: "Error", msg: msg)
                     return
@@ -152,11 +178,7 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
     //                                self.navigationController?.pushViewController(vc_summary, animated: true)
     //                                return
                 
-    //                                guard let destinationVC = self.storyboard?.instantiateViewController(withIdentifier: "OrderSuccessVC") as? OrderSuccessViewController else {
-    //                                    fatalError("Unexpected destiation view controller")
-    //                                }
-    //                                destinationVC.orders = records
-    //                                self.present(destinationVC, animated: true, completion: nil)
+
             })
             
         }
@@ -270,11 +292,10 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 		
 		if self.isUserLoggedIn {
 			let session = UserDefaults.standard.string(forKey: UserDefaultsKeys.SESSION_ID)
-			if(session == nil)
-			{
-			}
-			else{
-				
+            
+			if(session == nil){
+                
+			} else {
 				let storyboard = UIStoryboard(name: "Profile", bundle: nil)
 				guard let addressVC = storyboard.instantiateViewController(withIdentifier: "AddressTableVC") as? AddressTableViewController else{
 					fatalError("Unexpected ViewController")
@@ -284,8 +305,8 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 				addressVC.selectionDelegate = self
 				shouldAllowAppear = false
 				navigationController?.pushViewController(addressVC, animated: true)
-				
 			}
+            
 		} else {
 			showAlert(title: "Error", msg: "Please login to add address.")
 		}
@@ -373,7 +394,7 @@ class PaymentSummaryViewController: UIViewController, CartFoodCellDelegate, Cart
 					orderItems.append(dict)
 				}
 				
-				var params: [String: Any] = ["partner_id": user?.partner_id as Any,
+				var params: [String: Any] = ["partner_id": user!.partner_id as Any,
 											 "address_id": selectedAddress!.id,
 											 "orders": orderItems]
 				let orderType = UserDefaults.standard.string(forKey: "OrderType") ?? "asap"
