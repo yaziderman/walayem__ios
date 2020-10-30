@@ -821,7 +821,8 @@ class CartViewController: UIViewController, CartFoodCellDelegate, CartFoodHeader
             return 
         }
 		addressNameLabel.text = selectedAddress?.name
-		addressDetailLabel.text = selectedAddress!.city + ", " + selectedAddress!.street + ", " + selectedAddress!.extra
+        let addressText = (selectedAddress?.city ?? "") + ", " + (selectedAddress?.street ?? "") + ", " 
+		addressDetailLabel.text =  addressText + (selectedAddress?.extra ?? "")
 	}
 	
 	private func calculateCost(){
